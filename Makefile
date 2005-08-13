@@ -7,7 +7,7 @@ install: $(BINARY)
 	$(INSTALL_PROGRAM) cow-shell $(DESTDIR)/usr/bin/cow-shell
 
 libcowdancer.so: cowdancer.lo
-	gcc -shared -o $@ $<
+	gcc -ldl -shared -o $@ $<
 
 cow-shell: cow-shell.o
 

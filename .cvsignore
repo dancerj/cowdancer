@@ -1,2 +1,5 @@
 .ilist
+build-stamp
+configure-stamp
+cow-shell
 cowdancer.lo

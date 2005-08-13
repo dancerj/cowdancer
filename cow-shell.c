@@ -19,7 +19,7 @@ int main(int ac, char** av)
   asprintf(&buf, "%s%s%s",
 	   getenv("LD_PRELOAD")?:"",
 	   getenv("LD_PRELOAD")?" ":"",
-	   "/usr/lib/libcowdancer/libcowdancer.so"
+	   "/usr/lib/cowdancer/libcowdancer.so"
 	   );
 
   if (unlink(".ilist")==-1)
@@ -42,8 +42,14 @@ int main(int ac, char** av)
   if (ac>1)
     execvp(av[1], av+1);
   else
-    execl(getenv("SHELL")?:"/bin/sh",
-	  getenv("SHELL")?:"/bin/sh",
-	  NULL);
+    {
+      const char* myshell=getenv("SHELL")?:"/bin/sh";
+      fprintf(stderr, "Invoking %s\n", myshell);
+      
+      execl(myshell,
+	    myshell,
+	    NULL);
+    }
+  perror("cow-shell: exec");
   return 1;
 }

@@ -1,6 +1,11 @@
 2005-08-13  Junichi Uekawa  <dancer@debian.org>
 
+	* cowdancer.c: fix obscure messages.
+
+	* cow-shell.c: fix a few thinko's
+
 	* Makefile (clean): new target for cleaning.
+	(BINARY): -ldl is required, some programs are not linked against -ldl.
 
 	* cow-shell.c: created
 

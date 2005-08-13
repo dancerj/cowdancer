@@ -47,7 +47,8 @@ static void load_ilist(void)
   int fd=0;
   long dev, ino;
 
-  ilist=malloc(2000*sizeof(struct ilist_struct));
+  if (!(ilist=malloc(2000*sizeof(struct ilist_struct))))
+    outofmemory("load_ilist initialize");
   ilist_len=2000;
 
   fd=origlibc_open(getenv("COWDANCER_ILISTFILE"),O_RDONLY,0);
@@ -64,8 +65,7 @@ static void load_ilist(void)
 	  ilist=realloc(ilist, (ilist_len*=2)*sizeof(struct ilist_struct));
 	  if (!ilist)
 	    {
-	      /* FIXME: erm.... out of memory? How do I signal error? */
-	      outofmemory("ilist_load");
+	      outofmemory("load_ilist initialize realloc ");
 	    }
 	}
     }
@@ -133,7 +133,6 @@ static void check_inode_and_copy(const char* s)
       if (asprintf(&buf, "COWDANCER_IGNORE=yes /bin/cp -a %s~~ %s",
 		   s, s)==-1)
 	outofmemory("out of memory in check_inode_and_copy, 2");
-      debug_cowdancer_2("Command-line", buf);
       system(buf);
       if (unlink(tilde)==-1)
 	perror(PRGNAME " unlink backup");
