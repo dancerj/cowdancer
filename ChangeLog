@@ -1,5 +1,13 @@
 2005-08-13  Junichi Uekawa  <dancer@debian.org>
 
+	* Makefile: install manpage
+
+	* cow-shell.1: create a manpage
+
+	* cow-shell.c: unset COWDANCER_IGNORE
+
+	* NEWS: create a NEWS file.
+
 	* cowdancer.c: fix obscure messages.
 
 	* cow-shell.c: fix a few thinko's

@@ -3,11 +3,14 @@ INSTALL_DIR=install -d -o root -g root -m 755
 INSTALL_FILE=install -o root -g root -m 644
 INSTALL_PROGRAM=install -o root -g root -m 755
 DESTDIR=
+VERSION=0.1
 
 all: $(BINARY)
 
 install: $(BINARY)
 	$(INSTALL_DIR) $(DESTDIR)/usr/lib/cowdancer/
+	$(INSTALL_DIR) $(DESTDIR)/usr/share/man/man1/
+	$(INSTALL_FILE)  cow-shell.1 $(DESTDIR)/usr/share/man/man1/cow-shell.1
 	$(INSTALL_FILE)  libcowdancer.so $(DESTDIR)/usr/lib/cowdancer/libcowdancer.so
 	$(INSTALL_PROGRAM) cow-shell $(DESTDIR)/usr/bin/cow-shell
 
@@ -26,7 +29,7 @@ clean:
 	-rm *~ *.o *.lo $(BINARY)
 
 upload-dist-all:
-	:
+	scp ../cowdancer_$(VERSION).tar.gz viper2.netfort.gr.jp:public_html/software/downloads
 
 check:
 	:

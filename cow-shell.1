@@ -1,0 +1,85 @@
+.TH "cow\-shell" 1 "2005 Aug 13" "cowdancer" "cowdancer"
+.SH "NAME"
+cow\-shell \- Start a copy-on-write session and invoke a shell.
+.SH SYNOPSIS
+.BI "cow-shell [" "commandline" "]"
+.SH DESCRIPTION
+.B cow\-shell
+Executes specified command with
+.B cowdancer
+or a shell if no command-line option is given.
+
+Inside the cowdancer session, files under the current directory
+are protected in a way so that a write operation to an i-node
+which existed at the point of running cow-shell
+is not modified.
+
+Useful for managing hard-linked source-trees and 
+scratch-filesystems.
+
+.SH "EXAMPLES"
+.TP
+.B "cp -al cowdancer/ cowdancer.new &&  cd cowdancer.new && cow-shell  "
+Create a hardlinked tree, and cd into the newly created tree.
+After invoking cow-shell inside that tree, a write operation 
+against a file that is hardlinked with the original tree 
+will be copied to a new file before write.
+.TP
+.B "cp -al cowdancer/ cowdancer.new &&  cd cowdancer.new && cow-shell debuild"
+Tries to run dpkg-buildpackage on the new tree,
+to avoid damage to the original tree.
+
+.PP
+.SH "FILES"
+.TP
+.B ".ilist"
+Generated dynamically in the current directory.
+The file contains the list of i-node numbers that should be 
+protected from write operation.
+
+.TP
+.B "/usr/lib/cowdancer/libcowdancer.so"
+The shared library used internally that overrides some functions 
+that potentially write to files.
+This library implements the COW feature and is preloaded with 
+LD_PRELOAD.
+
+.TP
+.B "/bin/cp"
+Used for copying.
+Requires GNU option
+.B "\-a"
+to be functional.
+
+.SH "ENVIRONMENT"
+.TP
+.B "COWDANCER_ILISTFILE"
+The path to the current 
+.B .ilist
+file.
+
+.TP
+.B "COWDANCER_IGNORE"
+Used internally to work around infinite loops.
+It will be unset.
+
+.TP
+.B "LD_PRELOAD"
+Utilized to preload
+.B libcowdancer.so
+
+.SH "BUGS"
+
+Does not cross device boundaries.
+
+Does not support anything that LD_PRELOAD does not work.
+
+Does not work unless hardlinks are supported.
+
+Not very user-friendly.
+
+.SH "AUTHOR"
+Junichi Uekawa (dancer@debian.org)
+
+Upstream page is available at 
+.B "http://www.netfort.gr.jp/~dancer/software/cowdancer.html"
