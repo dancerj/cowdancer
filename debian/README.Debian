@@ -1,0 +1,11 @@
+cowdancer for Debian
+--------------------
+
+This is a cowdancer.
+
+Restrictions:
+	Fundamentally really cannot work with chroot due to ld-preload
+	really cannot work with fakeroot, since it tries to override the same things.
+	
+
+ -- Junichi Uekawa <dancer@debian.org>, Sat Aug 13 19:04:41 2005

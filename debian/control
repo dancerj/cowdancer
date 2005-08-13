@@ -1,0 +1,13 @@
+Source: cowdancer
+Section: utils
+Priority: optional
+Maintainer: Junichi Uekawa <dancer@debian.org>
+Build-Depends: debhelper (>> 4.0.0)
+Standards-Version: 3.6.2
+
+Package: cowdancer
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: Copy-on-write directory tree utility.
+ Tries to make copy-on-write semantics upon hard-link copied
+ directory trees.

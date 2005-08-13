@@ -1,7 +1,15 @@
 2005-08-13  Junichi Uekawa  <dancer@debian.org>
 
+	* Makefile (clean): new target for cleaning.
+
 	* cow-shell.c: created
 
 	* Makefile: created.
 
 	* cowdancer.c: Created.
+
+
+ cowdancer -- a Copy-on-write data-access; No-cow-easy-replacement
+
+ Copyright 2005 Junichi Uekawa
+ GPL v2 or later.

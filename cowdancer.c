@@ -1,4 +1,9 @@
-/* cowdancer test */
+/*
+ * cowdancer -- a Copy-on-write data-access; No-cow-easy-replacement
+ *
+ * Copyright 2005 Junichi Uekawa
+ * GPL v2 or later.
+ */
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,8 +30,8 @@ struct ilist_struct
   ino_t inode;
 };
 
-struct ilist_struct* ilist=NULL;
-long ilist_len=0;
+static struct ilist_struct* ilist=NULL;
+static long ilist_len=0;
 
 /* I will die when things get too wrong. */
 static void outofmemory(const char* msg)
