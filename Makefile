@@ -1,4 +1,9 @@
 BINARY=libcowdancer.so cow-shell
+INSTALL_DIR=install -d -o root -g root -m 755
+INSTALL_FILE=install -o root -g root -m 644
+INSTALL_PROGRAM=install -o root -g root -m 755
+DESTDIR=
+
 all: $(BINARY)
 
 install: $(BINARY)
