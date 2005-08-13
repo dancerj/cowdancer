@@ -1,0 +1,7 @@
+2005-08-13  Junichi Uekawa  <dancer@debian.org>
+
+	* cow-shell.c: created
+
+	* Makefile: created.
+
+	* cowdancer.c: Created.
