@@ -11,4 +11,8 @@ Restrictions:
 	Might have some problems with fakeroot; although it seems to be 
 working fine at the moment.
 
- -- Junichi Uekawa <dancer@debian.org>, Mon Aug 15 09:19:04 2005
+BUGS:
+	O_CREAT may be better implemented without cp -a, but the implication
+of owner of created file vs truncated file is unclear.
+
+ -- Junichi Uekawa <dancer@debian.org>, Tue Aug 16 08:33:04 2005
