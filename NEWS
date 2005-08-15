@@ -1,3 +1,7 @@
+0.3.unreleased 16 Aug 2005
+
++ Add testsuite.
+
 0.2 13 Aug 2005
 
 + Buffer overflow bug fixed.

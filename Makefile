@@ -3,7 +3,7 @@ INSTALL_DIR=install -d -o root -g root -m 755
 INSTALL_FILE=install -o root -g root -m 644
 INSTALL_PROGRAM=install -o root -g root -m 755
 DESTDIR=
-VERSION=0.2
+VERSION=0.3
 
 all: $(BINARY)
 
@@ -32,6 +32,6 @@ upload-dist-all:
 	scp ../cowdancer_$(VERSION).tar.gz viper2.netfort.gr.jp:public_html/software/downloads
 
 check:
-	:
+	set -e; for A in tests/???_*.sh; do bash $$A; done
 
 .PHONY: clean check upload-dist-all

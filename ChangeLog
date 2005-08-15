@@ -1,3 +1,7 @@
+2005-08-16  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/000_test_basic.sh: Created a basic test.
+
 2005-08-13  Junichi Uekawa  <dancer@debian.org>
 
 	* Makefile (VERSION): 0.2

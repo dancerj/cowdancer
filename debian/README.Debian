@@ -4,8 +4,11 @@ cowdancer for Debian
 This is a cowdancer.
 
 Restrictions:
-	Fundamentally really cannot work with chroot due to ld-preload
+	Fundamentally really cannot work with chroot due to ld-preload;
+		cow-shell needs to be invoked inside chroot.
+		e.g. chroot /path/to/chroot cow-shell command-to-execute
+
 	Might have some problems with fakeroot; although it seems to be 
 working fine at the moment.
 
- -- Junichi Uekawa <dancer@debian.org>, Sat Aug 13 20:17:07 2005
+ -- Junichi Uekawa <dancer@debian.org>, Mon Aug 15 09:19:04 2005
