@@ -1,3 +1,9 @@
+cowdancer (0.2) unstable; urgency=low
+
+  * Fix buffer overflow.
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 13 Aug 2005 21:38:22 +0900
+
 cowdancer (0.1) unstable; urgency=low
 
   * Initial Release

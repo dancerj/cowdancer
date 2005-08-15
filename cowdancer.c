@@ -60,7 +60,7 @@ static void load_ilist(void)
       (ilist+i)->inode=(ino_t)ino;
 
       i++;
-      if (i>ilist_len)
+      if (i>=ilist_len)
 	{
 	  ilist=realloc(ilist, (ilist_len*=2)*sizeof(struct ilist_struct));
 	  if (!ilist)

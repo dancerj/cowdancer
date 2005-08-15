@@ -1,3 +1,7 @@
+0.2 13 Aug 2005
+
++ Buffer overflow bug fixed.
+
 0.1 13 Aug 2005
 
 + Initial Public Release.

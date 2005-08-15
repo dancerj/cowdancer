@@ -1,5 +1,9 @@
 2005-08-13  Junichi Uekawa  <dancer@debian.org>
 
+	* Makefile (VERSION): 0.2
+
+	* cowdancer.c (load_ilist): buffer overflow.
+
 	* Makefile: install manpage
 
 	* cow-shell.1: create a manpage
