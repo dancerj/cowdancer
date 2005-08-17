@@ -1,0 +1,27 @@
+   2/ before
+合計 4
+112068 lrwxrwxrwx  2 dancer dancer    6 2005-08-18 08:19 a -> a.real
+112066 -rw-r--r--  2 dancer dancer    0 2005-08-18 08:19 a.real
+112063 -rw-r--r--  2 dancer dancer    0 2005-08-18 08:19 b
+112064 -rw-r--r--  2 dancer dancer    0 2005-08-18 08:19 c
+112065 -rw-r--r--  2 dancer dancer    0 2005-08-18 08:19 d
+112067 -rw-r--r--  2 dancer dancer 1024 2005-08-18 08:19 e
+   2/ after
+合計 12
+112094 lrwxrwxrwx  1 dancer dancer    6 2005-08-18 08:19 a -> a.real
+112066 -rw-r--r--  2 dancer dancer    2 2005-08-18 08:19 a.real
+112095 -rw-r--r--  1 dancer dancer    0 2005-08-18 08:19 c
+112096 -rw-r--r--  1 dancer dancer 1024 2005-08-18 08:19 d
+112067 -rw-r--r--  2 dancer dancer 1024 2005-08-18 08:19 e
+   1/ differences; should not exist
+--- ls.prev	2005-08-18 08:19:04.262279640 +0900
++++ ls.after	2005-08-18 08:19:05.380109704 +0900
+@@ -1,6 +1,6 @@
+-合計 4
++合計 8
+ 112068 lrwxrwxrwx  1 dancer dancer    6 2005-08-18 08:19 a -> a.real
+-112066 -rw-r--r--  1 dancer dancer    0 2005-08-18 08:19 a.real
++112066 -rw-r--r--  1 dancer dancer    2 2005-08-18 08:19 a.real
+ 112063 -rw-r--r--  1 dancer dancer    0 2005-08-18 08:19 b
+ 112064 -rw-r--r--  1 dancer dancer    0 2005-08-18 08:19 c
+ 112065 -rw-r--r--  1 dancer dancer    0 2005-08-18 08:19 d

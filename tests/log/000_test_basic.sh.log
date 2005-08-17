@@ -1,0 +1,14 @@
+   2/ before
+合計 4
+112011 -rw-r--r--  2 dancer dancer    0 2005-08-18 08:19 a
+112012 -rw-r--r--  2 dancer dancer    0 2005-08-18 08:19 b
+112013 -rw-r--r--  2 dancer dancer    0 2005-08-18 08:19 c
+112014 -rw-r--r--  2 dancer dancer    0 2005-08-18 08:19 d
+112015 -rw-r--r--  2 dancer dancer 1024 2005-08-18 08:19 e
+   2/ after
+合計 12
+112047 -rw-r--r--  1 dancer dancer    2 2005-08-18 08:19 a
+112048 -rw-r--r--  1 dancer dancer    0 2005-08-18 08:19 c
+112049 -rw-r--r--  1 dancer dancer 1024 2005-08-18 08:19 d
+112015 -rw-r--r--  2 dancer dancer 1024 2005-08-18 08:19 e
+   1/ differences; should not exist

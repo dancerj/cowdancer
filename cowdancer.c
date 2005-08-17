@@ -109,9 +109,24 @@ static void check_inode_and_copy(const char* s)
 {
   struct stat buf;
   struct ilist_struct search_target;
+  char *canonical=NULL;		/* the canonical filename */
+  
 
   debug_cowdancer_2("DEBUG: test for", s);
-  stat(s, &buf);
+  if(stat(s, &buf))
+    return;			/* if stat fails, the file probably 
+				   doesn't exist; return */
+
+  if (S_ISLNK(buf.st_mode))
+    {
+      /* for symbollic link, canonicalize and get the real filename */
+      if (!(canonical=canonicalize_file_name(s)))
+	return;			/* if canonicalize_file_name fails, 
+				   the file probably doesn't exist. */
+      
+      stat(canonical, &buf);
+    }
+      
   search_target.inode = buf.st_ino;
   search_target.dev = buf.st_dev;
 
@@ -127,9 +142,9 @@ static void check_inode_and_copy(const char* s)
       char* buf=NULL;
       char* tilde=NULL;		/* filename of backup file */
 
-      if (asprintf(&tilde, "%s~~", s)==-1)
+      if (asprintf(&tilde, "%s~~", canonical?:s)==-1)
 	outofmemory("out of memory in check_inode_and_copy, 1");
-      if (rename(s, tilde)==-1)
+      if (rename(canonical?:s, tilde)==-1)
 	{
 	  perror (PRGNAME " backup file generation");
 	  fprintf(stderr, "while trying %s\n", tilde);
@@ -138,7 +153,7 @@ static void check_inode_and_copy(const char* s)
       else
 	{
 	  if (asprintf(&buf, "COWDANCER_IGNORE=yes /bin/cp -a %s~~ %s",
-		   s, s)==-1)
+		       canonical?:s, canonical?:s)==-1)
 	    outofmemory("out of memory in check_inode_and_copy, 2");
 	  system(buf);
 	  free(buf);
@@ -149,6 +164,8 @@ static void check_inode_and_copy(const char* s)
     }
   else				
     debug_cowdancer_2("DEBUG: did not match ", s);
+
+  if (canonical) free(canonical);
 }
 
 int open(const char * a, int flags, ...)

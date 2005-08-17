@@ -14,7 +14,7 @@ COWDEB=$(readlink -f ../cowdancer_0.3_i386.deb)
 
 sudo rm -rf /var/cache/pbuilder/build/cow
 sudo mkdir -p $ORIG
-(
+
 cd $ORIG
 sudo tar xfzp $BASETGZ
 sudo cp $COWDEB $ORIG/tmp/
@@ -28,21 +28,15 @@ sudo pbuilder build --buildplace $WORK-1 --no-targz --internal-chrootexec "chroo
 diff -u {$ORIG,$WORK-1}/etc/passwd
 diff -u {$ORIG,$WORK-1}/etc/group
 sudo diff -u /tmp/a $WORK-1/var/log/dpkg.log
-echo passwd
-cat $WORK-1/etc/passwd
-echo group
-cat $WORK-1/etc/group
-echo dpkglog
-sudo cat $WORK-1/var/log/dpkg.log
 sudo rm -rf $WORK-1
 
 sudo find $ORIG -ls > /tmp/ls-after
-)
 
+cd ..
 sudo rm -rf /var/cache/pbuilder/build/cow
 
 # /etc/passwd, /etc/group are due to 'pbuilder-buildpackage-funcs/createbuilduser'
 diff -u /tmp/ls-before /tmp/ls-after
 
-
 echo end
+

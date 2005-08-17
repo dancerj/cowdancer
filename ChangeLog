@@ -1,3 +1,14 @@
+2005-08-18  Junichi Uekawa  <dancer@debian.org>
+
+	* cowdancer.c (check_inode_and_copy): use the canonical filename
+	rather than the possible symbollic link.
+
+	* tests/001_test_symlink.sh: create code to test symlink handling.
+
+	* tests/README: add a readme.
+
+	* tests/900_test_pbuilder.sh: rename to 900.
+
 2005-08-17  Junichi Uekawa  <dancer@debian.org>
 
 	* cowdancer.c (check_inode_and_copy): add hook to avoid looping around; should not be

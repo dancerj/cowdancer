@@ -1,7 +1,5 @@
 #!/bin/bash
-# test that things are working as expected.
-#
-# Requires a installed cowdancer, and will test the installed cowdancer.
+# test symlink handling.
 
 set -ex
 
@@ -11,9 +9,9 @@ cd ${TESTDIR}
 mkdir 1/
 
 # make a few files for testing.
-touch 1/a 1/b 1/c 1/d
+touch 1/b 1/c 1/d 1/a.real
 dd if=/dev/zero of=1/e bs=512 count=2
-
+ln -s a.real 1/a
 ls -li 1/ > ls.prev
 
 sleep 1s
