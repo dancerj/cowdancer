@@ -116,7 +116,8 @@ static void check_inode_and_copy(const char* s)
   search_target.dev = buf.st_dev;
 
   if(memmem(ilist, ilist_len*(sizeof(struct ilist_struct)), 
-	    &search_target, sizeof(search_target)))
+	    &search_target, sizeof(search_target)) &&
+     S_ISREG(buf.st_mode))
     {
       /* There is a file that needs to be protected, 
 	 Copy-on-write hardlink files.
@@ -129,14 +130,21 @@ static void check_inode_and_copy(const char* s)
       if (asprintf(&tilde, "%s~~", s)==-1)
 	outofmemory("out of memory in check_inode_and_copy, 1");
       if (rename(s, tilde)==-1)
-	perror (PRGNAME " backup file generation");
-      if (asprintf(&buf, "COWDANCER_IGNORE=yes /bin/cp -a %s~~ %s",
+	{
+	  perror (PRGNAME " backup file generation");
+	  fprintf(stderr, "while trying %s\n", tilde);
+	  /* FIXME: should error-handle. */
+	}
+      else
+	{
+	  if (asprintf(&buf, "COWDANCER_IGNORE=yes /bin/cp -a %s~~ %s",
 		   s, s)==-1)
-	outofmemory("out of memory in check_inode_and_copy, 2");
-      system(buf);
-      if (unlink(tilde)==-1)
-	perror(PRGNAME " unlink backup");
-      free(buf);
+	    outofmemory("out of memory in check_inode_and_copy, 2");
+	  system(buf);
+	  free(buf);
+	  if (unlink(tilde)==-1)
+	    perror(PRGNAME " unlink backup");
+	}
       free(tilde);
     }
   else				

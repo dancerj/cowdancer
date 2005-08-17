@@ -1,3 +1,19 @@
+2005-08-17  Junichi Uekawa  <dancer@debian.org>
+
+	* cowdancer.c (check_inode_and_copy): add hook to avoid looping around; should not be
+	a problem, but as a safety measure.
+	(check_inode_and_copy): Fix free routine location.
+	(check_inode_and_copy): add debugging error message
+	(check_inode_and_copy): check that the file is a regular file
+	before trying to do anything on it; directories and special files
+	and sockets really don't want this.
+
+	* cow-shell.c (main): -xdev to find.
+
+	* tests/001_test_pbuilder.sh: cow working simulation
+
+	* Makefile (check): create logfiles.
+
 2005-08-16  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/000_test_basic.sh: Created a basic test.

@@ -7,7 +7,7 @@ set -ex
 
 TESTDIR=$(mktemp -d )
 
-cd ${TESTDIR}
+( cd ${TESTDIR}
 mkdir 1/
 
 # make a few files for testing.
@@ -33,5 +33,6 @@ ls -li 1/ > ls.after
 
 echo "   1/ differences; should not exist"
 diff -u ls.prev ls.after
+)
 
 rm -rf ${TESTDIR}

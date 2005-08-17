@@ -1,8 +1,9 @@
 cowdancer (0.3) UNRELEASED; urgency=low
 
   * add testsuite.
+  * find -xdev to avoid looking into /proc
 
- -- Junichi Uekawa <dancer@debian.org>  Tue, 16 Aug 2005 08:29:21 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 17 Aug 2005 08:54:44 +0900
 
 cowdancer (0.2) unstable; urgency=low
 
