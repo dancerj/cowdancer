@@ -25,9 +25,7 @@ sudo cp var/log/dpkg.log /tmp/a
 sudo pbuilder update --buildplace $WORK-1 --no-targz --internal-chrootexec "chroot $WORK-1 cow-shell" 
 sudo pbuilder build --buildplace $WORK-1 --no-targz --internal-chrootexec "chroot $WORK-1 cow-shell" /home/dancer/pending/20050813/cowdancer_0.2.dsc
 
-diff -u {$ORIG,$WORK-1}/etc/passwd
-diff -u {$ORIG,$WORK-1}/etc/group
-sudo diff -u /tmp/a $WORK-1/var/log/dpkg.log
+sudo diff -u /tmp/a $ORIG/var/log/dpkg.log
 sudo rm -rf $WORK-1
 
 sudo find $ORIG -ls > /tmp/ls-after

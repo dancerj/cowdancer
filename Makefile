@@ -32,7 +32,7 @@ upload-dist-all:
 	scp ../cowdancer_$(VERSION).tar.gz viper2.netfort.gr.jp:public_html/software/downloads
 
 check:
-	set -e; for A in tests/???_*.sh; do echo $A; bash $$A 2>&1 > tests/log/$${A/*\//}.log; done
+	set -e; for A in tests/???_*.sh; do echo $$A; bash $$A  > tests/log/$${A/*\//}.log 2>&1; done
 
 
 .PHONY: clean check upload-dist-all

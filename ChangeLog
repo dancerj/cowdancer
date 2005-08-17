@@ -1,5 +1,7 @@
 2005-08-18  Junichi Uekawa  <dancer@debian.org>
 
+	* Makefile (check): fix redirect in testsuite.
+
 	* cowdancer.c (check_inode_and_copy): use the canonical filename
 	rather than the possible symbollic link.
 

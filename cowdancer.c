@@ -113,7 +113,7 @@ static void check_inode_and_copy(const char* s)
   
 
   debug_cowdancer_2("DEBUG: test for", s);
-  if(stat(s, &buf))
+  if(lstat(s, &buf))
     return;			/* if stat fails, the file probably 
 				   doesn't exist; return */
 
@@ -124,7 +124,9 @@ static void check_inode_and_copy(const char* s)
 	return;			/* if canonicalize_file_name fails, 
 				   the file probably doesn't exist. */
       
-      stat(canonical, &buf);
+      if(stat(canonical, &buf))	/* if I can't stat this file, I don't think 
+				   I can write to it; ignore */
+	return;
     }
       
   search_target.inode = buf.st_ino;
