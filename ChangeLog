@@ -1,3 +1,12 @@
+2005-08-19  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/004_test_fopen64.sh: 
+	* tests/004_test_fopen64.c: 
+	* tests/003_test_fopen.sh: 
+	* tests/003_test_fopen.c: 
+	* tests/002_test_open.sh: 
+	* tests/002_test_open.c: Add testsuite. fopen test fails.
+
 2005-08-18  Junichi Uekawa  <dancer@debian.org>
 
 	* Makefile (check): fix redirect in testsuite.

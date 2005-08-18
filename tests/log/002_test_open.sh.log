@@ -1,0 +1,46 @@
+++ mktemp -d
++ TESTDIR=/tmp/tmp.vnzGvg
+++ readlink -f tests/002_test_open.c
++ TESTCODE=/home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c
++ cd /tmp/tmp.vnzGvg
++ mkdir 1/
++ touch 1/a 1/b 1/c 1/d
++ dd if=/dev/zero of=1/e bs=512 count=2
+読み込んだブロック数は 2+0
+書き込んだブロック数は 2+0
+1024 bytes transferred in 0.004353 seconds (235238 bytes/sec)
++ ls -li 1/
++ sleep 1s
++ cp -al 1/ 2/
++ echo '   2/ before'
+   2/ before
++ ls -li 2/
+合計 4
+226499 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 a
+226500 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 b
+226501 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 c
+226502 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 d
+226503 -rw-r--r--  2 dancer dancer 1024 2005-08-19 08:38 e
++ cow-shell /home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
+002_test_open.c: In function 'writeandclose':
+002_test_open.c:8: warning: implicit declaration of function 'write'
+002_test_open.c:9: warning: implicit declaration of function 'close'
+002_test_open.c: In function 'main':
+002_test_open.c:23: warning: 'a' is used uninitialized in this function
+002_test_open.c:24: warning: 'b' is used uninitialized in this function
+002_test_open.c:25: warning: 'c' is used uninitialized in this function
++ echo '   2/ after'
+   2/ after
++ ls -li 2/
+合計 4
+226499 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 a
+226552 -rw-r--r--  1 dancer dancer    0 2005-08-19 08:38 b
+226553 -rw-r--r--  1 dancer dancer    0 2005-08-19 08:38 c
+226502 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 d
+226503 -rw-r--r--  2 dancer dancer 1024 2005-08-19 08:38 e
++ rm -rf 2/
++ ls -li 1/
++ echo '   1/ differences; should not exist'
+   1/ differences; should not exist
++ diff -u ls.prev ls.after
++ rm -rf /tmp/tmp.vnzGvg
