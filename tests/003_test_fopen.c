@@ -1,7 +1,7 @@
 /*BINFMTC:
 fopen test */
 #include <stdio.h>
-
+#include <stdlib.h>
 
 void writeandclose(FILE* a)
 {

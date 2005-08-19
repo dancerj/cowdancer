@@ -23,6 +23,8 @@ static int (*origlibc_open)(const char *, int, ...) = NULL;
 static int (*origlibc_open64)(const char *, int, ...) = NULL;
 static int (*origlibc_creat)(const char *, mode_t) = NULL;
 static int (*origlibc_creat64)(const char *, mode_t) = NULL;
+static FILE* (*origlibc_fopen)(const char *, const char*) = NULL;
+static FILE* (*origlibc_fopen64)(const char *, const char*) = NULL;
 
 struct ilist_struct
 {
@@ -95,6 +97,8 @@ static void initialize_functions ()
       origlibc_open64 = dlsym(RTLD_NEXT, "open64");
       origlibc_creat = dlsym(RTLD_NEXT, "creat");
       origlibc_creat64 = dlsym(RTLD_NEXT, "creat64");
+      origlibc_fopen = dlsym(RTLD_NEXT, "fopen64");
+      origlibc_fopen64 = dlsym(RTLD_NEXT, "fopen64");
 
       /* load the ilist */
       load_ilist();
@@ -243,3 +247,40 @@ int creat64(const char * a, mode_t mode)
   fd = origlibc_creat64 (a, mode);
   return fd;
 }
+
+static int likely_fopen_write(const char *t)
+{
+  /* checks if it is likely to be a write fopen */
+  return strspn(t, "aw+");
+}
+
+#undef fopen
+FILE* fopen(const char* s, const char* t)
+{
+  FILE *f;
+  initialize_functions();
+  if(!getenv("COWDANCER_IGNORE")&&
+     likely_fopen_write(t))
+    {
+      debug_cowdancer_2 ("fopen", s);
+      check_inode_and_copy(s);
+    }
+  f = origlibc_fopen (s, t);
+  return f;
+}
+
+#undef fopen64
+FILE* fopen64(const char* s, const char* t)
+{
+  FILE *f;
+  initialize_functions();
+  if(!getenv("COWDANCER_IGNORE")&&
+     likely_fopen_write(t))
+    {
+      debug_cowdancer_2 ("fopen64", s);
+      check_inode_and_copy(s);
+    }
+  f = origlibc_fopen64(s, t);
+  return f;
+}
+

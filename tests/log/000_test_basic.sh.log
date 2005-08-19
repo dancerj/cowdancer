@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.wsqv9K
-+ cd /tmp/tmp.wsqv9K
++ TESTDIR=/tmp/tmp.zvCaoE
++ cd /tmp/tmp.zvCaoE
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004257 seconds (240539 bytes/sec)
+1024 bytes transferred in 0.004462 seconds (229498 bytes/sec)
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2/
@@ -14,28 +14,28 @@
    2/ before
 + ls -li 2/
 合計 4
-226401 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 a
-226402 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 b
-226403 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 c
-226404 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 d
-226405 -rw-r--r--  2 dancer dancer 1024 2005-08-19 08:38 e
+25954 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:14 a
+25955 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:14 b
+25956 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:14 c
+25957 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:14 d
+25958 -rw-r--r--  2 dancer dancer 1024 2005-08-19 22:14 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/sh
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004296 seconds (238365 bytes/sec)
+1024 bytes transferred in 0.006824 seconds (150058 bytes/sec)
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-226431 -rw-r--r--  1 dancer dancer    2 2005-08-19 08:38 a
-226432 -rw-r--r--  1 dancer dancer    0 2005-08-19 08:38 c
-226433 -rw-r--r--  1 dancer dancer 1024 2005-08-19 08:38 d
-226405 -rw-r--r--  2 dancer dancer 1024 2005-08-19 08:38 e
+25985 -rw-r--r--  1 dancer dancer    2 2005-08-19 22:14 a
+25986 -rw-r--r--  1 dancer dancer    0 2005-08-19 22:14 c
+25987 -rw-r--r--  1 dancer dancer 1024 2005-08-19 22:14 d
+25958 -rw-r--r--  2 dancer dancer 1024 2005-08-19 22:14 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.wsqv9K
++ rm -rf /tmp/tmp.zvCaoE

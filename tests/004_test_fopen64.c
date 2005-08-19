@@ -1,8 +1,7 @@
 /*BINFMTC: -D_FILE_OFFSET_BITS=64
 fopen test */
 #include <stdio.h>
-
-
+#include <stdlib.h>
 
 void writeandclose(FILE* a)
 {

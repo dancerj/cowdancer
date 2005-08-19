@@ -1,5 +1,8 @@
 2005-08-19  Junichi Uekawa  <dancer@debian.org>
 
+	* cowdancer.c (likely_fopen_write, fopen, fopen64): implement fopen.
+	(initialize_functions): implement fopen.
+
 	* tests/004_test_fopen64.sh: 
 	* tests/004_test_fopen64.c: 
 	* tests/003_test_fopen.sh: 

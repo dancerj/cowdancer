@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.YAQB6N
++ TESTDIR=/tmp/tmp.ACkZAr
 ++ readlink -f tests/003_test_fopen.c
 + TESTCODE=/home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/003_test_fopen.c
-+ cd /tmp/tmp.YAQB6N
++ cd /tmp/tmp.ACkZAr
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004214 seconds (243005 bytes/sec)
+1024 bytes transferred in 0.004232 seconds (241966 bytes/sec)
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2/
@@ -16,38 +16,24 @@
    2/ before
 + ls -li 2/
 合計 4
-226567 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 a
-226568 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 b
-226569 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 c
-226570 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 d
-226571 -rw-r--r--  2 dancer dancer 1024 2005-08-19 08:38 e
+26247 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:15 a
+26248 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:15 b
+26249 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:15 c
+26250 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:15 d
+26251 -rw-r--r--  2 dancer dancer 1024 2005-08-19 22:15 e
 + cow-shell /home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/003_test_fopen.c 2/a 2/b 2/c
-003_test_fopen.c: In function 'main':
-003_test_fopen.c:16: warning: implicit declaration of function 'exit'
-003_test_fopen.c:16: warning: incompatible implicit declaration of built-in function 'exit'
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-226567 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 a
-226568 -rw-r--r--  2 dancer dancer    4 2005-08-19 08:38 b
-226569 -rw-r--r--  2 dancer dancer    4 2005-08-19 08:38 c
-226570 -rw-r--r--  2 dancer dancer    0 2005-08-19 08:38 d
-226571 -rw-r--r--  2 dancer dancer 1024 2005-08-19 08:38 e
+26247 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:15 a
+26320 -rw-r--r--  1 dancer dancer    4 2005-08-19 22:15 b
+26321 -rw-r--r--  1 dancer dancer    4 2005-08-19 22:15 c
+26250 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:15 d
+26251 -rw-r--r--  2 dancer dancer 1024 2005-08-19 22:15 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
---- ls.prev	2005-08-19 08:38:31.393411248 +0900
-+++ ls.after	2005-08-19 08:38:32.633222768 +0900
-@@ -1,6 +1,6 @@
--合計 4
-+合計 12
- 226567 -rw-r--r--  1 dancer dancer    0 2005-08-19 08:38 a
--226568 -rw-r--r--  1 dancer dancer    0 2005-08-19 08:38 b
--226569 -rw-r--r--  1 dancer dancer    0 2005-08-19 08:38 c
-+226568 -rw-r--r--  1 dancer dancer    4 2005-08-19 08:38 b
-+226569 -rw-r--r--  1 dancer dancer    4 2005-08-19 08:38 c
- 226570 -rw-r--r--  1 dancer dancer    0 2005-08-19 08:38 d
- 226571 -rw-r--r--  1 dancer dancer 1024 2005-08-19 08:38 e
++ rm -rf /tmp/tmp.ACkZAr
