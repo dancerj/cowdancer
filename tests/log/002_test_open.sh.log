@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.CM1cL1
++ TESTDIR=/tmp/tmp.hcrxE7
 ++ readlink -f tests/002_test_open.c
 + TESTCODE=/home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c
-+ cd /tmp/tmp.CM1cL1
++ cd /tmp/tmp.hcrxE7
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004225 seconds (242371 bytes/sec)
+1024 bytes transferred in 0.004345 seconds (235678 bytes/sec)
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2/
@@ -16,11 +16,11 @@
    2/ before
 + ls -li 2/
 合計 4
-26113 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:14 a
-26114 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:14 b
-26115 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:14 c
-26116 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:14 d
-26117 -rw-r--r--  2 dancer dancer 1024 2005-08-19 22:14 e
+208167 -rw-r--r--  2 dancer dancer    0 2005-08-19 23:04 a
+208168 -rw-r--r--  2 dancer dancer    0 2005-08-19 23:04 b
+208169 -rw-r--r--  2 dancer dancer    0 2005-08-19 23:04 c
+208170 -rw-r--r--  2 dancer dancer    0 2005-08-19 23:04 d
+208171 -rw-r--r--  2 dancer dancer 1024 2005-08-19 23:04 e
 + cow-shell /home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
 002_test_open.c: In function 'writeandclose':
 002_test_open.c:8: warning: implicit declaration of function 'write'
@@ -33,14 +33,14 @@
    2/ after
 + ls -li 2/
 合計 4
-26113 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:14 a
-26232 -rw-r--r--  1 dancer dancer    0 2005-08-19 22:14 b
-26233 -rw-r--r--  1 dancer dancer    0 2005-08-19 22:14 c
-26116 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:14 d
-26117 -rw-r--r--  2 dancer dancer 1024 2005-08-19 22:14 e
+208167 -rw-r--r--  2 dancer dancer    0 2005-08-19 23:04 a
+208226 -rw-r--r--  1 dancer dancer    0 2005-08-19 23:04 b
+208227 -rw-r--r--  1 dancer dancer    0 2005-08-19 23:04 c
+208170 -rw-r--r--  2 dancer dancer    0 2005-08-19 23:04 d
+208171 -rw-r--r--  2 dancer dancer 1024 2005-08-19 23:04 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.CM1cL1
++ rm -rf /tmp/tmp.hcrxE7

@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.ACkZAr
++ TESTDIR=/tmp/tmp.vsDIX1
 ++ readlink -f tests/003_test_fopen.c
 + TESTCODE=/home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/003_test_fopen.c
-+ cd /tmp/tmp.ACkZAr
++ cd /tmp/tmp.vsDIX1
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004232 seconds (241966 bytes/sec)
+1024 bytes transferred in 0.004949 seconds (206915 bytes/sec)
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2/
@@ -16,24 +16,24 @@
    2/ before
 + ls -li 2/
 合計 4
-26247 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:15 a
-26248 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:15 b
-26249 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:15 c
-26250 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:15 d
-26251 -rw-r--r--  2 dancer dancer 1024 2005-08-19 22:15 e
+208241 -rw-r--r--  2 dancer dancer    0 2005-08-19 23:04 a
+208242 -rw-r--r--  2 dancer dancer    0 2005-08-19 23:04 b
+208243 -rw-r--r--  2 dancer dancer    0 2005-08-19 23:04 c
+208244 -rw-r--r--  2 dancer dancer    0 2005-08-19 23:04 d
+208245 -rw-r--r--  2 dancer dancer 1024 2005-08-19 23:04 e
 + cow-shell /home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/003_test_fopen.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-26247 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:15 a
-26320 -rw-r--r--  1 dancer dancer    4 2005-08-19 22:15 b
-26321 -rw-r--r--  1 dancer dancer    4 2005-08-19 22:15 c
-26250 -rw-r--r--  2 dancer dancer    0 2005-08-19 22:15 d
-26251 -rw-r--r--  2 dancer dancer 1024 2005-08-19 22:15 e
+208241 -rw-r--r--  2 dancer dancer    0 2005-08-19 23:04 a
+208276 -rw-r--r--  1 dancer dancer    4 2005-08-19 23:04 b
+208277 -rw-r--r--  1 dancer dancer    4 2005-08-19 23:04 c
+208244 -rw-r--r--  2 dancer dancer    0 2005-08-19 23:04 d
+208245 -rw-r--r--  2 dancer dancer 1024 2005-08-19 23:04 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.ACkZAr
++ rm -rf /tmp/tmp.vsDIX1

@@ -1,5 +1,5 @@
 + ORIG=/var/cache/pbuilder/build/cow/orig
-+ WORK=/var/cache/pbuilder/build/cow/work8901
++ WORK=/var/cache/pbuilder/build/cow/work5416
 + BASETGZ=/var/cache/pbuilder/base.tgz
 ++ readlink -f ../cowdancer_0.3_i386.deb
 + COWDEB=/home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer_0.3_i386.deb
@@ -14,9 +14,9 @@ Selecting previously deselected package cowdancer.
 Unpacking cowdancer (from tmp/cowdancer_0.3_i386.deb) ...
 Setting up cowdancer (0.3) ...
 + sudo find /var/cache/pbuilder/build/cow/orig -ls
-+ sudo cp -al /var/cache/pbuilder/build/cow/orig /var/cache/pbuilder/build/cow/work8901-1
++ sudo cp -al /var/cache/pbuilder/build/cow/orig /var/cache/pbuilder/build/cow/work5416-1
 + sudo cp var/log/dpkg.log /tmp/a
-+ sudo pbuilder update --buildplace /var/cache/pbuilder/build/cow/work8901-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work8901-1 cow-shell'
++ sudo pbuilder update --buildplace /var/cache/pbuilder/build/cow/work5416-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work5416-1 cow-shell'
  -> Running in no-targz mode
  -> copying local configuration
  -> mounting /proc filesystem
@@ -30,7 +30,7 @@ Ign http://ring.asahi-net.or.jp sid Release
 Get:3 http://ring.asahi-net.or.jp sid/main Packages [3752kB]
 Get:4 http://ring.asahi-net.or.jp sid/contrib Packages [65.9kB]
 Get:5 http://ring.asahi-net.or.jp sid/non-free Packages [65.7kB]
-Fetched 3918kB in 2s (1908kB/s)
+Fetched 3918kB in 1s (2247kB/s)
 Reading package lists...
 W: GPG error: http://ring.asahi-net.or.jp sid Release: Could not execute /usr/bin/gpgv to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
@@ -56,7 +56,7 @@ Get:7 http://ring.asahi-net.or.jp sid/main cpp-4.0 4.0.1-5 [2042kB]
 Get:8 http://ring.asahi-net.or.jp sid/main gcc-4.0 4.0.1-5 [503kB]
 Get:9 http://ring.asahi-net.or.jp sid/main libstdc++6-4.0-dev 4.0.1-5 [1517kB]
 Get:10 http://ring.asahi-net.or.jp sid/main g++-4.0 4.0.1-5 [2326kB]
-Fetched 9110kB in 2s (3609kB/s)
+Fetched 9110kB in 1s (6661kB/s)
 (Reading database ... 12158 files and directories currently installed.)
 Preparing to replace dpkg 1.13.10 (using .../archives/dpkg_1.13.11_i386.deb) ...
 Unpacking replacement dpkg ...
@@ -102,21 +102,21 @@ apt is already the newest version.
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-+ sudo pbuilder build --buildplace /var/cache/pbuilder/build/cow/work8901-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work8901-1 cow-shell' /home/dancer/pending/20050813/cowdancer_0.2.dsc
++ sudo pbuilder build --buildplace /var/cache/pbuilder/build/cow/work5416-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work5416-1 cow-shell' /home/dancer/pending/20050813/cowdancer_0.2.dsc
  -> Running in no-targz mode
 I: using fakeroot in build.
 pbuilder-buildpackage/i386 $Id$
 $Id$
 
-Current time: Fri Aug 19 22:16:39 JST 2005
-pbuilder-time-stamp: 1124457399
+Current time: Fri Aug 19 23:05:26 JST 2005
+pbuilder-time-stamp: 1124460326
  -> copying local configuration
  -> mounting /proc filesystem
  -> mounting /dev/pts filesystem
  -> policy-rc.d already exists
  -> created buildresult dir :/var/cache/pbuilder/result/
 Installing the build-deps
- -> Attempting to parse the build-deps : pbuilder-satisfydepends,v 1.19 2005/06/03 12:07:39 dancer Exp $
+ -> Attempting to parse the build-deps : pbuilder-satisfydepends,v 1.20 2005/08/17 00:46:54 dancer Exp $
  -> Considering  debhelper (>> 4.0.0)
    -> Trying debhelper
  -> Installing  debhelper
@@ -145,7 +145,7 @@ Get:5 http://ring.asahi-net.or.jp sid/main gettext 0.14.5-2 [1775kB]
 Get:6 http://ring.asahi-net.or.jp sid/main intltool-debian 0.30+20040213 [23.5kB]
 Get:7 http://ring.asahi-net.or.jp sid/main po-debconf 0.8.23 [78.0kB]
 Get:8 http://ring.asahi-net.or.jp sid/main debhelper 4.9.5 [363kB]
-Fetched 2627kB in 0s (3445kB/s)
+Fetched 2627kB in 0s (6031kB/s)
 Selecting previously deselected package libmagic1.
 (Reading database ... 12158 files and directories currently installed.)
 Unpacking libmagic1 (from .../libmagic1_4.12-1_i386.deb) ...
@@ -186,12 +186,14 @@ After unpacking 193kB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   fakeroot
 Get:1 http://ring.asahi-net.or.jp sid/main fakeroot 1.4.2 [69.5kB]
-Fetched 69.5kB in 0s (686kB/s)
+Fetched 69.5kB in 0s (962kB/s)
 Selecting previously deselected package fakeroot.
 (Reading database ... 12674 files and directories currently installed.)
 Unpacking fakeroot (from .../fakeroot_1.4.2_i386.deb) ...
 Setting up fakeroot (1.4.2) ...
 
+/var/cache/pbuilder/build/cow/work5416-1/etc/passwd
+/var/cache/pbuilder/build/cow/work5416-1/etc/group
 Copying source file
     -> copying [/home/dancer/pending/20050813/cowdancer_0.2.dsc]
     -> copying [/home/dancer/pending/20050813/cowdancer_0.2.tar.gz]
@@ -305,34 +307,16 @@ debian: warning: no utmp entry available and LOGNAME not defined; using uid of p
 dpkg-genchanges: including full source code in upload
 dpkg-buildpackage: full upload; Debian-native package (full source is included)
  -> Terminate timeout process
-/usr/lib/pbuilder/pbuilder-buildpackage: line 135: 10017 Terminated              ( : Timeout process; sleep "${TIMEOUT_TIME}"; echo " -> Terminating build process due to timeout "; kill ${BUILD_PID} || true )
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-Current time: Fri Aug 19 22:17:02 JST 2005
-pbuilder-time-stamp: 1124457422
+/usr/lib/pbuilder/pbuilder-buildpackage: line 152:  6006 Terminated              ( : Timeout process; sleep "${TIMEOUT_TIME}"; echo " -> Terminating build process due to timeout "; kill ${BUILD_PID} || true )
+Current time: Fri Aug 19 23:05:54 JST 2005
+pbuilder-time-stamp: 1124460354
 + sudo diff -u /tmp/a /var/cache/pbuilder/build/cow/orig/var/log/dpkg.log
-+ sudo rm -rf /var/cache/pbuilder/build/cow/work8901-1
++ sudo rm -rf /var/cache/pbuilder/build/cow/work5416-1
 + sudo find /var/cache/pbuilder/build/cow/orig -ls
 + cd ..
 + sudo rm -rf /var/cache/pbuilder/build/cow
 + diff -u /tmp/ls-before /tmp/ls-after
---- /tmp/ls-before	2005-08-19 22:15:50.929034280 +0900
-+++ /tmp/ls-after	2005-08-19 22:17:04.951781112 +0900
-@@ -5609,7 +5609,7 @@
- 1111940    4 -rw-r--r--   1 root     root          170 12月 20  2003 /var/cache/pbuilder/build/cow/orig/etc/logrotate.d/exim4-base
- 1111941    4 -rw-r--r--   1 root     root          111  6月 13 00:28 /var/cache/pbuilder/build/cow/orig/etc/logrotate.d/dpkg
- 921319   20 -rw-r--r--   1 root     root        17571  3月 22 04:46 /var/cache/pbuilder/build/cow/orig/etc/services
--921320    4 -rw-r--r--   1 root     root          480 12月 11  2004 /var/cache/pbuilder/build/cow/orig/etc/group
-+921320    4 -rw-r--r--   1 root     root          497  8月 19 22:16 /var/cache/pbuilder/build/cow/orig/etc/group
- 932073    4 drwxr-xr-x   2 root     root         4096  3月 13 19:21 /var/cache/pbuilder/build/cow/orig/etc/cron.hourly
- 1095839    4 -rw-r--r--   1 root     root          102  7月 29  2004 /var/cache/pbuilder/build/cow/orig/etc/cron.hourly/.placeholder
- 932074    4 drwxr-xr-x   2 root     root         4096  8月 17 09:00 /var/cache/pbuilder/build/cow/orig/etc/security
-@@ -5753,7 +5753,7 @@
- 932087    4 drwxr-xr-x   3 root     root         4096  1月 10  2004 /var/cache/pbuilder/build/cow/orig/etc/apm
- 932088    4 drwxr-xr-x   2 root     root         4096  5月 20 06:56 /var/cache/pbuilder/build/cow/orig/etc/apm/event.d
- 1340886    4 -rwxr-xr-x   1 root     root          961 12月 27  2003 /var/cache/pbuilder/build/cow/orig/etc/apm/event.d/ppp
--921351    4 -rw-r--r--   1 root     root          806 12月 11  2004 /var/cache/pbuilder/build/cow/orig/etc/passwd
-+921351    4 -rw-r--r--   1 root     root          851  8月 19 22:16 /var/cache/pbuilder/build/cow/orig/etc/passwd
- 921352    4 -rw-r-----   1 root     daemon        144  1月 18  2002 /var/cache/pbuilder/build/cow/orig/etc/at.deny
- 921353  188 -rw-r--r--   1 root     root       188168  1月 23  2005 /var/cache/pbuilder/build/cow/orig/etc/bash_completion
- 921354    4 -rw-r--r--   1 root     root          806  1月 10  2004 /var/cache/pbuilder/build/cow/orig/etc/passwd.org
++ echo end
+end

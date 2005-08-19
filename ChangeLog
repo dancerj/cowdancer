@@ -1,5 +1,7 @@
 2005-08-19  Junichi Uekawa  <dancer@debian.org>
 
+	* tests/900_test_pbuilder.sh: with fixed pbuilder 0.130, it works
+
 	* cowdancer.c (likely_fopen_write, fopen, fopen64): implement fopen.
 	(initialize_functions): implement fopen.
 
