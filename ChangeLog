@@ -1,3 +1,11 @@
+2005-08-20  Junichi Uekawa  <dancer@debian.org>
+
+	* NEWS: update NEWS
+
+	* debian/changelog: update changelog
+
+	* tests/900_test_pbuilder.sh: use dsh as example, not cowdancer itself.
+
 2005-08-19  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/900_test_pbuilder.sh: with fixed pbuilder 0.130, it works

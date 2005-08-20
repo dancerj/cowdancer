@@ -1,7 +1,11 @@
-0.3.unreleased 16 Aug 2005
+0.3 20 Aug 2005
 
-+ Add testsuite.
++ Add regression testsuite.
 + Support symbollic links
++ fopen/fopen64 is now trapped
++ only COW regular files
++ do not try to cross device boundaries when creating the ilink list.
++ Now it is able to run pbuilder 0.130.
 
 0.2 13 Aug 2005
 

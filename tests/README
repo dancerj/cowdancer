@@ -2,5 +2,5 @@ This directory contains testsuite; which is ran against the installed
 version of cowdancer.
 
 0XX: basic functional tests
-8XX: applicational tests that do not require root privilege
-9XX: applicational tests that may require root privilege. (use sudo)
+8XX: applicational system tests that do not require root privilege
+9XX: applicational system tests that may require root privilege. (use sudo)
