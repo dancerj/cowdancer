@@ -1,3 +1,7 @@
+0.4 ---
+
++ Error checking that does more than kill SIGSEGV to self.
+
 0.3 20 Aug 2005
 
 + Add regression testsuite.

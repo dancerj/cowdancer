@@ -1,3 +1,10 @@
+cowdancer (0.4) UNRELEASED; urgency=low
+
+  * added some error checking 
+  * Initial upload to Debian archive (closes: #325370)
+
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 29 Aug 2005 18:04:15 +0900
+
 cowdancer (0.3) unstable; urgency=low
 
   * add testsuite.

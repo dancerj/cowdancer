@@ -1,3 +1,17 @@
+2005-08-29  Junichi Uekawa  <dancer@debian.org>
+
+	* cowdancer.c (load_ilist): add error checking for NULL.
+
+	* tests/010_test_noilistfile.sh: new test to test error checking; the log is more significant.
+
+	* Makefile (VERSION): 0.4
+
+	* cowdancer.c (load_ilist): errorcheck
+	(outofmemory): do not kill myself.
+	(initialize_functions): return 1 on error.
+	(fopen, fopen64): return NULL on error
+	(creat64, creat, open64, open): return -1 on error.
+
 2005-08-20  Junichi Uekawa  <dancer@debian.org>
 
 	* NEWS: update NEWS

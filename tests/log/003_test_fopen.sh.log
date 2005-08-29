@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.T7yrbY
++ TESTDIR=/tmp/tmp.RtzwgO
 ++ readlink -f tests/003_test_fopen.c
 + TESTCODE=/home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/003_test_fopen.c
-+ cd /tmp/tmp.T7yrbY
++ cd /tmp/tmp.RtzwgO
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004324 seconds (236812 bytes/sec)
+1024 bytes transferred in 0.004217 seconds (242830 bytes/sec)
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2/
@@ -16,24 +16,24 @@
    2/ before
 + ls -li 2/
 合計 4
-84934 -rw-r--r--  2 dancer dancer    0 2005-08-20 09:07 a
-84935 -rw-r--r--  2 dancer dancer    0 2005-08-20 09:07 b
-84936 -rw-r--r--  2 dancer dancer    0 2005-08-20 09:07 c
-84937 -rw-r--r--  2 dancer dancer    0 2005-08-20 09:07 d
-84938 -rw-r--r--  2 dancer dancer 1024 2005-08-20 09:07 e
+250428 -rw-r--r--  2 dancer dancer    0 2005-08-29 18:33 a
+250429 -rw-r--r--  2 dancer dancer    0 2005-08-29 18:33 b
+250430 -rw-r--r--  2 dancer dancer    0 2005-08-29 18:33 c
+250431 -rw-r--r--  2 dancer dancer    0 2005-08-29 18:33 d
+250432 -rw-r--r--  2 dancer dancer 1024 2005-08-29 18:33 e
 + cow-shell /home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/003_test_fopen.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-84934 -rw-r--r--  2 dancer dancer    0 2005-08-20 09:07 a
-84975 -rw-r--r--  1 dancer dancer    4 2005-08-20 09:07 b
-84976 -rw-r--r--  1 dancer dancer    4 2005-08-20 09:07 c
-84937 -rw-r--r--  2 dancer dancer    0 2005-08-20 09:07 d
-84938 -rw-r--r--  2 dancer dancer 1024 2005-08-20 09:07 e
+250428 -rw-r--r--  2 dancer dancer    0 2005-08-29 18:33 a
+250451 -rw-r--r--  1 dancer dancer    4 2005-08-29 18:33 b
+250452 -rw-r--r--  1 dancer dancer    4 2005-08-29 18:33 c
+250431 -rw-r--r--  2 dancer dancer    0 2005-08-29 18:33 d
+250432 -rw-r--r--  2 dancer dancer 1024 2005-08-29 18:33 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.T7yrbY
++ rm -rf /tmp/tmp.RtzwgO

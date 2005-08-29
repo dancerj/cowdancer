@@ -39,10 +39,10 @@ static long ilist_len=0;
 static void outofmemory(const char* msg)
 {
   fprintf (stderr, "%s: %s\n", PRGNAME, msg);
-  kill(getpid(), SIGSEGV);
 }
 
-static void load_ilist(void)
+/* return 1 on error */
+static int load_ilist(void)
 {
   int i=0;
   FILE* f=0;
@@ -50,10 +50,24 @@ static void load_ilist(void)
   long dev, ino;
 
   if (!(ilist=malloc(2000*sizeof(struct ilist_struct))))
-    outofmemory("load_ilist initialize");
+    {
+      outofmemory("load_ilist initialize");
+      return 1;
+    }
+  
   ilist_len=2000;
 
-  fd=origlibc_open(getenv("COWDANCER_ILISTFILE"),O_RDONLY,0);
+  if (!getenv("COWDANCER_ILISTFILE"))
+    {
+      fprintf(stderr, "env var COWDANCER_ILISTFILE not defined\n");
+      return 1;
+    }
+  
+  if (-1==(fd=origlibc_open(getenv("COWDANCER_ILISTFILE"),O_RDONLY,0)))
+    {
+      fprintf(stderr, "cannot open ilistfile %s\n", getenv("COWDANCER_ILISTFILE"));
+      return 1;
+    }
   f=fdopen(fd, "r");
   
   while (fscanf(f,"%li %li",&dev, &ino)>0)
@@ -68,11 +82,14 @@ static void load_ilist(void)
 	  if (!ilist)
 	    {
 	      outofmemory("load_ilist initialize realloc ");
+	      fclose(f);
+	      return 1;
 	    }
 	}
     }
   ilist_len=i;
   fclose(f);
+  return 0;
 }
 
 
@@ -86,7 +103,8 @@ static void debug_cowdancer_2 (const char * s, const char*e)
   if (0) fprintf (stderr, PRGNAME ": DEBUG %s:%s\n", s, e);
 }
 
-static void initialize_functions ()
+/* return 1 on error */
+static int initialize_functions ()
 {
   static int initialized = 0;
   /* do I need to make this code reentrant? */
@@ -101,11 +119,13 @@ static void initialize_functions ()
       origlibc_fopen64 = dlsym(RTLD_NEXT, "fopen64");
 
       /* load the ilist */
-      load_ilist();
+      if (load_ilist())
+	return 1;
 
       initialized = 1;
       debug_cowdancer ("Initialization successfully finished.\n");
     }  
+  return 0;
 }
 
 /* check if i-node is to be protected, and if so, copy the file*/
@@ -182,7 +202,9 @@ int open(const char * a, int flags, ...)
   va_start(args, flags);
   mode = va_arg(args, mode_t);
   va_end(args);
-  initialize_functions();
+  if (initialize_functions())
+    return -1;			/* FIXME: should set errno */
+  
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("open", a);
@@ -206,7 +228,8 @@ int open64(const char * a, int flags, ...)
   va_start(args, flags);
   mode = va_arg(args, mode_t);
   va_end(args);
-  initialize_functions();
+  if (initialize_functions())
+    return -1;			/* FIXME: should set errno */
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("open64", a);
@@ -238,7 +261,8 @@ int creat(const char * a, mode_t mode)
 int creat64(const char * a, mode_t mode)
 {
   int fd;
-  initialize_functions();
+  if (initialize_functions())
+    return -1;			/* FIXME: should set errno */
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("creat64", a);
@@ -258,7 +282,8 @@ static int likely_fopen_write(const char *t)
 FILE* fopen(const char* s, const char* t)
 {
   FILE *f;
-  initialize_functions();
+  if (initialize_functions())
+    return NULL;
   if(!getenv("COWDANCER_IGNORE")&&
      likely_fopen_write(t))
     {
@@ -273,7 +298,8 @@ FILE* fopen(const char* s, const char* t)
 FILE* fopen64(const char* s, const char* t)
 {
   FILE *f;
-  initialize_functions();
+  if(initialize_functions())
+    return NULL;
   if(!getenv("COWDANCER_IGNORE")&&
      likely_fopen_write(t))
     {

@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.qnJcsM
-+ cd /tmp/tmp.qnJcsM
++ TESTDIR=/tmp/tmp.6bk8kb
++ cd /tmp/tmp.6bk8kb
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004282 seconds (239142 bytes/sec)
+1024 bytes transferred in 0.004630 seconds (221161 bytes/sec)
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2/
@@ -14,28 +14,28 @@
    2/ before
 + ls -li 2/
 合計 4
-84490 -rw-r--r--  2 dancer dancer    0 2005-08-20 09:07 a
-84491 -rw-r--r--  2 dancer dancer    0 2005-08-20 09:07 b
-84492 -rw-r--r--  2 dancer dancer    0 2005-08-20 09:07 c
-84493 -rw-r--r--  2 dancer dancer    0 2005-08-20 09:07 d
-84494 -rw-r--r--  2 dancer dancer 1024 2005-08-20 09:07 e
+250322 -rw-r--r--  2 dancer dancer    0 2005-08-29 18:33 a
+250323 -rw-r--r--  2 dancer dancer    0 2005-08-29 18:33 b
+250324 -rw-r--r--  2 dancer dancer    0 2005-08-29 18:33 c
+250325 -rw-r--r--  2 dancer dancer    0 2005-08-29 18:33 d
+250326 -rw-r--r--  2 dancer dancer 1024 2005-08-29 18:33 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/sh
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004321 seconds (236983 bytes/sec)
+1024 bytes transferred in 0.004307 seconds (237748 bytes/sec)
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-84526 -rw-r--r--  1 dancer dancer    2 2005-08-20 09:07 a
-84527 -rw-r--r--  1 dancer dancer    0 2005-08-20 09:07 c
-84528 -rw-r--r--  1 dancer dancer 1024 2005-08-20 09:07 d
-84494 -rw-r--r--  2 dancer dancer 1024 2005-08-20 09:07 e
+250340 -rw-r--r--  1 dancer dancer    2 2005-08-29 18:33 a
+250341 -rw-r--r--  1 dancer dancer    0 2005-08-29 18:33 c
+250342 -rw-r--r--  1 dancer dancer 1024 2005-08-29 18:33 d
+250326 -rw-r--r--  2 dancer dancer 1024 2005-08-29 18:33 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.qnJcsM
++ rm -rf /tmp/tmp.6bk8kb
