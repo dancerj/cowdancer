@@ -10,4 +10,11 @@ Architecture: any
 Depends: ${shlibs:Depends}
 Description: Copy-on-write directory tree utility.
  Tries to make copy-on-write semantics upon hard-link copied
- directory trees.
+ directory trees generated with 'cp -la'
+ .
+ 'cow-shell' command invokes a shell session. Within that session,
+ under the directory cow-shell was invoked, 
+ cowdancer will create a new file when existing i-nodes are opened for 
+ write.
+ .
+ Useful for quick scratch workspace and experimentation.

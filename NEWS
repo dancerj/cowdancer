@@ -1,6 +1,6 @@
-0.4 ---
+0.4 30 Aug 2005
 
-+ Error checking that does more than kill SIGSEGV to self.
++ Fix Error checking so that it does more than kill(SIGSEGV) to self.
 
 0.3 20 Aug 2005
 

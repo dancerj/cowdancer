@@ -1,14 +1,14 @@
 + '[' '!' -x /usr/sbin/pbuilder ']'
 + ORIG=/var/cache/pbuilder/build/cow/orig
-+ WORK=/var/cache/pbuilder/build/cow/work27010
++ WORK=/var/cache/pbuilder/build/cow/work26454
 + BASETGZ=/var/cache/pbuilder/base.tgz
-++ readlink -f ../cowdancer_0.3_i386.deb
-+ COWDEB=/home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer_0.3_i386.deb
+++ readlink -f ../cowdancer_0.4_i386.deb
++ COWDEB=/home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer_0.4_i386.deb
 + sudo rm -rf /var/cache/pbuilder/build/cow
 + sudo mkdir -p /var/cache/pbuilder/build/cow/orig
 + cd /var/cache/pbuilder/build/cow/orig
 + sudo tar xfzp /var/cache/pbuilder/base.tgz
-+ sudo cp /home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer_0.3_i386.deb /var/cache/pbuilder/build/cow/orig/tmp/
++ sudo cp /home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer_0.4_i386.deb /var/cache/pbuilder/build/cow/orig/tmp/
 + sudo apt-get source -d dsh
 パッケージリストを読みこんでいます...
 依存関係ツリーを作成しています...
@@ -16,17 +16,17 @@
 取得:1 http://ring.asahi-net.or.jp unstable/main dsh 0.25.6-1 (dsc) [583B]
 取得:2 http://ring.asahi-net.or.jp unstable/main dsh 0.25.6-1 (tar) [373kB]
 取得:3 http://ring.asahi-net.or.jp unstable/main dsh 0.25.6-1 (diff) [7934B]
-382kB を 0s で取得しました (4953kB/s)
+382kB を 0s で取得しました (1364kB/s)
 ダウンロードオンリーモードでパッケージのダウンロードが完了しました
-+ sudo chroot /var/cache/pbuilder/build/cow/orig dpkg -i tmp/cowdancer_0.3_i386.deb
++ sudo chroot /var/cache/pbuilder/build/cow/orig dpkg -i tmp/cowdancer_0.4_i386.deb
 Selecting previously deselected package cowdancer.
 (Reading database ... 12162 files and directories currently installed.)
-Unpacking cowdancer (from tmp/cowdancer_0.3_i386.deb) ...
-Setting up cowdancer (0.3) ...
+Unpacking cowdancer (from tmp/cowdancer_0.4_i386.deb) ...
+Setting up cowdancer (0.4) ...
 + sudo find /var/cache/pbuilder/build/cow/orig -ls
-+ sudo cp -al /var/cache/pbuilder/build/cow/orig /var/cache/pbuilder/build/cow/work27010-1
++ sudo cp -al /var/cache/pbuilder/build/cow/orig /var/cache/pbuilder/build/cow/work26454-1
 + sudo cp var/log/dpkg.log /tmp/a
-+ sudo pbuilder update --buildplace /var/cache/pbuilder/build/cow/work27010-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work27010-1 cow-shell'
++ sudo pbuilder update --buildplace /var/cache/pbuilder/build/cow/work26454-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work26454-1 cow-shell'
  -> Running in no-targz mode
  -> copying local configuration
  -> mounting /proc filesystem
@@ -40,7 +40,7 @@ Ign http://ring.asahi-net.or.jp sid Release
 Hit http://ring.asahi-net.or.jp sid/main Packages
 Hit http://ring.asahi-net.or.jp sid/contrib Packages
 Hit http://ring.asahi-net.or.jp sid/non-free Packages
-Fetched 189B in 0s (2654B/s)
+Fetched 189B in 0s (1581B/s)
 Reading package lists...
 W: GPG error: http://ring.asahi-net.or.jp sid Release: Could not execute /usr/bin/gpgv to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
@@ -56,14 +56,14 @@ apt is already the newest version.
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-+ sudo pbuilder build --buildplace /var/cache/pbuilder/build/cow/work27010-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work27010-1 cow-shell' dsh_0.25.6-1.dsc
++ sudo pbuilder build --buildplace /var/cache/pbuilder/build/cow/work26454-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work26454-1 cow-shell' dsh_0.25.6-1.dsc
  -> Running in no-targz mode
 I: using fakeroot in build.
 pbuilder-buildpackage/i386 $Id$
 $Id$
 
-Current time: Mon Aug 29 18:34:25 JST 2005
-pbuilder-time-stamp: 1125308065
+Current time: Tue Aug 30 08:44:47 JST 2005
+pbuilder-time-stamp: 1125359087
  -> copying local configuration
  -> mounting /proc filesystem
  -> mounting /dev/pts filesystem
@@ -104,7 +104,7 @@ Get:7 http://ring.asahi-net.or.jp sid/main po-debconf 0.8.23 [78.0kB]
 Get:8 http://ring.asahi-net.or.jp sid/main debhelper 4.9.8 [364kB]
 Get:9 http://ring.asahi-net.or.jp sid/main libdshconfig1 0.20.11-1 [10.7kB]
 Get:10 http://ring.asahi-net.or.jp sid/main libdshconfig1-dev 0.20.11-1 [12.4kB]
-Fetched 2650kB in 0s (7817kB/s)
+Fetched 2650kB in 0s (3458kB/s)
 Selecting previously deselected package libmagic1.
 (Reading database ... 12172 files and directories currently installed.)
 Unpacking libmagic1 (from .../libmagic1_4.12-1_i386.deb) ...
@@ -152,14 +152,14 @@ After unpacking 193kB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   fakeroot
 Get:1 http://ring.asahi-net.or.jp sid/main fakeroot 1.4.3 [69.6kB]
-Fetched 69.6kB in 0s (1359kB/s)
+Fetched 69.6kB in 0s (813kB/s)
 Selecting previously deselected package fakeroot.
 (Reading database ... 12715 files and directories currently installed.)
 Unpacking fakeroot (from .../fakeroot_1.4.3_i386.deb) ...
 Setting up fakeroot (1.4.3) ...
 
-/var/cache/pbuilder/build/cow/work27010-1/etc/passwd
-/var/cache/pbuilder/build/cow/work27010-1/etc/group
+/var/cache/pbuilder/build/cow/work26454-1/etc/passwd
+/var/cache/pbuilder/build/cow/work26454-1/etc/group
 Copying source file
     -> copying [dsh_0.25.6-1.dsc]
     -> copying [./dsh_0.25.6.orig.tar.gz]
@@ -429,8 +429,10 @@ make[3]: Entering directory `/tmp/buildd/dsh-0.25.6/po'
 make[3]: Nothing to be done for `check'.
 make[3]: Leaving directory `/tmp/buildd/dsh-0.25.6/po'
 make[3]: Entering directory `/tmp/buildd/dsh-0.25.6'
+sed -e 's,[@]sysconfdir[@],/etc/dsh,' < ./dsh.1 > build-man/dsh.1
 /usr/bin/make  dsh
 make[4]: Entering directory `/tmp/buildd/dsh-0.25.6'
+make[4]: `dsh' is up to date.
 make[4]: Leaving directory `/tmp/buildd/dsh-0.25.6'
 /usr/bin/make  check-TESTS
 make[4]: Entering directory `/tmp/buildd/dsh-0.25.6'
@@ -471,8 +473,8 @@ success
 success
 a: dsh: Failed executing ./invalid-exec-file with llexec call
 b: dsh: Failed executing ./invalid-exec-file with llexec call
-c: dsh: Failed executing ./invalid-exec-file with llexec call
 d: dsh: Failed executing ./invalid-exec-file with llexec call
+c: dsh: Failed executing ./invalid-exec-file with llexec call
 success
 dsh: Failed executing ./invalid-exec-file with llexec call
 dsh: Failed executing ./invalid-exec-file with llexec call
@@ -484,7 +486,7 @@ PASS: tests/param-r-invalid.sh
 2: 2
 dsh: fork limit and wait shell cannot be specified at the same time
 PASS: tests/param-F-invalid.sh
-Mon Aug 29 09:35:11 UTC 2005
+Mon Aug 29 23:45:37 UTC 2005
 2: Using sleep as the remote shell
 2: Show machine names on output
 2: Adding machine 5,4,3,2,1 to list
@@ -554,7 +556,7 @@ Adding machine 5,4,3,2,1 to list
 Setting forklimit to 3 and wait_shell to 0
 ... Waiting for process to end with waitpid
 ... Waiting for process to end with waitpid
-Mon Aug 29 09:35:16 UTC 2005
+Mon Aug 29 23:45:42 UTC 2005
 PASS: tests/param-F-forklimit.sh
 PASS: tests/param-gnu-getopt.sh
 PASS: tests/news-okay.sh
@@ -669,12 +671,12 @@ dpkg-genchanges: including full source code in upload
 dpkg-buildpackage: full upload (original source is included)
  -> Terminate timeout process
  -> unmounting dev/pts filesystem
+/usr/lib/pbuilder/pbuilder-modules: line 89: 26987 Terminated              ( : Timeout process; sleep "${TIMEOUT_TIME}"; echo " -> Terminating build process due to timeout "; kill ${BUILD_PID} || true )
  -> unmounting proc filesystem
-/usr/lib/pbuilder/pbuilder-buildpackage: line 152: 27483 Terminated              ( : Timeout process; sleep "${TIMEOUT_TIME}"; echo " -> Terminating build process due to timeout "; kill ${BUILD_PID} || true )
-Current time: Mon Aug 29 18:35:23 JST 2005
-pbuilder-time-stamp: 1125308123
+Current time: Tue Aug 30 08:45:49 JST 2005
+pbuilder-time-stamp: 1125359149
 + sudo diff -u /tmp/a /var/cache/pbuilder/build/cow/orig/var/log/dpkg.log
-+ sudo rm -rf /var/cache/pbuilder/build/cow/work27010-1
++ sudo rm -rf /var/cache/pbuilder/build/cow/work26454-1
 + sudo find /var/cache/pbuilder/build/cow/orig -ls
 + cd ..
 + sudo rm -rf /var/cache/pbuilder/build/cow

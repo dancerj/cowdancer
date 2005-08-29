@@ -1,3 +1,11 @@
+2005-08-30  Junichi Uekawa  <dancer@debian.org>
+
+	* NEWS: 0.4 release.
+
+	* tests/900_test_pbuilder.sh (COWDEB): update to 0.4; 
+	note that this test depends on local ../cowdancer.
+	It will be updated when cowdancer package exists in Debian.
+
 2005-08-29  Junichi Uekawa  <dancer@debian.org>
 
 	* cowdancer.c (load_ilist): add error checking for NULL.
