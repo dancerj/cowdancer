@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.BK0hjV
-+ cd /tmp/tmp.BK0hjV
++ TESTDIR=/tmp/tmp.KNX7XU
++ cd /tmp/tmp.KNX7XU
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004284 seconds (239028 bytes/sec)
+1024 bytes transferred in 0.004602 seconds (222518 bytes/sec)
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2/
@@ -14,28 +14,28 @@
    2/ before
 + ls -li 2/
 合計 4
-118181 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 a
-118182 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 b
-118183 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 c
-118184 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 d
-118185 -rw-r--r--  2 dancer dancer 1024 2005-08-30 08:43 e
+86345 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 a
+86346 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 b
+86347 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 c
+86348 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 d
+86349 -rw-r--r--  2 dancer dancer 1024 2005-09-21 22:42 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/sh
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004300 seconds (238144 bytes/sec)
+1024 bytes transferred in 0.004281 seconds (239194 bytes/sec)
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-118219 -rw-r--r--  1 dancer dancer    2 2005-08-30 08:43 a
-118220 -rw-r--r--  1 dancer dancer    0 2005-08-30 08:43 c
-118221 -rw-r--r--  1 dancer dancer 1024 2005-08-30 08:43 d
-118185 -rw-r--r--  2 dancer dancer 1024 2005-08-30 08:43 e
+86375 -rw-r--r--  1 dancer dancer    2 2005-09-21 22:42 a
+86376 -rw-r--r--  1 dancer dancer    0 2005-09-21 22:42 c
+86377 -rw-r--r--  1 dancer dancer 1024 2005-09-21 22:42 d
+86349 -rw-r--r--  2 dancer dancer 1024 2005-09-21 22:42 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.BK0hjV
++ rm -rf /tmp/tmp.KNX7XU

@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.FZorT7
-+ cd /tmp/tmp.FZorT7
++ TESTDIR=/tmp/tmp.OHVPhY
++ cd /tmp/tmp.OHVPhY
 + mkdir 1/
 + touch 1/b 1/c 1/d 1/a.real
 + dd if=/dev/zero of=1/e bs=512 count=2
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004241 seconds (241458 bytes/sec)
+1024 bytes transferred in 0.004589 seconds (223145 bytes/sec)
 + ln -s a.real 1/a
 + ls -li 1/
 + sleep 1s
@@ -15,30 +15,30 @@
    2/ before
 + ls -li 2/
 合計 4
-118239 lrwxrwxrwx  2 dancer dancer    6 2005-08-30 08:43 a -> a.real
-118237 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 a.real
-118234 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 b
-118235 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 c
-118236 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 d
-118238 -rw-r--r--  2 dancer dancer 1024 2005-08-30 08:43 e
+86395 lrwxrwxrwx  2 dancer dancer    6 2005-09-21 22:42 a -> a.real
+86393 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 a.real
+86390 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 b
+86391 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 c
+86392 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 d
+86394 -rw-r--r--  2 dancer dancer 1024 2005-09-21 22:42 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/sh
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004288 seconds (238803 bytes/sec)
+1024 bytes transferred in 0.004295 seconds (238414 bytes/sec)
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-118239 lrwxrwxrwx  2 dancer dancer    6 2005-08-30 08:43 a -> a.real
-118471 -rw-r--r--  1 dancer dancer    2 2005-08-30 08:43 a.real
-118472 -rw-r--r--  1 dancer dancer    0 2005-08-30 08:43 c
-118473 -rw-r--r--  1 dancer dancer 1024 2005-08-30 08:43 d
-118238 -rw-r--r--  2 dancer dancer 1024 2005-08-30 08:43 e
+86395 lrwxrwxrwx  2 dancer dancer    6 2005-09-21 22:42 a -> a.real
+86421 -rw-r--r--  1 dancer dancer    2 2005-09-21 22:42 a.real
+86428 -rw-r--r--  1 dancer dancer    0 2005-09-21 22:42 c
+86429 -rw-r--r--  1 dancer dancer 1024 2005-09-21 22:42 d
+86394 -rw-r--r--  2 dancer dancer 1024 2005-09-21 22:42 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.FZorT7
++ rm -rf /tmp/tmp.OHVPhY

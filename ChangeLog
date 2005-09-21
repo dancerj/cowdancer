@@ -1,3 +1,9 @@
+2005-09-21  Junichi Uekawa  <dancer@debian.org>
+
+	* cow-shell.c (main): SHELL may contain non-full path value.
+	'SHELL=bash', execlp instead of execl.
+	Fall back to /bin/sh if SHELL is bogus.
+
 2005-08-30  Junichi Uekawa  <dancer@debian.org>
 
 	* NEWS: 0.4 release.

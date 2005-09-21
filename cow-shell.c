@@ -48,9 +48,15 @@ int main(int ac, char** av)
       const char* myshell=getenv("SHELL")?:"/bin/sh";
       fprintf(stderr, "Invoking %s\n", myshell);
       
-      execl(myshell,
-	    myshell,
-	    NULL);
+      execlp(myshell,
+	     myshell,
+	     NULL);
+      perror("cow-shell: exec");
+
+      fprintf(stderr, "Falling back to /bin/sh\n");
+      execlp("/bin/sh",
+	     "/bin/sh",
+	     NULL);
     }
   perror("cow-shell: exec");
   return 1;

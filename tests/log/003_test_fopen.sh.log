@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.XGtxII
++ TESTDIR=/tmp/tmp.4tWAZu
 ++ readlink -f tests/003_test_fopen.c
 + TESTCODE=/home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/003_test_fopen.c
-+ cd /tmp/tmp.XGtxII
++ cd /tmp/tmp.4tWAZu
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.020661 seconds (49562 bytes/sec)
+1024 bytes transferred in 0.004284 seconds (239034 bytes/sec)
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2/
@@ -16,24 +16,24 @@
    2/ before
 + ls -li 2/
 合計 4
-118537 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 a
-118538 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 b
-118539 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 c
-118540 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 d
-118541 -rw-r--r--  2 dancer dancer 1024 2005-08-30 08:43 e
+86493 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 a
+86494 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 b
+86495 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 c
+86496 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 d
+86497 -rw-r--r--  2 dancer dancer 1024 2005-09-21 22:42 e
 + cow-shell /home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/003_test_fopen.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-118537 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 a
-118586 -rw-r--r--  1 dancer dancer    4 2005-08-30 08:43 b
-118587 -rw-r--r--  1 dancer dancer    4 2005-08-30 08:43 c
-118540 -rw-r--r--  2 dancer dancer    0 2005-08-30 08:43 d
-118541 -rw-r--r--  2 dancer dancer 1024 2005-08-30 08:43 e
+86493 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 a
+86528 -rw-r--r--  1 dancer dancer    4 2005-09-21 22:42 b
+86529 -rw-r--r--  1 dancer dancer    4 2005-09-21 22:42 c
+86496 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 d
+86497 -rw-r--r--  2 dancer dancer 1024 2005-09-21 22:42 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.XGtxII
++ rm -rf /tmp/tmp.4tWAZu
