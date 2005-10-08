@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.WH2SR9
++ TESTDIR=/tmp/tmp.BVJcdm
 ++ readlink -f tests/002_test_open.c
-+ TESTCODE=/home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c
-+ cd /tmp/tmp.WH2SR9
++ TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c
++ cd /tmp/tmp.BVJcdm
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.004232 seconds (241960 bytes/sec)
+1024 bytes transferred in 0.002518 seconds (406682 bytes/sec)
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2/
@@ -16,12 +16,12 @@
    2/ before
 + ls -li 2/
 合計 4
-86443 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 a
-86444 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 b
-86445 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 c
-86446 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 d
-86447 -rw-r--r--  2 dancer dancer 1024 2005-09-21 22:42 e
-+ cow-shell /home/dancer/cvscheckout/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
+215638 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:26 a
+215639 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:26 b
+215640 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:26 c
+215641 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:26 d
+215642 -rw-r--r--  2 dancer dancer 1024 2005-10-08 14:26 e
++ cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
 002_test_open.c: In function 'writeandclose':
 002_test_open.c:8: warning: implicit declaration of function 'write'
 002_test_open.c:9: warning: implicit declaration of function 'close'
@@ -33,14 +33,14 @@
    2/ after
 + ls -li 2/
 合計 4
-86443 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 a
-86478 -rw-r--r--  1 dancer dancer    0 2005-09-21 22:42 b
-86479 -rw-r--r--  1 dancer dancer    0 2005-09-21 22:42 c
-86446 -rw-r--r--  2 dancer dancer    0 2005-09-21 22:42 d
-86447 -rw-r--r--  2 dancer dancer 1024 2005-09-21 22:42 e
+215638 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:26 a
+229534 -rw-r--r--  1 dancer dancer    0 2005-10-08 14:26 b
+229535 -rw-r--r--  1 dancer dancer    0 2005-10-08 14:26 c
+215641 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:26 d
+215642 -rw-r--r--  2 dancer dancer 1024 2005-10-08 14:26 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.WH2SR9
++ rm -rf /tmp/tmp.BVJcdm

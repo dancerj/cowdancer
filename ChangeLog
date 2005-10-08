@@ -1,3 +1,10 @@
+2005-10-08  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/012_test_chown.sh (TESTCODE): 
+	* tests/013_test_chmod.sh (TESTCODE): 
+	* tests/012_test_chown.c: 
+	* tests/013_test_chmod.c: test for chown/chmod functionality.
+	
 2005-09-21  Junichi Uekawa  <dancer@debian.org>
 
 	* cow-shell.c (main): SHELL may contain non-full path value.

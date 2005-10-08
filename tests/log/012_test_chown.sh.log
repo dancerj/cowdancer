@@ -1,0 +1,58 @@
+++ mktemp -d
++ TESTDIR=/tmp/tmp.vN5xHP
+++ readlink -f tests/012_test_chown.c
++ TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/012_test_chown.c
+++ id -G
++ set -- 1000 20 24 25 29 44 46
++ ORIGID=1000
++ NEWID=20
++ ((  7 < 3  ))
++ cd /tmp/tmp.vN5xHP
++ mkdir 1/
++ touch 1/a 1/b 1/c 1/d
++ dd if=/dev/zero of=1/e bs=512 count=2
+読み込んだブロック数は 2+0
+書き込んだブロック数は 2+0
+1024 bytes transferred in 0.002440 seconds (419676 bytes/sec)
++ chgrp 1000 1/a 1/b 1/c 1/d
++ ls -li 1/
++ sleep 1s
++ cp -al 1/ 2/
++ echo '   2/ before'
+   2/ before
++ ls -li 2/
+合計 4
+215638 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:27 a
+215639 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:27 b
+215640 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:27 c
+215641 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:27 d
+215642 -rw-r--r--  2 dancer dancer 1024 2005-10-08 14:27 e
++ cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/012_test_chown.c 20 2/a 2/b 2/c
++ echo '   2/ after'
+   2/ after
++ ls -li 2/
+合計 4
+215638 -rw-r--r--  2 dancer dialout    0 2005-10-08 14:27 a
+215639 -rw-r--r--  2 dancer dialout    0 2005-10-08 14:27 b
+215640 -rw-r--r--  2 dancer dialout    0 2005-10-08 14:27 c
+215641 -rw-r--r--  2 dancer dancer     0 2005-10-08 14:27 d
+215642 -rw-r--r--  2 dancer dancer  1024 2005-10-08 14:27 e
++ rm -rf 2/
++ ls -li 1/
++ echo '   1/ differences; should not exist'
+   1/ differences; should not exist
++ diff -u ls.prev ls.after
+--- ls.prev	2005-10-08 14:27:02.000000000 +0900
++++ ls.after	2005-10-08 14:27:03.000000000 +0900
+@@ -1,6 +1,6 @@
+ 合計 4
+-215638 -rw-r--r--  1 dancer dancer    0 2005-10-08 14:27 a
+-215639 -rw-r--r--  1 dancer dancer    0 2005-10-08 14:27 b
+-215640 -rw-r--r--  1 dancer dancer    0 2005-10-08 14:27 c
+-215641 -rw-r--r--  1 dancer dancer    0 2005-10-08 14:27 d
+-215642 -rw-r--r--  1 dancer dancer 1024 2005-10-08 14:27 e
++215638 -rw-r--r--  1 dancer dialout    0 2005-10-08 14:27 a
++215639 -rw-r--r--  1 dancer dialout    0 2005-10-08 14:27 b
++215640 -rw-r--r--  1 dancer dialout    0 2005-10-08 14:27 c
++215641 -rw-r--r--  1 dancer dancer     0 2005-10-08 14:27 d
++215642 -rw-r--r--  1 dancer dancer  1024 2005-10-08 14:27 e
