@@ -26,6 +26,12 @@ static int (*origlibc_creat64)(const char *, mode_t) = NULL;
 static FILE* (*origlibc_fopen)(const char *, const char*) = NULL;
 static FILE* (*origlibc_fopen64)(const char *, const char*) = NULL;
 
+static int (*origlibc_chown)(const char *, uid_t, gid_t) = NULL;
+static int (*origlibc_fchown)(int fd, uid_t, gid_t) = NULL;
+static int (*origlibc_lchown)(const char *, uid_t, gid_t) = NULL;
+static int (*origlibc_chmod)(const char *, mode_t) = NULL;
+static int (*origlibc_fchmod)(int fd, mode_t) = NULL;
+
 struct ilist_struct
 {
   dev_t dev;
@@ -49,7 +55,7 @@ static int load_ilist(void)
   int fd=0;
   long dev, ino;
 
-  if (!(ilist=malloc(2000*sizeof(struct ilist_struct))))
+  if (!(ilist=calloc(2000,sizeof(struct ilist_struct))))
     {
       outofmemory("load_ilist initialize");
       return 1;
@@ -95,12 +101,14 @@ static int load_ilist(void)
 
 static void debug_cowdancer (const char * s)
 {
-  if (0) fprintf (stderr, PRGNAME ": DEBUG %s\n", s);
+  if (0) 
+    fprintf (stderr, PRGNAME ": DEBUG %s\n", s);
 }
 
 static void debug_cowdancer_2 (const char * s, const char*e)
 {
-  if (0) fprintf (stderr, PRGNAME ": DEBUG %s:%s\n", s, e);
+  if (0)
+    fprintf (stderr, PRGNAME ": DEBUG %s:%s\n", s, e);
 }
 
 /* return 1 on error */
@@ -117,6 +125,11 @@ static int initialize_functions ()
       origlibc_creat64 = dlsym(RTLD_NEXT, "creat64");
       origlibc_fopen = dlsym(RTLD_NEXT, "fopen64");
       origlibc_fopen64 = dlsym(RTLD_NEXT, "fopen64");
+      origlibc_chown = dlsym(RTLD_NEXT, "chown");
+      origlibc_fchown = dlsym(RTLD_NEXT, "fchown");
+      origlibc_lchown = dlsym(RTLD_NEXT, "lchown");
+      origlibc_chmod = dlsym(RTLD_NEXT, "chmod");
+      origlibc_fchmod = dlsym(RTLD_NEXT, "fchmod");
 
       /* load the ilist */
       if (load_ilist())
@@ -131,16 +144,14 @@ static int initialize_functions ()
 /* check if i-node is to be protected, and if so, copy the file*/
 static void check_inode_and_copy(const char* s)
 {
-  struct stat buf;
   struct ilist_struct search_target;
   char *canonical=NULL;		/* the canonical filename */
+  struct stat buf;
   
-
   debug_cowdancer_2("DEBUG: test for", s);
   if(lstat(s, &buf))
     return;			/* if stat fails, the file probably 
 				   doesn't exist; return */
-
   if (S_ISLNK(buf.st_mode))
     {
       /* for symbollic link, canonicalize and get the real filename */
@@ -153,6 +164,7 @@ static void check_inode_and_copy(const char* s)
 	return;
     }
       
+  memset(&search_target, 0, sizeof(search_target));
   search_target.inode = buf.st_ino;
   search_target.dev = buf.st_dev;
 
@@ -310,3 +322,110 @@ FILE* fopen64(const char* s, const char* t)
   return f;
 }
 
+#undef chown
+int chown(const char* s, uid_t u, gid_t g)
+{
+  int ret;
+  if(initialize_functions())
+    return -1;
+  if(!getenv("COWDANCER_IGNORE"))
+    {
+      debug_cowdancer_2 ("chown", s);
+      check_inode_and_copy(s);
+    }
+  ret = origlibc_chown(s, u, g);
+  return ret;
+}
+
+/* Check out file descriptor
+ *
+ * @return 1 on failure
+ */
+int check_fd_inode_and_warn(int fd)
+{
+  struct stat buf;
+  struct ilist_struct search_target;
+
+  fstat(fd, &buf);
+  memset(&search_target, 0, sizeof(search_target));
+  search_target.inode = buf.st_ino;
+  search_target.dev = buf.st_dev;
+  if(memmem(ilist, ilist_len*(sizeof(struct ilist_struct)), 
+	    &search_target, sizeof(search_target)) &&
+     S_ISREG(buf.st_mode))
+    {
+      /* Someone opened file read-only, and called
+	 fchown/fchmod; I don't really know how to do
+	 salvation in that case, since the original filename is 
+	 probably not available, and file is already open.
+
+	 If there is any better way, I'd like to know.
+       */
+      fprintf(stderr, "cowdancer-unsupported operation, read-only open and fchown/fchmod: %li:%li\n", 
+	      (long)buf.st_dev, (long)buf.st_ino);
+      return 1;
+    }
+  return 0;
+}
+
+#undef fchown
+int fchown(int fd, uid_t u, gid_t g)
+{
+  int ret;
+  if(initialize_functions())
+    return -1;
+  if(!getenv("COWDANCER_IGNORE"))
+    {
+      debug_cowdancer ("fchown");
+      if (check_fd_inode_and_warn(fd))
+	return -1;
+    }
+  ret = origlibc_fchown(fd, u, g);
+  return ret;
+}
+
+#undef lchown
+int lchown(const char* s, uid_t u, gid_t g)
+{
+  int ret;
+  if(initialize_functions())
+    return -1;
+  if(!getenv("COWDANCER_IGNORE"))
+    {
+      debug_cowdancer_2 ("lchown", s);
+      check_inode_and_copy(s);
+    }
+  ret = origlibc_lchown(s, u, g);
+  return ret;
+}
+
+#undef chmod
+int chmod(const char* s, mode_t mode)
+{
+  int ret;
+  if(initialize_functions())
+    return -1;
+  if(!getenv("COWDANCER_IGNORE"))
+    {
+      debug_cowdancer_2 ("chmod", s);
+      check_inode_and_copy(s);
+    }
+  ret = origlibc_chmod(s, mode);
+  return ret;
+}
+
+#undef fchmod
+int fchmod(int fd, mode_t mode)
+{
+  int ret;
+  if(initialize_functions())
+    return -1;
+  if(!getenv("COWDANCER_IGNORE"))
+    {
+      debug_cowdancer ("fchmod");
+      if (check_fd_inode_and_warn(fd))
+	return -1;
+    }
+  ret = origlibc_fchmod(fd, mode);
+  return ret;
+}

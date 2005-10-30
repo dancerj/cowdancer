@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.knu3te
-+ cd /tmp/tmp.knu3te
++ TESTDIR=/tmp/tmp.NxufQu
++ cd /tmp/tmp.NxufQu
 + mkdir 1/
 + touch 1/b 1/c 1/d 1/a.real
 + dd if=/dev/zero of=1/e bs=512 count=2
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.002477 seconds (413415 bytes/sec)
+1024 bytes transferred in 0.006322 seconds (161976 bytes/sec)
 + ln -s a.real 1/a
 + ls -li 1/
 + sleep 1s
@@ -15,30 +15,30 @@
    2/ before
 + ls -li 2/
 合計 4
-215643 lrwxrwxrwx  2 dancer dancer    6 2005-10-08 14:26 a -> a.real
-215641 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:26 a.real
-215638 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:26 b
-215639 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:26 c
-215640 -rw-r--r--  2 dancer dancer    0 2005-10-08 14:26 d
-215642 -rw-r--r--  2 dancer dancer 1024 2005-10-08 14:26 e
+66568 lrwxrwxrwx  2 dancer dancer    6 2005-10-28 14:31 a -> a.real
+66566 -rw-r--r--  2 dancer dancer    0 2005-10-28 14:31 a.real
+66563 -rw-r--r--  2 dancer dancer    0 2005-10-28 14:31 b
+66564 -rw-r--r--  2 dancer dancer    0 2005-10-28 14:31 c
+66565 -rw-r--r--  2 dancer dancer    0 2005-10-28 14:31 d
+66567 -rw-r--r--  2 dancer dancer 1024 2005-10-28 14:31 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/sh
 読み込んだブロック数は 2+0
 書き込んだブロック数は 2+0
-1024 bytes transferred in 0.002476 seconds (413574 bytes/sec)
+1024 bytes transferred in 0.006286 seconds (162898 bytes/sec)
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-215643 lrwxrwxrwx  2 dancer dancer    6 2005-10-08 14:26 a -> a.real
-229534 -rw-r--r--  1 dancer dancer    2 2005-10-08 14:26 a.real
-229535 -rw-r--r--  1 dancer dancer    0 2005-10-08 14:26 c
-229536 -rw-r--r--  1 dancer dancer 1024 2005-10-08 14:26 d
-215642 -rw-r--r--  2 dancer dancer 1024 2005-10-08 14:26 e
+66568 lrwxrwxrwx  2 dancer dancer    6 2005-10-28 14:31 a -> a.real
+66602 -rw-r--r--  1 dancer dancer    2 2005-10-28 14:31 a.real
+66603 -rw-r--r--  1 dancer dancer    0 2005-10-28 14:31 c
+66604 -rw-r--r--  1 dancer dancer 1024 2005-10-28 14:31 d
+66567 -rw-r--r--  2 dancer dancer 1024 2005-10-28 14:31 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.knu3te
++ rm -rf /tmp/tmp.NxufQu

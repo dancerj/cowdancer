@@ -18,8 +18,9 @@ int main(int argc, char** argv)
   
   chmod(argv[1], 0400);
   fid=open(argv[2], O_RDONLY);
-  if (fchmod(fid, 0400))
-    perror("fchmod");
+  if (fchmod(fid, 0400)!=-1)
+      return 1;			/* this func will fail */
+  
   close(fid);
 	
   return 0;

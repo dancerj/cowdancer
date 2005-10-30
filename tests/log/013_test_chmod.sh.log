@@ -1,0 +1,41 @@
+++ mktemp -d
++ TESTDIR=/tmp/tmp.y4r0Gg
+++ readlink -f tests/013_test_chmod.c
++ TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/013_test_chmod.c
++ cd /tmp/tmp.y4r0Gg
++ mkdir 1/
++ touch 1/a 1/b 1/c 1/d
++ dd if=/dev/zero of=1/e bs=512 count=2
+読み込んだブロック数は 2+0
+書き込んだブロック数は 2+0
+1024 bytes transferred in 0.006328 seconds (161824 bytes/sec)
++ chmod 600 1/a 1/b 1/c 1/d
++ ls -li 1/
++ sleep 1s
++ cp -al 1/ 2/
++ echo '   2/ before'
+   2/ before
++ ls -li 2/
+合計 4
+66863 -rw-------  2 dancer dancer    0 2005-10-28 14:32 a
+66864 -rw-------  2 dancer dancer    0 2005-10-28 14:32 b
+66865 -rw-------  2 dancer dancer    0 2005-10-28 14:32 c
+66866 -rw-------  2 dancer dancer    0 2005-10-28 14:32 d
+66867 -rw-r--r--  2 dancer dancer 1024 2005-10-28 14:32 e
++ cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/013_test_chmod.c 2/a 2/b
+cowdancer-unsupported operation, read-only open and fchown/fchmod: 12:66864
++ echo '   2/ after'
+   2/ after
++ ls -li 2/
+合計 4
+66898 -r--------  1 dancer dancer    0 2005-10-28 14:32 a
+66864 -rw-------  2 dancer dancer    0 2005-10-28 14:32 b
+66865 -rw-------  2 dancer dancer    0 2005-10-28 14:32 c
+66866 -rw-------  2 dancer dancer    0 2005-10-28 14:32 d
+66867 -rw-r--r--  2 dancer dancer 1024 2005-10-28 14:32 e
++ rm -rf 2/
++ ls -li 1/
++ echo '   1/ differences; should not exist'
+   1/ differences; should not exist
++ diff -u ls.prev ls.after
++ rm -rf /tmp/tmp.y4r0Gg

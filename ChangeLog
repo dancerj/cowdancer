@@ -1,3 +1,23 @@
+2005-10-28  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/013_test_chmod.c (main): 
+	* tests/012_test_chown.c (main): expect fchown and fchmod to fail.
+
+        * cowdancer.c (initialize_functions): chown, fchown, and lchown implementation. they look like the following:
+	chown("/tmp/1/a", 1000, 24)             = 0
+	fchown(3, 1000, 24)                     = 0
+	lchown("/tmp/1/c", 1000, 24)            = 0
+	fchown will be an unsupported operation, hopefully noone will use that.
+	(check_fd_inode_and_warn, fchown, lchown, chown): implement.
+	(chmod, fchmod): implement.
+	chmod("/tmp/1/a", 0400)                 = 0
+	fchmod(3, 0400)                         = 0
+	
+	* cowdancer.c (load_ilist): use calloc instead of malloc.
+	(check_inode_and_copy): clear memory before match.
+	Required to get working on my ibook. Probably the 
+	structs weren't packed.
+
 2005-10-08  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/012_test_chown.sh (TESTCODE): 

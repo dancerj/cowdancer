@@ -24,7 +24,8 @@ int main(int argc, char** argv)
   
   chown(argv[2], uid, gid);
   fid=open(argv[3], O_RDONLY);
-  fchown(fid, uid, gid);
+  if (fchown(fid, uid, gid)!=-1)	/* this func will fail */
+    return 1;
   close(fid);
   lchown(argv[4], uid, gid);
 
