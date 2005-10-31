@@ -1,3 +1,13 @@
+2005-10-31  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/900_test_pbuilder.sh: update for 0.6
+	 test fails for pbuilder test since fchmod is used here:
+	
+	    cowdancer-unsupported operation, read-only open and fchown/fchmod: 2049:274641
+	    dpkg: error processing /var/cache/apt/archives/libc6-dev_2.3.5-7_amd64.deb (--unpack):
+	     error setting ownership of `./usr/bin/gencat': No such file or directory
+
+
 2005-10-28  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/013_test_chmod.c (main): 

@@ -17,7 +17,7 @@ fi
 ORIG=/var/cache/pbuilder/build/cow/orig
 WORK=/var/cache/pbuilder/build/cow/work$$
 BASETGZ=/var/cache/pbuilder/base.tgz
-COWDEB=$(readlink -f ../cowdancer_0.4_i386.deb)
+COWDEB=$(readlink -f ../cowdancer_0.6_amd64.deb)
 
 sudo rm -rf /var/cache/pbuilder/build/cow
 sudo mkdir -p $ORIG
