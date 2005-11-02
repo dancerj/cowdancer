@@ -361,9 +361,12 @@ int check_fd_inode_and_warn(int fd)
 
 	 If there is any better way, I'd like to know.
        */
-      fprintf(stderr, "cowdancer-unsupported operation, read-only open and fchown/fchmod: %li:%li\n", 
+      fprintf(stderr, "Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: %li:%li\n", 
 	      (long)buf.st_dev, (long)buf.st_ino);
-      return 1;
+      /* emit a warning and do not fail, 
+	 if you want to make it fail, add a return 1;
+	 apt seems to want to use this operation; thus apt will always fail.
+       */
     }
   return 0;
 }

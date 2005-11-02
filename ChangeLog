@@ -1,3 +1,14 @@
+2005-11-02  Junichi Uekawa  <dancer@debian.org>
+
+	* Makefile (VERSION): Change VERSION to be dpkg-parsechangelog-based
+
+	* tests/012_test_chown.c (main): 
+	* tests/013_test_chmod.c (main): do not test fchmod, fchown.
+
+	* cowdancer.c (check_fd_inode_and_warn): do not die even if 
+	fchown/fchmod is used; try allowing things to run albeit the warning...
+	I am guessing test_pbuilder.sh is going to be non-functional.
+
 2005-10-31  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/900_test_pbuilder.sh: update for 0.6

@@ -1,14 +1,19 @@
-cowdancer (0.6) UNRELEASED; urgency=low
+cowdancer (0.7) UNRELEASED; urgency=low
 
-  * add chmod/chown support.
-  - does not fully support fchmod, apt/dpkg will fail.
-    cowdancer-unsupported operation, read-only open and fchown/fchmod: 2049:274641
-    dpkg: error processing /var/cache/apt/archives/libc6-dev_2.3.5-7_amd64.deb (--unpack):
-    error setting ownership of `./usr/bin/gencat': No such file or directory
+  * 
 
+ -- Junichi Uekawa <dancer@debian.org>  Wed,  2 Nov 2005 09:14:21 +0900
+
+cowdancer (0.6) unstable; urgency=low
+
+  * add chmod/chown support. (closes: #329383)
+  - does not fully support fchmod/fchown, 
+    apt/dpkg apparently uses that operation.
+    will need to investigate further.
+  - debian/TODO: added
   * Clear memory before use on ilist; fixes problem on ppc.
 
- -- Junichi Uekawa <dancer@debian.org>  Mon, 31 Oct 2005 09:00:39 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Wed,  2 Nov 2005 09:07:01 +0900
 
 cowdancer (0.5) unstable; urgency=low
 
