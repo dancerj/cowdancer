@@ -101,13 +101,13 @@ static int load_ilist(void)
 
 static void debug_cowdancer (const char * s)
 {
-  if (0) 
+  if (getenv("COWDANCER_DEBUG")) 
     fprintf (stderr, PRGNAME ": DEBUG %s\n", s);
 }
 
 static void debug_cowdancer_2 (const char * s, const char*e)
 {
-  if (0)
+  if (getenv("COWDANCER_DEBUG"))
     fprintf (stderr, PRGNAME ": DEBUG %s:%s\n", s, e);
 }
 

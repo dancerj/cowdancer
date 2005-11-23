@@ -1,3 +1,33 @@
+2005-11-23  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/002_test_open.c: write(2) requires unistd.h
+
+	* NEWS: add comments on what has been changed.
+
+	* tests/900_test_pbuilder.sh (COWDEB): use a better algorithm for 
+	determining the deb package to use.
+	
+	* Makefile (DESTDIR): export VERSION
+
+	* tests/013_test_chmod.sh (TESTCODE): 
+	* tests/012_test_chown.sh (NEWID): 
+	* tests/004_test_fopen64.sh (TESTCODE): 
+	* tests/003_test_fopen.sh (TESTCODE): 
+	* tests/002_test_open.sh (TESTCODE): 
+	* tests/001_test_symlink.sh (TESTDIR): 
+	* tests/000_test_basic.sh (TESTDIR): cp -al 1/ 2/ no longer works,
+	change to cp -al 1/ 2
+	
+	* cow-shell.c (main): work around new 'stat' feature, which doesn't 
+	add a newline after --format.
+	Add a space after it so that scanf can read in.
+	Tested with Debian sarge and sid.
+
+	* cow-shell.1: add reference to COWDANCER_DEBUG environmental variable.
+
+	* cowdancer.c (debug_cowdancer_2, debug_cowdancer): use COWDANCER_DEBUG
+	environment variable for debug toggling.
+
 2005-11-02  Junichi Uekawa  <dancer@debian.org>
 
 	* Makefile (VERSION): Change VERSION to be dpkg-parsechangelog-based

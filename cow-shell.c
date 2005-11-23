@@ -35,7 +35,7 @@ int main(int ac, char** av)
 	}
     }
       
-  system("find . -xdev -print0 -type f | xargs -0 stat --format '%d %i' > .ilist");
+  system("find . -xdev -print0 -type f | xargs -0 stat --format '%d %i ' > .ilist");
   setenv("COWDANCER_ILISTFILE",
 	  canonicalize_file_name("./.ilist"),1);
   setenv("LD_PRELOAD",buf,1);

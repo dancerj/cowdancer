@@ -1,6 +1,7 @@
 /*BINFMTC:
 open test */
 #include <stdlib.h>
+#include <unistd.h>
 #include <fcntl.h>
 
 void writeandclose(int a)

@@ -1,3 +1,13 @@
+0.7 23 Nov 2005
+
++ Bug fix: Work around 5.3.0 coreutils 'feature' which stat no longer 
+  emits a newline for --format option.
++ Bug fix: Work around recent coreutils failing to do 
+      cp -al 1/ 2/ 
+  when 2/ does not already exist.
++ Environment variable COWDANCER_DEBUG can now be used for debugging
+  e.g. COWDANCER_DEBUG=1 make -k check  (warning, log is massive)
+
 0.6 28 Oct 2005
 
 + Add support for chown and chmod

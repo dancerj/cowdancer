@@ -18,7 +18,7 @@ ls -li 1/ > ls.prev
 
 sleep 1s
 
-cp -al 1/ 2/ 
+cp -al 1/ 2
 
 echo "   2/ before"
 ls -li 2/ 
