@@ -1,10 +1,10 @@
-cowdancer (0.6.cvs.1) UNRELEASED; urgency=low
+cowdancer (0.7) unstable; urgency=low
 
   * Work around stat change with coreutils 5.3.0 and later
   * Fix testsuite
   * COWDANCER_DEBUG environmental variable enables debug messages.
 
- -- Junichi Uekawa <dancer@debian.org>  Wed, 23 Nov 2005 14:07:42 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 23 Nov 2005 14:08:51 +0900
 
 cowdancer (0.6) unstable; urgency=low
 

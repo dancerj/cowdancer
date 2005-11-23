@@ -1,5 +1,7 @@
 2005-11-23  Junichi Uekawa  <dancer@debian.org>
 
+	* debian/changelog: 0.7
+
 	* tests/002_test_open.c: write(2) requires unistd.h
 
 	* NEWS: add comments on what has been changed.
