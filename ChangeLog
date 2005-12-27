@@ -1,3 +1,20 @@
+2005-12-25  Junichi Uekawa  <dancer@debian.org>
+
+	* cowdancer.c (check_inode_and_copy): use bsearch
+	(check_fd_inode_and_warn): use bsearch
+
+	* ilist.h (compare_ilist): comparison function here.
+
+	* cow-shell.c: move compare_ilist to header file.
+
+	* tests/900_test_pbuilder.sh: ignore this test for now.
+
+	* cowdancer.c (load_ilist): use mmap.
+
+	* cow-shell.c: include ilist.
+	
+	* ilist.h (struct ilist_struct): create ilist struct separately.
+
 2005-11-23  Junichi Uekawa  <dancer@debian.org>
 
 	* debian/changelog: 0.7

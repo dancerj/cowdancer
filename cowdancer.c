@@ -16,7 +16,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/signal.h>
+#include <sys/mman.h>
 #define PRGNAME "cowdancer"
+#include "ilist.h"
 
 /* libc functions. */
 static int (*origlibc_open)(const char *, int, ...) = NULL;
@@ -32,12 +34,6 @@ static int (*origlibc_lchown)(const char *, uid_t, gid_t) = NULL;
 static int (*origlibc_chmod)(const char *, mode_t) = NULL;
 static int (*origlibc_fchmod)(int fd, mode_t) = NULL;
 
-struct ilist_struct
-{
-  dev_t dev;
-  ino_t inode;
-};
-
 static struct ilist_struct* ilist=NULL;
 static long ilist_len=0;
 
@@ -47,21 +43,13 @@ static void outofmemory(const char* msg)
   fprintf (stderr, "%s: %s\n", PRGNAME, msg);
 }
 
-/* return 1 on error */
+/* load ilist file, 
+   return 1 on error */
 static int load_ilist(void)
 {
-  int i=0;
   FILE* f=0;
   int fd=0;
-  long dev, ino;
-
-  if (!(ilist=calloc(2000,sizeof(struct ilist_struct))))
-    {
-      outofmemory("load_ilist initialize");
-      return 1;
-    }
-  
-  ilist_len=2000;
+  struct stat stbuf;
 
   if (!getenv("COWDANCER_ILISTFILE"))
     {
@@ -74,27 +62,30 @@ static int load_ilist(void)
       fprintf(stderr, "cannot open ilistfile %s\n", getenv("COWDANCER_ILISTFILE"));
       return 1;
     }
-  f=fdopen(fd, "r");
-  
-  while (fscanf(f,"%li %li",&dev, &ino)>0)
+  if (-1==fstat(fd,&stbuf))
     {
-      (ilist+i)->dev=(dev_t)dev;
-      (ilist+i)->inode=(ino_t)ino;
-
-      i++;
-      if (i>=ilist_len)
-	{
-	  ilist=realloc(ilist, (ilist_len*=2)*sizeof(struct ilist_struct));
-	  if (!ilist)
-	    {
-	      outofmemory("load_ilist initialize realloc ");
-	      fclose(f);
-	      return 1;
-	    }
-	}
+      fprintf(stderr, "cannot fstat ilistfile %s\n", getenv("COWDANCER_ILISTFILE"));
+      return 1;
     }
-  ilist_len=i;
-  fclose(f);
+  ilist_len=stbuf.st_size / sizeof(struct ilist_struct);
+
+  if (stbuf.st_size != (sizeof(struct ilist_struct) * ilist_len))
+    {
+      outofmemory(".ilist file size unexpected");
+      return 1;
+    }
+  
+  if (((void*)-1)==
+      (ilist=mmap(NULL, stbuf.st_size, PROT_READ, MAP_PRIVATE, 
+		  fd, 0)))
+    {
+      perror("mmap failed, failback to other method");
+      /* fall back to non-mmap method. */
+      f=fdopen(fd, "r");
+      ilist=malloc(stbuf.st_size);
+      fread(ilist, sizeof(struct ilist_struct), ilist_len, f);
+      fclose(f);
+    }
   return 0;
 }
 
@@ -167,9 +158,8 @@ static void check_inode_and_copy(const char* s)
   memset(&search_target, 0, sizeof(search_target));
   search_target.inode = buf.st_ino;
   search_target.dev = buf.st_dev;
-
-  if(memmem(ilist, ilist_len*(sizeof(struct ilist_struct)), 
-	    &search_target, sizeof(search_target)) &&
+  if(bsearch(&search_target, ilist, ilist_len, 
+	     sizeof(search_target), compare_ilist) &&
      S_ISREG(buf.st_mode))
     {
       /* There is a file that needs to be protected, 
@@ -350,8 +340,8 @@ int check_fd_inode_and_warn(int fd)
   memset(&search_target, 0, sizeof(search_target));
   search_target.inode = buf.st_ino;
   search_target.dev = buf.st_dev;
-  if(memmem(ilist, ilist_len*(sizeof(struct ilist_struct)), 
-	    &search_target, sizeof(search_target)) &&
+  if(bsearch(&search_target, ilist, ilist_len, 
+	     sizeof(search_target), compare_ilist) &&
      S_ISREG(buf.st_mode))
     {
       /* Someone opened file read-only, and called

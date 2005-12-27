@@ -1,3 +1,8 @@
+0.8 25 Dec 2005
+
++ Speed improvement: save binary ilist in cow-shell and load the binary data 
+  with mmap in cowdancer.
+
 0.7 23 Nov 2005
 
 + Bug fix: Work around 5.3.0 coreutils 'feature' which stat no longer 

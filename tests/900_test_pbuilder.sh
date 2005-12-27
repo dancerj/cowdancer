@@ -6,6 +6,9 @@
 
 # this test requires root privs for pbuilder.
 
+if [[ $(uname -n ) != "dancer64" ]]; then
+    exit 1;
+fi
 
 set -ex
 

@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.0hQB0b
-+ cd /tmp/tmp.0hQB0b
++ TESTDIR=/tmp/tmp.CRCmiB
++ cd /tmp/tmp.CRCmiB
 + mkdir 1/
 + touch 1/b 1/c 1/d 1/a.real
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes transferred in 0.000226 seconds (4530556 bytes/sec)
+1024 bytes (1.0 kB) copied, 9.1e-05 seconds, 11.3 MB/s
 + ln -s a.real 1/a
 + ls -li 1/
 + sleep 1s
@@ -14,31 +14,31 @@
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-total 4
-4285 lrwxrwxrwx  2 dancer dancer    6 Nov 23 14:10 a -> a.real
-4283 -rw-r--r--  2 dancer dancer    0 Nov 23 14:10 a.real
-4280 -rw-r--r--  2 dancer dancer    0 Nov 23 14:10 b
-4281 -rw-r--r--  2 dancer dancer    0 Nov 23 14:10 c
-4282 -rw-r--r--  2 dancer dancer    0 Nov 23 14:10 d
-4284 -rw-r--r--  2 dancer dancer 1024 Nov 23 14:10 e
+合計 4
+193420 lrwxrwxrwx 2 dancer dancer    6 2005-12-25 15:35 a -> a.real
+193418 -rw-r--r-- 2 dancer dancer    0 2005-12-25 15:35 a.real
+193412 -rw-r--r-- 2 dancer dancer    0 2005-12-25 15:35 b
+193416 -rw-r--r-- 2 dancer dancer    0 2005-12-25 15:35 c
+193417 -rw-r--r-- 2 dancer dancer    0 2005-12-25 15:35 d
+193419 -rw-r--r-- 2 dancer dancer 1024 2005-12-25 15:35 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
-Invoking /bin/sh
-2+0 records in
-2+0 records out
-1024 bytes transferred in 0.000288 seconds (3555437 bytes/sec)
+Invoking /bin/bash
+0+1 records in
+0+1 records out
+256 bytes (256 B) copied, 0.00011 seconds, 2.3 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-total 12
-4285 lrwxrwxrwx  2 dancer dancer    6 Nov 23 14:10 a -> a.real
-4315 -rw-r--r--  1 dancer dancer    2 Nov 23 14:10 a.real
-4316 -rw-r--r--  1 dancer dancer    0 Nov 23 14:10 c
-4317 -rw-r--r--  1 dancer dancer 1024 Nov 23 14:10 d
-4284 -rw-r--r--  2 dancer dancer 1024 Nov 23 14:10 e
+合計 12
+193420 lrwxrwxrwx 2 dancer dancer    6 2005-12-25 15:35 a -> a.real
+193461 -rw-r--r-- 1 dancer dancer    2 2005-12-25 15:35 a.real
+193468 -rw-r--r-- 1 dancer dancer    0 2005-12-25 15:35 c
+193476 -rw-r--r-- 1 dancer dancer  256 2005-12-25 15:35 d
+193419 -rw-r--r-- 2 dancer dancer 1024 2005-12-25 15:35 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.0hQB0b
++ rm -rf /tmp/tmp.CRCmiB
