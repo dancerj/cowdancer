@@ -1,7 +1,9 @@
-0.8 25 Dec 2005
+0.8 28 Dec 2005
 
-+ Speed improvement: save binary ilist in cow-shell and load the binary data 
++ Speed improvement 1: save binary ilist in cow-shell and load the binary data 
   with mmap in cowdancer.
++ Speed improvement 2: sort ilist and do a binary search within it.
++ Make code a bit more thread-safe than it was.
 
 0.7 23 Nov 2005
 

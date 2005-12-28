@@ -1,3 +1,10 @@
+2005-12-28  Junichi Uekawa  <dancer@debian.org>
+
+	* NEWS: update news file.
+
+	* cowdancer.c: insert sched_yield in parts to make things look a
+	bit more quasi-thread-safe.
+
 2005-12-25  Junichi Uekawa  <dancer@debian.org>
 
 	* cowdancer.c (check_inode_and_copy): use bsearch

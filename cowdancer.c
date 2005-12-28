@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <sys/signal.h>
 #include <sys/mman.h>
+#include <sched.h>
 #define PRGNAME "cowdancer"
 #include "ilist.h"
 
@@ -50,6 +51,8 @@ static int load_ilist(void)
   FILE* f=0;
   int fd=0;
   struct stat stbuf;
+  struct ilist_struct* local_ilist=NULL;
+  long local_ilist_len=0;  
 
   if (!getenv("COWDANCER_ILISTFILE"))
     {
@@ -67,28 +70,40 @@ static int load_ilist(void)
       fprintf(stderr, "cannot fstat ilistfile %s\n", getenv("COWDANCER_ILISTFILE"));
       return 1;
     }
-  ilist_len=stbuf.st_size / sizeof(struct ilist_struct);
 
-  if (stbuf.st_size != (sizeof(struct ilist_struct) * ilist_len))
+  local_ilist_len=stbuf.st_size / sizeof(struct ilist_struct);
+
+  if (stbuf.st_size != (sizeof(struct ilist_struct) * local_ilist_len))
     {
-      outofmemory(".ilist file size unexpected");
+      outofmemory(".ilist size unexpected");
       return 1;
     }
   
   if (((void*)-1)==
-      (ilist=mmap(NULL, stbuf.st_size, PROT_READ, MAP_PRIVATE, 
+      (local_ilist=mmap(NULL, stbuf.st_size, PROT_READ, MAP_PRIVATE, 
 		  fd, 0)))
     {
       perror("mmap failed, failback to other method");
       /* fall back to non-mmap method. */
       f=fdopen(fd, "r");
-      ilist=malloc(stbuf.st_size);
-      fread(ilist, sizeof(struct ilist_struct), ilist_len, f);
+      local_ilist=malloc(stbuf.st_size);
+      fread(local_ilist, sizeof(struct ilist_struct), local_ilist_len, f);
       fclose(f);
     }
+
+  /* commit, this should really be atomic, 
+     but I don't want to have a lock here.
+     Pray that same result will result in multiple invocations,
+     and ask for luck. It shouldn't change the result very much if it was called multiple times.
+  */
+  sched_yield();
+  /* Do I need to make them volatile? I want the following assignment to happen
+     at this exact timing, to make this quasi-lock-free logic to be remotely successful. */
+  ilist_len = local_ilist_len;
+  ilist = local_ilist;
+  
   return 0;
 }
-
 
 static void debug_cowdancer (const char * s)
 {
@@ -105,11 +120,13 @@ static void debug_cowdancer_2 (const char * s, const char*e)
 /* return 1 on error */
 static int initialize_functions ()
 {
-  static int initialized = 0;
-  /* do I need to make this code reentrant? */
+  static volatile int initialized = 0;
+  /* this code is quasi-reentrant; 
+     wouldn't suffer too much if it is called multiple times. */
   
   if (!initialized)
     {
+      initialized = 1;
       origlibc_open = dlsym(RTLD_NEXT, "open");
       origlibc_open64 = dlsym(RTLD_NEXT, "open64");
       origlibc_creat = dlsym(RTLD_NEXT, "creat");
@@ -123,12 +140,19 @@ static int initialize_functions ()
       origlibc_fchmod = dlsym(RTLD_NEXT, "fchmod");
 
       /* load the ilist */
-      if (load_ilist())
-	return 1;
+      if (!ilist)
+	{
+	  if (load_ilist())
+	    return 1;
+	}
 
-      initialized = 1;
+      initialized = 2;
       debug_cowdancer ("Initialization successfully finished.\n");
     }  
+  /* wait until somebody else finishes his job */
+  while (initialized == 1)
+    sched_yield();
+  
   return 0;
 }
 

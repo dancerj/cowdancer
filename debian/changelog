@@ -1,8 +1,10 @@
 cowdancer (0.8) UNRELEASED; urgency=low
 
-  * speed improvement; when handling linux kernel source tree, performance
-    degradation was around 6x in 0.7, but it's now 1.1x on my test
-    system.
+  * speed improvement when handling ilist file; when handling linux kernel
+    source tree, performance degradation was around 6x in 0.7, but it's
+    now 1.1x on my test system.
+  - Use mmap and binary data format  
+  - Use qsort/bsearch on this data format.
 
  -- Junichi Uekawa <dancer@debian.org>  Sun, 25 Dec 2005 14:53:27 +0900
 
