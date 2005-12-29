@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.hAImp8
-+ cd /tmp/tmp.hAImp8
++ TESTDIR=/tmp/tmp.65nDbN
++ cd /tmp/tmp.65nDbN
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 9.9e-05 seconds, 10.3 MB/s
+1024 bytes (1.0 kB) copied, 8.3e-05 seconds, 12.3 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -14,28 +14,28 @@
    2/ before
 + ls -li 2/
 合計 4
-760441 -rw-r--r-- 2 dancer dancer    0 2005-12-28 18:53 a
-760445 -rw-r--r-- 2 dancer dancer    0 2005-12-28 18:53 b
-760446 -rw-r--r-- 2 dancer dancer    0 2005-12-28 18:53 c
-760447 -rw-r--r-- 2 dancer dancer    0 2005-12-28 18:53 d
-760448 -rw-r--r-- 2 dancer dancer 1024 2005-12-28 18:53 e
+265931 -rw-r--r-- 2 dancer dancer    0 2005-12-29 23:17 a
+265935 -rw-r--r-- 2 dancer dancer    0 2005-12-29 23:17 b
+265936 -rw-r--r-- 2 dancer dancer    0 2005-12-29 23:17 c
+265937 -rw-r--r-- 2 dancer dancer    0 2005-12-29 23:17 d
+265938 -rw-r--r-- 2 dancer dancer 1024 2005-12-29 23:17 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/bash
 0+1 records in
 0+1 records out
-224 bytes (224 B) copied, 0.000114 seconds, 2.0 MB/s
+224 bytes (224 B) copied, 0.000118 seconds, 1.9 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-760490 -rw-r--r-- 1 dancer dancer    2 2005-12-28 18:54 a
-760497 -rw-r--r-- 1 dancer dancer    0 2005-12-28 18:54 c
-760505 -rw-r--r-- 1 dancer dancer  224 2005-12-28 18:54 d
-760448 -rw-r--r-- 2 dancer dancer 1024 2005-12-28 18:53 e
+265979 -rw-r--r-- 1 dancer dancer    2 2005-12-29 23:17 a
+265986 -rw-r--r-- 1 dancer dancer    0 2005-12-29 23:17 c
+265994 -rw-r--r-- 1 dancer dancer  224 2005-12-29 23:17 d
+265938 -rw-r--r-- 2 dancer dancer 1024 2005-12-29 23:17 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.hAImp8
++ rm -rf /tmp/tmp.65nDbN

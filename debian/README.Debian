@@ -14,5 +14,6 @@ working fine at the moment.
 BUGS:
 	O_CREAT may be better implemented without cp -a, but the implication
 of owner of created file vs truncated file is unclear.
+	fchown/fchmod cannot possibly work reliably
 
- -- Junichi Uekawa <dancer@debian.org>, Tue Aug 16 08:33:04 2005
+ -- Junichi Uekawa <dancer@debian.org>, Thu Dec 29 23:18:42 2005

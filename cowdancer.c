@@ -62,12 +62,12 @@ static int load_ilist(void)
   
   if (-1==(fd=origlibc_open(getenv("COWDANCER_ILISTFILE"),O_RDONLY,0)))
     {
-      fprintf(stderr, "cannot open ilistfile %s\n", getenv("COWDANCER_ILISTFILE"));
+      fprintf(stderr, "%s: cannot open ilistfile %s\n", PRGNAME, getenv("COWDANCER_ILISTFILE"));
       return 1;
     }
   if (-1==fstat(fd,&stbuf))
     {
-      fprintf(stderr, "cannot fstat ilistfile %s\n", getenv("COWDANCER_ILISTFILE"));
+      fprintf(stderr, "%s: cannot fstat ilistfile %s\n", PRGNAME, getenv("COWDANCER_ILISTFILE"));
       return 1;
     }
 
@@ -85,8 +85,17 @@ static int load_ilist(void)
     {
       perror("mmap failed, failback to other method");
       /* fall back to non-mmap method. */
-      f=fdopen(fd, "r");
-      local_ilist=malloc(stbuf.st_size);
+      if (NULL==(f=fdopen(fd, "r")))
+	{
+	  fprintf(stderr, "%s: cannot fdopen ilistfile %s\n", PRGNAME, getenv("COWDANCER_ILISTFILE"));
+	  return 1;
+	}
+      
+      if (NULL==(local_ilist=malloc(stbuf.st_size)))
+	{
+	  fprintf(stderr, "%s: out of memory while trying to allocate memory for ilist\n", PRGNAME);
+	  return 1;
+	}
       fread(local_ilist, sizeof(struct ilist_struct), local_ilist_len, f);
       fclose(f);
     }

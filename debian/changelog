@@ -5,8 +5,9 @@ cowdancer (0.8) UNRELEASED; urgency=low
     now 1.1x on my test system.
   - Use mmap and binary data format  
   - Use qsort/bsearch on this data format.
+  * update README.Debian.
 
- -- Junichi Uekawa <dancer@debian.org>  Sun, 25 Dec 2005 14:53:27 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 29 Dec 2005 23:19:00 +0900
 
 cowdancer (0.7) unstable; urgency=low
 

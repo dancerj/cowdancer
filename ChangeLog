@@ -1,5 +1,15 @@
 2005-12-29  Junichi Uekawa  <dancer@debian.org>
 
+	* debian/TODO: update 
+
+	* debian/README.Debian (BUGS): add fchown/fchmod notes.
+
+	* tests/014_ilistdump_test.sh: add a test to check for ilist dumping.
+
+	* tests/014_ilistdump_test.c: add a test program for dumping ilist file contents.
+
+	* cowdancer.c (load_ilist): add error checks.
+
 	* Makefile (%.o): define _REENTRANT
 
 2005-12-28  Junichi Uekawa  <dancer@debian.org>

@@ -3,3 +3,6 @@ It is partially implemented, but difficult to really do.
 open(, RDONLY) and fchmod/fchown is hard to do, because we're handling
 inodes at that timing.
 
+* cpbuilder implementation
+A prototype exists, but I need a good test environment with network
+connection, and a chunk of time allocated for it. A Codefest ?

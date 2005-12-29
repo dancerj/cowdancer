@@ -1,4 +1,4 @@
 env var COWDANCER_ILISTFILE not defined
 dd: opening `/dev/zero'
-cannot open ilistfile ./nonexistent-file
+cowdancer: cannot open ilistfile ./nonexistent-file
 dd: opening `/dev/zero': そのようなファイルやディレクトリはありません
