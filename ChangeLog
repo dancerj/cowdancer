@@ -1,3 +1,7 @@
+2005-12-29  Junichi Uekawa  <dancer@debian.org>
+
+	* Makefile (%.o): define _REENTRANT
+
 2005-12-28  Junichi Uekawa  <dancer@debian.org>
 
 	* NEWS: update news file.

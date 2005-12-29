@@ -20,7 +20,7 @@ libcowdancer.so: cowdancer.lo
 cow-shell: cow-shell.o
 
 %.lo: %.c
-	gcc -fPIC $< -o $@ -c -Wall -O2 -g
+	gcc -D_REENTRANT -fPIC $< -o $@ -c -Wall -O2 -g
 
 %.o: %.c
 	gcc $< -o $@ -c -Wall -O2 -g 
