@@ -1,3 +1,9 @@
+cowdancer (0.9) UNRELEASED; urgency=low
+
+  * 
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat,  7 Jan 2006 13:59:48 +0900
+
 cowdancer (0.8) unstable; urgency=low
 
   * speed improvement when handling ilist file; when handling linux kernel
