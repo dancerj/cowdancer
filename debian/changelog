@@ -1,4 +1,4 @@
-cowdancer (0.8) UNRELEASED; urgency=low
+cowdancer (0.8) unstable; urgency=low
 
   * speed improvement when handling ilist file; when handling linux kernel
     source tree, performance degradation was around 6x in 0.7, but it's
@@ -7,7 +7,7 @@ cowdancer (0.8) UNRELEASED; urgency=low
   - Use qsort/bsearch on this data format.
   * update README.Debian.
 
- -- Junichi Uekawa <dancer@debian.org>  Thu, 29 Dec 2005 23:19:00 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sat,  7 Jan 2006 11:56:06 +0900
 
 cowdancer (0.7) unstable; urgency=low
 

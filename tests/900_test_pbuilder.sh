@@ -6,8 +6,9 @@
 
 # this test requires root privs for pbuilder.
 
-if [[ $(uname -n ) != "dancer64" ]]; then
-    exit 1;
+if [[ $(uname -mn ) != "dancer64 x86_64" ]]; then
+    echo 'skip this test'
+    exit 0;
 fi
 
 set -ex
@@ -30,7 +31,7 @@ sudo tar xfzp $BASETGZ
 sudo cp $COWDEB $ORIG/tmp/
 sudo apt-get source -d dsh
 sudo chroot $ORIG dpkg -i tmp/cowdancer*.deb
-sudo find $ORIG -ls > /tmp/ls-before
+#sudo find $ORIG -ls > /tmp/ls-before
 sudo cp -al $ORIG $WORK-1
 sudo cp var/log/dpkg.log /tmp/a
 sudo pbuilder update --buildplace $WORK-1 --no-targz --internal-chrootexec "chroot $WORK-1 cow-shell" 
@@ -38,13 +39,13 @@ sudo pbuilder build --buildplace $WORK-1 --no-targz --internal-chrootexec "chroo
 sudo diff -u /tmp/a $ORIG/var/log/dpkg.log
 sudo rm -rf $WORK-1
 
-sudo find $ORIG -ls > /tmp/ls-after
+#sudo find $ORIG -ls > /tmp/ls-after
 
 cd ..
 sudo rm -rf /var/cache/pbuilder/build/cow
 
 # /etc/passwd, /etc/group are due to 'pbuilder-buildpackage-funcs/createbuilduser'
-diff -u /tmp/ls-before /tmp/ls-after
+#diff -u /tmp/ls-before /tmp/ls-after
 
 echo end
 

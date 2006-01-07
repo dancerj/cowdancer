@@ -3,7 +3,7 @@ INSTALL_DIR=install -d -o root -g root -m 755
 INSTALL_FILE=install -o root -g root -m 644
 INSTALL_PROGRAM=install -o root -g root -m 755
 DESTDIR=
-export VERSION=$(shell dpkg-parsechangelog|sed -n 's/^Version: //p')
+export VERSION=$(shell sed -n '1s/.*(\(.*\)).*$$/\1/p' < debian/changelog )
 
 all: $(BINARY)
 
@@ -32,7 +32,6 @@ upload-dist-all:
 	scp ../cowdancer_$(VERSION).tar.gz viper2.netfort.gr.jp:public_html/software/downloads
 
 check:
-	set -e; for A in tests/???_*.sh; do echo $$A; bash $$A  > tests/log/$${A/*\//}.log 2>&1; done
-
+	set -e; set -o pipefail; for A in tests/???_*.sh; do echo $$A; bash $$A  2>&1 | tee tests/log/$${A/*\//}.log; done
 
 .PHONY: clean check upload-dist-all

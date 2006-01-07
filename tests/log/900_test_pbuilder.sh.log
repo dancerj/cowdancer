@@ -1,0 +1,115 @@
++ '[' '!' -x /usr/sbin/pbuilder ']'
++ ORIG=/var/cache/pbuilder/build/cow/orig
++ WORK=/var/cache/pbuilder/build/cow/work5958
++ BASETGZ=/var/cache/pbuilder/base.tgz
++++ dpkg --print-architecture
+++ readlink -f ../cowdancer_0.8_amd64.deb
++ COWDEB=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.8_amd64.deb
++ sudo rm -rf /var/cache/pbuilder/build/cow
++ sudo mkdir -p /var/cache/pbuilder/build/cow/orig
++ cd /var/cache/pbuilder/build/cow/orig
++ sudo tar xfzp /var/cache/pbuilder/base.tgz
++ sudo cp /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.8_amd64.deb /var/cache/pbuilder/build/cow/orig/tmp/
++ sudo apt-get source -d dsh
+パッケージリストを読みこんでいます...
+依存関係ツリーを作成しています...
+382kB のソースアーカイブを取得する必要があります。
+取得:1 http://ftp.jp.debian.org unstable/main dsh 0.25.6-1 (dsc) [583B]
+取得:2 http://ftp.jp.debian.org unstable/main dsh 0.25.6-1 (tar) [373kB]
+取得:3 http://ftp.jp.debian.org unstable/main dsh 0.25.6-1 (diff) [7934B]
+382kB を 0s で取得しました (530kB/s)
+ダウンロードオンリーモードでパッケージのダウンロードが完了しました
++ sudo chroot /var/cache/pbuilder/build/cow/orig dpkg -i tmp/cowdancer_0.8_amd64.deb
+Selecting previously deselected package cowdancer.
+(Reading database ... 11828 files and directories currently installed.)
+Unpacking cowdancer (from tmp/cowdancer_0.8_amd64.deb) ...
+Setting up cowdancer (0.8) ...
++ sudo find /var/cache/pbuilder/build/cow/orig -ls
++ sudo cp -al /var/cache/pbuilder/build/cow/orig /var/cache/pbuilder/build/cow/work5958-1
++ sudo cp var/log/dpkg.log /tmp/a
++ sudo pbuilder update --buildplace /var/cache/pbuilder/build/cow/work5958-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work5958-1 cow-shell'
+W: /home/dancer/.pbuilderrc does not exist
+ -> Running in no-targz mode
+ -> copying local configuration
+ -> mounting /proc filesystem
+ln: creating symbolic link `/var/cache/pbuilder/build/cow/work5958-1/etc/mtab' to `../proc/mounts': File exists
+ -> mounting /dev/pts filesystem
+ -> policy-rc.d already exists
+Refreshing the base.tgz 
+ -> upgrading packages
+Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
+Get:2 http://ftp.jp.debian.org sid Release [5722B]
+Ign http://ftp.jp.debian.org sid Release
+Get:3 http://ftp.jp.debian.org sid/main Packages [3863kB]
+Fetched 3869kB in 2s (1879kB/s)
+Reading package lists...
+W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute /usr/bin/gpgv to verify signature (is gnupg installed?)
+W: You may want to run apt-get update to correct these problems
+dpkg - warning: ignoring request to remove lilo which isn't installed.
+Obtaining the cached apt archive contents
+Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:262136
+
+Building dependency tree...
+The following packages will be upgraded:
+  at base-config bsdmainutils cpio cpp-4.0 debconf debconf-i18n dhcp3-client
+  dhcp3-common g++-4.0 gcc-4.0 gcc-4.0-base libc6 libc6-dev libgcc1
+  libselinux1 libsepol1 libstdc++6 libstdc++6-4.0-dev lsb-base manpages nano
+  netbase tasksel zlib1g
+25 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 7411kB/16.9MB of archives.
+After unpacking 844kB disk space will be freed.
+WARNING: The following packages cannot be authenticated!
+  debconf-i18n debconf libc6-dev libc6 cpp-4.0 gcc-4.0-base libgcc1 gcc-4.0
+  g++-4.0 libstdc++6-4.0-dev libstdc++6 libsepol1 libselinux1 zlib1g
+  base-config bsdmainutils cpio manpages nano lsb-base netbase tasksel at
+  dhcp3-client dhcp3-common
+Get:1 http://ftp.jp.debian.org sid/main cpp-4.0 4.0.2-6 [2261kB]
+Get:2 http://ftp.jp.debian.org sid/main gcc-4.0-base 4.0.2-6 [180kB]
+Get:3 http://ftp.jp.debian.org sid/main libgcc1 1:4.0.2-6 [99.9kB]
+Get:4 http://ftp.jp.debian.org sid/main gcc-4.0 4.0.2-6 [522kB]
+Get:5 http://ftp.jp.debian.org sid/main g++-4.0 4.0.2-6 [2581kB]
+Get:6 http://ftp.jp.debian.org sid/main libstdc++6-4.0-dev 4.0.2-6 [1481kB]
+Get:7 http://ftp.jp.debian.org sid/main libstdc++6 4.0.2-6 [286kB]
+Preconfiguring packages ...
+Fetched 7411kB in 3s (2226kB/s)
+(Reading database ... 11839 files and directories currently installed.)
+Preparing to replace debconf-i18n 1.4.62 (using .../debconf-i18n_1.4.67_all.deb) ...
+Unpacking replacement debconf-i18n ...
+Preparing to replace debconf 1.4.62 (using .../debconf_1.4.67_all.deb) ...
+Unpacking replacement debconf ...
+Preparing to replace libc6-dev 2.3.5-9 (using .../libc6-dev_2.3.5-11_amd64.deb) ...
+Unpacking replacement libc6-dev ...
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+rm: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+dpkg: error while cleaning up:
+ subprocess rm cleanup returned error exit status 127
+dpkg-split: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+dpkg: error processing /var/cache/apt/archives/libc6_2.3.5-11_amd64.deb (--unpack):
+ subprocess dpkg-split returned error exit status 127
+Errors were encountered while processing:
+ /var/cache/apt/archives/libc6_2.3.5-11_amd64.deb
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+Copying back the cached apt archive contents
+ -> new cache content cpp-4.0_4.0.2-6_amd64.deb added
+ -> new cache content gcc-4.0-base_4.0.2-6_amd64.deb added
+ -> new cache content libgcc1_1%3a4.0.2-6_amd64.deb added
+ -> new cache content gcc-4.0_4.0.2-6_amd64.deb added
+ -> new cache content g++-4.0_4.0.2-6_amd64.deb added
+ -> new cache content libstdc++6-4.0-dev_4.0.2-6_amd64.deb added
+ -> new cache content libstdc++6_4.0.2-6_amd64.deb added
+ -> unmounting dev/pts filesystem
+ -> unmounting proc filesystem

@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /tmp/buildd/*/debian/..
+chown -R 1555:1555 tests/log
+echo make check | su user1

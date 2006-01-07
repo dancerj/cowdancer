@@ -1,3 +1,20 @@
+2006-01-07  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/900_test_pbuilder.sh: skip this test unless it's a known
+	working location
+
+	* Makefile: make it easier to see test failure results.
+
+	* debian/pbuilder-test/000_prepinstall: 
+	* debian/pbuilder-test/001_makecheck: testsuite to run make-check inside chroot.
+
+	* tests/900_test_pbuilder.sh: 
+
+	* debian/TODO: note that cpbuilder test fails today, because it's
+	probably forking when it should not be.
+
+	* Makefile: use VERSION string without debian dependency.
+
 2005-12-29  Junichi Uekawa  <dancer@debian.org>
 
 	* debian/TODO: update 
