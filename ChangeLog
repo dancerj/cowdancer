@@ -7,6 +7,16 @@
 	* cowdancer.c (check_inode_and_copy): try to tackle the problem of
 	ld.so overwrite while exec.
 
+	This happens because we do rename before cp.
+	before:
+	rename a a~~
+	cp -a a~~ a (requires working libc)
+	rm a~~
+
+	modified:
+	cp -a a a~~ 
+	rename a~~ a
+
 2006-01-07  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/900_test_pbuilder.sh: skip this test unless it's a known
