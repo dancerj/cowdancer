@@ -1,3 +1,12 @@
+2006-01-08  Junichi Uekawa  <dancer@debian.org>
+
+	* NEWS: update
+
+	* debian/TODO: document the problem with ld.so overwrite
+
+	* cowdancer.c (check_inode_and_copy): try to tackle the problem of
+	ld.so overwrite while exec.
+
 2006-01-07  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/900_test_pbuilder.sh: skip this test unless it's a known

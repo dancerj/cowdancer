@@ -1,22 +1,20 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.3ntVtF
++ TESTDIR=/tmp/tmp.ZURVQr
 ++ readlink -f tests/014_ilistdump_test.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/014_ilistdump_test.c
-+ cd /tmp/tmp.3ntVtF
++ cd /tmp/tmp.ZURVQr
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 3.9e-05 seconds, 26.3 MB/s
+1024 bytes (1.0 kB) copied, 0.000104 seconds, 9.8 MB/s
 + cd 1
-+ find -printf '%D %i\n'
 + sort +2 -n
++ find -printf '%D %i\n'
 + cow-shell echo hello
 hello
 + /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/014_ilistdump_test.c
-014_ilistdump_test.c: In function 'main':
-014_ilistdump_test.c:27: ·Ù¹ð: format '%i' expects type 'int', but argument 3 has type 'long unsigned int'
 ilist_struct size on this architecture: 16
-+ diff -u /tmp/tmp.3ntVtF/mylist.1 /tmp/tmp.3ntVtF/mylist.2
-+ rm -rf /tmp/tmp.3ntVtF
++ diff -u /tmp/tmp.ZURVQr/mylist.1 /tmp/tmp.ZURVQr/mylist.2
++ rm -rf /tmp/tmp.ZURVQr

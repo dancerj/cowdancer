@@ -10,6 +10,19 @@ connection, and a chunk of time allocated for it. A Codefest ?
 * cpbuilder test fails, presumably because I'm forking when I cannot
 7 Jan 2006:
 
+This happens because we do rename before cp.
+current:
+rename a a~~
+cp -a a~~ a (requires working libc)
+rm a~~
+
+modified:
+cp -a a a~~ 
+rename a~~ a
+
+
+testsuite passes. I need to do some regression testing here.
+
 Preparing to replace libc6-dev 2.3.5-9 (using .../libc6-dev_2.3.5-11_amd64.deb) ...
 Unpacking replacement libc6-dev ...
 sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory

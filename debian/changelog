@@ -1,8 +1,9 @@
 cowdancer (0.9) UNRELEASED; urgency=low
 
-  * 
+  * Reorder the flow of execution for the case when /lib/ld.so binary is
+    written to; I cannot fork/exec shared binaries while modifying ld.so.
 
- -- Junichi Uekawa <dancer@debian.org>  Sat,  7 Jan 2006 13:59:48 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sun,  8 Jan 2006 14:13:47 +0900
 
 cowdancer (0.8) unstable; urgency=low
 

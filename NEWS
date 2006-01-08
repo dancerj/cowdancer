@@ -1,3 +1,9 @@
+0.9 8 Jan 2006
+
++ Change order of copying.  for the case when /lib/ld.so binary is
+  written to; I cannot fork/exec shared binaries while ld.so does not
+  exist.
+
 0.8 28 Dec 2005
 
 + Speed improvement 1: save binary ilist in cow-shell and load the binary data 

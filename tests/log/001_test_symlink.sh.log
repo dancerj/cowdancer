@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.G3yj1F
-+ cd /tmp/tmp.G3yj1F
++ TESTDIR=/tmp/tmp.8WWk6b
++ cd /tmp/tmp.8WWk6b
 + mkdir 1/
 + touch 1/b 1/c 1/d 1/a.real
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4e-05 seconds, 26 MB/s
+1024 bytes (1.0 kB) copied, 0.000106 seconds, 9.7 MB/s
 + ln -s a.real 1/a
 + ls -li 1/
 + sleep 1s
@@ -15,30 +15,30 @@
    2/ before
 + ls -li 2/
 合計 4
-199372 lrwxrwxrwx 2 dancer dancer    6 2006-01-07 11:56 a -> a.real
-199370 -rw-r--r-- 2 dancer dancer    0 2006-01-07 11:56 a.real
-199367 -rw-r--r-- 2 dancer dancer    0 2006-01-07 11:56 b
-199368 -rw-r--r-- 2 dancer dancer    0 2006-01-07 11:56 c
-199369 -rw-r--r-- 2 dancer dancer    0 2006-01-07 11:56 d
-199371 -rw-r--r-- 2 dancer dancer 1024 2006-01-07 11:56 e
+446260 lrwxrwxrwx 2 dancer dancer    6 2006-01-08 15:06 a -> a.real
+446258 -rw-r--r-- 2 dancer dancer    0 2006-01-08 15:06 a.real
+446252 -rw-r--r-- 2 dancer dancer    0 2006-01-08 15:06 b
+446256 -rw-r--r-- 2 dancer dancer    0 2006-01-08 15:06 c
+446257 -rw-r--r-- 2 dancer dancer    0 2006-01-08 15:06 d
+446259 -rw-r--r-- 2 dancer dancer 1024 2006-01-08 15:06 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/bash
 0+1 records in
 0+1 records out
-256 bytes (256 B) copied, 4.6e-05 seconds, 5.6 MB/s
+256 bytes (256 B) copied, 0.000142 seconds, 1.8 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-199372 lrwxrwxrwx 2 dancer dancer    6 2006-01-07 11:56 a -> a.real
-199376 -rw-r--r-- 1 dancer dancer    2 2006-01-07 11:56 a.real
-199377 -rw-r--r-- 1 dancer dancer    0 2006-01-07 11:56 c
-199378 -rw-r--r-- 1 dancer dancer  256 2006-01-07 11:56 d
-199371 -rw-r--r-- 2 dancer dancer 1024 2006-01-07 11:56 e
+446260 lrwxrwxrwx 2 dancer dancer    6 2006-01-08 15:06 a -> a.real
+446301 -rw-r--r-- 1 dancer dancer    2 2006-01-08 15:06 a.real
+446316 -rw-r--r-- 1 dancer dancer    0 2006-01-08 15:06 c
+446324 -rw-r--r-- 1 dancer dancer  256 2006-01-08 15:06 d
+446259 -rw-r--r-- 2 dancer dancer 1024 2006-01-08 15:06 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.G3yj1F
++ rm -rf /tmp/tmp.8WWk6b

@@ -202,25 +202,37 @@ static void check_inode_and_copy(const char* s)
       */
       char* buf=NULL;
       char* tilde=NULL;		/* filename of backup file */
+      int ret;
 
+      /* FIXME: tilde is the temporary file name, it should be created
+	 with temporary file creation function */
       if (asprintf(&tilde, "%s~~", canonical?:s)==-1)
 	outofmemory("out of memory in check_inode_and_copy, 1");
-      if (rename(canonical?:s, tilde)==-1)
+
+      /* do cp. */
+      if (asprintf(&buf, "COWDANCER_IGNORE=yes /bin/cp -a %s %s~~",
+		   canonical?:s, canonical?:s)==-1)
+	outofmemory("out of memory in check_inode_and_copy, 2");
+      
+      if (!(ret=system(buf)))
 	{
-	  perror (PRGNAME " backup file generation");
-	  fprintf(stderr, "while trying %s\n", tilde);
-	  /* FIXME: should error-handle. */
+	  if (rename(tilde, canonical?:s)==-1)
+	    {
+	      perror (PRGNAME ": file overwrite with rename");
+	      fprintf(stderr, PRGNAME": while trying rename of %s to %s\n",  canonical?:s, tilde);
+	      /* FIXME: should error-handle. */
+	    }
 	}
       else
 	{
-	  if (asprintf(&buf, "COWDANCER_IGNORE=yes /bin/cp -a %s~~ %s",
-		       canonical?:s, canonical?:s)==-1)
-	    outofmemory("out of memory in check_inode_and_copy, 2");
-	  system(buf);
-	  free(buf);
-	  if (unlink(tilde)==-1)
-	    perror(PRGNAME " unlink backup");
+	  /* failed cp -a */
+
+	  if (ret==-1)		/* if failure was in 'system', print errno */
+	    perror(PRGNAME ": system in check_inode_and_copy");
+	  fprintf(stderr, PRGNAME": cp -a failed for %s\n", tilde);
+	  /* FIXME: should error-handle. */
 	}
+      free(buf);
       free(tilde);
     }
   else				
