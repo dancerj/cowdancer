@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.yAQApw
++ TESTDIR=/tmp/tmp.Tq1ZWW
 ++ readlink -f tests/014_ilistdump_test.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/014_ilistdump_test.c
-+ cd /tmp/tmp.yAQApw
++ cd /tmp/tmp.Tq1ZWW
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 6.7e-05 seconds, 15.3 MB/s
+1024 bytes (1.0 kB) copied, 4.3e-05 seconds, 23.8 MB/s
 + cd 1
 + find -printf '%D %i\n'
 + sort +2 -n
@@ -16,5 +16,5 @@
 hello
 + /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/014_ilistdump_test.c
 ilist_struct size on this architecture: 16
-+ diff -u /tmp/tmp.yAQApw/mylist.1 /tmp/tmp.yAQApw/mylist.2
-+ rm -rf /tmp/tmp.yAQApw
++ diff -u /tmp/tmp.Tq1ZWW/mylist.1 /tmp/tmp.Tq1ZWW/mylist.2
++ rm -rf /tmp/tmp.Tq1ZWW

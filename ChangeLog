@@ -1,7 +1,12 @@
 2006-01-14  Junichi Uekawa  <dancer@debian.org>
 
+	* debian/changelog: 0.10 preparation.
+
+	* NEWS: 0.10 preparation
+
 	* tests/016_memleakcheck.sh: use mcheck to see if memory leaks
 	happen.
+	Why does this not fail when check is failing?
 
 	* tests/015_test_ilistdelete.sh: disabled the check since it's
 	difficult to formulate the test yet.

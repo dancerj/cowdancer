@@ -1,3 +1,7 @@
+0.10 14 Jan 2006
+
++ Added more checks in the testsuite.
+
 0.9 8 Jan 2006
 
 + Change order of copying.  for the case when /lib/ld.so binary is
