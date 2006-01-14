@@ -16,8 +16,11 @@ TESTCODE=$(readlink -f tests/014_ilistdump_test.c)
     find -printf "%D %i\n" | sort +2 -n > ../mylist.1
     cow-shell echo hello
 )
+RET=$?
+
 $TESTCODE < ${TESTDIR}/1/.ilist > ${TESTDIR}/mylist.2
 
 diff -u ${TESTDIR}/mylist.1 ${TESTDIR}/mylist.2
 
 rm -rf ${TESTDIR}
+exit $RET

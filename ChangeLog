@@ -1,5 +1,17 @@
 2006-01-14  Junichi Uekawa  <dancer@debian.org>
 
+	* cowdancer.c (initialize_functions): use mkstemp to create a temp
+	file.
+	(check_inode_and_copy): thinko. fix ~~ handling.
+
+	* tests/017_tempfilecheck.sh: fix temp file handling.
+
+	* tests/015_test_ilistdelete.c: update to be a pthread-based test.
+
+	* tests/018_testcxx.cc (main): test for C++ code.
+
+	* tests/018_testcxx.sh: add test for C++ code
+
 	* debian/changelog: 0.10 preparation.
 
 	* NEWS: 0.10 preparation

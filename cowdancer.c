@@ -156,10 +156,9 @@ static int initialize_functions ()
 	      initialized = 0;
 	      return 1;
 	    }
+	  initialized = 2;
+	  debug_cowdancer ("Initialization successfully finished.\n");
 	}
-
-      initialized = 2;
-      debug_cowdancer ("Initialization successfully finished.\n");
     }  
   /* wait until somebody else finishes his job */
   while (initialized == 1)
@@ -171,7 +170,11 @@ static int initialize_functions ()
     return 0;
 }
 
-/* check if i-node is to be protected, and if so, copy the file*/
+/* check if i-node is to be protected, and if so, copy the file.  This
+function may fail, but the error cannot really be recovered; how
+should the default be ?
+*/
+
 static void check_inode_and_copy(const char* s)
 {
   struct ilist_struct search_target;
@@ -210,19 +213,30 @@ static void check_inode_and_copy(const char* s)
       char* tilde=NULL;		/* filename of backup file */
       int ret;
 
-      /* FIXME: tilde is the temporary file name, it should be created
-	 with temporary file creation function */
-      if (asprintf(&tilde, "%s~~", canonical?:s)==-1)
-	outofmemory("out of memory in check_inode_and_copy, 1");
-
-      /* do cp. */
-      if (asprintf(&buf, "COWDANCER_IGNORE=yes /bin/cp -a %s %s~~",
-		   canonical?:s, canonical?:s)==-1)
+      if (asprintf(&tilde, "%sXXXXXX", canonical?:s)==-1)
+	{
+	  outofmemory("out of memory in check_inode_and_copy, 1");
+	  /* FIXME: should error-handle. */
+	  return;
+	}
+      
+      close(ret=mkstemp(tilde));
+      if (ret==-1)
+	{
+	  perror(PRGNAME ": mkstemp");
+	  /* FIXME: should error-handle. */
+	  return;
+	}
+      
+      /* let cp do the task, 
+	 it probably knows about filesystem details more than I do. */
+      if (asprintf(&buf, "COWDANCER_IGNORE=yes /bin/cp -a %s %s",
+		   canonical?:s, tilde)==-1)
 	outofmemory("out of memory in check_inode_and_copy, 2");
       
       if (!(ret=system(buf)))
 	{
-	  if (rename(tilde, canonical?:s)==-1)
+	  if (-1==rename(tilde, canonical?:s))
 	    {
 	      perror (PRGNAME ": file overwrite with rename");
 	      fprintf(stderr, PRGNAME": while trying rename of %s to %s\n",  canonical?:s, tilde);

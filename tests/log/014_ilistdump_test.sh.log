@@ -1,8 +1,8 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.Tq1ZWW
++ TESTDIR=/tmp/tmp.7KIujS
 ++ readlink -f tests/014_ilistdump_test.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/014_ilistdump_test.c
-+ cd /tmp/tmp.Tq1ZWW
++ cd /tmp/tmp.7KIujS
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
@@ -14,7 +14,9 @@
 + sort +2 -n
 + cow-shell echo hello
 hello
++ RET=0
 + /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/014_ilistdump_test.c
 ilist_struct size on this architecture: 16
-+ diff -u /tmp/tmp.Tq1ZWW/mylist.1 /tmp/tmp.Tq1ZWW/mylist.2
-+ rm -rf /tmp/tmp.Tq1ZWW
++ diff -u /tmp/tmp.7KIujS/mylist.1 /tmp/tmp.7KIujS/mylist.2
++ rm -rf /tmp/tmp.7KIujS
++ exit 0

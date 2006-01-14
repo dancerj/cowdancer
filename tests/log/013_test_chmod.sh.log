@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.V5O0aE
++ TESTDIR=/tmp/tmp.8qqxnr
 ++ readlink -f tests/013_test_chmod.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/013_test_chmod.c
-+ cd /tmp/tmp.V5O0aE
++ cd /tmp/tmp.8qqxnr
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4.1e-05 seconds, 25.0 MB/s
+1024 bytes (1.0 kB) copied, 4.5e-05 seconds, 22.8 MB/s
 + chmod 600 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -17,24 +17,24 @@
    2/ before
 + ls -li 2/
 合計 4
-98087 -rw------- 2 dancer dancer    0 2006-01-14 14:57 a
-98088 -rw------- 2 dancer dancer    0 2006-01-14 14:57 b
-98089 -rw------- 2 dancer dancer    0 2006-01-14 14:57 c
-98090 -rw------- 2 dancer dancer    0 2006-01-14 14:57 d
-98091 -rw-r--r-- 2 dancer dancer 1024 2006-01-14 14:57 e
+242557 -rw------- 2 dancer dancer    0 2006-01-14 18:38 a
+242558 -rw------- 2 dancer dancer    0 2006-01-14 18:38 b
+242560 -rw------- 2 dancer dancer    0 2006-01-14 18:38 c
+242561 -rw------- 2 dancer dancer    0 2006-01-14 18:38 d
+242563 -rw-r--r-- 2 dancer dancer 1024 2006-01-14 18:38 e
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/013_test_chmod.c 2/a 2/b
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 4
-98094 -r-------- 1 dancer dancer    0 2006-01-14 14:57 a
-98088 -rw------- 2 dancer dancer    0 2006-01-14 14:57 b
-98089 -rw------- 2 dancer dancer    0 2006-01-14 14:57 c
-98090 -rw------- 2 dancer dancer    0 2006-01-14 14:57 d
-98091 -rw-r--r-- 2 dancer dancer 1024 2006-01-14 14:57 e
+242568 -r-------- 1 dancer dancer    0 2006-01-14 18:38 a
+242558 -rw------- 2 dancer dancer    0 2006-01-14 18:38 b
+242560 -rw------- 2 dancer dancer    0 2006-01-14 18:38 c
+242561 -rw------- 2 dancer dancer    0 2006-01-14 18:38 d
+242563 -rw-r--r-- 2 dancer dancer 1024 2006-01-14 18:38 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.V5O0aE
++ rm -rf /tmp/tmp.8qqxnr

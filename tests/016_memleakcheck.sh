@@ -15,6 +15,9 @@ TESTCODE=$(readlink -f tests/016_memleakcheck.c)
 
     MALLOC_TRACE="log" cow-shell $TESTCODE
 )
+RESULT=$?
 
 mtrace ${TESTDIR}/log
 rm -rf ${TESTDIR}
+
+exit $RESULT

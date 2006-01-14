@@ -1,8 +1,7 @@
 #!/bin/bash
 # test if ilist deletion is handled gracefully
+# 0.9 used to hang if pthread was used and ilist was not available.
 set -ex
-
-exit 0; # disable this check
 
 TESTDIR=$(mktemp -d )
 TESTCODE=$(readlink -f tests/015_test_ilistdelete.c)
@@ -16,5 +15,7 @@ TESTCODE=$(readlink -f tests/015_test_ilistdelete.c)
 
     cow-shell $TESTCODE
 )
-
+RET=$?
 rm -rf ${TESTDIR}
+
+exit $RET

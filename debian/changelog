@@ -1,8 +1,8 @@
 cowdancer (0.10) UNRELEASED; urgency=low
 
-  * 
+  * fixed pthread race condition.
 
- -- Junichi Uekawa <dancer@debian.org>  Sat, 14 Jan 2006 14:56:18 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 14 Jan 2006 18:40:12 +0900
 
 cowdancer (0.9) unstable; urgency=low
 

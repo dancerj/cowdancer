@@ -1,5 +1,6 @@
 0.10 14 Jan 2006
 
++ fixes hangs with applications that are using pthread.
 + Added more checks in the testsuite.
 
 0.9 8 Jan 2006
