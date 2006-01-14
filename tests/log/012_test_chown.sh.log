@@ -1,19 +1,19 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.0Z0xbr
++ TESTDIR=/tmp/tmp.nv2mxs
 ++ readlink -f tests/012_test_chown.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/012_test_chown.c
 ++ id -G
-+ set -- 1000 24 29
++ set -- 1000 20 24 25 29 44 46
 + ORIGID=1000
-+ NEWID=24
-+ ((  3 < 3  ))
-+ cd /tmp/tmp.0Z0xbr
++ NEWID=20
++ ((  7 < 3  ))
++ cd /tmp/tmp.nv2mxs
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 8.8e-05 seconds, 11.6 MB/s
+1024 bytes (1.0 kB) copied, 4.6e-05 seconds, 22.3 MB/s
 + chgrp 1000 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -21,25 +21,25 @@
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-total 4
-1935197 -rw-r--r-- 2 dancer dancer    0 Jan 14 18:56 a
-1935201 -rw-r--r-- 2 dancer dancer    0 Jan 14 18:56 b
-1935202 -rw-r--r-- 2 dancer dancer    0 Jan 14 18:56 c
-1935203 -rw-r--r-- 2 dancer dancer    0 Jan 14 18:56 d
-1935204 -rw-r--r-- 2 dancer dancer 1024 Jan 14 18:56 e
-+ cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/012_test_chown.c 24 2/a 2/b 2/c
+合計 4
+216483 -rw-r--r-- 2 dancer dancer    0 2006-01-14 22:28 a
+216484 -rw-r--r-- 2 dancer dancer    0 2006-01-14 22:28 b
+216485 -rw-r--r-- 2 dancer dancer    0 2006-01-14 22:28 c
+216486 -rw-r--r-- 2 dancer dancer    0 2006-01-14 22:28 d
+216487 -rw-r--r-- 2 dancer dancer 1024 2006-01-14 22:28 e
++ cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/012_test_chown.c 20 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-total 4
-1935258 -rw-r--r-- 1 dancer cdrom     0 Jan 14 18:56 a
-1935201 -rw-r--r-- 2 dancer dancer    0 Jan 14 18:56 b
-1935263 -rw-r--r-- 1 dancer cdrom     0 Jan 14 18:56 c
-1935203 -rw-r--r-- 2 dancer dancer    0 Jan 14 18:56 d
-1935204 -rw-r--r-- 2 dancer dancer 1024 Jan 14 18:56 e
+合計 4
+216490 -rw-r--r-- 1 dancer dialout    0 2006-01-14 22:28 a
+216484 -rw-r--r-- 2 dancer dancer     0 2006-01-14 22:28 b
+216491 -rw-r--r-- 1 dancer dialout    0 2006-01-14 22:28 c
+216486 -rw-r--r-- 2 dancer dancer     0 2006-01-14 22:28 d
+216487 -rw-r--r-- 2 dancer dancer  1024 2006-01-14 22:28 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.0Z0xbr
++ rm -rf /tmp/tmp.nv2mxs
