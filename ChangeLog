@@ -1,3 +1,26 @@
+2006-01-14  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/016_memleakcheck.sh: use mcheck to see if memory leaks
+	happen.
+
+	* tests/015_test_ilistdelete.sh: disabled the check since it's
+	difficult to formulate the test yet.
+
+	* tests/002_test_open.c (main): fix thinko. It was never tested,
+	really.
+
+2006-01-13  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/015_test_ilistdelete.c (main): a preliminary
+	implementation, this is wrong.
+	I should also test pthread and doing something racy.
+
+	* cowdancer.c (initialize_functions): logic error, if someone else
+	is initializing and it has failed, we'd probably need to retry,
+	not hang.
+
+	* tests/015_test_ilistdelete.sh: test ilist delete code path.
+
 2006-01-08  Junichi Uekawa  <dancer@debian.org>
 
 	* NEWS: update

@@ -18,9 +18,9 @@ int main(int argc, char** argv)
   if(argc < 4)
     exit(1);
   
-  open(argv[1], O_RDONLY);
-  open(argv[2], O_WRONLY);
-  open(argv[3], O_RDWR);
+  a=open(argv[1], O_RDONLY);
+  b=open(argv[2], O_WRONLY);
+  c=open(argv[3], O_RDWR);
   writeandclose(a);
   writeandclose(b);
   writeandclose(c);

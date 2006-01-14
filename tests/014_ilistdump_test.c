@@ -24,7 +24,7 @@
 int main(int argc, char** argv)
 {
   struct ilist_struct s;
-  fprintf (stderr, "ilist_struct size on this architecture: %i\n", sizeof(struct ilist_struct));
+  fprintf (stderr, "ilist_struct size on this architecture: %i\n", (int)sizeof(struct ilist_struct));
   while(fread(&s, sizeof(struct ilist_struct), 1, stdin))
     {
       printf ("%li %li\n", (long)s.dev, (long)s.inode);

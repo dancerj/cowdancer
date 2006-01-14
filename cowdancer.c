@@ -152,7 +152,10 @@ static int initialize_functions ()
       if (!ilist)
 	{
 	  if (load_ilist())
-	    return 1;
+	    {
+	      initialized = 0;
+	      return 1;
+	    }
 	}
 
       initialized = 2;
@@ -162,7 +165,10 @@ static int initialize_functions ()
   while (initialized == 1)
     sched_yield();
   
-  return 0;
+  if (initialized==0)
+    return 1;			/* that somebody else failed */
+  else
+    return 0;
 }
 
 /* check if i-node is to be protected, and if so, copy the file*/
