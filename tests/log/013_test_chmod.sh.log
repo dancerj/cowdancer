@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.8qqxnr
++ TESTDIR=/tmp/tmp.RbsKiX
 ++ readlink -f tests/013_test_chmod.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/013_test_chmod.c
-+ cd /tmp/tmp.8qqxnr
++ cd /tmp/tmp.RbsKiX
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4.5e-05 seconds, 22.8 MB/s
+1024 bytes (1.0 kB) copied, 9.1e-05 seconds, 11.3 MB/s
 + chmod 600 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -16,25 +16,25 @@
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-合計 4
-242557 -rw------- 2 dancer dancer    0 2006-01-14 18:38 a
-242558 -rw------- 2 dancer dancer    0 2006-01-14 18:38 b
-242560 -rw------- 2 dancer dancer    0 2006-01-14 18:38 c
-242561 -rw------- 2 dancer dancer    0 2006-01-14 18:38 d
-242563 -rw-r--r-- 2 dancer dancer 1024 2006-01-14 18:38 e
+total 4
+1935288 -rw------- 2 dancer dancer    0 Jan 14 18:56 a
+1935292 -rw------- 2 dancer dancer    0 Jan 14 18:56 b
+1935293 -rw------- 2 dancer dancer    0 Jan 14 18:56 c
+1935294 -rw------- 2 dancer dancer    0 Jan 14 18:56 d
+1935295 -rw-r--r-- 2 dancer dancer 1024 Jan 14 18:56 e
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/013_test_chmod.c 2/a 2/b
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-合計 4
-242568 -r-------- 1 dancer dancer    0 2006-01-14 18:38 a
-242558 -rw------- 2 dancer dancer    0 2006-01-14 18:38 b
-242560 -rw------- 2 dancer dancer    0 2006-01-14 18:38 c
-242561 -rw------- 2 dancer dancer    0 2006-01-14 18:38 d
-242563 -rw-r--r-- 2 dancer dancer 1024 2006-01-14 18:38 e
+total 4
+1935339 -r-------- 1 dancer dancer    0 Jan 14 18:56 a
+1935292 -rw------- 2 dancer dancer    0 Jan 14 18:56 b
+1935293 -rw------- 2 dancer dancer    0 Jan 14 18:56 c
+1935294 -rw------- 2 dancer dancer    0 Jan 14 18:56 d
+1935295 -rw-r--r-- 2 dancer dancer 1024 Jan 14 18:56 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.8qqxnr
++ rm -rf /tmp/tmp.RbsKiX

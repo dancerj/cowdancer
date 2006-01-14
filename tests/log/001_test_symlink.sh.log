@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.XCuhhu
-+ cd /tmp/tmp.XCuhhu
++ TESTDIR=/tmp/tmp.MOu0wb
++ cd /tmp/tmp.MOu0wb
 + mkdir 1/
 + touch 1/b 1/c 1/d 1/a.real
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4.4e-05 seconds, 23.3 MB/s
+1024 bytes (1.0 kB) copied, 8.3e-05 seconds, 12.3 MB/s
 + ln -s a.real 1/a
 + ls -li 1/
 + sleep 1s
@@ -14,31 +14,31 @@
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-合計 4
-242563 lrwxrwxrwx 2 dancer dancer    6 2006-01-14 18:37 a -> a.real
-242560 -rw-r--r-- 2 dancer dancer    0 2006-01-14 18:37 a.real
-242556 -rw-r--r-- 2 dancer dancer    0 2006-01-14 18:37 b
-242557 -rw-r--r-- 2 dancer dancer    0 2006-01-14 18:37 c
-242558 -rw-r--r-- 2 dancer dancer    0 2006-01-14 18:37 d
-242561 -rw-r--r-- 2 dancer dancer 1024 2006-01-14 18:37 e
+total 4
+1934845 lrwxrwxrwx 2 dancer dancer    6 Jan 14 18:56 a -> a.real
+1934843 -rw-r--r-- 2 dancer dancer    0 Jan 14 18:56 a.real
+1934837 -rw-r--r-- 2 dancer dancer    0 Jan 14 18:56 b
+1934841 -rw-r--r-- 2 dancer dancer    0 Jan 14 18:56 c
+1934842 -rw-r--r-- 2 dancer dancer    0 Jan 14 18:56 d
+1934844 -rw-r--r-- 2 dancer dancer 1024 Jan 14 18:56 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/bash
 0+1 records in
 0+1 records out
-256 bytes (256 B) copied, 4.8e-05 seconds, 5.3 MB/s
+256 bytes (256 B) copied, 0.000114 seconds, 2.2 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-合計 12
-242563 lrwxrwxrwx 2 dancer dancer    6 2006-01-14 18:37 a -> a.real
-242569 -rw-r--r-- 1 dancer dancer    2 2006-01-14 18:37 a.real
-242570 -rw-r--r-- 1 dancer dancer    0 2006-01-14 18:37 c
-242571 -rw-r--r-- 1 dancer dancer  256 2006-01-14 18:37 d
-242561 -rw-r--r-- 2 dancer dancer 1024 2006-01-14 18:37 e
+total 12
+1934845 lrwxrwxrwx 2 dancer dancer    6 Jan 14 18:56 a -> a.real
+1934892 -rw-r--r-- 1 dancer dancer    2 Jan 14 18:56 a.real
+1934899 -rw-r--r-- 1 dancer dancer    0 Jan 14 18:56 c
+1934907 -rw-r--r-- 1 dancer dancer  256 Jan 14 18:56 d
+1934844 -rw-r--r-- 2 dancer dancer 1024 Jan 14 18:56 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.XCuhhu
++ rm -rf /tmp/tmp.MOu0wb
