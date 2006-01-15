@@ -1,3 +1,26 @@
+* hardlink behavior.
+
+If I had a hardlinked file, I would expect both files to be updated 
+at the same time. Currently, it will only update one of the files.
+
+mkdir 1
+touch 1/a
+ln 1/a 1/b
+cp -al 1 2
+cowdancer
+
+echo test > 2/b
+
+will result in 2/b being different to 2/a.
+
+This has implications, and I think this should be documented.
+
+* count number of hardlinks
+
+before searching for the file in i-node list, I can decide that 
+if the hardlink count=1, it's definitely not hardlinked.
+Would it be worth the change? benchmark it.
+
 * Investigate fchmod/fchown
 It is partially implemented, but difficult to really do.
 open(, RDONLY) and fchmod/fchown is hard to do, because we're handling
@@ -6,47 +29,3 @@ inodes at that timing.
 * cpbuilder implementation
 A prototype exists, but I need a good test environment with network
 connection, and a chunk of time allocated for it. A Codefest ?
-
-* cpbuilder test fails, presumably because I'm forking when I cannot
-7 Jan 2006:
-
-This happens because we do rename before cp.
-current:
-rename a a~~
-cp -a a~~ a (requires working libc)
-rm a~~
-
-modified:
-cp -a a a~~ 
-rename a~~ a
-
-
-testsuite passes. I need to do some regression testing here.
-
-Preparing to replace libc6-dev 2.3.5-9 (using .../libc6-dev_2.3.5-11_amd64.deb) ...
-Unpacking replacement libc6-dev ...
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-sh: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-rm: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-dpkg: error while cleaning up:
- subprocess rm cleanup returned error exit status 127
-dpkg-split: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
-dpkg: error processing /var/cache/apt/archives/libc6_2.3.5-11_amd64.deb (--unpack):
- subprocess dpkg-split returned error exit status 127
-Errors were encountered while processing:
- /var/cache/apt/archives/libc6_2.3.5-11_amd64.deb
-E: Sub-process /usr/bin/dpkg returned an error code (1)
-
