@@ -1,3 +1,9 @@
+cowdancer (0.11) UNRELEASED; urgency=low
+
+  * add error-handling
+
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 25 Jan 2006 20:50:35 +0900
+
 cowdancer (0.10) unstable; urgency=low
 
   * fixed pthread race condition.

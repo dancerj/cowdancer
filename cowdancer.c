@@ -18,6 +18,7 @@
 #include <sys/signal.h>
 #include <sys/mman.h>
 #include <sched.h>
+#include <errno.h>
 #define PRGNAME "cowdancer"
 #include "ilist.h"
 
@@ -44,8 +45,9 @@ static void outofmemory(const char* msg)
   fprintf (stderr, "%s: %s\n", PRGNAME, msg);
 }
 
-/* load ilist file, 
-   return 1 on error */
+/* load ilist file
+
+   @return 1 on error, 0 on success */
 static int load_ilist(void)
 {
   FILE* f=0;
@@ -126,12 +128,17 @@ static void debug_cowdancer_2 (const char * s, const char*e)
     fprintf (stderr, PRGNAME ": DEBUG %s:%s\n", s, e);
 }
 
-/* return 1 on error */
+/** 
+    initialize functions to override libc functions.
+
+    @return 1 on error
+ */
+__attribute__ ((warn_unused_result)) 
 static int initialize_functions ()
 {
   static volatile int initialized = 0;
   /* this code is quasi-reentrant; 
-     wouldn't suffer too much if it is called multiple times. */
+     shouldn't suffer too much if it is called multiple times. */
   
   if (!initialized)
     {
@@ -170,77 +177,87 @@ static int initialize_functions ()
     return 0;
 }
 
-/* check if i-node is to be protected, and if so, copy the file.  This
-function may fail, but the error cannot really be recovered; how
-should the default be ?
+/**
+   check if i-node is to be protected, and if so, copy the file.  This
+   function may fail, but the error cannot really be recovered; how
+   should the default be ?
+   
+   @return 1 on failure, 0 on success
 */
-
-static void check_inode_and_copy(const char* s)
+__attribute__ ((warn_unused_result)) 
+static int check_inode_and_copy(const char* s)
 {
   struct ilist_struct search_target;
   char *canonical=NULL;		/* the canonical filename */
   struct stat buf;
+
+  char* command_buf=NULL;
+  char* tilde=NULL;		/* filename of backup file */
+  int ret;
   
   debug_cowdancer_2("DEBUG: test for", s);
   if(lstat(s, &buf))
-    return;			/* if stat fails, the file probably 
-				   doesn't exist; return */
+    return 0;			/* if stat fails, the file probably 
+				   doesn't exist; return, success */
   if (S_ISLNK(buf.st_mode))
     {
       /* for symbollic link, canonicalize and get the real filename */
       if (!(canonical=canonicalize_file_name(s)))
-	return;			/* if canonicalize_file_name fails, 
+	return 0;			/* if canonicalize_file_name fails, 
 				   the file probably doesn't exist. */
       
       if(stat(canonical, &buf))	/* if I can't stat this file, I don't think 
 				   I can write to it; ignore */
-	return;
+	return 0;
     }
       
   memset(&search_target, 0, sizeof(search_target));
   search_target.inode = buf.st_ino;
   search_target.dev = buf.st_dev;
+
+  /* I probably want to check if hardlink no is 1, so that I don't
+     need to check, if performance is wrong. c.f. fl-cow */
+
   if(bsearch(&search_target, ilist, ilist_len, 
 	     sizeof(search_target), compare_ilist) &&
      S_ISREG(buf.st_mode))
     {
       /* There is a file that needs to be protected, 
 	 Copy-on-write hardlink files.
-	 we move the file away and create a copy of that file
-	 using cp; and remove the original file.
+
+	 we copy the file first to a backup place, and then mv the
+	 backup to the original file, to break the hardlink.
       */
-      char* buf=NULL;
-      char* tilde=NULL;		/* filename of backup file */
-      int ret;
 
       if (asprintf(&tilde, "%sXXXXXX", canonical?:s)==-1)
 	{
 	  outofmemory("out of memory in check_inode_and_copy, 1");
-	  /* FIXME: should error-handle. */
-	  return;
+	  goto error_canonical;
 	}
       
       close(ret=mkstemp(tilde));
       if (ret==-1)
 	{
 	  perror(PRGNAME ": mkstemp");
-	  /* FIXME: should error-handle. */
-	  return;
+	  goto error_tilde;
 	}
       
       /* let cp do the task, 
 	 it probably knows about filesystem details more than I do. */
-      if (asprintf(&buf, "COWDANCER_IGNORE=yes /bin/cp -a %s %s",
+      if (asprintf(&command_buf, "COWDANCER_IGNORE=yes /bin/cp -a %s %s",
 		   canonical?:s, tilde)==-1)
-	outofmemory("out of memory in check_inode_and_copy, 2");
-      
-      if (!(ret=system(buf)))
+	{
+	  outofmemory("out of memory in check_inode_and_copy, 2");
+	  goto error_tilde;
+	}
+            
+      if (!(ret=system(command_buf)))
 	{
 	  if (-1==rename(tilde, canonical?:s))
 	    {
 	      perror (PRGNAME ": file overwrite with rename");
 	      fprintf(stderr, PRGNAME": while trying rename of %s to %s\n",  canonical?:s, tilde);
-	      /* FIXME: should error-handle. */
+	      goto error_buf;
 	    }
 	}
       else
@@ -250,15 +267,25 @@ static void check_inode_and_copy(const char* s)
 	  if (ret==-1)		/* if failure was in 'system', print errno */
 	    perror(PRGNAME ": system in check_inode_and_copy");
 	  fprintf(stderr, PRGNAME": cp -a failed for %s\n", tilde);
-	  /* FIXME: should error-handle. */
+	  goto error_buf;
 	}
-      free(buf);
+      free(command_buf);
       free(tilde);
     }
   else				
     debug_cowdancer_2("DEBUG: did not match ", s);
 
   if (canonical) free(canonical);
+  return 0;
+
+  /* error-processing routine. */
+ error_buf:
+  free(tilde);
+ error_tilde:
+  free(command_buf);
+ error_canonical:
+  if (canonical) free(canonical);
+  return 1;
 }
 
 int open(const char * a, int flags, ...)
@@ -270,7 +297,11 @@ int open(const char * a, int flags, ...)
   mode = va_arg(args, mode_t);
   va_end(args);
   if (initialize_functions())
-    return -1;			/* FIXME: should set errno */
+    {
+      errno=ENOMEM;
+      return -1;
+    }
+  
   
   if(!getenv("COWDANCER_IGNORE"))
     {
@@ -279,7 +310,11 @@ int open(const char * a, int flags, ...)
 	{
 	case O_WRONLY:
 	case O_RDWR:
-	  check_inode_and_copy(a);
+	  if (check_inode_and_copy(a))
+	    {
+	      errno=ENOMEM;
+	      return -1;
+	    }
 	  break;
 	}
     }
@@ -296,7 +331,10 @@ int open64(const char * a, int flags, ...)
   mode = va_arg(args, mode_t);
   va_end(args);
   if (initialize_functions())
-    return -1;			/* FIXME: should set errno */
+    {
+      errno=ENOMEM;
+      return -1;
+    }
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("open64", a);
@@ -304,7 +342,11 @@ int open64(const char * a, int flags, ...)
 	{
 	case O_WRONLY:
 	case O_RDWR:
-	  check_inode_and_copy(a);
+	  if (check_inode_and_copy(a))
+	    {
+	      errno=ENOMEM;
+	      return -1;
+	    }
 	  break;
 	}
     }
@@ -315,11 +357,19 @@ int open64(const char * a, int flags, ...)
 int creat(const char * a, mode_t mode)
 {
   int fd;
-  initialize_functions();
+  if (initialize_functions())
+    {
+      errno=ENOMEM;
+      return -1;
+    }
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("creat", a);
-      check_inode_and_copy(a);
+      if (check_inode_and_copy(a))
+	{
+	  errno=ENOMEM;
+	  return -1;
+	}
     }
   fd = origlibc_creat (a, mode);
   return fd;
@@ -329,11 +379,18 @@ int creat64(const char * a, mode_t mode)
 {
   int fd;
   if (initialize_functions())
-    return -1;			/* FIXME: should set errno */
+    {
+      errno=ENOMEM;
+      return -1;
+    }
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("creat64", a);
-      check_inode_and_copy(a);
+      if (check_inode_and_copy(a))
+	    {
+	      errno=ENOMEM;
+	      return -1;
+	    }
     }
   fd = origlibc_creat64 (a, mode);
   return fd;
@@ -350,12 +407,19 @@ FILE* fopen(const char* s, const char* t)
 {
   FILE *f;
   if (initialize_functions())
-    return NULL;
+    {
+      errno=ENOMEM;
+      return NULL;
+    }
   if(!getenv("COWDANCER_IGNORE")&&
      likely_fopen_write(t))
     {
       debug_cowdancer_2 ("fopen", s);
-      check_inode_and_copy(s);
+      if (check_inode_and_copy(s))
+	{
+	  errno=ENOMEM;
+	  return NULL;
+	}
     }
   f = origlibc_fopen (s, t);
   return f;
@@ -366,12 +430,19 @@ FILE* fopen64(const char* s, const char* t)
 {
   FILE *f;
   if(initialize_functions())
-    return NULL;
+    {
+      errno=ENOMEM;
+      return NULL;
+    }
   if(!getenv("COWDANCER_IGNORE")&&
      likely_fopen_write(t))
     {
       debug_cowdancer_2 ("fopen64", s);
-      check_inode_and_copy(s);
+      if(check_inode_and_copy(s))
+	{
+	  errno=ENOMEM;
+	  return NULL;
+	}
     }
   f = origlibc_fopen64(s, t);
   return f;
@@ -382,11 +453,18 @@ int chown(const char* s, uid_t u, gid_t g)
 {
   int ret;
   if(initialize_functions())
-    return -1;
+    {
+      errno=ENOMEM;
+      return -1;
+    }
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("chown", s);
-      check_inode_and_copy(s);
+      if(check_inode_and_copy(s))
+	{
+	  errno=ENOMEM;
+	  return -1;
+	}
     }
   ret = origlibc_chown(s, u, g);
   return ret;
@@ -394,7 +472,10 @@ int chown(const char* s, uid_t u, gid_t g)
 
 /* Check out file descriptor
  *
- * @return 1 on failure
+ * This function is currently a dummy, which does not return 1.
+ *
+ * @return 1 on failure, 0 on success
+ *
  */
 int check_fd_inode_and_warn(int fd)
 {
@@ -436,7 +517,10 @@ int fchown(int fd, uid_t u, gid_t g)
     {
       debug_cowdancer ("fchown");
       if (check_fd_inode_and_warn(fd))
-	return -1;
+	{
+	  errno=ENOMEM;
+	  return -1;
+	}
     }
   ret = origlibc_fchown(fd, u, g);
   return ret;
@@ -447,11 +531,18 @@ int lchown(const char* s, uid_t u, gid_t g)
 {
   int ret;
   if(initialize_functions())
-    return -1;
+    {
+      errno=ENOMEM;
+      return -1;
+    }
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("lchown", s);
-      check_inode_and_copy(s);
+      if (check_inode_and_copy(s))
+	{
+	  errno=ENOMEM;
+	  return -1;
+	}
     }
   ret = origlibc_lchown(s, u, g);
   return ret;
@@ -462,11 +553,18 @@ int chmod(const char* s, mode_t mode)
 {
   int ret;
   if(initialize_functions())
-    return -1;
+    {
+      errno=ENOMEM;
+      return -1;
+    }
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("chmod", s);
-      check_inode_and_copy(s);
+      if (check_inode_and_copy(s))
+	{
+	  errno=ENOMEM;
+	  return -1;
+	}
     }
   ret = origlibc_chmod(s, mode);
   return ret;
@@ -477,12 +575,18 @@ int fchmod(int fd, mode_t mode)
 {
   int ret;
   if(initialize_functions())
-    return -1;
+    {
+      errno=ENOMEM;
+      return -1;
+    }
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer ("fchmod");
       if (check_fd_inode_and_warn(fd))
-	return -1;
+	{
+	  errno=ENOMEM;
+	  return -1;
+	}
     }
   ret = origlibc_fchmod(fd, mode);
   return ret;

@@ -1,3 +1,15 @@
+2006-01-25  Junichi Uekawa  <dancer@debian.org>
+
+	* NEWS: update for 0.11
+
+	* cow-shell.1: update manual. It does cross device boundaries.
+	Note that -I or -i option should be used on debuild.
+	Note that hardlinks are broken all the time.
+
+	* cowdancer.c (check_inode_and_copy): return int.
+	(open): set errno=ENOMEM
+	(fchmod,...): check for error condition returned from check_inode_and_copy
+
 2006-01-14  Junichi Uekawa  <dancer@debian.org>
 
 	* cowdancer.c (initialize_functions): use mkstemp to create a temp

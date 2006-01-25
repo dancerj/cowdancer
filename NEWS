@@ -1,3 +1,7 @@
+0.11 25 Jan 2006 
+
++ Check for error values on COW operation, and return error to application, with ENOMEM.
+
 0.10 14 Jan 2006
 
 + fixes hangs with applications that are using pthread.

@@ -1,4 +1,4 @@
-.TH "cow\-shell" 1 "2005 Aug 13" "cowdancer" "cowdancer"
+.TH "cow\-shell" 1 "2006 Jan 25" "cowdancer" "cowdancer"
 .SH "NAME"
 cow\-shell \- Start a copy-on-write session and invoke a shell.
 .SH SYNOPSIS
@@ -28,6 +28,14 @@ will be copied to a new file before write.
 .B "cp -al cowdancer/ cowdancer.new &&  cd cowdancer.new && cow-shell debuild"
 Tries to run dpkg-buildpackage on the new tree,
 to avoid damage to the original tree.
+
+Configure debuild to ignore
+.B ".ilist"
+files, through 
+.B "-i" 
+or 
+.B "-I"
+option.
 
 .PP
 .SH "FILES"
@@ -73,15 +81,31 @@ Utilized to preload
 Enables debug messages.
 cowdancer will give debug messages in standard error output.
 
-.SH "BUGS"
+.SH "RETURN VALUE"
 
-Does not cross device boundaries.
+The functions that are overridden with cowdancer will give an errno
+value of
+.B ENOMEM
+when there is a problem.
 
-Does not support anything that LD_PRELOAD does not work.
+.SH "RESTRICTIONS"
 
-Does not work unless hardlinks are supported.
+Can only support directories that are scanned by 
+.B cow-shell
+command.
+
+The operation is not semantically correct when files are originally
+hardlinked, hardlinks are always broken.
+
+Does not support anything when LD_PRELOAD trick does not work.
+
+Does not work unless hardlinks are supported on the filesystem.
 
 Not very user-friendly.
+
+Leaves
+.B ".ilist"
+file around.
 
 .SH "AUTHOR"
 Junichi Uekawa (dancer@debian.org)
