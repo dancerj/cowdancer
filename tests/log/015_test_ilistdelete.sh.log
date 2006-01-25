@@ -1,19 +1,19 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.0tgUjk
++ TESTDIR=/tmp/tmp.Ilayfy
 ++ readlink -f tests/015_test_ilistdelete.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/015_test_ilistdelete.c
-+ cd /tmp/tmp.0tgUjk
++ cd /tmp/tmp.Ilayfy
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 0.000119 seconds, 8.6 MB/s
+1024 bytes (1.0 kB) copied, 4.5e-05 seconds, 22.8 MB/s
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/015_test_ilistdelete.c
-cowdancer: cannot open ilistfile /tmp/tmp.0tgUjk/.ilist
+cowdancer: cannot open ilistfile /tmp/tmp.Ilayfy/.ilist
 open: Cannot allocate memory
-cowdancer: cannot open ilistfile /tmp/tmp.0tgUjk/.ilist
+cowdancer: cannot open ilistfile /tmp/tmp.Ilayfy/.ilist
 open: Cannot allocate memory
 + RET=0
-+ rm -rf /tmp/tmp.0tgUjk
++ rm -rf /tmp/tmp.Ilayfy
 + exit 0

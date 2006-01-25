@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.dlVW3h
++ TESTDIR=/tmp/tmp.yETaCr
 ++ readlink -f tests/002_test_open.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c
-+ cd /tmp/tmp.dlVW3h
++ cd /tmp/tmp.yETaCr
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 0.000105 seconds, 9.8 MB/s
+1024 bytes (1.0 kB) copied, 5.3e-05 seconds, 19.3 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -16,24 +16,24 @@
    2/ before
 + ls -li 2/
 合計 4
-179138 -rw-r--r-- 2 dancer dancer    0 2006-01-25 20:58 a
-179142 -rw-r--r-- 2 dancer dancer    0 2006-01-25 20:58 b
-179143 -rw-r--r-- 2 dancer dancer    0 2006-01-25 20:58 c
-179144 -rw-r--r-- 2 dancer dancer    0 2006-01-25 20:58 d
-179145 -rw-r--r-- 2 dancer dancer 1024 2006-01-25 20:58 e
+533052 -rw-r--r-- 2 dancer dancer    0 2006-01-26 08:06 a
+533053 -rw-r--r-- 2 dancer dancer    0 2006-01-26 08:06 b
+533054 -rw-r--r-- 2 dancer dancer    0 2006-01-26 08:06 c
+533055 -rw-r--r-- 2 dancer dancer    0 2006-01-26 08:06 d
+533056 -rw-r--r-- 2 dancer dancer 1024 2006-01-26 08:06 e
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-179138 -rw-r--r-- 2 dancer dancer    0 2006-01-25 20:58 a
-179229 -rw-r--r-- 1 dancer dancer    3 2006-01-25 20:58 b
-179234 -rw-r--r-- 1 dancer dancer    3 2006-01-25 20:58 c
-179144 -rw-r--r-- 2 dancer dancer    0 2006-01-25 20:58 d
-179145 -rw-r--r-- 2 dancer dancer 1024 2006-01-25 20:58 e
+533052 -rw-r--r-- 2 dancer dancer    0 2006-01-26 08:06 a
+726852 -rw-r--r-- 1 dancer dancer    3 2006-01-26 08:06 b
+726853 -rw-r--r-- 1 dancer dancer    3 2006-01-26 08:06 c
+533055 -rw-r--r-- 2 dancer dancer    0 2006-01-26 08:06 d
+533056 -rw-r--r-- 2 dancer dancer 1024 2006-01-26 08:06 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.dlVW3h
++ rm -rf /tmp/tmp.yETaCr
