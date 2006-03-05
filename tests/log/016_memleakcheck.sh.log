@@ -1,19 +1,19 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.pzeYb3
++ TESTDIR=/tmp/tmp.zjy9v0
 ++ readlink -f tests/016_memleakcheck.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c
 + set -ex
-+ cd /tmp/tmp.pzeYb3
++ cd /tmp/tmp.zjy9v0
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 7.8e-05 seconds, 13.1 MB/s
+1024 bytes (1.0 kB) copied, 4.4e-05 seconds, 23.3 MB/s
 + MALLOC_TRACE=log
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c
 + RESULT=0
-+ mtrace /tmp/tmp.pzeYb3/log
++ mtrace /tmp/tmp.zjy9v0/log
 No memory leaks.
-+ rm -rf /tmp/tmp.pzeYb3
++ rm -rf /tmp/tmp.zjy9v0
 + exit 0
