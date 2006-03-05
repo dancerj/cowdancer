@@ -193,6 +193,8 @@ static int check_inode_and_copy(const char* s)
   struct stat buf;
   char* backup_file=NULL;/* filename of backup file, the new file with new inode that will be used for future writes */
   int ret;
+  pid_t pid;
+  int status;
   
   debug_cowdancer_2("DEBUG: test for", s);
   if(lstat(s, &buf))
@@ -209,8 +211,9 @@ static int check_inode_and_copy(const char* s)
 				   I can write to it; ignore */
 	return 0;
     }
-  canonical=canonical?:strdup(s);
-      
+  else
+    canonical=strdup(s);
+
   memset(&search_target, 0, sizeof(search_target));
   search_target.inode = buf.st_ino;
   search_target.dev = buf.st_dev;
@@ -244,52 +247,40 @@ static int check_inode_and_copy(const char* s)
       
       /* let cp do the task, 
 	 it probably knows about filesystem details more than I do. */
-      {
-	int pid, status;
-	char *av[5];
-
-	switch(pid=fork())
-	  {
-	  case 0:
-	    /* child process, run cp */
-	    setenv("COWDANCER_IGNORE", "yes", 1);
-	    /*putenv("COWDANCER_IGNORE=yes");*/
-	    av[0]="/bin/cp";
-	    av[1]="-a";
-	    av[2]=canonical;
-	    av[3]=backup_file;
-	    av[4]=NULL;
-	    execv("/bin/cp", av);
-	    exit(EXIT_FAILURE);
-	  case -1:
-	    /* error condition in fork(); something is really wrong */
-	    outofmemory("out of memory in check_inode_and_copy, 2");
-	    goto error_buf;
-	  default:
-	    /* parent process, waiting for cp -a to terminate */
-	    waitpid(pid, &status, 0);
-	    
-	    if (!WIFEXITED(status))
-	      {
-		/* something unexpected */
-		outofmemory("unexpected WIFEXITED status in waitpid");
-		goto error_buf;
-	      }
-	    else if (WEXITSTATUS(status))
-	      {
-		/* cp -a failed */
-		fprintf(stderr, PRGNAME": cp -a failed for %s\n", backup_file);
-		goto error_buf;
-	      }
-	    /* when cp -a succeeded, overwrite the target file from the temporary file with rename */
-	    else if (-1==rename(backup_file, canonical))
-	      {
-		perror (PRGNAME ": file overwrite with rename");
-		fprintf(stderr, PRGNAME": while trying rename of %s to %s\n",  canonical, backup_file);
-		goto error_buf;
-	      }
-	  }
-      }
+      switch(pid=fork())
+	{
+	case 0:
+	  /* child process, run cp */
+	  putenv("COWDANCER_IGNORE=yes");
+	  execl("/bin/cp", "/bin/cp", "-a", canonical, backup_file, NULL);
+	  exit(EXIT_FAILURE);
+	case -1:
+	  /* error condition in fork(); something is really wrong */
+	  outofmemory("out of memory in check_inode_and_copy, 2");
+	  goto error_buf;
+	default:
+	  /* parent process, waiting for cp -a to terminate */
+	  waitpid(pid, &status, 0);
+	  if (!WIFEXITED(status))
+	    {
+	      /* something unexpected */
+	      outofmemory("unexpected WIFEXITED status in waitpid");
+	      goto error_buf;
+	    }
+	  else if (WEXITSTATUS(status))
+	    {
+	      /* cp -a failed */
+	      fprintf(stderr, PRGNAME": cp -a failed for %s\n", backup_file);
+	      goto error_buf;
+	    }
+	  /* when cp -a succeeded, overwrite the target file from the temporary file with rename */
+	  else if (-1==rename(backup_file, canonical))
+	    {
+	      perror (PRGNAME ": file overwrite with rename");
+	      fprintf(stderr, PRGNAME": while trying rename of %s to %s\n",  canonical, backup_file);
+	      goto error_buf;
+	    }
+	}
       free(backup_file);
     }
   else				

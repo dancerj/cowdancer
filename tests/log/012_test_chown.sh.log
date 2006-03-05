@@ -1,5 +1,5 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.auEWuJ
++ TESTDIR=/tmp/tmp.fUS377
 ++ readlink -f tests/012_test_chown.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/012_test_chown.c
 ++ id -G
@@ -7,7 +7,7 @@
 + ORIGID=1000
 + NEWID=20
 + ((  7 < 3  ))
-+ cd /tmp/tmp.auEWuJ
++ cd /tmp/tmp.fUS377
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
@@ -22,24 +22,24 @@
    2/ before
 + ls -li 2/
 合計 4
-231309 -rw-r--r-- 2 dancer dancer    0 2006-03-05 20:37 a
-231310 -rw-r--r-- 2 dancer dancer    0 2006-03-05 20:37 b
-231311 -rw-r--r-- 2 dancer dancer    0 2006-03-05 20:37 c
-231312 -rw-r--r-- 2 dancer dancer    0 2006-03-05 20:37 d
-231313 -rw-r--r-- 2 dancer dancer 1024 2006-03-05 20:37 e
+231733 -rw-r--r-- 2 dancer dancer    0 2006-03-05 22:45 a
+231735 -rw-r--r-- 2 dancer dancer    0 2006-03-05 22:45 b
+231747 -rw-r--r-- 2 dancer dancer    0 2006-03-05 22:45 c
+231749 -rw-r--r-- 2 dancer dancer    0 2006-03-05 22:45 d
+231751 -rw-r--r-- 2 dancer dancer 1024 2006-03-05 22:45 e
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/012_test_chown.c 20 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 4
-231316 -rw-r--r-- 1 dancer dialout    0 2006-03-05 20:37 a
-231310 -rw-r--r-- 2 dancer dancer     0 2006-03-05 20:37 b
-231317 -rw-r--r-- 1 dancer dialout    0 2006-03-05 20:37 c
-231312 -rw-r--r-- 2 dancer dancer     0 2006-03-05 20:37 d
-231313 -rw-r--r-- 2 dancer dancer  1024 2006-03-05 20:37 e
+231757 -rw-r--r-- 1 dancer dialout    0 2006-03-05 22:45 a
+231735 -rw-r--r-- 2 dancer dancer     0 2006-03-05 22:45 b
+231759 -rw-r--r-- 1 dancer dialout    0 2006-03-05 22:45 c
+231749 -rw-r--r-- 2 dancer dancer     0 2006-03-05 22:45 d
+231751 -rw-r--r-- 2 dancer dancer  1024 2006-03-05 22:45 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.auEWuJ
++ rm -rf /tmp/tmp.fUS377

@@ -1,111 +1,63 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.u6A0rf
++ TESTDIR=/tmp/tmp.JYjfy7
 ++ readlink -f tests/016_memleakcheck.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c
++ gcc /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c -o /tmp/tmp.JYjfy7/tracer -g
 + set -ex
-+ cd /tmp/tmp.u6A0rf
++ cd /tmp/tmp.JYjfy7
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4.1e-05 seconds, 25.0 MB/s
+1024 bytes (1.0 kB) copied, 4.4e-05 seconds, 23.3 MB/s
 + MALLOC_TRACE=log
-+ cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c
++ cow-shell /tmp/tmp.JYjfy7/tracer
+00400000-00401000 r-xp 00000000 08:01 231733                             /tmp/tmp.JYjfy7/tracer
+00500000-00501000 rw-p 00000000 08:01 231733                             /tmp/tmp.JYjfy7/tracer
+00501000-00522000 rw-p 00501000 00:00 0                                  [heap]
+2b1078bb6000-2b1078bcd000 r-xp 00000000 08:01 357856                     /lib/ld-2.3.6.so
+2b1078bcd000-2b1078bce000 rw-p 2b1078bcd000 00:00 0 
+2b1078ccc000-2b1078cce000 rw-p 00016000 08:01 357856                     /lib/ld-2.3.6.so
+2b1078cce000-2b1078cd1000 r-xp 00000000 08:01 420212                     /usr/lib/cowdancer/libcowdancer.so
+2b1078cd1000-2b1078dd0000 ---p 00003000 08:01 420212                     /usr/lib/cowdancer/libcowdancer.so
+2b1078dd0000-2b1078dd1000 rw-p 00002000 08:01 420212                     /usr/lib/cowdancer/libcowdancer.so
+2b1078dd1000-2b1078dd2000 r--p 00000000 08:01 231761                     /tmp/tmp.JYjfy7/.ilist
+2b1078dd2000-2b1078dd5000 rw-p 2b1078dd2000 00:00 0 
+2b1078de4000-2b1078f08000 r-xp 00000000 08:01 357854                     /lib/libc-2.3.6.so
+2b1078f08000-2b1079007000 ---p 00124000 08:01 357854                     /lib/libc-2.3.6.so
+2b1079007000-2b107901c000 r--p 00123000 08:01 357854                     /lib/libc-2.3.6.so
+2b107901c000-2b107901f000 rw-p 00138000 08:01 357854                     /lib/libc-2.3.6.so
+2b107901f000-2b1079024000 rw-p 2b107901f000 00:00 0 
+2b1079024000-2b1079026000 r-xp 00000000 08:01 355735                     /lib/libdl-2.3.6.so
+2b1079026000-2b1079125000 ---p 00002000 08:01 355735                     /lib/libdl-2.3.6.so
+2b1079125000-2b1079127000 rw-p 00001000 08:01 355735                     /lib/libdl-2.3.6.so
+2b1079127000-2b1079128000 rw-p 2b1079127000 00:00 0 
+7fffffa1c000-7fffffa31000 rw-p 7fffffa1c000 00:00 0                      [stack]
+ffffffffff600000-ffffffffffe00000 ---p 00000000 00:00 0                  [vdso]
 + RESULT=0
-+ mtrace /tmp/tmp.u6A0rf/log
-+ 0x0000000000501460 Alloc 34 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:(tsearch+0x10d)[0x2b4b4fa1__strdup+0x22)[0x2b4b4f9c7262]
-+ 0x0000000000501480 Alloc 37 duplicate: 0x2b4b4f985fd6 /lib/libc.so.6:(vasprintf+0x3e)[0x2b4b4f9b8dce]
-+ 0x00000000005014f0 Alloc 38 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501460 Alloc 50 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:[0x2b4b4f985e.6:[0x2b4b4f9b17fa]
-+ 0x00000000005014f0 Alloc 56 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 98 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x0000000000501460 Alloc 100 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:(__strdup+0x22)[0x2b4b4f9c7262]
-+ 0x00000000005014f0 Alloc 104 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 146 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x0000000000501460 Alloc 148 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:(tsearch+0x10d)[0x2b4b4f:(__strdup+0x22)[0x2b4b4f9c7262]
-+ 0x0000000000501480 Alloc 151 duplicate: 0x2b4b4f985fd6 /lib/libc.so.6:(vasprintf+0x3e)[0x2b4b4f9b8dce]
-+ 0x00000000005014f0 Alloc 152 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501460 Alloc 164 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:[0x2b4b4f98so.6:[0x2b4b4f9b17fa]
-+ 0x00000000005014f0 Alloc 170 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 212 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x00000000005014f0 Alloc 218 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 260 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x0000000000501460 Alloc 262 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:(tsearch+0x10d)[0x2b4b.6:(__strdup+0x22)[0x2b4b4f9c7262]
-+ 0x0000000000501480 Alloc 265 duplicate: 0x2b4b4f985fd6 /lib/libc.so.6:(vasprintf+0x3e)[0x2b4b4f9b8dce]
-+ 0x00000000005014f0 Alloc 266 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501460 Alloc 278 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:[0x2b4b4fc.so.6:[0x2b4b4f9b17fa]
-+ 0x00000000005014f0 Alloc 284 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 326 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x00000000005014f0 Alloc 332 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 374 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x0000000000501460 Alloc 376 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:(tsearch+0x10d)[0x2bso.6:(__strdup+0x22)[0x2b4b4f9c7262]
-+ 0x0000000000501480 Alloc 379 duplicate: 0x2b4b4f985fd6 /lib/libc.so.6:(vasprintf+0x3e)[0x2b4b4f9b8dce]
-+ 0x00000000005014f0 Alloc 380 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501460 Alloc 392 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:[0x2b4bibc.so.6:[0x2b4b4f9b17fa]
-+ 0x00000000005014f0 Alloc 398 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 440 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x00000000005014f0 Alloc 446 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 488 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x0000000000501460 Alloc 490 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:(tsearch+0x10d)[0xc.so.6:(__strdup+0x22)[0x2b4b4f9c7262]
-+ 0x0000000000501480 Alloc 493 duplicate: 0x2b4b4f985fd6 /lib/libc.so.6:(vasprintf+0x3e)[0x2b4b4f9b8dce]
-+ 0x00000000005014f0 Alloc 494 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501460 Alloc 506 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:[0x2b/libc.so.6:[0x2b4b4f9b17fa]
-+ 0x00000000005014f0 Alloc 512 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 554 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x00000000005014f0 Alloc 560 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 602 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x0000000000501460 Alloc 604 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:(tsearch+0x10d)[ibc.so.6:(__strdup+0x22)[0x2b4b4f9c7262]
-+ 0x0000000000501480 Alloc 607 duplicate: 0x2b4b4f985fd6 /lib/libc.so.6:(vasprintf+0x3e)[0x2b4b4f9b8dce]
-+ 0x00000000005014f0 Alloc 608 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501460 Alloc 620 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:[0xib/libc.so.6:[0x2b4b4f9b17fa]
-+ 0x00000000005014f0 Alloc 626 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 668 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x00000000005014f0 Alloc 674 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 716 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x0000000000501460 Alloc 718 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:(tsearch+0x10d/libc.so.6:(__strdup+0x22)[0x2b4b4f9c7262]
-+ 0x0000000000501480 Alloc 721 duplicate: 0x2b4b4f985fd6 /lib/libc.so.6:(vasprintf+0x3e)[0x2b4b4f9b8dce]
-+ 0x00000000005014f0 Alloc 722 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501460 Alloc 734 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:[/lib/libc.so.6:[0x2b4b4f9b17fa]
-+ 0x00000000005014f0 Alloc 740 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 782 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x00000000005014f0 Alloc 788 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 830 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x0000000000501460 Alloc 832 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:(tsearch+0x1ib/libc.so.6:(__strdup+0x22)[0x2b4b4f9c7262]
-+ 0x0000000000501480 Alloc 835 duplicate: 0x2b4b4f985fd6 /lib/libc.so.6:(vasprintf+0x3e)[0x2b4b4f9b8dce]
-+ 0x00000000005014f0 Alloc 836 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x00000000005014f0 Alloc 854 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 896 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x00000000005014f0 Alloc 902 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 944 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x0000000000501460 Alloc 946 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:(tsearch+0/lib/libc.so.6:(__strdup+0x22)[0x2b4b4f9c7262]
-+ 0x0000000000501480 Alloc 949 duplicate: 0x2b4b4f985fd6 /lib/libc.so.6:(vasprintf+0x3e)[0x2b4b4f9b8dce]
-+ 0x00000000005014f0 Alloc 950 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501460 Alloc 963 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:[0x2b4b4f9b17fa]
-+ 0x00000000005014f0 Alloc 969 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 1011 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x00000000005014f0 Alloc 1017 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 1059 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x0000000000501480 Alloc 1064 duplicate: 0x2b4b4f985fd6 /lib/libc.so.6:(vasprintf+0x3e)[0x2b4b4f9b8dce]
-+ 0x00000000005014f0 Alloc 1065 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501460 Alloc 1078 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:[0x2b4b4f9b17fa]
-+ 0x00000000005014f0 Alloc 1084 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 1126 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x0000000000501460 Alloc 1128 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:(__strdup+0x22)[0x2b4b4f9c7262]
-+ 0x00000000005014f0 Alloc 1132 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 1174 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x0000000000501460 Alloc 1177 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:(__strdup+0x22)[0x2b4b4f9c7262]
-+ 0x0000000000501480 Alloc 1180 duplicate: 0x2b4b4f985fd6 /lib/libc.so.6:(vasprintf+0x3e)[0x2b4b4f9b8dce]
-+ 0x00000000005014f0 Alloc 1181 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501460 Alloc 1194 duplicate: 0x2b4b4f9c7262 /lib/libc.so.6:[0x2b4b4f9b17fa]
-+ 0x00000000005014f0 Alloc 1200 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-+ 0x0000000000501510 Alloc 1242 duplicate: 0x2b4b4f985e9b /lib/libc.so.6:[0x2b4b4f985e9b]
-+ 0x00000000005014f0 Alloc 1249 duplicate: 0x2b4b4f9b8e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b4b4f9b8e81]
-
-Memory not freed:
------------------
-           Address     Size     Caller
-0x0000000000501510    0x140  at 0x2b4b4f985e9b
-+ true
-+ rm -rf /tmp/tmp.u6A0rf
++ mtrace /tmp/tmp.JYjfy7/tracer /tmp/tmp.JYjfy7/log
++ 0x0000000000501460 Alloc 42 duplicate: 0x2b1078e57262 /lib/libc.so.6:[0x2b1078e15e.6:[0x2b1078e417fa]
++ 0x00000000005014f0 Alloc 48 duplicate: 0x2b1078e48e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b1078e48e81]
++ 0x0000000000501460 Alloc 140 duplicate: 0x2b1078e57262 /lib/libc.so.6:[0x2b1078e1so.6:[0x2b1078e417fa]
++ 0x00000000005014f0 Alloc 146 duplicate: 0x2b1078e48e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b1078e48e81]
++ 0x0000000000501460 Alloc 238 duplicate: 0x2b1078e57262 /lib/libc.so.6:[0x2b1078c.so.6:[0x2b1078e417fa]
++ 0x00000000005014f0 Alloc 244 duplicate: 0x2b1078e48e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b1078e48e81]
++ 0x0000000000501460 Alloc 336 duplicate: 0x2b1078e57262 /lib/libc.so.6:[0x2b10ibc.so.6:[0x2b1078e417fa]
++ 0x00000000005014f0 Alloc 342 duplicate: 0x2b1078e48e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b1078e48e81]
++ 0x0000000000501460 Alloc 434 duplicate: 0x2b1078e57262 /lib/libc.so.6:[0x2b/libc.so.6:[0x2b1078e417fa]
++ 0x00000000005014f0 Alloc 440 duplicate: 0x2b1078e48e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b1078e48e81]
++ 0x0000000000501460 Alloc 532 duplicate: 0x2b1078e57262 /lib/libc.so.6:[0xib/libc.so.6:[0x2b1078e417fa]
++ 0x00000000005014f0 Alloc 538 duplicate: 0x2b1078e48e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b1078e48e81]
++ 0x0000000000501460 Alloc 630 duplicate: 0x2b1078e57262 /lib/libc.so.6:[/lib/libc.so.6:[0x2b1078e417fa]
++ 0x00000000005014f0 Alloc 636 duplicate: 0x2b1078e48e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b1078e48e81]
++ 0x00000000005014f0 Alloc 734 duplicate: 0x2b1078e48e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b1078e48e81]
++ 0x0000000000501460 Alloc 827 duplicate: 0x2b1078e57262 /lib/libc.so.6:[0x2b1078e417fa]
++ 0x00000000005014f0 Alloc 833 duplicate: 0x2b1078e48e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b1078e48e81]
++ 0x0000000000501460 Alloc 926 duplicate: 0x2b1078e57262 /lib/libc.so.6:[0x2b1078e417fa]
++ 0x00000000005014f0 Alloc 932 duplicate: 0x2b1078e48e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b1078e48e81]
++ 0x0000000000501460 Alloc 1025 duplicate: 0x2b1078e57262 /lib/libc.so.6:[0x2b1078e417fa]
++ 0x00000000005014f0 Alloc 1031 duplicate: 0x2b1078e48e81 /lib/libc.so.6:(vasprintf+0xf1)[0x2b1078e48e81]
+No memory leaks.
++ rm -rf /tmp/tmp.JYjfy7
 + exit 0

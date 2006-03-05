@@ -4,6 +4,7 @@ set -ex
 
 TESTDIR=$(mktemp -d )
 TESTCODE=$(readlink -f tests/016_memleakcheck.c)
+gcc ${TESTCODE} -o ${TESTDIR}/tracer -g 
 
 (
     set -ex
@@ -13,14 +14,12 @@ TESTCODE=$(readlink -f tests/016_memleakcheck.c)
     touch 1/a 1/b 1/c 1/d
     dd if=/dev/zero of=1/e bs=512 count=2
 
-    MALLOC_TRACE="log" cow-shell $TESTCODE
+    MALLOC_TRACE="log" cow-shell ${TESTDIR}/tracer
 )
 RESULT=$?
 
-mtrace ${TESTDIR}/log || true
+mtrace ${TESTDIR}/tracer ${TESTDIR}/log
 rm -rf ${TESTDIR}
 
-#exit $RESULT
-exit 0
+exit $RESULT
 
-# ignore the result for now; mtrace is giving me memory leaks, but I don't know how to fix it.

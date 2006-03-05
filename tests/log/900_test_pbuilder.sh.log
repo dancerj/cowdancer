@@ -1,6 +1,6 @@
 + '[' '!' -x /usr/sbin/pbuilder ']'
 + ORIG=/var/cache/pbuilder/build/cow/orig
-+ WORK=/var/cache/pbuilder/build/cow/work7568
++ WORK=/var/cache/pbuilder/build/cow/work27901
 + BASETGZ=/var/cache/pbuilder/base.tgz
 +++ dpkg --print-architecture
 ++ readlink -f ../cowdancer_0.12.1_amd64.deb
@@ -17,21 +17,21 @@
 取得:1 http://ftp.jp.debian.org unstable/main dsh 0.25.6-1 (dsc) [583B]
 取得:2 http://ftp.jp.debian.org unstable/main dsh 0.25.6-1 (tar) [373kB]
 取得:3 http://ftp.jp.debian.org unstable/main dsh 0.25.6-1 (diff) [7934B]
-382kB を 0s で取得しました (462kB/s)
+382kB を 0s で取得しました (1052kB/s)
 ダウンロードオンリーモードでパッケージのダウンロードが完了しました
 + sudo chroot /var/cache/pbuilder/build/cow/orig dpkg -i tmp/cowdancer_0.12.1_amd64.deb
 Selecting previously deselected package cowdancer.
 (Reading database ... 11817 files and directories currently installed.)
 Unpacking cowdancer (from tmp/cowdancer_0.12.1_amd64.deb) ...
 Setting up cowdancer (0.12.1) ...
-+ sudo cp -al /var/cache/pbuilder/build/cow/orig /var/cache/pbuilder/build/cow/work7568-1
++ sudo cp -al /var/cache/pbuilder/build/cow/orig /var/cache/pbuilder/build/cow/work27901-1
 + sudo cp var/log/dpkg.log /tmp/a
-+ sudo pbuilder update --buildplace /var/cache/pbuilder/build/cow/work7568-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work7568-1 cow-shell'
++ sudo pbuilder update --buildplace /var/cache/pbuilder/build/cow/work27901-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work27901-1 cow-shell'
 W: /home/dancer/.pbuilderrc does not exist
  -> Running in no-targz mode
  -> copying local configuration
  -> mounting /proc filesystem
-ln: creating symbolic link `/var/cache/pbuilder/build/cow/work7568-1/etc/mtab' to `../proc/mounts': File exists
+ln: creating symbolic link `/var/cache/pbuilder/build/cow/work27901-1/etc/mtab' to `../proc/mounts': File exists
  -> mounting /dev/pts filesystem
  -> policy-rc.d already exists
 Refreshing the base.tgz 
@@ -40,32 +40,41 @@ Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
 Get:2 http://ftp.jp.debian.org sid Release [5902B]
 Ign http://ftp.jp.debian.org sid Release
 Get:3 http://ftp.jp.debian.org sid/main Packages [3931kB]
-Fetched 3937kB in 2s (1556kB/s)
+Fetched 3937kB in 2s (1721kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute /usr/bin/gpgv to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
 dpkg - warning: ignoring request to remove lilo which isn't installed.
 Obtaining the cached apt archive contents
-Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:716077
-
+Reading package lists...
 Building dependency tree...
 The following packages will be upgraded:
-  adduser apt apt-utils bsdutils coreutils cron debconf debconf-i18n
+  adduser apt apt-utils bsdutils coreutils cpp-4.0 cron debconf debconf-i18n
   debianutils dhcp3-client dhcp3-common dpkg dpkg-dev dselect exim4 exim4-base
-  exim4-config exim4-daemon-light hostname info libacl1 libattr1 libc6
-  libc6-dev libdb4.2 libdb4.3 libdb4.4 libwrap0 login make mount passwd procps
-  tar tasksel tcpd util-linux
-37 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
-Need to get 0B/21.6MB of archives.
-After unpacking 393kB of additional disk space will be used.
+  exim4-config exim4-daemon-light g++-4.0 gcc-4.0 gcc-4.0-base hostname info
+  libacl1 libattr1 libc6 libc6-dev libdb4.2 libdb4.3 libdb4.4 libgcc1
+  libstdc++6 libstdc++6-4.0-dev libwrap0 login make mount passwd procps tar
+  tasksel tcpd util-linux
+44 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 7345kB/28.9MB of archives.
+After unpacking 303kB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   bsdutils dpkg coreutils debianutils hostname login mount tar util-linux
-  debconf-i18n debconf libc6-dev libc6 apt libattr1 libacl1 passwd adduser
+  debconf-i18n debconf libc6-dev libc6 cpp-4.0 gcc-4.0-base libgcc1 gcc-4.0
+  g++-4.0 libstdc++6-4.0-dev libstdc++6 apt libattr1 libacl1 passwd adduser
   libdb4.3 apt-utils cron info libwrap0 tasksel tcpd dselect procps make
   dpkg-dev libdb4.2 exim4-config exim4-base exim4-daemon-light exim4 libdb4.4
   dhcp3-client dhcp3-common
-Extracting templates from packages: 81%Extracting templates from packages: 100%
+Get:1 http://ftp.jp.debian.org sid/main cpp-4.0 4.0.2-10 [2262kB]
+Get:2 http://ftp.jp.debian.org sid/main gcc-4.0-base 4.0.2-10 [180kB]
+Get:3 http://ftp.jp.debian.org sid/main libgcc1 1:4.0.2-10 [25.6kB]
+Get:4 http://ftp.jp.debian.org sid/main gcc-4.0 4.0.2-10 [526kB]
+Get:5 http://ftp.jp.debian.org sid/main g++-4.0 4.0.2-10 [2584kB]
+Get:6 http://ftp.jp.debian.org sid/main libstdc++6-4.0-dev 4.0.2-10 [1481kB]
+Get:7 http://ftp.jp.debian.org sid/main libstdc++6 4.0.2-10 [286kB]
+Extracting templates from packages: 68%Extracting templates from packages: 100%
 Preconfiguring packages ...
+Fetched 7345kB in 3s (2207kB/s)
 (Reading database ... 11828 files and directories currently installed.)
 Preparing to replace bsdutils 1:2.12r-6 (using .../bsdutils_1%3a2.12r-8_amd64.deb) ...
 Unpacking replacement bsdutils ...
@@ -74,6 +83,8 @@ Setting up bsdutils (2.12r-8) ...
 (Reading database ... 11828 files and directories currently installed.)
 Preparing to replace dpkg 1.13.15 (using .../dpkg_1.13.16_amd64.deb) ...
 Unpacking replacement dpkg ...
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:325712
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:325712
 Setting up dpkg (1.13.16) ...
 
 (Reading database ... 11829 files and directories currently installed.)
@@ -81,6 +92,8 @@ Preparing to replace coreutils 5.93-5 (using .../coreutils_5.94-1_amd64.deb) ...
 No diversion `any diversion of /usr/share/man/man1/md5sum.textutils.1.gz', none removed
 No diversion `any diversion of /usr/bin/md5sum.textutils', none removed
 Unpacking replacement coreutils ...
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:325714
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:325714
 Setting up coreutils (5.94-1) ...
 
 (Reading database ... 11835 files and directories currently installed.)
@@ -95,6 +108,8 @@ Setting up hostname (2.92) ...
 (Reading database ... 11835 files and directories currently installed.)
 Preparing to replace login 1:4.0.14-6 (using .../login_1%3a4.0.14-7_amd64.deb) ...
 Unpacking replacement login ...
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:325714
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:325714
 Setting up login (4.0.14-7) ...
 
 (Reading database ... 11835 files and directories currently installed.)
@@ -124,16 +139,37 @@ Unpacking replacement libc6 ...
 Setting up libc6 (2.3.6-3) ...
 Installing new version of config file /etc/init.d/glibc.sh ...
 Current default timezone: 'UTC'.
-Local time is now:      Sun Mar  5 11:38:27 UTC 2006.
-Universal Time is now:  Sun Mar  5 11:38:27 UTC 2006.
+Local time is now:      Sun Mar  5 13:46:22 UTC 2006.
+Universal Time is now:  Sun Mar  5 13:46:22 UTC 2006.
 Run 'tzconfig' if you wish to change it.
 
 (Reading database ... 11840 files and directories currently installed.)
+Preparing to replace cpp-4.0 4.0.2-9 (using .../cpp-4.0_4.0.2-10_amd64.deb) ...
+Unpacking replacement cpp-4.0 ...
+Preparing to replace gcc-4.0-base 4.0.2-9 (using .../gcc-4.0-base_4.0.2-10_amd64.deb) ...
+Unpacking replacement gcc-4.0-base ...
+Preparing to replace libgcc1 1:4.0.2-9 (using .../libgcc1_1%3a4.0.2-10_amd64.deb) ...
+Unpacking replacement libgcc1 ...
+Setting up gcc-4.0-base (4.0.2-10) ...
+Setting up libgcc1 (4.0.2-10) ...
+
+(Reading database ... 11838 files and directories currently installed.)
+Preparing to replace gcc-4.0 4.0.2-9 (using .../gcc-4.0_4.0.2-10_amd64.deb) ...
+Unpacking replacement gcc-4.0 ...
+Preparing to replace g++-4.0 4.0.2-9 (using .../g++-4.0_4.0.2-10_amd64.deb) ...
+Unpacking replacement g++-4.0 ...
+Preparing to replace libstdc++6-4.0-dev 4.0.2-9 (using .../libstdc++6-4.0-dev_4.0.2-10_amd64.deb) ...
+Unpacking replacement libstdc++6-4.0-dev ...
+Preparing to replace libstdc++6 4.0.2-9 (using .../libstdc++6_4.0.2-10_amd64.deb) ...
+Unpacking replacement libstdc++6 ...
+Setting up libstdc++6 (4.0.2-10) ...
+
+(Reading database ... 11838 files and directories currently installed.)
 Preparing to replace apt 0.6.43.2 (using .../apt_0.6.43.3_amd64.deb) ...
 Unpacking replacement apt ...
 Setting up apt (0.6.43.3) ...
 
-(Reading database ... 11844 files and directories currently installed.)
+(Reading database ... 11842 files and directories currently installed.)
 Preparing to replace libattr1 2.4.25-1 (using .../libattr1_2.4.31-1_amd64.deb) ...
 Unpacking replacement libattr1 ...
 Preparing to replace libacl1 2.2.34-1 (using .../libacl1_2.2.35-1_amd64.deb) ...
@@ -142,7 +178,7 @@ Setting up libattr1 (2.4.31-1) ...
 
 Setting up libacl1 (2.2.35-1) ...
 
-(Reading database ... 11844 files and directories currently installed.)
+(Reading database ... 11842 files and directories currently installed.)
 Preparing to replace passwd 1:4.0.14-6 (using .../passwd_1%3a4.0.14-7_amd64.deb) ...
 Unpacking replacement passwd ...
 Preparing to replace adduser 3.83 (using .../archives/adduser_3.85_all.deb) ...
@@ -186,6 +222,8 @@ Unpacking replacement dhcp3-client ...
 Preparing to replace dhcp3-common 3.0.3-6 (using .../dhcp3-common_3.0.3-7_amd64.deb) ...
 Unpacking replacement dhcp3-common ...
 Setting up libc6-dev (2.3.6-3) ...
+Setting up cpp-4.0 (4.0.2-10) ...
+Setting up gcc-4.0 (4.0.2-10) ...
 Setting up passwd (4.0.14-7) ...
 
 Setting up libdb4.3 (4.3.29-4.1) ...
@@ -207,6 +245,8 @@ Setting up dhcp3-common (3.0.3-7) ...
 Setting up dhcp3-client (3.0.3-7) ...
 
 Setting up debconf-i18n (1.4.71) ...
+Setting up libstdc++6-4.0-dev (4.0.2-10) ...
+Setting up g++-4.0 (4.0.2-10) ...
 Setting up debconf (1.4.71) ...
 
 Setting up adduser (3.85) ...
@@ -235,27 +275,35 @@ Installing new version of config file /etc/init.d/exim4 ...
 Setting up exim4-daemon-light (4.60-4) ...
 
 Setting up exim4 (4.60-4) ...
-Reading package lists...
+Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:532244
+
 Building dependency tree...
 build-essential is already the newest version.
 dpkg-dev is already the newest version.
 apt is already the newest version.
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 Copying back the cached apt archive contents
+ -> new cache content cpp-4.0_4.0.2-10_amd64.deb added
+ -> new cache content gcc-4.0-base_4.0.2-10_amd64.deb added
+ -> new cache content libgcc1_1%3a4.0.2-10_amd64.deb added
+ -> new cache content gcc-4.0_4.0.2-10_amd64.deb added
+ -> new cache content g++-4.0_4.0.2-10_amd64.deb added
+ -> new cache content libstdc++6-4.0-dev_4.0.2-10_amd64.deb added
+ -> new cache content libstdc++6_4.0.2-10_amd64.deb added
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-+ sudo pbuilder build --buildplace /var/cache/pbuilder/build/cow/work7568-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work7568-1 cow-shell' dsh_0.25.6-1.dsc
++ sudo pbuilder build --buildplace /var/cache/pbuilder/build/cow/work27901-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work27901-1 cow-shell' dsh_0.25.6-1.dsc
 W: /home/dancer/.pbuilderrc does not exist
  -> Running in no-targz mode
 I: using fakeroot in build.
 pbuilder-buildpackage/amd64 $Id$
 $Id$
 
-Current time: Sun Mar  5 20:38:42 JST 2006
-pbuilder-time-stamp: 1141558722
+Current time: Sun Mar  5 22:46:37 JST 2006
+pbuilder-time-stamp: 1141566397
  -> copying local configuration
  -> mounting /proc filesystem
-ln: creating symbolic link `/var/cache/pbuilder/build/cow/work7568-1/etc/mtab' to `../proc/mounts': File exists
+ln: creating symbolic link `/var/cache/pbuilder/build/cow/work27901-1/etc/mtab' to `../proc/mounts': File exists
  -> mounting /dev/pts filesystem
  -> policy-rc.d already exists
  -> created buildresult dir :/var/cache/pbuilder/result/
@@ -285,16 +333,18 @@ WARNING: The following packages cannot be authenticated!
   libmagic1 file html2text gettext intltool-debian po-debconf debhelper
   libdshconfig1 libdshconfig1-dev
 Selecting previously deselected package libmagic1.
-(Reading database ... 11889 files and directories currently installed.)
+(Reading database ... 11887 files and directories currently installed.)
 Unpacking libmagic1 (from .../libmagic1_4.15-2_amd64.deb) ...
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:309748
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:309748
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:468373
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:468373
 Selecting previously deselected package file.
 Unpacking file (from .../archives/file_4.15-2_amd64.deb) ...
 Selecting previously deselected package html2text.
 Unpacking html2text (from .../html2text_1.3.2a-3_amd64.deb) ...
 Selecting previously deselected package gettext.
 Unpacking gettext (from .../gettext_0.14.5-2_amd64.deb) ...
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:645363
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:645363
 Selecting previously deselected package intltool-debian.
 Unpacking intltool-debian (from .../intltool-debian_0.34.1+20050828_all.deb) ...
 Selecting previously deselected package po-debconf.
@@ -319,7 +369,7 @@ Setting up libdshconfig1 (0.20.12-1) ...
 
 Setting up libdshconfig1-dev (0.20.12-1) ...
  -> Finished parsing the build-deps
-Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:373072
+Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:532244
 
 Building dependency tree...
 The following NEW packages will be installed:
@@ -330,13 +380,13 @@ After unpacking 406kB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   fakeroot
 Selecting previously deselected package fakeroot.
-(Reading database ... 12487 files and directories currently installed.)
+(Reading database ... 12485 files and directories currently installed.)
 Unpacking fakeroot (from .../fakeroot_1.5.7_amd64.deb) ...
 Setting up fakeroot (1.5.7) ...
 
 Copying back the cached apt archive contents
-/var/cache/pbuilder/build/cow/work7568-1/etc/passwd
-/var/cache/pbuilder/build/cow/work7568-1/etc/group
+/var/cache/pbuilder/build/cow/work27901-1/etc/passwd
+/var/cache/pbuilder/build/cow/work27901-1/etc/group
 Copying source file
     -> copying [dsh_0.25.6-1.dsc]
     -> copying [./dsh_0.25.6.orig.tar.gz]
@@ -654,10 +704,10 @@ success
 success
 success
 success
-c: dsh: Failed executing ./invalid-exec-file with llexec call
-d: dsh: Failed executing ./invalid-exec-file with llexec call
 a: dsh: Failed executing ./invalid-exec-file with llexec call
 b: dsh: Failed executing ./invalid-exec-file with llexec call
+d: dsh: Failed executing ./invalid-exec-file with llexec call
+c: dsh: Failed executing ./invalid-exec-file with llexec call
 success
 dsh: Failed executing ./invalid-exec-file with llexec call
 dsh: Failed executing ./invalid-exec-file with llexec call
@@ -665,11 +715,11 @@ dsh: Failed executing ./invalid-exec-file with llexec call
 dsh: Failed executing ./invalid-exec-file with llexec call
 success
 PASS: tests/param-r-invalid.sh
-1: 1
 2: 2
+1: 1
 dsh: fork limit and wait shell cannot be specified at the same time
 PASS: tests/param-F-invalid.sh
-Sun Mar  5 11:39:35 UTC 2006
+Sun Mar  5 13:47:27 UTC 2006
 2: Using sleep as the remote shell
 2: Show machine names on output
 2: Adding machine 5,4,3,2,1 to list
@@ -739,13 +789,13 @@ Adding machine 5,4,3,2,1 to list
 Setting forklimit to 3 and wait_shell to 0
 ... Waiting for process to end with waitpid
 ... Waiting for process to end with waitpid
-Sun Mar  5 11:39:40 UTC 2006
+Sun Mar  5 13:47:32 UTC 2006
 PASS: tests/param-F-forklimit.sh
 PASS: tests/param-gnu-getopt.sh
 PASS: tests/news-okay.sh
 a: a
-dsh: Process terminated (before write).
 b: b
+dsh: Process terminated (before write).
 c: c
 PASS: tests/segv-catcher.sh
 l w
@@ -872,10 +922,10 @@ dpkg-buildpackage: full upload (original source is included)
 Copying back the cached apt archive contents
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-Current time: Sun Mar  5 20:39:43 JST 2006
-pbuilder-time-stamp: 1141558783
+Current time: Sun Mar  5 22:47:35 JST 2006
+pbuilder-time-stamp: 1141566455
 + sudo diff -u /tmp/a /var/cache/pbuilder/build/cow/orig/var/log/dpkg.log
-+ sudo rm -rf /var/cache/pbuilder/build/cow/work7568-1
++ sudo rm -rf /var/cache/pbuilder/build/cow/work27901-1
 + cd ..
 + sudo rm -rf /var/cache/pbuilder/build/cow
 + echo end

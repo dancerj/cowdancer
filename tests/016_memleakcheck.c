@@ -20,6 +20,17 @@
 #include <sys/mman.h>
 #include <mcheck.h>
 
+void dump_procmap()
+{
+  FILE*f;
+  int c;
+  
+  f=fopen("/proc/self/maps", "r");
+  while (EOF!=(c=fgetc(f)))
+    fputc(c,stdout);
+  fclose(f);
+}
+
 int main(int argc, char** argv)
 {
   int fd;
@@ -82,5 +93,8 @@ int main(int argc, char** argv)
     }
   
   muntrace();
+  
+  dump_procmap();
+  
   return 0;
 }

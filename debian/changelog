@@ -1,9 +1,8 @@
-cowdancer (0.12.1) UNRELEASED; urgency=low
+cowdancer (0.13) unstable; urgency=low
 
   * use exec instead of system, so that it will work with ' and spaces.
-  - mtrace tells me I'm leaking memory, no idea how to fix it.
 
- -- Junichi Uekawa <dancer@debian.org>  Sun,  5 Mar 2006 20:47:35 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sun,  5 Mar 2006 22:58:16 +0900
 
 cowdancer (0.12) unstable; urgency=low
 
