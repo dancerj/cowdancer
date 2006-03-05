@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <sys/signal.h>
 #include <sys/mman.h>
+#include <sys/wait.h>
 #include <sched.h>
 #include <errno.h>
 #define PRGNAME "cowdancer"
@@ -188,11 +189,9 @@ __attribute__ ((warn_unused_result))
 static int check_inode_and_copy(const char* s)
 {
   struct ilist_struct search_target;
-  char *canonical=NULL;		/* the canonical filename */
+  char* canonical=NULL;/* the canonical filename, the filename of the protected inode and the newly generated*/
   struct stat buf;
-
-  char* command_buf=NULL;
-  char* tilde=NULL;		/* filename of backup file */
+  char* backup_file=NULL;/* filename of backup file, the new file with new inode that will be used for future writes */
   int ret;
   
   debug_cowdancer_2("DEBUG: test for", s);
@@ -210,6 +209,7 @@ static int check_inode_and_copy(const char* s)
 				   I can write to it; ignore */
 	return 0;
     }
+  canonical=canonical?:strdup(s);
       
   memset(&search_target, 0, sizeof(search_target));
   search_target.inode = buf.st_ino;
@@ -229,62 +229,80 @@ static int check_inode_and_copy(const char* s)
 	 backup to the original file, to break the hardlink.
       */
 
-      if (asprintf(&tilde, "%sXXXXXX", canonical?:s)==-1)
+      if (asprintf(&backup_file, "%sXXXXXX", canonical)==-1)
 	{
 	  outofmemory("out of memory in check_inode_and_copy, 1");
 	  goto error_canonical;
 	}
       
-      close(ret=mkstemp(tilde));
+      close(ret=mkstemp(backup_file));
       if (ret==-1)
 	{
 	  perror(PRGNAME ": mkstemp");
-	  goto error_tilde;
+	  goto error_buf;
 	}
       
       /* let cp do the task, 
 	 it probably knows about filesystem details more than I do. */
-      if (asprintf(&command_buf, "COWDANCER_IGNORE=yes /bin/cp -a %s %s",
-		   canonical?:s, tilde)==-1)
-	{
-	  outofmemory("out of memory in check_inode_and_copy, 2");
-	  goto error_tilde;
-	}
-            
-      if (!(ret=system(command_buf)))
-	{
-	  if (-1==rename(tilde, canonical?:s))
-	    {
-	      perror (PRGNAME ": file overwrite with rename");
-	      fprintf(stderr, PRGNAME": while trying rename of %s to %s\n",  canonical?:s, tilde);
-	      goto error_buf;
-	    }
-	}
-      else
-	{
-	  /* failed cp -a */
+      {
+	int pid, status;
+	char *av[5];
 
-	  if (ret==-1)		/* if failure was in 'system', print errno */
-	    perror(PRGNAME ": system in check_inode_and_copy");
-	  fprintf(stderr, PRGNAME": cp -a failed for %s\n", tilde);
-	  goto error_buf;
-	}
-      free(command_buf);
-      free(tilde);
+	switch(pid=fork())
+	  {
+	  case 0:
+	    /* child process, run cp */
+	    setenv("COWDANCER_IGNORE", "yes", 1);
+	    /*putenv("COWDANCER_IGNORE=yes");*/
+	    av[0]="/bin/cp";
+	    av[1]="-a";
+	    av[2]=canonical;
+	    av[3]=backup_file;
+	    av[4]=NULL;
+	    execv("/bin/cp", av);
+	    exit(EXIT_FAILURE);
+	  case -1:
+	    /* error condition in fork(); something is really wrong */
+	    outofmemory("out of memory in check_inode_and_copy, 2");
+	    goto error_buf;
+	  default:
+	    /* parent process, waiting for cp -a to terminate */
+	    waitpid(pid, &status, 0);
+	    
+	    if (!WIFEXITED(status))
+	      {
+		/* something unexpected */
+		outofmemory("unexpected WIFEXITED status in waitpid");
+		goto error_buf;
+	      }
+	    else if (WEXITSTATUS(status))
+	      {
+		/* cp -a failed */
+		fprintf(stderr, PRGNAME": cp -a failed for %s\n", backup_file);
+		goto error_buf;
+	      }
+	    /* when cp -a succeeded, overwrite the target file from the temporary file with rename */
+	    else if (-1==rename(backup_file, canonical))
+	      {
+		perror (PRGNAME ": file overwrite with rename");
+		fprintf(stderr, PRGNAME": while trying rename of %s to %s\n",  canonical, backup_file);
+		goto error_buf;
+	      }
+	  }
+      }
+      free(backup_file);
     }
   else				
     debug_cowdancer_2("DEBUG: did not match ", s);
-
-  if (canonical) free(canonical);
+  
+  free(canonical);
   return 0;
 
   /* error-processing routine. */
  error_buf:
-  free(tilde);
- error_tilde:
-  free(command_buf);
+  free(backup_file);
  error_canonical:
-  if (canonical) free(canonical);
+  free(canonical);
   return 1;
 }
 

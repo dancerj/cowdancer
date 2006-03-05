@@ -1,3 +1,18 @@
+2006-03-05  Junichi Uekawa  <dancer@debian.org>
+
+	* cowdancer.c (check_inode_and_copy): make 'canonical' be always
+	defined rather than conditionally using 's'
+
+	* tests/019_test_filename_with_space.sh: test quote character also.
+
+	* cowdancer.c (check_inode_and_copy): rewrite with exec.
+
+	* tests/019_test_filename_with_space.sh: add test for filename with a space.
+
+	* cowdancer.c (check_inode_and_copy): support filename with a
+	space.  Doesn't support filename with a "'" character, but that'll
+	need to be handled in a completely different way.
+
 2006-01-25  Junichi Uekawa  <dancer@debian.org>
 
 	* NEWS: update for 0.11

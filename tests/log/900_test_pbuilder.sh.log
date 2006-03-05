@@ -1,15 +1,15 @@
 + '[' '!' -x /usr/sbin/pbuilder ']'
 + ORIG=/var/cache/pbuilder/build/cow/orig
-+ WORK=/var/cache/pbuilder/build/cow/work4757
++ WORK=/var/cache/pbuilder/build/cow/work7568
 + BASETGZ=/var/cache/pbuilder/base.tgz
 +++ dpkg --print-architecture
-++ readlink -f ../cowdancer_0.11_amd64.deb
-+ COWDEB=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.11_amd64.deb
+++ readlink -f ../cowdancer_0.12.1_amd64.deb
++ COWDEB=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.12.1_amd64.deb
 + sudo rm -rf /var/cache/pbuilder/build/cow
 + sudo mkdir -p /var/cache/pbuilder/build/cow/orig
 + cd /var/cache/pbuilder/build/cow/orig
 + sudo tar xfzp /var/cache/pbuilder/base.tgz
-+ sudo cp /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.11_amd64.deb /var/cache/pbuilder/build/cow/orig/tmp/
++ sudo cp /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.12.1_amd64.deb /var/cache/pbuilder/build/cow/orig/tmp/
 + sudo apt-get source -d dsh
 パッケージリストを読みこんでいます...
 依存関係ツリーを作成しています...
@@ -17,21 +17,21 @@
 取得:1 http://ftp.jp.debian.org unstable/main dsh 0.25.6-1 (dsc) [583B]
 取得:2 http://ftp.jp.debian.org unstable/main dsh 0.25.6-1 (tar) [373kB]
 取得:3 http://ftp.jp.debian.org unstable/main dsh 0.25.6-1 (diff) [7934B]
-382kB を 1s で取得しました (370kB/s)
+382kB を 0s で取得しました (462kB/s)
 ダウンロードオンリーモードでパッケージのダウンロードが完了しました
-+ sudo chroot /var/cache/pbuilder/build/cow/orig dpkg -i tmp/cowdancer_0.11_amd64.deb
++ sudo chroot /var/cache/pbuilder/build/cow/orig dpkg -i tmp/cowdancer_0.12.1_amd64.deb
 Selecting previously deselected package cowdancer.
 (Reading database ... 11817 files and directories currently installed.)
-Unpacking cowdancer (from tmp/cowdancer_0.11_amd64.deb) ...
-Setting up cowdancer (0.11) ...
-+ sudo cp -al /var/cache/pbuilder/build/cow/orig /var/cache/pbuilder/build/cow/work4757-1
+Unpacking cowdancer (from tmp/cowdancer_0.12.1_amd64.deb) ...
+Setting up cowdancer (0.12.1) ...
++ sudo cp -al /var/cache/pbuilder/build/cow/orig /var/cache/pbuilder/build/cow/work7568-1
 + sudo cp var/log/dpkg.log /tmp/a
-+ sudo pbuilder update --buildplace /var/cache/pbuilder/build/cow/work4757-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work4757-1 cow-shell'
++ sudo pbuilder update --buildplace /var/cache/pbuilder/build/cow/work7568-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work7568-1 cow-shell'
 W: /home/dancer/.pbuilderrc does not exist
  -> Running in no-targz mode
  -> copying local configuration
  -> mounting /proc filesystem
-ln: creating symbolic link `/var/cache/pbuilder/build/cow/work4757-1/etc/mtab' to `../proc/mounts': File exists
+ln: creating symbolic link `/var/cache/pbuilder/build/cow/work7568-1/etc/mtab' to `../proc/mounts': File exists
  -> mounting /dev/pts filesystem
  -> policy-rc.d already exists
 Refreshing the base.tgz 
@@ -40,13 +40,14 @@ Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
 Get:2 http://ftp.jp.debian.org sid Release [5902B]
 Ign http://ftp.jp.debian.org sid Release
 Get:3 http://ftp.jp.debian.org sid/main Packages [3931kB]
-Fetched 3937kB in 2s (1672kB/s)
+Fetched 3937kB in 2s (1556kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute /usr/bin/gpgv to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
 dpkg - warning: ignoring request to remove lilo which isn't installed.
 Obtaining the cached apt archive contents
-Reading package lists...
+Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:716077
+
 Building dependency tree...
 The following packages will be upgraded:
   adduser apt apt-utils bsdutils coreutils cron debconf debconf-i18n
@@ -55,7 +56,7 @@ The following packages will be upgraded:
   libc6-dev libdb4.2 libdb4.3 libdb4.4 libwrap0 login make mount passwd procps
   tar tasksel tcpd util-linux
 37 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
-Need to get 10.7MB/21.6MB of archives.
+Need to get 0B/21.6MB of archives.
 After unpacking 393kB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   bsdutils dpkg coreutils debianutils hostname login mount tar util-linux
@@ -63,14 +64,8 @@ WARNING: The following packages cannot be authenticated!
   libdb4.3 apt-utils cron info libwrap0 tasksel tcpd dselect procps make
   dpkg-dev libdb4.2 exim4-config exim4-base exim4-daemon-light exim4 libdb4.4
   dhcp3-client dhcp3-common
-Get:1 http://ftp.jp.debian.org sid/main coreutils 5.94-1 [3138kB]
-Get:2 http://ftp.jp.debian.org sid/main tar 1.15.1-4 [764kB]
-Get:3 http://ftp.jp.debian.org sid/main libc6-dev 2.3.6-3 [2117kB]
-Get:4 http://ftp.jp.debian.org sid/main libc6 2.3.6-3 [4539kB]
-Get:5 http://ftp.jp.debian.org sid/main adduser 3.85 [171kB]
 Extracting templates from packages: 81%Extracting templates from packages: 100%
 Preconfiguring packages ...
-Fetched 10.7MB in 4s (2194kB/s)
 (Reading database ... 11828 files and directories currently installed.)
 Preparing to replace bsdutils 1:2.12r-6 (using .../bsdutils_1%3a2.12r-8_amd64.deb) ...
 Unpacking replacement bsdutils ...
@@ -129,8 +124,8 @@ Unpacking replacement libc6 ...
 Setting up libc6 (2.3.6-3) ...
 Installing new version of config file /etc/init.d/glibc.sh ...
 Current default timezone: 'UTC'.
-Local time is now:      Sun Mar  5 03:20:47 UTC 2006.
-Universal Time is now:  Sun Mar  5 03:20:47 UTC 2006.
+Local time is now:      Sun Mar  5 11:38:27 UTC 2006.
+Universal Time is now:  Sun Mar  5 11:38:27 UTC 2006.
 Run 'tzconfig' if you wish to change it.
 
 (Reading database ... 11840 files and directories currently installed.)
@@ -240,33 +235,27 @@ Installing new version of config file /etc/init.d/exim4 ...
 Setting up exim4-daemon-light (4.60-4) ...
 
 Setting up exim4 (4.60-4) ...
-Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:246912
-
+Reading package lists...
 Building dependency tree...
 build-essential is already the newest version.
 dpkg-dev is already the newest version.
 apt is already the newest version.
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 Copying back the cached apt archive contents
- -> new cache content coreutils_5.94-1_amd64.deb added
- -> new cache content tar_1.15.1-4_amd64.deb added
- -> new cache content libc6-dev_2.3.6-3_amd64.deb added
- -> new cache content libc6_2.3.6-3_amd64.deb added
- -> new cache content adduser_3.85_all.deb added
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-+ sudo pbuilder build --buildplace /var/cache/pbuilder/build/cow/work4757-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work4757-1 cow-shell' dsh_0.25.6-1.dsc
++ sudo pbuilder build --buildplace /var/cache/pbuilder/build/cow/work7568-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work7568-1 cow-shell' dsh_0.25.6-1.dsc
 W: /home/dancer/.pbuilderrc does not exist
  -> Running in no-targz mode
 I: using fakeroot in build.
 pbuilder-buildpackage/amd64 $Id$
 $Id$
 
-Current time: Sun Mar  5 12:21:15 JST 2006
-pbuilder-time-stamp: 1141528875
+Current time: Sun Mar  5 20:38:42 JST 2006
+pbuilder-time-stamp: 1141558722
  -> copying local configuration
  -> mounting /proc filesystem
-ln: creating symbolic link `/var/cache/pbuilder/build/cow/work4757-1/etc/mtab' to `../proc/mounts': File exists
+ln: creating symbolic link `/var/cache/pbuilder/build/cow/work7568-1/etc/mtab' to `../proc/mounts': File exists
  -> mounting /dev/pts filesystem
  -> policy-rc.d already exists
  -> created buildresult dir :/var/cache/pbuilder/result/
@@ -304,6 +293,8 @@ Selecting previously deselected package html2text.
 Unpacking html2text (from .../html2text_1.3.2a-3_amd64.deb) ...
 Selecting previously deselected package gettext.
 Unpacking gettext (from .../gettext_0.14.5-2_amd64.deb) ...
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:645363
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:645363
 Selecting previously deselected package intltool-debian.
 Unpacking intltool-debian (from .../intltool-debian_0.34.1+20050828_all.deb) ...
 Selecting previously deselected package po-debconf.
@@ -328,7 +319,8 @@ Setting up libdshconfig1 (0.20.12-1) ...
 
 Setting up libdshconfig1-dev (0.20.12-1) ...
  -> Finished parsing the build-deps
-Reading package lists...
+Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:373072
+
 Building dependency tree...
 The following NEW packages will be installed:
   fakeroot
@@ -343,8 +335,8 @@ Unpacking fakeroot (from .../fakeroot_1.5.7_amd64.deb) ...
 Setting up fakeroot (1.5.7) ...
 
 Copying back the cached apt archive contents
-/var/cache/pbuilder/build/cow/work4757-1/etc/passwd
-/var/cache/pbuilder/build/cow/work4757-1/etc/group
+/var/cache/pbuilder/build/cow/work7568-1/etc/passwd
+/var/cache/pbuilder/build/cow/work7568-1/etc/group
 Copying source file
     -> copying [dsh_0.25.6-1.dsc]
     -> copying [./dsh_0.25.6.orig.tar.gz]
@@ -382,12 +374,12 @@ dh_testroot
 rm -f build-stamp configure-stamp
 /usr/bin/make clean
 make[2]: Entering directory `/tmp/buildd/dsh-0.25.6'
-make[2]: *** No rule to make target `clean'.  Stop.
+make[2]: *** No rule to make target `clean'.
 make[2]: Leaving directory `/tmp/buildd/dsh-0.25.6'
 make[1]: [clean] Error 2 (ignored)
 /usr/bin/make distclean
 make[2]: Entering directory `/tmp/buildd/dsh-0.25.6'
-make[2]: *** No rule to make target `distclean'.  Stop.
+make[2]: *** No rule to make target `distclean'.
 make[2]: Leaving directory `/tmp/buildd/dsh-0.25.6'
 make[1]: [clean] Error 2 (ignored)
 dh_clean
@@ -677,7 +669,7 @@ PASS: tests/param-r-invalid.sh
 2: 2
 dsh: fork limit and wait shell cannot be specified at the same time
 PASS: tests/param-F-invalid.sh
-Sun Mar  5 03:22:24 UTC 2006
+Sun Mar  5 11:39:35 UTC 2006
 2: Using sleep as the remote shell
 2: Show machine names on output
 2: Adding machine 5,4,3,2,1 to list
@@ -747,13 +739,13 @@ Adding machine 5,4,3,2,1 to list
 Setting forklimit to 3 and wait_shell to 0
 ... Waiting for process to end with waitpid
 ... Waiting for process to end with waitpid
-Sun Mar  5 03:22:29 UTC 2006
+Sun Mar  5 11:39:40 UTC 2006
 PASS: tests/param-F-forklimit.sh
 PASS: tests/param-gnu-getopt.sh
 PASS: tests/news-okay.sh
 a: a
-b: b
 dsh: Process terminated (before write).
+b: b
 c: c
 PASS: tests/segv-catcher.sh
 l w
@@ -880,10 +872,10 @@ dpkg-buildpackage: full upload (original source is included)
 Copying back the cached apt archive contents
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-Current time: Sun Mar  5 12:22:31 JST 2006
-pbuilder-time-stamp: 1141528951
+Current time: Sun Mar  5 20:39:43 JST 2006
+pbuilder-time-stamp: 1141558783
 + sudo diff -u /tmp/a /var/cache/pbuilder/build/cow/orig/var/log/dpkg.log
-+ sudo rm -rf /var/cache/pbuilder/build/cow/work4757-1
++ sudo rm -rf /var/cache/pbuilder/build/cow/work7568-1
 + cd ..
 + sudo rm -rf /var/cache/pbuilder/build/cow
 + echo end

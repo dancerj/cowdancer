@@ -1,3 +1,13 @@
+0.12.1 5 Mar 2006
+
++ Fix: support quote and space in filenames
+  (use exec instead of system.)
+
+0.12 5 Mar 2006
+
++ Fix: support space in filenames. 
+  Currently still doesn't support filename with "'", is there a need?
+
 0.11 25 Jan 2006 
 
 + Check for error values on COW operation, and return error to application, with ENOMEM.

@@ -1,3 +1,18 @@
+cowdancer (0.12.1) unstable; urgency=low
+
+  * use exec instead of system, so that it will work with ' and spaces.
+  - mtrace tells me I'm leaking memory, no idea how to fix it.
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun,  5 Mar 2006 20:33:13 +0900
+
+cowdancer (0.12) unstable; urgency=low
+
+  * add support for space in filenames.
+  - Bug fix: "cowdancer: dpatches with spaces in their name fail to
+    apply", thanks to Paul Wise (Closes: #355358).
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun,  5 Mar 2006 19:31:34 +0900
+
 cowdancer (0.11) unstable; urgency=low
 
   * add error-handling

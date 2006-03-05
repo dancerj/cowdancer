@@ -1,8 +1,8 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.H19XUy
++ TESTDIR=/tmp/tmp.nUVNh7
 ++ readlink -f tests/002_test_open.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c
-+ cd /tmp/tmp.H19XUy
++ cd /tmp/tmp.nUVNh7
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
@@ -16,24 +16,24 @@
    2/ before
 + ls -li 2/
 合計 4
-227152 -rw-r--r-- 2 dancer dancer    0 2006-03-05 12:18 a
-227153 -rw-r--r-- 2 dancer dancer    0 2006-03-05 12:18 b
-227154 -rw-r--r-- 2 dancer dancer    0 2006-03-05 12:18 c
-227155 -rw-r--r-- 2 dancer dancer    0 2006-03-05 12:18 d
-227156 -rw-r--r-- 2 dancer dancer 1024 2006-03-05 12:18 e
+231307 -rw-r--r-- 2 dancer dancer    0 2006-03-05 20:37 a
+231309 -rw-r--r-- 2 dancer dancer    0 2006-03-05 20:37 b
+231310 -rw-r--r-- 2 dancer dancer    0 2006-03-05 20:37 c
+231311 -rw-r--r-- 2 dancer dancer    0 2006-03-05 20:37 d
+231312 -rw-r--r-- 2 dancer dancer 1024 2006-03-05 20:37 e
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-227152 -rw-r--r-- 2 dancer dancer    0 2006-03-05 12:18 a
-227160 -rw-r--r-- 1 dancer dancer    3 2006-03-05 12:18 b
-227161 -rw-r--r-- 1 dancer dancer    3 2006-03-05 12:18 c
-227155 -rw-r--r-- 2 dancer dancer    0 2006-03-05 12:18 d
-227156 -rw-r--r-- 2 dancer dancer 1024 2006-03-05 12:18 e
+231307 -rw-r--r-- 2 dancer dancer    0 2006-03-05 20:37 a
+231316 -rw-r--r-- 1 dancer dancer    3 2006-03-05 20:37 b
+231317 -rw-r--r-- 1 dancer dancer    3 2006-03-05 20:37 c
+231311 -rw-r--r-- 2 dancer dancer    0 2006-03-05 20:37 d
+231312 -rw-r--r-- 2 dancer dancer 1024 2006-03-05 20:37 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.H19XUy
++ rm -rf /tmp/tmp.nUVNh7

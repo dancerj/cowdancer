@@ -1,4 +1,4 @@
-/*BINFMTC:
+/*BINFMTC: -g 
  *
  * check memory leak
  *
