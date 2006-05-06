@@ -1,3 +1,9 @@
+cowdancer (0.14) UNRELEASED; urgency=low
+
+  * TODO: instead of using ./.ilist, use a temporary file in /tmp
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 29 Apr 2006 00:43:00 +0900
+
 cowdancer (0.13) unstable; urgency=low
 
   * use exec instead of system, so that it will work with ' and spaces.

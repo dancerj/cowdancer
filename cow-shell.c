@@ -20,7 +20,7 @@ static void outofmemory(const char* msg)
 }
 
 /* return 1 on error, 0 on success */
-static int ilistcreate(void)
+static int ilistcreate(const char* ilistpath)
 {
   int i=0;
   long dev, ino;
@@ -69,7 +69,7 @@ static int ilistcreate(void)
   qsort(ilist, ilist_len, sizeof(struct ilist_struct), compare_ilist);
 
   /* write out the ilist file */
-  if (NULL==(outf=fopen(".ilist","w")))
+  if (NULL==(outf=fopen(ilistpath,"w")))
     {
       outofmemory("cannot open .ilist file");
       return 1;
@@ -93,14 +93,16 @@ int main(int ac, char** av)
 {
   /* give me a command-line to exec, 
      and I will cow-keep what's under this directory. */
+  const char* ilistpath="./.ilist";
   char*buf;
+
   asprintf(&buf, "%s%s%s",
 	   getenv("LD_PRELOAD")?:"",
 	   getenv("LD_PRELOAD")?" ":"",
 	   "/usr/lib/cowdancer/libcowdancer.so"
 	   );
 
-  if (unlink(".ilist")==-1)
+  if (unlink(ilistpath)==-1)
     {
       if (errno == ENOENT)
 	{
@@ -113,14 +115,14 @@ int main(int ac, char** av)
 	}
     }
 
-  if(ilistcreate())
+  if(ilistcreate(ilistpath))
     {
       outofmemory(".ilist creation failed");
       return 1;
     }
   
   setenv("COWDANCER_ILISTFILE",
-	  canonicalize_file_name("./.ilist"),1);
+	  canonicalize_file_name(ilistpath),1);
   setenv("LD_PRELOAD",buf,1);
   unsetenv("COWDANCER_IGNORE");
 
