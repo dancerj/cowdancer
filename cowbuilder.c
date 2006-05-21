@@ -17,6 +17,11 @@
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
  *
  */
+
+/* 
+   TODO: add support for --configfile etc options.
+ */
+
 /* 
   sudo ./cowbuilder --create --distribution sid --basepath /mnt/120g-1/dancer/cow/cow
   sudo ./cowbuilder --update --basepath /mnt/120g-1/dancer/cow/cow
