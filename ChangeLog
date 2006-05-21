@@ -1,3 +1,9 @@
+2006-05-21  Junichi Uekawa  <dancer@debian.org>
+
+	* Makefile: install cowbuilder
+
+	* cowbuilder.c: add cowbuilder code.
+
 2006-04-29  Junichi Uekawa  <dancer@debian.org>
 
 	* cow-shell.c (ilistcreate, main): instead of hard-coding

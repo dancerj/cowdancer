@@ -1,4 +1,4 @@
-BINARY=libcowdancer.so cow-shell
+BINARY=libcowdancer.so cow-shell cowbuilder
 INSTALL_DIR=install -d -o root -g root -m 755
 INSTALL_FILE=install -o root -g root -m 644
 INSTALL_PROGRAM=install -o root -g root -m 755
@@ -13,6 +13,7 @@ install: $(BINARY)
 	$(INSTALL_FILE)  cow-shell.1 $(DESTDIR)/usr/share/man/man1/cow-shell.1
 	$(INSTALL_FILE)  libcowdancer.so $(DESTDIR)/usr/lib/cowdancer/libcowdancer.so
 	$(INSTALL_PROGRAM) cow-shell $(DESTDIR)/usr/bin/cow-shell
+	$(INSTALL_PROGRAM) cowbuilder $(DESTDIR)/usr/bin/cowbuilder
 
 libcowdancer.so: cowdancer.lo
 	gcc -ldl -shared -o $@ $<

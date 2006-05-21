@@ -8,6 +8,7 @@ Standards-Version: 3.6.2
 Package: cowdancer
 Architecture: any
 Depends: ${shlibs:Depends}
+Recommends: pbuilder
 Description: Copy-on-write directory tree utility.
  Tries to make copy-on-write semantics upon hard-link copied
  directory trees generated with 'cp -la'
