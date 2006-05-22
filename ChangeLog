@@ -1,3 +1,7 @@
+2006-05-22  Junichi Uekawa  <dancer@debian.org>
+
+	* debian/TODO: update
+
 2006-05-21  Junichi Uekawa  <dancer@debian.org>
 
 	* Makefile: install cowbuilder

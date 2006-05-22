@@ -1,3 +1,14 @@
+* cowbuilder implementation
+
+A prototype exists, but I need a good test environment with network
+connection, and a chunk of time allocated for it. A Codefest ?
+
+   I had a lot of time allocated for it at Debconf2006, in Mexico,
+   although network was lacking, I have now a very good idea.
+
+ - cowbuilder should support most options pbuilder does.
+ - cowbuilder should support configuration files for some configs.
+
 * hardlink behavior.
 
 If I had a hardlinked file, I would expect both files to be updated 
@@ -26,6 +37,3 @@ It is partially implemented, but difficult to really do.
 open(, RDONLY) and fchmod/fchown is hard to do, because we're handling
 inodes at that timing.
 
-* cpbuilder implementation
-A prototype exists, but I need a good test environment with network
-connection, and a chunk of time allocated for it. A Codefest ?
