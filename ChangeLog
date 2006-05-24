@@ -1,3 +1,76 @@
+2006-05-24  Junichi Uekawa  <dancer@debian.org>
+
+	* debian/TODO: update, note .ilist handling is a problem I have
+	pondered and not reached any conclusions. I need to measure some
+	timings and other stuff.
+
+	* debian/changelog: fixed entry.
+
+	* NEWS: added entry.
+
+	* cowbuilder.c (main): implement save-after-login
+	(cpbuilder_login, cpbuilder_execute)
+	(cpbuilder_internal_saveupdate, cpbuilder_update): unify the
+	replace-original routine.
+
+	* debian/TODO: document more TODO items until cowbuilder becomes really usable.
+
+	* cowbuilder.c: change default basepath and buildplace. basepath
+	is in /var/cache/pbuilder/base.cow, and buildplace is in
+	/var/cache/pbuilder/build.
+	(cpbuilder_execute): effects of pbuilder --execute with -- seems sane.
+	pbuilder documentation is updated with this insight.
+
+	$ sudo pbuilder execute -- /bin/echo --world
+	W: /home/dancer/.pbuilderrc does not exist
+	Building the build Environment
+	 -> extracting base tarball [/var/cache/pbuilder/base.tgz]
+
+	$ sudo ./cowbuilder.c --execute hello --world
+	./cowbuilder.c: unrecognized option `--world'
+	Unhandled option
+
+	[08:51:22]ibookg4:cowdancer> time sudo ./cowbuilder.c --execute -- /bin/echo hello --world
+	 -> Copying COW directory
+	 -> Invoking pbuilder
+	DEBUG: 0: pbuilder
+	DEBUG: 1: execute
+	DEBUG: 2: --buildplace
+	DEBUG: 3: /var/cache/pbuilder/build/cow9150
+	DEBUG: 4: --no-targz
+	DEBUG: 5: --internal-chrootexec
+	DEBUG: 6: chroot /var/cache/pbuilder/build/cow9150 cow-shell
+	DEBUG: 7: /bin/echo
+	DEBUG: 8: hello
+	DEBUG: 9: --world
+	W: /home/dancer/.pbuilderrc does not exist
+	 -> Running in no-targz mode
+	 -> copying local configuration
+	 -> mounting /proc filesystem
+	ln: creating symbolic link `/var/cache/pbuilder/build/cow9150/etc/mtab' to `../proc/mounts': File exists
+	 -> mounting /dev/pts filesystem
+	 -> policy-rc.d already exists
+	Obtaining the cached apt archive contents
+	hello --world
+	Copying back the cached apt archive contents
+	 -> unmounting dev/pts filesystem
+	 -> unmounting proc filesystem
+	 -> Cleaning COW directory
+	
+	real	0m5.646s
+	user	0m2.165s
+	sys	0m2.290s
+
+
+	* debian/README.Debian (BUGS): update
+
+	* Makefile (install): install manual and install cowbuilder in sbin.
+
+	* cowbuilder.8: rough manual
+
+	* cowbuilder.c: introduce generic argument passing mechanism, and
+	support all reasonable options pbuilder currently supports.
+
 2006-05-22  Junichi Uekawa  <dancer@debian.org>
 
 	* debian/TODO: update

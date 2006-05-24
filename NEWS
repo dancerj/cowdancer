@@ -1,3 +1,8 @@
+0.14 24 May 2006
+
++ introducing an application "cowbuilder", a pbuilder frontend to use
+  cowdancer.
+
 0.13 5 Mar 2006
 
 + Fix: support quote and space in filenames

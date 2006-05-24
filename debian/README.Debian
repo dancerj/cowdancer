@@ -16,4 +16,7 @@ BUGS:
 of owner of created file vs truncated file is unclear.
 	fchown/fchmod cannot possibly work reliably
 
- -- Junichi Uekawa <dancer@debian.org>, Thu Dec 29 23:18:42 2005
+	upgrading cowdancer while running under cowdancer may cause
+problems due to incompatibility in data format.
+
+ -- Junichi Uekawa <dancer@debian.org>, Wed, 24 May 2006 05:35:56 +0900

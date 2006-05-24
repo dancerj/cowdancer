@@ -17,11 +17,6 @@
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
  *
  */
-
-/* 
-   TODO: add support for --configfile etc options.
- */
-
 /* 
   sudo ./cowbuilder --create --distribution sid --basepath /mnt/120g-1/dancer/cow/cow
   sudo ./cowbuilder --update --basepath /mnt/120g-1/dancer/cow/cow
@@ -40,7 +35,6 @@ i.e. requires cowdancer inside the chroot.
 How to find out changed times of chroot:
 $ sudo find /var/cache/pbuilder/build/cow -mtime -1 -ls
 will show the list of files changed.
-
 
  */
 
@@ -95,6 +89,27 @@ user    0m4.526s
 sys     0m3.689s
 
 
+
+ibookg4 on batteries, building cowdancer sources.
+time pdebuild --pbuilder cowbuild
+real    0m41.501s
+user    0m22.473s
+sys     0m8.473s
+
+real    0m45.087s
+user    0m22.422s
+sys     0m8.434s
+
+time debuild
+real    0m51.879s
+user    0m18.079s
+sys     0m4.401s
+
+2nd try:
+real    0m24.262s
+user    0m18.113s
+sys     0m3.792s
+
  */
 
 #define _GNU_SOURCE
@@ -113,17 +128,85 @@ typedef struct pbuilderconfig
   int mountproc;
   int mountdev;
   int mountdevpts;
-  char* buildplace;		/* /var/cache/pbuilder/buildplace/XXX.$$ */
-  char* basepath;		/* /var/cache/pbuilder/buildplace/XXX */
-  char* distribution;
+  int save_after_login;
+  char* buildplace;		/* /var/cache/pbuilder/build/XXX.$$ */
+  char* basepath;		/* /var/cache/pbuilder/cow */
   enum {
     pbuilder_do_nothing=0,
     pbuilder_build,
     pbuilder_create,
     pbuilder_update,
+    pbuilder_execute,
     pbuilder_login
   } operation;
 }pbuilderconfig;
+
+/* 
+   
+The pbuilder command-line to pass
+
+0: pbuilder
+1: build/create/login etc.
+offset: the next command
+
+The last-command will be
+PBUILDER_ADD_PARAM(NULL);
+
+ */
+#define MAXPBUILDERCOMMANDLINE 256
+char* pbuildercommandline[MAXPBUILDERCOMMANDLINE];
+int offset=2;
+#define PBUILDER_ADD_PARAM(a) \
+ if(offset<(MAXPBUILDERCOMMANDLINE-1)) \
+ {pbuildercommandline[offset++]=a;} \
+ else \
+ {pbuildercommandline[offset]=NULL; fprintf(stderr, "pbuilder-command-line: Max command-line exceeded\n");}
+
+
+/*
+  execvp that does fork.
+  
+  @return < 0 for failure, exit code for other cases.
+ */
+static int
+forkexecvp (char *const argv[])
+{
+  int ret;
+  pid_t pid;
+  int status;
+  
+  /* DEBUG: */
+  {
+    int i=0;
+    while(argv[i])
+      {
+	//printf("DEBUG: %i: %s\n", i, argv[i]);
+	i++;
+      }
+  }
+
+  switch(pid=fork())
+    {
+    case 0:
+      execvp(argv[0], (char*const*)argv);
+      perror("cowbuilder: execvp");
+      exit(EXIT_FAILURE);
+    case -1:
+      /* error condition in fork(); something is really wrong */
+      perror("cowbuilder: fork");
+      return -1;
+    default:
+      /* parent process, waiting for termination */
+      waitpid(pid, &status, 0);
+      if (!WIFEXITED(status))
+	{
+	  /* something unexpected */
+	  return -1;
+	}
+      ret = WEXITSTATUS(status);
+    }
+  return ret;
+}
 
 /*
   execlp that does fork.
@@ -150,7 +233,6 @@ forkexeclp (const char *path, const char *arg0, ...)
   do
     {
       argv[i] = va_arg(args, const char *);
-      //printf("debug: %i %s\n", i, argv[i]);
       
       if ( i >= 1023 ) 
 	{
@@ -237,11 +319,15 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
       return -1;
     }
   printf(" -> Invoking pbuilder\n");
-  ret=forkexeclp("pbuilder", "pbuilder", "build", "--buildplace", pc->buildplace, "--no-targz",
-		 "--internal-chrootexec",
-		 buf_chroot, 
-		 dscfile,
-		 NULL);
+  pbuildercommandline[1]="build";
+  PBUILDER_ADD_PARAM("--buildplace");
+  PBUILDER_ADD_PARAM(pc->buildplace);
+  PBUILDER_ADD_PARAM("--no-targz");
+  PBUILDER_ADD_PARAM("--internal-chrootexec");
+  PBUILDER_ADD_PARAM(buf_chroot);
+  PBUILDER_ADD_PARAM(strdup(dscfile));
+  PBUILDER_ADD_PARAM(NULL);
+  ret=forkexecvp(pbuildercommandline);
   free(buf_chroot);
   cpbuilder_internal_cleancow(pc);
   return ret;
@@ -253,11 +339,60 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   
   mkdir(pc->basepath,0777);
   printf(" -> Invoking pbuilder\n");
-  ret=forkexeclp("pbuilder","pbuilder","create","--distribution",pc->distribution,
-	     "--buildplace",pc->basepath,"--no-targz","--extrapackages",
-	     "cowdancer", NULL);
+
+  pbuildercommandline[1]="create";
+  PBUILDER_ADD_PARAM("--buildplace");
+  PBUILDER_ADD_PARAM(pc->basepath);
+  PBUILDER_ADD_PARAM("--no-targz");
+  PBUILDER_ADD_PARAM("--extrapackages");
+  PBUILDER_ADD_PARAM("cowdancer");
+  PBUILDER_ADD_PARAM(NULL);
+  ret=forkexecvp(pbuildercommandline);
+
   return ret;
 }
+
+
+/*
+  mv basepath basepath-
+  mv buildplace basepath
+  rm -rf basepath-
+
+  return 0 on success, nonzero on error.
+ */
+int cpbuilder_internal_saveupdate(const struct pbuilderconfig* pc)
+{
+  int ret=0;
+  char* buf_tmpfile=NULL;
+  
+  if (0>asprintf(&buf_tmpfile, "%s-%i-tmp", pc->buildplace, (int)getpid()))
+    {
+      /* outofmemory */
+      return -1;
+    }
+  if(-1==rename(pc->basepath, buf_tmpfile))
+    {
+      perror("rename");
+      ret=-1;
+      goto out;
+    }
+  if(-1==rename(pc->buildplace, pc->basepath))
+    {
+      perror("rename");
+      ret=-1;
+      goto out;
+    }
+  if (0!=forkexeclp("rm", "rm", "-rf", buf_tmpfile, NULL))
+    {
+      printf("Could not remove original tree\n");
+      ret=-1;
+      goto out;
+    }
+ out:
+  free(buf_tmpfile);
+  return ret;
+}
+
 
 int cpbuilder_login(const struct pbuilderconfig* pc)
 {
@@ -265,7 +400,45 @@ int cpbuilder_login(const struct pbuilderconfig* pc)
   int ret;
   
   cpbuilder_internal_cowcopy(pc);
+  if (0>asprintf(&buf_chroot, "chroot %s cow-shell", pc->buildplace))
+    {
+      /* outofmemory */
+      return -1;
+    }
+  printf(" -> Invoking pbuilder\n");
+  pbuildercommandline[1]="login";
+  PBUILDER_ADD_PARAM("--buildplace");
+  PBUILDER_ADD_PARAM(pc->buildplace);
+  PBUILDER_ADD_PARAM("--no-targz");
+  PBUILDER_ADD_PARAM("--internal-chrootexec");
+  PBUILDER_ADD_PARAM(buf_chroot);
+  PBUILDER_ADD_PARAM(NULL);
+  ret=forkexecvp(pbuildercommandline);
+  free(buf_chroot);
+  if (pc->save_after_login)
+    {
+      if (cpbuilder_internal_saveupdate(pc))
+	ret=-1;
+    }
+  else
+    {
+      cpbuilder_internal_cleancow(pc);
+    }
+  return ret;
+}
 
+/* 
+
+Mostly a copy of pbuilder login, executes a script.
+
+ */
+int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
+{
+  char *buf_chroot;
+  int ret;
+  int i=0;
+  
+  cpbuilder_internal_cowcopy(pc);
   
   if (0>asprintf(&buf_chroot, "chroot %s cow-shell", pc->buildplace))
     {
@@ -273,12 +446,31 @@ int cpbuilder_login(const struct pbuilderconfig* pc)
       return -1;
     }
   printf(" -> Invoking pbuilder\n");
-  ret=forkexeclp("pbuilder","pbuilder","login","--buildplace",
-		 pc->buildplace,"--no-targz",
-		 "--internal-chrootexec", 
-		 buf_chroot, NULL);
+  pbuildercommandline[1]="execute";
+  PBUILDER_ADD_PARAM("--buildplace");
+  PBUILDER_ADD_PARAM(pc->buildplace);
+  PBUILDER_ADD_PARAM("--no-targz");
+  PBUILDER_ADD_PARAM("--internal-chrootexec");
+  PBUILDER_ADD_PARAM(buf_chroot);
+
+  /* add all additional parameters */
+  while(av[i])
+    {
+      PBUILDER_ADD_PARAM(av[i]);
+      i++;
+    }
+  PBUILDER_ADD_PARAM(NULL);
+  ret=forkexecvp(pbuildercommandline);
   free(buf_chroot);
-  cpbuilder_internal_cleancow(pc);
+  if (pc->save_after_login)
+    {
+      if (cpbuilder_internal_saveupdate(pc))
+	ret=-1;
+    }
+  else
+    {
+      cpbuilder_internal_cleancow(pc);
+    }
   return ret;
 }
 
@@ -291,7 +483,6 @@ int cpbuilder_login(const struct pbuilderconfig* pc)
 int cpbuilder_update(const struct pbuilderconfig* pc)
 {
   char * buf_chroot;
-  char * buf_tmpfile;
   int ret;
   
   /* 
@@ -316,14 +507,18 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
       /* outofmemory */
       return -1;
     }
-  if (0>asprintf(&buf_tmpfile, "%s-tmp", pc->buildplace))
-    {
-      /* outofmemory */
-      return -1;
-    }
 
   cpbuilder_internal_cowcopy(pc);
   printf(" -> Invoking pbuilder\n");
+
+  pbuildercommandline[1]="update";
+  PBUILDER_ADD_PARAM("--buildplace");
+  PBUILDER_ADD_PARAM(pc->buildplace);
+  PBUILDER_ADD_PARAM("--no-targz");
+  PBUILDER_ADD_PARAM("--internal-chrootexec");
+  PBUILDER_ADD_PARAM(buf_chroot);
+  PBUILDER_ADD_PARAM(NULL);
+
   ret=forkexeclp("pbuilder","pbuilder","update","--buildplace",
 		 pc->buildplace,"--no-targz",
 		 "--internal-chrootexec", 
@@ -334,35 +529,14 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
       if (0!=forkexeclp("rm", "rm", "-rf", pc->buildplace, NULL))
 	{
 	  printf("Could not remove original tree\n");
-	  ret=-1;
+	  goto out;
 	}
-      goto out;
     }
 
   printf(" -> removing cowbuilder working copy\n");
-  if(-1==rename(pc->basepath, buf_tmpfile))
-    {
-      perror("rename");
-      ret=-1;
-      goto out;
-    }
-  if(-1==rename(pc->buildplace, pc->basepath))
-    {
-      perror("rename");
-      ret=-1;
-      goto out;
-    }
-  if (0!=forkexeclp("rm", "rm", "-rf", buf_tmpfile, NULL))
-    {
-      printf("Could not remove original tree\n");
-      ret=-1;
-      goto out;
-    }
-
+  cpbuilder_internal_saveupdate(pc);
  out:
-  free(buf_tmpfile);
   free(buf_chroot);
-  
   return ret;
 }
 
@@ -370,29 +544,63 @@ int main(int ac, char** av)
 {
   int c;			/* option */
   int index_point;
+  char * cmdstr=NULL;
+  
   static pbuilderconfig pc;
 
   static struct option long_options[]=
   {
     {"basepath", required_argument, 0, 'b'},
-    {"distribution", required_argument, 0, 'd'},
+    {"distribution", required_argument, 0, 'M'},
     {"mountproc", no_argument, &pc.mountproc, 1},
     {"mountdev", no_argument, &pc.mountdev, 1},
     {"mountdevpts", no_argument, &pc.mountdevpts, 1},
     {"nomountproc", no_argument, &pc.mountproc, 0},
     {"nomountdev", no_argument, &pc.mountdev, 0},
     {"nomountdevpts", no_argument, &pc.mountdevpts, 0},
+    {"save-after-login", no_argument, &pc.save_after_login, 1},
+    {"save-after-exec", no_argument, &pc.save_after_login, 1},
     {"build", no_argument, (int*)&pc.operation, pbuilder_build},
     {"create", no_argument, (int*)&pc.operation, pbuilder_create},
     {"update", no_argument, (int*)&pc.operation, pbuilder_update},
     {"login", no_argument, (int*)&pc.operation, pbuilder_login},
+    {"execute", no_argument, (int*)&pc.operation, pbuilder_execute},
     {"help", no_argument, 0, 'h'},
     {"version", no_argument, 0, 'v'},
+
+    /* verbatim options, synced as of pbuilder 0.153 */
+    {"mirror", required_argument, 0, 'M'},
+    {"othermirror", required_argument, 0, 'M'},
+    {"buildresult", required_argument, 0, 'M'},
+    {"http-proxy", required_argument, 0, 'M'},
+    {"aptcache", required_argument, 0, 'M'},
+    {"extrapackages", required_argument, 0, 'M'},
+    {"configfile", required_argument, 0, 'M'},
+    {"hookdir", required_argument, 0, 'M'},
+    {"debemail", required_argument, 0, 'M'},
+    {"debbuildopts", required_argument, 0, 'M'},
+    {"logfile", required_argument, 0, 'M'},
+    {"aptconfdir", required_argument, 0, 'M'},
+    {"timeout", required_argument, 0, 'M'},
+    {"bindmounts", required_argument, 0, 'M'},
+    {"debootstrapopts", required_argument, 0, 'M'},
+    {"debootstrap", required_argument, 0, 'M'},
+
+    {"removepackages", no_argument, 0, 'm'},
+    {"override-config", no_argument, 0, 'm'},
+    {"pkgname-logfile", no_argument, 0, 'm'},
+    {"binary-arch", no_argument, 0, 'm'},
+    {"preserve-buildplace", no_argument, 0, 'm'},
+    {"debug", no_argument, 0, 'm'},
+    {"autocleanaptcache", no_argument, 0, 'm'},
+
     {0,0,0,0}
   };
 
   /* define pc to be clear. */
   memset (&pc, 0, sizeof(pbuilderconfig));
+  /* default command-line component */
+  pbuildercommandline[0]="pbuilder";
 
   /* load config files here. */
   while((c = getopt_long (ac, av, "b:d:hv", long_options, &index_point)) != -1)
@@ -402,8 +610,26 @@ int main(int ac, char** av)
 	case 'b':
 	  pc.basepath = canonicalize_file_name (optarg);
 	  break;
-	case 'd':
-	  pc.distribution = strdup(optarg);
+	case 'M':		/* default duplicate with param */
+	  //printf("DEBUG: adding option %s with %s \n", long_options[index_point].name, optarg);
+	  if (0>asprintf(&cmdstr, "--%s", long_options[index_point].name))
+	    {
+	      /* error */
+	      fprintf(stderr, "out of memory constructing command-line options\n");
+	      exit (1);
+	    }
+	  PBUILDER_ADD_PARAM(cmdstr);
+	  PBUILDER_ADD_PARAM(strdup(optarg));
+	  break;
+	case 'm':		/* default duplicate without param */
+	  //printf("DEBUG: adding option %s\n", long_options[index_point].name);
+	  if (0>asprintf(&cmdstr, "--%s", long_options[index_point].name))
+	    {
+	      /* error */
+	      fprintf(stderr, "out of memory constructing command-line options\n");
+	      exit (1);
+	    }
+	  PBUILDER_ADD_PARAM(cmdstr);
 	  break;
 	case 'h':
 	  break;
@@ -423,10 +649,8 @@ int main(int ac, char** av)
 
   /* set default values */
   if (!pc.basepath) 
-    pc.basepath=strdup("/var/cache/pbuilder/build/cow");
-  if (!pc.distribution) 
-    pc.distribution=strdup("sid");
-  asprintf(&(pc.buildplace), "%s%i", pc.basepath, (int)getpid());
+    pc.basepath=strdup("/var/cache/pbuilder/base.cow");
+  asprintf(&(pc.buildplace), "/var/cache/pbuilder/build/cow.%i", (int)getpid());
 
   switch(pc.operation)
     {
@@ -441,7 +665,10 @@ int main(int ac, char** av)
       
     case pbuilder_login:
       return cpbuilder_login(&pc);
-            
+
+    case pbuilder_execute:
+      return cpbuilder_execute(&pc, &av[optind]);
+
     default:
       fprintf(stderr, "No operation selected\n");
       return 1;

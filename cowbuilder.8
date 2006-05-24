@@ -1,0 +1,38 @@
+.TH "cowbuilder" 8 "2006 May 24" "cowdancer" "cowdancer"
+.SH "NAME"
+cowbuilder \- a pbuilder wrapper for cowdancer.
+.SH SYNOPSIS
+.BI "cowbuilder [" "commandline" "]"
+.SH DESCRIPTION
+.B cowbuilder
+Executes the specified pbuilder operation with
+.B cowdancer
+
+.SH "COMMANDS"
+.TP
+.B "--create"
+
+.TP
+.B "--update"
+
+.TP
+.B "--build"
+
+.TP
+.B "--login"
+
+Invoke pbuilder with the specified commands, see pbuilder manual for
+details.
+
+.SH
+.B "--buildplace"
+
+The place where COW operation takes place.
+
+.SH
+.B "--basetgz" 
+has a very different meaning, since there is no tgz.
+Instead, it specifies the directory in which the COW master data is stored.
+
+.SH "AUTHOR"
+Junichi Uekawa (dancer@debian.org)

@@ -1,6 +1,5 @@
 cowdancer (0.14) UNRELEASED; urgency=low
 
-  * TODO: instead of using ./.ilist, use a temporary file in /tmp
   * Welcome to cowbuilder, which can be used along with pbuilder.
 
  -- Junichi Uekawa <dancer@debian.org>  Sun, 21 May 2006 22:12:48 +0900
