@@ -17,5 +17,8 @@ Description: Copy-on-write directory tree utility.
  under the directory cow-shell was invoked, 
  cowdancer will create a new file when existing i-nodes are opened for 
  write.
- .
  Useful for quick scratch workspace and experimentation.
+ .
+ 'cowbuilder' command is a wrapper for pbuilder which allows using 
+ pbuilder-like interface over cowdancer environment.
+

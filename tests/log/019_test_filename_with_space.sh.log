@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.bPE82l
-+ cd /tmp/tmp.bPE82l
++ TESTDIR=/tmp/tmp.ARKiSl
++ cd /tmp/tmp.ARKiSl
 + mkdir 1/
 + touch '1/a'\''f' '1/b g' '1/c h' '1/d i'
 + dd if=/dev/zero 'of=1/e j' bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 0.000119 seconds, 8.6 MB/s
+1024 bytes (1.0 kB) copied, 6.2e-05 seconds, 16.5 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -14,28 +14,28 @@
    2/ before
 + ls -li 2/
 合計 4
-80408 -rw-r--r-- 2 dancer dancer    0 2006-04-29 00:55 a'f
-80412 -rw-r--r-- 2 dancer dancer    0 2006-04-29 00:55 b g
-80413 -rw-r--r-- 2 dancer dancer    0 2006-04-29 00:55 c h
-80414 -rw-r--r-- 2 dancer dancer    0 2006-04-29 00:55 d i
-80415 -rw-r--r-- 2 dancer dancer 1024 2006-04-29 00:55 e j
+67318 -rw-r--r-- 2 dancer dancer    0 2006-05-26 06:35 a'f
+67319 -rw-r--r-- 2 dancer dancer    0 2006-05-26 06:35 b g
+67320 -rw-r--r-- 2 dancer dancer    0 2006-05-26 06:35 c h
+67321 -rw-r--r-- 2 dancer dancer    0 2006-05-26 06:35 d i
+67322 -rw-r--r-- 2 dancer dancer 1024 2006-05-26 06:35 e j
 + echo 'cd 2 && echo a > "a'\''f" && mv '\''b g'\'' '\''c h'\'' && touch '\''c h'\'' && dd if='\''e j'\'' of='\''d i'\'''
 + cow-shell
 Invoking /bin/bash
 0+1 records in
 0+1 records out
-224 bytes (224 B) copied, 0.000152 seconds, 1.5 MB/s
+224 bytes (224 B) copied, 4.9e-05 seconds, 4.6 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-80455 -rw-r--r-- 1 dancer dancer    2 2006-04-29 00:55 a'f
-80470 -rw-r--r-- 1 dancer dancer    0 2006-04-29 00:55 c h
-80478 -rw-r--r-- 1 dancer dancer  224 2006-04-29 00:55 d i
-80415 -rw-r--r-- 2 dancer dancer 1024 2006-04-29 00:55 e j
+67325 -rw-r--r-- 1 dancer dancer    2 2006-05-26 06:35 a'f
+67326 -rw-r--r-- 1 dancer dancer    0 2006-05-26 06:35 c h
+67327 -rw-r--r-- 1 dancer dancer  224 2006-05-26 06:35 d i
+67322 -rw-r--r-- 2 dancer dancer 1024 2006-05-26 06:35 e j
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.bPE82l
++ rm -rf /tmp/tmp.ARKiSl

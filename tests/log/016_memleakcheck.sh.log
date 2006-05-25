@@ -1,43 +1,63 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.WvpsRV
++ TESTDIR=/tmp/tmp.saX84T
 ++ readlink -f tests/016_memleakcheck.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c
-+ gcc /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c -o /tmp/tmp.WvpsRV/tracer -g
++ gcc /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c -o /tmp/tmp.saX84T/tracer -g
 + set -ex
-+ cd /tmp/tmp.WvpsRV
++ cd /tmp/tmp.saX84T
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 0.000119 seconds, 8.6 MB/s
+1024 bytes (1.0 kB) copied, 4.9e-05 seconds, 20.9 MB/s
 + MALLOC_TRACE=log
-+ cow-shell /tmp/tmp.WvpsRV/tracer
-0fe43000-0fe46000 r-xp 00000000 03:04 163368     /lib/tls/libdl-2.3.6.so
-0fe46000-0fe55000 ---p 00003000 03:04 163368     /lib/tls/libdl-2.3.6.so
-0fe55000-0fe56000 r--p 00002000 03:04 163368     /lib/tls/libdl-2.3.6.so
-0fe56000-0fe57000 rwxp 00003000 03:04 163368     /lib/tls/libdl-2.3.6.so
-0fe67000-0ffb0000 r-xp 00000000 03:04 163365     /lib/tls/libc-2.3.6.so
-0ffb0000-0ffbf000 ---p 00149000 03:04 163365     /lib/tls/libc-2.3.6.so
-0ffbf000-0ffc5000 r--p 00148000 03:04 163365     /lib/tls/libc-2.3.6.so
-0ffc5000-0ffca000 rwxp 0014e000 03:04 163365     /lib/tls/libc-2.3.6.so
-0ffca000-0ffcc000 rwxp 0ffca000 00:00 0 
-0ffdc000-0ffe0000 r-xp 00000000 03:04 114089     /usr/lib/cowdancer/libcowdancer.so
-0ffe0000-0ffef000 ---p 00004000 03:04 114089     /usr/lib/cowdancer/libcowdancer.so
-0ffef000-0fff0000 rwxp 00003000 03:04 114089     /usr/lib/cowdancer/libcowdancer.so
-10000000-10001000 r-xp 00000000 00:0e 80173      /tmp/tmp.WvpsRV/tracer
-10010000-10011000 rwxp 00000000 00:0e 80173      /tmp/tmp.WvpsRV/tracer
-10011000-10032000 rwxp 10011000 00:00 0          [heap]
-30000000-30019000 r-xp 00000000 03:04 162953     /lib/ld-2.3.6.so
-30019000-3001a000 rw-p 30019000 00:00 0 
-3001a000-3001b000 r--p 00000000 00:0e 80189      /tmp/tmp.WvpsRV/.ilist
-3001b000-3001f000 rw-p 3001b000 00:00 0 
-30028000-30029000 r--p 00018000 03:04 162953     /lib/ld-2.3.6.so
-30029000-3002a000 rwxp 00019000 03:04 162953     /lib/ld-2.3.6.so
-3002a000-3002c000 rw-p 3002a000 00:00 0 
-7fbbc000-7fbd1000 rw-p 7fbbc000 00:00 0          [stack]
++ cow-shell /tmp/tmp.saX84T/tracer
+00400000-00401000 r-xp 00000000 08:01 67318                              /tmp/tmp.saX84T/tracer
+00500000-00501000 rw-p 00000000 08:01 67318                              /tmp/tmp.saX84T/tracer
+00501000-00522000 rw-p 00501000 00:00 0                                  [heap]
+2af58e444000-2af58e45b000 r-xp 00000000 08:01 357957                     /lib/ld-2.3.6.so
+2af58e45b000-2af58e45d000 rw-p 2af58e45b000 00:00 0 
+2af58e55a000-2af58e55c000 rw-p 00016000 08:01 357957                     /lib/ld-2.3.6.so
+2af58e55c000-2af58e55f000 r-xp 00000000 08:01 419953                     /usr/lib/cowdancer/libcowdancer.so
+2af58e55f000-2af58e65e000 ---p 00003000 08:01 419953                     /usr/lib/cowdancer/libcowdancer.so
+2af58e65e000-2af58e65f000 rw-p 00002000 08:01 419953                     /usr/lib/cowdancer/libcowdancer.so
+2af58e65f000-2af58e660000 r--p 00000000 08:01 67327                      /tmp/tmp.saX84T/.ilist
+2af58e660000-2af58e663000 rw-p 2af58e660000 00:00 0 
+2af58e672000-2af58e795000 r-xp 00000000 08:01 357955                     /lib/libc-2.3.6.so
+2af58e795000-2af58e895000 ---p 00123000 08:01 357955                     /lib/libc-2.3.6.so
+2af58e895000-2af58e8aa000 r--p 00123000 08:01 357955                     /lib/libc-2.3.6.so
+2af58e8aa000-2af58e8ad000 rw-p 00138000 08:01 357955                     /lib/libc-2.3.6.so
+2af58e8ad000-2af58e8b2000 rw-p 2af58e8ad000 00:00 0 
+2af58e8b2000-2af58e8b4000 r-xp 00000000 08:01 357948                     /lib/libdl-2.3.6.so
+2af58e8b4000-2af58e9b3000 ---p 00002000 08:01 357948                     /lib/libdl-2.3.6.so
+2af58e9b3000-2af58e9b5000 rw-p 00001000 08:01 357948                     /lib/libdl-2.3.6.so
+2af58e9b5000-2af58e9b6000 rw-p 2af58e9b5000 00:00 0 
+7fff1c650000-7fff1c666000 rw-p 7fff1c650000 00:00 0                      [stack]
+ffffffffff600000-ffffffffffe00000 ---p 00000000 00:00 0                  [vdso]
 + RESULT=0
-+ mtrace /tmp/tmp.WvpsRV/tracer /tmp/tmp.WvpsRV/log
++ mtrace /tmp/tmp.saX84T/tracer /tmp/tmp.saX84T/log
++ 0x0000000000501460 Alloc 42 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af58e6a3e.6:[0x2af58e6cf7aa]
++ 0x00000000005014f0 Alloc 48 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
++ 0x0000000000501460 Alloc 140 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af58e6aso.6:[0x2af58e6cf7aa]
++ 0x00000000005014f0 Alloc 146 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
++ 0x0000000000501460 Alloc 238 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af58ec.so.6:[0x2af58e6cf7aa]
++ 0x00000000005014f0 Alloc 244 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
++ 0x0000000000501460 Alloc 336 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af5ibc.so.6:[0x2af58e6cf7aa]
++ 0x00000000005014f0 Alloc 342 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
++ 0x0000000000501460 Alloc 434 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2a/libc.so.6:[0x2af58e6cf7aa]
++ 0x00000000005014f0 Alloc 440 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
++ 0x0000000000501460 Alloc 532 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0xib/libc.so.6:[0x2af58e6cf7aa]
++ 0x00000000005014f0 Alloc 538 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
++ 0x0000000000501460 Alloc 630 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[/lib/libc.so.6:[0x2af58e6cf7aa]
++ 0x00000000005014f0 Alloc 636 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
++ 0x00000000005014f0 Alloc 734 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
++ 0x0000000000501460 Alloc 827 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af58e6cf7aa]
++ 0x00000000005014f0 Alloc 833 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
++ 0x0000000000501460 Alloc 926 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af58e6cf7aa]
++ 0x00000000005014f0 Alloc 932 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
++ 0x0000000000501460 Alloc 1025 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af58e6cf7aa]
++ 0x00000000005014f0 Alloc 1031 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
 No memory leaks.
-+ rm -rf /tmp/tmp.WvpsRV
++ rm -rf /tmp/tmp.saX84T
 + exit 0
