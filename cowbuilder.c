@@ -133,6 +133,7 @@ typedef struct pbuilderconfig
   char* basepath;		/* /var/cache/pbuilder/cow */
   enum {
     pbuilder_do_nothing=0,
+    pbuilder_help,
     pbuilder_build,
     pbuilder_create,
     pbuilder_update,
@@ -540,6 +541,23 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
   return ret;
 }
 
+int cpbuilder_help(void)
+{
+  printf("cowbuilder [operation] [options]\n"
+	 "operation:\n"
+	 " --build\n"
+	 " --create\n"
+	 " --update\n"
+	 " --login\n"
+	 " --execute\n"
+	 " --help\n"
+	 "options:\n"
+	 " --basepath:\n"
+	 " --distribution:\n"
+	 );
+  return 0;
+}
+
 int main(int ac, char** av)
 {
   int c;			/* option */
@@ -565,7 +583,7 @@ int main(int ac, char** av)
     {"update", no_argument, (int*)&pc.operation, pbuilder_update},
     {"login", no_argument, (int*)&pc.operation, pbuilder_login},
     {"execute", no_argument, (int*)&pc.operation, pbuilder_execute},
-    {"help", no_argument, 0, 'h'},
+    {"help", no_argument, (int*)&pc.operation, pbuilder_help},
     {"version", no_argument, 0, 'v'},
 
     /* verbatim options, synced as of pbuilder 0.153 */
@@ -608,7 +626,24 @@ int main(int ac, char** av)
       switch (c)
 	{
 	case 'b':
-	  pc.basepath = canonicalize_file_name (optarg);
+	  if (pc.operation == pbuilder_create)
+	    {
+	      if (mkdir(optarg, 777)<0)
+		{
+		  perror("mkdir");
+		  return 1;
+		}
+	    }
+	  else if (!pc.operation)
+	    {
+	      fprintf(stderr, "need to specify operation before --basepath option\n");
+	      return 1;
+	    }
+	  if (!(pc.basepath = canonicalize_file_name(optarg)))
+	    {
+	      fprintf(stderr, "cannot canonicalize filename %s, does not exist\n", optarg);
+	      return 1;
+	    }
 	  break;
 	case 'M':		/* default duplicate with param */
 	  //printf("DEBUG: adding option %s with %s \n", long_options[index_point].name, optarg);
@@ -669,8 +704,9 @@ int main(int ac, char** av)
     case pbuilder_execute:
       return cpbuilder_execute(&pc, &av[optind]);
 
+    case pbuilder_help:
     default:
-      fprintf(stderr, "No operation selected\n");
+      cpbuilder_help();
       return 1;
     }
   

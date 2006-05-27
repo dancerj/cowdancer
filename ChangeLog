@@ -1,3 +1,9 @@
+2006-05-27  Junichi Uekawa  <dancer@debian.org>
+
+	* cowbuilder.c (main): help iplementation.
+	(pbuilder_help): help message.
+	(main): 
+
 2006-05-26  Junichi Uekawa  <dancer@debian.org>
 
 	* debian/control: update description.
