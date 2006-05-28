@@ -1,321 +1,801 @@
 + '[' '!' -x /usr/sbin/pbuilder ']'
-+ ORIG=/var/cache/pbuilder/build/cow/orig
-+ WORK=/var/cache/pbuilder/build/cow/work8961
-+ BASETGZ=/var/cache/pbuilder/base.tgz
-+++ dpkg --print-architecture
-++ readlink -f ../cowdancer_0.14_amd64.deb
-+ COWDEB=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.14_amd64.deb
-+ sudo rm -rf /var/cache/pbuilder/build/cow
-+ sudo mkdir -p /var/cache/pbuilder/build/cow/orig
-+ cd /var/cache/pbuilder/build/cow/orig
-+ sudo tar xfzp /var/cache/pbuilder/base.tgz
-+ sudo cp /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.14_amd64.deb /var/cache/pbuilder/build/cow/orig/tmp/
-+ sudo apt-get source -d dsh
-パッケージリストを読み込んでいます...
-依存関係ツリーを作成しています...
-382kB のソースアーカイブを取得する必要があります。
-取得:1 http://ftp.jp.debian.org unstable/main dsh 0.25.6-1 (dsc) [583B]
-取得:2 http://ftp.jp.debian.org unstable/main dsh 0.25.6-1 (tar) [373kB]
-取得:3 http://ftp.jp.debian.org unstable/main dsh 0.25.6-1 (diff) [7934B]
-382kB を 0s で取得しました (661kB/s)
-ダウンロードオンリーモードでパッケージのダウンロードが完了しました
-+ sudo chroot /var/cache/pbuilder/build/cow/orig dpkg -i tmp/cowdancer_0.14_amd64.deb
-Selecting previously deselected package cowdancer.
-(Reading database ... 12009 files and directories currently installed.)
-Unpacking cowdancer (from tmp/cowdancer_0.14_amd64.deb) ...
-Setting up cowdancer (0.14) ...
-+ sudo cp -al /var/cache/pbuilder/build/cow/orig /var/cache/pbuilder/build/cow/work8961-1
-+ sudo cp var/log/dpkg.log /tmp/a
-+ sudo pbuilder update --buildplace /var/cache/pbuilder/build/cow/work8961-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work8961-1 cow-shell'
++ sudo rm -rf /var/cache/pbuilder/base-test.cow
++ sudo cowbuilder --create --basepath /var/cache/pbuilder/base-test.cow
 W: /home/dancer/.pbuilderrc does not exist
  -> Running in no-targz mode
+Distribution is sid.
+Building the build environment
+ -> running cdebootstrap
+/usr/bin/cdebootstrap
+P: Retrieving Release.gpg
+P: Retrieving Release
+P: Parsing Release
+P: Retrieving Packages.gz
+P: Validating Packages
+P: Parsing Packages
+W: can't find package: base-config
+P: Retrieving tzdata
+P: Validating tzdata
+P: Retrieving libc6
+P: Validating libc6
+P: Retrieving gcc-4.1-base
+P: Validating gcc-4.1-base
+P: Retrieving libgcc1
+P: Validating libgcc1
+P: Retrieving libstdc++6
+P: Validating libstdc++6
+P: Retrieving apt
+P: Validating apt
+P: Retrieving libdb4.3
+P: Validating libdb4.3
+P: Retrieving apt-utils
+P: Validating apt-utils
+P: Retrieving libattr1
+P: Validating libattr1
+P: Retrieving libacl1
+P: Validating libacl1
+P: Retrieving libsepol1
+P: Validating libsepol1
+P: Retrieving libselinux1
+P: Validating libselinux1
+P: Retrieving coreutils
+P: Validating coreutils
+P: Retrieving mktemp
+P: Validating mktemp
+P: Retrieving debianutils
+P: Validating debianutils
+P: Retrieving dhcp3-common
+P: Validating dhcp3-common
+P: Retrieving perl-base
+P: Validating perl-base
+P: Retrieving liblocale-gettext-perl
+P: Validating liblocale-gettext-perl
+P: Retrieving libtext-iconv-perl
+P: Validating libtext-iconv-perl
+P: Retrieving libtext-charwidth-perl
+P: Validating libtext-charwidth-perl
+P: Retrieving libtext-wrapi18n-perl
+P: Validating libtext-wrapi18n-perl
+P: Retrieving debconf-i18n
+P: Validating debconf-i18n
+P: Retrieving debconf
+P: Validating debconf
+P: Retrieving dhcp3-client
+P: Validating dhcp3-client
+P: Retrieving net-tools
+P: Validating net-tools
+P: Retrieving ifupdown
+P: Validating ifupdown
+P: Retrieving iptables
+P: Validating iptables
+P: Retrieving iputils-ping
+P: Validating iputils-ping
+P: Retrieving libwrap0
+P: Validating libwrap0
+P: Retrieving tcpd
+P: Validating tcpd
+P: Retrieving openbsd-inetd
+P: Validating openbsd-inetd
+P: Retrieving sed
+P: Validating sed
+P: Retrieving libncurses5
+P: Validating libncurses5
+P: Retrieving ncurses-bin
+P: Validating ncurses-bin
+P: Retrieving lsb-base
+P: Validating lsb-base
+P: Retrieving netbase
+P: Validating netbase
+P: Retrieving telnet
+P: Validating telnet
+P: Retrieving zlib1g
+P: Validating zlib1g
+P: Retrieving libssl0.9.8
+P: Validating libssl0.9.8
+P: Retrieving wget
+P: Validating wget
+P: Retrieving info
+P: Validating info
+P: Retrieving manpages
+P: Validating manpages
+P: Retrieving groff-base
+P: Validating groff-base
+P: Retrieving bsdutils
+P: Validating bsdutils
+P: Retrieving bsdmainutils
+P: Validating bsdmainutils
+P: Retrieving dpkg
+P: Validating dpkg
+P: Retrieving libgdbm3
+P: Validating libgdbm3
+P: Retrieving man-db
+P: Validating man-db
+P: Retrieving libpam-runtime
+P: Validating libpam-runtime
+P: Retrieving libpam0g
+P: Validating libpam0g
+P: Retrieving libcap1
+P: Validating libcap1
+P: Retrieving libpam-modules
+P: Validating libpam-modules
+P: Retrieving login
+P: Validating login
+P: Retrieving passwd
+P: Validating passwd
+P: Retrieving adduser
+P: Validating adduser
+P: Retrieving cron
+P: Validating cron
+P: Retrieving exim4-config
+P: Validating exim4-config
+P: Retrieving exim4-base
+P: Validating exim4-base
+P: Retrieving libgpg-error0
+P: Validating libgpg-error0
+P: Retrieving libgcrypt11
+P: Validating libgcrypt11
+P: Retrieving liblzo1
+P: Validating liblzo1
+P: Retrieving libopencdk8
+P: Validating libopencdk8
+P: Retrieving libgnutls13
+P: Validating libgnutls13
+P: Retrieving libpcre3
+P: Validating libpcre3
+P: Retrieving exim4-daemon-light
+P: Validating exim4-daemon-light
+P: Retrieving at
+P: Validating at
+P: Retrieving cpio
+P: Validating cpio
+P: Retrieving ed
+P: Validating ed
+P: Retrieving libncursesw5
+P: Validating libncursesw5
+P: Retrieving nano
+P: Validating nano
+P: Retrieving nvi
+P: Validating nvi
+P: Retrieving psmisc
+P: Validating psmisc
+P: Retrieving klogd
+P: Validating klogd
+P: Retrieving sysklogd
+P: Validating sysklogd
+P: Retrieving libsigc++-2.0-0c2a
+P: Validating libsigc++-2.0-0c2a
+P: Retrieving aptitude
+P: Validating aptitude
+P: Retrieving dmidecode
+P: Validating dmidecode
+P: Retrieving laptop-detect
+P: Validating laptop-detect
+P: Retrieving tasksel-data
+P: Validating tasksel-data
+P: Retrieving tasksel
+P: Validating tasksel
+P: Retrieving libslang2
+P: Validating libslang2
+P: Retrieving libnewt0.52
+P: Validating libnewt0.52
+P: Retrieving libpopt0
+P: Validating libpopt0
+P: Retrieving whiptail
+P: Validating whiptail
+P: Retrieving exim4
+P: Validating exim4
+P: Retrieving base-passwd
+P: Validating base-passwd
+P: Retrieving logrotate
+P: Validating logrotate
+P: Retrieving hostname
+P: Validating hostname
+P: Retrieving mawk
+P: Validating mawk
+P: Retrieving base-files
+P: Validating base-files
+P: Retrieving bash
+P: Validating bash
+P: Retrieving gcc-4.0-base
+P: Validating gcc-4.0-base
+P: Retrieving grep
+P: Validating grep
+P: Retrieving libdevmapper1.02
+P: Validating libdevmapper1.02
+P: Retrieving procps
+P: Validating procps
+P: Retrieving libcomerr2
+P: Validating libcomerr2
+P: Retrieving dselect
+P: Validating dselect
+P: Retrieving diff
+P: Validating diff
+P: Retrieving gzip
+P: Validating gzip
+P: Retrieving libss2
+P: Validating libss2
+P: Retrieving libblkid1
+P: Validating libblkid1
+P: Retrieving libuuid1
+P: Validating libuuid1
+P: Retrieving mount
+P: Validating mount
+P: Retrieving e2fslibs
+P: Validating e2fslibs
+P: Retrieving e2fsprogs
+P: Validating e2fsprogs
+P: Retrieving initscripts
+P: Validating initscripts
+P: Retrieving tar
+P: Validating tar
+P: Retrieving sysv-rc
+P: Validating sysv-rc
+P: Retrieving sysvinit
+P: Validating sysvinit
+P: Retrieving makedev
+P: Validating makedev
+P: Retrieving ncurses-base
+P: Validating ncurses-base
+P: Retrieving findutils
+P: Validating findutils
+P: Retrieving util-linux
+P: Validating util-linux
+P: Extracting tzdata
+P: Extracting libc6
+P: Extracting gcc-4.1-base
+P: Extracting libgcc1
+P: Extracting libstdc++6
+P: Extracting libdb4.3
+P: Extracting libattr1
+P: Extracting libacl1
+P: Extracting libsepol1
+P: Extracting libselinux1
+P: Extracting coreutils
+P: Extracting mktemp
+P: Extracting debianutils
+P: Extracting perl-base
+P: Extracting liblocale-gettext-perl
+P: Extracting libtext-iconv-perl
+P: Extracting libtext-charwidth-perl
+P: Extracting libtext-wrapi18n-perl
+P: Extracting debconf
+P: Extracting debconf-i18n
+P: Extracting sed
+P: Extracting libncurses5
+P: Extracting ncurses-bin
+P: Extracting lsb-base
+P: Extracting zlib1g
+P: Extracting bsdutils
+P: Extracting dpkg
+P: Extracting libpam-runtime
+P: Extracting libpam0g
+P: Extracting libcap1
+P: Extracting libpam-modules
+P: Extracting login
+P: Extracting passwd
+P: Extracting libslang2
+P: Extracting base-passwd
+P: Extracting hostname
+P: Extracting mawk
+P: Extracting base-files
+P: Extracting bash
+P: Extracting gcc-4.0-base
+P: Extracting grep
+P: Extracting libdevmapper1.02
+P: Extracting procps
+P: Extracting libcomerr2
+P: Extracting dselect
+P: Extracting diff
+P: Extracting gzip
+P: Extracting libss2
+P: Extracting libblkid1
+P: Extracting libuuid1
+P: Extracting mount
+P: Extracting e2fslibs
+P: Extracting e2fsprogs
+P: Extracting initscripts
+P: Extracting tar
+P: Extracting sysv-rc
+P: Extracting sysvinit
+P: Extracting makedev
+P: Extracting ncurses-base
+P: Extracting findutils
+P: Extracting util-linux
+P: Unpacking package base-passwd
+P: Configuring package base-passwd
+P: Configuring helper cdebootstrap-helper-diverts
+P: Configuring helper cdebootstrap-helper-makedev
+P: Unpacking package dpkg
+P: Configuring package dpkg
+P: Unpacking package tzdata
+P: Unpacking package libc6
+P: Unpacking package gcc-4.1-base
+P: Unpacking package libgcc1
+P: Unpacking package libstdc++6
+P: Unpacking package libdb4.3
+P: Unpacking package libattr1
+P: Unpacking package libacl1
+P: Unpacking package libsepol1
+P: Unpacking package libselinux1
+P: Unpacking package coreutils
+P: Unpacking package mktemp
+P: Unpacking package debianutils
+P: Unpacking package perl-base
+P: Unpacking package liblocale-gettext-perl
+P: Unpacking package libtext-iconv-perl
+P: Unpacking package libtext-charwidth-perl
+P: Unpacking package libtext-wrapi18n-perl
+P: Unpacking package debconf
+P: Unpacking package debconf-i18n
+P: Unpacking package sed
+P: Unpacking package libncurses5
+P: Unpacking package ncurses-bin
+P: Unpacking package lsb-base
+P: Unpacking package zlib1g
+P: Unpacking package bsdutils
+P: Unpacking package libpam-runtime
+P: Unpacking package libpam0g
+P: Unpacking package libcap1
+P: Unpacking package libpam-modules
+P: Unpacking package login
+P: Unpacking package passwd
+P: Unpacking package libslang2
+P: Unpacking package hostname
+P: Unpacking package mawk
+P: Unpacking package base-files
+P: Unpacking package bash
+P: Unpacking package gcc-4.0-base
+P: Unpacking package grep
+P: Unpacking package libdevmapper1.02
+P: Unpacking package procps
+P: Unpacking package libcomerr2
+P: Unpacking package dselect
+P: Unpacking package diff
+P: Unpacking package gzip
+P: Unpacking package libss2
+P: Unpacking package libblkid1
+P: Unpacking package libuuid1
+P: Unpacking package mount
+P: Unpacking package e2fslibs
+P: Unpacking package e2fsprogs
+P: Unpacking package initscripts
+P: Unpacking package tar
+P: Unpacking package sysv-rc
+P: Unpacking package sysvinit
+P: Unpacking package makedev
+P: Unpacking package ncurses-base
+P: Unpacking package findutils
+P: Unpacking package util-linux
+P: Configuring package makedev
+P: Configuring package sysv-rc
+P: Configuring package tzdata
+P: Configuring package gcc-4.0-base
+P: Configuring package gcc-4.1-base
+P: Configuring package libpam-runtime
+P: Configuring package libc6
+P: Configuring package libcap1
+P: Configuring package mktemp
+P: Configuring package libuuid1
+P: Configuring package libpam0g
+P: Configuring package bsdutils
+P: Configuring package perl-base
+P: Configuring package libsepol1
+P: Configuring package tar
+P: Configuring package zlib1g
+P: Configuring package libgcc1
+P: Configuring package libtext-iconv-perl
+P: Configuring package libncurses5
+P: Configuring package libattr1
+P: Configuring package sed
+P: Configuring package e2fslibs
+P: Configuring package libcomerr2
+P: Configuring package mawk
+P: Configuring package libdb4.3
+P: Configuring package grep
+P: Configuring package hostname
+P: Configuring package libacl1
+P: Configuring package libslang2
+P: Configuring package libss2
+P: Configuring package findutils
+P: Configuring package liblocale-gettext-perl
+P: Configuring package diff
+P: Configuring package libselinux1
+P: Configuring package libstdc++6
+P: Configuring package libdevmapper1.02
+P: Configuring package libtext-charwidth-perl
+P: Configuring package libtext-wrapi18n-perl
+P: Configuring package coreutils
+P: Configuring package debianutils
+P: Configuring package procps
+P: Configuring package ncurses-base
+P: Configuring package ncurses-bin
+P: Configuring package libpam-modules
+P: Configuring package base-files
+P: Configuring package libblkid1
+P: Configuring package e2fsprogs
+P: Configuring package gzip
+P: Configuring package dselect
+P: Configuring package bash
+P: Configuring package login
+P: Configuring package lsb-base
+P: Configuring package mount
+P: Configuring package passwd
+P: Configuring package initscripts
+P: Configuring package util-linux
+P: Configuring package sysvinit
+P: Configuring package debconf-i18n
+P: Configuring package debconf
+P: Unpacking package apt
+P: Configuring package apt
+P: Configuring helper cdebootstrap-helper-apt
+P: Unpacking package adduser
+P: Unpacking package apt-utils
+P: Unpacking package libncursesw5
+P: Unpacking package libsigc++-2.0-0c2a
+P: Unpacking package aptitude
+P: Unpacking package bsdmainutils
+P: Unpacking package cpio
+P: Unpacking package cron
+P: Unpacking package dmidecode
+P: Unpacking package ed
+P: Unpacking package groff-base
+P: Unpacking package net-tools
+P: Unpacking package ifupdown
+P: Unpacking package info
+P: Unpacking package iptables
+P: Unpacking package iputils-ping
+P: Unpacking package sysklogd
+P: Unpacking package klogd
+P: Unpacking package laptop-detect
+P: Unpacking package libgpg-error0
+P: Unpacking package libgcrypt11
+P: Unpacking package libgdbm3
+P: Unpacking package liblzo1
+P: Unpacking package libopencdk8
+P: Unpacking package libgnutls13
+P: Unpacking package libpopt0
+P: Unpacking package libssl0.9.8
+P: Unpacking package libwrap0
+P: Unpacking package logrotate
+P: Unpacking package man-db
+P: Unpacking package manpages
+P: Unpacking package nano
+P: Unpacking package openbsd-inetd
+P: Unpacking package tcpd
+P: Unpacking package netbase
+P: Unpacking package nvi
+P: Unpacking package tasksel-data
+P: Unpacking package tasksel
+P: Unpacking package wget
+P: Unpacking package libnewt0.52
+P: Unpacking package whiptail
+P: Unpacking package exim4-config
+P: Unpacking package exim4-base
+P: Unpacking package libpcre3
+P: Unpacking package exim4-daemon-light
+P: Unpacking package at
+P: Unpacking package exim4
+P: Unpacking package telnet
+P: Unpacking package dhcp3-common
+P: Unpacking package dhcp3-client
+P: Unpacking package psmisc
+P: Configuring package adduser
+P: Configuring package apt-utils
+P: Configuring package libncursesw5
+P: Configuring package libsigc++-2.0-0c2a
+P: Configuring package aptitude
+P: Configuring package bsdmainutils
+P: Configuring package cpio
+P: Configuring package cron
+P: Configuring package dmidecode
+P: Configuring package ed
+P: Configuring package groff-base
+P: Configuring package net-tools
+P: Configuring package ifupdown
+P: Configuring package info
+P: Configuring package iptables
+P: Configuring package iputils-ping
+P: Configuring package laptop-detect
+P: Configuring package libgpg-error0
+P: Configuring package libgcrypt11
+P: Configuring package libgdbm3
+P: Configuring package liblzo1
+P: Configuring package libopencdk8
+P: Configuring package libgnutls13
+P: Configuring package libpopt0
+P: Configuring package libssl0.9.8
+P: Configuring package libwrap0
+P: Configuring package logrotate
+P: Configuring package man-db
+P: Configuring package manpages
+P: Configuring package nano
+P: Configuring package tcpd
+P: Configuring package nvi
+P: Configuring package wget
+P: Configuring package libnewt0.52
+P: Configuring package whiptail
+P: Configuring package exim4-config
+P: Configuring package libpcre3
+P: Configuring package dhcp3-common
+P: Configuring package dhcp3-client
+P: Configuring package psmisc
+P: Configuring package tasksel-data
+P: Configuring package klogd
+P: Configuring package sysklogd
+P: Configuring package netbase
+P: Configuring package openbsd-inetd
+P: Configuring package tasksel
+P: Configuring package exim4-base
+P: Configuring package exim4-daemon-light
+P: Configuring package at
+P: Configuring package exim4
+P: Configuring package telnet
+P: Deconfiguring helper cdebootstrap-helper-apt
+P: Deconfiguring helper cdebootstrap-helper-diverts
+P: Deconfiguring helper cdebootstrap-helper-makedev
+ -> debootstrap finished
  -> copying local configuration
- -> mounting /proc filesystem
-ln: creating symbolic link `/var/cache/pbuilder/build/cow/work8961-1/etc/mtab' to `../proc/mounts': File exists
- -> mounting /dev/pts filesystem
- -> policy-rc.d already exists
+  -> Installing apt-lines
 Refreshing the base.tgz 
  -> upgrading packages
+ -> mounting /proc filesystem
+ -> mounting /dev/pts filesystem
+ -> installing dummy policy-rc.d
 Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
-Get:2 http://ftp.jp.debian.org sid Release [5902B]
+Get:2 http://ftp.jp.debian.org sid Release [38.3kB]
 Ign http://ftp.jp.debian.org sid Release
-Get:3 http://ftp.jp.debian.org sid/main Packages/DiffIndex [12.6kB]
-Get:4 2006-05-10-2319.10.pdiff [14.2kB]
-Get:5 2006-05-10-2319.10.pdiff [14.2kB]
-Get:6 2006-05-10-2319.10.pdiff [14.2kB]
-Get:7 2006-05-11-2319.56.pdiff [13.0kB]
-Get:8 2006-05-11-2319.56.pdiff [13.0kB]
-Get:9 2006-05-11-2319.56.pdiff [13.0kB]
-Get:10 2006-05-12-2220.13.pdiff [11.9kB]
-Get:11 2006-05-12-2220.13.pdiff [11.9kB]
-Get:12 2006-05-12-2220.13.pdiff [11.9kB]
-Get:13 2006-05-13-2317.35.pdiff [13.2kB]
-Get:14 2006-05-13-2317.35.pdiff [13.2kB]
-Get:15 2006-05-13-2317.35.pdiff [13.2kB]
-Get:16 2006-05-14-2318.13.pdiff [14.3kB]
-Get:17 2006-05-14-2318.13.pdiff [14.3kB]
-Get:18 2006-05-14-2318.13.pdiff [14.3kB]
-Get:19 2006-05-16-0019.10.pdiff [17.0kB]
-Get:20 2006-05-16-0019.10.pdiff [17.0kB]
-Get:21 2006-05-16-0019.10.pdiff [17.0kB]
-Get:22 2006-05-16-2320.29.pdiff [16.9kB]
-Get:23 2006-05-16-2320.29.pdiff [16.9kB]
-Get:24 2006-05-16-2320.29.pdiff [16.9kB]
-Fetched 119kB in 5s (20.9kB/s)
+Get:3 http://ftp.jp.debian.org sid/main Packages [3989kB]
+Fetched 4027kB in 2s (1532kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
 dpkg - warning: ignoring request to remove lilo which isn't installed.
 Obtaining the cached apt archive contents
-find: /var/cache/pbuilder/aptcache/: No such file or directory
-Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:485108
-
+Reading package lists...
 Building dependency tree...
-The following packages will be upgraded:
-  bsdutils cpp debconf debconf-i18n e2fslibs e2fsprogs findutils g++ gcc
-  libblkid1 libcomerr2 libdevmapper1.02 libgnutls13 libss2 libssl0.9.8
-  libuuid1 mount tasksel util-linux
-19 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
-Need to get 3600kB of archives.
-After unpacking 12.3kB of additional disk space will be used.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Reading package lists...
+Building dependency tree...
+apt is already the newest version.
+The following extra packages will be installed:
+  binutils cpp cpp-4.0 g++ g++-4.0 gcc gcc-4.0 libc6-dev libdb4.4
+  libstdc++6-4.0-dev linux-kernel-headers make patch perl perl-modules
+Suggested packages:
+  binutils-doc cpp-doc gcc-4.0-locales gnupg debian-keyring gcc-4.0-doc
+  lib32stdc++6 manpages-dev autoconf automake1.9 libtool flex bison gdb
+  gcc-doc libc6-dev-i386 lib32gcc1 glibc-doc libstdc++6-4.0-doc stl-manual
+  make-doc-non-dfsg diff-doc libterm-readline-gnu-perl
+  libterm-readline-perl-perl
+Recommended packages:
+  pbuilder bzip2 libmudflap0-dev perl-doc
+The following NEW packages will be installed:
+  binutils build-essential cowdancer cpp cpp-4.0 dpkg-dev g++ g++-4.0 gcc
+  gcc-4.0 libc6-dev libdb4.4 libstdc++6-4.0-dev linux-kernel-headers make
+  patch perl perl-modules
+0 upgraded, 18 newly installed, 0 to remove and 0 not upgraded.
+Need to get 6045kB/21.0MB of archives.
+After unpacking 83.4MB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
-  bsdutils e2fslibs e2fsprogs findutils mount util-linux debconf-i18n debconf
-  libdevmapper1.02 libblkid1 libcomerr2 libss2 libuuid1 libgnutls13
-  libssl0.9.8 tasksel cpp gcc g++
-Get:1 http://ftp.jp.debian.org sid/main bsdutils 1:2.12r-10 [69.1kB]
-Get:2 http://ftp.jp.debian.org sid/main e2fslibs 1.38+1.39-WIP-2006.04.09-2 [88.3kB]
-Get:3 http://ftp.jp.debian.org sid/main e2fsprogs 1.38+1.39-WIP-2006.04.09-2 [572kB]
-Get:4 http://ftp.jp.debian.org sid/main findutils 4.2.27-3 [418kB]
-Get:5 http://ftp.jp.debian.org sid/main mount 2.12r-10 [162kB]
-Get:6 http://ftp.jp.debian.org sid/main util-linux 2.12r-10 [398kB]
-Get:7 http://ftp.jp.debian.org sid/main debconf-i18n 1.5.1 [109kB]
-Get:8 http://ftp.jp.debian.org sid/main debconf 1.5.1 [134kB]
-Get:9 http://ftp.jp.debian.org sid/main libdevmapper1.02 2:1.02.05-2 [40.6kB]
-Get:10 http://ftp.jp.debian.org sid/main libblkid1 1.38+1.39-WIP-2006.04.09-2 [42.9kB]
-Get:11 http://ftp.jp.debian.org sid/main libcomerr2 1.38+1.39-WIP-2006.04.09-2 [30.3kB]
-Get:12 http://ftp.jp.debian.org sid/main libss2 1.38+1.39-WIP-2006.04.09-2 [37.0kB]
-Get:13 http://ftp.jp.debian.org sid/main libuuid1 1.38+1.39-WIP-2006.04.09-2 [31.8kB]
-Get:14 http://ftp.jp.debian.org sid/main libgnutls13 1.3.5-1.1 [348kB]
-Get:15 http://ftp.jp.debian.org sid/main libssl0.9.8 0.9.8b-2 [878kB]
-Get:16 http://ftp.jp.debian.org sid/main tasksel 2.44 [205kB]
-Get:17 http://ftp.jp.debian.org sid/main cpp 4:4.0.3-4 [31.1kB]
-Get:18 http://ftp.jp.debian.org sid/main gcc 4:4.0.3-4 [5102B]
-Get:19 http://ftp.jp.debian.org sid/main g++ 4:4.0.3-4 [1396B]
-Preconfiguring packages ...
-Fetched 3600kB in 4s (781kB/s)
-(Reading database ... 12022 files and directories currently installed.)
-Preparing to replace bsdutils 1:2.12r-9 (using .../bsdutils_1%3a2.12r-10_amd64.deb) ...
-Unpacking replacement bsdutils ...
-Setting up bsdutils (2.12r-10) ...
+  binutils cpp-4.0 cpp perl-modules libdb4.4 perl patch make dpkg-dev gcc-4.0
+  gcc linux-kernel-headers libc6-dev libstdc++6-4.0-dev g++-4.0 g++
+  build-essential cowdancer
+Get:1 http://ftp.jp.debian.org sid/main perl 5.8.8-4 [4254kB]
+Get:2 http://ftp.jp.debian.org sid/main patch 2.5.9-4 [98.7kB]
+Get:3 http://ftp.jp.debian.org sid/main linux-kernel-headers 2.6.13+0rc3-2.1 [1686kB]
+Get:4 http://ftp.jp.debian.org sid/main build-essential 11.2 [6754B]
+Fetched 6045kB in 3s (1735kB/s)
+Selecting previously deselected package binutils.
+(Reading database ... 6774 files and directories currently installed.)
+Unpacking binutils (from .../binutils_2.16.1cvs20060413-1_amd64.deb) ...
+Selecting previously deselected package cpp-4.0.
+Unpacking cpp-4.0 (from .../cpp-4.0_4.0.3-3_amd64.deb) ...
+Selecting previously deselected package cpp.
+Unpacking cpp (from .../cpp_4%3a4.0.3-4_amd64.deb) ...
+Selecting previously deselected package perl-modules.
+Unpacking perl-modules (from .../perl-modules_5.8.8-4_all.deb) ...
+Selecting previously deselected package libdb4.4.
+Unpacking libdb4.4 (from .../libdb4.4_4.4.20-4_amd64.deb) ...
+Selecting previously deselected package perl.
+Unpacking perl (from .../perl_5.8.8-4_amd64.deb) ...
+Selecting previously deselected package patch.
+Unpacking patch (from .../patch_2.5.9-4_amd64.deb) ...
+Selecting previously deselected package make.
+Unpacking make (from .../archives/make_3.81-2_amd64.deb) ...
+Selecting previously deselected package dpkg-dev.
+Unpacking dpkg-dev (from .../dpkg-dev_1.13.19_all.deb) ...
+Selecting previously deselected package gcc-4.0.
+Unpacking gcc-4.0 (from .../gcc-4.0_4.0.3-3_amd64.deb) ...
+Selecting previously deselected package gcc.
+Unpacking gcc (from .../gcc_4%3a4.0.3-4_amd64.deb) ...
+Selecting previously deselected package linux-kernel-headers.
+Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.13+0rc3-2.1_amd64.deb) ...
+Selecting previously deselected package libc6-dev.
+Unpacking libc6-dev (from .../libc6-dev_2.3.6-10_amd64.deb) ...
+Selecting previously deselected package libstdc++6-4.0-dev.
+Unpacking libstdc++6-4.0-dev (from .../libstdc++6-4.0-dev_4.0.3-3_amd64.deb) ...
+Selecting previously deselected package g++-4.0.
+Unpacking g++-4.0 (from .../g++-4.0_4.0.3-3_amd64.deb) ...
+Selecting previously deselected package g++.
+Unpacking g++ (from .../g++_4%3a4.0.3-4_amd64.deb) ...
+Selecting previously deselected package build-essential.
+Unpacking build-essential (from .../build-essential_11.2_amd64.deb) ...
+Selecting previously deselected package cowdancer.
+Unpacking cowdancer (from .../cowdancer_0.14_amd64.deb) ...
+Setting up binutils (2.16.1cvs20060413-1) ...
 
-(Reading database ... 12022 files and directories currently installed.)
-Preparing to replace e2fslibs 1.38+1.39-WIP-2006.04.09-1 (using .../e2fslibs_1.38+1.39-WIP-2006.04.09-2_amd64.deb) ...
-Unpacking replacement e2fslibs ...
-Setting up e2fslibs (1.38+1.39-WIP-2006.04.09-2) ...
-
-(Reading database ... 12022 files and directories currently installed.)
-Preparing to replace e2fsprogs 1.38+1.39-WIP-2006.04.09-1 (using .../e2fsprogs_1.38+1.39-WIP-2006.04.09-2_amd64.deb) ...
-Unpacking replacement e2fsprogs ...
-Setting up e2fsprogs (1.38+1.39-WIP-2006.04.09-2) ...
-(Reading database ... 12022 files and directories currently installed.)
-Preparing to replace findutils 4.2.27-2 (using .../findutils_4.2.27-3_amd64.deb) ...
-Unpacking replacement findutils ...
-Setting up findutils (4.2.27-3) ...
-
-(Reading database ... 12022 files and directories currently installed.)
-Preparing to replace mount 2.12r-9 (using .../mount_2.12r-10_amd64.deb) ...
-Unpacking replacement mount ...
-Setting up mount (2.12r-10) ...
-
-(Reading database ... 12022 files and directories currently installed.)
-Preparing to replace util-linux 2.12r-9 (using .../util-linux_2.12r-10_amd64.deb) ...
-Unpacking replacement util-linux ...
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:613731
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:613731
-Setting up util-linux (2.12r-10) ...
-
-(Reading database ... 12022 files and directories currently installed.)
-Preparing to replace debconf-i18n 1.5.0 (using .../debconf-i18n_1.5.1_all.deb) ...
-Unpacking replacement debconf-i18n ...
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:613732
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:613732
-Preparing to replace debconf 1.5.0 (using .../archives/debconf_1.5.1_all.deb) ...
-Unpacking replacement debconf ...
-Preparing to replace libdevmapper1.02 2:1.02.05-1 (using .../libdevmapper1.02_2%3a1.02.05-2_amd64.deb) ...
-Unpacking replacement libdevmapper1.02 ...
-Setting up libdevmapper1.02 (1.02.05-2) ...
-
-(Reading database ... 12022 files and directories currently installed.)
-Preparing to replace libblkid1 1.38+1.39-WIP-2006.04.09-1 (using .../libblkid1_1.38+1.39-WIP-2006.04.09-2_amd64.deb) ...
-Unpacking replacement libblkid1 ...
-Setting up libblkid1 (1.38+1.39-WIP-2006.04.09-2) ...
-
-(Reading database ... 12022 files and directories currently installed.)
-Preparing to replace libcomerr2 1.38+1.39-WIP-2006.04.09-1 (using .../libcomerr2_1.38+1.39-WIP-2006.04.09-2_amd64.deb) ...
-Unpacking replacement libcomerr2 ...
-Setting up libcomerr2 (1.38+1.39-WIP-2006.04.09-2) ...
-
-(Reading database ... 12022 files and directories currently installed.)
-Preparing to replace libss2 1.38+1.39-WIP-2006.04.09-1 (using .../libss2_1.38+1.39-WIP-2006.04.09-2_amd64.deb) ...
-Unpacking replacement libss2 ...
-Setting up libss2 (1.38+1.39-WIP-2006.04.09-2) ...
-
-(Reading database ... 12022 files and directories currently installed.)
-Preparing to replace libuuid1 1.38+1.39-WIP-2006.04.09-1 (using .../libuuid1_1.38+1.39-WIP-2006.04.09-2_amd64.deb) ...
-Unpacking replacement libuuid1 ...
-Setting up libuuid1 (1.38+1.39-WIP-2006.04.09-2) ...
-
-(Reading database ... 12022 files and directories currently installed.)
-Preparing to replace libgnutls13 1.3.5-1 (using .../libgnutls13_1.3.5-1.1_amd64.deb) ...
-Unpacking replacement libgnutls13 ...
-Preparing to replace libssl0.9.8 0.9.8a-8 (using .../libssl0.9.8_0.9.8b-2_amd64.deb) ...
-Unpacking replacement libssl0.9.8 ...
-Preparing to replace tasksel 2.43 (using .../archives/tasksel_2.44_all.deb) ...
-Unpacking replacement tasksel ...
-Preparing to replace cpp 4:4.0.3-3 (using .../cpp_4%3a4.0.3-4_amd64.deb) ...
-Unpacking replacement cpp ...
-Preparing to replace gcc 4:4.0.3-3 (using .../gcc_4%3a4.0.3-4_amd64.deb) ...
-Removing old gcc doc directory.
-Unpacking replacement gcc ...
-Preparing to replace g++ 4:4.0.3-3 (using .../g++_4%3a4.0.3-4_amd64.deb) ...
-Unpacking replacement g++ ...
-Setting up libgnutls13 (1.3.5-1.1) ...
-
+Setting up cpp-4.0 (4.0.3-3) ...
 Setting up cpp (4.0.3-4) ...
 
+Setting up libdb4.4 (4.4.20-4) ...
+Setting up patch (2.5.9-4) ...
+Setting up make (3.81-2) ...
+Setting up gcc-4.0 (4.0.3-3) ...
 Setting up gcc (4.0.3-4) ...
+
+Setting up linux-kernel-headers (2.6.13+0rc3-2.1) ...
+Setting up libc6-dev (2.3.6-10) ...
+Setting up cowdancer (0.14) ...
+Setting up g++-4.0 (4.0.3-3) ...
+Setting up libstdc++6-4.0-dev (4.0.3-3) ...
 
 Setting up g++ (4.0.3-4) ...
 
-Setting up debconf-i18n (1.5.1) ...
-Setting up debconf (1.5.1) ...
+Setting up perl-modules (5.8.8-4) ...
+Setting up perl (5.8.8-4) ...
 
-Setting up libssl0.9.8 (0.9.8b-2) ...
+Setting up dpkg-dev (1.13.19) ...
+Setting up build-essential (11.2) ...
+Copying back the cached apt archive contents
+ -> unmounting dev/pts filesystem
+ -> unmounting proc filesystem
+ -> Invoking pbuilder
++ sudo cowbuilder --update --basepath /var/cache/pbuilder/base-test.cow
+W: /home/dancer/.pbuilderrc does not exist
+ -> Running in no-targz mode
+ -> copying local configuration
+ -> mounting /proc filesystem
+ln: creating symbolic link `/var/cache/pbuilder/build/cow.11932/etc/mtab' to `../proc/mounts': File exists
+ -> mounting /dev/pts filesystem
+ -> policy-rc.d already exists
+Refreshing the base.tgz 
+ -> upgrading packages
+Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
+Hit http://ftp.jp.debian.org sid Release
+Err http://ftp.jp.debian.org sid Release
+  
+Get:2 http://ftp.jp.debian.org sid Release [38.3kB]
+Ign http://ftp.jp.debian.org sid Release
+Get:3 http://ftp.jp.debian.org sid/main Packages/DiffIndex [12.6kB]
+Fetched 51.1kB in 0s (129kB/s)
+Reading package lists...
+W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
+W: You may want to run apt-get update to correct these problems
+dpkg - warning: ignoring request to remove lilo which isn't installed.
+Obtaining the cached apt archive contents
+Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:537761
 
-Setting up tasksel (2.44) ...
-
-Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:485108
-
+Building dependency tree...
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Reading package lists...
 Building dependency tree...
 build-essential is already the newest version.
 dpkg-dev is already the newest version.
 apt is already the newest version.
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 Copying back the cached apt archive contents
- -> new cache content bsdutils_1%3a2.12r-10_amd64.deb added
- -> new cache content e2fslibs_1.38+1.39-WIP-2006.04.09-2_amd64.deb added
- -> new cache content e2fsprogs_1.38+1.39-WIP-2006.04.09-2_amd64.deb added
- -> new cache content findutils_4.2.27-3_amd64.deb added
- -> new cache content mount_2.12r-10_amd64.deb added
- -> new cache content util-linux_2.12r-10_amd64.deb added
- -> new cache content debconf-i18n_1.5.1_all.deb added
- -> new cache content debconf_1.5.1_all.deb added
- -> new cache content libdevmapper1.02_2%3a1.02.05-2_amd64.deb added
- -> new cache content libblkid1_1.38+1.39-WIP-2006.04.09-2_amd64.deb added
- -> new cache content libcomerr2_1.38+1.39-WIP-2006.04.09-2_amd64.deb added
- -> new cache content libss2_1.38+1.39-WIP-2006.04.09-2_amd64.deb added
- -> new cache content libuuid1_1.38+1.39-WIP-2006.04.09-2_amd64.deb added
- -> new cache content libgnutls13_1.3.5-1.1_amd64.deb added
- -> new cache content libssl0.9.8_0.9.8b-2_amd64.deb added
- -> new cache content tasksel_2.44_all.deb added
- -> new cache content cpp_4%3a4.0.3-4_amd64.deb added
- -> new cache content gcc_4%3a4.0.3-4_amd64.deb added
- -> new cache content g++_4%3a4.0.3-4_amd64.deb added
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-+ sudo pbuilder build --buildplace /var/cache/pbuilder/build/cow/work8961-1 --no-targz --internal-chrootexec 'chroot /var/cache/pbuilder/build/cow/work8961-1 cow-shell' dsh_0.25.6-1.dsc
+ -> Copying COW directory
+ -> Invoking pbuilder
+ -> removing cowbuilder working copy
++ sudo pdebuild --pbuilder cowbuilder -- --basepath /var/cache/pbuilder/base-test.cow
+W: /home/dancer/.pbuilderrc does not exist
+  -> using cowbuilder as pbuilder
+dpkg-buildpackage: source package is cowdancer
+dpkg-buildpackage: source version is 0.15
+dpkg-buildpackage: source changed by Junichi Uekawa <dancer@debian.org>
+dpkg-buildpackage: source version without epoch 0.15
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -f build-stamp configure-stamp
+/usr/bin/make clean
+make[1]: Entering directory `/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer'
+rm *~ *.o *.lo libcowdancer.so cow-shell cowbuilder
+rm: cannot remove `*~': No such file or directory
+make[1]: [clean] Error 1 (ignored)
+make[1]: Leaving directory `/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer'
+dh_clean
+ dpkg-source -b cowdancer
+dpkg-source: warning: source directory `./cowdancer' is not <sourcepackage>-<upstreamversion> `cowdancer-0.15'
+dpkg-source: building cowdancer in cowdancer_0.15.tar.gz
+dpkg-source: building cowdancer in cowdancer_0.15.dsc
+ dpkg-genchanges -S
+dpkg-genchanges: including full source code in upload
+dpkg-buildpackage: source only upload: Debian-native package
 W: /home/dancer/.pbuilderrc does not exist
  -> Running in no-targz mode
 I: using fakeroot in build.
 pbuilder-buildpackage/amd64 $Id$
 $Id$
 
-Current time: Fri May 26 06:36:15 JST 2006
-pbuilder-time-stamp: 1148592975
+Current time: Mon May 29 07:16:02 JST 2006
+pbuilder-time-stamp: 1148854562
  -> copying local configuration
  -> mounting /proc filesystem
-ln: creating symbolic link `/var/cache/pbuilder/build/cow/work8961-1/etc/mtab' to `../proc/mounts': File exists
+ln: creating symbolic link `/var/cache/pbuilder/build/cow.12919/etc/mtab' to `../proc/mounts': File exists
  -> mounting /dev/pts filesystem
  -> policy-rc.d already exists
- -> created buildresult dir :/var/cache/pbuilder/result/
+ -> created buildresult dir :/var/cache/pbuilder/result
 Obtaining the cached apt archive contents
 Installing the build-deps
  -> Attempting to parse the build-deps : pbuilder-satisfydepends,v 1.27 2006/05/22 02:18:00 dancer Exp $
- -> Considering  debhelper (>> 3.0.0)
+ -> Considering  debhelper (>> 4.0.0)
    -> Trying debhelper
- -> Considering  libdshconfig1-dev (>= 0.20.11-1)
-   -> Trying libdshconfig1-dev
- -> Installing  debhelper libdshconfig1-dev
+ -> Installing  debhelper
 Reading package lists...
 Building dependency tree...
 The following extra packages will be installed:
-  file gettext html2text intltool-debian libdshconfig1 libmagic1 po-debconf
+  file gettext gettext-base html2text intltool-debian libmagic1 po-debconf
 Suggested packages:
   dh-make cvs gettext-doc
 Recommended packages:
   curl libmail-sendmail-perl libcompress-zlib-perl
 The following NEW packages will be installed:
-  debhelper file gettext html2text intltool-debian libdshconfig1
-  libdshconfig1-dev libmagic1 po-debconf
-0 upgraded, 9 newly installed, 0 to remove and 0 not upgraded.
-Need to get 2912kB of archives.
-After unpacking 9695kB of additional disk space will be used.
+  debhelper file gettext gettext-base html2text intltool-debian libmagic1
+  po-debconf
+0 upgraded, 8 newly installed, 0 to remove and 0 not upgraded.
+Need to get 2443kB/2983kB of archives.
+After unpacking 10.3MB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
-  libmagic1 file html2text gettext intltool-debian po-debconf debhelper
-  libdshconfig1 libdshconfig1-dev
-Get:1 http://ftp.jp.debian.org sid/main libmagic1 4.17-1 [277kB]
-Get:2 http://ftp.jp.debian.org sid/main file 4.17-1 [31.4kB]
-Get:3 http://ftp.jp.debian.org sid/main html2text 1.3.2a-3 [115kB]
-Get:4 http://ftp.jp.debian.org sid/main gettext 0.14.5-2 [1815kB]
-Get:5 http://ftp.jp.debian.org sid/main intltool-debian 0.34.2+20060512 [30.5kB]
-Get:6 http://ftp.jp.debian.org sid/main po-debconf 1.0.1 [97.2kB]
-Get:7 http://ftp.jp.debian.org sid/main debhelper 5.0.35 [509kB]
-Get:8 http://ftp.jp.debian.org sid/main libdshconfig1 0.20.12-1 [10.8kB]
-Get:9 http://ftp.jp.debian.org sid/main libdshconfig1-dev 0.20.12-1 [26.2kB]
-Fetched 2912kB in 3s (864kB/s)
+  gettext-base libmagic1 file html2text gettext intltool-debian po-debconf
+  debhelper
+Get:1 http://ftp.jp.debian.org sid/main gettext-base 0.14.5-4 [107kB]
+Get:2 http://ftp.jp.debian.org sid/main libmagic1 4.17-1 [277kB]
+Get:3 http://ftp.jp.debian.org sid/main file 4.17-1 [31.4kB]
+Get:4 http://ftp.jp.debian.org sid/main html2text 1.3.2a-3 [92.7kB]
+Get:5 http://ftp.jp.debian.org sid/main gettext 0.14.5-4 [1828kB]
+Get:6 http://ftp.jp.debian.org sid/main po-debconf 1.0.2 [108kB]
+Fetched 2443kB in 2s (990kB/s)
+Selecting previously deselected package gettext-base.
+(Reading database ... 11178 files and directories currently installed.)
+Unpacking gettext-base (from .../gettext-base_0.14.5-4_amd64.deb) ...
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:487305
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:487305
 Selecting previously deselected package libmagic1.
-(Reading database ... 12022 files and directories currently installed.)
 Unpacking libmagic1 (from .../libmagic1_4.17-1_amd64.deb) ...
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:597321
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:597321
 Selecting previously deselected package file.
 Unpacking file (from .../archives/file_4.17-1_amd64.deb) ...
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:597321
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:597321
 Selecting previously deselected package html2text.
 Unpacking html2text (from .../html2text_1.3.2a-3_amd64.deb) ...
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:613730
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:613730
 Selecting previously deselected package gettext.
-Unpacking gettext (from .../gettext_0.14.5-2_amd64.deb) ...
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:501468
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:501468
+Unpacking gettext (from .../gettext_0.14.5-4_amd64.deb) ...
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:99987
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:99987
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:99988
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:99988
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:99989
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:99989
 Selecting previously deselected package intltool-debian.
 Unpacking intltool-debian (from .../intltool-debian_0.34.2+20060512_all.deb) ...
 Selecting previously deselected package po-debconf.
-Unpacking po-debconf (from .../po-debconf_1.0.1_all.deb) ...
+Unpacking po-debconf (from .../po-debconf_1.0.2_all.deb) ...
 Selecting previously deselected package debhelper.
 Unpacking debhelper (from .../debhelper_5.0.35_all.deb) ...
-Selecting previously deselected package libdshconfig1.
-Unpacking libdshconfig1 (from .../libdshconfig1_0.20.12-1_amd64.deb) ...
-Selecting previously deselected package libdshconfig1-dev.
-Unpacking libdshconfig1-dev (from .../libdshconfig1-dev_0.20.12-1_amd64.deb) ...
+Setting up gettext-base (0.14.5-4) ...
+
 Setting up libmagic1 (4.17-1) ...
 
 Setting up file (4.17-1) ...
 Setting up html2text (1.3.2a-3) ...
 
-Setting up gettext (0.14.5-2) ...
+Setting up gettext (0.14.5-4) ...
 
 Setting up intltool-debian (0.34.2+20060512) ...
-Setting up po-debconf (1.0.1) ...
+Setting up po-debconf (1.0.2) ...
 Setting up debhelper (5.0.35) ...
-Setting up libdshconfig1 (0.20.12-1) ...
-
-Setting up libdshconfig1-dev (0.20.12-1) ...
  -> Finished parsing the build-deps
-Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:485108
-
+Reading package lists...
 Building dependency tree...
 The following NEW packages will be installed:
   fakeroot
@@ -325,55 +805,44 @@ After unpacking 401kB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   fakeroot
 Get:1 http://ftp.jp.debian.org sid/main fakeroot 1.5.8 [96.2kB]
-Fetched 96.2kB in 0s (388kB/s)
+Fetched 96.2kB in 0s (396kB/s)
 Selecting previously deselected package fakeroot.
-(Reading database ... 12616 files and directories currently installed.)
+(Reading database ... 11796 files and directories currently installed.)
 Unpacking fakeroot (from .../fakeroot_1.5.8_amd64.deb) ...
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:597350
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:597350
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:613733
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:613733
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:487306
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:487306
 Setting up fakeroot (1.5.8) ...
 
 Copying back the cached apt archive contents
- -> new cache content libmagic1_4.17-1_amd64.deb added
- -> new cache content file_4.17-1_amd64.deb added
- -> new cache content html2text_1.3.2a-3_amd64.deb added
- -> new cache content gettext_0.14.5-2_amd64.deb added
- -> new cache content intltool-debian_0.34.2+20060512_all.deb added
- -> new cache content po-debconf_1.0.1_all.deb added
- -> new cache content debhelper_5.0.35_all.deb added
- -> new cache content libdshconfig1_0.20.12-1_amd64.deb added
- -> new cache content libdshconfig1-dev_0.20.12-1_amd64.deb added
- -> new cache content fakeroot_1.5.8_amd64.deb added
+ -> new cache content gettext-base_0.14.5-4_amd64.deb added
+ -> new cache content gettext_0.14.5-4_amd64.deb added
+ -> new cache content po-debconf_1.0.2_all.deb added
 Copying source file
-    -> copying [dsh_0.25.6-1.dsc]
-    -> copying [./dsh_0.25.6.orig.tar.gz]
-    -> copying [./dsh_0.25.6-1.diff.gz]
+    -> copying [/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.15.dsc]
+    -> copying [/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.15.tar.gz]
 Extracting source
 su: Authentication service cannot retrieve authentication info.
 (Ignored)
 dpkg-source: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
-dpkg-source: warning: could not verify signature on ./dsh_0.25.6-1.dsc since gpg isn't installed
-dpkg-source: extracting dsh in dsh-0.25.6
-dpkg-source: unpacking dsh_0.25.6.orig.tar.gz
-dpkg-source: applying ./dsh_0.25.6-1.diff.gz
+dpkg-source: warning: extracting unsigned source package (./cowdancer_0.15.dsc)
+dpkg-source: extracting cowdancer in cowdancer-0.15
+dpkg-source: unpacking cowdancer_0.15.tar.gz
  -> Building the package
 su: Authentication service cannot retrieve authentication info.
 (Ignored)
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
-dpkg-buildpackage: source package is dsh
+dpkg-buildpackage: source package is cowdancer
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
-dpkg-buildpackage: source version is 0.25.6-1
+dpkg-buildpackage: source version is 0.15
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-buildpackage: source changed by Junichi Uekawa <dancer@debian.org>
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-buildpackage: host architecture amd64
-dpkg-buildpackage: source version without epoch 0.25.6-1
+dpkg-buildpackage: source version without epoch 0.15
 dpkg-checkbuilddeps: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
@@ -382,505 +851,104 @@ dh_testdir
 dh_testroot
 rm -f build-stamp configure-stamp
 /usr/bin/make clean
-make[1]: Entering directory `/tmp/buildd/dsh-0.25.6'
-make[1]: *** No rule to make target `clean'.  Stop.
-make[1]: Leaving directory `/tmp/buildd/dsh-0.25.6'
-make: [clean] Error 2 (ignored)
-/usr/bin/make distclean
-make[1]: Entering directory `/tmp/buildd/dsh-0.25.6'
-make[1]: *** No rule to make target `distclean'.  Stop.
-make[1]: Leaving directory `/tmp/buildd/dsh-0.25.6'
-make: [clean] Error 2 (ignored)
+make[1]: Entering directory `/tmp/buildd/cowdancer-0.15'
+rm *~ *.o *.lo libcowdancer.so cow-shell cowbuilder
+rm: cannot remove `*~': No such file or directory
+rm: cannot remove `*.o': No such file or directory
+rm: cannot remove `*.lo': No such file or directory
+rm: cannot remove `libcowdancer.so': No such file or directory
+rm: cannot remove `cow-shell': No such file or directory
+rm: cannot remove `cowbuilder': No such file or directory
+make[1]: [clean] Error 1 (ignored)
+make[1]: Leaving directory `/tmp/buildd/cowdancer-0.15'
 dh_clean
-dh_clean: Compatibility levels before 4 are deprecated.
- dpkg-source -b dsh-0.25.6
+ dpkg-source -b cowdancer-0.15
 dpkg-source: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
-dpkg-source: building dsh using existing dsh_0.25.6.orig.tar.gz
-dpkg-source: building dsh in dsh_0.25.6-1.diff.gz
-dpkg-source: warning: file dcp.sh has no final newline (either original or modified version)
-dpkg-source: warning: file debian/compat has no final newline (either original or modified version)
-dpkg-source: building dsh in dsh_0.25.6-1.dsc
+dpkg-source: building cowdancer in cowdancer_0.15.tar.gz
+dpkg-source: building cowdancer in cowdancer_0.15.dsc
  debian/rules build
 dh_testdir
-INSTALL_PROGRAM='install -p    -o root -g root  -m  755 -s' CFLAGS='-Wall -g -O2' \
-	 ./configure --prefix=/usr --sysconfdir=/etc/dsh --mandir=/usr/share/man
-checking for a BSD-compatible install... /usr/bin/install -c
-checking whether build environment is sane... yes
-checking for gawk... no
-checking for mawk... mawk
-checking whether make sets $(MAKE)... yes
-checking whether to enable maintainer-specific portions of Makefiles... no
-checking for style of include used by make... GNU
-checking for gcc... gcc
-checking for C compiler default output file name... a.out
-checking whether the C compiler works... yes
-checking whether we are cross compiling... no
-checking for suffix of executables... 
-checking for suffix of object files... o
-checking whether we are using the GNU C compiler... yes
-checking whether gcc accepts -g... yes
-checking for gcc option to accept ANSI C... none needed
-checking dependency style of gcc... gcc3
-checking for library containing strerror... none required
-checking for gcc... (cached) gcc
-checking whether we are using the GNU C compiler... (cached) yes
-checking whether gcc accepts -g... (cached) yes
-checking for gcc option to accept ANSI C... (cached) none needed
-checking dependency style of gcc... (cached) gcc3
-checking for gcc... (cached) gcc
-checking whether we are using the GNU C compiler... (cached) yes
-checking whether gcc accepts -g... (cached) yes
-checking for gcc option to accept ANSI C... (cached) none needed
-checking dependency style of gcc... (cached) gcc3
-checking whether make sets $(MAKE)... (cached) yes
-checking how to run the C preprocessor... gcc -E
-checking for egrep... grep -E
-checking for ANSI C header files... yes
-checking for sys/wait.h that is POSIX.1 compatible... yes
-checking build system type... x86_64-unknown-linux-gnu
-checking host system type... x86_64-unknown-linux-gnu
-checking for a sed that does not truncate output... /bin/sed
-checking for ld used by gcc... /usr/bin/ld
-checking if the linker (/usr/bin/ld) is GNU ld... yes
-checking for /usr/bin/ld option to reload object files... -r
-checking for BSD-compatible nm... /usr/bin/nm -B
-checking whether ln -s works... yes
-checking how to recognise dependent libraries... pass_all
-checking for sys/types.h... yes
-checking for sys/stat.h... yes
-checking for stdlib.h... yes
-checking for string.h... yes
-checking for memory.h... yes
-checking for strings.h... yes
-checking for inttypes.h... yes
-checking for stdint.h... yes
-checking for unistd.h... yes
-checking dlfcn.h usability... yes
-checking dlfcn.h presence... yes
-checking for dlfcn.h... yes
-checking for g++... g++
-checking whether we are using the GNU C++ compiler... yes
-checking whether g++ accepts -g... yes
-checking dependency style of g++... gcc3
-checking how to run the C++ preprocessor... g++ -E
-checking for g77... no
-checking for f77... no
-checking for xlf... no
-checking for frt... no
-checking for pgf77... no
-checking for fort77... no
-checking for fl32... no
-checking for af77... no
-checking for f90... no
-checking for xlf90... no
-checking for pgf90... no
-checking for epcf90... no
-checking for f95... no
-checking for fort... no
-checking for xlf95... no
-checking for ifc... no
-checking for efc... no
-checking for pgf95... no
-checking for lf95... no
-checking for gfortran... no
-checking whether we are using the GNU Fortran 77 compiler... no
-checking whether  accepts -g... no
-checking the maximum length of command line arguments... 32768
-checking command to parse /usr/bin/nm -B output from gcc object... ok
-checking for objdir... .libs
-checking for ar... ar
-checking for ranlib... ranlib
-checking for strip... strip
-checking if gcc static flag  works... yes
-checking if gcc supports -fno-rtti -fno-exceptions... no
-checking for gcc option to produce PIC... -fPIC
-checking if gcc PIC flag -fPIC works... yes
-checking if gcc supports -c -o file.o... yes
-checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
-checking whether -lc should be explicitly linked in... no
-checking dynamic linker characteristics... GNU/Linux ld.so
-checking how to hardcode library paths into programs... immediate
-checking whether stripping libraries is possible... yes
-checking if libtool supports shared libraries... yes
-checking whether to build shared libraries... yes
-checking whether to build static libraries... yes
-configure: creating libtool
-appending configuration tag "CXX" to libtool
-checking for ld used by g++... /usr/bin/ld -m elf_x86_64
-checking if the linker (/usr/bin/ld -m elf_x86_64) is GNU ld... yes
-checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
-checking for g++ option to produce PIC... -fPIC
-checking if g++ PIC flag -fPIC works... yes
-checking if g++ supports -c -o file.o... yes
-checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
-checking dynamic linker characteristics... GNU/Linux ld.so
-checking how to hardcode library paths into programs... immediate
-checking whether stripping libraries is possible... yes
-appending configuration tag "F77" to libtool
-checking for an ANSI C-conforming const... yes
-checking for msgfmt... /usr/bin/msgfmt
-checking for gmsgfmt... /usr/bin/msgfmt
-checking for xgettext... /usr/bin/xgettext
-checking for msgmerge... /usr/bin/msgmerge
-checking for ld used by GCC... /usr/bin/ld -m elf_x86_64
-checking if the linker (/usr/bin/ld -m elf_x86_64) is GNU ld... yes
-checking for shared library run path origin... done
-checking whether NLS is requested... yes
-checking for GNU gettext in libc... yes
-checking for gettext... yes
-checking getopt.h usability... yes
-checking getopt.h presence... yes
-checking for getopt.h... yes
-checking fcntl.h usability... yes
-checking fcntl.h presence... yes
-checking for fcntl.h... yes
-checking libintl.h usability... yes
-checking libintl.h presence... yes
-checking for libintl.h... yes
-checking locale.h usability... yes
-checking locale.h presence... yes
-checking for locale.h... yes
-checking for stdlib.h... (cached) yes
-checking netdb.h usability... yes
-checking netdb.h presence... yes
-checking for netdb.h... yes
-checking for string.h... (cached) yes
-checking for unistd.h... (cached) yes
-checking netgroup.h usability... no
-checking netgroup.h presence... no
-checking for netgroup.h... no
-checking signal.h usability... yes
-checking signal.h presence... yes
-checking for signal.h... yes
-checking for libdshconfig.h ... yes
-checking for asprintf... yes
-checking for strdup... yes
-checking for getopt_long... yes
-checking for getline... yes
-checking for dup2... yes
-checking for setlocale... yes
-checking for strcasecmp... yes
-checking for strchr... yes
-checking for setnetgrent... yes
-checking for getnetgrent... yes
-checking for endnetgrent... yes
-checking for open_dshconfig in -ldshconfig... yes
-checking netdb.h has setnetgrent that returns void... no
-checking getopt with a GNU option reordering extention... yes, disabling
-configure: creating ./config.status
-config.status: creating po/Makefile.in
-config.status: creating m4/Makefile
-config.status: creating Makefile
-config.status: creating config.h
-config.status: executing depfiles commands
-config.status: executing default-1 commands
-config.status: creating po/POTFILES
-config.status: creating po/Makefile
 touch configure-stamp
 dh_testdir
 /usr/bin/make
-make[1]: Entering directory `/tmp/buildd/dsh-0.25.6'
-/usr/bin/make  all-recursive
-make[2]: Entering directory `/tmp/buildd/dsh-0.25.6'
-Making all in m4
-make[3]: Entering directory `/tmp/buildd/dsh-0.25.6/m4'
-make[3]: Nothing to be done for `all'.
-make[3]: Leaving directory `/tmp/buildd/dsh-0.25.6/m4'
-Making all in po
-make[3]: Entering directory `/tmp/buildd/dsh-0.25.6/po'
-make[3]: Nothing to be done for `all'.
-make[3]: Leaving directory `/tmp/buildd/dsh-0.25.6/po'
-make[3]: Entering directory `/tmp/buildd/dsh-0.25.6'
-if gcc -DHAVE_CONFIG_H -I. -I. -I.    -DDSHCONFDIR="\"/etc/dsh\"" -DDSH_COMMANDLINE="\"/usr/bin/dsh\"" -DLOCALEDIR="\"/usr/share/locale\"" -Wall -g -O2 -MT dsh-dsh.o -MD -MP -MF ".deps/dsh-dsh.Tpo" -c -o dsh-dsh.o `test -f 'dsh.c' || echo './'`dsh.c; \
-	then mv -f ".deps/dsh-dsh.Tpo" ".deps/dsh-dsh.Po"; else rm -f ".deps/dsh-dsh.Tpo"; exit 1; fi
-if gcc -DHAVE_CONFIG_H -I. -I. -I.    -DDSHCONFDIR="\"/etc/dsh\"" -DDSH_COMMANDLINE="\"/usr/bin/dsh\"" -DLOCALEDIR="\"/usr/share/locale\"" -Wall -g -O2 -MT dsh-linkedlist.o -MD -MP -MF ".deps/dsh-linkedlist.Tpo" -c -o dsh-linkedlist.o `test -f 'linkedlist.c' || echo './'`linkedlist.c; \
-	then mv -f ".deps/dsh-linkedlist.Tpo" ".deps/dsh-linkedlist.Po"; else rm -f ".deps/dsh-linkedlist.Tpo"; exit 1; fi
-if gcc -DHAVE_CONFIG_H -I. -I. -I.    -DDSHCONFDIR="\"/etc/dsh\"" -DDSH_COMMANDLINE="\"/usr/bin/dsh\"" -DLOCALEDIR="\"/usr/share/locale\"" -Wall -g -O2 -MT dsh-parameter.o -MD -MP -MF ".deps/dsh-parameter.Tpo" -c -o dsh-parameter.o `test -f 'parameter.c' || echo './'`parameter.c; \
-	then mv -f ".deps/dsh-parameter.Tpo" ".deps/dsh-parameter.Po"; else rm -f ".deps/dsh-parameter.Tpo"; exit 1; fi
-/bin/sh ./libtool --mode=link gcc  -Wall -g -O2   -o dsh  dsh-dsh.o dsh-linkedlist.o dsh-parameter.o  -ldshconfig 
-mkdir .libs
-gcc -Wall -g -O2 -o dsh dsh-dsh.o dsh-linkedlist.o dsh-parameter.o  /usr/lib/libdshconfig.so
-mkdir build-man
-sed -e 's,[@]sysconfdir[@],/etc/dsh,' < ./dsh.1 > build-man/dsh.1
-sed -e 's,[@]sysconfdir[@],/etc/dsh,' < ./dsh.conf.5 > build-man/dsh.conf.5
-make[3]: Leaving directory `/tmp/buildd/dsh-0.25.6'
-make[2]: Leaving directory `/tmp/buildd/dsh-0.25.6'
-make[1]: Leaving directory `/tmp/buildd/dsh-0.25.6'
-/usr/bin/make check
-make[1]: Entering directory `/tmp/buildd/dsh-0.25.6'
-Making check in m4
-make[2]: Entering directory `/tmp/buildd/dsh-0.25.6/m4'
-make[2]: Nothing to be done for `check'.
-make[2]: Leaving directory `/tmp/buildd/dsh-0.25.6/m4'
-Making check in po
-make[2]: Entering directory `/tmp/buildd/dsh-0.25.6/po'
-make[2]: Nothing to be done for `check'.
-make[2]: Leaving directory `/tmp/buildd/dsh-0.25.6/po'
-make[2]: Entering directory `/tmp/buildd/dsh-0.25.6'
-/usr/bin/make  dsh
-make[3]: Entering directory `/tmp/buildd/dsh-0.25.6'
-make[3]: `dsh' is up to date.
-make[3]: Leaving directory `/tmp/buildd/dsh-0.25.6'
-/usr/bin/make  check-TESTS
-make[3]: Entering directory `/tmp/buildd/dsh-0.25.6'
-PASS: tests/param-f.sh
-dsh: File ./tests/nonexistent.file could not be opened for read
-PASS: tests/param-f-fail.sh
-PASS: tests/param-f-with-space.sh
-PASS: tests/param-m.sh
-test to check that unknown parameter checking is right.
-./dsh: unrecognized option `--unknown-parameter'
-./dsh: invalid option -- u
-PASS: tests/param-unknown.sh
-test1
-test2
-dsh: Process terminated (before write).
-PASS: tests/param-i.sh
-Check that cn4 option is working.
-PASS: tests/param-cn4.sh
-test to check that -b0 is rejected, and -b1 is accepted
-Buffer size needs to be greater than 1
-Buffer size needs to be greater than 1
-a
-b
-PASS: tests/param-b-0.sh
-dsh: Failed executing ./invalid-exec-file with llexec call
-dsh: Failed executing ./invalid-exec-file with llexec call
-dsh: Failed executing ./invalid-exec-file with llexec call
-dsh: Failed executing ./invalid-exec-file with llexec call
-success
-dsh: Failed executing ./invalid-exec-file with llexec call
-dsh: Failed executing ./invalid-exec-file with llexec call
-dsh: Failed executing ./invalid-exec-file with llexec call
-dsh: Failed executing ./invalid-exec-file with llexec call
-success
-success
-success
-success
-success
-a: dsh: Failed executing ./invalid-exec-file with llexec call
-b: dsh: Failed executing ./invalid-exec-file with llexec call
-c: dsh: Failed executing ./invalid-exec-file with llexec call
-d: dsh: Failed executing ./invalid-exec-file with llexec call
-success
-dsh: Failed executing ./invalid-exec-file with llexec call
-dsh: Failed executing ./invalid-exec-file with llexec call
-dsh: Failed executing ./invalid-exec-file with llexec call
-dsh: Failed executing ./invalid-exec-file with llexec call
-success
-PASS: tests/param-r-invalid.sh
-2: 2
-1: 1
-dsh: fork limit and wait shell cannot be specified at the same time
-PASS: tests/param-F-invalid.sh
-Thu May 25 21:36:34 UTC 2006
-2: Using sleep as the remote shell
-2: Show machine names on output
-2: Adding machine 5,4,3,2,1 to list
-2: Setting forklimit to 3 and wait_shell to 0
-2: DUMPing parameters passed to llexec
-2: [2] 
-Using sleep as the remote shell
-Show machine names on output
-Adding machine 5,4,3,2,1 to list
-Setting forklimit to 3 and wait_shell to 0
-DUMPing parameters passed to llexec
-[2] 
-3: Using sleep as the remote shell
-3: Show machine names on output
-3: Adding machine 5,4,3,2,1 to list
-3: Setting forklimit to 3 and wait_shell to 0
-3: DUMPing parameters passed to llexec
-3: [3] 
-Using sleep as the remote shell
-Show machine names on output
-Adding machine 5,4,3,2,1 to list
-Setting forklimit to 3 and wait_shell to 0
-DUMPing parameters passed to llexec
-[3] 
-1: Using sleep as the remote shell
-1: Show machine names on output
-1: Adding machine 5,4,3,2,1 to list
-1: Setting forklimit to 3 and wait_shell to 0
-1: ... Waiting for process to end with waitpid
-1: DUMPing parameters passed to llexec
-1: [1] 
-Using sleep as the remote shell
-Show machine names on output
-Adding machine 5,4,3,2,1 to list
-Setting forklimit to 3 and wait_shell to 0
-... Waiting for process to end with waitpid
-DUMPing parameters passed to llexec
-[1] 
-4: Using sleep as the remote shell
-4: Show machine names on output
-4: Adding machine 5,4,3,2,1 to list
-4: Setting forklimit to 3 and wait_shell to 0
-4: DUMPing parameters passed to llexec
-4: [4] 
-Using sleep as the remote shell
-Show machine names on output
-Adding machine 5,4,3,2,1 to list
-Setting forklimit to 3 and wait_shell to 0
-DUMPing parameters passed to llexec
-[4] 
-5: Using sleep as the remote shell
-5: Show machine names on output
-5: Adding machine 5,4,3,2,1 to list
-5: Setting forklimit to 3 and wait_shell to 0
-5: DUMPing parameters passed to llexec
-5: [5] 
-Using sleep as the remote shell
-Show machine names on output
-Adding machine 5,4,3,2,1 to list
-Setting forklimit to 3 and wait_shell to 0
-DUMPing parameters passed to llexec
-[5] 
---- Terminated running
-Using sleep as the remote shell
-Show machine names on output
-Adding machine 5,4,3,2,1 to list
-Setting forklimit to 3 and wait_shell to 0
-... Waiting for process to end with waitpid
-... Waiting for process to end with waitpid
-Thu May 25 21:36:39 UTC 2006
-PASS: tests/param-F-forklimit.sh
-PASS: tests/param-gnu-getopt.sh
-PASS: tests/news-okay.sh
-a: a
-dsh: Process terminated (before write).
-b: b
-c: c
-PASS: tests/segv-catcher.sh
-l w
-PASS: tests/test-bufferoverflow.sh
-PASS: tests/machinelist-comment-test.sh
-PASS: tests/machinelist-order.sh
-===================
-All 17 tests passed
-===================
-make[3]: Leaving directory `/tmp/buildd/dsh-0.25.6'
-make[2]: Leaving directory `/tmp/buildd/dsh-0.25.6'
-make[1]: Leaving directory `/tmp/buildd/dsh-0.25.6'
+make[1]: Entering directory `/tmp/buildd/cowdancer-0.15'
+gcc -D_REENTRANT -fPIC cowdancer.c -o cowdancer.lo -c -Wall -O2 -g
+gcc -ldl -shared -o libcowdancer.so cowdancer.lo
+gcc cow-shell.c -o cow-shell.o -c -Wall -O2 -g 
+cc   cow-shell.o   -o cow-shell
+gcc cowbuilder.c -o cowbuilder.o -c -Wall -O2 -g 
+cc   cowbuilder.o   -o cowbuilder
+make[1]: Leaving directory `/tmp/buildd/cowdancer-0.15'
+#/usr/bin/make check
 touch build-stamp
  fakeroot debian/rules binary
 dh_testdir
 dh_testroot
 dh_clean -k
-dh_clean: Compatibility levels before 4 are deprecated.
 dh_installdirs
-dh_installdirs: Compatibility levels before 4 are deprecated.
 # Add here commands to install the package into debian/dsh.
-/usr/bin/make install DESTDIR=/tmp/buildd/dsh-0.25.6/debian/dsh
-make[1]: Entering directory `/tmp/buildd/dsh-0.25.6'
-Making install in m4
-make[2]: Entering directory `/tmp/buildd/dsh-0.25.6/m4'
-make[3]: Entering directory `/tmp/buildd/dsh-0.25.6/m4'
-make[3]: Nothing to be done for `install-exec-am'.
-make[3]: Nothing to be done for `install-data-am'.
-make[3]: Leaving directory `/tmp/buildd/dsh-0.25.6/m4'
-make[2]: Leaving directory `/tmp/buildd/dsh-0.25.6/m4'
-Making install in po
-make[2]: Entering directory `/tmp/buildd/dsh-0.25.6/po'
-/bin/sh `case "./mkinstalldirs" in /*) echo "./mkinstalldirs" ;; *) echo ".././mkinstalldirs" ;; esac` /tmp/buildd/dsh-0.25.6/debian/dsh/usr/share
-mkdir -p -- /tmp/buildd/dsh-0.25.6/debian/dsh/usr/share
-mkdir -p -- /tmp/buildd/dsh-0.25.6/debian/dsh/usr/share/locale/ja/LC_MESSAGES
-installing ja.gmo as /tmp/buildd/dsh-0.25.6/debian/dsh/usr/share/locale/ja/LC_MESSAGES/dsh.mo
-if test "dsh" = "gettext"; then \
-	  /bin/sh `case "./mkinstalldirs" in /*) echo "./mkinstalldirs" ;; *) echo ".././mkinstalldirs" ;; esac` /tmp/buildd/dsh-0.25.6/debian/dsh/usr/share/gettext/po; \
-	  for file in Makefile.in.in Makevars remove-potcdate.sin   ; do \
-	    /usr/bin/install -c -m 644 ./$file \
-			    /tmp/buildd/dsh-0.25.6/debian/dsh/usr/share/gettext/po/$file; \
-	  done; \
-	else \
-	  : ; \
-	fi
-make[2]: Leaving directory `/tmp/buildd/dsh-0.25.6/po'
-make[2]: Entering directory `/tmp/buildd/dsh-0.25.6'
-make[3]: Entering directory `/tmp/buildd/dsh-0.25.6'
-test -z "/usr/bin" || mkdir -p -- . "/tmp/buildd/dsh-0.25.6/debian/dsh/usr/bin"
-  /bin/sh ./libtool --mode=install install -p    -o root -g root  -m  755 -s 'dsh' '/tmp/buildd/dsh-0.25.6/debian/dsh/usr/bin/dsh'
-install -p -o root -g root -m 755 -s dsh /tmp/buildd/dsh-0.25.6/debian/dsh/usr/bin/dsh
-test -z "/etc/dsh" || mkdir -p -- . "/tmp/buildd/dsh-0.25.6/debian/dsh/etc/dsh"
- /usr/bin/install -c -m 644 'dsh.conf' '/tmp/buildd/dsh-0.25.6/debian/dsh/etc/dsh/dsh.conf'
-for LANGS in ja ; do \
-		mkdir -p /tmp/buildd/dsh-0.25.6/debian/dsh/usr/share/man/$LANGS/man1 ;\
-		mkdir -p /tmp/buildd/dsh-0.25.6/debian/dsh/usr/share/man/$LANGS/man5 ;\
-		sed -e 's,[@]sysconfdir[@],/etc/dsh,' < ./dsh.$LANGS.1 \
-			> /tmp/buildd/dsh-0.25.6/debian/dsh/usr/share/man/$LANGS/man1/dsh.1 ; \
-		sed -e 's,[@]sysconfdir[@],/etc/dsh,' < ./dsh.conf.$LANGS.5 \
-			> /tmp/buildd/dsh-0.25.6/debian/dsh/usr/share/man/$LANGS/man5/dsh.conf.5 ; \
-	done
-test -z "/usr/share/man/man1" || mkdir -p -- . "/tmp/buildd/dsh-0.25.6/debian/dsh/usr/share/man/man1"
- /usr/bin/install -c -m 644 './build-man/dsh.1' '/tmp/buildd/dsh-0.25.6/debian/dsh/usr/share/man/man1/dsh.1'
-test -z "/usr/share/man/man5" || mkdir -p -- . "/tmp/buildd/dsh-0.25.6/debian/dsh/usr/share/man/man5"
- /usr/bin/install -c -m 644 './build-man/dsh.conf.5' '/tmp/buildd/dsh-0.25.6/debian/dsh/usr/share/man/man5/dsh.conf.5'
-make[3]: Leaving directory `/tmp/buildd/dsh-0.25.6'
-make[2]: Leaving directory `/tmp/buildd/dsh-0.25.6'
-make[1]: Leaving directory `/tmp/buildd/dsh-0.25.6'
-cp /tmp/buildd/dsh-0.25.6/debian/machines.list /tmp/buildd/dsh-0.25.6/debian/dsh/etc/dsh/machines.list
-cp /tmp/buildd/dsh-0.25.6/dsh.conf /tmp/buildd/dsh-0.25.6/debian/dsh/etc/dsh/dsh.conf
-ln -s ../machines.list /tmp/buildd/dsh-0.25.6/debian/dsh/etc/dsh/group/all
-install -d /tmp/buildd/dsh-0.25.6/debian/dsh/usr/lib/update-cluster
-install -m 755 /tmp/buildd/dsh-0.25.6/debian/dsh.updatelist /tmp/buildd/dsh-0.25.6/debian/dsh/usr/lib/update-cluster/
+/usr/bin/make install DESTDIR=/tmp/buildd/cowdancer-0.15/debian/cowdancer
+make[1]: Entering directory `/tmp/buildd/cowdancer-0.15'
+install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.15/debian/cowdancer/usr/lib/cowdancer/
+install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.15/debian/cowdancer/usr/share/man/man1/
+install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.15/debian/cowdancer/usr/share/man/man8/
+install -o root -g root -m 644  cow-shell.1 /tmp/buildd/cowdancer-0.15/debian/cowdancer/usr/share/man/man1/cow-shell.1
+install -o root -g root -m 644  cowbuilder.8 /tmp/buildd/cowdancer-0.15/debian/cowdancer/usr/share/man/man8/cowbuilder.8
+install -o root -g root -m 644  libcowdancer.so /tmp/buildd/cowdancer-0.15/debian/cowdancer/usr/lib/cowdancer/libcowdancer.so
+install -o root -g root -m 755 cow-shell /tmp/buildd/cowdancer-0.15/debian/cowdancer/usr/bin/cow-shell
+install -o root -g root -m 755 cowbuilder /tmp/buildd/cowdancer-0.15/debian/cowdancer/usr/sbin/cowbuilder
+make[1]: Leaving directory `/tmp/buildd/cowdancer-0.15'
 dh_testdir
 dh_testroot
 dh_installdocs NEWS
-dh_installdocs: Compatibility levels before 4 are deprecated.
-dh_installexamples
-dh_installexamples: Compatibility levels before 4 are deprecated.
-dh_installmenu
-dh_installmenu: Compatibility levels before 4 are deprecated.
-dh_installman
-dh_installman: Compatibility levels before 4 are deprecated.
-dh_installchangelogs ChangeLog 
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (0)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (0)
-dh_installchangelogs: Compatibility levels before 4 are deprecated.
+dh_installexamples
+dh_installmenu
+dh_installman
+dh_installchangelogs ChangeLog
+dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (0)
+debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (0)
 dh_link
-dh_link: Compatibility levels before 4 are deprecated.
 dh_strip
-dh_strip: Compatibility levels before 4 are deprecated.
 dh_shlibdeps
-dh_shlibdeps: Compatibility levels before 4 are deprecated.
 dpkg-shlibdeps: warning: no utmp entry available and LOGNAME not defined; using uid of process (0)
 couldn't open /etc/ld.so.conf: No such file or directory at /usr/bin/dpkg-shlibdeps line 137.
 dh_compress
-dh_compress: Compatibility levels before 4 are deprecated.
 dh_fixperms
-dh_fixperms: Compatibility levels before 4 are deprecated.
 dh_installdeb
-dh_installdeb: Compatibility levels before 4 are deprecated.
 dh_gencontrol
-dh_gencontrol: Compatibility levels before 4 are deprecated.
 dpkg-gencontrol: warning: no utmp entry available and LOGNAME not defined; using uid of process (0)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (0)
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (0)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (0)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (0)
+dpkg-gencontrol: warning: unknown substitution variable ${shlibs:Depends}
 dh_md5sums
-dh_md5sums: Compatibility levels before 4 are deprecated.
 dh_builddeb
-dh_builddeb: Compatibility levels before 4 are deprecated.
-dpkg-deb: building package `dsh' in `../dsh_0.25.6-1_amd64.deb'.
+dpkg-deb: building package `cowdancer' in `../cowdancer_0.15_amd64.deb'.
  dpkg-genchanges
 dpkg-genchanges: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
+dpkg-genchanges: warning: package cowdancer in control file but not in files list
+dpkg-genchanges: warning: package cowdancer in control file but not in files list
+dpkg-genchanges: warning: package cowdancer in control file but not in files list
+dpkg-genchanges: warning: package cowdancer in control file but not in files list
+dpkg-genchanges: warning: package cowdancer in control file but not in files list
 dpkg-genchanges: including full source code in upload
-dpkg-buildpackage: full upload (original source is included)
+dpkg-buildpackage: source only upload: Debian-native package
 Copying back the cached apt archive contents
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-Current time: Fri May 26 06:36:41 JST 2006
-pbuilder-time-stamp: 1148593001
-+ sudo diff -u /tmp/a /var/cache/pbuilder/build/cow/orig/var/log/dpkg.log
-+ sudo rm -rf /var/cache/pbuilder/build/cow/work8961-1
-+ cd ..
-+ sudo rm -rf /var/cache/pbuilder/build/cow
+Current time: Mon May 29 07:16:19 JST 2006
+pbuilder-time-stamp: 1148854579
+ -> Copying COW directory
+ -> Invoking pbuilder
+ -> Cleaning COW directory
 + echo end
 end

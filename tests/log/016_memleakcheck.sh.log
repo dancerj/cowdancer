@@ -1,63 +1,63 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.saX84T
++ TESTDIR=/tmp/tmp.iZBio25316
 ++ readlink -f tests/016_memleakcheck.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c
-+ gcc /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c -o /tmp/tmp.saX84T/tracer -g
++ gcc /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c -o /tmp/tmp.iZBio25316/tracer -g
 + set -ex
-+ cd /tmp/tmp.saX84T
++ cd /tmp/tmp.iZBio25316
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4.9e-05 seconds, 20.9 MB/s
+1024 bytes (1.0 kB) copied, 5.1e-05 seconds, 20.1 MB/s
 + MALLOC_TRACE=log
-+ cow-shell /tmp/tmp.saX84T/tracer
-00400000-00401000 r-xp 00000000 08:01 67318                              /tmp/tmp.saX84T/tracer
-00500000-00501000 rw-p 00000000 08:01 67318                              /tmp/tmp.saX84T/tracer
++ cow-shell /tmp/tmp.iZBio25316/tracer
+00400000-00401000 r-xp 00000000 08:01 49727                              /tmp/tmp.iZBio25316/tracer
+00500000-00501000 rw-p 00000000 08:01 49727                              /tmp/tmp.iZBio25316/tracer
 00501000-00522000 rw-p 00501000 00:00 0                                  [heap]
-2af58e444000-2af58e45b000 r-xp 00000000 08:01 357957                     /lib/ld-2.3.6.so
-2af58e45b000-2af58e45d000 rw-p 2af58e45b000 00:00 0 
-2af58e55a000-2af58e55c000 rw-p 00016000 08:01 357957                     /lib/ld-2.3.6.so
-2af58e55c000-2af58e55f000 r-xp 00000000 08:01 419953                     /usr/lib/cowdancer/libcowdancer.so
-2af58e55f000-2af58e65e000 ---p 00003000 08:01 419953                     /usr/lib/cowdancer/libcowdancer.so
-2af58e65e000-2af58e65f000 rw-p 00002000 08:01 419953                     /usr/lib/cowdancer/libcowdancer.so
-2af58e65f000-2af58e660000 r--p 00000000 08:01 67327                      /tmp/tmp.saX84T/.ilist
-2af58e660000-2af58e663000 rw-p 2af58e660000 00:00 0 
-2af58e672000-2af58e795000 r-xp 00000000 08:01 357955                     /lib/libc-2.3.6.so
-2af58e795000-2af58e895000 ---p 00123000 08:01 357955                     /lib/libc-2.3.6.so
-2af58e895000-2af58e8aa000 r--p 00123000 08:01 357955                     /lib/libc-2.3.6.so
-2af58e8aa000-2af58e8ad000 rw-p 00138000 08:01 357955                     /lib/libc-2.3.6.so
-2af58e8ad000-2af58e8b2000 rw-p 2af58e8ad000 00:00 0 
-2af58e8b2000-2af58e8b4000 r-xp 00000000 08:01 357948                     /lib/libdl-2.3.6.so
-2af58e8b4000-2af58e9b3000 ---p 00002000 08:01 357948                     /lib/libdl-2.3.6.so
-2af58e9b3000-2af58e9b5000 rw-p 00001000 08:01 357948                     /lib/libdl-2.3.6.so
-2af58e9b5000-2af58e9b6000 rw-p 2af58e9b5000 00:00 0 
-7fff1c650000-7fff1c666000 rw-p 7fff1c650000 00:00 0                      [stack]
+2afffbede000-2afffbef5000 r-xp 00000000 08:01 354848                     /lib/ld-2.3.6.so
+2afffbef5000-2afffbef7000 rw-p 2afffbef5000 00:00 0 
+2afffbff4000-2afffbff6000 rw-p 00016000 08:01 354848                     /lib/ld-2.3.6.so
+2afffbff6000-2afffbff9000 r-xp 00000000 08:01 134286                     /usr/lib/cowdancer/libcowdancer.so
+2afffbff9000-2afffc0f8000 ---p 00003000 08:01 134286                     /usr/lib/cowdancer/libcowdancer.so
+2afffc0f8000-2afffc0f9000 rw-p 00002000 08:01 134286                     /usr/lib/cowdancer/libcowdancer.so
+2afffc0f9000-2afffc0fa000 r--p 00000000 08:01 49779                      /tmp/tmp.iZBio25316/.ilist
+2afffc0fa000-2afffc0fd000 rw-p 2afffc0fa000 00:00 0 
+2afffc10d000-2afffc231000 r-xp 00000000 08:01 358223                     /lib/libc-2.3.6.so
+2afffc231000-2afffc330000 ---p 00124000 08:01 358223                     /lib/libc-2.3.6.so
+2afffc330000-2afffc345000 r--p 00123000 08:01 358223                     /lib/libc-2.3.6.so
+2afffc345000-2afffc348000 rw-p 00138000 08:01 358223                     /lib/libc-2.3.6.so
+2afffc348000-2afffc34d000 rw-p 2afffc348000 00:00 0 
+2afffc34d000-2afffc34f000 r-xp 00000000 08:01 359046                     /lib/libdl-2.3.6.so
+2afffc34f000-2afffc44e000 ---p 00002000 08:01 359046                     /lib/libdl-2.3.6.so
+2afffc44e000-2afffc450000 rw-p 00001000 08:01 359046                     /lib/libdl-2.3.6.so
+2afffc450000-2afffc451000 rw-p 2afffc450000 00:00 0 
+7fffaebb6000-7fffaebcc000 rw-p 7fffaebb6000 00:00 0                      [stack]
 ffffffffff600000-ffffffffffe00000 ---p 00000000 00:00 0                  [vdso]
 + RESULT=0
-+ mtrace /tmp/tmp.saX84T/tracer /tmp/tmp.saX84T/log
-+ 0x0000000000501460 Alloc 42 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af58e6a3e.6:[0x2af58e6cf7aa]
-+ 0x00000000005014f0 Alloc 48 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
-+ 0x0000000000501460 Alloc 140 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af58e6aso.6:[0x2af58e6cf7aa]
-+ 0x00000000005014f0 Alloc 146 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
-+ 0x0000000000501460 Alloc 238 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af58ec.so.6:[0x2af58e6cf7aa]
-+ 0x00000000005014f0 Alloc 244 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
-+ 0x0000000000501460 Alloc 336 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af5ibc.so.6:[0x2af58e6cf7aa]
-+ 0x00000000005014f0 Alloc 342 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
-+ 0x0000000000501460 Alloc 434 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2a/libc.so.6:[0x2af58e6cf7aa]
-+ 0x00000000005014f0 Alloc 440 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
-+ 0x0000000000501460 Alloc 532 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0xib/libc.so.6:[0x2af58e6cf7aa]
-+ 0x00000000005014f0 Alloc 538 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
-+ 0x0000000000501460 Alloc 630 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[/lib/libc.so.6:[0x2af58e6cf7aa]
-+ 0x00000000005014f0 Alloc 636 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
-+ 0x00000000005014f0 Alloc 734 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
-+ 0x0000000000501460 Alloc 827 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af58e6cf7aa]
-+ 0x00000000005014f0 Alloc 833 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
-+ 0x0000000000501460 Alloc 926 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af58e6cf7aa]
-+ 0x00000000005014f0 Alloc 932 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
-+ 0x0000000000501460 Alloc 1025 duplicate: 0x2af58e6e5212 /lib/libc.so.6:[0x2af58e6cf7aa]
-+ 0x00000000005014f0 Alloc 1031 duplicate: 0x2af58e6d6e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2af58e6d6e31]
++ mtrace /tmp/tmp.iZBio25316/tracer /tmp/tmp.iZBio25316/log
++ 0x0000000000501460 Alloc 42 duplicate: 0x2afffc180212 /lib/libc.so.6:[0x2afffc13ee.6:[0x2afffc16a7aa]
++ 0x00000000005014f0 Alloc 48 duplicate: 0x2afffc171e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2afffc171e31]
++ 0x0000000000501460 Alloc 140 duplicate: 0x2afffc180212 /lib/libc.so.6:[0x2afffc13so.6:[0x2afffc16a7aa]
++ 0x00000000005014f0 Alloc 146 duplicate: 0x2afffc171e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2afffc171e31]
++ 0x0000000000501460 Alloc 238 duplicate: 0x2afffc180212 /lib/libc.so.6:[0x2afffcc.so.6:[0x2afffc16a7aa]
++ 0x00000000005014f0 Alloc 244 duplicate: 0x2afffc171e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2afffc171e31]
++ 0x0000000000501460 Alloc 336 duplicate: 0x2afffc180212 /lib/libc.so.6:[0x2affibc.so.6:[0x2afffc16a7aa]
++ 0x00000000005014f0 Alloc 342 duplicate: 0x2afffc171e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2afffc171e31]
++ 0x0000000000501460 Alloc 434 duplicate: 0x2afffc180212 /lib/libc.so.6:[0x2a/libc.so.6:[0x2afffc16a7aa]
++ 0x00000000005014f0 Alloc 440 duplicate: 0x2afffc171e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2afffc171e31]
++ 0x0000000000501460 Alloc 532 duplicate: 0x2afffc180212 /lib/libc.so.6:[0xib/libc.so.6:[0x2afffc16a7aa]
++ 0x00000000005014f0 Alloc 538 duplicate: 0x2afffc171e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2afffc171e31]
++ 0x0000000000501460 Alloc 630 duplicate: 0x2afffc180212 /lib/libc.so.6:[/lib/libc.so.6:[0x2afffc16a7aa]
++ 0x00000000005014f0 Alloc 636 duplicate: 0x2afffc171e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2afffc171e31]
++ 0x00000000005014f0 Alloc 734 duplicate: 0x2afffc171e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2afffc171e31]
++ 0x0000000000501460 Alloc 827 duplicate: 0x2afffc180212 /lib/libc.so.6:[0x2afffc16a7aa]
++ 0x00000000005014f0 Alloc 833 duplicate: 0x2afffc171e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2afffc171e31]
++ 0x0000000000501460 Alloc 926 duplicate: 0x2afffc180212 /lib/libc.so.6:[0x2afffc16a7aa]
++ 0x00000000005014f0 Alloc 932 duplicate: 0x2afffc171e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2afffc171e31]
++ 0x0000000000501460 Alloc 1025 duplicate: 0x2afffc180212 /lib/libc.so.6:[0x2afffc16a7aa]
++ 0x00000000005014f0 Alloc 1031 duplicate: 0x2afffc171e31 /lib/libc.so.6:(vasprintf+0xf1)[0x2afffc171e31]
 No memory leaks.
-+ rm -rf /tmp/tmp.saX84T
++ rm -rf /tmp/tmp.iZBio25316
 + exit 0

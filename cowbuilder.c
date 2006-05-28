@@ -400,7 +400,12 @@ int cpbuilder_login(const struct pbuilderconfig* pc)
   char *buf_chroot;
   int ret;
   
-  cpbuilder_internal_cowcopy(pc);
+  if (cpbuilder_internal_cowcopy(pc))
+    {
+      fprintf(stderr, "Failed cowcopy.\n");
+      return 1;
+    }
+  
   if (0>asprintf(&buf_chroot, "chroot %s cow-shell", pc->buildplace))
     {
       /* outofmemory */
@@ -439,7 +444,11 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
   int ret;
   int i=0;
   
-  cpbuilder_internal_cowcopy(pc);
+  if (cpbuilder_internal_cowcopy(pc))
+    {
+      fprintf(stderr, "Failed cowcopy.\n");
+      return 1;
+    }
   
   if (0>asprintf(&buf_chroot, "chroot %s cow-shell", pc->buildplace))
     {
@@ -509,7 +518,12 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
       return -1;
     }
 
-  cpbuilder_internal_cowcopy(pc);
+  if (cpbuilder_internal_cowcopy(pc))
+    {
+      fprintf(stderr, "Failed cowcopy.\n");
+      return 1;
+    }
+
   printf(" -> Invoking pbuilder\n");
 
   pbuildercommandline[1]="update";
@@ -569,7 +583,7 @@ int main(int ac, char** av)
   static struct option long_options[]=
   {
     {"basepath", required_argument, 0, 'b'},
-    {"distribution", required_argument, 0, 'M'},
+    {"basepath", required_argument, 0, 'B'},
     {"mountproc", no_argument, &pc.mountproc, 1},
     {"mountdev", no_argument, &pc.mountdev, 1},
     {"mountdevpts", no_argument, &pc.mountdevpts, 1},
@@ -603,6 +617,7 @@ int main(int ac, char** av)
     {"bindmounts", required_argument, 0, 'M'},
     {"debootstrapopts", required_argument, 0, 'M'},
     {"debootstrap", required_argument, 0, 'M'},
+    {"distribution", required_argument, 0, 'M'},
 
     {"removepackages", no_argument, 0, 'm'},
     {"override-config", no_argument, 0, 'm'},
@@ -645,6 +660,9 @@ int main(int ac, char** av)
 	      return 1;
 	    }
 	  break;
+	case 'B':
+	  pc.buildplace = strdup(optarg);
+	  break;
 	case 'M':		/* default duplicate with param */
 	  //printf("DEBUG: adding option %s with %s \n", long_options[index_point].name, optarg);
 	  if (0>asprintf(&cmdstr, "--%s", long_options[index_point].name))
@@ -685,7 +703,11 @@ int main(int ac, char** av)
   /* set default values */
   if (!pc.basepath) 
     pc.basepath=strdup("/var/cache/pbuilder/base.cow");
-  asprintf(&(pc.buildplace), "/var/cache/pbuilder/build/cow.%i", (int)getpid());
+  if (!pc.buildplace)
+    {
+      mkdir("/var/cache/pbuilder/build",777);
+      asprintf(&(pc.buildplace), "/var/cache/pbuilder/build/cow.%i", (int)getpid());
+    }
 
   switch(pc.operation)
     {

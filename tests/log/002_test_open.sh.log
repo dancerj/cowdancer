@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.LX6T25
++ TESTDIR=/tmp/tmp.pQPcv25113
 ++ readlink -f tests/002_test_open.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c
-+ cd /tmp/tmp.LX6T25
++ cd /tmp/tmp.pQPcv25113
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4.7e-05 seconds, 21.8 MB/s
+1024 bytes (1.0 kB) copied, 4.6e-05 seconds, 22.3 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -16,24 +16,24 @@
    2/ before
 + ls -li 2/
 合計 4
-67317 -rw-r--r-- 2 dancer dancer    0 2006-05-26 06:35 a
-67318 -rw-r--r-- 2 dancer dancer    0 2006-05-26 06:35 b
-67319 -rw-r--r-- 2 dancer dancer    0 2006-05-26 06:35 c
-67320 -rw-r--r-- 2 dancer dancer    0 2006-05-26 06:35 d
-67321 -rw-r--r-- 2 dancer dancer 1024 2006-05-26 06:35 e
+49705 -rw-r--r-- 2 dancer dancer    0 2006-05-29 07:12 a
+49706 -rw-r--r-- 2 dancer dancer    0 2006-05-29 07:12 b
+49708 -rw-r--r-- 2 dancer dancer    0 2006-05-29 07:12 c
+49709 -rw-r--r-- 2 dancer dancer    0 2006-05-29 07:12 d
+49710 -rw-r--r-- 2 dancer dancer 1024 2006-05-29 07:12 e
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-67317 -rw-r--r-- 2 dancer dancer    0 2006-05-26 06:35 a
-67325 -rw-r--r-- 1 dancer dancer    3 2006-05-26 06:35 b
-67326 -rw-r--r-- 1 dancer dancer    3 2006-05-26 06:35 c
-67320 -rw-r--r-- 2 dancer dancer    0 2006-05-26 06:35 d
-67321 -rw-r--r-- 2 dancer dancer 1024 2006-05-26 06:35 e
+49705 -rw-r--r-- 2 dancer dancer    0 2006-05-29 07:12 a
+49725 -rw-r--r-- 1 dancer dancer    3 2006-05-29 07:12 b
+49726 -rw-r--r-- 1 dancer dancer    3 2006-05-29 07:12 c
+49709 -rw-r--r-- 2 dancer dancer    0 2006-05-29 07:12 d
+49710 -rw-r--r-- 2 dancer dancer 1024 2006-05-29 07:12 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.LX6T25
++ rm -rf /tmp/tmp.pQPcv25113

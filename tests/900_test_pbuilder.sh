@@ -18,34 +18,9 @@ if [ ! -x /usr/sbin/pbuilder ]; then
     exit 0;
 fi
 
-ORIG=/var/cache/pbuilder/build/cow/orig
-WORK=/var/cache/pbuilder/build/cow/work$$
-BASETGZ=/var/cache/pbuilder/base.tgz
-COWDEB=$(readlink -f ../cowdancer_${VERSION}_$(dpkg --print-architecture).deb)
-
-sudo rm -rf /var/cache/pbuilder/build/cow
-sudo mkdir -p $ORIG
-
-cd $ORIG
-sudo tar xfzp $BASETGZ
-sudo cp $COWDEB $ORIG/tmp/
-sudo apt-get source -d dsh
-sudo chroot $ORIG dpkg -i tmp/cowdancer*.deb
-#sudo find $ORIG -ls > /tmp/ls-before
-sudo cp -al $ORIG $WORK-1
-sudo cp var/log/dpkg.log /tmp/a
-sudo pbuilder update --buildplace $WORK-1 --no-targz --internal-chrootexec "chroot $WORK-1 cow-shell" 
-sudo pbuilder build --buildplace $WORK-1 --no-targz --internal-chrootexec "chroot $WORK-1 cow-shell" dsh*.dsc
-sudo diff -u /tmp/a $ORIG/var/log/dpkg.log
-sudo rm -rf $WORK-1
-
-#sudo find $ORIG -ls > /tmp/ls-after
-
-cd ..
-sudo rm -rf /var/cache/pbuilder/build/cow
-
-# /etc/passwd, /etc/group are due to 'pbuilder-buildpackage-funcs/createbuilduser'
-#diff -u /tmp/ls-before /tmp/ls-after
+sudo rm -rf /var/cache/pbuilder/base-test.cow
+sudo cowbuilder --create --basepath /var/cache/pbuilder/base-test.cow
+sudo cowbuilder --update --basepath /var/cache/pbuilder/base-test.cow
+sudo pdebuild --pbuilder cowbuilder -- --basepath /var/cache/pbuilder/base-test.cow
 
 echo end
-

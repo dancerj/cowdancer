@@ -1,3 +1,19 @@
+2006-05-29  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/014_ilistdump_test.sh: sort both
+
+	* tests/900_test_pbuilder.sh: use cowbuilder to test instead of
+	hand-assembled stuff.
+
+	* cowbuilder.c (cpbuilder_login): handle error
+	(cpbuilder_execute, cpbuilder_update): handle error
+	(main): create /var/cache/pbuilder/build/ directory if it doesn't
+	already exist.
+	(main): support --distribution option.
+	(main): support --buildplace option.
+
+	* cowbuilder.8: --basepath, not --basetgz.
+
 2006-05-27  Junichi Uekawa  <dancer@debian.org>
 
 	* cowbuilder.c (main): help iplementation.
