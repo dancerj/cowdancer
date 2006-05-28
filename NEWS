@@ -1,7 +1,10 @@
-0.15 XX May 2006
+0.16 XX May 2006
+0.15 29 May 2006
 
 + add help message to cowbuilder.
-+ fix --basepath handling.
++ fix --basepath handling, --distribution handling
++ fix other option handling
++ update testsuite
 
 0.14 24 May 2006
 
