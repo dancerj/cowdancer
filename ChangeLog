@@ -1,3 +1,9 @@
+2006-06-06  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/900_test_pbuilder.sh: add debug option
+
+	* tests/901_test_pbuilder_create.sh: add a test for bootstrapping each distribution.
+
 2006-05-29  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/014_ilistdump_test.sh: sort both

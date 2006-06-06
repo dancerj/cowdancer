@@ -19,7 +19,7 @@ if [ ! -x /usr/sbin/pbuilder ]; then
 fi
 
 sudo rm -rf /var/cache/pbuilder/base-test.cow
-sudo cowbuilder --create --basepath /var/cache/pbuilder/base-test.cow
+sudo cowbuilder --create --debootstrapopts --debug --basepath /var/cache/pbuilder/base-test.cow
 sudo cowbuilder --update --basepath /var/cache/pbuilder/base-test.cow
 sudo pdebuild --pbuilder cowbuilder -- --basepath /var/cache/pbuilder/base-test.cow
 
