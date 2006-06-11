@@ -1,6 +1,6 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.POKKa25484
-+ cd /tmp/tmp.POKKa25484
++ TESTDIR=/tmp/tmp.Gthkx24023
++ cd /tmp/tmp.Gthkx24023
 + mkdir 1/
 + touch '1/a'\''f' '1/b g' '1/c h' '1/d i'
 + dd if=/dev/zero 'of=1/e j' bs=512 count=2
@@ -14,28 +14,28 @@
    2/ before
 + ls -li 2/
 合計 4
-49708 -rw-r--r-- 2 dancer dancer    0 2006-05-29 07:12 a'f
-49709 -rw-r--r-- 2 dancer dancer    0 2006-05-29 07:12 b g
-49710 -rw-r--r-- 2 dancer dancer    0 2006-05-29 07:12 c h
-49711 -rw-r--r-- 2 dancer dancer    0 2006-05-29 07:12 d i
-49723 -rw-r--r-- 2 dancer dancer 1024 2006-05-29 07:12 e j
+113505 -rw-r--r-- 2 dancer dancer    0 2006-06-11 12:42 a'f
+113506 -rw-r--r-- 2 dancer dancer    0 2006-06-11 12:42 b g
+113586 -rw-r--r-- 2 dancer dancer    0 2006-06-11 12:42 c h
+113587 -rw-r--r-- 2 dancer dancer    0 2006-06-11 12:42 d i
+113589 -rw-r--r-- 2 dancer dancer 1024 2006-06-11 12:42 e j
 + echo 'cd 2 && echo a > "a'\''f" && mv '\''b g'\'' '\''c h'\'' && touch '\''c h'\'' && dd if='\''e j'\'' of='\''d i'\'''
 + cow-shell
 Invoking /bin/bash
 0+1 records in
 0+1 records out
-224 bytes (224 B) copied, 5.1e-05 seconds, 4.4 MB/s
+224 bytes (224 B) copied, 5.2e-05 seconds, 4.3 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-49724 -rw-r--r-- 1 dancer dancer    2 2006-05-29 07:13 a'f
-49725 -rw-r--r-- 1 dancer dancer    0 2006-05-29 07:13 c h
-49726 -rw-r--r-- 1 dancer dancer  224 2006-05-29 07:13 d i
-49723 -rw-r--r-- 2 dancer dancer 1024 2006-05-29 07:12 e j
+113843 -rw-r--r-- 1 dancer dancer    2 2006-06-11 12:42 a'f
+113933 -rw-r--r-- 1 dancer dancer    0 2006-06-11 12:42 c h
+114259 -rw-r--r-- 1 dancer dancer  224 2006-06-11 12:42 d i
+113589 -rw-r--r-- 2 dancer dancer 1024 2006-06-11 12:42 e j
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.POKKa25484
++ rm -rf /tmp/tmp.Gthkx24023

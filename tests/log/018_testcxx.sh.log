@@ -1,9 +1,9 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.bfgZK25458
++ TESTDIR=/tmp/tmp.WQVzF23997
 ++ readlink -f tests/018_testcxx.cc
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/018_testcxx.cc
 + set -ex
-+ cd /tmp/tmp.bfgZK25458
++ cd /tmp/tmp.WQVzF23997
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
@@ -16,10 +16,10 @@
 Hello world
 + cat 0/a
 + diff -u 1/a 0/a
---- 1/a	2006-05-29 07:12:59.000000000 +0900
-+++ 0/a	2006-05-29 07:12:58.000000000 +0900
+--- 1/a	2006-06-11 12:42:34.000000000 +0900
++++ 0/a	2006-06-11 12:42:33.000000000 +0900
 @@ -1 +0,0 @@
 -Hello world
 + RESULT=0
-+ rm -rf /tmp/tmp.bfgZK25458
++ rm -rf /tmp/tmp.WQVzF23997
 + exit 0

@@ -1,3 +1,7 @@
+2006-06-11  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/901_test_pbuilder_create.sh: fix test script to work around problem with debootstrap not supporting --debug
+
 2006-06-06  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/900_test_pbuilder.sh: add debug option
