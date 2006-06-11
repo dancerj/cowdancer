@@ -1,4 +1,4 @@
-cowdancer (0.16) UNRELEASED; urgency=low
+cowdancer (0.16) unstable; urgency=low
 
   * add test case for sid/etc debootstrap with cdebootstrap and
     debootstrap.
@@ -7,7 +7,7 @@ cowdancer (0.16) UNRELEASED; urgency=low
   * Standards-version: 3.7.2
   * Error out when there is no file in directory to cowprotect.
 
- -- Junichi Uekawa <dancer@debian.org>  Sun, 11 Jun 2006 14:44:31 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 11 Jun 2006 15:04:49 +0900
 
 cowdancer (0.15) unstable; urgency=low
 
