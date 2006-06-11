@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Junichi Uekawa <dancer@debian.org>
 Build-Depends: debhelper (>> 4.0.0)
-Standards-Version: 3.6.2
+Standards-Version: 3.7.2
 
 Package: cowdancer
 Architecture: any

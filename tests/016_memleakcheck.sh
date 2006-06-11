@@ -14,6 +14,8 @@ gcc ${TESTCODE} -o ${TESTDIR}/tracer -g
     touch 1/a 1/b 1/c 1/d
     dd if=/dev/zero of=1/e bs=512 count=2
 
+    cp -al 1 2 
+
     MALLOC_TRACE="log" cow-shell ${TESTDIR}/tracer
 )
 RESULT=$?

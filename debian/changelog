@@ -2,8 +2,12 @@ cowdancer (0.16) UNRELEASED; urgency=low
 
   * add test case for sid/etc debootstrap with cdebootstrap and
     debootstrap.
+  * Avoid unneeded cowlinkbreak when hardlink number is 1. Caused some
+    problems with dpkg-gencontrol. (Closes: #369261).
+  * Standards-version: 3.7.2
+  * Error out when there is no file in directory to cowprotect.
 
- -- Junichi Uekawa <dancer@debian.org>  Tue,  6 Jun 2006 20:02:46 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 11 Jun 2006 14:44:31 +0900
 
 cowdancer (0.15) unstable; urgency=low
 

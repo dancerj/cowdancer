@@ -221,9 +221,12 @@ static int check_inode_and_copy(const char* s)
   /* I probably want to check if hardlink no is 1, so that I don't
      need to check, if performance is wrong. c.f. fl-cow */
 
-  if(bsearch(&search_target, ilist, ilist_len, 
-	     sizeof(search_target), compare_ilist) &&
-     S_ISREG(buf.st_mode))
+  if((buf.st_nlink > 1) && 	/* it is hardlinked */
+     S_ISREG(buf.st_mode) && 	/* it is a regular file */
+     bsearch(&search_target, ilist, ilist_len, 
+	     sizeof(search_target), compare_ilist)) /* and a match is
+						       found in ilist
+						       file */
     {
       /* There is a file that needs to be protected, 
 	 Copy-on-write hardlink files.

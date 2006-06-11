@@ -35,7 +35,7 @@ static int ilistcreate(const char* ilistpath)
       return 1;
     }
   ilist_len=2000;
-  if (NULL==(inf=popen("find . -xdev -print0 -type f | xargs -0 stat --format '%d %i '","r")))
+  if (NULL==(inf=popen("find . -xdev -type f -links +1 -print0 | xargs -0 stat --format '%d %i '","r")))
     {
       outofmemory("popen find failed");
       return 1;
@@ -61,7 +61,7 @@ static int ilistcreate(const char* ilistpath)
   ilist_len=i;
   if (pclose(inf))
     {
-      outofmemory("pclose returned non-zero, possible find failure");
+      outofmemory("pclose returned non-zero, probably the directory contains no hardlinked file, don't bother using cow-shell here.");
       return 1;
     }
 

@@ -599,7 +599,7 @@ Refreshing the base.tgz
 Get:1 http://ftp.jp.debian.org etch Release.gpg [189B]
 Hit http://ftp.jp.debian.org etch Release
 Get:2 http://ftp.jp.debian.org etch/main Packages/DiffIndex [12.5kB]
-Fetched 12.7kB in 0s (60.2kB/s)
+Fetched 12.7kB in 0s (31.7kB/s)
 Reading package lists...
 dpkg - warning: ignoring request to remove lilo which isn't installed.
 Obtaining the cached apt archive contents
@@ -628,7 +628,7 @@ The following NEW packages will be installed:
 Need to get 0B/21.0MB of archives.
 After unpacking 83.4MB of additional disk space will be used.
 Selecting previously deselected package binutils.
-(Reading database ... 7001 files and directories currently installed.)
+(Reading database ... 7000 files and directories currently installed.)
 Unpacking binutils (from .../binutils_2.16.1cvs20060413-1_amd64.deb) ...
 Selecting previously deselected package cpp-4.0.
 Unpacking cpp-4.0 (from .../cpp-4.0_4.0.3-3_amd64.deb) ...
@@ -1299,7 +1299,7 @@ Refreshing the base.tgz
 Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
 Hit http://ftp.jp.debian.org sid Release
 Get:2 http://ftp.jp.debian.org sid/main Packages/DiffIndex [12.6kB]
-Fetched 12.8kB in 0s (56.5kB/s)
+Fetched 12.8kB in 0s (38.4kB/s)
 Reading package lists...
 dpkg - warning: ignoring request to remove lilo which isn't installed.
 Obtaining the cached apt archive contents
@@ -1325,8 +1325,8 @@ The following NEW packages will be installed:
   gcc-4.1 libc6-dev libdb4.4 libstdc++6-4.1-dev linux-kernel-headers make
   patch perl perl-modules
 0 upgraded, 18 newly installed, 0 to remove and 0 not upgraded.
-Need to get 0B/21.7MB of archives.
-After unpacking 86.3MB of additional disk space will be used.
+Need to get 0B/21.8MB of archives.
+After unpacking 87.0MB of additional disk space will be used.
 Selecting previously deselected package binutils.
 (Reading database ... 7023 files and directories currently installed.)
 Unpacking binutils (from .../binutils_2.16.1cvs20060413-1_amd64.deb) ...
@@ -1337,7 +1337,7 @@ Unpacking cpp (from .../cpp_4%3a4.1.1-1_amd64.deb) ...
 Selecting previously deselected package perl-modules.
 Unpacking perl-modules (from .../perl-modules_5.8.8-5_all.deb) ...
 Selecting previously deselected package libdb4.4.
-Unpacking libdb4.4 (from .../libdb4.4_4.4.20-4_amd64.deb) ...
+Unpacking libdb4.4 (from .../libdb4.4_4.4.20-5_amd64.deb) ...
 Selecting previously deselected package perl.
 Unpacking perl (from .../perl_5.8.8-5_amd64.deb) ...
 Selecting previously deselected package patch.
@@ -1351,7 +1351,7 @@ Unpacking gcc-4.1 (from .../gcc-4.1_4.1.1-2_amd64.deb) ...
 Selecting previously deselected package gcc.
 Unpacking gcc (from .../gcc_4%3a4.1.1-1_amd64.deb) ...
 Selecting previously deselected package linux-kernel-headers.
-Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.13+0rc3-2.1_amd64.deb) ...
+Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.16.20-1_amd64.deb) ...
 Selecting previously deselected package libc6-dev.
 Unpacking libc6-dev (from .../libc6-dev_2.3.6-15_amd64.deb) ...
 Selecting previously deselected package libstdc++6-4.1-dev.
@@ -1369,13 +1369,13 @@ Setting up binutils (2.16.1cvs20060413-1) ...
 Setting up cpp-4.1 (4.1.1-2) ...
 Setting up cpp (4.1.1-1) ...
 
-Setting up libdb4.4 (4.4.20-4) ...
+Setting up libdb4.4 (4.4.20-5) ...
 Setting up patch (2.5.9-4) ...
 Setting up make (3.81-2) ...
 Setting up gcc-4.1 (4.1.1-2) ...
 Setting up gcc (4.1.1-1) ...
 
-Setting up linux-kernel-headers (2.6.13+0rc3-2.1) ...
+Setting up linux-kernel-headers (2.6.16.20-1) ...
 Setting up libc6-dev (2.3.6-15) ...
 Setting up cowdancer (0.15) ...
 Setting up libstdc++6-4.1-dev (4.1.1-2) ...
@@ -1388,6 +1388,8 @@ Setting up perl (5.8.8-5) ...
 Setting up dpkg-dev (1.13.21) ...
 Setting up build-essential (11.2) ...
 Copying back the cached apt archive contents
+ -> new cache content login_1%3a4.0.16-2_amd64.deb added
+ -> new cache content passwd_1%3a4.0.16-2_amd64.deb added
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
  -> Invoking pbuilder
@@ -1895,7 +1897,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libnewt0.52
 P: Retrieving libpopt0
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpopt0_1.7-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/popt/libpopt0_1.7-5_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpopt0_1.10-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/popt/libpopt0_1.10-2_amd64.deb"
 D: Return code: 0
 P: Validating libpopt0
 P: Retrieving whiptail
@@ -2386,8 +2388,7 @@ D: resolver (findutils): mark
 D: resolver (makedev): mark
 D: Execute "dpkg -i --force-all /var/cache/bootstrap/base-passwd_3.5.11_amd64.deb" in chroot
 O: Selecting previously deselected package base-passwd.
-O: (Reading database ... 
-O: 0 files and directories currently installed.)
+O: (Reading database ... 0 files and directories currently installed.)
 O: Unpacking base-passwd (from .../base-passwd_3.5.11_amd64.deb) ...
 P: Unpacking package base-passwd
 D: Updating base-passwd to status 2
@@ -2405,8 +2406,7 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-diverts.deb /var/cach
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-diverts.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-diverts.
-O: (Reading database ... 
-O: 24 files and directories currently installed.)
+O: (Reading database ... 24 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-diverts (from .../cdebootstrap-helper-diverts.deb) ...
 O: Adding `diversion of /sbin/start-stop-daemon to /sbin/start-stop-daemon.REAL by cdebootstrap-helper-diverts'
 O: Adding `diversion of /usr/sbin/invoke-rc.d to /usr/sbin/invoke-rc.d.REAL by cdebootstrap-helper-diverts'
@@ -2418,8 +2418,7 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-makedev.deb /var/cach
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-makedev.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-makedev.
-O: (Reading database ... 
-O: 29 files and directories currently installed.)
+O: (Reading database ... 29 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-makedev (from .../cdebootstrap-helper-makedev.deb) ...
 O: Setting up cdebootstrap-helper-makedev (1) ...
 O: 
@@ -2427,13 +2426,14 @@ D: Return code: 0
 D: call action: dpkg-install
 D: Execute "dpkg -i --force-all /var/cache/bootstrap/dpkg_1.13.19_amd64.deb" in chroot
 O: Selecting previously deselected package dpkg.
-O: (Reading database ... 29 files and directories currently installed.)
-O: Unpacking dpkg (from .../dpkg_1.13.19_amd64.deb) ...
-P: Unpacking package dpkg
-D: Updating dpkg to status 2
 O: dpkg: regarding .../dpkg_1.13.19_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on libc6 (>= 2.3.5-1)
 O: dpkg: warning - ignoring pre-dependency problem !
+O: (Reading database ... 
+O: 29 files and directories currently installed.)
+O: Unpacking dpkg (from .../dpkg_1.13.19_amd64.deb) ...
+P: Unpacking package dpkg
+D: Updating dpkg to status 2
 O: dpkg: dpkg: dependency problems, but configuring anyway as you request:
 O:  dpkg depends on libc6 (>= 2.3.5-1); however:
 O:   Package libc6 is not installed.
@@ -3503,6 +3503,7 @@ D: resolver (base-passwd): mark, dependency from logrotate
 D: resolver (logrotate): mark
 D: Execute "apt-get install --yes -o APT::Get::AllowUnauthenticated=true apt-utils dhcp3-common dhcp3-client net-tools ifupdown iptables iputils-ping libwrap0 tcpd netbase openbsd-inetd telnet libssl0.9.8 wget info manpages groff-base bsdmainutils libgdbm3 man-db adduser cron exim4-config exim4-base libgpg-error0 libgcrypt11 liblzo1 libopencdk8 libgnutls13 libpcre3 exim4-daemon-light at cpio ed libncursesw5 nano nvi psmisc sysklogd klogd libsigc++-2.0-0c2a aptitude dmidecode laptop-detect tasksel tasksel-data libnewt0.52 libpopt0 whiptail exim4 logrotate" in chroot
 O: Reading package lists...
+O: 
 O: Building dependency tree...
 O: 
 O: Suggested packages:
@@ -3636,7 +3637,7 @@ O: Unpacking libgnutls13 (from .../libgnutls13_1.3.5-1.1_amd64.deb) ...
 P: Unpacking package libgnutls13
 D: Updating libgnutls13 to status 2
 O: Selecting previously deselected package libpopt0.
-O: Unpacking libpopt0 (from .../libpopt0_1.7-5_amd64.deb) ...
+O: Unpacking libpopt0 (from .../libpopt0_1.10-2_amd64.deb) ...
 P: Unpacking package libpopt0
 D: Updating libpopt0 to status 2
 O: Selecting previously deselected package libssl0.9.8.
@@ -3835,7 +3836,7 @@ O: Setting up libgnutls13 (1.3.5-1.1) ...
 P: Configuring package libgnutls13
 D: Updating libgnutls13 to status 3
 O: 
-O: Setting up libpopt0 (1.7-5) ...
+O: Setting up libpopt0 (1.10-2) ...
 P: Configuring package libpopt0
 D: Updating libpopt0 to status 3
 O: 
@@ -3958,14 +3959,14 @@ D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-apt
 D: Execute "dpkg -P cdebootstrap-helper-apt" in chroot
 O: (Reading database ... 
-O: 6775 files and directories currently installed.)
+O: 6774 files and directories currently installed.)
 O: Removing cdebootstrap-helper-apt ...
 D: Return code: 0
 D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-diverts
 D: Execute "dpkg -P cdebootstrap-helper-diverts" in chroot
 O: (Reading database ... 
-O: 6774 files and directories currently installed.)
+O: 6773 files and directories currently installed.)
 O: Removing cdebootstrap-helper-diverts ...
 O: Purging configuration files for cdebootstrap-helper-diverts ...
 O: Removing `diversion of /sbin/start-stop-daemon to /sbin/start-stop-daemon.REAL by cdebootstrap-helper-diverts'
@@ -3975,7 +3976,7 @@ D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-makedev
 D: Execute "dpkg -P cdebootstrap-helper-makedev" in chroot
 O: (Reading database ... 
-O: 6772 files and directories currently installed.)
+O: 6771 files and directories currently installed.)
 O: Removing cdebootstrap-helper-makedev ...
 D: Return code: 0
 D: call action: dev-cleanup
@@ -3995,8 +3996,8 @@ Refreshing the base.tgz
 Get:1 http://ftp.jp.debian.org etch Release.gpg [189B]
 Get:2 http://ftp.jp.debian.org etch Release [35.4kB]
 Ign http://ftp.jp.debian.org etch Release
-Get:3 http://ftp.jp.debian.org etch/main Packages [3618kB]
-Fetched 3653kB in 5s (669kB/s)
+Get:3 http://ftp.jp.debian.org etch/main Packages [3631kB]
+Fetched 3667kB in 2s (1543kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org etch Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
@@ -4031,7 +4032,7 @@ WARNING: The following packages cannot be authenticated!
   gcc linux-kernel-headers libc6-dev libstdc++6-4.0-dev g++-4.0 g++
   build-essential cowdancer
 Selecting previously deselected package binutils.
-(Reading database ... 6772 files and directories currently installed.)
+(Reading database ... 6771 files and directories currently installed.)
 Unpacking binutils (from .../binutils_2.16.1cvs20060413-1_amd64.deb) ...
 Selecting previously deselected package cpp-4.0.
 Unpacking cpp-4.0 (from .../cpp-4.0_4.0.3-3_amd64.deb) ...
@@ -4478,11 +4479,11 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libpam-modules
 P: Retrieving login
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/login_4.0.16-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/login_4.0.16-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/login_4.0.16-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/login_4.0.16-2_amd64.deb"
 D: Return code: 0
 P: Validating login
 P: Retrieving passwd
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/passwd_4.0.16-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/passwd_4.0.16-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/passwd_4.0.16-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/passwd_4.0.16-2_amd64.deb"
 D: Return code: 0
 P: Validating passwd
 P: Retrieving adduser
@@ -5129,17 +5130,16 @@ D: Return code: 0
 D: call action: dpkg-install
 D: Execute "dpkg -i --force-all /var/cache/bootstrap/dpkg_1.13.21_amd64.deb" in chroot
 O: Selecting previously deselected package dpkg.
+O: (Reading database ... 29 files and directories currently installed.)
+O: Unpacking dpkg (from .../dpkg_1.13.21_amd64.deb) ...
+P: Unpacking package dpkg
+D: Updating dpkg to status 2
 O: dpkg: regarding .../dpkg_1.13.21_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on libc6 (>= 2.3.5-1)
 O: dpkg: warning - ignoring pre-dependency problem !
 O: dpkg: regarding .../dpkg_1.13.21_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on coreutils (>= 5.93-1)
 O: dpkg: warning - ignoring pre-dependency problem !
-O: (Reading database ... 
-O: 29 files and directories currently installed.)
-O: Unpacking dpkg (from .../dpkg_1.13.21_amd64.deb) ...
-P: Unpacking package dpkg
-D: Updating dpkg to status 2
 O: dpkg: dpkg: dependency problems, but configuring anyway as you request:
 O:  dpkg depends on libc6 (>= 2.3.5-1); however:
 O:   Package libc6 is not installed.
@@ -5396,23 +5396,23 @@ O: Unpacking libpam-modules (from .../libpam-modules_0.79-3.1_amd64.deb) ...
 P: Unpacking package libpam-modules
 D: Updating libpam-modules to status 2
 O: Selecting previously deselected package login.
-O: dpkg: regarding .../login_4.0.16-1_amd64.deb containing login, pre-dependency problem:
+O: dpkg: regarding .../login_4.0.16-2_amd64.deb containing login, pre-dependency problem:
 O:  login pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../login_4.0.16-1_amd64.deb containing login, pre-dependency problem:
+O: dpkg: regarding .../login_4.0.16-2_amd64.deb containing login, pre-dependency problem:
 O:  login pre-depends on libpam0g (>= 0.76)
 O:   libpam0g is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../login_4.0.16-1_amd64.deb containing login, pre-dependency problem:
+O: dpkg: regarding .../login_4.0.16-2_amd64.deb containing login, pre-dependency problem:
 O:  login pre-depends on libpam-runtime (>= 0.76-14)
 O:   libpam-runtime is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking login (from .../login_4.0.16-1_amd64.deb) ...
+O: Unpacking login (from .../login_4.0.16-2_amd64.deb) ...
 P: Unpacking package login
 D: Updating login to status 2
 O: Selecting previously deselected package passwd.
-O: Unpacking passwd (from .../passwd_4.0.16-1_amd64.deb) ...
+O: Unpacking passwd (from .../passwd_4.0.16-2_amd64.deb) ...
 P: Unpacking package passwd
 D: Updating passwd to status 2
 O: Selecting previously deselected package libslang2.
@@ -5944,7 +5944,7 @@ O: Setting up bash (3.1-4) ...
 P: Configuring package bash
 D: Updating bash to status 3
 O: 
-O: Setting up login (4.0.16-1) ...
+O: Setting up login (4.0.16-2) ...
 P: Configuring package login
 D: Updating login to status 3
 O: 
@@ -5955,7 +5955,7 @@ O: Setting up mount (2.12r-10) ...
 P: Configuring package mount
 D: Updating mount to status 3
 O: 
-O: Setting up passwd (4.0.16-1) ...
+O: Setting up passwd (4.0.16-2) ...
 P: Configuring package passwd
 D: Updating passwd to status 3
 O: 
@@ -6096,8 +6096,7 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-apt.deb /var/cache/pb
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-apt.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-apt.
-O: (Reading database ... 
-O: 4845 files and directories currently installed.)
+O: (Reading database ... 4845 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-apt (from /cdebootstrap-helper-apt.deb) ...
 O: Setting up cdebootstrap-helper-apt (1) ...
 D: Return code: 0
@@ -6700,8 +6699,8 @@ Refreshing the base.tgz
 Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
 Get:2 http://ftp.jp.debian.org sid Release [38.3kB]
 Ign http://ftp.jp.debian.org sid Release
-Get:3 http://ftp.jp.debian.org sid/main Packages [4030kB]
-Fetched 4069kB in 2s (1664kB/s)
+Get:3 http://ftp.jp.debian.org sid/main Packages [4031kB]
+Fetched 4069kB in 2s (1655kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
@@ -6729,8 +6728,8 @@ The following NEW packages will be installed:
   gcc-4.1 libc6-dev libdb4.4 libstdc++6-4.1-dev linux-kernel-headers make
   patch perl perl-modules
 0 upgraded, 18 newly installed, 0 to remove and 0 not upgraded.
-Need to get 0B/21.7MB of archives.
-After unpacking 86.3MB of additional disk space will be used.
+Need to get 0B/21.8MB of archives.
+After unpacking 87.0MB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   binutils cpp-4.1 cpp perl-modules libdb4.4 perl patch make dpkg-dev gcc-4.1
   gcc linux-kernel-headers libc6-dev libstdc++6-4.1-dev g++-4.1 g++
@@ -6745,7 +6744,7 @@ Unpacking cpp (from .../cpp_4%3a4.1.1-1_amd64.deb) ...
 Selecting previously deselected package perl-modules.
 Unpacking perl-modules (from .../perl-modules_5.8.8-5_all.deb) ...
 Selecting previously deselected package libdb4.4.
-Unpacking libdb4.4 (from .../libdb4.4_4.4.20-4_amd64.deb) ...
+Unpacking libdb4.4 (from .../libdb4.4_4.4.20-5_amd64.deb) ...
 Selecting previously deselected package perl.
 Unpacking perl (from .../perl_5.8.8-5_amd64.deb) ...
 Selecting previously deselected package patch.
@@ -6759,7 +6758,7 @@ Unpacking gcc-4.1 (from .../gcc-4.1_4.1.1-2_amd64.deb) ...
 Selecting previously deselected package gcc.
 Unpacking gcc (from .../gcc_4%3a4.1.1-1_amd64.deb) ...
 Selecting previously deselected package linux-kernel-headers.
-Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.13+0rc3-2.1_amd64.deb) ...
+Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.16.20-1_amd64.deb) ...
 Selecting previously deselected package libc6-dev.
 Unpacking libc6-dev (from .../libc6-dev_2.3.6-15_amd64.deb) ...
 Selecting previously deselected package libstdc++6-4.1-dev.
@@ -6777,13 +6776,13 @@ Setting up binutils (2.16.1cvs20060413-1) ...
 Setting up cpp-4.1 (4.1.1-2) ...
 Setting up cpp (4.1.1-1) ...
 
-Setting up libdb4.4 (4.4.20-4) ...
+Setting up libdb4.4 (4.4.20-5) ...
 Setting up patch (2.5.9-4) ...
 Setting up make (3.81-2) ...
 Setting up gcc-4.1 (4.1.1-2) ...
 Setting up gcc (4.1.1-1) ...
 
-Setting up linux-kernel-headers (2.6.13+0rc3-2.1) ...
+Setting up linux-kernel-headers (2.6.16.20-1) ...
 Setting up libc6-dev (2.3.6-15) ...
 Setting up cowdancer (0.15) ...
 Setting up libstdc++6-4.1-dev (4.1.1-2) ...
