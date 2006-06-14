@@ -643,7 +643,7 @@ int main(int ac, char** av)
 	case 'b':
 	  if (pc.operation == pbuilder_create)
 	    {
-	      if (mkdir(optarg, 777)<0)
+	      if (mkdir(optarg, 0777)<0)
 		{
 		  perror("mkdir");
 		  return 1;
@@ -705,7 +705,7 @@ int main(int ac, char** av)
     pc.basepath=strdup("/var/cache/pbuilder/base.cow");
   if (!pc.buildplace)
     {
-      mkdir("/var/cache/pbuilder/build",777); /* create if it does not exist */
+      mkdir("/var/cache/pbuilder/build",0777); /* create if it does not exist */
       asprintf(&(pc.buildplace), "/var/cache/pbuilder/build/cow.%i", (int)getpid());
     }
 

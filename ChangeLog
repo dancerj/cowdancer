@@ -1,3 +1,7 @@
+2006-06-15  Junichi Uekawa  <dancer@debian.org>
+
+	* cowbuilder.c (main): mkdir with 0777, not 777.
+
 2006-06-11  Junichi Uekawa  <dancer@debian.org>
 
 	* cow-shell.c (ilistcreate): use find -links +1.

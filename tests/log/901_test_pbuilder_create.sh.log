@@ -599,7 +599,7 @@ Refreshing the base.tgz
 Get:1 http://ftp.jp.debian.org etch Release.gpg [189B]
 Hit http://ftp.jp.debian.org etch Release
 Get:2 http://ftp.jp.debian.org etch/main Packages/DiffIndex [12.5kB]
-Fetched 12.7kB in 0s (31.7kB/s)
+Fetched 12.7kB in 0s (45.3kB/s)
 Reading package lists...
 dpkg - warning: ignoring request to remove lilo which isn't installed.
 Obtaining the cached apt archive contents
@@ -1299,7 +1299,7 @@ Refreshing the base.tgz
 Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
 Hit http://ftp.jp.debian.org sid Release
 Get:2 http://ftp.jp.debian.org sid/main Packages/DiffIndex [12.6kB]
-Fetched 12.8kB in 0s (38.4kB/s)
+Fetched 12.8kB in 0s (56.6kB/s)
 Reading package lists...
 dpkg - warning: ignoring request to remove lilo which isn't installed.
 Obtaining the cached apt archive contents
@@ -1388,8 +1388,6 @@ Setting up perl (5.8.8-5) ...
 Setting up dpkg-dev (1.13.21) ...
 Setting up build-essential (11.2) ...
 Copying back the cached apt archive contents
- -> new cache content login_1%3a4.0.16-2_amd64.deb added
- -> new cache content passwd_1%3a4.0.16-2_amd64.deb added
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
  -> Invoking pbuilder
@@ -2406,7 +2404,8 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-diverts.deb /var/cach
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-diverts.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-diverts.
-O: (Reading database ... 24 files and directories currently installed.)
+O: (Reading database ... 
+O: 24 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-diverts (from .../cdebootstrap-helper-diverts.deb) ...
 O: Adding `diversion of /sbin/start-stop-daemon to /sbin/start-stop-daemon.REAL by cdebootstrap-helper-diverts'
 O: Adding `diversion of /usr/sbin/invoke-rc.d to /usr/sbin/invoke-rc.d.REAL by cdebootstrap-helper-diverts'
@@ -2418,7 +2417,8 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-makedev.deb /var/cach
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-makedev.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-makedev.
-O: (Reading database ... 29 files and directories currently installed.)
+O: (Reading database ... 
+O: 29 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-makedev (from .../cdebootstrap-helper-makedev.deb) ...
 O: Setting up cdebootstrap-helper-makedev (1) ...
 O: 
@@ -2426,14 +2426,13 @@ D: Return code: 0
 D: call action: dpkg-install
 D: Execute "dpkg -i --force-all /var/cache/bootstrap/dpkg_1.13.19_amd64.deb" in chroot
 O: Selecting previously deselected package dpkg.
-O: dpkg: regarding .../dpkg_1.13.19_amd64.deb containing dpkg, pre-dependency problem:
-O:  dpkg pre-depends on libc6 (>= 2.3.5-1)
-O: dpkg: warning - ignoring pre-dependency problem !
-O: (Reading database ... 
-O: 29 files and directories currently installed.)
+O: (Reading database ... 29 files and directories currently installed.)
 O: Unpacking dpkg (from .../dpkg_1.13.19_amd64.deb) ...
 P: Unpacking package dpkg
 D: Updating dpkg to status 2
+O: dpkg: regarding .../dpkg_1.13.19_amd64.deb containing dpkg, pre-dependency problem:
+O:  dpkg pre-depends on libc6 (>= 2.3.5-1)
+O: dpkg: warning - ignoring pre-dependency problem !
 O: dpkg: dpkg: dependency problems, but configuring anyway as you request:
 O:  dpkg depends on libc6 (>= 2.3.5-1); however:
 O:   Package libc6 is not installed.
@@ -3375,8 +3374,7 @@ D: resolver (libstdc++6): mark, dependency from apt
 D: resolver (apt): mark
 D: Execute "dpkg -i /var/cache/bootstrap/apt_0.6.44.1_amd64.deb" in chroot
 O: Selecting previously deselected package apt.
-O: (Reading database ... 
-O: 4660 files and directories currently installed.)
+O: (Reading database ... 4660 files and directories currently installed.)
 O: Unpacking apt (from .../apt_0.6.44.1_amd64.deb) ...
 P: Unpacking package apt
 D: Updating apt to status 2
@@ -3997,7 +3995,7 @@ Get:1 http://ftp.jp.debian.org etch Release.gpg [189B]
 Get:2 http://ftp.jp.debian.org etch Release [35.4kB]
 Ign http://ftp.jp.debian.org etch Release
 Get:3 http://ftp.jp.debian.org etch/main Packages [3631kB]
-Fetched 3667kB in 2s (1543kB/s)
+Fetched 3667kB in 2s (1690kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org etch Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
@@ -6700,7 +6698,7 @@ Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
 Get:2 http://ftp.jp.debian.org sid Release [38.3kB]
 Ign http://ftp.jp.debian.org sid Release
 Get:3 http://ftp.jp.debian.org sid/main Packages [4031kB]
-Fetched 4069kB in 2s (1655kB/s)
+Fetched 4069kB in 2s (1702kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems

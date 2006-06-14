@@ -1029,17 +1029,16 @@ D: Return code: 0
 D: call action: dpkg-install
 D: Execute "dpkg -i --force-all /var/cache/bootstrap/dpkg_1.13.21_amd64.deb" in chroot
 O: Selecting previously deselected package dpkg.
+O: (Reading database ... 29 files and directories currently installed.)
+O: Unpacking dpkg (from .../dpkg_1.13.21_amd64.deb) ...
+P: Unpacking package dpkg
+D: Updating dpkg to status 2
 O: dpkg: regarding .../dpkg_1.13.21_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on libc6 (>= 2.3.5-1)
 O: dpkg: warning - ignoring pre-dependency problem !
 O: dpkg: regarding .../dpkg_1.13.21_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on coreutils (>= 5.93-1)
 O: dpkg: warning - ignoring pre-dependency problem !
-O: (Reading database ... 
-O: 29 files and directories currently installed.)
-O: Unpacking dpkg (from .../dpkg_1.13.21_amd64.deb) ...
-P: Unpacking package dpkg
-D: Updating dpkg to status 2
 O: dpkg: dpkg: dependency problems, but configuring anyway as you request:
 O:  dpkg depends on libc6 (>= 2.3.5-1); however:
 O:   Package libc6 is not installed.
@@ -1996,8 +1995,7 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-apt.deb /var/cache/pb
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-apt.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-apt.
-O: (Reading database ... 
-O: 4845 files and directories currently installed.)
+O: (Reading database ... 4845 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-apt (from /cdebootstrap-helper-apt.deb) ...
 O: Setting up cdebootstrap-helper-apt (1) ...
 D: Return code: 0
@@ -2108,7 +2106,6 @@ D: resolver (base-passwd): mark, dependency from logrotate
 D: resolver (logrotate): mark
 D: Execute "apt-get install --yes -o APT::Get::AllowUnauthenticated=true apt-utils dhcp3-common dhcp3-client net-tools ifupdown iptables iputils-ping libwrap0 tcpd netbase openbsd-inetd telnet libssl0.9.8 wget info manpages groff-base bsdmainutils libgdbm3 man-db adduser cron exim4-config exim4-base libgpg-error0 libgcrypt11 liblzo1 libopencdk8 libgnutls13 libpcre3 exim4-daemon-light at cpio ed libncursesw5 nano nvi psmisc sysklogd klogd libsigc++-2.0-0c2a aptitude dmidecode laptop-detect tasksel tasksel-data libnewt0.52 libpopt0 whiptail exim4 logrotate" in chroot
 O: Reading package lists...
-O: 
 O: Building dependency tree...
 O: 
 O: Suggested packages:
@@ -2602,7 +2599,7 @@ Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
 Get:2 http://ftp.jp.debian.org sid Release [38.3kB]
 Ign http://ftp.jp.debian.org sid Release
 Get:3 http://ftp.jp.debian.org sid/main Packages [4031kB]
-Fetched 4069kB in 2s (1711kB/s)
+Fetched 4069kB in 2s (1762kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
@@ -2630,15 +2627,12 @@ The following NEW packages will be installed:
   gcc-4.1 libc6-dev libdb4.4 libstdc++6-4.1-dev linux-kernel-headers make
   patch perl perl-modules
 0 upgraded, 18 newly installed, 0 to remove and 0 not upgraded.
-Need to get 2289kB/21.8MB of archives.
+Need to get 0B/21.8MB of archives.
 After unpacking 87.0MB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   binutils cpp-4.1 cpp perl-modules libdb4.4 perl patch make dpkg-dev gcc-4.1
   gcc linux-kernel-headers libc6-dev libstdc++6-4.1-dev g++-4.1 g++
   build-essential cowdancer
-Get:1 http://ftp.jp.debian.org sid/main libdb4.4 4.4.20-5 [474kB]
-Get:2 http://ftp.jp.debian.org sid/main linux-kernel-headers 2.6.16.20-1 [1815kB]
-Fetched 2289kB in 1s (1353kB/s)
 Selecting previously deselected package binutils.
 (Reading database ... 6784 files and directories currently installed.)
 Unpacking binutils (from .../binutils_2.16.1cvs20060413-1_amd64.deb) ...
@@ -2700,8 +2694,6 @@ Setting up perl (5.8.8-5) ...
 Setting up dpkg-dev (1.13.21) ...
 Setting up build-essential (11.2) ...
 Copying back the cached apt archive contents
- -> new cache content libdb4.4_4.4.20-5_amd64.deb added
- -> new cache content linux-kernel-headers_2.6.16.20-1_amd64.deb added
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
  -> Invoking pbuilder
@@ -2721,13 +2713,14 @@ Err http://ftp.jp.debian.org sid Release
 Get:2 http://ftp.jp.debian.org sid Release [38.3kB]
 Ign http://ftp.jp.debian.org sid Release
 Get:3 http://ftp.jp.debian.org sid/main Packages/DiffIndex [12.6kB]
-Fetched 51.1kB in 0s (136kB/s)
+Fetched 51.1kB in 0s (118kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
 dpkg - warning: ignoring request to remove lilo which isn't installed.
 Obtaining the cached apt archive contents
-Reading package lists...
+Reading package lists...Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:677874
+
 Building dependency tree...
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 Reading package lists...
@@ -2757,6 +2750,11 @@ rm -f build-stamp configure-stamp
 make[1]: Entering directory `/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer'
 rm *~ *.o *.lo libcowdancer.so cow-shell cowbuilder
 rm: cannot remove `*~': No such file or directory
+rm: cannot remove `*.o': No such file or directory
+rm: cannot remove `*.lo': No such file or directory
+rm: cannot remove `libcowdancer.so': No such file or directory
+rm: cannot remove `cow-shell': No such file or directory
+rm: cannot remove `cowbuilder': No such file or directory
 make[1]: [clean] Error 1 (ignored)
 make[1]: Leaving directory `/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer'
 dh_clean
@@ -2773,8 +2771,8 @@ I: using fakeroot in build.
 pbuilder-buildpackage/amd64 $Id$
 $Id$
 
-Current time: Sun Jun 11 14:48:47 JST 2006
-pbuilder-time-stamp: 1150004927
+Current time: Mon Jun 12 10:54:34 JST 2006
+pbuilder-time-stamp: 1150077274
  -> copying local configuration
  -> mounting /proc filesystem
  -> mounting /dev/pts filesystem
@@ -2797,18 +2795,14 @@ The following NEW packages will be installed:
   debhelper file gettext gettext-base html2text intltool-debian libmagic1
   po-debconf
 0 upgraded, 8 newly installed, 0 to remove and 0 not upgraded.
-Need to get 509kB/2982kB of archives.
+Need to get 0B/2982kB of archives.
 After unpacking 10.3MB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   gettext-base libmagic1 file html2text gettext intltool-debian po-debconf
   debhelper
-Get:1 http://ftp.jp.debian.org sid/main debhelper 5.0.36 [509kB]
-Fetched 509kB in 3s (153kB/s)
 Selecting previously deselected package gettext-base.
 (Reading database ... 11556 files and directories currently installed.)
 Unpacking gettext-base (from .../gettext-base_0.14.5-4_amd64.deb) ...
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:340244
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:340244
 Selecting previously deselected package libmagic1.
 Unpacking libmagic1 (from .../libmagic1_4.17-1_amd64.deb) ...
 Selecting previously deselected package file.
@@ -2817,6 +2811,8 @@ Selecting previously deselected package html2text.
 Unpacking html2text (from .../html2text_1.3.2a-3_amd64.deb) ...
 Selecting previously deselected package gettext.
 Unpacking gettext (from .../gettext_0.14.5-4_amd64.deb) ...
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:500314
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:500314
 Selecting previously deselected package intltool-debian.
 Unpacking intltool-debian (from .../intltool-debian_0.34.2+20060512_all.deb) ...
 Selecting previously deselected package po-debconf.
@@ -2848,12 +2844,11 @@ WARNING: The following packages cannot be authenticated!
 Selecting previously deselected package fakeroot.
 (Reading database ... 12174 files and directories currently installed.)
 Unpacking fakeroot (from .../fakeroot_1.5.8_amd64.deb) ...
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:340841
-Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:340841
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:516954
+Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: 2049:516954
 Setting up fakeroot (1.5.8) ...
 
 Copying back the cached apt archive contents
- -> new cache content debhelper_5.0.36_all.deb added
 Copying source file
     -> copying [/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.16.dsc]
     -> copying [/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.16.tar.gz]
@@ -2983,8 +2978,8 @@ dpkg-buildpackage: full upload; Debian-native package (full source is included)
 Copying back the cached apt archive contents
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-Current time: Sun Jun 11 14:49:03 JST 2006
-pbuilder-time-stamp: 1150004943
+Current time: Mon Jun 12 10:54:48 JST 2006
+pbuilder-time-stamp: 1150077288
  -> Copying COW directory
  -> Invoking pbuilder
  -> Cleaning COW directory
