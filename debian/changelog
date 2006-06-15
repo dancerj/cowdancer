@@ -1,3 +1,9 @@
+cowdancer (0.18) UNRELEASED; urgency=low
+
+  * 
+
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 15 Jun 2006 09:06:09 +0900
+
 cowdancer (0.17) unstable; urgency=low
 
   * mkdir with right permission 0777, not 777.
