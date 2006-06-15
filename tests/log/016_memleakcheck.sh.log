@@ -1,10 +1,10 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.iPiIg16947
++ TESTDIR=/tmp/tmp.IUmZb21526
 ++ readlink -f tests/016_memleakcheck.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c
-+ gcc /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c -o /tmp/tmp.iPiIg16947/tracer -g
++ gcc /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/016_memleakcheck.c -o /tmp/tmp.IUmZb21526/tracer -g
 + set -ex
-+ cd /tmp/tmp.iPiIg16947
++ cd /tmp/tmp.IUmZb21526
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
@@ -13,31 +13,31 @@
 1024 bytes (1.0 kB) copied, 4.8e-05 seconds, 21.3 MB/s
 + cp -al 1 2
 + MALLOC_TRACE=log
-+ cow-shell /tmp/tmp.iPiIg16947/tracer
-00400000-00401000 r-xp 00000000 08:01 49727                              /tmp/tmp.iPiIg16947/tracer
-00500000-00501000 rw-p 00000000 08:01 49727                              /tmp/tmp.iPiIg16947/tracer
++ cow-shell /tmp/tmp.IUmZb21526/tracer
+00400000-00401000 r-xp 00000000 08:01 49723                              /tmp/tmp.IUmZb21526/tracer
+00500000-00501000 rw-p 00000000 08:01 49723                              /tmp/tmp.IUmZb21526/tracer
 00501000-00522000 rw-p 00501000 00:00 0                                  [heap]
-2ae809ddd000-2ae809df4000 r-xp 00000000 08:01 354848                     /lib/ld-2.3.6.so
-2ae809df4000-2ae809df6000 rw-p 2ae809df4000 00:00 0 
-2ae809ef3000-2ae809ef5000 rw-p 00016000 08:01 354848                     /lib/ld-2.3.6.so
-2ae809ef5000-2ae809ef8000 r-xp 00000000 08:01 129452                     /usr/lib/cowdancer/libcowdancer.so
-2ae809ef8000-2ae809ff7000 ---p 00003000 08:01 129452                     /usr/lib/cowdancer/libcowdancer.so
-2ae809ff7000-2ae809ff8000 rw-p 00002000 08:01 129452                     /usr/lib/cowdancer/libcowdancer.so
-2ae809ff8000-2ae809ff9000 r--p 00000000 08:01 50382                      /tmp/tmp.iPiIg16947/.ilist
-2ae809ff9000-2ae809ffc000 rw-p 2ae809ff9000 00:00 0 
-2ae80a00d000-2ae80a131000 r-xp 00000000 08:01 358223                     /lib/libc-2.3.6.so
-2ae80a131000-2ae80a230000 ---p 00124000 08:01 358223                     /lib/libc-2.3.6.so
-2ae80a230000-2ae80a245000 r--p 00123000 08:01 358223                     /lib/libc-2.3.6.so
-2ae80a245000-2ae80a248000 rw-p 00138000 08:01 358223                     /lib/libc-2.3.6.so
-2ae80a248000-2ae80a24d000 rw-p 2ae80a248000 00:00 0 
-2ae80a24d000-2ae80a24f000 r-xp 00000000 08:01 359046                     /lib/libdl-2.3.6.so
-2ae80a24f000-2ae80a34e000 ---p 00002000 08:01 359046                     /lib/libdl-2.3.6.so
-2ae80a34e000-2ae80a350000 rw-p 00001000 08:01 359046                     /lib/libdl-2.3.6.so
-2ae80a350000-2ae80a351000 rw-p 2ae80a350000 00:00 0 
-7fffa0cb7000-7fffa0ccd000 rw-p 7fffa0cb7000 00:00 0                      [stack]
+2ab5d3bc3000-2ab5d3bda000 r-xp 00000000 08:01 354848                     /lib/ld-2.3.6.so
+2ab5d3bda000-2ab5d3bdc000 rw-p 2ab5d3bda000 00:00 0 
+2ab5d3cd9000-2ab5d3cdb000 rw-p 00016000 08:01 354848                     /lib/ld-2.3.6.so
+2ab5d3cdb000-2ab5d3cde000 r-xp 00000000 08:01 135022                     /usr/lib/cowdancer/libcowdancer.so
+2ab5d3cde000-2ab5d3ddd000 ---p 00003000 08:01 135022                     /usr/lib/cowdancer/libcowdancer.so
+2ab5d3ddd000-2ab5d3dde000 rw-p 00002000 08:01 135022                     /usr/lib/cowdancer/libcowdancer.so
+2ab5d3dde000-2ab5d3ddf000 r--p 00000000 08:01 50379                      /tmp/tmp.IUmZb21526/.ilist
+2ab5d3ddf000-2ab5d3de2000 rw-p 2ab5d3ddf000 00:00 0 
+2ab5d3df3000-2ab5d3f17000 r-xp 00000000 08:01 358223                     /lib/libc-2.3.6.so
+2ab5d3f17000-2ab5d4016000 ---p 00124000 08:01 358223                     /lib/libc-2.3.6.so
+2ab5d4016000-2ab5d402b000 r--p 00123000 08:01 358223                     /lib/libc-2.3.6.so
+2ab5d402b000-2ab5d402e000 rw-p 00138000 08:01 358223                     /lib/libc-2.3.6.so
+2ab5d402e000-2ab5d4033000 rw-p 2ab5d402e000 00:00 0 
+2ab5d4033000-2ab5d4035000 r-xp 00000000 08:01 359046                     /lib/libdl-2.3.6.so
+2ab5d4035000-2ab5d4134000 ---p 00002000 08:01 359046                     /lib/libdl-2.3.6.so
+2ab5d4134000-2ab5d4136000 rw-p 00001000 08:01 359046                     /lib/libdl-2.3.6.so
+2ab5d4136000-2ab5d4137000 rw-p 2ab5d4136000 00:00 0 
+7fffd6ed1000-7fffd6ee7000 rw-p 7fffd6ed1000 00:00 0                      [stack]
 ffffffffff600000-ffffffffffe00000 ---p 00000000 00:00 0                  [vdso]
 + RESULT=0
-+ mtrace /tmp/tmp.iPiIg16947/tracer /tmp/tmp.iPiIg16947/log
++ mtrace /tmp/tmp.IUmZb21526/tracer /tmp/tmp.IUmZb21526/log
 No memory leaks.
-+ rm -rf /tmp/tmp.iPiIg16947
++ rm -rf /tmp/tmp.IUmZb21526
 + exit 0

@@ -1,5 +1,13 @@
 2006-06-15  Junichi Uekawa  <dancer@debian.org>
 
+	* tests/901_test_pbuilder_create.sh: check for failure states in test.
+
+	* tests/902_test_cowbuilder_fail.sh: check that exit code is
+	processed properly; it seems like it isn't in some cases?
+
+	* tests/010_test_noilistfile.sh: variable was wrong, it should be
+	COWDANCER_ILISTFILE
+	
 	* cowbuilder.c (main): mkdir with 0777, not 777.
 
 2006-06-11  Junichi Uekawa  <dancer@debian.org>
