@@ -105,7 +105,8 @@ int main(int ac, char** av)
 	   "/usr/lib/cowdancer/libcowdancer.so"
 	   );
 
-  if (!strcmp(getenv("COWDANCER_REUSE"),"yes") && 
+  if (getenv("COWDANCER_REUSE") && 
+      !strcmp(getenv("COWDANCER_REUSE"),"yes") && 
       !stat(ilistpath, &st))
     {
       /* if reuse flag is on and file already exists 
