@@ -1,8 +1,8 @@
 cowdancer (0.18) UNRELEASED; urgency=low
 
-  * 
+  * cow-shell: COWDANCER_REUSE=yes: reuse .ilist instead of regenerating.
 
- -- Junichi Uekawa <dancer@debian.org>  Thu, 15 Jun 2006 09:06:09 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 21 Jun 2006 07:37:45 +0900
 
 cowdancer (0.17) unstable; urgency=low
 
