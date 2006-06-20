@@ -1,10 +1,28 @@
 2006-06-21  Junichi Uekawa  <dancer@debian.org>
 
+	* cowbuilder.c (cpbuilder_build): support COWDANCER_REUSE option
+	in build target. pbuilder-satisfydepends seems faster now.  50
+	seconds -> 33 seconds to build pbuilder inside chroot.
+
 	* tests/902_test_cowbuilder_fail.sh: fix thinko.
 
 	* cow-shell.1: document.
 
-	* cow-shell.c (main): COWDANCER_REUSE option.
+	* cow-shell.c (main): COWDANCER_REUSE option; it is definitely
+	faster.
+
+	[08:23:25]dancer64:linux-2.6> time echo exit| cow-shell
+	Invoking /bin/bash
+	
+	real    0m0.323s
+	user    0m0.059s
+	sys     0m0.256s
+	[08:23:25]dancer64:linux-2.6> time echo exit| COWDANCER_REUSE=yes cow-shell
+	Invoking /bin/bash
+	
+	real    0m0.006s
+	user    0m0.004s
+	sys     0m0.002s
 
 2006-06-15  Junichi Uekawa  <dancer@debian.org>
 

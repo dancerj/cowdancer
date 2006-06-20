@@ -297,6 +297,7 @@ static int cpbuilder_internal_cleancow(const struct pbuilderconfig* pc)
 int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
 {
   const char* dscfile=canonicalize_file_name(dscfile_);
+  char* ilistfile;
   char* buf_chroot=NULL;
   int ret;
 
@@ -319,6 +320,17 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
       fprintf(stderr, "cowdancer: out of memory.\n");
       return -1;
     }
+  
+  /* delete existing ilist file and use COWDANCER_REUSE */
+  asprintf(&ilistfile, "%s/.ilist", pc->buildplace);  
+  if (unlink(ilistfile))
+    {
+      /* no ilist file, but this is no problem */
+    }
+    
+  free(ilistfile);
+  setenv("COWDANCER_REUSE","yes",1);
+
   printf(" -> Invoking pbuilder\n");
   pbuildercommandline[1]="build";
   PBUILDER_ADD_PARAM("--buildplace");

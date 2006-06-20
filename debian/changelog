@@ -1,8 +1,11 @@
-cowdancer (0.18) UNRELEASED; urgency=low
+cowdancer (0.18) unstable; urgency=low
 
   * cow-shell: COWDANCER_REUSE=yes: reuse .ilist instead of regenerating.
+  * cowbuilder: use COWDANCER_REUSE=yes option to avoid excessive call to
+    find/xargs. Speeds up pbuilder-satisfydepends considerably, making
+    cowbuilder build faster.
 
- -- Junichi Uekawa <dancer@debian.org>  Wed, 21 Jun 2006 07:37:45 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 21 Jun 2006 08:34:39 +0900
 
 cowdancer (0.17) unstable; urgency=low
 
