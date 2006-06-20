@@ -93,6 +93,7 @@ D: resolver (libgpg-error0): mark, dependency from libgcrypt11
 D: resolver (libgcrypt11): mark, dependency from libgnutls13
 D: resolver (liblzo1): mark, dependency from libgnutls13
 D: resolver (libopencdk8): mark, dependency from libgnutls13
+D: resolver (libtasn1-3): mark, dependency from libgnutls13
 D: resolver (libgnutls13): mark, dependency from exim4-daemon-light
 D: resolver (libpcre3): mark, dependency from exim4-daemon-light
 D: resolver (exim4-daemon-light): mark, dependency from at
@@ -124,7 +125,6 @@ D: resolver (awk): search, dependency from base-files
 D: resolver (mawk): mark, dependency from base-files
 D: resolver (base-files): mark
 D: resolver (bash): mark
-D: resolver (gcc-4.0-base): mark
 D: resolver (rgrep): search
 D: resolver (grep): mark
 D: resolver (perl5-base): search
@@ -178,19 +178,19 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libc6
 P: Retrieving gcc-4.1-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gcc-4.1-base_4.1.1-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/gcc-4.1-base_4.1.1-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gcc-4.1-base_4.1.1-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/gcc-4.1-base_4.1.1-5_amd64.deb"
 D: Return code: 0
 P: Validating gcc-4.1-base
 P: Retrieving libgcc1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcc1_4.1.1-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/libgcc1_4.1.1-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcc1_4.1.1-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/libgcc1_4.1.1-5_amd64.deb"
 D: Return code: 0
 P: Validating libgcc1
 P: Retrieving libstdc++6
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libstdc++6_4.1.1-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/libstdc++6_4.1.1-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libstdc++6_4.1.1-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/libstdc++6_4.1.1-5_amd64.deb"
 D: Return code: 0
 P: Validating libstdc++6
 P: Retrieving apt
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt_0.6.44.1-0.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt_0.6.44.1-0.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt_0.6.44.2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt_0.6.44.2_amd64.deb"
 D: Return code: 0
 P: Validating apt
 P: Retrieving libdb4.3
@@ -198,7 +198,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libdb4.3
 P: Retrieving apt-utils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt-utils_0.6.44.1-0.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt-utils_0.6.44.1-0.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt-utils_0.6.44.2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt-utils_0.6.44.2_amd64.deb"
 D: Return code: 0
 P: Validating apt-utils
 P: Retrieving libattr1
@@ -230,7 +230,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/deb
 D: Return code: 0
 P: Validating debianutils
 P: Retrieving dhcp3-common
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dhcp3-common_3.0.4-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/dhcp3/dhcp3-common_3.0.4-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dhcp3-common_3.0.4-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/dhcp3/dhcp3-common_3.0.4-5_amd64.deb"
 D: Return code: 0
 P: Validating dhcp3-common
 P: Retrieving perl-base
@@ -262,7 +262,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/deb
 D: Return code: 0
 P: Validating debconf
 P: Retrieving dhcp3-client
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dhcp3-client_3.0.4-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/dhcp3/dhcp3-client_3.0.4-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dhcp3-client_3.0.4-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/dhcp3/dhcp3-client_3.0.4-5_amd64.deb"
 D: Return code: 0
 P: Validating dhcp3-client
 P: Retrieving net-tools
@@ -417,8 +417,12 @@ P: Retrieving libopencdk8
 D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libopencdk8_0.5.7-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/o/opencdk8/libopencdk8_0.5.7-2_amd64.deb"
 D: Return code: 0
 P: Validating libopencdk8
+P: Retrieving libtasn1-3
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtasn1-3_0.3.4-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libt/libtasn1-3/libtasn1-3_0.3.4-2_amd64.deb"
+D: Return code: 0
+P: Validating libtasn1-3
 P: Retrieving libgnutls13
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgnutls13_1.3.5-1.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gnutls13/libgnutls13_1.3.5-1.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgnutls13_1.4.0-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gnutls13/libgnutls13_1.4.0-2_amd64.deb"
 D: Return code: 0
 P: Validating libgnutls13
 P: Retrieving libpcre3
@@ -434,7 +438,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/at_
 D: Return code: 0
 P: Validating at
 P: Retrieving cpio
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cpio_2.6-12_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/cpio/cpio_2.6-12_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cpio_2.6-13_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/cpio/cpio_2.6-13_amd64.deb"
 D: Return code: 0
 P: Validating cpio
 P: Retrieving ed
@@ -533,10 +537,6 @@ P: Retrieving bash
 D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/bash_3.1-4_amd64.deb http://ftp.jp.debian.org/debian/pool/main/b/bash/bash_3.1-4_amd64.deb"
 D: Return code: 0
 P: Validating bash
-P: Retrieving gcc-4.0-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gcc-4.0-base_4.0.3-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.0/gcc-4.0-base_4.0.3-3_amd64.deb"
-D: Return code: 0
-P: Validating gcc-4.0-base
 P: Retrieving grep
 D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/grep_2.5.1.ds2-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/grep/grep_2.5.1.ds2-5_amd64.deb"
 D: Return code: 0
@@ -663,7 +663,6 @@ D: resolver (mawk): mark
 D: resolver (awk): search, dependency from base-files
 D: resolver (base-files): mark
 D: resolver (bash): mark
-D: resolver (gcc-4.0-base): mark
 D: resolver (grep): mark
 D: resolver (libdevmapper1.02): mark
 D: resolver (procps): mark
@@ -802,9 +801,6 @@ D: Return code: 0
 P: Extracting bash
 D: Execute "tar -xz -C /var/cache/pbuilder/base-test.cow -f -"
 D: Return code: 0
-P: Extracting gcc-4.0-base
-D: Execute "tar -xz -C /var/cache/pbuilder/base-test.cow -f -"
-D: Return code: 0
 P: Extracting grep
 D: Execute "tar -xz -C /var/cache/pbuilder/base-test.cow -f -"
 D: Return code: 0
@@ -934,6 +930,7 @@ D: resolver (libgpg-error0): mark
 D: resolver (libgcrypt11): mark
 D: resolver (liblzo1): mark
 D: resolver (libopencdk8): mark
+D: resolver (libtasn1-3): mark
 D: resolver (libgnutls13): mark
 D: resolver (libpcre3): mark
 D: resolver (exim4-daemon-light): mark
@@ -965,7 +962,6 @@ D: resolver (mawk): mark
 D: resolver (awk): search, dependency from base-files
 D: resolver (base-files): mark
 D: resolver (bash): mark
-D: resolver (gcc-4.0-base): mark
 D: resolver (grep): mark
 D: resolver (libdevmapper1.02): mark
 D: resolver (procps): mark
@@ -1007,8 +1003,7 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-diverts.deb /var/cach
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-diverts.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-diverts.
-O: (Reading database ... 
-O: 24 files and directories currently installed.)
+O: (Reading database ... 24 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-diverts (from .../cdebootstrap-helper-diverts.deb) ...
 O: Adding `diversion of /sbin/start-stop-daemon to /sbin/start-stop-daemon.REAL by cdebootstrap-helper-diverts'
 O: Adding `diversion of /usr/sbin/invoke-rc.d to /usr/sbin/invoke-rc.d.REAL by cdebootstrap-helper-diverts'
@@ -1029,16 +1024,17 @@ D: Return code: 0
 D: call action: dpkg-install
 D: Execute "dpkg -i --force-all /var/cache/bootstrap/dpkg_1.13.21_amd64.deb" in chroot
 O: Selecting previously deselected package dpkg.
-O: (Reading database ... 29 files and directories currently installed.)
-O: Unpacking dpkg (from .../dpkg_1.13.21_amd64.deb) ...
-P: Unpacking package dpkg
-D: Updating dpkg to status 2
 O: dpkg: regarding .../dpkg_1.13.21_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on libc6 (>= 2.3.5-1)
 O: dpkg: warning - ignoring pre-dependency problem !
 O: dpkg: regarding .../dpkg_1.13.21_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on coreutils (>= 5.93-1)
 O: dpkg: warning - ignoring pre-dependency problem !
+O: (Reading database ... 
+O: 29 files and directories currently installed.)
+O: Unpacking dpkg (from .../dpkg_1.13.21_amd64.deb) ...
+P: Unpacking package dpkg
+D: Updating dpkg to status 2
 O: dpkg: dpkg: dependency problems, but configuring anyway as you request:
 O:  dpkg depends on libc6 (>= 2.3.5-1); however:
 O:   Package libc6 is not installed.
@@ -1090,7 +1086,6 @@ D: resolver (awk): search, dependency from base-files
 D: resolver (base-passwd): mark, dependency from base-files
 D: resolver (base-files): mark
 D: resolver (bash): mark
-D: resolver (gcc-4.0-base): mark
 D: resolver (grep): mark
 D: resolver (libdevmapper1.02): mark
 D: resolver (procps): mark
@@ -1113,7 +1108,7 @@ D: resolver (makedev): mark
 D: resolver (ncurses-base): mark
 D: resolver (findutils): mark
 D: resolver (util-linux): mark
-D: Execute "dpkg --unpack --force-all /var/cache/bootstrap/tzdata_2006g-2_all.deb /var/cache/bootstrap/libc6_2.3.6-15_amd64.deb /var/cache/bootstrap/gcc-4.1-base_4.1.1-3_amd64.deb /var/cache/bootstrap/libgcc1_4.1.1-3_amd64.deb /var/cache/bootstrap/libstdc++6_4.1.1-3_amd64.deb /var/cache/bootstrap/libdb4.3_4.3.29-5_amd64.deb /var/cache/bootstrap/libattr1_2.4.32-1_amd64.deb /var/cache/bootstrap/libacl1_2.2.37-1_amd64.deb /var/cache/bootstrap/libsepol1_1.12-1_amd64.deb /var/cache/bootstrap/libselinux1_1.30-1_amd64.deb /var/cache/bootstrap/coreutils_5.96-3_amd64.deb /var/cache/bootstrap/mktemp_1.5-2_amd64.deb /var/cache/bootstrap/debianutils_2.16.1_amd64.deb /var/cache/bootstrap/perl-base_5.8.8-6_amd64.deb /var/cache/bootstrap/liblocale-gettext-perl_1.05-1_amd64.deb /var/cache/bootstrap/libtext-iconv-perl_1.4-2_amd64.deb /var/cache/bootstrap/libtext-charwidth-perl_0.04-3_amd64.deb /var/cache/bootstrap/libtext-wrapi18n-perl_0.06-4_all.deb /var/cache/bootstrap/debconf_1.5.2_all.deb /var/cache/bootstrap/debconf-i18n_1
+D: Execute "dpkg --unpack --force-all /var/cache/bootstrap/tzdata_2006g-2_all.deb /var/cache/bootstrap/libc6_2.3.6-15_amd64.deb /var/cache/bootstrap/gcc-4.1-base_4.1.1-5_amd64.deb /var/cache/bootstrap/libgcc1_4.1.1-5_amd64.deb /var/cache/bootstrap/libstdc++6_4.1.1-5_amd64.deb /var/cache/bootstrap/libdb4.3_4.3.29-5_amd64.deb /var/cache/bootstrap/libattr1_2.4.32-1_amd64.deb /var/cache/bootstrap/libacl1_2.2.37-1_amd64.deb /var/cache/bootstrap/libsepol1_1.12-1_amd64.deb /var/cache/bootstrap/libselinux1_1.30-1_amd64.deb /var/cache/bootstrap/coreutils_5.96-3_amd64.deb /var/cache/bootstrap/mktemp_1.5-2_amd64.deb /var/cache/bootstrap/debianutils_2.16.1_amd64.deb /var/cache/bootstrap/perl-base_5.8.8-6_amd64.deb /var/cache/bootstrap/liblocale-gettext-perl_1.05-1_amd64.deb /var/cache/bootstrap/libtext-iconv-perl_1.4-2_amd64.deb /var/cache/bootstrap/libtext-charwidth-perl_0.04-3_amd64.deb /var/cache/bootstrap/libtext-wrapi18n-perl_0.06-4_all.deb /var/cache/bootstrap/debconf_1.5.2_all.deb /var/cache/bootstrap/debconf-i18n_1
 O: Selecting previously deselected package tzdata.
 O: (Reading database ... 
 O: 207 files and directories currently installed.)
@@ -1125,15 +1120,15 @@ O: Unpacking libc6 (from .../libc6_2.3.6-15_amd64.deb) ...
 P: Unpacking package libc6
 D: Updating libc6 to status 2
 O: Selecting previously deselected package gcc-4.1-base.
-O: Unpacking gcc-4.1-base (from .../gcc-4.1-base_4.1.1-3_amd64.deb) ...
+O: Unpacking gcc-4.1-base (from .../gcc-4.1-base_4.1.1-5_amd64.deb) ...
 P: Unpacking package gcc-4.1-base
 D: Updating gcc-4.1-base to status 2
 O: Selecting previously deselected package libgcc1.
-O: Unpacking libgcc1 (from .../libgcc1_4.1.1-3_amd64.deb) ...
+O: Unpacking libgcc1 (from .../libgcc1_4.1.1-5_amd64.deb) ...
 P: Unpacking package libgcc1
 D: Updating libgcc1 to status 2
 O: Selecting previously deselected package libstdc++6.
-O: Unpacking libstdc++6 (from .../libstdc++6_4.1.1-3_amd64.deb) ...
+O: Unpacking libstdc++6 (from .../libstdc++6_4.1.1-5_amd64.deb) ...
 P: Unpacking package libstdc++6
 D: Updating libstdc++6 to status 2
 O: Selecting previously deselected package libdb4.3.
@@ -1350,10 +1345,6 @@ O: dpkg: warning - ignoring pre-dependency problem !
 O: Unpacking bash (from .../bootstrap/bash_3.1-4_amd64.deb) ...
 P: Unpacking package bash
 D: Updating bash to status 2
-O: Selecting previously deselected package gcc-4.0-base.
-O: Unpacking gcc-4.0-base (from .../gcc-4.0-base_4.0.3-3_amd64.deb) ...
-P: Unpacking package gcc-4.0-base
-D: Updating gcc-4.0-base to status 2
 O: Selecting previously deselected package grep.
 O: dpkg: regarding .../grep_2.5.1.ds2-5_amd64.deb containing grep, pre-dependency problem:
 O:  grep pre-depends on libc6 (>= 2.3.5-1)
@@ -1600,6 +1591,7 @@ D: resolver (libgpg-error0): mark
 D: resolver (libgcrypt11): mark
 D: resolver (liblzo1): mark
 D: resolver (libopencdk8): mark
+D: resolver (libtasn1-3): mark
 D: resolver (libgnutls13): mark
 D: resolver (libpcre3): mark
 D: resolver (exim4-daemon-light): mark
@@ -1631,7 +1623,6 @@ D: resolver (mawk): mark
 D: resolver (awk): search, dependency from base-files
 D: resolver (base-files): mark
 D: resolver (bash): mark
-D: resolver (gcc-4.0-base): mark
 D: resolver (grep): mark
 D: resolver (libdevmapper1.02): mark
 D: resolver (procps): mark
@@ -1667,11 +1658,7 @@ P: Configuring package tzdata
 D: Updating tzdata to status 3
 O: Non-interactive mode, setting timezone to UTC.  Run tzconfig to change.
 O: 
-O: Setting up gcc-4.0-base (4.0.3-3) ...
-P: Configuring package gcc-4.0-base
-D: Updating gcc-4.0-base to status 3
-O: 
-O: Setting up gcc-4.1-base (4.1.1-3) ...
+O: Setting up gcc-4.1-base (4.1.1-5) ...
 P: Configuring package gcc-4.1-base
 D: Updating gcc-4.1-base to status 3
 O: 
@@ -1717,7 +1704,7 @@ O: Setting up zlib1g (1.2.3-11) ...
 P: Configuring package zlib1g
 D: Updating zlib1g to status 3
 O: 
-O: Setting up libgcc1 (4.1.1-3) ...
+O: Setting up libgcc1 (4.1.1-5) ...
 P: Configuring package libgcc1
 D: Updating libgcc1 to status 3
 O: 
@@ -1785,7 +1772,7 @@ O: Setting up libselinux1 (1.30-1) ...
 P: Configuring package libselinux1
 D: Updating libselinux1 to status 3
 O: 
-O: Setting up libstdc++6 (4.1.1-3) ...
+O: Setting up libstdc++6 (4.1.1-5) ...
 P: Configuring package libstdc++6
 D: Updating libstdc++6 to status 3
 O: 
@@ -1945,6 +1932,7 @@ D: resolver (libgpg-error0): mark
 D: resolver (libgcrypt11): mark
 D: resolver (liblzo1): mark
 D: resolver (libopencdk8): mark
+D: resolver (libtasn1-3): mark
 D: resolver (libgnutls13): mark
 D: resolver (libpcre3): mark
 D: resolver (exim4-daemon-light): mark
@@ -1977,13 +1965,14 @@ D: resolver (gcc-4.1-base): mark, dependency from libgcc1
 D: resolver (libgcc1): mark, dependency from apt
 D: resolver (libstdc++6): mark, dependency from apt
 D: resolver (apt): mark
-D: Execute "dpkg -i /var/cache/bootstrap/apt_0.6.44.1-0.1_amd64.deb" in chroot
+D: Execute "dpkg -i /var/cache/bootstrap/apt_0.6.44.2_amd64.deb" in chroot
 O: Selecting previously deselected package apt.
-O: (Reading database ... 4665 files and directories currently installed.)
-O: Unpacking apt (from .../apt_0.6.44.1-0.1_amd64.deb) ...
+O: (Reading database ... 
+O: 4657 files and directories currently installed.)
+O: Unpacking apt (from .../apt_0.6.44.2_amd64.deb) ...
 P: Unpacking package apt
 D: Updating apt to status 2
-O: Setting up apt (0.6.44.1-0.1) ...
+O: Setting up apt (0.6.44.2) ...
 P: Configuring package apt
 D: Updating apt to status 3
 O: 
@@ -1995,7 +1984,7 @@ D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-apt.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-apt.
 O: (Reading database ... 
-O: 4845 files and directories currently installed.)
+O: 4837 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-apt (from /cdebootstrap-helper-apt.deb) ...
 O: Setting up cdebootstrap-helper-apt (1) ...
 D: Return code: 0
@@ -2078,6 +2067,7 @@ D: resolver (libgpg-error0): mark
 D: resolver (libgcrypt11): mark
 D: resolver (liblzo1): mark
 D: resolver (libopencdk8): mark
+D: resolver (libtasn1-3): mark
 D: resolver (libgnutls13): mark
 D: resolver (libpcre3): mark
 D: resolver (exim4-daemon-light): mark
@@ -2104,8 +2094,9 @@ D: resolver (whiptail): mark
 D: resolver (exim4): mark
 D: resolver (base-passwd): mark, dependency from logrotate
 D: resolver (logrotate): mark
-D: Execute "apt-get install --yes -o APT::Get::AllowUnauthenticated=true apt-utils dhcp3-common dhcp3-client net-tools ifupdown iptables iputils-ping libwrap0 tcpd netbase openbsd-inetd telnet libssl0.9.8 wget info manpages groff-base bsdmainutils libgdbm3 man-db adduser cron exim4-config exim4-base libgpg-error0 libgcrypt11 liblzo1 libopencdk8 libgnutls13 libpcre3 exim4-daemon-light at cpio ed libncursesw5 nano nvi psmisc sysklogd klogd libsigc++-2.0-0c2a aptitude dmidecode laptop-detect tasksel tasksel-data libnewt0.52 libpopt0 whiptail exim4 logrotate" in chroot
+D: Execute "apt-get install --yes -o APT::Get::AllowUnauthenticated=true apt-utils dhcp3-common dhcp3-client net-tools ifupdown iptables iputils-ping libwrap0 tcpd netbase openbsd-inetd telnet libssl0.9.8 wget info manpages groff-base bsdmainutils libgdbm3 man-db adduser cron exim4-config exim4-base libgpg-error0 libgcrypt11 liblzo1 libopencdk8 libtasn1-3 libgnutls13 libpcre3 exim4-daemon-light at cpio ed libncursesw5 nano nvi psmisc sysklogd klogd libsigc++-2.0-0c2a aptitude dmidecode laptop-detect tasksel tasksel-data libnewt0.52 libpopt0 whiptail exim4 logrotate" in chroot
 O: Reading package lists...
+O: 
 O: Building dependency tree...
 O: 
 O: Suggested packages:
@@ -2114,36 +2105,36 @@ O:   whois vacation anacron lockfile-progs checksecurity resolvconf mail-reader
 O:   eximon4 exim4-doc-html exim4-doc-info gnutls-bin groff iproute ppp rng-tools
 O:   less www-browser spell
 O: Recommended packages:
-O:   aptitude-doc-en aptitude-doc libgpmg1 libfribidi0 mailx
+O:   aptitude-doc-en aptitude-doc libgpmg1 libfribidi0 libtasn1-3-bin mailx
 O: The following NEW packages will be installed:
 O:   adduser apt-utils aptitude at bsdmainutils cpio cron dhcp3-client
 O:   dhcp3-common dmidecode ed exim4 exim4-base exim4-config exim4-daemon-light
 O:   groff-base ifupdown info iptables iputils-ping klogd laptop-detect
 O:   libgcrypt11 libgdbm3 libgnutls13 libgpg-error0 liblzo1 libncursesw5
 O:   libnewt0.52 libopencdk8 libpcre3 libpopt0 libsigc++-2.0-0c2a libssl0.9.8
-O:   libwrap0 logrotate man-db manpages nano net-tools netbase nvi openbsd-inetd
-O:   psmisc sysklogd tasksel tasksel-data tcpd telnet wget whiptail
-O: 0 upgraded, 51 newly installed, 0 to remove and 0 not upgraded.
+O:   libtasn1-3 libwrap0 logrotate man-db manpages nano net-tools netbase nvi
+O:   openbsd-inetd psmisc sysklogd tasksel tasksel-data tcpd telnet wget whiptail
+O: 0 upgraded, 52 newly installed, 0 to remove and 0 not upgraded.
 O: Need to get 13.1MB of archives.
 O: After unpacking 39.9MB of additional disk space will be used.
 O: WARNING: The following packages cannot be authenticated!
 O:   adduser apt-utils libncursesw5 libsigc++-2.0-0c2a aptitude bsdmainutils cpio
 O:   cron dmidecode ed groff-base net-tools ifupdown info iptables iputils-ping
 O:   sysklogd klogd laptop-detect libgpg-error0 libgcrypt11 libgdbm3 liblzo1
-O:   libopencdk8 libgnutls13 libpopt0 libssl0.9.8 libwrap0 logrotate man-db
-O:   manpages nano openbsd-inetd tcpd netbase nvi tasksel-data tasksel wget
-O:   libnewt0.52 whiptail exim4-config exim4-base libpcre3 exim4-daemon-light at
-O:   exim4 telnet dhcp3-common dhcp3-client psmisc
+O:   libopencdk8 libtasn1-3 libgnutls13 libpopt0 libssl0.9.8 libwrap0 logrotate
+O:   man-db manpages nano openbsd-inetd tcpd netbase nvi tasksel-data tasksel
+O:   wget libnewt0.52 whiptail exim4-config exim4-base libpcre3
+O:   exim4-daemon-light at exim4 telnet dhcp3-common dhcp3-client psmisc
 O: debconf: delaying package configuration, since apt-utils is not installed
 O: Authentication warning overridden.
 O: Selecting previously deselected package adduser.
 O: (Reading database ... 
-O: 4846 files and directories currently installed.)
+O: 4838 files and directories currently installed.)
 O: Unpacking adduser (from .../bootstrap/adduser_3.87_all.deb) ...
 P: Unpacking package adduser
 D: Updating adduser to status 2
 O: Selecting previously deselected package apt-utils.
-O: Unpacking apt-utils (from .../apt-utils_0.6.44.1-0.1_amd64.deb) ...
+O: Unpacking apt-utils (from .../apt-utils_0.6.44.2_amd64.deb) ...
 P: Unpacking package apt-utils
 D: Updating apt-utils to status 2
 O: Selecting previously deselected package libncursesw5.
@@ -2163,7 +2154,7 @@ O: Unpacking bsdmainutils (from .../bsdmainutils_6.1.3_amd64.deb) ...
 P: Unpacking package bsdmainutils
 D: Updating bsdmainutils to status 2
 O: Selecting previously deselected package cpio.
-O: Unpacking cpio (from .../cpio_2.6-12_amd64.deb) ...
+O: Unpacking cpio (from .../cpio_2.6-13_amd64.deb) ...
 P: Unpacking package cpio
 D: Updating cpio to status 2
 O: Selecting previously deselected package cron.
@@ -2234,8 +2225,12 @@ O: Selecting previously deselected package libopencdk8.
 O: Unpacking libopencdk8 (from .../libopencdk8_0.5.7-2_amd64.deb) ...
 P: Unpacking package libopencdk8
 D: Updating libopencdk8 to status 2
+O: Selecting previously deselected package libtasn1-3.
+O: Unpacking libtasn1-3 (from .../libtasn1-3_0.3.4-2_amd64.deb) ...
+P: Unpacking package libtasn1-3
+D: Updating libtasn1-3 to status 2
 O: Selecting previously deselected package libgnutls13.
-O: Unpacking libgnutls13 (from .../libgnutls13_1.3.5-1.1_amd64.deb) ...
+O: Unpacking libgnutls13 (from .../libgnutls13_1.4.0-2_amd64.deb) ...
 P: Unpacking package libgnutls13
 D: Updating libgnutls13 to status 2
 O: Selecting previously deselected package libpopt0.
@@ -2331,11 +2326,11 @@ O: Unpacking telnet (from .../telnet_0.17-32_amd64.deb) ...
 P: Unpacking package telnet
 D: Updating telnet to status 2
 O: Selecting previously deselected package dhcp3-common.
-O: Unpacking dhcp3-common (from .../dhcp3-common_3.0.4-2_amd64.deb) ...
+O: Unpacking dhcp3-common (from .../dhcp3-common_3.0.4-5_amd64.deb) ...
 P: Unpacking package dhcp3-common
 D: Updating dhcp3-common to status 2
 O: Selecting previously deselected package dhcp3-client.
-O: Unpacking dhcp3-client (from .../dhcp3-client_3.0.4-2_amd64.deb) ...
+O: Unpacking dhcp3-client (from .../dhcp3-client_3.0.4-5_amd64.deb) ...
 P: Unpacking package dhcp3-client
 D: Updating dhcp3-client to status 2
 O: Selecting previously deselected package psmisc.
@@ -2346,7 +2341,7 @@ O: Setting up adduser (3.87) ...
 P: Configuring package adduser
 D: Updating adduser to status 3
 O: 
-O: Setting up apt-utils (0.6.44.1-0.1) ...
+O: Setting up apt-utils (0.6.44.2) ...
 P: Configuring package apt-utils
 D: Updating apt-utils to status 3
 O: 
@@ -2366,7 +2361,7 @@ O: Setting up bsdmainutils (6.1.3) ...
 P: Configuring package bsdmainutils
 D: Updating bsdmainutils to status 3
 O: 
-O: Setting up cpio (2.6-12) ...
+O: Setting up cpio (2.6-13) ...
 P: Configuring package cpio
 D: Updating cpio to status 3
 O: 
@@ -2434,7 +2429,11 @@ O: Setting up libopencdk8 (0.5.7-2) ...
 P: Configuring package libopencdk8
 D: Updating libopencdk8 to status 3
 O: 
-O: Setting up libgnutls13 (1.3.5-1.1) ...
+O: Setting up libtasn1-3 (0.3.4-2) ...
+P: Configuring package libtasn1-3
+D: Updating libtasn1-3 to status 3
+O: 
+O: Setting up libgnutls13 (1.4.0-2) ...
 P: Configuring package libgnutls13
 D: Updating libgnutls13 to status 3
 O: 
@@ -2501,10 +2500,10 @@ O: Setting up libpcre3 (6.4-2) ...
 P: Configuring package libpcre3
 D: Updating libpcre3 to status 3
 O: 
-O: Setting up dhcp3-common (3.0.4-2) ...
+O: Setting up dhcp3-common (3.0.4-5) ...
 P: Configuring package dhcp3-common
 D: Updating dhcp3-common to status 3
-O: Setting up dhcp3-client (3.0.4-2) ...
+O: Setting up dhcp3-client (3.0.4-5) ...
 P: Configuring package dhcp3-client
 D: Updating dhcp3-client to status 3
 O: 
@@ -2561,14 +2560,14 @@ D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-apt
 D: Execute "dpkg -P cdebootstrap-helper-apt" in chroot
 O: (Reading database ... 
-O: 6787 files and directories currently installed.)
+O: 6790 files and directories currently installed.)
 O: Removing cdebootstrap-helper-apt ...
 D: Return code: 0
 D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-diverts
 D: Execute "dpkg -P cdebootstrap-helper-diverts" in chroot
 O: (Reading database ... 
-O: 6786 files and directories currently installed.)
+O: 6789 files and directories currently installed.)
 O: Removing cdebootstrap-helper-diverts ...
 O: Purging configuration files for cdebootstrap-helper-diverts ...
 O: Removing `diversion of /sbin/start-stop-daemon to /sbin/start-stop-daemon.REAL by cdebootstrap-helper-diverts'
@@ -2578,7 +2577,7 @@ D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-makedev
 D: Execute "dpkg -P cdebootstrap-helper-makedev" in chroot
 O: (Reading database ... 
-O: 6784 files and directories currently installed.)
+O: 6787 files and directories currently installed.)
 O: Removing cdebootstrap-helper-makedev ...
 D: Return code: 0
 D: call action: dev-cleanup
@@ -2598,8 +2597,8 @@ Refreshing the base.tgz
 Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
 Get:2 http://ftp.jp.debian.org sid Release [38.3kB]
 Ign http://ftp.jp.debian.org sid Release
-Get:3 http://ftp.jp.debian.org sid/main Packages [4040kB]
-Fetched 4078kB in 2s (1594kB/s)
+Get:3 http://ftp.jp.debian.org sid/main Packages [4051kB]
+Fetched 4089kB in 2s (1708kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
@@ -2634,10 +2633,10 @@ WARNING: The following packages cannot be authenticated!
   gcc linux-kernel-headers libc6-dev libstdc++6-4.1-dev g++-4.1 g++
   build-essential cowdancer
 Selecting previously deselected package binutils.
-(Reading database ... 6784 files and directories currently installed.)
+(Reading database ... 6787 files and directories currently installed.)
 Unpacking binutils (from .../binutils_2.16.1cvs20060413-1_amd64.deb) ...
 Selecting previously deselected package cpp-4.1.
-Unpacking cpp-4.1 (from .../cpp-4.1_4.1.1-3_amd64.deb) ...
+Unpacking cpp-4.1 (from .../cpp-4.1_4.1.1-5_amd64.deb) ...
 Selecting previously deselected package cpp.
 Unpacking cpp (from .../cpp_4%3a4.1.1-1_amd64.deb) ...
 Selecting previously deselected package perl-modules.
@@ -2653,40 +2652,40 @@ Unpacking make (from .../archives/make_3.81-2_amd64.deb) ...
 Selecting previously deselected package dpkg-dev.
 Unpacking dpkg-dev (from .../dpkg-dev_1.13.21_all.deb) ...
 Selecting previously deselected package gcc-4.1.
-Unpacking gcc-4.1 (from .../gcc-4.1_4.1.1-3_amd64.deb) ...
+Unpacking gcc-4.1 (from .../gcc-4.1_4.1.1-5_amd64.deb) ...
 Selecting previously deselected package gcc.
 Unpacking gcc (from .../gcc_4%3a4.1.1-1_amd64.deb) ...
 Selecting previously deselected package linux-kernel-headers.
-Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.16.20-5_amd64.deb) ...
+Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.16.20-6_amd64.deb) ...
 Selecting previously deselected package libc6-dev.
 Unpacking libc6-dev (from .../libc6-dev_2.3.6-15_amd64.deb) ...
 Selecting previously deselected package libstdc++6-4.1-dev.
-Unpacking libstdc++6-4.1-dev (from .../libstdc++6-4.1-dev_4.1.1-3_amd64.deb) ...
+Unpacking libstdc++6-4.1-dev (from .../libstdc++6-4.1-dev_4.1.1-5_amd64.deb) ...
 Selecting previously deselected package g++-4.1.
-Unpacking g++-4.1 (from .../g++-4.1_4.1.1-3_amd64.deb) ...
+Unpacking g++-4.1 (from .../g++-4.1_4.1.1-5_amd64.deb) ...
 Selecting previously deselected package g++.
 Unpacking g++ (from .../g++_4%3a4.1.1-1_amd64.deb) ...
 Selecting previously deselected package build-essential.
 Unpacking build-essential (from .../build-essential_11.2_amd64.deb) ...
 Selecting previously deselected package cowdancer.
-Unpacking cowdancer (from .../cowdancer_0.16_amd64.deb) ...
+Unpacking cowdancer (from .../cowdancer_0.17_amd64.deb) ...
 Setting up binutils (2.16.1cvs20060413-1) ...
 
-Setting up cpp-4.1 (4.1.1-3) ...
+Setting up cpp-4.1 (4.1.1-5) ...
 Setting up cpp (4.1.1-1) ...
 
 Setting up libdb4.4 (4.4.20-6) ...
 Setting up patch (2.5.9-4) ...
 Setting up make (3.81-2) ...
-Setting up gcc-4.1 (4.1.1-3) ...
+Setting up gcc-4.1 (4.1.1-5) ...
 Setting up gcc (4.1.1-1) ...
 
-Setting up linux-kernel-headers (2.6.16.20-5) ...
+Setting up linux-kernel-headers (2.6.16.20-6) ...
 Setting up libc6-dev (2.3.6-15) ...
-Setting up cowdancer (0.16) ...
-Setting up libstdc++6-4.1-dev (4.1.1-3) ...
+Setting up cowdancer (0.17) ...
+Setting up libstdc++6-4.1-dev (4.1.1-5) ...
 Setting up perl-modules (5.8.8-6) ...
-Setting up g++-4.1 (4.1.1-3) ...
+Setting up g++-4.1 (4.1.1-5) ...
 Setting up g++ (4.1.1-1) ...
 
 Setting up perl (5.8.8-6) ...
@@ -2713,7 +2712,7 @@ Err http://ftp.jp.debian.org sid Release
 Get:2 http://ftp.jp.debian.org sid Release [38.3kB]
 Ign http://ftp.jp.debian.org sid Release
 Get:3 http://ftp.jp.debian.org sid/main Packages/DiffIndex [12.6kB]
-Fetched 51.1kB in 0s (145kB/s)
+Fetched 51.1kB in 0s (142kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
@@ -2738,9 +2737,9 @@ Copying back the cached apt archive contents
 W: /home/dancer/.pbuilderrc does not exist
   -> using cowbuilder as pbuilder
 dpkg-buildpackage: source package is cowdancer
-dpkg-buildpackage: source version is 0.17
+dpkg-buildpackage: source version is 0.18
 dpkg-buildpackage: source changed by Junichi Uekawa <dancer@debian.org>
-dpkg-buildpackage: source version without epoch 0.17
+dpkg-buildpackage: source version without epoch 0.18
  fakeroot debian/rules clean
 dh_testdir
 dh_testroot
@@ -2749,18 +2748,13 @@ rm -f build-stamp configure-stamp
 make[1]: Entering directory `/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer'
 rm *~ *.o *.lo libcowdancer.so cow-shell cowbuilder
 rm: cannot remove `*~': No such file or directory
-rm: cannot remove `*.o': No such file or directory
-rm: cannot remove `*.lo': No such file or directory
-rm: cannot remove `libcowdancer.so': No such file or directory
-rm: cannot remove `cow-shell': No such file or directory
-rm: cannot remove `cowbuilder': No such file or directory
 make[1]: [clean] Error 1 (ignored)
 make[1]: Leaving directory `/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer'
 dh_clean
  dpkg-source -b cowdancer
-dpkg-source: warning: source directory `./cowdancer' is not <sourcepackage>-<upstreamversion> `cowdancer-0.17'
-dpkg-source: building cowdancer in cowdancer_0.17.tar.gz
-dpkg-source: building cowdancer in cowdancer_0.17.dsc
+dpkg-source: warning: source directory `./cowdancer' is not <sourcepackage>-<upstreamversion> `cowdancer-0.18'
+dpkg-source: building cowdancer in cowdancer_0.18.tar.gz
+dpkg-source: building cowdancer in cowdancer_0.18.dsc
  dpkg-genchanges -S
 dpkg-genchanges: including full source code in upload
 dpkg-buildpackage: source only upload: Debian-native package
@@ -2770,8 +2764,8 @@ I: using fakeroot in build.
 pbuilder-buildpackage/amd64 $Id$
 $Id$
 
-Current time: Thu Jun 15 08:43:54 JST 2006
-pbuilder-time-stamp: 1150328634
+Current time: Wed Jun 21 07:50:40 JST 2006
+pbuilder-time-stamp: 1150843840
  -> copying local configuration
  -> mounting /proc filesystem
  -> mounting /dev/pts filesystem
@@ -2794,18 +2788,18 @@ The following NEW packages will be installed:
   debhelper file gettext gettext-base html2text intltool-debian libmagic1
   po-debconf
 0 upgraded, 8 newly installed, 0 to remove and 0 not upgraded.
-Need to get 0B/2980kB of archives.
+Need to get 0B/2978kB of archives.
 After unpacking 10.3MB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   gettext-base libmagic1 file html2text gettext intltool-debian po-debconf
   debhelper
 Selecting previously deselected package gettext-base.
-(Reading database ... 11576 files and directories currently installed.)
+(Reading database ... 11579 files and directories currently installed.)
 Unpacking gettext-base (from .../gettext-base_0.14.5-4_amd64.deb) ...
 Selecting previously deselected package libmagic1.
-Unpacking libmagic1 (from .../libmagic1_4.17-1_amd64.deb) ...
+Unpacking libmagic1 (from .../libmagic1_4.17-2_amd64.deb) ...
 Selecting previously deselected package file.
-Unpacking file (from .../archives/file_4.17-1_amd64.deb) ...
+Unpacking file (from .../archives/file_4.17-2_amd64.deb) ...
 Selecting previously deselected package html2text.
 Unpacking html2text (from .../html2text_1.3.2a-3_amd64.deb) ...
 Selecting previously deselected package gettext.
@@ -2818,9 +2812,9 @@ Selecting previously deselected package debhelper.
 Unpacking debhelper (from .../debhelper_5.0.37.1_all.deb) ...
 Setting up gettext-base (0.14.5-4) ...
 
-Setting up libmagic1 (4.17-1) ...
+Setting up libmagic1 (4.17-2) ...
 
-Setting up file (4.17-1) ...
+Setting up file (4.17-2) ...
 Setting up html2text (1.3.2a-3) ...
 
 Setting up gettext (0.14.5-4) ...
@@ -2839,21 +2833,21 @@ After unpacking 401kB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   fakeroot
 Selecting previously deselected package fakeroot.
-(Reading database ... 12194 files and directories currently installed.)
+(Reading database ... 12197 files and directories currently installed.)
 Unpacking fakeroot (from .../fakeroot_1.5.8_amd64.deb) ...
 Setting up fakeroot (1.5.8) ...
 
 Copying back the cached apt archive contents
 Copying source file
-    -> copying [/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.17.dsc]
-    -> copying [/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.17.tar.gz]
+    -> copying [/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.18.dsc]
+    -> copying [/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.18.tar.gz]
 Extracting source
 su: Authentication service cannot retrieve authentication info.
 (Ignored)
 dpkg-source: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
-dpkg-source: warning: extracting unsigned source package (./cowdancer_0.17.dsc)
-dpkg-source: extracting cowdancer in cowdancer-0.17
-dpkg-source: unpacking cowdancer_0.17.tar.gz
+dpkg-source: warning: extracting unsigned source package (./cowdancer_0.18.dsc)
+dpkg-source: extracting cowdancer in cowdancer-0.18
+dpkg-source: unpacking cowdancer_0.18.tar.gz
  -> Building the package
 su: Authentication service cannot retrieve authentication info.
 (Ignored)
@@ -2862,14 +2856,14 @@ debian: warning: no utmp entry available and LOGNAME not defined; using uid of p
 dpkg-buildpackage: source package is cowdancer
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
-dpkg-buildpackage: source version is 0.17
+dpkg-buildpackage: source version is 0.18
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-buildpackage: source changed by Junichi Uekawa <dancer@debian.org>
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-buildpackage: host architecture amd64
-dpkg-buildpackage: source version without epoch 0.17
+dpkg-buildpackage: source version without epoch 0.18
 dpkg-checkbuilddeps: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
@@ -2878,7 +2872,7 @@ dh_testdir
 dh_testroot
 rm -f build-stamp configure-stamp
 /usr/bin/make clean
-make[1]: Entering directory `/tmp/buildd/cowdancer-0.17'
+make[1]: Entering directory `/tmp/buildd/cowdancer-0.18'
 rm *~ *.o *.lo libcowdancer.so cow-shell cowbuilder
 rm: cannot remove `*~': No such file or directory
 rm: cannot remove `*.o': No such file or directory
@@ -2887,21 +2881,21 @@ rm: cannot remove `libcowdancer.so': No such file or directory
 rm: cannot remove `cow-shell': No such file or directory
 rm: cannot remove `cowbuilder': No such file or directory
 make[1]: [clean] Error 1 (ignored)
-make[1]: Leaving directory `/tmp/buildd/cowdancer-0.17'
+make[1]: Leaving directory `/tmp/buildd/cowdancer-0.18'
 dh_clean
- dpkg-source -b cowdancer-0.17
+ dpkg-source -b cowdancer-0.18
 dpkg-source: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
-dpkg-source: building cowdancer in cowdancer_0.17.tar.gz
-dpkg-source: building cowdancer in cowdancer_0.17.dsc
+dpkg-source: building cowdancer in cowdancer_0.18.tar.gz
+dpkg-source: building cowdancer in cowdancer_0.18.dsc
  debian/rules build
 dh_testdir
 touch configure-stamp
 dh_testdir
 /usr/bin/make
-make[1]: Entering directory `/tmp/buildd/cowdancer-0.17'
+make[1]: Entering directory `/tmp/buildd/cowdancer-0.18'
 gcc -D_REENTRANT -fPIC cowdancer.c -o cowdancer.lo -c -Wall -O2 -g
 gcc -ldl -shared -o libcowdancer.so cowdancer.lo
 gcc cow-shell.c -o cow-shell.o -c -Wall -O2 -g 
@@ -2915,7 +2909,7 @@ cowbuilder.c:598: warning: dereferencing type-punned pointer will break strict-a
 cowbuilder.c:599: warning: dereferencing type-punned pointer will break strict-aliasing rules
 cowbuilder.c:600: warning: dereferencing type-punned pointer will break strict-aliasing rules
 cc   cowbuilder.o   -o cowbuilder
-make[1]: Leaving directory `/tmp/buildd/cowdancer-0.17'
+make[1]: Leaving directory `/tmp/buildd/cowdancer-0.18'
 #/usr/bin/make check
 touch build-stamp
  fakeroot debian/rules binary
@@ -2924,17 +2918,17 @@ dh_testroot
 dh_clean -k
 dh_installdirs
 # Add here commands to install the package into debian/dsh.
-/usr/bin/make install DESTDIR=/tmp/buildd/cowdancer-0.17/debian/cowdancer
-make[1]: Entering directory `/tmp/buildd/cowdancer-0.17'
-install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.17/debian/cowdancer/usr/lib/cowdancer/
-install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.17/debian/cowdancer/usr/share/man/man1/
-install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.17/debian/cowdancer/usr/share/man/man8/
-install -o root -g root -m 644  cow-shell.1 /tmp/buildd/cowdancer-0.17/debian/cowdancer/usr/share/man/man1/cow-shell.1
-install -o root -g root -m 644  cowbuilder.8 /tmp/buildd/cowdancer-0.17/debian/cowdancer/usr/share/man/man8/cowbuilder.8
-install -o root -g root -m 644  libcowdancer.so /tmp/buildd/cowdancer-0.17/debian/cowdancer/usr/lib/cowdancer/libcowdancer.so
-install -o root -g root -m 755 cow-shell /tmp/buildd/cowdancer-0.17/debian/cowdancer/usr/bin/cow-shell
-install -o root -g root -m 755 cowbuilder /tmp/buildd/cowdancer-0.17/debian/cowdancer/usr/sbin/cowbuilder
-make[1]: Leaving directory `/tmp/buildd/cowdancer-0.17'
+/usr/bin/make install DESTDIR=/tmp/buildd/cowdancer-0.18/debian/cowdancer
+make[1]: Entering directory `/tmp/buildd/cowdancer-0.18'
+install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.18/debian/cowdancer/usr/lib/cowdancer/
+install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.18/debian/cowdancer/usr/share/man/man1/
+install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.18/debian/cowdancer/usr/share/man/man8/
+install -o root -g root -m 644  cow-shell.1 /tmp/buildd/cowdancer-0.18/debian/cowdancer/usr/share/man/man1/cow-shell.1
+install -o root -g root -m 644  cowbuilder.8 /tmp/buildd/cowdancer-0.18/debian/cowdancer/usr/share/man/man8/cowbuilder.8
+install -o root -g root -m 644  libcowdancer.so /tmp/buildd/cowdancer-0.18/debian/cowdancer/usr/lib/cowdancer/libcowdancer.so
+install -o root -g root -m 755 cow-shell /tmp/buildd/cowdancer-0.18/debian/cowdancer/usr/bin/cow-shell
+install -o root -g root -m 755 cowbuilder /tmp/buildd/cowdancer-0.18/debian/cowdancer/usr/sbin/cowbuilder
+make[1]: Leaving directory `/tmp/buildd/cowdancer-0.18'
 dh_testdir
 dh_testroot
 dh_installdocs NEWS
@@ -2962,7 +2956,7 @@ debian: warning: no utmp entry available and LOGNAME not defined; using uid of p
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (0)
 dh_md5sums
 dh_builddeb
-dpkg-deb: building package `cowdancer' in `../cowdancer_0.17_amd64.deb'.
+dpkg-deb: building package `cowdancer' in `../cowdancer_0.18_amd64.deb'.
  dpkg-genchanges
 dpkg-genchanges: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
@@ -2973,8 +2967,8 @@ dpkg-buildpackage: full upload; Debian-native package (full source is included)
 Copying back the cached apt archive contents
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-Current time: Thu Jun 15 08:44:40 JST 2006
-pbuilder-time-stamp: 1150328680
+Current time: Wed Jun 21 07:51:09 JST 2006
+pbuilder-time-stamp: 1150843869
  -> Copying COW directory
  -> Invoking pbuilder
  -> Cleaning COW directory

@@ -1,0 +1,4 @@
++ sudo echo exit 1
++ cowbuilder --login --basepath /var/cache/pbuilder/base-test.cow
+tests/902_test_cowbuilder_fail.sh: line 4: cowbuilder: command not found
++ exit 0

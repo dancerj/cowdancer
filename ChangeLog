@@ -1,5 +1,7 @@
 2006-06-21  Junichi Uekawa  <dancer@debian.org>
 
+	* tests/902_test_cowbuilder_fail.sh: fix thinko.
+
 	* cow-shell.1: document.
 
 	* cow-shell.c (main): COWDANCER_REUSE option.
