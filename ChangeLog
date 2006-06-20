@@ -1,3 +1,9 @@
+2006-06-21  Junichi Uekawa  <dancer@debian.org>
+
+	* cow-shell.1: document.
+
+	* cow-shell.c (main): COWDANCER_REUSE option.
+
 2006-06-15  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/901_test_pbuilder_create.sh: check for failure states in test.

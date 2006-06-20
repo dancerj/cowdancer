@@ -2,7 +2,7 @@
   Copy-on-write filesystem invocation.
 
   GPL v2 or later
-  Copyright 2005 Junichi Uekawa.
+  Copyright 2005,2006 Junichi Uekawa.
  */
 #define _GNU_SOURCE
 
@@ -10,6 +10,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
+#include <sys/stat.h>
+#include <string.h>
 #define PRGNAME "cow-shell"
 #include "ilist.h"
   
@@ -95,6 +97,7 @@ int main(int ac, char** av)
      and I will cow-keep what's under this directory. */
   const char* ilistpath="./.ilist";
   char*buf;
+  struct stat st;
 
   asprintf(&buf, "%s%s%s",
 	   getenv("LD_PRELOAD")?:"",
@@ -102,23 +105,31 @@ int main(int ac, char** av)
 	   "/usr/lib/cowdancer/libcowdancer.so"
 	   );
 
-  if (unlink(ilistpath)==-1)
+  if (!strcmp(getenv("COWDANCER_REUSE"),"yes") && 
+      !stat(ilistpath, &st))
     {
-      if (errno == ENOENT)
+      /* if reuse flag is on and file already exists 
+	 do nothing */
+    }
+  else
+    {
+      if (unlink(ilistpath)==-1)
 	{
-	  /* expected */
+	  if (errno == ENOENT)
+	    {
+	      /* expected */
+	    }
+	  else
+	    {
+	      perror("cow-shell: unlink of .ilist failed");
+	      return 1;
+	    }
 	}
-      else
+      if(ilistcreate(ilistpath))
 	{
-	  perror("cow-shell: unlink of .ilist failed");
+	  outofmemory(".ilist creation failed");
 	  return 1;
 	}
-    }
-
-  if(ilistcreate(ilistpath))
-    {
-      outofmemory(".ilist creation failed");
-      return 1;
     }
   
   setenv("COWDANCER_ILISTFILE",

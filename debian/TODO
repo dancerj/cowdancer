@@ -1,3 +1,9 @@
+* cowbuilder .ilist file reuse.
+
+- test new flag
+- implement .ilist delete on initial
+- support build target with ilist file reuse and measure time.
+
 * cowbuilder implementation
 
 A prototype exists, but I need a good test environment with network
