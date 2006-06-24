@@ -1,3 +1,9 @@
+cowdancer (0.19) UNRELEASED; urgency=low
+
+  * actually support --buildplace and fix --basepath.
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 24 Jun 2006 11:47:36 +0900
+
 cowdancer (0.18) unstable; urgency=low
 
   * cow-shell: COWDANCER_REUSE=yes: reuse .ilist instead of regenerating.

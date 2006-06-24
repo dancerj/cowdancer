@@ -1,3 +1,7 @@
+2006-06-24  Junichi Uekawa  <dancer@debian.org>
+
+	* cowbuilder.c (main): s/basepath/buildplace/ for -B.
+
 2006-06-21  Junichi Uekawa  <dancer@debian.org>
 
 	* cowbuilder.c (cpbuilder_build): support COWDANCER_REUSE option

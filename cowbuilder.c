@@ -579,6 +579,7 @@ int cpbuilder_help(void)
 	 " --help\n"
 	 "options:\n"
 	 " --basepath:\n"
+	 " --buildplace:\n"
 	 " --distribution:\n"
 	 );
   return 0;
@@ -595,7 +596,7 @@ int main(int ac, char** av)
   static struct option long_options[]=
   {
     {"basepath", required_argument, 0, 'b'},
-    {"basepath", required_argument, 0, 'B'},
+    {"buildplace", required_argument, 0, 'B'},
     {"mountproc", no_argument, &pc.mountproc, 1},
     {"mountdev", no_argument, &pc.mountdev, 1},
     {"mountdevpts", no_argument, &pc.mountdevpts, 1},
