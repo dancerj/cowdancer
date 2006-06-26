@@ -1,8 +1,9 @@
-cowdancer (0.19) UNRELEASED; urgency=low
+cowdancer (0.19) unstable; urgency=low
 
-  * actually support --buildplace and fix --basepath.
+  * actually support --buildplace and fix --basepath. Thanks to Jonas
+    Smedegaard for the patch.  (closes: #375019)
 
- -- Junichi Uekawa <dancer@debian.org>  Sat, 24 Jun 2006 11:47:36 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 27 Jun 2006 00:07:08 +0900
 
 cowdancer (0.18) unstable; urgency=low
 
