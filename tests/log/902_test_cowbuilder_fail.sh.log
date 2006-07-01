@@ -1,4 +1,17 @@
-+ sudo echo exit 1
-+ cowbuilder --login --basepath /var/cache/pbuilder/base-test.cow
-tests/902_test_cowbuilder_fail.sh: line 4: cowbuilder: command not found
++ echo exit 1
++ sudo cowbuilder --login --basepath /var/cache/pbuilder/base-test.cow
+W: /home/dancer/.pbuilderrc does not exist
+ -> Running in no-targz mode
+ -> copying local configuration
+ -> mounting /proc filesystem
+ -> mounting /dev/pts filesystem
+ -> policy-rc.d already exists
+Obtaining the cached apt archive contents
+ -> entering the shell
+Copying back the cached apt archive contents
+ -> unmounting dev/pts filesystem
+ -> unmounting proc filesystem
+ -> Copying COW directory
+ -> Invoking pbuilder
+ -> Cleaning COW directory
 + exit 0

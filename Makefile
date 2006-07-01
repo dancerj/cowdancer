@@ -31,7 +31,7 @@ cowbuilder: cowbuilder.o
 	gcc $< -o $@ -c -Wall -O2 -g 
 
 clean: 
-	-rm *~ *.o *.lo $(BINARY)
+	-rm -f *~ *.o *.lo $(BINARY)
 
 upload-dist-all:
 	scp ../cowdancer_$(VERSION).tar.gz viper2.netfort.gr.jp:public_html/software/downloads

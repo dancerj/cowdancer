@@ -1,8 +1,8 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.wCwsJ16782
++ TESTDIR=/tmp/tmp.nTicD16272
 ++ readlink -f tests/013_test_chmod.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/013_test_chmod.c
-+ cd /tmp/tmp.wCwsJ16782
++ cd /tmp/tmp.nTicD16272
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
@@ -16,25 +16,25 @@
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-合計 4
-49251 -rw------- 2 dancer dancer    0 2006-06-21 07:47 a
-49252 -rw------- 2 dancer dancer    0 2006-06-21 07:47 b
-49253 -rw------- 2 dancer dancer    0 2006-06-21 07:47 c
-49254 -rw------- 2 dancer dancer    0 2006-06-21 07:47 d
-49256 -rw-r--r-- 2 dancer dancer 1024 2006-06-21 07:47 e
+total 4
+49097 -rw------- 2 dancer dancer    0 2006-07-01 14:24 a
+49098 -rw------- 2 dancer dancer    0 2006-07-01 14:24 b
+49099 -rw------- 2 dancer dancer    0 2006-07-01 14:24 c
+49100 -rw------- 2 dancer dancer    0 2006-07-01 14:24 d
+49101 -rw-r--r-- 2 dancer dancer 1024 2006-07-01 14:24 e
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/013_test_chmod.c 2/a 2/b
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-合計 4
-49264 -r-------- 1 dancer dancer    0 2006-06-21 07:47 a
-49252 -rw------- 2 dancer dancer    0 2006-06-21 07:47 b
-49253 -rw------- 2 dancer dancer    0 2006-06-21 07:47 c
-49254 -rw------- 2 dancer dancer    0 2006-06-21 07:47 d
-49256 -rw-r--r-- 2 dancer dancer 1024 2006-06-21 07:47 e
+total 4
+49115 -r-------- 1 dancer dancer    0 2006-07-01 14:24 a
+49098 -rw------- 2 dancer dancer    0 2006-07-01 14:24 b
+49099 -rw------- 2 dancer dancer    0 2006-07-01 14:24 c
+49100 -rw------- 2 dancer dancer    0 2006-07-01 14:24 d
+49101 -rw-r--r-- 2 dancer dancer 1024 2006-07-01 14:24 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.wCwsJ16782
++ rm -rf /tmp/tmp.nTicD16272

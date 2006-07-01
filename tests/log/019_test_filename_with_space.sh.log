@@ -1,24 +1,24 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.jYaCG16931
-+ cd /tmp/tmp.jYaCG16931
++ TESTDIR=/tmp/tmp.AFyPP16421
++ cd /tmp/tmp.AFyPP16421
 + mkdir 1/
 + touch '1/a'\''f' '1/b g' '1/c h' '1/d i'
 + dd if=/dev/zero 'of=1/e j' bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4.8e-05 seconds, 21.3 MB/s
+1024 bytes (1.0 kB) copied, 6.8e-05 seconds, 15.1 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-合計 4
-49251 -rw-r--r-- 2 dancer dancer    0 2006-06-21 07:47 a'f
-49252 -rw-r--r-- 2 dancer dancer    0 2006-06-21 07:47 b g
-49253 -rw-r--r-- 2 dancer dancer    0 2006-06-21 07:47 c h
-49254 -rw-r--r-- 2 dancer dancer    0 2006-06-21 07:47 d i
-49256 -rw-r--r-- 2 dancer dancer 1024 2006-06-21 07:47 e j
+total 4
+49097 -rw-r--r-- 2 dancer dancer    0 2006-07-01 14:24 a'f
+49098 -rw-r--r-- 2 dancer dancer    0 2006-07-01 14:24 b g
+49099 -rw-r--r-- 2 dancer dancer    0 2006-07-01 14:24 c h
+49100 -rw-r--r-- 2 dancer dancer    0 2006-07-01 14:24 d i
+49101 -rw-r--r-- 2 dancer dancer 1024 2006-07-01 14:24 e j
 + echo 'cd 2 && echo a > "a'\''f" && mv '\''b g'\'' '\''c h'\'' && touch '\''c h'\'' && dd if='\''e j'\'' of='\''d i'\'''
 + cow-shell
 Invoking /bin/bash
@@ -28,14 +28,14 @@ Invoking /bin/bash
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-合計 12
-49263 -rw-r--r-- 1 dancer dancer    2 2006-06-21 07:47 a'f
-49264 -rw-r--r-- 1 dancer dancer    0 2006-06-21 07:47 c h
-49265 -rw-r--r-- 1 dancer dancer  160 2006-06-21 07:47 d i
-49256 -rw-r--r-- 2 dancer dancer 1024 2006-06-21 07:47 e j
+total 12
+49111 -rw-r--r-- 1 dancer dancer    2 2006-07-01 14:24 a'f
+49115 -rw-r--r-- 1 dancer dancer    0 2006-07-01 14:24 c h
+49123 -rw-r--r-- 1 dancer dancer  160 2006-07-01 14:24 d i
+49101 -rw-r--r-- 2 dancer dancer 1024 2006-07-01 14:24 e j
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.jYaCG16931
++ rm -rf /tmp/tmp.AFyPP16421
