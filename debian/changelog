@@ -1,3 +1,10 @@
+cowdancer (0.20) unstable; urgency=low
+
+  * Bug fix: "cowdancer: cowbuilder removes base.cow after failed
+    --update", thanks to Jorda Polo (Closes: #379797).
+
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 26 Jul 2006 08:35:42 +0900
+
 cowdancer (0.19) unstable; urgency=low
 
   * actually support --buildplace and fix --basepath. Thanks to Jonas

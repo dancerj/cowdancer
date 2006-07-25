@@ -1,3 +1,8 @@
+2006-07-26  Junichi Uekawa  <dancer@debian.org>
+
+	* cowbuilder.c (cpbuilder_update): do not remove base.cow if
+	update failed.
+
 2006-06-24  Junichi Uekawa  <dancer@debian.org>
 
 	* cowbuilder.c (main): s/basepath/buildplace/ for -B.

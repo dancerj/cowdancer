@@ -556,10 +556,10 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
       if (0!=forkexeclp("rm", "rm", "-rf", pc->buildplace, NULL))
 	{
 	  printf("Could not remove original tree\n");
-	  goto out;
 	}
+      /* either way, I don't want to touch the original tree */
+      goto out;
     }
-
   printf(" -> removing cowbuilder working copy\n");
   cpbuilder_internal_saveupdate(pc);
  out:
