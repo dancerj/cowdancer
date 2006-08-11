@@ -17,7 +17,7 @@ I: Retrieving Packages
 I: Validating Packages
 I: Resolving dependencies of required packages...
 I: Resolving dependencies of base packages...
-I: Found additional base dependencies: libdb4.2 libnewt0.52 libreadline5 libsigc++-2.0-0c2a openbsd-inetd readline-common 
+I: Found additional base dependencies: libdb4.2 libnewt0.52 libreadline5 libsigc++-2.0-0c2a readline-common 
 I: Checking component main on http://ftp.jp.debian.org/debian...
 I: Retrieving adduser
 I: Validating adduser
@@ -229,8 +229,6 @@ I: Retrieving netbase
 I: Validating netbase
 I: Retrieving netcat
 I: Validating netcat
-I: Retrieving netkit-inetd
-I: Validating netkit-inetd
 I: Retrieving nvi
 I: Validating nvi
 I: Retrieving openbsd-inetd
@@ -510,10 +508,9 @@ I: Unpacking nano...
 I: Unpacking net-tools...
 I: Unpacking netbase...
 I: Unpacking netcat...
-I: Unpacking netkit-inetd...
 I: Unpacking nvi...
 I: Unpacking openbsd-inetd...
-I: Unpacking netkit-inetd...
+I: Unpacking readline-common...
 I: Unpacking sysklogd...
 I: Unpacking tasksel...
 I: Unpacking tasksel-data...
@@ -598,7 +595,7 @@ Refreshing the base.tgz
 Get:1 http://ftp.jp.debian.org etch Release.gpg [189B]
 Hit http://ftp.jp.debian.org etch Release
 Get:2 http://ftp.jp.debian.org etch/main Packages/DiffIndex [12.6kB]
-Fetched 12.8kB in 0s (37.7kB/s)
+Fetched 12.8kB in 0s (42.0kB/s)
 Reading package lists...
 dpkg - warning: ignoring request to remove lilo which isn't installed.
 Obtaining the cached apt archive contents
@@ -609,32 +606,30 @@ Reading package lists...
 Building dependency tree...
 apt is already the newest version.
 The following extra packages will be installed:
-  binutils cpp cpp-4.0 g++ g++-4.0 gcc gcc-4.0 gcc-4.0-base libc6-dev libdb4.4
-  libstdc++6-4.0-dev linux-kernel-headers make patch perl perl-modules
+  binutils cpp cpp-4.1 g++ g++-4.1 gcc gcc-4.1 libc6-dev libdb4.4
+  libstdc++6-4.1-dev linux-kernel-headers make patch perl perl-modules
 Suggested packages:
-  binutils-doc cpp-doc gcc-4.0-locales debian-keyring gcc-4.0-doc lib32stdc++6
+  binutils-doc cpp-doc gcc-4.1-locales debian-keyring gcc-4.1-doc lib32stdc++6
   manpages-dev autoconf automake1.9 libtool flex bison gdb gcc-doc
-  libc6-dev-i386 lib32gcc1 glibc-doc libstdc++6-4.0-doc stl-manual
+  libc6-dev-i386 lib32gcc1 glibc-doc libstdc++6-4.1-doc stl-manual
   make-doc-non-dfsg diff-doc libterm-readline-gnu-perl
   libterm-readline-perl-perl
 Recommended packages:
-  pbuilder bzip2 libmudflap0-dev perl-doc
+  pbuilder bzip2 libmudflap0-dev libssp0-dev perl-doc
 The following NEW packages will be installed:
-  binutils build-essential cowdancer cpp cpp-4.0 dpkg-dev g++ g++-4.0 gcc
-  gcc-4.0 gcc-4.0-base libc6-dev libdb4.4 libstdc++6-4.0-dev
-  linux-kernel-headers make patch perl perl-modules
-0 upgraded, 19 newly installed, 0 to remove and 0 not upgraded.
-Need to get 0B/21.2MB of archives.
-After unpacking 83.7MB of additional disk space will be used.
+  binutils build-essential cowdancer cpp cpp-4.1 dpkg-dev g++ g++-4.1 gcc
+  gcc-4.1 libc6-dev libdb4.4 libstdc++6-4.1-dev linux-kernel-headers make
+  patch perl perl-modules
+0 upgraded, 18 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0B/21.8MB of archives.
+After unpacking 87.2MB of additional disk space will be used.
 Selecting previously deselected package binutils.
-(Reading database ... 6998 files and directories currently installed.)
-Unpacking binutils (from .../binutils_2.16.1cvs20060413-1_amd64.deb) ...
-Selecting previously deselected package gcc-4.0-base.
-Unpacking gcc-4.0-base (from .../gcc-4.0-base_4.0.3-3_amd64.deb) ...
-Selecting previously deselected package cpp-4.0.
-Unpacking cpp-4.0 (from .../cpp-4.0_4.0.3-3_amd64.deb) ...
+(Reading database ... 7027 files and directories currently installed.)
+Unpacking binutils (from .../binutils_2.17-2_amd64.deb) ...
+Selecting previously deselected package cpp-4.1.
+Unpacking cpp-4.1 (from .../cpp-4.1_4.1.1-5_amd64.deb) ...
 Selecting previously deselected package cpp.
-Unpacking cpp (from .../cpp_4%3a4.0.3-4_amd64.deb) ...
+Unpacking cpp (from .../cpp_4%3a4.1.1-5_amd64.deb) ...
 Selecting previously deselected package perl-modules.
 Unpacking perl-modules (from .../perl-modules_5.8.8-4_all.deb) ...
 Selecting previously deselected package libdb4.4.
@@ -647,46 +642,43 @@ Selecting previously deselected package make.
 Unpacking make (from .../archives/make_3.81-2_amd64.deb) ...
 Selecting previously deselected package dpkg-dev.
 Unpacking dpkg-dev (from .../dpkg-dev_1.13.21_all.deb) ...
-Selecting previously deselected package gcc-4.0.
-Unpacking gcc-4.0 (from .../gcc-4.0_4.0.3-3_amd64.deb) ...
+Selecting previously deselected package gcc-4.1.
+Unpacking gcc-4.1 (from .../gcc-4.1_4.1.1-5_amd64.deb) ...
 Selecting previously deselected package gcc.
-Unpacking gcc (from .../gcc_4%3a4.0.3-4_amd64.deb) ...
+Unpacking gcc (from .../gcc_4%3a4.1.1-5_amd64.deb) ...
 Selecting previously deselected package linux-kernel-headers.
-Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.13+0rc3-2.1_amd64.deb) ...
+Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.17.6-1_amd64.deb) ...
 Selecting previously deselected package libc6-dev.
 Unpacking libc6-dev (from .../libc6-dev_2.3.6-15_amd64.deb) ...
-Selecting previously deselected package libstdc++6-4.0-dev.
-Unpacking libstdc++6-4.0-dev (from .../libstdc++6-4.0-dev_4.0.3-3_amd64.deb) ...
-Selecting previously deselected package g++-4.0.
-Unpacking g++-4.0 (from .../g++-4.0_4.0.3-3_amd64.deb) ...
+Selecting previously deselected package libstdc++6-4.1-dev.
+Unpacking libstdc++6-4.1-dev (from .../libstdc++6-4.1-dev_4.1.1-5_amd64.deb) ...
+Selecting previously deselected package g++-4.1.
+Unpacking g++-4.1 (from .../g++-4.1_4.1.1-5_amd64.deb) ...
 Selecting previously deselected package g++.
-Unpacking g++ (from .../g++_4%3a4.0.3-4_amd64.deb) ...
+Unpacking g++ (from .../g++_4%3a4.1.1-5_amd64.deb) ...
 Selecting previously deselected package build-essential.
 Unpacking build-essential (from .../build-essential_11.2_amd64.deb) ...
 Selecting previously deselected package cowdancer.
-Unpacking cowdancer (from .../cowdancer_0.15_amd64.deb) ...
-Setting up binutils (2.16.1cvs20060413-1) ...
+Unpacking cowdancer (from .../cowdancer_0.20_amd64.deb) ...
+Setting up binutils (2.17-2) ...
 
-Setting up gcc-4.0-base (4.0.3-3) ...
-
-Setting up cpp-4.0 (4.0.3-3) ...
-Setting up cpp (4.0.3-4) ...
+Setting up cpp-4.1 (4.1.1-5) ...
+Setting up cpp (4.1.1-5) ...
 
 Setting up libdb4.4 (4.4.20-3) ...
 Setting up patch (2.5.9-4) ...
 Setting up make (3.81-2) ...
-Setting up gcc-4.0 (4.0.3-3) ...
-Setting up gcc (4.0.3-4) ...
+Setting up gcc-4.1 (4.1.1-5) ...
+Setting up gcc (4.1.1-5) ...
 
-Setting up linux-kernel-headers (2.6.13+0rc3-2.1) ...
+Setting up linux-kernel-headers (2.6.17.6-1) ...
 Setting up libc6-dev (2.3.6-15) ...
-Setting up cowdancer (0.15) ...
-Setting up g++-4.0 (4.0.3-3) ...
-Setting up libstdc++6-4.0-dev (4.0.3-3) ...
-
-Setting up g++ (4.0.3-4) ...
-
+Setting up cowdancer (0.20) ...
+Setting up libstdc++6-4.1-dev (4.1.1-5) ...
 Setting up perl-modules (5.8.8-4) ...
+Setting up g++-4.1 (4.1.1-5) ...
+Setting up g++ (4.1.1-5) ...
+
 Setting up perl (5.8.8-4) ...
 
 Setting up dpkg-dev (1.13.21) ...
@@ -712,7 +704,7 @@ I: Retrieving Packages
 I: Validating Packages
 I: Resolving dependencies of required packages...
 I: Resolving dependencies of base packages...
-I: Found additional base dependencies: libdb4.2 libnewt0.52 libreadline5 libsigc++-2.0-0c2a openbsd-inetd readline-common 
+I: Found additional base dependencies: libdb4.2 libnewt0.52 libreadline5 libsigc++-2.0-0c2a readline-common 
 I: Checking component main on http://ftp.jp.debian.org/debian...
 I: Retrieving adduser
 I: Validating adduser
@@ -924,8 +916,6 @@ I: Retrieving netbase
 I: Validating netbase
 I: Retrieving netcat
 I: Validating netcat
-I: Retrieving netkit-inetd
-I: Validating netkit-inetd
 I: Retrieving nvi
 I: Validating nvi
 I: Retrieving openbsd-inetd
@@ -1205,10 +1195,9 @@ I: Unpacking nano...
 I: Unpacking net-tools...
 I: Unpacking netbase...
 I: Unpacking netcat...
-I: Unpacking netkit-inetd...
 I: Unpacking nvi...
 I: Unpacking openbsd-inetd...
-I: Unpacking netkit-inetd...
+I: Unpacking readline-common...
 I: Unpacking sysklogd...
 I: Unpacking tasksel...
 I: Unpacking tasksel-data...
@@ -1293,7 +1282,7 @@ Refreshing the base.tgz
 Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
 Hit http://ftp.jp.debian.org sid Release
 Get:2 http://ftp.jp.debian.org sid/main Packages/DiffIndex [12.6kB]
-Fetched 12.8kB in 0s (51.5kB/s)
+Fetched 12.8kB in 0s (31.2kB/s)
 Reading package lists...
 dpkg - warning: ignoring request to remove lilo which isn't installed.
 Obtaining the cached apt archive contents
@@ -1304,84 +1293,91 @@ Reading package lists...
 Building dependency tree...
 apt is already the newest version.
 The following extra packages will be installed:
-  binutils cpp cpp-4.1 g++ g++-4.1 gcc gcc-4.1 libc6-dev libdb4.4
+  binutils cpp cpp-4.1 g++ g++-4.1 gcc gcc-4.1 libc6-dev libdb4.4 libssp0
   libstdc++6-4.1-dev linux-kernel-headers make patch perl perl-modules
 Suggested packages:
   binutils-doc cpp-doc gcc-4.1-locales debian-keyring gcc-4.1-doc lib32stdc++6
   manpages-dev autoconf automake1.9 libtool flex bison gdb gcc-doc
-  libc6-dev-i386 lib32gcc1 glibc-doc libstdc++6-4.1-doc stl-manual
+  libc6-dev-i386 lib32gcc1 lib32ssp0 glibc-doc libstdc++6-4.1-doc
   make-doc-non-dfsg diff-doc libterm-readline-gnu-perl
   libterm-readline-perl-perl
 Recommended packages:
-  pbuilder bzip2 libmudflap0-dev libssp0-dev perl-doc
+  pbuilder bzip2 libmudflap0-dev perl-doc
 The following NEW packages will be installed:
   binutils build-essential cowdancer cpp cpp-4.1 dpkg-dev g++ g++-4.1 gcc
-  gcc-4.1 libc6-dev libdb4.4 libstdc++6-4.1-dev linux-kernel-headers make
-  patch perl perl-modules
-0 upgraded, 18 newly installed, 0 to remove and 0 not upgraded.
+  gcc-4.1 libc6-dev libdb4.4 libssp0 libstdc++6-4.1-dev linux-kernel-headers
+  make patch perl perl-modules
+0 upgraded, 19 newly installed, 0 to remove and 0 not upgraded.
 Need to get 0B/21.7MB of archives.
 After unpacking 87.2MB of additional disk space will be used.
 Selecting previously deselected package binutils.
-(Reading database ... 7023 files and directories currently installed.)
-Unpacking binutils (from .../binutils_2.17-1_amd64.deb) ...
+(Reading database ... 7093 files and directories currently installed.)
+Unpacking binutils (from .../binutils_2.17-2_amd64.deb) ...
 Selecting previously deselected package cpp-4.1.
-Unpacking cpp-4.1 (from .../cpp-4.1_4.1.1-5_amd64.deb) ...
+Unpacking cpp-4.1 (from .../cpp-4.1_4.1.1-10_amd64.deb) ...
 Selecting previously deselected package cpp.
-Unpacking cpp (from .../cpp_4%3a4.1.1-1_amd64.deb) ...
+Unpacking cpp (from .../cpp_4%3a4.1.1-5_amd64.deb) ...
 Selecting previously deselected package perl-modules.
-Unpacking perl-modules (from .../perl-modules_5.8.8-6_all.deb) ...
+Unpacking perl-modules (from .../perl-modules_5.8.8-6.1_all.deb) ...
 Selecting previously deselected package libdb4.4.
-Unpacking libdb4.4 (from .../libdb4.4_4.4.20-6_amd64.deb) ...
+Unpacking libdb4.4 (from .../libdb4.4_4.4.20-7_amd64.deb) ...
 Selecting previously deselected package perl.
-Unpacking perl (from .../perl_5.8.8-6_amd64.deb) ...
+Unpacking perl (from .../perl_5.8.8-6.1_amd64.deb) ...
 Selecting previously deselected package patch.
 Unpacking patch (from .../patch_2.5.9-4_amd64.deb) ...
 Selecting previously deselected package make.
 Unpacking make (from .../archives/make_3.81-2_amd64.deb) ...
 Selecting previously deselected package dpkg-dev.
 Unpacking dpkg-dev (from .../dpkg-dev_1.13.22_all.deb) ...
+Selecting previously deselected package libssp0.
+Unpacking libssp0 (from .../libssp0_4.1.1-10_amd64.deb) ...
 Selecting previously deselected package gcc-4.1.
-Unpacking gcc-4.1 (from .../gcc-4.1_4.1.1-5_amd64.deb) ...
+Unpacking gcc-4.1 (from .../gcc-4.1_4.1.1-10_amd64.deb) ...
 Selecting previously deselected package gcc.
-Unpacking gcc (from .../gcc_4%3a4.1.1-1_amd64.deb) ...
+Unpacking gcc (from .../gcc_4%3a4.1.1-5_amd64.deb) ...
 Selecting previously deselected package linux-kernel-headers.
-Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.17.1-1_amd64.deb) ...
+Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.17.7-1_amd64.deb) ...
 Selecting previously deselected package libc6-dev.
-Unpacking libc6-dev (from .../libc6-dev_2.3.6-15_amd64.deb) ...
+Unpacking libc6-dev (from .../libc6-dev_2.3.6-19_amd64.deb) ...
 Selecting previously deselected package libstdc++6-4.1-dev.
-Unpacking libstdc++6-4.1-dev (from .../libstdc++6-4.1-dev_4.1.1-5_amd64.deb) ...
+Unpacking libstdc++6-4.1-dev (from .../libstdc++6-4.1-dev_4.1.1-10_amd64.deb) ...
 Selecting previously deselected package g++-4.1.
-Unpacking g++-4.1 (from .../g++-4.1_4.1.1-5_amd64.deb) ...
+Unpacking g++-4.1 (from .../g++-4.1_4.1.1-10_amd64.deb) ...
 Selecting previously deselected package g++.
-Unpacking g++ (from .../g++_4%3a4.1.1-1_amd64.deb) ...
+Unpacking g++ (from .../g++_4%3a4.1.1-5_amd64.deb) ...
 Selecting previously deselected package build-essential.
-Unpacking build-essential (from .../build-essential_11.2_amd64.deb) ...
+Unpacking build-essential (from .../build-essential_11.3_amd64.deb) ...
 Selecting previously deselected package cowdancer.
-Unpacking cowdancer (from .../cowdancer_0.19_amd64.deb) ...
-Setting up binutils (2.17-1) ...
+Unpacking cowdancer (from .../cowdancer_0.20_amd64.deb) ...
+Setting up binutils (2.17-2) ...
 
-Setting up cpp-4.1 (4.1.1-5) ...
-Setting up cpp (4.1.1-1) ...
+Setting up cpp-4.1 (4.1.1-10) ...
+Setting up cpp (4.1.1-5) ...
 
-Setting up libdb4.4 (4.4.20-6) ...
+Setting up libdb4.4 (4.4.20-7) ...
 Setting up patch (2.5.9-4) ...
 Setting up make (3.81-2) ...
-Setting up gcc-4.1 (4.1.1-5) ...
-Setting up gcc (4.1.1-1) ...
+Setting up libssp0 (4.1.1-10) ...
 
-Setting up linux-kernel-headers (2.6.17.1-1) ...
-Setting up libc6-dev (2.3.6-15) ...
-Setting up cowdancer (0.19) ...
-Setting up libstdc++6-4.1-dev (4.1.1-5) ...
-Setting up perl-modules (5.8.8-6) ...
-Setting up g++-4.1 (4.1.1-5) ...
-Setting up g++ (4.1.1-1) ...
+Setting up gcc-4.1 (4.1.1-10) ...
+Setting up gcc (4.1.1-5) ...
 
-Setting up perl (5.8.8-6) ...
+Setting up linux-kernel-headers (2.6.17.7-1) ...
+Setting up libc6-dev (2.3.6-19) ...
+Setting up cowdancer (0.20) ...
+Setting up libstdc++6-4.1-dev (4.1.1-10) ...
+Setting up perl-modules (5.8.8-6.1) ...
+Setting up g++-4.1 (4.1.1-10) ...
+Setting up g++ (4.1.1-5) ...
+
+Setting up perl (5.8.8-6.1) ...
 
 Setting up dpkg-dev (1.13.22) ...
-Setting up build-essential (11.2) ...
+Setting up build-essential (11.3) ...
 Copying back the cached apt archive contents
+ -> new cache content info_4.8.dfsg.1-2_amd64.deb added
+ -> new cache content libnewt0.52_0.52.2-7_amd64.deb added
+ -> new cache content whiptail_0.52.2-7_amd64.deb added
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
  -> Invoking pbuilder
@@ -1440,15 +1436,15 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libstdc++6
 P: Retrieving apt
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt_0.6.44.2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt_0.6.44.2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt_0.6.45_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt_0.6.45_amd64.deb"
 D: Return code: 0
 P: Validating apt
 P: Retrieving libdb4.3
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libdb4.3_4.3.29-4.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/db4.3/libdb4.3_4.3.29-4.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libdb4.3_4.3.29-6_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/db4.3/libdb4.3_4.3.29-6_amd64.deb"
 D: Return code: 0
 P: Validating libdb4.3
 P: Retrieving apt-utils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt-utils_0.6.44.2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt-utils_0.6.44.2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt-utils_0.6.45_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt-utils_0.6.45_amd64.deb"
 D: Return code: 0
 P: Validating apt-utils
 P: Retrieving libattr1
@@ -1456,7 +1452,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libattr1
 P: Retrieving libacl1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libacl1_2.2.37-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/acl/libacl1_2.2.37-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libacl1_2.2.41-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/acl/libacl1_2.2.41-1_amd64.deb"
 D: Return code: 0
 P: Validating libacl1
 P: Retrieving libsepol1
@@ -1468,7 +1464,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libselinux1
 P: Retrieving coreutils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/coreutils_5.96-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/coreutils/coreutils_5.96-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/coreutils_5.96-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/coreutils/coreutils_5.96-5_amd64.deb"
 D: Return code: 0
 P: Validating coreutils
 P: Retrieving mktemp
@@ -1476,7 +1472,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/mkt
 D: Return code: 0
 P: Validating mktemp
 P: Retrieving debianutils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debianutils_2.16.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/debianutils/debianutils_2.16.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debianutils_2.17_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/debianutils/debianutils_2.17_amd64.deb"
 D: Return code: 0
 P: Validating debianutils
 P: Retrieving dhcp3-common
@@ -1500,15 +1496,15 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libtext-charwidth-perl
 P: Retrieving libtext-wrapi18n-perl
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtext-wrapi18n-perl_0.06-4_all.deb http://ftp.jp.debian.org/debian/pool/main/libt/libtext-wrapi18n-perl/libtext-wrapi18n-perl_0.06-4_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtext-wrapi18n-perl_0.06-5_all.deb http://ftp.jp.debian.org/debian/pool/main/libt/libtext-wrapi18n-perl/libtext-wrapi18n-perl_0.06-5_all.deb"
 D: Return code: 0
 P: Validating libtext-wrapi18n-perl
 P: Retrieving debconf-i18n
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debconf-i18n_1.5.2_all.deb http://ftp.jp.debian.org/debian/pool/main/d/debconf/debconf-i18n_1.5.2_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debconf-i18n_1.5.3_all.deb http://ftp.jp.debian.org/debian/pool/main/d/debconf/debconf-i18n_1.5.3_all.deb"
 D: Return code: 0
 P: Validating debconf-i18n
 P: Retrieving debconf
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debconf_1.5.2_all.deb http://ftp.jp.debian.org/debian/pool/main/d/debconf/debconf_1.5.2_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debconf_1.5.3_all.deb http://ftp.jp.debian.org/debian/pool/main/d/debconf/debconf_1.5.3_all.deb"
 D: Return code: 0
 P: Validating debconf
 P: Retrieving dhcp3-client
@@ -1568,7 +1564,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tel
 D: Return code: 0
 P: Validating telnet
 P: Retrieving zlib1g
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/zlib1g_1.2.3-11_amd64.deb http://ftp.jp.debian.org/debian/pool/main/z/zlib/zlib1g_1.2.3-11_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/zlib1g_1.2.3-13_amd64.deb http://ftp.jp.debian.org/debian/pool/main/z/zlib/zlib1g_1.2.3-13_amd64.deb"
 D: Return code: 0
 P: Validating zlib1g
 P: Retrieving libssl0.9.8
@@ -1576,7 +1572,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libssl0.9.8
 P: Retrieving wget
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/wget_1.10.2-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/w/wget/wget_1.10.2-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/wget_1.10.2-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/w/wget/wget_1.10.2-2_amd64.deb"
 D: Return code: 0
 P: Validating wget
 P: Retrieving info
@@ -1584,7 +1580,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/inf
 D: Return code: 0
 P: Validating info
 P: Retrieving manpages
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/manpages_2.33-2_all.deb http://ftp.jp.debian.org/debian/pool/main/m/manpages/manpages_2.33-2_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/manpages_2.34-1_all.deb http://ftp.jp.debian.org/debian/pool/main/m/manpages/manpages_2.34-1_all.deb"
 D: Return code: 0
 P: Validating manpages
 P: Retrieving groff-base
@@ -1628,27 +1624,27 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libpam-modules
 P: Retrieving login
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/login_4.0.16-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/login_4.0.16-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/login_4.0.17-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/login_4.0.17-2_amd64.deb"
 D: Return code: 0
 P: Validating login
 P: Retrieving passwd
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/passwd_4.0.16-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/passwd_4.0.16-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/passwd_4.0.17-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/passwd_4.0.17-2_amd64.deb"
 D: Return code: 0
 P: Validating passwd
 P: Retrieving adduser
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/adduser_3.87_all.deb http://ftp.jp.debian.org/debian/pool/main/a/adduser/adduser_3.87_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/adduser_3.95_all.deb http://ftp.jp.debian.org/debian/pool/main/a/adduser/adduser_3.95_all.deb"
 D: Return code: 0
 P: Validating adduser
 P: Retrieving cron
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cron_3.0pl1-94_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/cron/cron_3.0pl1-94_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cron_3.0pl1-95_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/cron/cron_3.0pl1-95_amd64.deb"
 D: Return code: 0
 P: Validating cron
 P: Retrieving exim4-config
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-config_4.62-1_all.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-config_4.62-1_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-config_4.62-2_all.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-config_4.62-2_all.deb"
 D: Return code: 0
 P: Validating exim4-config
 P: Retrieving exim4-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-base_4.62-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-base_4.62-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-base_4.62-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-base_4.62-2_amd64.deb"
 D: Return code: 0
 P: Validating exim4-base
 P: Retrieving libgpg-error0
@@ -1656,7 +1652,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libgpg-error0
 P: Retrieving libgcrypt11
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcrypt11_1.2.2-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.2.2-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcrypt11_1.2.2-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.2.2-3_amd64.deb"
 D: Return code: 0
 P: Validating libgcrypt11
 P: Retrieving liblzo1
@@ -1664,15 +1660,15 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating liblzo1
 P: Retrieving libopencdk8
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libopencdk8_0.5.7-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/o/opencdk8/libopencdk8_0.5.7-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libopencdk8_0.5.8-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/o/opencdk8/libopencdk8_0.5.8-1_amd64.deb"
 D: Return code: 0
 P: Validating libopencdk8
 P: Retrieving libtasn1-3
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtasn1-3_0.3.4-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libt/libtasn1-3/libtasn1-3_0.3.4-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtasn1-3_0.3.5-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libt/libtasn1-3/libtasn1-3_0.3.5-2_amd64.deb"
 D: Return code: 0
 P: Validating libtasn1-3
 P: Retrieving libgnutls13
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgnutls13_1.4.0-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gnutls13/libgnutls13_1.4.0-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgnutls13_1.4.1-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gnutls13/libgnutls13_1.4.1-1_amd64.deb"
 D: Return code: 0
 P: Validating libgnutls13
 P: Retrieving libpcre3
@@ -1680,7 +1676,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libpcre3
 P: Retrieving exim4-daemon-light
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-daemon-light_4.62-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-daemon-light_4.62-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-daemon-light_4.62-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-daemon-light_4.62-2_amd64.deb"
 D: Return code: 0
 P: Validating exim4-daemon-light
 P: Retrieving at
@@ -1688,7 +1684,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/at_
 D: Return code: 0
 P: Validating at
 P: Retrieving cpio
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cpio_2.6-13_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/cpio/cpio_2.6-13_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cpio_2.6-17_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/cpio/cpio_2.6-17_amd64.deb"
 D: Return code: 0
 P: Validating cpio
 P: Retrieving ed
@@ -1700,7 +1696,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libncursesw5
 P: Retrieving nano
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/nano_1.3.11-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/nano/nano_1.3.11-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/nano_1.3.12-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/nano/nano_1.3.12-2_amd64.deb"
 D: Return code: 0
 P: Validating nano
 P: Retrieving nvi
@@ -1736,11 +1732,11 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lap
 D: Return code: 0
 P: Validating laptop-detect
 P: Retrieving tasksel-data
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tasksel-data_2.48_all.deb http://ftp.jp.debian.org/debian/pool/main/t/tasksel/tasksel-data_2.48_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tasksel-data_2.53_all.deb http://ftp.jp.debian.org/debian/pool/main/t/tasksel/tasksel-data_2.53_all.deb"
 D: Return code: 0
 P: Validating tasksel-data
 P: Retrieving tasksel
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tasksel_2.48_all.deb http://ftp.jp.debian.org/debian/pool/main/t/tasksel/tasksel_2.48_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tasksel_2.53_all.deb http://ftp.jp.debian.org/debian/pool/main/t/tasksel/tasksel_2.53_all.deb"
 D: Return code: 0
 P: Validating tasksel
 P: Retrieving libslang2
@@ -1748,7 +1744,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libslang2
 P: Retrieving libnewt0.52
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libnewt0.52_0.52.2-4_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/newt/libnewt0.52_0.52.2-4_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libnewt0.52_0.52.2-5.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/newt/libnewt0.52_0.52.2-5.1_amd64.deb"
 D: Return code: 0
 P: Validating libnewt0.52
 P: Retrieving libpopt0
@@ -1756,11 +1752,11 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libpopt0
 P: Retrieving whiptail
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/whiptail_0.52.2-4_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/newt/whiptail_0.52.2-4_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/whiptail_0.52.2-5.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/newt/whiptail_0.52.2-5.1_amd64.deb"
 D: Return code: 0
 P: Validating whiptail
 P: Retrieving exim4
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4_4.62-1_all.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4_4.62-1_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4_4.62-2_all.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4_4.62-2_all.deb"
 D: Return code: 0
 P: Validating exim4
 P: Retrieving base-passwd
@@ -1772,7 +1768,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/log
 D: Return code: 0
 P: Validating logrotate
 P: Retrieving procps
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/procps_3.2.6-2.2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/procps/procps_3.2.6-2.2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/procps_3.2.7-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/procps/procps_3.2.7-2_amd64.deb"
 D: Return code: 0
 P: Validating procps
 P: Retrieving libdevmapper1.02
@@ -1808,7 +1804,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/maw
 D: Return code: 0
 P: Validating mawk
 P: Retrieving tar
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tar_1.15.1dfsg-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/t/tar/tar_1.15.1dfsg-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tar_1.15.91-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/t/tar/tar_1.15.91-2_amd64.deb"
 D: Return code: 0
 P: Validating tar
 P: Retrieving e2fslibs
@@ -1844,15 +1840,15 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/e2f
 D: Return code: 0
 P: Validating e2fsprogs
 P: Retrieving initscripts
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/initscripts_2.86.ds1-14.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/initscripts_2.86.ds1-14.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/initscripts_2.86.ds1-15_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/initscripts_2.86.ds1-15_amd64.deb"
 D: Return code: 0
 P: Validating initscripts
 P: Retrieving sysv-rc
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysv-rc_2.86.ds1-14.1_all.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/sysv-rc_2.86.ds1-14.1_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysv-rc_2.86.ds1-15_all.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/sysv-rc_2.86.ds1-15_all.deb"
 D: Return code: 0
 P: Validating sysv-rc
 P: Retrieving sysvinit
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysvinit_2.86.ds1-14.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/sysvinit_2.86.ds1-14.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysvinit_2.86.ds1-15_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/sysvinit_2.86.ds1-15_amd64.deb"
 D: Return code: 0
 P: Validating sysvinit
 P: Retrieving base-files
@@ -1860,7 +1856,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/bas
 D: Return code: 0
 P: Validating base-files
 P: Retrieving bash
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/bash_3.1-4_amd64.deb http://ftp.jp.debian.org/debian/pool/main/b/bash/bash_3.1-4_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/bash_3.1-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/b/bash/bash_3.1-5_amd64.deb"
 D: Return code: 0
 P: Validating bash
 P: Retrieving findutils
@@ -1868,7 +1864,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/fin
 D: Return code: 0
 P: Validating findutils
 P: Retrieving makedev
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/makedev_2.3.1-81_all.deb http://ftp.jp.debian.org/debian/pool/main/m/makedev/makedev_2.3.1-81_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/makedev_2.3.1-82_all.deb http://ftp.jp.debian.org/debian/pool/main/m/makedev/makedev_2.3.1-82_all.deb"
 D: Return code: 0
 P: Validating makedev
 D: call action: extract
@@ -2056,8 +2052,7 @@ D: call action: mount
 D: call action: dpkg-install
 D: Execute "dpkg -i --force-all /var/cache/bootstrap/base-passwd_3.5.11_amd64.deb" in chroot
 O: Selecting previously deselected package base-passwd.
-O: (Reading database ... 
-O: 0 files and directories currently installed.)
+O: (Reading database ... 0 files and directories currently installed.)
 O: Unpacking base-passwd (from .../base-passwd_3.5.11_amd64.deb) ...
 P: Unpacking package base-passwd
 D: Updating base-passwd to status 2
@@ -2119,7 +2114,7 @@ D: Updating dpkg to status 3
 O: 
 D: Return code: 0
 D: call action: dpkg-unpack
-D: Execute "dpkg --unpack --force-all /var/cache/bootstrap/tzdata_2006g-2_all.deb /var/cache/bootstrap/libc6_2.3.6-15_amd64.deb /var/cache/bootstrap/gcc-4.1-base_4.1.1-5_amd64.deb /var/cache/bootstrap/libgcc1_4.1.1-5_amd64.deb /var/cache/bootstrap/libstdc++6_4.1.1-5_amd64.deb /var/cache/bootstrap/libdb4.3_4.3.29-4.1_amd64.deb /var/cache/bootstrap/libattr1_2.4.32-1_amd64.deb /var/cache/bootstrap/libacl1_2.2.37-1_amd64.deb /var/cache/bootstrap/libsepol1_1.12-1_amd64.deb /var/cache/bootstrap/libselinux1_1.30-1_amd64.deb /var/cache/bootstrap/coreutils_5.96-3_amd64.deb /var/cache/bootstrap/mktemp_1.5-2_amd64.deb /var/cache/bootstrap/debianutils_2.16.1_amd64.deb /var/cache/bootstrap/perl-base_5.8.8-4_amd64.deb /var/cache/bootstrap/liblocale-gettext-perl_1.05-1_amd64.deb /var/cache/bootstrap/libtext-iconv-perl_1.4-2_amd64.deb /var/cache/bootstrap/libtext-charwidth-perl_0.04-3_amd64.deb /var/cache/bootstrap/libtext-wrapi18n-perl_0.06-4_all.deb /var/cache/bootstrap/debconf_1.5.2_all.deb /var/cache/bootstrap/debconf-i18n
+D: Execute "dpkg --unpack --force-all /var/cache/bootstrap/tzdata_2006g-2_all.deb /var/cache/bootstrap/libc6_2.3.6-15_amd64.deb /var/cache/bootstrap/gcc-4.1-base_4.1.1-5_amd64.deb /var/cache/bootstrap/libgcc1_4.1.1-5_amd64.deb /var/cache/bootstrap/libstdc++6_4.1.1-5_amd64.deb /var/cache/bootstrap/libdb4.3_4.3.29-6_amd64.deb /var/cache/bootstrap/libattr1_2.4.32-1_amd64.deb /var/cache/bootstrap/libacl1_2.2.41-1_amd64.deb /var/cache/bootstrap/libsepol1_1.12-1_amd64.deb /var/cache/bootstrap/libselinux1_1.30-1_amd64.deb /var/cache/bootstrap/coreutils_5.96-5_amd64.deb /var/cache/bootstrap/mktemp_1.5-2_amd64.deb /var/cache/bootstrap/debianutils_2.17_amd64.deb /var/cache/bootstrap/perl-base_5.8.8-4_amd64.deb /var/cache/bootstrap/liblocale-gettext-perl_1.05-1_amd64.deb /var/cache/bootstrap/libtext-iconv-perl_1.4-2_amd64.deb /var/cache/bootstrap/libtext-charwidth-perl_0.04-3_amd64.deb /var/cache/bootstrap/libtext-wrapi18n-perl_0.06-5_all.deb /var/cache/bootstrap/debconf_1.5.3_all.deb /var/cache/bootstrap/debconf-i18n_1.5
 O: Selecting previously deselected package tzdata.
 O: (Reading database ... 
 O: 207 files and directories currently installed.)
@@ -2143,7 +2138,7 @@ O: Unpacking libstdc++6 (from .../libstdc++6_4.1.1-5_amd64.deb) ...
 P: Unpacking package libstdc++6
 D: Updating libstdc++6 to status 2
 O: Selecting previously deselected package libdb4.3.
-O: Unpacking libdb4.3 (from .../libdb4.3_4.3.29-4.1_amd64.deb) ...
+O: Unpacking libdb4.3 (from .../libdb4.3_4.3.29-6_amd64.deb) ...
 P: Unpacking package libdb4.3
 D: Updating libdb4.3 to status 2
 O: Selecting previously deselected package libattr1.
@@ -2151,7 +2146,7 @@ O: Unpacking libattr1 (from .../libattr1_2.4.32-1_amd64.deb) ...
 P: Unpacking package libattr1
 D: Updating libattr1 to status 2
 O: Selecting previously deselected package libacl1.
-O: Unpacking libacl1 (from .../libacl1_2.2.37-1_amd64.deb) ...
+O: Unpacking libacl1 (from .../libacl1_2.2.41-1_amd64.deb) ...
 P: Unpacking package libacl1
 D: Updating libacl1 to status 2
 O: Selecting previously deselected package libsepol1.
@@ -2163,19 +2158,19 @@ O: Unpacking libselinux1 (from .../libselinux1_1.30-1_amd64.deb) ...
 P: Unpacking package libselinux1
 D: Updating libselinux1 to status 2
 O: Selecting previously deselected package coreutils.
-O: dpkg: regarding .../coreutils_5.96-3_amd64.deb containing coreutils, pre-dependency problem:
+O: dpkg: regarding .../coreutils_5.96-5_amd64.deb containing coreutils, pre-dependency problem:
 O:  coreutils pre-depends on libacl1 (>= 2.2.11-1)
 O:   libacl1 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../coreutils_5.96-3_amd64.deb containing coreutils, pre-dependency problem:
+O: dpkg: regarding .../coreutils_5.96-5_amd64.deb containing coreutils, pre-dependency problem:
 O:  coreutils pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../coreutils_5.96-3_amd64.deb containing coreutils, pre-dependency problem:
+O: dpkg: regarding .../coreutils_5.96-5_amd64.deb containing coreutils, pre-dependency problem:
 O:  coreutils pre-depends on libselinux1 (>= 1.30)
 O:   libselinux1 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking coreutils (from .../coreutils_5.96-3_amd64.deb) ...
+O: Unpacking coreutils (from .../coreutils_5.96-5_amd64.deb) ...
 P: Unpacking package coreutils
 D: Updating coreutils to status 2
 O: No diversion `any diversion of /usr/share/man/man1/md5sum.textutils.1.gz', none removed
@@ -2185,19 +2180,19 @@ O: Unpacking mktemp (from .../mktemp_1.5-2_amd64.deb) ...
 P: Unpacking package mktemp
 D: Updating mktemp to status 2
 O: Selecting previously deselected package debianutils.
-O: dpkg: regarding .../debianutils_2.16.1_amd64.deb containing debianutils, pre-dependency problem:
+O: dpkg: regarding .../debianutils_2.17_amd64.deb containing debianutils, pre-dependency problem:
 O:  debianutils pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../debianutils_2.16.1_amd64.deb containing debianutils, pre-dependency problem:
+O: dpkg: regarding .../debianutils_2.17_amd64.deb containing debianutils, pre-dependency problem:
 O:  debianutils pre-depends on coreutils (>= 4.5.8-1)
 O:   coreutils is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../debianutils_2.16.1_amd64.deb containing debianutils, pre-dependency problem:
+O: dpkg: regarding .../debianutils_2.17_amd64.deb containing debianutils, pre-dependency problem:
 O:  debianutils pre-depends on mktemp
 O:   mktemp is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking debianutils (from .../debianutils_2.16.1_amd64.deb) ...
+O: Unpacking debianutils (from .../debianutils_2.17_amd64.deb) ...
 P: Unpacking package debianutils
 D: Updating debianutils to status 2
 O: Selecting previously deselected package perl-base.
@@ -2229,19 +2224,19 @@ O: Unpacking libtext-charwidth-perl (from .../libtext-charwidth-perl_0.04-3_amd6
 P: Unpacking package libtext-charwidth-perl
 D: Updating libtext-charwidth-perl to status 2
 O: Selecting previously deselected package libtext-wrapi18n-perl.
-O: Unpacking libtext-wrapi18n-perl (from .../libtext-wrapi18n-perl_0.06-4_all.deb) ...
+O: Unpacking libtext-wrapi18n-perl (from .../libtext-wrapi18n-perl_0.06-5_all.deb) ...
 P: Unpacking package libtext-wrapi18n-perl
 D: Updating libtext-wrapi18n-perl to status 2
 O: Selecting previously deselected package debconf.
-O: dpkg: regarding .../debconf_1.5.2_all.deb containing debconf, pre-dependency problem:
+O: dpkg: regarding .../debconf_1.5.3_all.deb containing debconf, pre-dependency problem:
 O:  debconf pre-depends on perl-base (>= 5.6.1-4)
 O:   perl-base is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking debconf (from .../debconf_1.5.2_all.deb) ...
+O: Unpacking debconf (from .../debconf_1.5.3_all.deb) ...
 P: Unpacking package debconf
 D: Updating debconf to status 2
 O: Selecting previously deselected package debconf-i18n.
-O: Unpacking debconf-i18n (from .../debconf-i18n_1.5.2_all.deb) ...
+O: Unpacking debconf-i18n (from .../debconf-i18n_1.5.3_all.deb) ...
 P: Unpacking package debconf-i18n
 D: Updating debconf-i18n to status 2
 O: Selecting previously deselected package sed.
@@ -2273,7 +2268,7 @@ O: Unpacking lsb-base (from .../lsb-base_3.1-10_all.deb) ...
 P: Unpacking package lsb-base
 D: Updating lsb-base to status 2
 O: Selecting previously deselected package zlib1g.
-O: Unpacking zlib1g (from .../zlib1g_1.2.3-11_amd64.deb) ...
+O: Unpacking zlib1g (from .../zlib1g_1.2.3-13_amd64.deb) ...
 P: Unpacking package zlib1g
 D: Updating zlib1g to status 2
 O: Selecting previously deselected package bsdutils.
@@ -2301,23 +2296,23 @@ O: Unpacking libpam-modules (from .../libpam-modules_0.79-3.1_amd64.deb) ...
 P: Unpacking package libpam-modules
 D: Updating libpam-modules to status 2
 O: Selecting previously deselected package login.
-O: dpkg: regarding .../login_4.0.16-2_amd64.deb containing login, pre-dependency problem:
+O: dpkg: regarding .../login_4.0.17-2_amd64.deb containing login, pre-dependency problem:
 O:  login pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../login_4.0.16-2_amd64.deb containing login, pre-dependency problem:
+O: dpkg: regarding .../login_4.0.17-2_amd64.deb containing login, pre-dependency problem:
 O:  login pre-depends on libpam0g (>= 0.76)
 O:   libpam0g is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../login_4.0.16-2_amd64.deb containing login, pre-dependency problem:
+O: dpkg: regarding .../login_4.0.17-2_amd64.deb containing login, pre-dependency problem:
 O:  login pre-depends on libpam-runtime (>= 0.76-14)
 O:   libpam-runtime is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking login (from .../login_4.0.16-2_amd64.deb) ...
+O: Unpacking login (from .../login_4.0.17-2_amd64.deb) ...
 P: Unpacking package login
 D: Updating login to status 2
 O: Selecting previously deselected package passwd.
-O: Unpacking passwd (from .../passwd_4.0.16-2_amd64.deb) ...
+O: Unpacking passwd (from .../passwd_4.0.17-2_amd64.deb) ...
 P: Unpacking package passwd
 D: Updating passwd to status 2
 O: Selecting previously deselected package libslang2.
@@ -2325,7 +2320,7 @@ O: Unpacking libslang2 (from .../libslang2_2.0.6-2_amd64.deb) ...
 P: Unpacking package libslang2
 D: Updating libslang2 to status 2
 O: Selecting previously deselected package procps.
-O: Unpacking procps (from .../procps_3.2.6-2.2_amd64.deb) ...
+O: Unpacking procps (from .../procps_3.2.7-2_amd64.deb) ...
 P: Unpacking package procps
 D: Updating procps to status 2
 O: Selecting previously deselected package libdevmapper1.02.
@@ -2393,11 +2388,11 @@ O: Unpacking mawk (from .../mawk_1.3.3-11_amd64.deb) ...
 P: Unpacking package mawk
 D: Updating mawk to status 2
 O: Selecting previously deselected package tar.
-O: dpkg: regarding .../tar_1.15.1dfsg-3_amd64.deb containing tar, pre-dependency problem:
+O: dpkg: regarding .../tar_1.15.91-2_amd64.deb containing tar, pre-dependency problem:
 O:  tar pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking tar (from .../tar_1.15.1dfsg-3_amd64.deb) ...
+O: Unpacking tar (from .../tar_1.15.91-2_amd64.deb) ...
 P: Unpacking package tar
 D: Updating tar to status 2
 O: Selecting previously deselected package e2fslibs.
@@ -2489,23 +2484,23 @@ O: Unpacking e2fsprogs (from .../e2fsprogs_1.39-1_amd64.deb) ...
 P: Unpacking package e2fsprogs
 D: Updating e2fsprogs to status 2
 O: Selecting previously deselected package initscripts.
-O: Unpacking initscripts (from .../initscripts_2.86.ds1-14.1_amd64.deb) ...
+O: Unpacking initscripts (from .../initscripts_2.86.ds1-15_amd64.deb) ...
 P: Unpacking package initscripts
 D: Updating initscripts to status 2
 O: Selecting previously deselected package sysv-rc.
-O: Unpacking sysv-rc (from .../sysv-rc_2.86.ds1-14.1_all.deb) ...
+O: Unpacking sysv-rc (from .../sysv-rc_2.86.ds1-15_all.deb) ...
 P: Unpacking package sysv-rc
 D: Updating sysv-rc to status 2
 O: Selecting previously deselected package sysvinit.
-O: dpkg: regarding .../sysvinit_2.86.ds1-14.1_amd64.deb containing sysvinit, pre-dependency problem:
+O: dpkg: regarding .../sysvinit_2.86.ds1-15_amd64.deb containing sysvinit, pre-dependency problem:
 O:  sysvinit pre-depends on initscripts
 O:   initscripts is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../sysvinit_2.86.ds1-14.1_amd64.deb containing sysvinit, pre-dependency problem:
+O: dpkg: regarding .../sysvinit_2.86.ds1-15_amd64.deb containing sysvinit, pre-dependency problem:
 O:  sysvinit pre-depends on sysv-rc (>= 2.86.ds1-1.2) | file-rc (>> 0.7.0)
 O:   sysv-rc is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking sysvinit (from .../sysvinit_2.86.ds1-14.1_amd64.deb) ...
+O: Unpacking sysvinit (from .../sysvinit_2.86.ds1-15_amd64.deb) ...
 P: Unpacking package sysvinit
 D: Updating sysvinit to status 2
 O: Selecting previously deselected package base-files.
@@ -2513,15 +2508,15 @@ O: Unpacking base-files (from .../base-files_3.1.13_amd64.deb) ...
 P: Unpacking package base-files
 D: Updating base-files to status 2
 O: Selecting previously deselected package bash.
-O: dpkg: regarding .../bootstrap/bash_3.1-4_amd64.deb containing bash, pre-dependency problem:
+O: dpkg: regarding .../bootstrap/bash_3.1-5_amd64.deb containing bash, pre-dependency problem:
 O:  bash pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../bootstrap/bash_3.1-4_amd64.deb containing bash, pre-dependency problem:
+O: dpkg: regarding .../bootstrap/bash_3.1-5_amd64.deb containing bash, pre-dependency problem:
 O:  bash pre-depends on libncurses5 (>= 5.4-5)
 O:   libncurses5 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking bash (from .../bootstrap/bash_3.1-4_amd64.deb) ...
+O: Unpacking bash (from .../bootstrap/bash_3.1-5_amd64.deb) ...
 P: Unpacking package bash
 D: Updating bash to status 2
 O: Selecting previously deselected package findutils.
@@ -2533,17 +2528,17 @@ O: Unpacking findutils (from .../findutils_4.2.27-3_amd64.deb) ...
 P: Unpacking package findutils
 D: Updating findutils to status 2
 O: Selecting previously deselected package makedev.
-O: Unpacking makedev (from .../makedev_2.3.1-81_all.deb) ...
+O: Unpacking makedev (from .../makedev_2.3.1-82_all.deb) ...
 P: Unpacking package makedev
 D: Updating makedev to status 2
 D: Return code: 0
 D: call action: dpkg-configure
 D: Execute "dpkg --configure -a" in chroot
-O: Setting up makedev (2.3.1-81) ...
+O: Setting up makedev (2.3.1-82) ...
 P: Configuring package makedev
 D: Updating makedev to status 3
 O: 
-O: Setting up sysv-rc (2.86.ds1-14.1) ...
+O: Setting up sysv-rc (2.86.ds1-15) ...
 P: Configuring package sysv-rc
 D: Updating sysv-rc to status 3
 O: 
@@ -2592,11 +2587,11 @@ O: Setting up libsepol1 (1.12-1) ...
 P: Configuring package libsepol1
 D: Updating libsepol1 to status 3
 O: 
-O: Setting up tar (1.15.1dfsg-3) ...
+O: Setting up tar (1.15.91-2) ...
 P: Configuring package tar
 D: Updating tar to status 3
 O: 
-O: Setting up zlib1g (1.2.3-11) ...
+O: Setting up zlib1g (1.2.3-13) ...
 P: Configuring package zlib1g
 D: Updating zlib1g to status 3
 O: 
@@ -2632,7 +2627,7 @@ O: Setting up mawk (1.3.3-11) ...
 P: Configuring package mawk
 D: Updating mawk to status 3
 O: 
-O: Setting up libdb4.3 (4.3.29-4.1) ...
+O: Setting up libdb4.3 (4.3.29-6) ...
 P: Configuring package libdb4.3
 D: Updating libdb4.3 to status 3
 O: Setting up grep (2.5.1.ds2-5) ...
@@ -2642,7 +2637,7 @@ O:
 O: Setting up hostname (2.92) ...
 P: Configuring package hostname
 D: Updating hostname to status 3
-O: Setting up libacl1 (2.2.37-1) ...
+O: Setting up libacl1 (2.2.41-1) ...
 P: Configuring package libacl1
 D: Updating libacl1 to status 3
 O: 
@@ -2679,18 +2674,18 @@ O:
 O: Setting up libtext-charwidth-perl (0.04-3) ...
 P: Configuring package libtext-charwidth-perl
 D: Updating libtext-charwidth-perl to status 3
-O: Setting up libtext-wrapi18n-perl (0.06-4) ...
+O: Setting up libtext-wrapi18n-perl (0.06-5) ...
 P: Configuring package libtext-wrapi18n-perl
 D: Updating libtext-wrapi18n-perl to status 3
-O: Setting up coreutils (5.96-3) ...
+O: Setting up coreutils (5.96-5) ...
 P: Configuring package coreutils
 D: Updating coreutils to status 3
 O: 
-O: Setting up debianutils (2.16.1) ...
+O: Setting up debianutils (2.17) ...
 P: Configuring package debianutils
 D: Updating debianutils to status 3
 O: 
-O: Setting up procps (3.2.6-2.2) ...
+O: Setting up procps (3.2.7-2) ...
 P: Configuring package procps
 D: Updating procps to status 3
 O: 
@@ -2722,11 +2717,11 @@ O:
 O: Setting up dselect (1.13.21) ...
 P: Configuring package dselect
 D: Updating dselect to status 3
-O: Setting up bash (3.1-4) ...
+O: Setting up bash (3.1-5) ...
 P: Configuring package bash
 D: Updating bash to status 3
 O: 
-O: Setting up login (4.0.16-2) ...
+O: Setting up login (4.0.17-2) ...
 P: Configuring package login
 D: Updating login to status 3
 O: 
@@ -2737,11 +2732,12 @@ O: Setting up mount (2.12r-10) ...
 P: Configuring package mount
 D: Updating mount to status 3
 O: 
-O: Setting up passwd (4.0.16-2) ...
+O: Setting up passwd (4.0.17-2) ...
 P: Configuring package passwd
 D: Updating passwd to status 3
+O: Shadow passwords are now on.
 O: 
-O: Setting up initscripts (2.86.ds1-14.1) ...
+O: Setting up initscripts (2.86.ds1-15) ...
 P: Configuring package initscripts
 D: Updating initscripts to status 3
 O: 
@@ -2749,30 +2745,30 @@ O: Setting up util-linux (2.12r-10) ...
 P: Configuring package util-linux
 D: Updating util-linux to status 3
 O: 
-O: Setting up sysvinit (2.86.ds1-14.1) ...
+O: Setting up sysvinit (2.86.ds1-15) ...
 P: Configuring package sysvinit
 D: Updating sysvinit to status 3
 O: sysvinit: creating /dev/initctl
 O: init: 
 O: timeout opening/writing control channel /dev/initctl
 O: 
-O: Setting up debconf-i18n (1.5.2) ...
+O: Setting up debconf-i18n (1.5.3) ...
 P: Configuring package debconf-i18n
 D: Updating debconf-i18n to status 3
-O: Setting up debconf (1.5.2) ...
+O: Setting up debconf (1.5.3) ...
 P: Configuring package debconf
 D: Updating debconf to status 3
 O: 
 D: Return code: 0
 D: call action: dpkg-install
-D: Execute "dpkg -i /var/cache/bootstrap/apt_0.6.44.2_amd64.deb" in chroot
+D: Execute "dpkg -i /var/cache/bootstrap/apt_0.6.45_amd64.deb" in chroot
 O: Selecting previously deselected package apt.
 O: (Reading database ... 
-O: 4654 files and directories currently installed.)
-O: Unpacking apt (from .../apt_0.6.44.2_amd64.deb) ...
+O: 4667 files and directories currently installed.)
+O: Unpacking apt (from .../bootstrap/apt_0.6.45_amd64.deb) ...
 P: Unpacking package apt
 D: Updating apt to status 2
-O: Setting up apt (0.6.44.2) ...
+O: Setting up apt (0.6.45) ...
 P: Configuring package apt
 D: Updating apt to status 3
 O: 
@@ -2784,23 +2780,19 @@ D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-apt.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-apt.
 O: (Reading database ... 
-O: 4834 files and directories currently installed.)
+O: 4847 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-apt (from /cdebootstrap-helper-apt.deb) ...
 O: Setting up cdebootstrap-helper-apt (1) ...
 D: Return code: 0
 D: call action: apt-prepare
 D: Execute "apt-get update" in chroot
 O: Get:1 bootstrap: . Release.gpg [189B]
-O: Get:2 bootstrap: . Release [35.4kB]
+O: Get:2 bootstrap: . Release [62.9kB]
 O: Ign bootstrap: . Release
 O: Reading package lists...
 O: 
-O: W: 
-O: GPG error: bootstrap: . Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
-O: 
-O: W: 
-O: You may want to run apt-get update to correct these problems
-O: 
+O: W: GPG error: bootstrap: . Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
+O: W: You may want to run apt-get update to correct these problems
 D: Return code: 0
 D: call action: apt-install
 D: Execute "apt-get install --yes -o APT::Get::AllowUnauthenticated=true apt-utils dhcp3-common dhcp3-client net-tools ifupdown iptables iputils-ping libwrap0 tcpd netbase openbsd-inetd telnet libssl0.9.8 wget info manpages groff-base bsdmainutils libgdbm3 man-db adduser cron exim4-config exim4-base libgpg-error0 libgcrypt11 liblzo1 libopencdk8 libtasn1-3 libgnutls13 libpcre3 exim4-daemon-light at cpio ed libncursesw5 nano nvi psmisc sysklogd klogd libsigc++-2.0-0c2a aptitude dmidecode laptop-detect tasksel tasksel-data libnewt0.52 libpopt0 whiptail exim4 logrotate" in chroot
@@ -2824,8 +2816,8 @@ O:   libnewt0.52 libopencdk8 libpcre3 libpopt0 libsigc++-2.0-0c2a libssl0.9.8
 O:   libtasn1-3 libwrap0 logrotate man-db manpages nano net-tools netbase nvi
 O:   openbsd-inetd psmisc sysklogd tasksel tasksel-data tcpd telnet wget whiptail
 O: 0 upgraded, 52 newly installed, 0 to remove and 0 not upgraded.
-O: Need to get 13.1MB of archives.
-O: After unpacking 39.9MB of additional disk space will be used.
+O: Need to get 13.2MB of archives.
+O: After unpacking 40.2MB of additional disk space will be used.
 O: WARNING: The following packages cannot be authenticated!
 O:   adduser apt-utils libncursesw5 libsigc++-2.0-0c2a aptitude bsdmainutils cpio
 O:   cron dmidecode ed groff-base net-tools ifupdown info iptables iputils-ping
@@ -2838,12 +2830,12 @@ O: debconf: delaying package configuration, since apt-utils is not installed
 O: Authentication warning overridden.
 O: Selecting previously deselected package adduser.
 O: (Reading database ... 
-O: 4835 files and directories currently installed.)
-O: Unpacking adduser (from .../bootstrap/adduser_3.87_all.deb) ...
+O: 4848 files and directories currently installed.)
+O: Unpacking adduser (from .../bootstrap/adduser_3.95_all.deb) ...
 P: Unpacking package adduser
 D: Updating adduser to status 2
 O: Selecting previously deselected package apt-utils.
-O: Unpacking apt-utils (from .../apt-utils_0.6.44.2_amd64.deb) ...
+O: Unpacking apt-utils (from .../apt-utils_0.6.45_amd64.deb) ...
 P: Unpacking package apt-utils
 D: Updating apt-utils to status 2
 O: Selecting previously deselected package libncursesw5.
@@ -2863,11 +2855,11 @@ O: Unpacking bsdmainutils (from .../bsdmainutils_6.1.3_amd64.deb) ...
 P: Unpacking package bsdmainutils
 D: Updating bsdmainutils to status 2
 O: Selecting previously deselected package cpio.
-O: Unpacking cpio (from .../cpio_2.6-13_amd64.deb) ...
+O: Unpacking cpio (from .../cpio_2.6-17_amd64.deb) ...
 P: Unpacking package cpio
 D: Updating cpio to status 2
 O: Selecting previously deselected package cron.
-O: Unpacking cron (from .../cron_3.0pl1-94_amd64.deb) ...
+O: Unpacking cron (from .../cron_3.0pl1-95_amd64.deb) ...
 P: Unpacking package cron
 D: Updating cron to status 2
 O: Selecting previously deselected package dmidecode.
@@ -2919,7 +2911,7 @@ O: Unpacking libgpg-error0 (from .../libgpg-error0_1.2-1_amd64.deb) ...
 P: Unpacking package libgpg-error0
 D: Updating libgpg-error0 to status 2
 O: Selecting previously deselected package libgcrypt11.
-O: Unpacking libgcrypt11 (from .../libgcrypt11_1.2.2-1_amd64.deb) ...
+O: Unpacking libgcrypt11 (from .../libgcrypt11_1.2.2-3_amd64.deb) ...
 P: Unpacking package libgcrypt11
 D: Updating libgcrypt11 to status 2
 O: Selecting previously deselected package libgdbm3.
@@ -2931,15 +2923,15 @@ O: Unpacking liblzo1 (from .../liblzo1_1.08-3_amd64.deb) ...
 P: Unpacking package liblzo1
 D: Updating liblzo1 to status 2
 O: Selecting previously deselected package libopencdk8.
-O: Unpacking libopencdk8 (from .../libopencdk8_0.5.7-2_amd64.deb) ...
+O: Unpacking libopencdk8 (from .../libopencdk8_0.5.8-1_amd64.deb) ...
 P: Unpacking package libopencdk8
 D: Updating libopencdk8 to status 2
 O: Selecting previously deselected package libtasn1-3.
-O: Unpacking libtasn1-3 (from .../libtasn1-3_0.3.4-2_amd64.deb) ...
+O: Unpacking libtasn1-3 (from .../libtasn1-3_0.3.5-2_amd64.deb) ...
 P: Unpacking package libtasn1-3
 D: Updating libtasn1-3 to status 2
 O: Selecting previously deselected package libgnutls13.
-O: Unpacking libgnutls13 (from .../libgnutls13_1.4.0-2_amd64.deb) ...
+O: Unpacking libgnutls13 (from .../libgnutls13_1.4.1-1_amd64.deb) ...
 P: Unpacking package libgnutls13
 D: Updating libgnutls13 to status 2
 O: Selecting previously deselected package libpopt0.
@@ -2963,11 +2955,11 @@ O: Unpacking man-db (from .../man-db_2.4.3-3_amd64.deb) ...
 P: Unpacking package man-db
 D: Updating man-db to status 2
 O: Selecting previously deselected package manpages.
-O: Unpacking manpages (from .../manpages_2.33-2_all.deb) ...
+O: Unpacking manpages (from .../manpages_2.34-1_all.deb) ...
 P: Unpacking package manpages
 D: Updating manpages to status 2
 O: Selecting previously deselected package nano.
-O: Unpacking nano (from .../nano_1.3.11-3_amd64.deb) ...
+O: Unpacking nano (from .../nano_1.3.12-2_amd64.deb) ...
 P: Unpacking package nano
 D: Updating nano to status 2
 O: Selecting previously deselected package openbsd-inetd.
@@ -2987,31 +2979,31 @@ O: Unpacking nvi (from .../nvi_1.79-24_amd64.deb) ...
 P: Unpacking package nvi
 D: Updating nvi to status 2
 O: Selecting previously deselected package tasksel-data.
-O: Unpacking tasksel-data (from .../tasksel-data_2.48_all.deb) ...
+O: Unpacking tasksel-data (from .../tasksel-data_2.53_all.deb) ...
 P: Unpacking package tasksel-data
 D: Updating tasksel-data to status 2
 O: Selecting previously deselected package tasksel.
-O: Unpacking tasksel (from .../bootstrap/tasksel_2.48_all.deb) ...
+O: Unpacking tasksel (from .../bootstrap/tasksel_2.53_all.deb) ...
 P: Unpacking package tasksel
 D: Updating tasksel to status 2
 O: Selecting previously deselected package wget.
-O: Unpacking wget (from .../wget_1.10.2-1_amd64.deb) ...
+O: Unpacking wget (from .../wget_1.10.2-2_amd64.deb) ...
 P: Unpacking package wget
 D: Updating wget to status 2
 O: Selecting previously deselected package libnewt0.52.
-O: Unpacking libnewt0.52 (from .../libnewt0.52_0.52.2-4_amd64.deb) ...
+O: Unpacking libnewt0.52 (from .../libnewt0.52_0.52.2-5.1_amd64.deb) ...
 P: Unpacking package libnewt0.52
 D: Updating libnewt0.52 to status 2
 O: Selecting previously deselected package whiptail.
-O: Unpacking whiptail (from .../whiptail_0.52.2-4_amd64.deb) ...
+O: Unpacking whiptail (from .../whiptail_0.52.2-5.1_amd64.deb) ...
 P: Unpacking package whiptail
 D: Updating whiptail to status 2
 O: Selecting previously deselected package exim4-config.
-O: Unpacking exim4-config (from .../exim4-config_4.62-1_all.deb) ...
+O: Unpacking exim4-config (from .../exim4-config_4.62-2_all.deb) ...
 P: Unpacking package exim4-config
 D: Updating exim4-config to status 2
 O: Selecting previously deselected package exim4-base.
-O: Unpacking exim4-base (from .../exim4-base_4.62-1_amd64.deb) ...
+O: Unpacking exim4-base (from .../exim4-base_4.62-2_amd64.deb) ...
 P: Unpacking package exim4-base
 D: Updating exim4-base to status 2
 O: Selecting previously deselected package libpcre3.
@@ -3019,7 +3011,7 @@ O: Unpacking libpcre3 (from .../libpcre3_6.4-2_amd64.deb) ...
 P: Unpacking package libpcre3
 D: Updating libpcre3 to status 2
 O: Selecting previously deselected package exim4-daemon-light.
-O: Unpacking exim4-daemon-light (from .../exim4-daemon-light_4.62-1_amd64.deb) ...
+O: Unpacking exim4-daemon-light (from .../exim4-daemon-light_4.62-2_amd64.deb) ...
 P: Unpacking package exim4-daemon-light
 D: Updating exim4-daemon-light to status 2
 O: Selecting previously deselected package at.
@@ -3027,7 +3019,7 @@ O: Unpacking at (from .../bootstrap/at_3.1.10_amd64.deb) ...
 P: Unpacking package at
 D: Updating at to status 2
 O: Selecting previously deselected package exim4.
-O: Unpacking exim4 (from .../bootstrap/exim4_4.62-1_all.deb) ...
+O: Unpacking exim4 (from .../bootstrap/exim4_4.62-2_all.deb) ...
 P: Unpacking package exim4
 D: Updating exim4 to status 2
 O: Selecting previously deselected package telnet.
@@ -3046,11 +3038,11 @@ O: Selecting previously deselected package psmisc.
 O: Unpacking psmisc (from .../psmisc_22.2-1_amd64.deb) ...
 P: Unpacking package psmisc
 D: Updating psmisc to status 2
-O: Setting up adduser (3.87) ...
+O: Setting up adduser (3.95) ...
 P: Configuring package adduser
 D: Updating adduser to status 3
 O: 
-O: Setting up apt-utils (0.6.44.2) ...
+O: Setting up apt-utils (0.6.45) ...
 P: Configuring package apt-utils
 D: Updating apt-utils to status 3
 O: 
@@ -3070,14 +3062,14 @@ O: Setting up bsdmainutils (6.1.3) ...
 P: Configuring package bsdmainutils
 D: Updating bsdmainutils to status 3
 O: 
-O: Setting up cpio (2.6-13) ...
+O: Setting up cpio (2.6-17) ...
 P: Configuring package cpio
 D: Updating cpio to status 3
 O: 
-O: Setting up cron (3.0pl1-94) ...
+O: Setting up cron (3.0pl1-95) ...
 P: Configuring package cron
 D: Updating cron to status 3
-O: Adding group `crontab' (101)...
+O: Adding group `crontab' (GID 101) ...
 O: Done.
 O: 
 O: Setting up dmidecode (2.8-2) ...
@@ -3122,7 +3114,7 @@ O: Setting up libgpg-error0 (1.2-1) ...
 P: Configuring package libgpg-error0
 D: Updating libgpg-error0 to status 3
 O: 
-O: Setting up libgcrypt11 (1.2.2-1) ...
+O: Setting up libgcrypt11 (1.2.2-3) ...
 P: Configuring package libgcrypt11
 D: Updating libgcrypt11 to status 3
 O: 
@@ -3134,15 +3126,15 @@ O: Setting up liblzo1 (1.08-3) ...
 P: Configuring package liblzo1
 D: Updating liblzo1 to status 3
 O: 
-O: Setting up libopencdk8 (0.5.7-2) ...
+O: Setting up libopencdk8 (0.5.8-1) ...
 P: Configuring package libopencdk8
 D: Updating libopencdk8 to status 3
 O: 
-O: Setting up libtasn1-3 (0.3.4-2) ...
+O: Setting up libtasn1-3 (0.3.5-2) ...
 P: Configuring package libtasn1-3
 D: Updating libtasn1-3 to status 3
 O: 
-O: Setting up libgnutls13 (1.4.0-2) ...
+O: Setting up libgnutls13 (1.4.1-1) ...
 P: Configuring package libgnutls13
 D: Updating libgnutls13 to status 3
 O: 
@@ -3166,10 +3158,10 @@ P: Configuring package man-db
 D: Updating man-db to status 3
 O: Building database of manual pages ...
 O: 
-O: Setting up manpages (2.33-2) ...
+O: Setting up manpages (2.34-1) ...
 P: Configuring package manpages
 D: Updating manpages to status 3
-O: Setting up nano (1.3.11-3) ...
+O: Setting up nano (1.3.12-2) ...
 P: Configuring package nano
 D: Updating nano to status 3
 O: 
@@ -3181,18 +3173,18 @@ O: Setting up nvi (1.79-24) ...
 P: Configuring package nvi
 D: Updating nvi to status 3
 O: 
-O: Setting up wget (1.10.2-1) ...
+O: Setting up wget (1.10.2-2) ...
 P: Configuring package wget
 D: Updating wget to status 3
 O: 
-O: Setting up libnewt0.52 (0.52.2-4) ...
+O: Setting up libnewt0.52 (0.52.2-5.1) ...
 P: Configuring package libnewt0.52
 D: Updating libnewt0.52 to status 3
 O: 
-O: Setting up whiptail (0.52.2-4) ...
+O: Setting up whiptail (0.52.2-5.1) ...
 P: Configuring package whiptail
 D: Updating whiptail to status 3
-O: Setting up exim4-config (4.62-1) ...
+O: Setting up exim4-config (4.62-2) ...
 P: Configuring package exim4-config
 D: Updating exim4-config to status 3
 O: hostname: 
@@ -3202,8 +3194,6 @@ O: hostname:
 O: Host name lookup failure
 O: 
 O: Adding system-user for exim (v4)
-O: chage: the shadow password file is not present
-O: chage failed with return code 15, shadow not enabled, password aging cannot be set. Continuing.
 O: 
 O: Setting up libpcre3 (6.4-2) ...
 P: Configuring package libpcre3
@@ -3220,7 +3210,7 @@ O: Setting up psmisc (22.2-1) ...
 P: Configuring package psmisc
 D: Updating psmisc to status 3
 O: 
-O: Setting up tasksel-data (2.48) ...
+O: Setting up tasksel-data (2.53) ...
 P: Configuring package tasksel-data
 D: Updating tasksel-data to status 3
 O: Setting up klogd (1.4.1-18) ...
@@ -3241,15 +3231,15 @@ O: Setting up openbsd-inetd (0.20050402-1) ...
 P: Configuring package openbsd-inetd
 D: Updating openbsd-inetd to status 3
 O: 
-O: Setting up tasksel (2.48) ...
+O: Setting up tasksel (2.53) ...
 P: Configuring package tasksel
 D: Updating tasksel to status 3
 O: 
-O: Setting up exim4-base (4.62-1) ...
+O: Setting up exim4-base (4.62-2) ...
 P: Configuring package exim4-base
 D: Updating exim4-base to status 3
 O: 
-O: Setting up exim4-daemon-light (4.62-1) ...
+O: Setting up exim4-daemon-light (4.62-2) ...
 P: Configuring package exim4-daemon-light
 D: Updating exim4-daemon-light to status 3
 O: 
@@ -3257,7 +3247,7 @@ O: Setting up at (3.1.10) ...
 P: Configuring package at
 D: Updating at to status 3
 O: 
-O: Setting up exim4 (4.62-1) ...
+O: Setting up exim4 (4.62-2) ...
 P: Configuring package exim4
 D: Updating exim4 to status 3
 O: Setting up telnet (0.17-32) ...
@@ -3269,14 +3259,14 @@ D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-apt
 D: Execute "dpkg -P cdebootstrap-helper-apt" in chroot
 O: (Reading database ... 
-O: 6787 files and directories currently installed.)
+O: 6830 files and directories currently installed.)
 O: Removing cdebootstrap-helper-apt ...
 D: Return code: 0
 D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-diverts
 D: Execute "dpkg -P cdebootstrap-helper-diverts" in chroot
 O: (Reading database ... 
-O: 6786 files and directories currently installed.)
+O: 6829 files and directories currently installed.)
 O: Removing cdebootstrap-helper-diverts ...
 O: Purging configuration files for cdebootstrap-helper-diverts ...
 O: Removing `diversion of /sbin/start-stop-daemon to /sbin/start-stop-daemon.REAL by cdebootstrap-helper-diverts'
@@ -3286,7 +3276,7 @@ D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-makedev
 D: Execute "dpkg -P cdebootstrap-helper-makedev" in chroot
 O: (Reading database ... 
-O: 6784 files and directories currently installed.)
+O: 6827 files and directories currently installed.)
 O: Removing cdebootstrap-helper-makedev ...
 D: Return code: 0
 D: call action: dev-cleanup
@@ -3304,10 +3294,10 @@ Refreshing the base.tgz
  -> mounting /dev/pts filesystem
  -> installing dummy policy-rc.d
 Get:1 http://ftp.jp.debian.org etch Release.gpg [189B]
-Get:2 http://ftp.jp.debian.org etch Release [35.4kB]
+Get:2 http://ftp.jp.debian.org etch Release [62.9kB]
 Ign http://ftp.jp.debian.org etch Release
-Get:3 http://ftp.jp.debian.org etch/main Packages [5076kB]
-Fetched 5112kB in 2s (1726kB/s)
+Get:3 http://ftp.jp.debian.org etch/main Packages [5195kB]
+Fetched 5258kB in 2s (1756kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org etch Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
@@ -3320,36 +3310,34 @@ Reading package lists...
 Building dependency tree...
 apt is already the newest version.
 The following extra packages will be installed:
-  binutils cpp cpp-4.0 g++ g++-4.0 gcc gcc-4.0 gcc-4.0-base libc6-dev libdb4.4
-  libstdc++6-4.0-dev linux-kernel-headers make patch perl perl-modules
+  binutils cpp cpp-4.1 g++ g++-4.1 gcc gcc-4.1 libc6-dev libdb4.4
+  libstdc++6-4.1-dev linux-kernel-headers make patch perl perl-modules
 Suggested packages:
-  binutils-doc cpp-doc gcc-4.0-locales gnupg debian-keyring gcc-4.0-doc
+  binutils-doc cpp-doc gcc-4.1-locales gnupg debian-keyring gcc-4.1-doc
   lib32stdc++6 manpages-dev autoconf automake1.9 libtool flex bison gdb
-  gcc-doc libc6-dev-i386 lib32gcc1 glibc-doc libstdc++6-4.0-doc stl-manual
+  gcc-doc libc6-dev-i386 lib32gcc1 glibc-doc libstdc++6-4.1-doc stl-manual
   make-doc-non-dfsg diff-doc libterm-readline-gnu-perl
   libterm-readline-perl-perl
 Recommended packages:
-  pbuilder bzip2 libmudflap0-dev perl-doc
+  pbuilder bzip2 libmudflap0-dev libssp0-dev perl-doc
 The following NEW packages will be installed:
-  binutils build-essential cowdancer cpp cpp-4.0 dpkg-dev g++ g++-4.0 gcc
-  gcc-4.0 gcc-4.0-base libc6-dev libdb4.4 libstdc++6-4.0-dev
-  linux-kernel-headers make patch perl perl-modules
-0 upgraded, 19 newly installed, 0 to remove and 0 not upgraded.
-Need to get 0B/21.2MB of archives.
-After unpacking 83.7MB of additional disk space will be used.
+  binutils build-essential cowdancer cpp cpp-4.1 dpkg-dev g++ g++-4.1 gcc
+  gcc-4.1 libc6-dev libdb4.4 libstdc++6-4.1-dev linux-kernel-headers make
+  patch perl perl-modules
+0 upgraded, 18 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0B/21.8MB of archives.
+After unpacking 87.2MB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
-  binutils gcc-4.0-base cpp-4.0 cpp perl-modules libdb4.4 perl patch make
-  dpkg-dev gcc-4.0 gcc linux-kernel-headers libc6-dev libstdc++6-4.0-dev
-  g++-4.0 g++ build-essential cowdancer
+  binutils cpp-4.1 cpp perl-modules libdb4.4 perl patch make dpkg-dev gcc-4.1
+  gcc linux-kernel-headers libc6-dev libstdc++6-4.1-dev g++-4.1 g++
+  build-essential cowdancer
 Selecting previously deselected package binutils.
-(Reading database ... 6784 files and directories currently installed.)
-Unpacking binutils (from .../binutils_2.16.1cvs20060413-1_amd64.deb) ...
-Selecting previously deselected package gcc-4.0-base.
-Unpacking gcc-4.0-base (from .../gcc-4.0-base_4.0.3-3_amd64.deb) ...
-Selecting previously deselected package cpp-4.0.
-Unpacking cpp-4.0 (from .../cpp-4.0_4.0.3-3_amd64.deb) ...
+(Reading database ... 6827 files and directories currently installed.)
+Unpacking binutils (from .../binutils_2.17-2_amd64.deb) ...
+Selecting previously deselected package cpp-4.1.
+Unpacking cpp-4.1 (from .../cpp-4.1_4.1.1-5_amd64.deb) ...
 Selecting previously deselected package cpp.
-Unpacking cpp (from .../cpp_4%3a4.0.3-4_amd64.deb) ...
+Unpacking cpp (from .../cpp_4%3a4.1.1-5_amd64.deb) ...
 Selecting previously deselected package perl-modules.
 Unpacking perl-modules (from .../perl-modules_5.8.8-4_all.deb) ...
 Selecting previously deselected package libdb4.4.
@@ -3362,46 +3350,43 @@ Selecting previously deselected package make.
 Unpacking make (from .../archives/make_3.81-2_amd64.deb) ...
 Selecting previously deselected package dpkg-dev.
 Unpacking dpkg-dev (from .../dpkg-dev_1.13.21_all.deb) ...
-Selecting previously deselected package gcc-4.0.
-Unpacking gcc-4.0 (from .../gcc-4.0_4.0.3-3_amd64.deb) ...
+Selecting previously deselected package gcc-4.1.
+Unpacking gcc-4.1 (from .../gcc-4.1_4.1.1-5_amd64.deb) ...
 Selecting previously deselected package gcc.
-Unpacking gcc (from .../gcc_4%3a4.0.3-4_amd64.deb) ...
+Unpacking gcc (from .../gcc_4%3a4.1.1-5_amd64.deb) ...
 Selecting previously deselected package linux-kernel-headers.
-Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.13+0rc3-2.1_amd64.deb) ...
+Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.17.6-1_amd64.deb) ...
 Selecting previously deselected package libc6-dev.
 Unpacking libc6-dev (from .../libc6-dev_2.3.6-15_amd64.deb) ...
-Selecting previously deselected package libstdc++6-4.0-dev.
-Unpacking libstdc++6-4.0-dev (from .../libstdc++6-4.0-dev_4.0.3-3_amd64.deb) ...
-Selecting previously deselected package g++-4.0.
-Unpacking g++-4.0 (from .../g++-4.0_4.0.3-3_amd64.deb) ...
+Selecting previously deselected package libstdc++6-4.1-dev.
+Unpacking libstdc++6-4.1-dev (from .../libstdc++6-4.1-dev_4.1.1-5_amd64.deb) ...
+Selecting previously deselected package g++-4.1.
+Unpacking g++-4.1 (from .../g++-4.1_4.1.1-5_amd64.deb) ...
 Selecting previously deselected package g++.
-Unpacking g++ (from .../g++_4%3a4.0.3-4_amd64.deb) ...
+Unpacking g++ (from .../g++_4%3a4.1.1-5_amd64.deb) ...
 Selecting previously deselected package build-essential.
 Unpacking build-essential (from .../build-essential_11.2_amd64.deb) ...
 Selecting previously deselected package cowdancer.
-Unpacking cowdancer (from .../cowdancer_0.15_amd64.deb) ...
-Setting up binutils (2.16.1cvs20060413-1) ...
+Unpacking cowdancer (from .../cowdancer_0.20_amd64.deb) ...
+Setting up binutils (2.17-2) ...
 
-Setting up gcc-4.0-base (4.0.3-3) ...
-
-Setting up cpp-4.0 (4.0.3-3) ...
-Setting up cpp (4.0.3-4) ...
+Setting up cpp-4.1 (4.1.1-5) ...
+Setting up cpp (4.1.1-5) ...
 
 Setting up libdb4.4 (4.4.20-3) ...
 Setting up patch (2.5.9-4) ...
 Setting up make (3.81-2) ...
-Setting up gcc-4.0 (4.0.3-3) ...
-Setting up gcc (4.0.3-4) ...
+Setting up gcc-4.1 (4.1.1-5) ...
+Setting up gcc (4.1.1-5) ...
 
-Setting up linux-kernel-headers (2.6.13+0rc3-2.1) ...
+Setting up linux-kernel-headers (2.6.17.6-1) ...
 Setting up libc6-dev (2.3.6-15) ...
-Setting up cowdancer (0.15) ...
-Setting up g++-4.0 (4.0.3-3) ...
-Setting up libstdc++6-4.0-dev (4.0.3-3) ...
-
-Setting up g++ (4.0.3-4) ...
-
+Setting up cowdancer (0.20) ...
+Setting up libstdc++6-4.1-dev (4.1.1-5) ...
 Setting up perl-modules (5.8.8-4) ...
+Setting up g++-4.1 (4.1.1-5) ...
+Setting up g++ (4.1.1-5) ...
+
 Setting up perl (5.8.8-4) ...
 
 Setting up dpkg-dev (1.13.21) ...
@@ -3448,31 +3433,31 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tzd
 D: Return code: 0
 P: Validating tzdata
 P: Retrieving libc6
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libc6_2.3.6-15_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/glibc/libc6_2.3.6-15_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libc6_2.3.6-19_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/glibc/libc6_2.3.6-19_amd64.deb"
 D: Return code: 0
 P: Validating libc6
 P: Retrieving gcc-4.1-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gcc-4.1-base_4.1.1-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/gcc-4.1-base_4.1.1-5_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gcc-4.1-base_4.1.1-10_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/gcc-4.1-base_4.1.1-10_amd64.deb"
 D: Return code: 0
 P: Validating gcc-4.1-base
 P: Retrieving libgcc1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcc1_4.1.1-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/libgcc1_4.1.1-5_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcc1_4.1.1-10_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/libgcc1_4.1.1-10_amd64.deb"
 D: Return code: 0
 P: Validating libgcc1
 P: Retrieving libstdc++6
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libstdc++6_4.1.1-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/libstdc++6_4.1.1-5_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libstdc++6_4.1.1-10_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/libstdc++6_4.1.1-10_amd64.deb"
 D: Return code: 0
 P: Validating libstdc++6
 P: Retrieving apt
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt_0.6.44.2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt_0.6.44.2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt_0.6.45_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt_0.6.45_amd64.deb"
 D: Return code: 0
 P: Validating apt
 P: Retrieving libdb4.3
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libdb4.3_4.3.29-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/db4.3/libdb4.3_4.3.29-5_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libdb4.3_4.3.29-6_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/db4.3/libdb4.3_4.3.29-6_amd64.deb"
 D: Return code: 0
 P: Validating libdb4.3
 P: Retrieving apt-utils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt-utils_0.6.44.2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt-utils_0.6.44.2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt-utils_0.6.45_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt-utils_0.6.45_amd64.deb"
 D: Return code: 0
 P: Validating apt-utils
 P: Retrieving libattr1
@@ -3480,11 +3465,11 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libattr1
 P: Retrieving libacl1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libacl1_2.2.39-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/acl/libacl1_2.2.39-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libacl1_2.2.41-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/acl/libacl1_2.2.41-1_amd64.deb"
 D: Return code: 0
 P: Validating libacl1
 P: Retrieving libsepol1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libsepol1_1.12-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libs/libsepol/libsepol1_1.12-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libsepol1_1.12.24-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libs/libsepol/libsepol1_1.12.24-1_amd64.deb"
 D: Return code: 0
 P: Validating libsepol1
 P: Retrieving libselinux1
@@ -3492,7 +3477,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libselinux1
 P: Retrieving coreutils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/coreutils_5.96-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/coreutils/coreutils_5.96-5_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/coreutils_5.97-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/coreutils/coreutils_5.97-3_amd64.deb"
 D: Return code: 0
 P: Validating coreutils
 P: Retrieving mktemp
@@ -3500,7 +3485,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/mkt
 D: Return code: 0
 P: Validating mktemp
 P: Retrieving debianutils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debianutils_2.16.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/debianutils/debianutils_2.16.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debianutils_2.17_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/debianutils/debianutils_2.17_amd64.deb"
 D: Return code: 0
 P: Validating debianutils
 P: Retrieving dhcp3-common
@@ -3508,7 +3493,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dhc
 D: Return code: 0
 P: Validating dhcp3-common
 P: Retrieving perl-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/perl-base_5.8.8-6_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/perl/perl-base_5.8.8-6_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/perl-base_5.8.8-6.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/perl/perl-base_5.8.8-6.1_amd64.deb"
 D: Return code: 0
 P: Validating perl-base
 P: Retrieving liblocale-gettext-perl
@@ -3528,11 +3513,11 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libtext-wrapi18n-perl
 P: Retrieving debconf-i18n
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debconf-i18n_1.5.2_all.deb http://ftp.jp.debian.org/debian/pool/main/d/debconf/debconf-i18n_1.5.2_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debconf-i18n_1.5.3_all.deb http://ftp.jp.debian.org/debian/pool/main/d/debconf/debconf-i18n_1.5.3_all.deb"
 D: Return code: 0
 P: Validating debconf-i18n
 P: Retrieving debconf
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debconf_1.5.2_all.deb http://ftp.jp.debian.org/debian/pool/main/d/debconf/debconf_1.5.2_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debconf_1.5.3_all.deb http://ftp.jp.debian.org/debian/pool/main/d/debconf/debconf_1.5.3_all.deb"
 D: Return code: 0
 P: Validating debconf
 P: Retrieving dhcp3-client
@@ -3580,7 +3565,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ncu
 D: Return code: 0
 P: Validating ncurses-bin
 P: Retrieving lsb-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lsb-base_3.1-10_all.deb http://ftp.jp.debian.org/debian/pool/main/l/lsb/lsb-base_3.1-10_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lsb-base_3.1-12_all.deb http://ftp.jp.debian.org/debian/pool/main/l/lsb/lsb-base_3.1-12_all.deb"
 D: Return code: 0
 P: Validating lsb-base
 P: Retrieving netbase
@@ -3592,7 +3577,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tel
 D: Return code: 0
 P: Validating telnet
 P: Retrieving zlib1g
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/zlib1g_1.2.3-12_amd64.deb http://ftp.jp.debian.org/debian/pool/main/z/zlib/zlib1g_1.2.3-12_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/zlib1g_1.2.3-13_amd64.deb http://ftp.jp.debian.org/debian/pool/main/z/zlib/zlib1g_1.2.3-13_amd64.deb"
 D: Return code: 0
 P: Validating zlib1g
 P: Retrieving libssl0.9.8
@@ -3604,11 +3589,11 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/wge
 D: Return code: 0
 P: Validating wget
 P: Retrieving info
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/info_4.8.dfsg.1-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/t/texinfo/info_4.8.dfsg.1-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/info_4.8.dfsg.1-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/t/texinfo/info_4.8.dfsg.1-2_amd64.deb"
 D: Return code: 0
 P: Validating info
 P: Retrieving manpages
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/manpages_2.34-1_all.deb http://ftp.jp.debian.org/debian/pool/main/m/manpages/manpages_2.34-1_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/manpages_2.37-1_all.deb http://ftp.jp.debian.org/debian/pool/main/m/manpages/manpages_2.37-1_all.deb"
 D: Return code: 0
 P: Validating manpages
 P: Retrieving groff-base
@@ -3652,27 +3637,27 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libpam-modules
 P: Retrieving login
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/login_4.0.16-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/login_4.0.16-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/login_4.0.18.1-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/login_4.0.18.1-1_amd64.deb"
 D: Return code: 0
 P: Validating login
 P: Retrieving passwd
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/passwd_4.0.16-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/passwd_4.0.16-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/passwd_4.0.18.1-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/passwd_4.0.18.1-1_amd64.deb"
 D: Return code: 0
 P: Validating passwd
 P: Retrieving adduser
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/adduser_3.91_all.deb http://ftp.jp.debian.org/debian/pool/main/a/adduser/adduser_3.91_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/adduser_3.96_all.deb http://ftp.jp.debian.org/debian/pool/main/a/adduser/adduser_3.96_all.deb"
 D: Return code: 0
 P: Validating adduser
 P: Retrieving cron
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cron_3.0pl1-94_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/cron/cron_3.0pl1-94_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cron_3.0pl1-95_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/cron/cron_3.0pl1-95_amd64.deb"
 D: Return code: 0
 P: Validating cron
 P: Retrieving exim4-config
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-config_4.62-2_all.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-config_4.62-2_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-config_4.62-4_all.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-config_4.62-4_all.deb"
 D: Return code: 0
 P: Validating exim4-config
 P: Retrieving exim4-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-base_4.62-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-base_4.62-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-base_4.62-4_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-base_4.62-4_amd64.deb"
 D: Return code: 0
 P: Validating exim4-base
 P: Retrieving libgpg-error0
@@ -3680,7 +3665,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libgpg-error0
 P: Retrieving libgcrypt11
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcrypt11_1.2.2-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.2.2-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcrypt11_1.2.2-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.2.2-3_amd64.deb"
 D: Return code: 0
 P: Validating libgcrypt11
 P: Retrieving liblzo1
@@ -3688,15 +3673,15 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating liblzo1
 P: Retrieving libopencdk8
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libopencdk8_0.5.8-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/o/opencdk8/libopencdk8_0.5.8-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libopencdk8_0.5.9-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/o/opencdk8/libopencdk8_0.5.9-1_amd64.deb"
 D: Return code: 0
 P: Validating libopencdk8
 P: Retrieving libtasn1-3
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtasn1-3_0.3.5-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libt/libtasn1-3/libtasn1-3_0.3.5-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtasn1-3_0.3.5-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libt/libtasn1-3/libtasn1-3_0.3.5-2_amd64.deb"
 D: Return code: 0
 P: Validating libtasn1-3
 P: Retrieving libgnutls13
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgnutls13_1.4.0-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gnutls13/libgnutls13_1.4.0-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgnutls13_1.4.1-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gnutls13/libgnutls13_1.4.1-1_amd64.deb"
 D: Return code: 0
 P: Validating libgnutls13
 P: Retrieving libpcre3
@@ -3704,7 +3689,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libpcre3
 P: Retrieving exim4-daemon-light
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-daemon-light_4.62-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-daemon-light_4.62-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-daemon-light_4.62-4_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-daemon-light_4.62-4_amd64.deb"
 D: Return code: 0
 P: Validating exim4-daemon-light
 P: Retrieving at
@@ -3712,7 +3697,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/at_
 D: Return code: 0
 P: Validating at
 P: Retrieving cpio
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cpio_2.6-15_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/cpio/cpio_2.6-15_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cpio_2.6-17_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/cpio/cpio_2.6-17_amd64.deb"
 D: Return code: 0
 P: Validating cpio
 P: Retrieving ed
@@ -3724,7 +3709,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libncursesw5
 P: Retrieving nano
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/nano_1.3.11-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/nano/nano_1.3.11-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/nano_1.3.12-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/nano/nano_1.3.12-2_amd64.deb"
 D: Return code: 0
 P: Validating nano
 P: Retrieving nvi
@@ -3732,7 +3717,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/nvi
 D: Return code: 0
 P: Validating nvi
 P: Retrieving psmisc
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/psmisc_22.2-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/psmisc/psmisc_22.2-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/psmisc_22.3-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/psmisc/psmisc_22.3-1_amd64.deb"
 D: Return code: 0
 P: Validating psmisc
 P: Retrieving klogd
@@ -3748,7 +3733,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libsigc++-2.0-0c2a
 P: Retrieving aptitude
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/aptitude_0.4.1-1.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/aptitude/aptitude_0.4.1-1.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/aptitude_0.4.2-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/aptitude/aptitude_0.4.2-1_amd64.deb"
 D: Return code: 0
 P: Validating aptitude
 P: Retrieving dmidecode
@@ -3760,11 +3745,11 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lap
 D: Return code: 0
 P: Validating laptop-detect
 P: Retrieving tasksel-data
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tasksel-data_2.49_all.deb http://ftp.jp.debian.org/debian/pool/main/t/tasksel/tasksel-data_2.49_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tasksel-data_2.53_all.deb http://ftp.jp.debian.org/debian/pool/main/t/tasksel/tasksel-data_2.53_all.deb"
 D: Return code: 0
 P: Validating tasksel-data
 P: Retrieving tasksel
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tasksel_2.49_all.deb http://ftp.jp.debian.org/debian/pool/main/t/tasksel/tasksel_2.49_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tasksel_2.53_all.deb http://ftp.jp.debian.org/debian/pool/main/t/tasksel/tasksel_2.53_all.deb"
 D: Return code: 0
 P: Validating tasksel
 P: Retrieving libslang2
@@ -3772,19 +3757,19 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libslang2
 P: Retrieving libnewt0.52
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libnewt0.52_0.52.2-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/newt/libnewt0.52_0.52.2-5_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libnewt0.52_0.52.2-7_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/newt/libnewt0.52_0.52.2-7_amd64.deb"
 D: Return code: 0
 P: Validating libnewt0.52
 P: Retrieving libpopt0
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpopt0_1.10-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/popt/libpopt0_1.10-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpopt0_1.10-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/popt/libpopt0_1.10-3_amd64.deb"
 D: Return code: 0
 P: Validating libpopt0
 P: Retrieving whiptail
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/whiptail_0.52.2-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/newt/whiptail_0.52.2-5_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/whiptail_0.52.2-7_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/newt/whiptail_0.52.2-7_amd64.deb"
 D: Return code: 0
 P: Validating whiptail
 P: Retrieving exim4
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4_4.62-2_all.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4_4.62-2_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4_4.62-4_all.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4_4.62-4_all.deb"
 D: Return code: 0
 P: Validating exim4
 P: Retrieving base-passwd
@@ -3804,11 +3789,11 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/maw
 D: Return code: 0
 P: Validating mawk
 P: Retrieving base-files
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/base-files_3.1.13_amd64.deb http://ftp.jp.debian.org/debian/pool/main/b/base-files/base-files_3.1.13_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/base-files_3.1.14_amd64.deb http://ftp.jp.debian.org/debian/pool/main/b/base-files/base-files_3.1.14_amd64.deb"
 D: Return code: 0
 P: Validating base-files
 P: Retrieving bash
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/bash_3.1-4_amd64.deb http://ftp.jp.debian.org/debian/pool/main/b/bash/bash_3.1-4_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/bash_3.1-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/b/bash/bash_3.1-5_amd64.deb"
 D: Return code: 0
 P: Validating bash
 P: Retrieving grep
@@ -3816,7 +3801,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gre
 D: Return code: 0
 P: Validating grep
 P: Retrieving libdevmapper1.02
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libdevmapper1.02_1.02.07-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/devmapper/libdevmapper1.02_1.02.07-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libdevmapper1.02_1.02.08-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/devmapper/libdevmapper1.02_1.02.08-1_amd64.deb"
 D: Return code: 0
 P: Validating libdevmapper1.02
 P: Retrieving procps
@@ -3864,23 +3849,23 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/e2f
 D: Return code: 0
 P: Validating e2fsprogs
 P: Retrieving initscripts
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/initscripts_2.86.ds1-14.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/initscripts_2.86.ds1-14.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/initscripts_2.86.ds1-15_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/initscripts_2.86.ds1-15_amd64.deb"
 D: Return code: 0
 P: Validating initscripts
 P: Retrieving tar
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tar_1.15.91-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/t/tar/tar_1.15.91-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tar_1.15.91-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/t/tar/tar_1.15.91-2_amd64.deb"
 D: Return code: 0
 P: Validating tar
 P: Retrieving sysv-rc
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysv-rc_2.86.ds1-14.1_all.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/sysv-rc_2.86.ds1-14.1_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysv-rc_2.86.ds1-15_all.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/sysv-rc_2.86.ds1-15_all.deb"
 D: Return code: 0
 P: Validating sysv-rc
 P: Retrieving sysvinit
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysvinit_2.86.ds1-14.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/sysvinit_2.86.ds1-14.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysvinit_2.86.ds1-15_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/sysvinit_2.86.ds1-15_amd64.deb"
 D: Return code: 0
 P: Validating sysvinit
 P: Retrieving makedev
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/makedev_2.3.1-81_all.deb http://ftp.jp.debian.org/debian/pool/main/m/makedev/makedev_2.3.1-81_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/makedev_2.3.1-82_all.deb http://ftp.jp.debian.org/debian/pool/main/m/makedev/makedev_2.3.1-82_all.deb"
 D: Return code: 0
 P: Validating makedev
 P: Retrieving ncurses-base
@@ -3888,7 +3873,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ncu
 D: Return code: 0
 P: Validating ncurses-base
 P: Retrieving findutils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/findutils_4.2.27-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/f/findutils/findutils_4.2.27-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/findutils_4.2.28-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/f/findutils/findutils_4.2.28-1_amd64.deb"
 D: Return code: 0
 P: Validating findutils
 P: Retrieving util-linux
@@ -4080,16 +4065,17 @@ D: call action: mount
 D: call action: dpkg-install
 D: Execute "dpkg -i --force-all /var/cache/bootstrap/base-passwd_3.5.11_amd64.deb" in chroot
 O: Selecting previously deselected package base-passwd.
-O: (Reading database ... 0 files and directories currently installed.)
+O: (Reading database ... 
+O: 0 files and directories currently installed.)
 O: Unpacking base-passwd (from .../base-passwd_3.5.11_amd64.deb) ...
 P: Unpacking package base-passwd
 D: Updating base-passwd to status 2
-O: dpkg: base-passwd: dependency problems, but configuring anyway as you request:
-O:  base-passwd depends on libc6 (>= 2.3.5-1); however:
-O:   Package libc6 is not installed.
 O: Setting up base-passwd (3.5.11) ...
 P: Configuring package base-passwd
 D: Updating base-passwd to status 3
+O: dpkg: base-passwd: dependency problems, but configuring anyway as you request:
+O:  base-passwd depends on libc6 (>= 2.3.5-1); however:
+O:   Package libc6 is not installed.
 O: 
 D: Return code: 0
 D: call action: helper-install
@@ -4142,7 +4128,7 @@ D: Updating dpkg to status 3
 O: 
 D: Return code: 0
 D: call action: dpkg-unpack
-D: Execute "dpkg --unpack --force-all /var/cache/bootstrap/tzdata_2006g-2_all.deb /var/cache/bootstrap/libc6_2.3.6-15_amd64.deb /var/cache/bootstrap/gcc-4.1-base_4.1.1-5_amd64.deb /var/cache/bootstrap/libgcc1_4.1.1-5_amd64.deb /var/cache/bootstrap/libstdc++6_4.1.1-5_amd64.deb /var/cache/bootstrap/libdb4.3_4.3.29-5_amd64.deb /var/cache/bootstrap/libattr1_2.4.32-1_amd64.deb /var/cache/bootstrap/libacl1_2.2.39-1_amd64.deb /var/cache/bootstrap/libsepol1_1.12-1_amd64.deb /var/cache/bootstrap/libselinux1_1.30-1_amd64.deb /var/cache/bootstrap/coreutils_5.96-5_amd64.deb /var/cache/bootstrap/mktemp_1.5-2_amd64.deb /var/cache/bootstrap/debianutils_2.16.1_amd64.deb /var/cache/bootstrap/perl-base_5.8.8-6_amd64.deb /var/cache/bootstrap/liblocale-gettext-perl_1.05-1_amd64.deb /var/cache/bootstrap/libtext-iconv-perl_1.4-3_amd64.deb /var/cache/bootstrap/libtext-charwidth-perl_0.04-4_amd64.deb /var/cache/bootstrap/libtext-wrapi18n-perl_0.06-5_all.deb /var/cache/bootstrap/debconf_1.5.2_all.deb /var/cache/bootstrap/debconf-i18n_1
+D: Execute "dpkg --unpack --force-all /var/cache/bootstrap/tzdata_2006g-2_all.deb /var/cache/bootstrap/libc6_2.3.6-19_amd64.deb /var/cache/bootstrap/gcc-4.1-base_4.1.1-10_amd64.deb /var/cache/bootstrap/libgcc1_4.1.1-10_amd64.deb /var/cache/bootstrap/libstdc++6_4.1.1-10_amd64.deb /var/cache/bootstrap/libdb4.3_4.3.29-6_amd64.deb /var/cache/bootstrap/libattr1_2.4.32-1_amd64.deb /var/cache/bootstrap/libacl1_2.2.41-1_amd64.deb /var/cache/bootstrap/libsepol1_1.12.24-1_amd64.deb /var/cache/bootstrap/libselinux1_1.30-1_amd64.deb /var/cache/bootstrap/coreutils_5.97-3_amd64.deb /var/cache/bootstrap/mktemp_1.5-2_amd64.deb /var/cache/bootstrap/debianutils_2.17_amd64.deb /var/cache/bootstrap/perl-base_5.8.8-6.1_amd64.deb /var/cache/bootstrap/liblocale-gettext-perl_1.05-1_amd64.deb /var/cache/bootstrap/libtext-iconv-perl_1.4-3_amd64.deb /var/cache/bootstrap/libtext-charwidth-perl_0.04-4_amd64.deb /var/cache/bootstrap/libtext-wrapi18n-perl_0.06-5_all.deb /var/cache/bootstrap/debconf_1.5.3_all.deb /var/cache/bootstrap/debconf-
 O: Selecting previously deselected package tzdata.
 O: (Reading database ... 
 O: 220 files and directories currently installed.)
@@ -4150,23 +4136,23 @@ O: Unpacking tzdata (from .../tzdata_2006g-2_all.deb) ...
 P: Unpacking package tzdata
 D: Updating tzdata to status 2
 O: Selecting previously deselected package libc6.
-O: Unpacking libc6 (from .../libc6_2.3.6-15_amd64.deb) ...
+O: Unpacking libc6 (from .../libc6_2.3.6-19_amd64.deb) ...
 P: Unpacking package libc6
 D: Updating libc6 to status 2
 O: Selecting previously deselected package gcc-4.1-base.
-O: Unpacking gcc-4.1-base (from .../gcc-4.1-base_4.1.1-5_amd64.deb) ...
+O: Unpacking gcc-4.1-base (from .../gcc-4.1-base_4.1.1-10_amd64.deb) ...
 P: Unpacking package gcc-4.1-base
 D: Updating gcc-4.1-base to status 2
 O: Selecting previously deselected package libgcc1.
-O: Unpacking libgcc1 (from .../libgcc1_4.1.1-5_amd64.deb) ...
+O: Unpacking libgcc1 (from .../libgcc1_4.1.1-10_amd64.deb) ...
 P: Unpacking package libgcc1
 D: Updating libgcc1 to status 2
 O: Selecting previously deselected package libstdc++6.
-O: Unpacking libstdc++6 (from .../libstdc++6_4.1.1-5_amd64.deb) ...
+O: Unpacking libstdc++6 (from .../libstdc++6_4.1.1-10_amd64.deb) ...
 P: Unpacking package libstdc++6
 D: Updating libstdc++6 to status 2
 O: Selecting previously deselected package libdb4.3.
-O: Unpacking libdb4.3 (from .../libdb4.3_4.3.29-5_amd64.deb) ...
+O: Unpacking libdb4.3 (from .../libdb4.3_4.3.29-6_amd64.deb) ...
 P: Unpacking package libdb4.3
 D: Updating libdb4.3 to status 2
 O: Selecting previously deselected package libattr1.
@@ -4174,11 +4160,11 @@ O: Unpacking libattr1 (from .../libattr1_2.4.32-1_amd64.deb) ...
 P: Unpacking package libattr1
 D: Updating libattr1 to status 2
 O: Selecting previously deselected package libacl1.
-O: Unpacking libacl1 (from .../libacl1_2.2.39-1_amd64.deb) ...
+O: Unpacking libacl1 (from .../libacl1_2.2.41-1_amd64.deb) ...
 P: Unpacking package libacl1
 D: Updating libacl1 to status 2
 O: Selecting previously deselected package libsepol1.
-O: Unpacking libsepol1 (from .../libsepol1_1.12-1_amd64.deb) ...
+O: Unpacking libsepol1 (from .../libsepol1_1.12.24-1_amd64.deb) ...
 P: Unpacking package libsepol1
 D: Updating libsepol1 to status 2
 O: Selecting previously deselected package libselinux1.
@@ -4186,19 +4172,19 @@ O: Unpacking libselinux1 (from .../libselinux1_1.30-1_amd64.deb) ...
 P: Unpacking package libselinux1
 D: Updating libselinux1 to status 2
 O: Selecting previously deselected package coreutils.
-O: dpkg: regarding .../coreutils_5.96-5_amd64.deb containing coreutils, pre-dependency problem:
+O: dpkg: regarding .../coreutils_5.97-3_amd64.deb containing coreutils, pre-dependency problem:
 O:  coreutils pre-depends on libacl1 (>= 2.2.11-1)
 O:   libacl1 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../coreutils_5.96-5_amd64.deb containing coreutils, pre-dependency problem:
+O: dpkg: regarding .../coreutils_5.97-3_amd64.deb containing coreutils, pre-dependency problem:
 O:  coreutils pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../coreutils_5.96-5_amd64.deb containing coreutils, pre-dependency problem:
+O: dpkg: regarding .../coreutils_5.97-3_amd64.deb containing coreutils, pre-dependency problem:
 O:  coreutils pre-depends on libselinux1 (>= 1.30)
 O:   libselinux1 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking coreutils (from .../coreutils_5.96-5_amd64.deb) ...
+O: Unpacking coreutils (from .../coreutils_5.97-3_amd64.deb) ...
 P: Unpacking package coreutils
 D: Updating coreutils to status 2
 O: No diversion `any diversion of /usr/share/man/man1/md5sum.textutils.1.gz', none removed
@@ -4208,27 +4194,27 @@ O: Unpacking mktemp (from .../mktemp_1.5-2_amd64.deb) ...
 P: Unpacking package mktemp
 D: Updating mktemp to status 2
 O: Selecting previously deselected package debianutils.
-O: dpkg: regarding .../debianutils_2.16.1_amd64.deb containing debianutils, pre-dependency problem:
+O: dpkg: regarding .../debianutils_2.17_amd64.deb containing debianutils, pre-dependency problem:
 O:  debianutils pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../debianutils_2.16.1_amd64.deb containing debianutils, pre-dependency problem:
+O: dpkg: regarding .../debianutils_2.17_amd64.deb containing debianutils, pre-dependency problem:
 O:  debianutils pre-depends on coreutils (>= 4.5.8-1)
 O:   coreutils is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../debianutils_2.16.1_amd64.deb containing debianutils, pre-dependency problem:
+O: dpkg: regarding .../debianutils_2.17_amd64.deb containing debianutils, pre-dependency problem:
 O:  debianutils pre-depends on mktemp
 O:   mktemp is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking debianutils (from .../debianutils_2.16.1_amd64.deb) ...
+O: Unpacking debianutils (from .../debianutils_2.17_amd64.deb) ...
 P: Unpacking package debianutils
 D: Updating debianutils to status 2
 O: Selecting previously deselected package perl-base.
-O: dpkg: regarding .../perl-base_5.8.8-6_amd64.deb containing perl-base, pre-dependency problem:
+O: dpkg: regarding .../perl-base_5.8.8-6.1_amd64.deb containing perl-base, pre-dependency problem:
 O:  perl-base pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking perl-base (from .../perl-base_5.8.8-6_amd64.deb) ...
+O: Unpacking perl-base (from .../perl-base_5.8.8-6.1_amd64.deb) ...
 P: Unpacking package perl-base
 D: Updating perl-base to status 2
 O: Selecting previously deselected package liblocale-gettext-perl.
@@ -4256,15 +4242,15 @@ O: Unpacking libtext-wrapi18n-perl (from .../libtext-wrapi18n-perl_0.06-5_all.de
 P: Unpacking package libtext-wrapi18n-perl
 D: Updating libtext-wrapi18n-perl to status 2
 O: Selecting previously deselected package debconf.
-O: dpkg: regarding .../debconf_1.5.2_all.deb containing debconf, pre-dependency problem:
+O: dpkg: regarding .../debconf_1.5.3_all.deb containing debconf, pre-dependency problem:
 O:  debconf pre-depends on perl-base (>= 5.6.1-4)
 O:   perl-base is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking debconf (from .../debconf_1.5.2_all.deb) ...
+O: Unpacking debconf (from .../debconf_1.5.3_all.deb) ...
 P: Unpacking package debconf
 D: Updating debconf to status 2
 O: Selecting previously deselected package debconf-i18n.
-O: Unpacking debconf-i18n (from .../debconf-i18n_1.5.2_all.deb) ...
+O: Unpacking debconf-i18n (from .../debconf-i18n_1.5.3_all.deb) ...
 P: Unpacking package debconf-i18n
 D: Updating debconf-i18n to status 2
 O: Selecting previously deselected package sed.
@@ -4292,11 +4278,11 @@ O: Unpacking ncurses-bin (from .../ncurses-bin_5.5-2_amd64.deb) ...
 P: Unpacking package ncurses-bin
 D: Updating ncurses-bin to status 2
 O: Selecting previously deselected package lsb-base.
-O: Unpacking lsb-base (from .../lsb-base_3.1-10_all.deb) ...
+O: Unpacking lsb-base (from .../lsb-base_3.1-12_all.deb) ...
 P: Unpacking package lsb-base
 D: Updating lsb-base to status 2
 O: Selecting previously deselected package zlib1g.
-O: Unpacking zlib1g (from .../zlib1g_1.2.3-12_amd64.deb) ...
+O: Unpacking zlib1g (from .../zlib1g_1.2.3-13_amd64.deb) ...
 P: Unpacking package zlib1g
 D: Updating zlib1g to status 2
 O: Selecting previously deselected package bsdutils.
@@ -4324,23 +4310,23 @@ O: Unpacking libpam-modules (from .../libpam-modules_0.79-3.1_amd64.deb) ...
 P: Unpacking package libpam-modules
 D: Updating libpam-modules to status 2
 O: Selecting previously deselected package login.
-O: dpkg: regarding .../login_4.0.16-2_amd64.deb containing login, pre-dependency problem:
+O: dpkg: regarding .../login_4.0.18.1-1_amd64.deb containing login, pre-dependency problem:
 O:  login pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../login_4.0.16-2_amd64.deb containing login, pre-dependency problem:
+O: dpkg: regarding .../login_4.0.18.1-1_amd64.deb containing login, pre-dependency problem:
 O:  login pre-depends on libpam0g (>= 0.76)
 O:   libpam0g is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../login_4.0.16-2_amd64.deb containing login, pre-dependency problem:
+O: dpkg: regarding .../login_4.0.18.1-1_amd64.deb containing login, pre-dependency problem:
 O:  login pre-depends on libpam-runtime (>= 0.76-14)
 O:   libpam-runtime is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking login (from .../login_4.0.16-2_amd64.deb) ...
+O: Unpacking login (from .../login_4.0.18.1-1_amd64.deb) ...
 P: Unpacking package login
 D: Updating login to status 2
 O: Selecting previously deselected package passwd.
-O: Unpacking passwd (from .../passwd_4.0.16-2_amd64.deb) ...
+O: Unpacking passwd (from .../passwd_4.0.18.1-1_amd64.deb) ...
 P: Unpacking package passwd
 D: Updating passwd to status 2
 O: Selecting previously deselected package libslang2.
@@ -4364,19 +4350,19 @@ O: Unpacking mawk (from .../mawk_1.3.3-11_amd64.deb) ...
 P: Unpacking package mawk
 D: Updating mawk to status 2
 O: Selecting previously deselected package base-files.
-O: Unpacking base-files (from .../base-files_3.1.13_amd64.deb) ...
+O: Unpacking base-files (from .../base-files_3.1.14_amd64.deb) ...
 P: Unpacking package base-files
 D: Updating base-files to status 2
 O: Selecting previously deselected package bash.
-O: dpkg: regarding .../bootstrap/bash_3.1-4_amd64.deb containing bash, pre-dependency problem:
+O: dpkg: regarding .../bootstrap/bash_3.1-5_amd64.deb containing bash, pre-dependency problem:
 O:  bash pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../bootstrap/bash_3.1-4_amd64.deb containing bash, pre-dependency problem:
+O: dpkg: regarding .../bootstrap/bash_3.1-5_amd64.deb containing bash, pre-dependency problem:
 O:  bash pre-depends on libncurses5 (>= 5.4-5)
 O:   libncurses5 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking bash (from .../bootstrap/bash_3.1-4_amd64.deb) ...
+O: Unpacking bash (from .../bootstrap/bash_3.1-5_amd64.deb) ...
 P: Unpacking package bash
 D: Updating bash to status 2
 O: Selecting previously deselected package grep.
@@ -4388,7 +4374,7 @@ O: Unpacking grep (from .../grep_2.5.1.ds2-5_amd64.deb) ...
 P: Unpacking package grep
 D: Updating grep to status 2
 O: Selecting previously deselected package libdevmapper1.02.
-O: Unpacking libdevmapper1.02 (from .../libdevmapper1.02_1.02.07-1_amd64.deb) ...
+O: Unpacking libdevmapper1.02 (from .../libdevmapper1.02_1.02.08-1_amd64.deb) ...
 P: Unpacking package libdevmapper1.02
 D: Updating libdevmapper1.02 to status 2
 O: Selecting previously deselected package procps.
@@ -4492,35 +4478,35 @@ O: Unpacking e2fsprogs (from .../e2fsprogs_1.39-1_amd64.deb) ...
 P: Unpacking package e2fsprogs
 D: Updating e2fsprogs to status 2
 O: Selecting previously deselected package initscripts.
-O: Unpacking initscripts (from .../initscripts_2.86.ds1-14.1_amd64.deb) ...
+O: Unpacking initscripts (from .../initscripts_2.86.ds1-15_amd64.deb) ...
 P: Unpacking package initscripts
 D: Updating initscripts to status 2
 O: Selecting previously deselected package tar.
-O: dpkg: regarding .../tar_1.15.91-1_amd64.deb containing tar, pre-dependency problem:
+O: dpkg: regarding .../tar_1.15.91-2_amd64.deb containing tar, pre-dependency problem:
 O:  tar pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking tar (from .../tar_1.15.91-1_amd64.deb) ...
+O: Unpacking tar (from .../tar_1.15.91-2_amd64.deb) ...
 P: Unpacking package tar
 D: Updating tar to status 2
 O: Selecting previously deselected package sysv-rc.
-O: Unpacking sysv-rc (from .../sysv-rc_2.86.ds1-14.1_all.deb) ...
+O: Unpacking sysv-rc (from .../sysv-rc_2.86.ds1-15_all.deb) ...
 P: Unpacking package sysv-rc
 D: Updating sysv-rc to status 2
 O: Selecting previously deselected package sysvinit.
-O: dpkg: regarding .../sysvinit_2.86.ds1-14.1_amd64.deb containing sysvinit, pre-dependency problem:
+O: dpkg: regarding .../sysvinit_2.86.ds1-15_amd64.deb containing sysvinit, pre-dependency problem:
 O:  sysvinit pre-depends on initscripts
 O:   initscripts is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../sysvinit_2.86.ds1-14.1_amd64.deb containing sysvinit, pre-dependency problem:
+O: dpkg: regarding .../sysvinit_2.86.ds1-15_amd64.deb containing sysvinit, pre-dependency problem:
 O:  sysvinit pre-depends on sysv-rc (>= 2.86.ds1-1.2) | file-rc (>> 0.7.0)
 O:   sysv-rc is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking sysvinit (from .../sysvinit_2.86.ds1-14.1_amd64.deb) ...
+O: Unpacking sysvinit (from .../sysvinit_2.86.ds1-15_amd64.deb) ...
 P: Unpacking package sysvinit
 D: Updating sysvinit to status 2
 O: Selecting previously deselected package makedev.
-O: Unpacking makedev (from .../makedev_2.3.1-81_all.deb) ...
+O: Unpacking makedev (from .../makedev_2.3.1-82_all.deb) ...
 P: Unpacking package makedev
 D: Updating makedev to status 2
 O: Selecting previously deselected package ncurses-base.
@@ -4528,11 +4514,11 @@ O: Unpacking ncurses-base (from .../ncurses-base_5.5-2_all.deb) ...
 P: Unpacking package ncurses-base
 D: Updating ncurses-base to status 2
 O: Selecting previously deselected package findutils.
-O: dpkg: regarding .../findutils_4.2.27-3_amd64.deb containing findutils, pre-dependency problem:
+O: dpkg: regarding .../findutils_4.2.28-1_amd64.deb containing findutils, pre-dependency problem:
 O:  findutils pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking findutils (from .../findutils_4.2.27-3_amd64.deb) ...
+O: Unpacking findutils (from .../findutils_4.2.28-1_amd64.deb) ...
 P: Unpacking package findutils
 D: Updating findutils to status 2
 O: Selecting previously deselected package util-linux.
@@ -4562,11 +4548,11 @@ D: Updating util-linux to status 2
 D: Return code: 0
 D: call action: dpkg-configure
 D: Execute "dpkg --configure -a" in chroot
-O: Setting up makedev (2.3.1-81) ...
+O: Setting up makedev (2.3.1-82) ...
 P: Configuring package makedev
 D: Updating makedev to status 3
 O: 
-O: Setting up sysv-rc (2.86.ds1-14.1) ...
+O: Setting up sysv-rc (2.86.ds1-15) ...
 P: Configuring package sysv-rc
 D: Updating sysv-rc to status 3
 O: 
@@ -4575,7 +4561,7 @@ P: Configuring package tzdata
 D: Updating tzdata to status 3
 O: Non-interactive mode, setting timezone to UTC.  Run tzconfig to change.
 O: 
-O: Setting up gcc-4.1-base (4.1.1-5) ...
+O: Setting up gcc-4.1-base (4.1.1-10) ...
 P: Configuring package gcc-4.1-base
 D: Updating gcc-4.1-base to status 3
 O: 
@@ -4583,9 +4569,19 @@ O: Setting up libpam-runtime (0.79-3.1) ...
 P: Configuring package libpam-runtime
 D: Updating libpam-runtime to status 3
 O: 
-O: Setting up libc6 (2.3.6-15) ...
+O: Setting up libc6 (2.3.6-19) ...
 P: Configuring package libc6
 D: Updating libc6 to status 3
+O: dpkg: --compare-versions takes three arguments: <version> <relation> <version>
+O: 
+O: Type dpkg --help for help about installing and deinstalling packages [*];
+O: Use `dselect' or `aptitude' for user-friendly package management;
+O: Type dpkg -Dhelp for a list of dpkg debug flag values;
+O: Type dpkg --force-help for a list of forcing options;
+O: Type dpkg-deb --help for help about manipulating *.deb files;
+O: Type dpkg --license for copyright license and lack of warranty (GNU GPL) [*].
+O: 
+O: Options marked [*] produce a lot of output - pipe it through `less' or `more' !
 O: init: 
 O: /dev/initctl: No such file or directory
 O: 
@@ -4608,22 +4604,24 @@ O: Setting up bsdutils (2.12r-10) ...
 P: Configuring package bsdutils
 D: Updating bsdutils to status 3
 O: 
-O: Setting up perl-base (5.8.8-6) ...
+O: Setting up perl-base (5.8.8-6.1) ...
 P: Configuring package perl-base
 D: Updating perl-base to status 3
-O: Setting up libsepol1 (1.12-1) ...
+O: Setting up libsepol1 (1.12.24-1) ...
 P: Configuring package libsepol1
 D: Updating libsepol1 to status 3
+O: init: 
+O: /dev/initctl: No such file or directory
 O: 
-O: Setting up tar (1.15.91-1) ...
+O: Setting up tar (1.15.91-2) ...
 P: Configuring package tar
 D: Updating tar to status 3
 O: 
-O: Setting up zlib1g (1.2.3-12) ...
+O: Setting up zlib1g (1.2.3-13) ...
 P: Configuring package zlib1g
 D: Updating zlib1g to status 3
 O: 
-O: Setting up libgcc1 (4.1.1-5) ...
+O: Setting up libgcc1 (4.1.1-10) ...
 P: Configuring package libgcc1
 D: Updating libgcc1 to status 3
 O: 
@@ -4655,7 +4653,7 @@ O: Setting up mawk (1.3.3-11) ...
 P: Configuring package mawk
 D: Updating mawk to status 3
 O: 
-O: Setting up libdb4.3 (4.3.29-5) ...
+O: Setting up libdb4.3 (4.3.29-6) ...
 P: Configuring package libdb4.3
 D: Updating libdb4.3 to status 3
 O: Setting up grep (2.5.1.ds2-5) ...
@@ -4665,7 +4663,7 @@ O:
 O: Setting up hostname (2.92) ...
 P: Configuring package hostname
 D: Updating hostname to status 3
-O: Setting up libacl1 (2.2.39-1) ...
+O: Setting up libacl1 (2.2.41-1) ...
 P: Configuring package libacl1
 D: Updating libacl1 to status 3
 O: 
@@ -4677,7 +4675,7 @@ O: Setting up libss2 (1.39-1) ...
 P: Configuring package libss2
 D: Updating libss2 to status 3
 O: 
-O: Setting up findutils (4.2.27-3) ...
+O: Setting up findutils (4.2.28-1) ...
 P: Configuring package findutils
 D: Updating findutils to status 3
 O: 
@@ -4691,11 +4689,11 @@ O: Setting up libselinux1 (1.30-1) ...
 P: Configuring package libselinux1
 D: Updating libselinux1 to status 3
 O: 
-O: Setting up libstdc++6 (4.1.1-5) ...
+O: Setting up libstdc++6 (4.1.1-10) ...
 P: Configuring package libstdc++6
 D: Updating libstdc++6 to status 3
 O: 
-O: Setting up libdevmapper1.02 (1.02.07-1) ...
+O: Setting up libdevmapper1.02 (1.02.08-1) ...
 P: Configuring package libdevmapper1.02
 D: Updating libdevmapper1.02 to status 3
 O: 
@@ -4705,11 +4703,11 @@ D: Updating libtext-charwidth-perl to status 3
 O: Setting up libtext-wrapi18n-perl (0.06-5) ...
 P: Configuring package libtext-wrapi18n-perl
 D: Updating libtext-wrapi18n-perl to status 3
-O: Setting up coreutils (5.96-5) ...
+O: Setting up coreutils (5.97-3) ...
 P: Configuring package coreutils
 D: Updating coreutils to status 3
 O: 
-O: Setting up debianutils (2.16.1) ...
+O: Setting up debianutils (2.17) ...
 P: Configuring package debianutils
 D: Updating debianutils to status 3
 O: 
@@ -4727,7 +4725,7 @@ O: Setting up libpam-modules (0.79-3.1) ...
 P: Configuring package libpam-modules
 D: Updating libpam-modules to status 3
 O: 
-O: Setting up base-files (3.1.13) ...
+O: Setting up base-files (3.1.14) ...
 P: Configuring package base-files
 D: Updating base-files to status 3
 O: 
@@ -4745,26 +4743,27 @@ O:
 O: Setting up dselect (1.13.22) ...
 P: Configuring package dselect
 D: Updating dselect to status 3
-O: Setting up bash (3.1-4) ...
+O: Setting up bash (3.1-5) ...
 P: Configuring package bash
 D: Updating bash to status 3
 O: 
-O: Setting up login (4.0.16-2) ...
+O: Setting up login (4.0.18.1-1) ...
 P: Configuring package login
 D: Updating login to status 3
 O: 
-O: Setting up lsb-base (3.1-10) ...
+O: Setting up lsb-base (3.1-12) ...
 P: Configuring package lsb-base
 D: Updating lsb-base to status 3
 O: Setting up mount (2.12r-10) ...
 P: Configuring package mount
 D: Updating mount to status 3
 O: 
-O: Setting up passwd (4.0.16-2) ...
+O: Setting up passwd (4.0.18.1-1) ...
 P: Configuring package passwd
 D: Updating passwd to status 3
+O: Shadow passwords are now on.
 O: 
-O: Setting up initscripts (2.86.ds1-14.1) ...
+O: Setting up initscripts (2.86.ds1-15) ...
 P: Configuring package initscripts
 D: Updating initscripts to status 3
 O: 
@@ -4772,30 +4771,30 @@ O: Setting up util-linux (2.12r-10) ...
 P: Configuring package util-linux
 D: Updating util-linux to status 3
 O: 
-O: Setting up sysvinit (2.86.ds1-14.1) ...
+O: Setting up sysvinit (2.86.ds1-15) ...
 P: Configuring package sysvinit
 D: Updating sysvinit to status 3
 O: sysvinit: creating /dev/initctl
 O: init: 
 O: timeout opening/writing control channel /dev/initctl
 O: 
-O: Setting up debconf-i18n (1.5.2) ...
+O: Setting up debconf-i18n (1.5.3) ...
 P: Configuring package debconf-i18n
 D: Updating debconf-i18n to status 3
-O: Setting up debconf (1.5.2) ...
+O: Setting up debconf (1.5.3) ...
 P: Configuring package debconf
 D: Updating debconf to status 3
 O: 
 D: Return code: 0
 D: call action: dpkg-install
-D: Execute "dpkg -i /var/cache/bootstrap/apt_0.6.44.2_amd64.deb" in chroot
+D: Execute "dpkg -i /var/cache/bootstrap/apt_0.6.45_amd64.deb" in chroot
 O: Selecting previously deselected package apt.
 O: (Reading database ... 
-O: 4676 files and directories currently installed.)
-O: Unpacking apt (from .../apt_0.6.44.2_amd64.deb) ...
+O: 4725 files and directories currently installed.)
+O: Unpacking apt (from .../bootstrap/apt_0.6.45_amd64.deb) ...
 P: Unpacking package apt
 D: Updating apt to status 2
-O: Setting up apt (0.6.44.2) ...
+O: Setting up apt (0.6.45) ...
 P: Configuring package apt
 D: Updating apt to status 3
 O: 
@@ -4807,14 +4806,14 @@ D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-apt.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-apt.
 O: (Reading database ... 
-O: 4856 files and directories currently installed.)
+O: 4905 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-apt (from /cdebootstrap-helper-apt.deb) ...
 O: Setting up cdebootstrap-helper-apt (1) ...
 D: Return code: 0
 D: call action: apt-prepare
 D: Execute "apt-get update" in chroot
 O: Get:1 bootstrap: . Release.gpg [189B]
-O: Get:2 bootstrap: . Release [38.3kB]
+O: Get:2 bootstrap: . Release [67.1kB]
 O: Ign bootstrap: . Release
 O: Reading package lists...
 O: 
@@ -4833,8 +4832,8 @@ O:
 O: Suggested packages:
 O:   perl-modules libparse-debianchangelog-perl debtags cpp wenglish wordlist
 O:   whois vacation anacron lockfile-progs checksecurity resolvconf mail-reader
-O:   eximon4 exim4-doc-html exim4-doc-info gnutls-bin groff iproute ppp rng-tools
-O:   less www-browser spell
+O:   eximon4 exim4-doc-html exim4-doc-info gnutls-bin libmail-spf-query-perl
+O:   groff iproute ppp rng-tools less www-browser spell
 O: Recommended packages:
 O:   aptitude-doc-en aptitude-doc libgpmg1 libfribidi0 libtasn1-3-bin mailx
 O: The following NEW packages will be installed:
@@ -4846,8 +4845,8 @@ O:   libnewt0.52 libopencdk8 libpcre3 libpopt0 libsigc++-2.0-0c2a libssl0.9.8
 O:   libtasn1-3 libwrap0 logrotate man-db manpages nano net-tools netbase nvi
 O:   openbsd-inetd psmisc sysklogd tasksel tasksel-data tcpd telnet wget whiptail
 O: 0 upgraded, 52 newly installed, 0 to remove and 0 not upgraded.
-O: Need to get 13.2MB of archives.
-O: After unpacking 40.1MB of additional disk space will be used.
+O: Need to get 13.4MB of archives.
+O: After unpacking 40.9MB of additional disk space will be used.
 O: WARNING: The following packages cannot be authenticated!
 O:   adduser apt-utils libncursesw5 libsigc++-2.0-0c2a aptitude bsdmainutils cpio
 O:   cron dmidecode ed groff-base net-tools ifupdown info iptables iputils-ping
@@ -4860,12 +4859,12 @@ O: debconf: delaying package configuration, since apt-utils is not installed
 O: Authentication warning overridden.
 O: Selecting previously deselected package adduser.
 O: (Reading database ... 
-O: 4857 files and directories currently installed.)
-O: Unpacking adduser (from .../bootstrap/adduser_3.91_all.deb) ...
+O: 4906 files and directories currently installed.)
+O: Unpacking adduser (from .../bootstrap/adduser_3.96_all.deb) ...
 P: Unpacking package adduser
 D: Updating adduser to status 2
 O: Selecting previously deselected package apt-utils.
-O: Unpacking apt-utils (from .../apt-utils_0.6.44.2_amd64.deb) ...
+O: Unpacking apt-utils (from .../apt-utils_0.6.45_amd64.deb) ...
 P: Unpacking package apt-utils
 D: Updating apt-utils to status 2
 O: Selecting previously deselected package libncursesw5.
@@ -4877,7 +4876,7 @@ O: Unpacking libsigc++-2.0-0c2a (from .../libsigc++-2.0-0c2a_2.0.16-3_amd64.deb)
 P: Unpacking package libsigc++-2.0-0c2a
 D: Updating libsigc++-2.0-0c2a to status 2
 O: Selecting previously deselected package aptitude.
-O: Unpacking aptitude (from .../aptitude_0.4.1-1.1_amd64.deb) ...
+O: Unpacking aptitude (from .../aptitude_0.4.2-1_amd64.deb) ...
 P: Unpacking package aptitude
 D: Updating aptitude to status 2
 O: Selecting previously deselected package bsdmainutils.
@@ -4885,11 +4884,11 @@ O: Unpacking bsdmainutils (from .../bsdmainutils_6.1.3_amd64.deb) ...
 P: Unpacking package bsdmainutils
 D: Updating bsdmainutils to status 2
 O: Selecting previously deselected package cpio.
-O: Unpacking cpio (from .../cpio_2.6-15_amd64.deb) ...
+O: Unpacking cpio (from .../cpio_2.6-17_amd64.deb) ...
 P: Unpacking package cpio
 D: Updating cpio to status 2
 O: Selecting previously deselected package cron.
-O: Unpacking cron (from .../cron_3.0pl1-94_amd64.deb) ...
+O: Unpacking cron (from .../cron_3.0pl1-95_amd64.deb) ...
 P: Unpacking package cron
 D: Updating cron to status 2
 O: Selecting previously deselected package dmidecode.
@@ -4913,7 +4912,7 @@ O: Unpacking ifupdown (from .../ifupdown_0.6.7_amd64.deb) ...
 P: Unpacking package ifupdown
 D: Updating ifupdown to status 2
 O: Selecting previously deselected package info.
-O: Unpacking info (from .../info_4.8.dfsg.1-1_amd64.deb) ...
+O: Unpacking info (from .../info_4.8.dfsg.1-2_amd64.deb) ...
 P: Unpacking package info
 D: Updating info to status 2
 O: Selecting previously deselected package iptables.
@@ -4941,7 +4940,7 @@ O: Unpacking libgpg-error0 (from .../libgpg-error0_1.2-1_amd64.deb) ...
 P: Unpacking package libgpg-error0
 D: Updating libgpg-error0 to status 2
 O: Selecting previously deselected package libgcrypt11.
-O: Unpacking libgcrypt11 (from .../libgcrypt11_1.2.2-1_amd64.deb) ...
+O: Unpacking libgcrypt11 (from .../libgcrypt11_1.2.2-3_amd64.deb) ...
 P: Unpacking package libgcrypt11
 D: Updating libgcrypt11 to status 2
 O: Selecting previously deselected package libgdbm3.
@@ -4953,19 +4952,19 @@ O: Unpacking liblzo1 (from .../liblzo1_1.08-3_amd64.deb) ...
 P: Unpacking package liblzo1
 D: Updating liblzo1 to status 2
 O: Selecting previously deselected package libopencdk8.
-O: Unpacking libopencdk8 (from .../libopencdk8_0.5.8-1_amd64.deb) ...
+O: Unpacking libopencdk8 (from .../libopencdk8_0.5.9-1_amd64.deb) ...
 P: Unpacking package libopencdk8
 D: Updating libopencdk8 to status 2
 O: Selecting previously deselected package libtasn1-3.
-O: Unpacking libtasn1-3 (from .../libtasn1-3_0.3.5-1_amd64.deb) ...
+O: Unpacking libtasn1-3 (from .../libtasn1-3_0.3.5-2_amd64.deb) ...
 P: Unpacking package libtasn1-3
 D: Updating libtasn1-3 to status 2
 O: Selecting previously deselected package libgnutls13.
-O: Unpacking libgnutls13 (from .../libgnutls13_1.4.0-2_amd64.deb) ...
+O: Unpacking libgnutls13 (from .../libgnutls13_1.4.1-1_amd64.deb) ...
 P: Unpacking package libgnutls13
 D: Updating libgnutls13 to status 2
 O: Selecting previously deselected package libpopt0.
-O: Unpacking libpopt0 (from .../libpopt0_1.10-2_amd64.deb) ...
+O: Unpacking libpopt0 (from .../libpopt0_1.10-3_amd64.deb) ...
 P: Unpacking package libpopt0
 D: Updating libpopt0 to status 2
 O: Selecting previously deselected package libssl0.9.8.
@@ -4985,11 +4984,11 @@ O: Unpacking man-db (from .../man-db_2.4.3-3_amd64.deb) ...
 P: Unpacking package man-db
 D: Updating man-db to status 2
 O: Selecting previously deselected package manpages.
-O: Unpacking manpages (from .../manpages_2.34-1_all.deb) ...
+O: Unpacking manpages (from .../manpages_2.37-1_all.deb) ...
 P: Unpacking package manpages
 D: Updating manpages to status 2
 O: Selecting previously deselected package nano.
-O: Unpacking nano (from .../nano_1.3.11-3_amd64.deb) ...
+O: Unpacking nano (from .../nano_1.3.12-2_amd64.deb) ...
 P: Unpacking package nano
 D: Updating nano to status 2
 O: Selecting previously deselected package openbsd-inetd.
@@ -5009,11 +5008,11 @@ O: Unpacking nvi (from .../nvi_1.79-24_amd64.deb) ...
 P: Unpacking package nvi
 D: Updating nvi to status 2
 O: Selecting previously deselected package tasksel-data.
-O: Unpacking tasksel-data (from .../tasksel-data_2.49_all.deb) ...
+O: Unpacking tasksel-data (from .../tasksel-data_2.53_all.deb) ...
 P: Unpacking package tasksel-data
 D: Updating tasksel-data to status 2
 O: Selecting previously deselected package tasksel.
-O: Unpacking tasksel (from .../bootstrap/tasksel_2.49_all.deb) ...
+O: Unpacking tasksel (from .../bootstrap/tasksel_2.53_all.deb) ...
 P: Unpacking package tasksel
 D: Updating tasksel to status 2
 O: Selecting previously deselected package wget.
@@ -5021,19 +5020,19 @@ O: Unpacking wget (from .../wget_1.10.2-2_amd64.deb) ...
 P: Unpacking package wget
 D: Updating wget to status 2
 O: Selecting previously deselected package libnewt0.52.
-O: Unpacking libnewt0.52 (from .../libnewt0.52_0.52.2-5_amd64.deb) ...
+O: Unpacking libnewt0.52 (from .../libnewt0.52_0.52.2-7_amd64.deb) ...
 P: Unpacking package libnewt0.52
 D: Updating libnewt0.52 to status 2
 O: Selecting previously deselected package whiptail.
-O: Unpacking whiptail (from .../whiptail_0.52.2-5_amd64.deb) ...
+O: Unpacking whiptail (from .../whiptail_0.52.2-7_amd64.deb) ...
 P: Unpacking package whiptail
 D: Updating whiptail to status 2
 O: Selecting previously deselected package exim4-config.
-O: Unpacking exim4-config (from .../exim4-config_4.62-2_all.deb) ...
+O: Unpacking exim4-config (from .../exim4-config_4.62-4_all.deb) ...
 P: Unpacking package exim4-config
 D: Updating exim4-config to status 2
 O: Selecting previously deselected package exim4-base.
-O: Unpacking exim4-base (from .../exim4-base_4.62-2_amd64.deb) ...
+O: Unpacking exim4-base (from .../exim4-base_4.62-4_amd64.deb) ...
 P: Unpacking package exim4-base
 D: Updating exim4-base to status 2
 O: Selecting previously deselected package libpcre3.
@@ -5041,7 +5040,7 @@ O: Unpacking libpcre3 (from .../libpcre3_6.4-2_amd64.deb) ...
 P: Unpacking package libpcre3
 D: Updating libpcre3 to status 2
 O: Selecting previously deselected package exim4-daemon-light.
-O: Unpacking exim4-daemon-light (from .../exim4-daemon-light_4.62-2_amd64.deb) ...
+O: Unpacking exim4-daemon-light (from .../exim4-daemon-light_4.62-4_amd64.deb) ...
 P: Unpacking package exim4-daemon-light
 D: Updating exim4-daemon-light to status 2
 O: Selecting previously deselected package at.
@@ -5049,7 +5048,7 @@ O: Unpacking at (from .../bootstrap/at_3.1.10_amd64.deb) ...
 P: Unpacking package at
 D: Updating at to status 2
 O: Selecting previously deselected package exim4.
-O: Unpacking exim4 (from .../bootstrap/exim4_4.62-2_all.deb) ...
+O: Unpacking exim4 (from .../bootstrap/exim4_4.62-4_all.deb) ...
 P: Unpacking package exim4
 D: Updating exim4 to status 2
 O: Selecting previously deselected package telnet.
@@ -5065,14 +5064,14 @@ O: Unpacking dhcp3-client (from .../dhcp3-client_3.0.4-6_amd64.deb) ...
 P: Unpacking package dhcp3-client
 D: Updating dhcp3-client to status 2
 O: Selecting previously deselected package psmisc.
-O: Unpacking psmisc (from .../psmisc_22.2-1_amd64.deb) ...
+O: Unpacking psmisc (from .../psmisc_22.3-1_amd64.deb) ...
 P: Unpacking package psmisc
 D: Updating psmisc to status 2
-O: Setting up adduser (3.91) ...
+O: Setting up adduser (3.96) ...
 P: Configuring package adduser
 D: Updating adduser to status 3
 O: 
-O: Setting up apt-utils (0.6.44.2) ...
+O: Setting up apt-utils (0.6.45) ...
 P: Configuring package apt-utils
 D: Updating apt-utils to status 3
 O: 
@@ -5084,7 +5083,7 @@ O: Setting up libsigc++-2.0-0c2a (2.0.16-3) ...
 P: Configuring package libsigc++-2.0-0c2a
 D: Updating libsigc++-2.0-0c2a to status 3
 O: 
-O: Setting up aptitude (0.4.1-1.1) ...
+O: Setting up aptitude (0.4.2-1) ...
 P: Configuring package aptitude
 D: Updating aptitude to status 3
 O: 
@@ -5092,14 +5091,14 @@ O: Setting up bsdmainutils (6.1.3) ...
 P: Configuring package bsdmainutils
 D: Updating bsdmainutils to status 3
 O: 
-O: Setting up cpio (2.6-15) ...
+O: Setting up cpio (2.6-17) ...
 P: Configuring package cpio
 D: Updating cpio to status 3
 O: 
-O: Setting up cron (3.0pl1-94) ...
+O: Setting up cron (3.0pl1-95) ...
 P: Configuring package cron
 D: Updating cron to status 3
-O: Adding group `crontab' (101)...
+O: Adding group `crontab' (GID 101) ...
 O: Done.
 O: 
 O: Setting up dmidecode (2.8-2) ...
@@ -5126,7 +5125,7 @@ O:
 O: ifupdown.postinst: Warning: No 'iface lo' definition found in /etc/network/interfaces
 O: ifupdown.postinst: Warning: No 'auto lo' statement found in /etc/network/interfaces
 O: 
-O: Setting up info (4.8.dfsg.1-1) ...
+O: Setting up info (4.8.dfsg.1-2) ...
 P: Configuring package info
 D: Updating info to status 3
 O: 
@@ -5144,7 +5143,7 @@ O: Setting up libgpg-error0 (1.2-1) ...
 P: Configuring package libgpg-error0
 D: Updating libgpg-error0 to status 3
 O: 
-O: Setting up libgcrypt11 (1.2.2-1) ...
+O: Setting up libgcrypt11 (1.2.2-3) ...
 P: Configuring package libgcrypt11
 D: Updating libgcrypt11 to status 3
 O: 
@@ -5156,19 +5155,19 @@ O: Setting up liblzo1 (1.08-3) ...
 P: Configuring package liblzo1
 D: Updating liblzo1 to status 3
 O: 
-O: Setting up libopencdk8 (0.5.8-1) ...
+O: Setting up libopencdk8 (0.5.9-1) ...
 P: Configuring package libopencdk8
 D: Updating libopencdk8 to status 3
 O: 
-O: Setting up libtasn1-3 (0.3.5-1) ...
+O: Setting up libtasn1-3 (0.3.5-2) ...
 P: Configuring package libtasn1-3
 D: Updating libtasn1-3 to status 3
 O: 
-O: Setting up libgnutls13 (1.4.0-2) ...
+O: Setting up libgnutls13 (1.4.1-1) ...
 P: Configuring package libgnutls13
 D: Updating libgnutls13 to status 3
 O: 
-O: Setting up libpopt0 (1.10-2) ...
+O: Setting up libpopt0 (1.10-3) ...
 P: Configuring package libpopt0
 D: Updating libpopt0 to status 3
 O: 
@@ -5188,10 +5187,10 @@ P: Configuring package man-db
 D: Updating man-db to status 3
 O: Building database of manual pages ...
 O: 
-O: Setting up manpages (2.34-1) ...
+O: Setting up manpages (2.37-1) ...
 P: Configuring package manpages
 D: Updating manpages to status 3
-O: Setting up nano (1.3.11-3) ...
+O: Setting up nano (1.3.12-2) ...
 P: Configuring package nano
 D: Updating nano to status 3
 O: 
@@ -5207,14 +5206,14 @@ O: Setting up wget (1.10.2-2) ...
 P: Configuring package wget
 D: Updating wget to status 3
 O: 
-O: Setting up libnewt0.52 (0.52.2-5) ...
+O: Setting up libnewt0.52 (0.52.2-7) ...
 P: Configuring package libnewt0.52
 D: Updating libnewt0.52 to status 3
 O: 
-O: Setting up whiptail (0.52.2-5) ...
+O: Setting up whiptail (0.52.2-7) ...
 P: Configuring package whiptail
 D: Updating whiptail to status 3
-O: Setting up exim4-config (4.62-2) ...
+O: Setting up exim4-config (4.62-4) ...
 P: Configuring package exim4-config
 D: Updating exim4-config to status 3
 O: hostname: 
@@ -5224,8 +5223,6 @@ O: hostname:
 O: Host name lookup failure
 O: 
 O: Adding system-user for exim (v4)
-O: chage: the shadow password file is not present
-O: /usr/bin/chage failed with return code 15, shadow not enabled, password aging cannot be set. Continuing.
 O: 
 O: Setting up libpcre3 (6.4-2) ...
 P: Configuring package libpcre3
@@ -5238,11 +5235,11 @@ O: Setting up dhcp3-client (3.0.4-6) ...
 P: Configuring package dhcp3-client
 D: Updating dhcp3-client to status 3
 O: 
-O: Setting up psmisc (22.2-1) ...
+O: Setting up psmisc (22.3-1) ...
 P: Configuring package psmisc
 D: Updating psmisc to status 3
 O: 
-O: Setting up tasksel-data (2.49) ...
+O: Setting up tasksel-data (2.53) ...
 P: Configuring package tasksel-data
 D: Updating tasksel-data to status 3
 O: Setting up klogd (1.4.1-18) ...
@@ -5263,15 +5260,15 @@ O: Setting up openbsd-inetd (0.20050402-1) ...
 P: Configuring package openbsd-inetd
 D: Updating openbsd-inetd to status 3
 O: 
-O: Setting up tasksel (2.49) ...
+O: Setting up tasksel (2.53) ...
 P: Configuring package tasksel
 D: Updating tasksel to status 3
 O: 
-O: Setting up exim4-base (4.62-2) ...
+O: Setting up exim4-base (4.62-4) ...
 P: Configuring package exim4-base
 D: Updating exim4-base to status 3
 O: 
-O: Setting up exim4-daemon-light (4.62-2) ...
+O: Setting up exim4-daemon-light (4.62-4) ...
 P: Configuring package exim4-daemon-light
 D: Updating exim4-daemon-light to status 3
 O: 
@@ -5279,7 +5276,7 @@ O: Setting up at (3.1.10) ...
 P: Configuring package at
 D: Updating at to status 3
 O: 
-O: Setting up exim4 (4.62-2) ...
+O: Setting up exim4 (4.62-4) ...
 P: Configuring package exim4
 D: Updating exim4 to status 3
 O: Setting up telnet (0.17-32) ...
@@ -5291,14 +5288,14 @@ D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-apt
 D: Execute "dpkg -P cdebootstrap-helper-apt" in chroot
 O: (Reading database ... 
-O: 6824 files and directories currently installed.)
+O: 6899 files and directories currently installed.)
 O: Removing cdebootstrap-helper-apt ...
 D: Return code: 0
 D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-diverts
 D: Execute "dpkg -P cdebootstrap-helper-diverts" in chroot
 O: (Reading database ... 
-O: 6823 files and directories currently installed.)
+O: 6898 files and directories currently installed.)
 O: Removing cdebootstrap-helper-diverts ...
 O: Purging configuration files for cdebootstrap-helper-diverts ...
 O: Removing `diversion of /sbin/start-stop-daemon to /sbin/start-stop-daemon.REAL by cdebootstrap-helper-diverts'
@@ -5308,7 +5305,7 @@ D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-makedev
 D: Execute "dpkg -P cdebootstrap-helper-makedev" in chroot
 O: (Reading database ... 
-O: 6821 files and directories currently installed.)
+O: 6896 files and directories currently installed.)
 O: Removing cdebootstrap-helper-makedev ...
 D: Return code: 0
 D: call action: dev-cleanup
@@ -5326,10 +5323,10 @@ Refreshing the base.tgz
  -> mounting /dev/pts filesystem
  -> installing dummy policy-rc.d
 Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
-Get:2 http://ftp.jp.debian.org sid Release [38.3kB]
+Get:2 http://ftp.jp.debian.org sid Release [67.1kB]
 Ign http://ftp.jp.debian.org sid Release
-Get:3 http://ftp.jp.debian.org sid/main Packages [5438kB]
-Fetched 5476kB in 3s (1726kB/s)
+Get:3 http://ftp.jp.debian.org sid/main Packages [5498kB]
+Fetched 5566kB in 3s (1551kB/s)
 Reading package lists...
 W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
@@ -5342,87 +5339,91 @@ Reading package lists...
 Building dependency tree...
 apt is already the newest version.
 The following extra packages will be installed:
-  binutils cpp cpp-4.1 g++ g++-4.1 gcc gcc-4.1 libc6-dev libdb4.4
+  binutils cpp cpp-4.1 g++ g++-4.1 gcc gcc-4.1 libc6-dev libdb4.4 libssp0
   libstdc++6-4.1-dev linux-kernel-headers make patch perl perl-modules
 Suggested packages:
   binutils-doc cpp-doc gcc-4.1-locales gnupg debian-keyring gcc-4.1-doc
   lib32stdc++6 manpages-dev autoconf automake1.9 libtool flex bison gdb
-  gcc-doc libc6-dev-i386 lib32gcc1 glibc-doc libstdc++6-4.1-doc stl-manual
+  gcc-doc libc6-dev-i386 lib32gcc1 lib32ssp0 glibc-doc libstdc++6-4.1-doc
   make-doc-non-dfsg diff-doc libterm-readline-gnu-perl
   libterm-readline-perl-perl
 Recommended packages:
-  pbuilder bzip2 libmudflap0-dev libssp0-dev perl-doc
+  pbuilder bzip2 libmudflap0-dev perl-doc
 The following NEW packages will be installed:
   binutils build-essential cowdancer cpp cpp-4.1 dpkg-dev g++ g++-4.1 gcc
-  gcc-4.1 libc6-dev libdb4.4 libstdc++6-4.1-dev linux-kernel-headers make
-  patch perl perl-modules
-0 upgraded, 18 newly installed, 0 to remove and 0 not upgraded.
+  gcc-4.1 libc6-dev libdb4.4 libssp0 libstdc++6-4.1-dev linux-kernel-headers
+  make patch perl perl-modules
+0 upgraded, 19 newly installed, 0 to remove and 0 not upgraded.
 Need to get 0B/21.7MB of archives.
 After unpacking 87.2MB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
-  binutils cpp-4.1 cpp perl-modules libdb4.4 perl patch make dpkg-dev gcc-4.1
-  gcc linux-kernel-headers libc6-dev libstdc++6-4.1-dev g++-4.1 g++
+  binutils cpp-4.1 cpp perl-modules libdb4.4 perl patch make dpkg-dev libssp0
+  gcc-4.1 gcc linux-kernel-headers libc6-dev libstdc++6-4.1-dev g++-4.1 g++
   build-essential cowdancer
 Selecting previously deselected package binutils.
-(Reading database ... 6821 files and directories currently installed.)
-Unpacking binutils (from .../binutils_2.17-1_amd64.deb) ...
+(Reading database ... 6896 files and directories currently installed.)
+Unpacking binutils (from .../binutils_2.17-2_amd64.deb) ...
 Selecting previously deselected package cpp-4.1.
-Unpacking cpp-4.1 (from .../cpp-4.1_4.1.1-5_amd64.deb) ...
+Unpacking cpp-4.1 (from .../cpp-4.1_4.1.1-10_amd64.deb) ...
 Selecting previously deselected package cpp.
-Unpacking cpp (from .../cpp_4%3a4.1.1-1_amd64.deb) ...
+Unpacking cpp (from .../cpp_4%3a4.1.1-5_amd64.deb) ...
 Selecting previously deselected package perl-modules.
-Unpacking perl-modules (from .../perl-modules_5.8.8-6_all.deb) ...
+Unpacking perl-modules (from .../perl-modules_5.8.8-6.1_all.deb) ...
 Selecting previously deselected package libdb4.4.
-Unpacking libdb4.4 (from .../libdb4.4_4.4.20-6_amd64.deb) ...
+Unpacking libdb4.4 (from .../libdb4.4_4.4.20-7_amd64.deb) ...
 Selecting previously deselected package perl.
-Unpacking perl (from .../perl_5.8.8-6_amd64.deb) ...
+Unpacking perl (from .../perl_5.8.8-6.1_amd64.deb) ...
 Selecting previously deselected package patch.
 Unpacking patch (from .../patch_2.5.9-4_amd64.deb) ...
 Selecting previously deselected package make.
 Unpacking make (from .../archives/make_3.81-2_amd64.deb) ...
 Selecting previously deselected package dpkg-dev.
 Unpacking dpkg-dev (from .../dpkg-dev_1.13.22_all.deb) ...
+Selecting previously deselected package libssp0.
+Unpacking libssp0 (from .../libssp0_4.1.1-10_amd64.deb) ...
 Selecting previously deselected package gcc-4.1.
-Unpacking gcc-4.1 (from .../gcc-4.1_4.1.1-5_amd64.deb) ...
+Unpacking gcc-4.1 (from .../gcc-4.1_4.1.1-10_amd64.deb) ...
 Selecting previously deselected package gcc.
-Unpacking gcc (from .../gcc_4%3a4.1.1-1_amd64.deb) ...
+Unpacking gcc (from .../gcc_4%3a4.1.1-5_amd64.deb) ...
 Selecting previously deselected package linux-kernel-headers.
-Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.17.1-1_amd64.deb) ...
+Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.17.7-1_amd64.deb) ...
 Selecting previously deselected package libc6-dev.
-Unpacking libc6-dev (from .../libc6-dev_2.3.6-15_amd64.deb) ...
+Unpacking libc6-dev (from .../libc6-dev_2.3.6-19_amd64.deb) ...
 Selecting previously deselected package libstdc++6-4.1-dev.
-Unpacking libstdc++6-4.1-dev (from .../libstdc++6-4.1-dev_4.1.1-5_amd64.deb) ...
+Unpacking libstdc++6-4.1-dev (from .../libstdc++6-4.1-dev_4.1.1-10_amd64.deb) ...
 Selecting previously deselected package g++-4.1.
-Unpacking g++-4.1 (from .../g++-4.1_4.1.1-5_amd64.deb) ...
+Unpacking g++-4.1 (from .../g++-4.1_4.1.1-10_amd64.deb) ...
 Selecting previously deselected package g++.
-Unpacking g++ (from .../g++_4%3a4.1.1-1_amd64.deb) ...
+Unpacking g++ (from .../g++_4%3a4.1.1-5_amd64.deb) ...
 Selecting previously deselected package build-essential.
-Unpacking build-essential (from .../build-essential_11.2_amd64.deb) ...
+Unpacking build-essential (from .../build-essential_11.3_amd64.deb) ...
 Selecting previously deselected package cowdancer.
-Unpacking cowdancer (from .../cowdancer_0.19_amd64.deb) ...
-Setting up binutils (2.17-1) ...
+Unpacking cowdancer (from .../cowdancer_0.20_amd64.deb) ...
+Setting up binutils (2.17-2) ...
 
-Setting up cpp-4.1 (4.1.1-5) ...
-Setting up cpp (4.1.1-1) ...
+Setting up cpp-4.1 (4.1.1-10) ...
+Setting up cpp (4.1.1-5) ...
 
-Setting up libdb4.4 (4.4.20-6) ...
+Setting up libdb4.4 (4.4.20-7) ...
 Setting up patch (2.5.9-4) ...
 Setting up make (3.81-2) ...
-Setting up gcc-4.1 (4.1.1-5) ...
-Setting up gcc (4.1.1-1) ...
+Setting up libssp0 (4.1.1-10) ...
 
-Setting up linux-kernel-headers (2.6.17.1-1) ...
-Setting up libc6-dev (2.3.6-15) ...
-Setting up cowdancer (0.19) ...
-Setting up libstdc++6-4.1-dev (4.1.1-5) ...
-Setting up perl-modules (5.8.8-6) ...
-Setting up g++-4.1 (4.1.1-5) ...
-Setting up g++ (4.1.1-1) ...
+Setting up gcc-4.1 (4.1.1-10) ...
+Setting up gcc (4.1.1-5) ...
 
-Setting up perl (5.8.8-6) ...
+Setting up linux-kernel-headers (2.6.17.7-1) ...
+Setting up libc6-dev (2.3.6-19) ...
+Setting up cowdancer (0.20) ...
+Setting up libstdc++6-4.1-dev (4.1.1-10) ...
+Setting up perl-modules (5.8.8-6.1) ...
+Setting up g++-4.1 (4.1.1-10) ...
+Setting up g++ (4.1.1-5) ...
+
+Setting up perl (5.8.8-6.1) ...
 
 Setting up dpkg-dev (1.13.22) ...
-Setting up build-essential (11.2) ...
+Setting up build-essential (11.3) ...
 Copying back the cached apt archive contents
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
