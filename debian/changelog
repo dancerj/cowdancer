@@ -1,3 +1,9 @@
+cowdancer (0.21) unstable; urgency=low
+
+  * Do not clean up if return code from pbuilder looks wrong.
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 20 Aug 2006 15:08:43 +0900
+
 cowdancer (0.20) unstable; urgency=low
 
   * Bug fix: "cowdancer: cowbuilder removes base.cow after failed

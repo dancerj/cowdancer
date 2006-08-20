@@ -342,7 +342,11 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
   PBUILDER_ADD_PARAM(NULL);
   ret=forkexecvp(pbuildercommandline);
   free(buf_chroot);
-  cpbuilder_internal_cleancow(pc);
+  if (ret < 128)
+    cpbuilder_internal_cleancow(pc);
+  else
+    printf("pbuilder build aborted, not cleaning\n");
+
   return ret;
 }
 
@@ -361,7 +365,6 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   PBUILDER_ADD_PARAM("cowdancer");
   PBUILDER_ADD_PARAM(NULL);
   ret=forkexecvp(pbuildercommandline);
-
   return ret;
 }
 
@@ -433,15 +436,22 @@ int cpbuilder_login(const struct pbuilderconfig* pc)
   PBUILDER_ADD_PARAM(NULL);
   ret=forkexecvp(pbuildercommandline);
   free(buf_chroot);
-  if (pc->save_after_login)
+  if (ret < 128)
     {
-      if (cpbuilder_internal_saveupdate(pc))
-	ret=-1;
+      
+      if (pc->save_after_login)
+	{
+	  if (cpbuilder_internal_saveupdate(pc))
+	    ret=-1;
+	}
+      else
+	{
+	  cpbuilder_internal_cleancow(pc);
+	}
     }
   else
-    {
-      cpbuilder_internal_cleancow(pc);
-    }
+    printf("pbuilder login aborted, not cleaning\n");
+
   return ret;
 }
 
@@ -484,15 +494,21 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
   PBUILDER_ADD_PARAM(NULL);
   ret=forkexecvp(pbuildercommandline);
   free(buf_chroot);
-  if (pc->save_after_login)
+  if (ret < 128)
     {
-      if (cpbuilder_internal_saveupdate(pc))
-	ret=-1;
+      if (pc->save_after_login)
+	{
+	  if (cpbuilder_internal_saveupdate(pc))
+	    ret=-1;
+	}
+      else
+	{
+	  cpbuilder_internal_cleancow(pc);
+	}
     }
   else
-    {
-      cpbuilder_internal_cleancow(pc);
-    }
+    printf("pbuilder execute aborted, not cleaning\n");
+  
   return ret;
 }
 
@@ -552,13 +568,20 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
 		 buf_chroot, NULL);
   if (ret)
     {
-      printf("pbuilder update failed\n");
-      if (0!=forkexeclp("rm", "rm", "-rf", pc->buildplace, NULL))
+      if (ret < 128)
 	{
-	  printf("Could not remove original tree\n");
+	  printf("pbuilder update failed\n");
+	  if (0!=forkexeclp("rm", "rm", "-rf", pc->buildplace, NULL))
+	    {
+	      printf("Could not remove original tree\n");
+	    }
 	}
+      else
+	  printf("pbuilder update aborted, not cleaning\n");
+      
       /* either way, I don't want to touch the original tree */
       goto out;
+      
     }
   printf(" -> removing cowbuilder working copy\n");
   cpbuilder_internal_saveupdate(pc);
