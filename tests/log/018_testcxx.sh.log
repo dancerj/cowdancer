@@ -1,25 +1,25 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.sSkAv17915
++ TESTDIR=/tmp/tmp.auneYD1654
 ++ readlink -f tests/018_testcxx.cc
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/018_testcxx.cc
 + set -ex
-+ cd /tmp/tmp.sSkAv17915
++ cd /tmp/tmp.auneYD1654
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3e-05 seconds, 44.5 MB/s
+1024 bytes (1.0 kB) copied, 2.4e-05 seconds, 42.7 MB/s
 + cp -al 1 0
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/018_testcxx.cc
 + cat 1/a
 Hello world
 + cat 0/a
 + diff -u 1/a 0/a
---- 1/a	2006-08-11 21:11:50.600059032 +0900
-+++ 0/a	2006-08-11 21:11:48.521375040 +0900
+--- 1/a	2006-08-20 15:10:30.572334680 +0900
++++ 0/a	2006-08-20 15:10:28.818601288 +0900
 @@ -1 +0,0 @@
 -Hello world
 + RESULT=0
-+ rm -rf /tmp/tmp.sSkAv17915
++ rm -rf /tmp/tmp.auneYD1654
 + exit 0
