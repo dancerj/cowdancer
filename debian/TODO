@@ -1,3 +1,7 @@
+* fix segv in parameter parsing
+
+	sudo cowbuilder -M aaa bbb cccc
+
 * cowbuilder implementation
 
 A prototype exists, but I need a good test environment with network

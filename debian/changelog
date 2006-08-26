@@ -1,3 +1,12 @@
+cowdancer (0.22) unstable; urgency=low
+
+  * Bug fix: "cowdancer: documentation fix to document that
+    --debootstrapopts etc can be used with cowbuilder", thanks to Pierre
+    Habouzit (Closes: #384030).
+  * update README.Debian
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 26 Aug 2006 09:07:25 +0900
+
 cowdancer (0.21) unstable; urgency=low
 
   * Do not clean up if return code from pbuilder looks wrong.

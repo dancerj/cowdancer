@@ -4,19 +4,19 @@ cowdancer for Debian
 This is a cowdancer.
 
 Restrictions:
-	Fundamentally really cannot work with chroot due to ld-preload;
-		cow-shell needs to be invoked inside chroot.
+	Usage with chroot needs cow-shell invoked inside chroot.
 		e.g. chroot /path/to/chroot cow-shell command-to-execute
+	cowbuilder handles this for you.
 
-	Might have some problems with fakeroot; although it seems to be 
-working fine at the moment.
+	Might potentially have some problems with fakeroot; although
+it seems to be working fine at the moment.
 
 BUGS:
 	O_CREAT may be better implemented without cp -a, but the implication
 of owner of created file vs truncated file is unclear.
 	fchown/fchmod cannot possibly work reliably
 
-	upgrading cowdancer while running under cowdancer may cause
+	upgrading cowdancer while running under cowdancer causes
 problems due to incompatibility in data format.
 
- -- Junichi Uekawa <dancer@debian.org>, Wed, 24 May 2006 05:35:56 +0900
+ -- Junichi Uekawa <dancer@debian.org>, Sat, 26 Aug 2006 09:06:01 +0900

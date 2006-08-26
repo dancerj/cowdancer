@@ -1,7 +1,7 @@
 /*
  * cowdancer -- a Copy-on-write data-access; No-cow-easy-replacement
  *
- * Copyright 2005 Junichi Uekawa
+ * Copyright 2005-2006 Junichi Uekawa
  * GPL v2 or later.
  */
 #define _GNU_SOURCE

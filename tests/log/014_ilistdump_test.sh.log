@@ -1,8 +1,8 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.XAUPrC1562
++ TESTDIR=/tmp/tmp.BFbpX13628
 ++ readlink -f tests/014_ilistdump_test.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/014_ilistdump_test.c
-+ cd /tmp/tmp.XAUPrC1562
++ cd /tmp/tmp.BFbpX13628
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + ln 1/a 1/aa
@@ -23,6 +23,6 @@ hello
 + sort +2 -n
 sort: Warning: "+number" syntax is deprecated, please use "-k number"
 ilist_struct size on this architecture: 16
-+ diff -u /tmp/tmp.XAUPrC1562/mylist.1 /tmp/tmp.XAUPrC1562/mylist.2
-+ rm -rf /tmp/tmp.XAUPrC1562
++ diff -u /tmp/tmp.BFbpX13628/mylist.1 /tmp/tmp.BFbpX13628/mylist.2
++ rm -rf /tmp/tmp.BFbpX13628
 + exit 0

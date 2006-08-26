@@ -604,6 +604,7 @@ int cpbuilder_help(void)
 	 " --basepath:\n"
 	 " --buildplace:\n"
 	 " --distribution:\n"
+	 " ... and other pbuilder options \n"
 	 );
   return 0;
 }
@@ -672,11 +673,11 @@ int main(int ac, char** av)
   pbuildercommandline[0]="pbuilder";
 
   /* load config files here. */
-  while((c = getopt_long (ac, av, "b:d:hv", long_options, &index_point)) != -1)
+  while((c = getopt_long (ac, av, "b:d:Mmhv", long_options, &index_point)) != -1)
     {
       switch (c)
 	{
-	case 'b':
+	case 'b':		/* basepath */
 	  if (pc.operation == pbuilder_create)
 	    {
 	      if (mkdir(optarg, 0777)<0)
@@ -696,11 +697,10 @@ int main(int ac, char** av)
 	      return 1;
 	    }
 	  break;
-	case 'B':
+	case 'B':		/* buildplace */
 	  pc.buildplace = strdup(optarg);
 	  break;
-	case 'M':		/* default duplicate with param */
-	  //printf("DEBUG: adding option %s with %s \n", long_options[index_point].name, optarg);
+	case 'M':		/* pass through to pbuilder: duplicate with param */
 	  if (0>asprintf(&cmdstr, "--%s", long_options[index_point].name))
 	    {
 	      /* error */
@@ -710,8 +710,7 @@ int main(int ac, char** av)
 	  PBUILDER_ADD_PARAM(cmdstr);
 	  PBUILDER_ADD_PARAM(strdup(optarg));
 	  break;
-	case 'm':		/* default duplicate without param */
-	  //printf("DEBUG: adding option %s\n", long_options[index_point].name);
+	case 'm':		/* pass through to pbuilder: duplicate without param */
 	  if (0>asprintf(&cmdstr, "--%s", long_options[index_point].name))
 	    {
 	      /* error */
@@ -720,15 +719,15 @@ int main(int ac, char** av)
 	    }
 	  PBUILDER_ADD_PARAM(cmdstr);
 	  break;
-	case 'h':
-	  break;
-	case 'v':
-	  break;
 	case 0:
 	  /* other cases with long option with flags,
 	     this is expected behavior, so ignore it.
 	  */
 	  break;	  
+	case 'h':		/* -h */
+	case 'v':		/* -v --version */
+	  pc.operation=pbuilder_help;
+	  break;
 	default:
 	  fprintf(stderr, "Unhandled option\n");
 	  /* Error case. */
@@ -763,8 +762,9 @@ int main(int ac, char** av)
       return cpbuilder_execute(&pc, &av[optind]);
 
     case pbuilder_help:
-    default:
-      cpbuilder_help();
+      return cpbuilder_help();
+
+    default:			
       return 1;
     }
   
