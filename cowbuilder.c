@@ -562,10 +562,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
   PBUILDER_ADD_PARAM(buf_chroot);
   PBUILDER_ADD_PARAM(NULL);
 
-  ret=forkexeclp("pbuilder","pbuilder","update","--buildplace",
-		 pc->buildplace,"--no-targz",
-		 "--internal-chrootexec", 
-		 buf_chroot, NULL);
+  ret=forkexecvp(pbuildercommandline);
   if (ret)
     {
       if (ret < 128)

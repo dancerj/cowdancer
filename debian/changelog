@@ -1,3 +1,9 @@
+cowdancer (0.23) unstable; urgency=low
+
+  * cowbuilder --update ignored command-line options; fix.
+
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 31 Aug 2006 07:30:23 +0900
+
 cowdancer (0.22) unstable; urgency=low
 
   * Bug fix: "cowdancer: documentation fix to document that

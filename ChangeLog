@@ -1,3 +1,7 @@
+2006-08-31  Junichi Uekawa  <dancer@debian.org>
+
+	* cowbuilder.c (cpbuilder_update): fix to use command-line options.
+
 2006-08-26  Junichi Uekawa  <dancer@debian.org>
 
 	* cowdancer.c: copyright update
