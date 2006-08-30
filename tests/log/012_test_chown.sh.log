@@ -1,5 +1,5 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.rzHTG13564
++ TESTDIR=/tmp/tmp.SNCNY20185
 ++ readlink -f tests/012_test_chown.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/012_test_chown.c
 ++ id -G
@@ -7,13 +7,13 @@
 + ORIGID=1000
 + NEWID=4
 + ((  11 < 3  ))
-+ cd /tmp/tmp.rzHTG13564
++ cd /tmp/tmp.SNCNY20185
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3e-05 seconds, 44.5 MB/s
+1024 bytes (1.0 kB) copied, 2.2e-05 seconds, 46.5 MB/s
 + chgrp 1000 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -22,24 +22,24 @@
    2/ before
 + ls -li 2/
 合計 4
-2344381 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:07 a
-2344385 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:07 b
-2344386 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:07 c
-2344387 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:07 d
-2344388 -rw-r--r-- 2 dancer dancer 1024 2006-08-26 09:07 e
+189412 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 a
+189416 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 b
+189417 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 c
+189418 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 d
+189419 -rw-r--r-- 2 dancer dancer 1024 2006-08-31 07:56 e
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/012_test_chown.c 4 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 4
-2344445 -rw-r--r-- 1 dancer adm       0 2006-08-26 09:07 a
-2344385 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:07 b
-2344450 -rw-r--r-- 1 dancer adm       0 2006-08-26 09:07 c
-2344387 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:07 d
-2344388 -rw-r--r-- 2 dancer dancer 1024 2006-08-26 09:07 e
+189474 -rw-r--r-- 1 dancer adm       0 2006-08-31 07:56 a
+189416 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 b
+189479 -rw-r--r-- 1 dancer adm       0 2006-08-31 07:56 c
+189418 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 d
+189419 -rw-r--r-- 2 dancer dancer 1024 2006-08-31 07:56 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.rzHTG13564
++ rm -rf /tmp/tmp.SNCNY20185

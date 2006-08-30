@@ -1,6 +1,6 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.APjpB13747
-+ cd /tmp/tmp.APjpB13747
++ TESTDIR=/tmp/tmp.wnWhE20365
++ cd /tmp/tmp.wnWhE20365
 + mkdir 1/
 + touch '1/a'\''f' '1/b g' '1/c h' '1/d i'
 + dd if=/dev/zero 'of=1/e j' bs=512 count=2
@@ -14,28 +14,28 @@
    2/ before
 + ls -li 2/
 合計 4
-2344797 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:08 a'f
-2344801 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:08 b g
-2344802 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:08 c h
-2344803 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:08 d i
-2344804 -rw-r--r-- 2 dancer dancer 1024 2006-08-26 09:08 e j
+189816 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 a'f
+189820 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 b g
+189821 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 c h
+189822 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 d i
+189823 -rw-r--r-- 2 dancer dancer 1024 2006-08-31 07:56 e j
 + echo 'cd 2 && echo a > "a'\''f" && mv '\''b g'\'' '\''c h'\'' && touch '\''c h'\'' && dd if='\''e j'\'' of='\''d i'\'''
 + cow-shell
 Invoking /bin/bash
 0+1 records in
 0+1 records out
-160 bytes (160 B) copied, 2.6e-05 seconds, 6.2 MB/s
+160 bytes (160 B) copied, 2.7e-05 seconds, 5.9 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-2344851 -rw-r--r-- 1 dancer dancer    2 2006-08-26 09:08 a'f
-2344858 -rw-r--r-- 1 dancer dancer    0 2006-08-26 09:08 c h
-2344866 -rw-r--r-- 1 dancer dancer  160 2006-08-26 09:08 d i
-2344804 -rw-r--r-- 2 dancer dancer 1024 2006-08-26 09:08 e j
+189862 -rw-r--r-- 1 dancer dancer    2 2006-08-31 07:56 a'f
+189869 -rw-r--r-- 1 dancer dancer    0 2006-08-31 07:56 c h
+189877 -rw-r--r-- 1 dancer dancer  160 2006-08-31 07:56 d i
+189823 -rw-r--r-- 2 dancer dancer 1024 2006-08-31 07:56 e j
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.APjpB13747
++ rm -rf /tmp/tmp.wnWhE20365

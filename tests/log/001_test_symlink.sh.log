@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.ZQyHP13441
-+ cd /tmp/tmp.ZQyHP13441
++ TESTDIR=/tmp/tmp.vCPbR20063
++ cd /tmp/tmp.vCPbR20063
 + mkdir 1/
 + touch 1/b 1/c 1/d 1/a.real
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.4e-05 seconds, 42.7 MB/s
+1024 bytes (1.0 kB) copied, 2.3e-05 seconds, 44.5 MB/s
 + ln -s a.real 1/a
 + ls -li 1/
 + sleep 1s
@@ -15,30 +15,30 @@
    2/ before
 + ls -li 2/
 合計 4
-2344030 lrwxrwxrwx 2 dancer dancer    6 2006-08-26 09:07 a -> a.real
-2344028 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:07 a.real
-2344022 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:07 b
-2344026 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:07 c
-2344027 -rw-r--r-- 2 dancer dancer    0 2006-08-26 09:07 d
-2344029 -rw-r--r-- 2 dancer dancer 1024 2006-08-26 09:07 e
+189073 lrwxrwxrwx 2 dancer dancer    6 2006-08-31 07:56 a -> a.real
+189071 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 a.real
+189065 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 b
+189069 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 c
+189070 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 d
+189072 -rw-r--r-- 2 dancer dancer 1024 2006-08-31 07:56 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/bash
 0+1 records in
 0+1 records out
-160 bytes (160 B) copied, 2.7e-05 seconds, 5.9 MB/s
+160 bytes (160 B) copied, 2.6e-05 seconds, 6.2 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-2344030 lrwxrwxrwx 2 dancer dancer    6 2006-08-26 09:07 a -> a.real
-2344080 -rw-r--r-- 1 dancer dancer    2 2006-08-26 09:07 a.real
-2344087 -rw-r--r-- 1 dancer dancer    0 2006-08-26 09:07 c
-2344095 -rw-r--r-- 1 dancer dancer  160 2006-08-26 09:07 d
-2344029 -rw-r--r-- 2 dancer dancer 1024 2006-08-26 09:07 e
+189073 lrwxrwxrwx 2 dancer dancer    6 2006-08-31 07:56 a -> a.real
+189112 -rw-r--r-- 1 dancer dancer    2 2006-08-31 07:56 a.real
+189119 -rw-r--r-- 1 dancer dancer    0 2006-08-31 07:56 c
+189127 -rw-r--r-- 1 dancer dancer  160 2006-08-31 07:56 d
+189072 -rw-r--r-- 2 dancer dancer 1024 2006-08-31 07:56 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.ZQyHP13441
++ rm -rf /tmp/tmp.vCPbR20063

@@ -6,9 +6,7 @@ W: /home/dancer/.pbuilderrc does not exist
  -> mounting /proc filesystem
  -> mounting /dev/pts filesystem
  -> policy-rc.d already exists
-Obtaining the cached apt archive contents
  -> entering the shell
-Copying back the cached apt archive contents
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
  -> Copying COW directory

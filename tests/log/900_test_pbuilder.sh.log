@@ -14,14 +14,14 @@ D: Return code: 0
 D: Execute "mkdir -p /var/cache/pbuilder/base-test.cow//var/log"
 D: Return code: 0
 P: Retrieving Release.gpg
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/Release.gpg http://ftp.jp.debian.org/debian/dists/sid/Release.gpg"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/Release.gpg http://glantank/debian/dists/sid/Release.gpg"
 D: Return code: 0
 P: Retrieving Release
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/Release http://ftp.jp.debian.org/debian/dists/sid/Release"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/Release http://glantank/debian/dists/sid/Release"
 D: Return code: 0
 P: Parsing Release
 P: Retrieving Packages.gz
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/Packages.gz http://ftp.jp.debian.org/debian/dists/sid/main/binary-amd64/Packages.gz"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/Packages.gz http://glantank/debian/dists/sid/main/binary-amd64/Packages.gz"
 D: Return code: 0
 P: Validating Packages
 D: Execute "gunzip -f /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/Packages.gz 2>&1"
@@ -29,455 +29,455 @@ D: Return code: 0
 P: Parsing Packages
 W: can't find package: base-config
 P: Retrieving tzdata
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tzdata_2006g-2_all.deb http://ftp.jp.debian.org/debian/pool/main/t/tzdata/tzdata_2006g-2_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tzdata_2006g-2_all.deb http://glantank/debian/pool/main/t/tzdata/tzdata_2006g-2_all.deb"
 D: Return code: 0
 P: Validating tzdata
 P: Retrieving libc6
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libc6_2.3.6.ds1-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/glibc/libc6_2.3.6.ds1-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libc6_2.3.6.ds1-4_amd64.deb http://glantank/debian/pool/main/g/glibc/libc6_2.3.6.ds1-4_amd64.deb"
 D: Return code: 0
 P: Validating libc6
 P: Retrieving gcc-4.1-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gcc-4.1-base_4.1.1-11_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/gcc-4.1-base_4.1.1-11_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gcc-4.1-base_4.1.1-11_amd64.deb http://glantank/debian/pool/main/g/gcc-4.1/gcc-4.1-base_4.1.1-11_amd64.deb"
 D: Return code: 0
 P: Validating gcc-4.1-base
 P: Retrieving libgcc1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcc1_4.1.1-11_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/libgcc1_4.1.1-11_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcc1_4.1.1-11_amd64.deb http://glantank/debian/pool/main/g/gcc-4.1/libgcc1_4.1.1-11_amd64.deb"
 D: Return code: 0
 P: Validating libgcc1
 P: Retrieving libstdc++6
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libstdc++6_4.1.1-11_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gcc-4.1/libstdc++6_4.1.1-11_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libstdc++6_4.1.1-11_amd64.deb http://glantank/debian/pool/main/g/gcc-4.1/libstdc++6_4.1.1-11_amd64.deb"
 D: Return code: 0
 P: Validating libstdc++6
 P: Retrieving apt
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt_0.6.45_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt_0.6.45_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt_0.6.45_amd64.deb http://glantank/debian/pool/main/a/apt/apt_0.6.45_amd64.deb"
 D: Return code: 0
 P: Validating apt
 P: Retrieving libdb4.3
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libdb4.3_4.3.29-6_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/db4.3/libdb4.3_4.3.29-6_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libdb4.3_4.3.29-6_amd64.deb http://glantank/debian/pool/main/d/db4.3/libdb4.3_4.3.29-6_amd64.deb"
 D: Return code: 0
 P: Validating libdb4.3
 P: Retrieving apt-utils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt-utils_0.6.45_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/apt/apt-utils_0.6.45_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt-utils_0.6.45_amd64.deb http://glantank/debian/pool/main/a/apt/apt-utils_0.6.45_amd64.deb"
 D: Return code: 0
 P: Validating apt-utils
 P: Retrieving libattr1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libattr1_2.4.32-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/attr/libattr1_2.4.32-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libattr1_2.4.32-1_amd64.deb http://glantank/debian/pool/main/a/attr/libattr1_2.4.32-1_amd64.deb"
 D: Return code: 0
 P: Validating libattr1
 P: Retrieving libacl1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libacl1_2.2.41-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/acl/libacl1_2.2.41-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libacl1_2.2.41-1_amd64.deb http://glantank/debian/pool/main/a/acl/libacl1_2.2.41-1_amd64.deb"
 D: Return code: 0
 P: Validating libacl1
 P: Retrieving libsepol1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libsepol1_1.12.24-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libs/libsepol/libsepol1_1.12.24-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libsepol1_1.12.24-1_amd64.deb http://glantank/debian/pool/main/libs/libsepol/libsepol1_1.12.24-1_amd64.deb"
 D: Return code: 0
 P: Validating libsepol1
 P: Retrieving libselinux1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libselinux1_1.30.26-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libs/libselinux/libselinux1_1.30.26-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libselinux1_1.30.26-2_amd64.deb http://glantank/debian/pool/main/libs/libselinux/libselinux1_1.30.26-2_amd64.deb"
 D: Return code: 0
 P: Validating libselinux1
 P: Retrieving coreutils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/coreutils_5.97-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/coreutils/coreutils_5.97-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/coreutils_5.97-4_amd64.deb http://glantank/debian/pool/main/c/coreutils/coreutils_5.97-4_amd64.deb"
 D: Return code: 0
 P: Validating coreutils
 P: Retrieving mktemp
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/mktemp_1.5-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/m/mktemp/mktemp_1.5-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/mktemp_1.5-2_amd64.deb http://glantank/debian/pool/main/m/mktemp/mktemp_1.5-2_amd64.deb"
 D: Return code: 0
 P: Validating mktemp
 P: Retrieving debianutils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debianutils_2.17_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/debianutils/debianutils_2.17_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debianutils_2.17_amd64.deb http://glantank/debian/pool/main/d/debianutils/debianutils_2.17_amd64.deb"
 D: Return code: 0
 P: Validating debianutils
 P: Retrieving dhcp3-common
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dhcp3-common_3.0.4-7_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/dhcp3/dhcp3-common_3.0.4-7_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dhcp3-common_3.0.4-7_amd64.deb http://glantank/debian/pool/main/d/dhcp3/dhcp3-common_3.0.4-7_amd64.deb"
 D: Return code: 0
 P: Validating dhcp3-common
 P: Retrieving perl-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/perl-base_5.8.8-6.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/perl/perl-base_5.8.8-6.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/perl-base_5.8.8-6.1_amd64.deb http://glantank/debian/pool/main/p/perl/perl-base_5.8.8-6.1_amd64.deb"
 D: Return code: 0
 P: Validating perl-base
 P: Retrieving liblocale-gettext-perl
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/liblocale-gettext-perl_1.05-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libl/liblocale-gettext-perl/liblocale-gettext-perl_1.05-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/liblocale-gettext-perl_1.05-1_amd64.deb http://glantank/debian/pool/main/libl/liblocale-gettext-perl/liblocale-gettext-perl_1.05-1_amd64.deb"
 D: Return code: 0
 P: Validating liblocale-gettext-perl
 P: Retrieving libtext-iconv-perl
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtext-iconv-perl_1.4-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libt/libtext-iconv-perl/libtext-iconv-perl_1.4-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtext-iconv-perl_1.4-3_amd64.deb http://glantank/debian/pool/main/libt/libtext-iconv-perl/libtext-iconv-perl_1.4-3_amd64.deb"
 D: Return code: 0
 P: Validating libtext-iconv-perl
 P: Retrieving libtext-charwidth-perl
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtext-charwidth-perl_0.04-4_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libt/libtext-charwidth-perl/libtext-charwidth-perl_0.04-4_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtext-charwidth-perl_0.04-4_amd64.deb http://glantank/debian/pool/main/libt/libtext-charwidth-perl/libtext-charwidth-perl_0.04-4_amd64.deb"
 D: Return code: 0
 P: Validating libtext-charwidth-perl
 P: Retrieving libtext-wrapi18n-perl
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtext-wrapi18n-perl_0.06-5_all.deb http://ftp.jp.debian.org/debian/pool/main/libt/libtext-wrapi18n-perl/libtext-wrapi18n-perl_0.06-5_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtext-wrapi18n-perl_0.06-5_all.deb http://glantank/debian/pool/main/libt/libtext-wrapi18n-perl/libtext-wrapi18n-perl_0.06-5_all.deb"
 D: Return code: 0
 P: Validating libtext-wrapi18n-perl
 P: Retrieving debconf-i18n
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debconf-i18n_1.5.3_all.deb http://ftp.jp.debian.org/debian/pool/main/d/debconf/debconf-i18n_1.5.3_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debconf-i18n_1.5.3_all.deb http://glantank/debian/pool/main/d/debconf/debconf-i18n_1.5.3_all.deb"
 D: Return code: 0
 P: Validating debconf-i18n
 P: Retrieving debconf
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debconf_1.5.3_all.deb http://ftp.jp.debian.org/debian/pool/main/d/debconf/debconf_1.5.3_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/debconf_1.5.3_all.deb http://glantank/debian/pool/main/d/debconf/debconf_1.5.3_all.deb"
 D: Return code: 0
 P: Validating debconf
 P: Retrieving dhcp3-client
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dhcp3-client_3.0.4-7_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/dhcp3/dhcp3-client_3.0.4-7_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dhcp3-client_3.0.4-7_amd64.deb http://glantank/debian/pool/main/d/dhcp3/dhcp3-client_3.0.4-7_amd64.deb"
 D: Return code: 0
 P: Validating dhcp3-client
 P: Retrieving net-tools
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/net-tools_1.60-17_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/net-tools/net-tools_1.60-17_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/net-tools_1.60-17_amd64.deb http://glantank/debian/pool/main/n/net-tools/net-tools_1.60-17_amd64.deb"
 D: Return code: 0
 P: Validating net-tools
 P: Retrieving ifupdown
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ifupdown_0.6.7-0.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/i/ifupdown/ifupdown_0.6.7-0.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ifupdown_0.6.7-0.1_amd64.deb http://glantank/debian/pool/main/i/ifupdown/ifupdown_0.6.7-0.1_amd64.deb"
 D: Return code: 0
 P: Validating ifupdown
 P: Retrieving iptables
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/iptables_1.3.3-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/i/iptables/iptables_1.3.3-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/iptables_1.3.5.0debian1-1_amd64.deb http://glantank/debian/pool/main/i/iptables/iptables_1.3.5.0debian1-1_amd64.deb"
 D: Return code: 0
 P: Validating iptables
 P: Retrieving iputils-ping
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/iputils-ping_20020927-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/i/iputils/iputils-ping_20020927-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/iputils-ping_20020927-3_amd64.deb http://glantank/debian/pool/main/i/iputils/iputils-ping_20020927-3_amd64.deb"
 D: Return code: 0
 P: Validating iputils-ping
 P: Retrieving libwrap0
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libwrap0_7.6.dbs-11_amd64.deb http://ftp.jp.debian.org/debian/pool/main/t/tcp-wrappers/libwrap0_7.6.dbs-11_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libwrap0_7.6.dbs-11_amd64.deb http://glantank/debian/pool/main/t/tcp-wrappers/libwrap0_7.6.dbs-11_amd64.deb"
 D: Return code: 0
 P: Validating libwrap0
 P: Retrieving tcpd
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tcpd_7.6.dbs-11_amd64.deb http://ftp.jp.debian.org/debian/pool/main/t/tcp-wrappers/tcpd_7.6.dbs-11_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tcpd_7.6.dbs-11_amd64.deb http://glantank/debian/pool/main/t/tcp-wrappers/tcpd_7.6.dbs-11_amd64.deb"
 D: Return code: 0
 P: Validating tcpd
 P: Retrieving openbsd-inetd
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/openbsd-inetd_0.20050402-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/o/openbsd-inetd/openbsd-inetd_0.20050402-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/openbsd-inetd_0.20050402-2_amd64.deb http://glantank/debian/pool/main/o/openbsd-inetd/openbsd-inetd_0.20050402-2_amd64.deb"
 D: Return code: 0
 P: Validating openbsd-inetd
 P: Retrieving sed
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sed_4.1.5-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sed/sed_4.1.5-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sed_4.1.5-1_amd64.deb http://glantank/debian/pool/main/s/sed/sed_4.1.5-1_amd64.deb"
 D: Return code: 0
 P: Validating sed
 P: Retrieving libncurses5
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libncurses5_5.5-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/ncurses/libncurses5_5.5-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libncurses5_5.5-2_amd64.deb http://glantank/debian/pool/main/n/ncurses/libncurses5_5.5-2_amd64.deb"
 D: Return code: 0
 P: Validating libncurses5
 P: Retrieving ncurses-bin
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ncurses-bin_5.5-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/ncurses/ncurses-bin_5.5-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ncurses-bin_5.5-2_amd64.deb http://glantank/debian/pool/main/n/ncurses/ncurses-bin_5.5-2_amd64.deb"
 D: Return code: 0
 P: Validating ncurses-bin
 P: Retrieving lsb-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lsb-base_3.1-14_all.deb http://ftp.jp.debian.org/debian/pool/main/l/lsb/lsb-base_3.1-14_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lsb-base_3.1-15_all.deb http://glantank/debian/pool/main/l/lsb/lsb-base_3.1-15_all.deb"
 D: Return code: 0
 P: Validating lsb-base
 P: Retrieving netbase
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/netbase_4.26_all.deb http://ftp.jp.debian.org/debian/pool/main/n/netbase/netbase_4.26_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/netbase_4.26_all.deb http://glantank/debian/pool/main/n/netbase/netbase_4.26_all.deb"
 D: Return code: 0
 P: Validating netbase
 P: Retrieving telnet
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/telnet_0.17-32_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/netkit-telnet/telnet_0.17-32_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/telnet_0.17-32_amd64.deb http://glantank/debian/pool/main/n/netkit-telnet/telnet_0.17-32_amd64.deb"
 D: Return code: 0
 P: Validating telnet
 P: Retrieving zlib1g
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/zlib1g_1.2.3-13_amd64.deb http://ftp.jp.debian.org/debian/pool/main/z/zlib/zlib1g_1.2.3-13_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/zlib1g_1.2.3-13_amd64.deb http://glantank/debian/pool/main/z/zlib/zlib1g_1.2.3-13_amd64.deb"
 D: Return code: 0
 P: Validating zlib1g
 P: Retrieving libssl0.9.8
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libssl0.9.8_0.9.8b-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/o/openssl/libssl0.9.8_0.9.8b-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libssl0.9.8_0.9.8b-2_amd64.deb http://glantank/debian/pool/main/o/openssl/libssl0.9.8_0.9.8b-2_amd64.deb"
 D: Return code: 0
 P: Validating libssl0.9.8
 P: Retrieving wget
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/wget_1.10.2-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/w/wget/wget_1.10.2-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/wget_1.10.2-2_amd64.deb http://glantank/debian/pool/main/w/wget/wget_1.10.2-2_amd64.deb"
 D: Return code: 0
 P: Validating wget
 P: Retrieving info
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/info_4.8.dfsg.1-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/t/texinfo/info_4.8.dfsg.1-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/info_4.8.dfsg.1-2_amd64.deb http://glantank/debian/pool/main/t/texinfo/info_4.8.dfsg.1-2_amd64.deb"
 D: Return code: 0
 P: Validating info
 P: Retrieving manpages
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/manpages_2.39-1_all.deb http://ftp.jp.debian.org/debian/pool/main/m/manpages/manpages_2.39-1_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/manpages_2.39-1_all.deb http://glantank/debian/pool/main/m/manpages/manpages_2.39-1_all.deb"
 D: Return code: 0
 P: Validating manpages
 P: Retrieving groff-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/groff-base_1.18.1.1-12_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/groff/groff-base_1.18.1.1-12_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/groff-base_1.18.1.1-12_amd64.deb http://glantank/debian/pool/main/g/groff/groff-base_1.18.1.1-12_amd64.deb"
 D: Return code: 0
 P: Validating groff-base
 P: Retrieving bsdutils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/bsdutils_2.12r-10_amd64.deb http://ftp.jp.debian.org/debian/pool/main/u/util-linux/bsdutils_2.12r-10_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/bsdutils_2.12r-10_amd64.deb http://glantank/debian/pool/main/u/util-linux/bsdutils_2.12r-10_amd64.deb"
 D: Return code: 0
 P: Validating bsdutils
 P: Retrieving bsdmainutils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/bsdmainutils_6.1.4_amd64.deb http://ftp.jp.debian.org/debian/pool/main/b/bsdmainutils/bsdmainutils_6.1.4_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/bsdmainutils_6.1.4_amd64.deb http://glantank/debian/pool/main/b/bsdmainutils/bsdmainutils_6.1.4_amd64.deb"
 D: Return code: 0
 P: Validating bsdmainutils
 P: Retrieving dpkg
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dpkg_1.13.22_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/dpkg/dpkg_1.13.22_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dpkg_1.13.22_amd64.deb http://glantank/debian/pool/main/d/dpkg/dpkg_1.13.22_amd64.deb"
 D: Return code: 0
 P: Validating dpkg
 P: Retrieving libgdbm3
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgdbm3_1.8.3-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gdbm/libgdbm3_1.8.3-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgdbm3_1.8.3-3_amd64.deb http://glantank/debian/pool/main/g/gdbm/libgdbm3_1.8.3-3_amd64.deb"
 D: Return code: 0
 P: Validating libgdbm3
 P: Retrieving man-db
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/man-db_2.4.3-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/m/man-db/man-db_2.4.3-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/man-db_2.4.3-3_amd64.deb http://glantank/debian/pool/main/m/man-db/man-db_2.4.3-3_amd64.deb"
 D: Return code: 0
 P: Validating man-db
 P: Retrieving libpam-runtime
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpam-runtime_0.79-3.2_all.deb http://ftp.jp.debian.org/debian/pool/main/p/pam/libpam-runtime_0.79-3.2_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpam-runtime_0.79-3.2_all.deb http://glantank/debian/pool/main/p/pam/libpam-runtime_0.79-3.2_all.deb"
 D: Return code: 0
 P: Validating libpam-runtime
 P: Retrieving libpam0g
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpam0g_0.79-3.2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/pam/libpam0g_0.79-3.2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpam0g_0.79-3.2_amd64.deb http://glantank/debian/pool/main/p/pam/libpam0g_0.79-3.2_amd64.deb"
 D: Return code: 0
 P: Validating libpam0g
 P: Retrieving libcap1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libcap1_1.10-14_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libc/libcap/libcap1_1.10-14_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libcap1_1.10-14_amd64.deb http://glantank/debian/pool/main/libc/libcap/libcap1_1.10-14_amd64.deb"
 D: Return code: 0
 P: Validating libcap1
 P: Retrieving libpam-modules
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpam-modules_0.79-3.2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/pam/libpam-modules_0.79-3.2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpam-modules_0.79-3.2_amd64.deb http://glantank/debian/pool/main/p/pam/libpam-modules_0.79-3.2_amd64.deb"
 D: Return code: 0
 P: Validating libpam-modules
 P: Retrieving login
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/login_4.0.18.1-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/login_4.0.18.1-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/login_4.0.18.1-2_amd64.deb http://glantank/debian/pool/main/s/shadow/login_4.0.18.1-2_amd64.deb"
 D: Return code: 0
 P: Validating login
 P: Retrieving passwd
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/passwd_4.0.18.1-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/shadow/passwd_4.0.18.1-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/passwd_4.0.18.1-2_amd64.deb http://glantank/debian/pool/main/s/shadow/passwd_4.0.18.1-2_amd64.deb"
 D: Return code: 0
 P: Validating passwd
 P: Retrieving adduser
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/adduser_3.97_all.deb http://ftp.jp.debian.org/debian/pool/main/a/adduser/adduser_3.97_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/adduser_3.97_all.deb http://glantank/debian/pool/main/a/adduser/adduser_3.97_all.deb"
 D: Return code: 0
 P: Validating adduser
 P: Retrieving cron
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cron_3.0pl1-97_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/cron/cron_3.0pl1-97_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cron_3.0pl1-97_amd64.deb http://glantank/debian/pool/main/c/cron/cron_3.0pl1-97_amd64.deb"
 D: Return code: 0
 P: Validating cron
 P: Retrieving exim4-config
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-config_4.63-3_all.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-config_4.63-3_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-config_4.63-3_all.deb http://glantank/debian/pool/main/e/exim4/exim4-config_4.63-3_all.deb"
 D: Return code: 0
 P: Validating exim4-config
 P: Retrieving exim4-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-base_4.63-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-base_4.63-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-base_4.63-3_amd64.deb http://glantank/debian/pool/main/e/exim4/exim4-base_4.63-3_amd64.deb"
 D: Return code: 0
 P: Validating exim4-base
 P: Retrieving libgpg-error0
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgpg-error0_1.2-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libg/libgpg-error/libgpg-error0_1.2-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgpg-error0_1.2-1_amd64.deb http://glantank/debian/pool/main/libg/libgpg-error/libgpg-error0_1.2-1_amd64.deb"
 D: Return code: 0
 P: Validating libgpg-error0
 P: Retrieving libgcrypt11
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcrypt11_1.2.2-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.2.2-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcrypt11_1.2.2-3_amd64.deb http://glantank/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.2.2-3_amd64.deb"
 D: Return code: 0
 P: Validating libgcrypt11
 P: Retrieving liblzo1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/liblzo1_1.08-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/l/lzo/liblzo1_1.08-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/liblzo1_1.08-3_amd64.deb http://glantank/debian/pool/main/l/lzo/liblzo1_1.08-3_amd64.deb"
 D: Return code: 0
 P: Validating liblzo1
 P: Retrieving libopencdk8
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libopencdk8_0.5.9-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/o/opencdk8/libopencdk8_0.5.9-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libopencdk8_0.5.9-1_amd64.deb http://glantank/debian/pool/main/o/opencdk8/libopencdk8_0.5.9-1_amd64.deb"
 D: Return code: 0
 P: Validating libopencdk8
 P: Retrieving libtasn1-3
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtasn1-3_0.3.5-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libt/libtasn1-3/libtasn1-3_0.3.5-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtasn1-3_0.3.5-2_amd64.deb http://glantank/debian/pool/main/libt/libtasn1-3/libtasn1-3_0.3.5-2_amd64.deb"
 D: Return code: 0
 P: Validating libtasn1-3
 P: Retrieving libgnutls13
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgnutls13_1.4.2-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gnutls13/libgnutls13_1.4.2-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgnutls13_1.4.2-1_amd64.deb http://glantank/debian/pool/main/g/gnutls13/libgnutls13_1.4.2-1_amd64.deb"
 D: Return code: 0
 P: Validating libgnutls13
 P: Retrieving libpcre3
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpcre3_6.4-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/pcre3/libpcre3_6.4-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpcre3_6.4-2_amd64.deb http://glantank/debian/pool/main/p/pcre3/libpcre3_6.4-2_amd64.deb"
 D: Return code: 0
 P: Validating libpcre3
 P: Retrieving exim4-daemon-light
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-daemon-light_4.63-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4-daemon-light_4.63-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4-daemon-light_4.63-3_amd64.deb http://glantank/debian/pool/main/e/exim4/exim4-daemon-light_4.63-3_amd64.deb"
 D: Return code: 0
 P: Validating exim4-daemon-light
 P: Retrieving at
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/at_3.1.10_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/at/at_3.1.10_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/at_3.1.10_amd64.deb http://glantank/debian/pool/main/a/at/at_3.1.10_amd64.deb"
 D: Return code: 0
 P: Validating at
 P: Retrieving cpio
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cpio_2.6-17_amd64.deb http://ftp.jp.debian.org/debian/pool/main/c/cpio/cpio_2.6-17_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cpio_2.6-17_amd64.deb http://glantank/debian/pool/main/c/cpio/cpio_2.6-17_amd64.deb"
 D: Return code: 0
 P: Validating cpio
 P: Retrieving ed
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ed_0.2-20_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/ed/ed_0.2-20_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ed_0.2-20_amd64.deb http://glantank/debian/pool/main/e/ed/ed_0.2-20_amd64.deb"
 D: Return code: 0
 P: Validating ed
 P: Retrieving libncursesw5
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libncursesw5_5.5-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/ncurses/libncursesw5_5.5-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libncursesw5_5.5-2_amd64.deb http://glantank/debian/pool/main/n/ncurses/libncursesw5_5.5-2_amd64.deb"
 D: Return code: 0
 P: Validating libncursesw5
 P: Retrieving nano
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/nano_1.3.12-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/nano/nano_1.3.12-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/nano_1.3.12-2_amd64.deb http://glantank/debian/pool/main/n/nano/nano_1.3.12-2_amd64.deb"
 D: Return code: 0
 P: Validating nano
 P: Retrieving nvi
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/nvi_1.79-24_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/nvi/nvi_1.79-24_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/nvi_1.79-24_amd64.deb http://glantank/debian/pool/main/n/nvi/nvi_1.79-24_amd64.deb"
 D: Return code: 0
 P: Validating nvi
 P: Retrieving psmisc
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/psmisc_22.3-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/psmisc/psmisc_22.3-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/psmisc_22.3-1_amd64.deb http://glantank/debian/pool/main/p/psmisc/psmisc_22.3-1_amd64.deb"
 D: Return code: 0
 P: Validating psmisc
 P: Retrieving klogd
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/klogd_1.4.1-18_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sysklogd/klogd_1.4.1-18_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/klogd_1.4.1-18_amd64.deb http://glantank/debian/pool/main/s/sysklogd/klogd_1.4.1-18_amd64.deb"
 D: Return code: 0
 P: Validating klogd
 P: Retrieving sysklogd
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysklogd_1.4.1-18_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sysklogd/sysklogd_1.4.1-18_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysklogd_1.4.1-18_amd64.deb http://glantank/debian/pool/main/s/sysklogd/sysklogd_1.4.1-18_amd64.deb"
 D: Return code: 0
 P: Validating sysklogd
 P: Retrieving libsigc++-2.0-0c2a
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libsigc++-2.0-0c2a_2.0.16-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/libs/libsigc++-2.0/libsigc++-2.0-0c2a_2.0.16-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libsigc++-2.0-0c2a_2.0.16-3_amd64.deb http://glantank/debian/pool/main/libs/libsigc++-2.0/libsigc++-2.0-0c2a_2.0.16-3_amd64.deb"
 D: Return code: 0
 P: Validating libsigc++-2.0-0c2a
 P: Retrieving aptitude
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/aptitude_0.4.2-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/a/aptitude/aptitude_0.4.2-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/aptitude_0.4.2-1_amd64.deb http://glantank/debian/pool/main/a/aptitude/aptitude_0.4.2-1_amd64.deb"
 D: Return code: 0
 P: Validating aptitude
 P: Retrieving dmidecode
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dmidecode_2.8-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/dmidecode/dmidecode_2.8-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dmidecode_2.8-2_amd64.deb http://glantank/debian/pool/main/d/dmidecode/dmidecode_2.8-2_amd64.deb"
 D: Return code: 0
 P: Validating dmidecode
 P: Retrieving laptop-detect
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/laptop-detect_0.12.1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/l/laptop-detect/laptop-detect_0.12.1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/laptop-detect_0.12.1_amd64.deb http://glantank/debian/pool/main/l/laptop-detect/laptop-detect_0.12.1_amd64.deb"
 D: Return code: 0
 P: Validating laptop-detect
 P: Retrieving tasksel-data
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tasksel-data_2.53_all.deb http://ftp.jp.debian.org/debian/pool/main/t/tasksel/tasksel-data_2.53_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tasksel-data_2.53_all.deb http://glantank/debian/pool/main/t/tasksel/tasksel-data_2.53_all.deb"
 D: Return code: 0
 P: Validating tasksel-data
 P: Retrieving tasksel
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tasksel_2.53_all.deb http://ftp.jp.debian.org/debian/pool/main/t/tasksel/tasksel_2.53_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tasksel_2.53_all.deb http://glantank/debian/pool/main/t/tasksel/tasksel_2.53_all.deb"
 D: Return code: 0
 P: Validating tasksel
 P: Retrieving libslang2
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libslang2_2.0.6-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/slang2/libslang2_2.0.6-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libslang2_2.0.6-3_amd64.deb http://glantank/debian/pool/main/s/slang2/libslang2_2.0.6-3_amd64.deb"
 D: Return code: 0
 P: Validating libslang2
 P: Retrieving libnewt0.52
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libnewt0.52_0.52.2-7_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/newt/libnewt0.52_0.52.2-7_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libnewt0.52_0.52.2-7_amd64.deb http://glantank/debian/pool/main/n/newt/libnewt0.52_0.52.2-7_amd64.deb"
 D: Return code: 0
 P: Validating libnewt0.52
 P: Retrieving libpopt0
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpopt0_1.10-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/popt/libpopt0_1.10-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libpopt0_1.10-3_amd64.deb http://glantank/debian/pool/main/p/popt/libpopt0_1.10-3_amd64.deb"
 D: Return code: 0
 P: Validating libpopt0
 P: Retrieving whiptail
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/whiptail_0.52.2-7_amd64.deb http://ftp.jp.debian.org/debian/pool/main/n/newt/whiptail_0.52.2-7_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/whiptail_0.52.2-7_amd64.deb http://glantank/debian/pool/main/n/newt/whiptail_0.52.2-7_amd64.deb"
 D: Return code: 0
 P: Validating whiptail
 P: Retrieving exim4
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4_4.63-3_all.deb http://ftp.jp.debian.org/debian/pool/main/e/exim4/exim4_4.63-3_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/exim4_4.63-3_all.deb http://glantank/debian/pool/main/e/exim4/exim4_4.63-3_all.deb"
 D: Return code: 0
 P: Validating exim4
 P: Retrieving base-passwd
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/base-passwd_3.5.11_amd64.deb http://ftp.jp.debian.org/debian/pool/main/b/base-passwd/base-passwd_3.5.11_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/base-passwd_3.5.11_amd64.deb http://glantank/debian/pool/main/b/base-passwd/base-passwd_3.5.11_amd64.deb"
 D: Return code: 0
 P: Validating base-passwd
 P: Retrieving logrotate
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/logrotate_3.7.1-3_amd64.deb http://ftp.jp.debian.org/debian/pool/main/l/logrotate/logrotate_3.7.1-3_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/logrotate_3.7.1-3_amd64.deb http://glantank/debian/pool/main/l/logrotate/logrotate_3.7.1-3_amd64.deb"
 D: Return code: 0
 P: Validating logrotate
 P: Retrieving hostname
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/hostname_2.92_amd64.deb http://ftp.jp.debian.org/debian/pool/main/h/hostname/hostname_2.92_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/hostname_2.92_amd64.deb http://glantank/debian/pool/main/h/hostname/hostname_2.92_amd64.deb"
 D: Return code: 0
 P: Validating hostname
 P: Retrieving mawk
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/mawk_1.3.3-11_amd64.deb http://ftp.jp.debian.org/debian/pool/main/m/mawk/mawk_1.3.3-11_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/mawk_1.3.3-11_amd64.deb http://glantank/debian/pool/main/m/mawk/mawk_1.3.3-11_amd64.deb"
 D: Return code: 0
 P: Validating mawk
 P: Retrieving base-files
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/base-files_3.1.15_amd64.deb http://ftp.jp.debian.org/debian/pool/main/b/base-files/base-files_3.1.15_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/base-files_3.1.16_amd64.deb http://glantank/debian/pool/main/b/base-files/base-files_3.1.16_amd64.deb"
 D: Return code: 0
 P: Validating base-files
 P: Retrieving bash
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/bash_3.1-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/b/bash/bash_3.1-5_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/bash_3.1-5_amd64.deb http://glantank/debian/pool/main/b/bash/bash_3.1-5_amd64.deb"
 D: Return code: 0
 P: Validating bash
 P: Retrieving grep
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/grep_2.5.1.ds2-5_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/grep/grep_2.5.1.ds2-5_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/grep_2.5.1.ds2-5_amd64.deb http://glantank/debian/pool/main/g/grep/grep_2.5.1.ds2-5_amd64.deb"
 D: Return code: 0
 P: Validating grep
 P: Retrieving libdevmapper1.02
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libdevmapper1.02_1.02.08-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/devmapper/libdevmapper1.02_1.02.08-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libdevmapper1.02_1.02.08-1_amd64.deb http://glantank/debian/pool/main/d/devmapper/libdevmapper1.02_1.02.08-1_amd64.deb"
 D: Return code: 0
 P: Validating libdevmapper1.02
 P: Retrieving procps
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/procps_3.2.7-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/procps/procps_3.2.7-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/procps_3.2.7-2_amd64.deb http://glantank/debian/pool/main/p/procps/procps_3.2.7-2_amd64.deb"
 D: Return code: 0
 P: Validating procps
 P: Retrieving libcomerr2
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libcomerr2_1.39-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/e2fsprogs/libcomerr2_1.39-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libcomerr2_1.39-1_amd64.deb http://glantank/debian/pool/main/e/e2fsprogs/libcomerr2_1.39-1_amd64.deb"
 D: Return code: 0
 P: Validating libcomerr2
 P: Retrieving dselect
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dselect_1.13.22_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/dpkg/dselect_1.13.22_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dselect_1.13.22_amd64.deb http://glantank/debian/pool/main/d/dpkg/dselect_1.13.22_amd64.deb"
 D: Return code: 0
 P: Validating dselect
 P: Retrieving diff
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/diff_2.8.1-11_amd64.deb http://ftp.jp.debian.org/debian/pool/main/d/diffutils/diff_2.8.1-11_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/diff_2.8.1-11_amd64.deb http://glantank/debian/pool/main/d/diffutils/diff_2.8.1-11_amd64.deb"
 D: Return code: 0
 P: Validating diff
 P: Retrieving gzip
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gzip_1.3.5-14_amd64.deb http://ftp.jp.debian.org/debian/pool/main/g/gzip/gzip_1.3.5-14_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gzip_1.3.5-14_amd64.deb http://glantank/debian/pool/main/g/gzip/gzip_1.3.5-14_amd64.deb"
 D: Return code: 0
 P: Validating gzip
 P: Retrieving libss2
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libss2_1.39-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/e2fsprogs/libss2_1.39-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libss2_1.39-1_amd64.deb http://glantank/debian/pool/main/e/e2fsprogs/libss2_1.39-1_amd64.deb"
 D: Return code: 0
 P: Validating libss2
 P: Retrieving libblkid1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libblkid1_1.39-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/e2fsprogs/libblkid1_1.39-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libblkid1_1.39-1_amd64.deb http://glantank/debian/pool/main/e/e2fsprogs/libblkid1_1.39-1_amd64.deb"
 D: Return code: 0
 P: Validating libblkid1
 P: Retrieving libuuid1
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libuuid1_1.39-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/e2fsprogs/libuuid1_1.39-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libuuid1_1.39-1_amd64.deb http://glantank/debian/pool/main/e/e2fsprogs/libuuid1_1.39-1_amd64.deb"
 D: Return code: 0
 P: Validating libuuid1
 P: Retrieving mount
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/mount_2.12r-10_amd64.deb http://ftp.jp.debian.org/debian/pool/main/u/util-linux/mount_2.12r-10_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/mount_2.12r-10_amd64.deb http://glantank/debian/pool/main/u/util-linux/mount_2.12r-10_amd64.deb"
 D: Return code: 0
 P: Validating mount
 P: Retrieving e2fslibs
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/e2fslibs_1.39-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/e2fsprogs/e2fslibs_1.39-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/e2fslibs_1.39-1_amd64.deb http://glantank/debian/pool/main/e/e2fsprogs/e2fslibs_1.39-1_amd64.deb"
 D: Return code: 0
 P: Validating e2fslibs
 P: Retrieving e2fsprogs
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/e2fsprogs_1.39-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/e/e2fsprogs/e2fsprogs_1.39-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/e2fsprogs_1.39-1_amd64.deb http://glantank/debian/pool/main/e/e2fsprogs/e2fsprogs_1.39-1_amd64.deb"
 D: Return code: 0
 P: Validating e2fsprogs
 P: Retrieving initscripts
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/initscripts_2.86.ds1-15_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/initscripts_2.86.ds1-15_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/initscripts_2.86.ds1-15_amd64.deb http://glantank/debian/pool/main/s/sysvinit/initscripts_2.86.ds1-15_amd64.deb"
 D: Return code: 0
 P: Validating initscripts
 P: Retrieving tar
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tar_1.15.91-2_amd64.deb http://ftp.jp.debian.org/debian/pool/main/t/tar/tar_1.15.91-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tar_1.15.91-2_amd64.deb http://glantank/debian/pool/main/t/tar/tar_1.15.91-2_amd64.deb"
 D: Return code: 0
 P: Validating tar
 P: Retrieving sysv-rc
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysv-rc_2.86.ds1-15_all.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/sysv-rc_2.86.ds1-15_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysv-rc_2.86.ds1-15_all.deb http://glantank/debian/pool/main/s/sysvinit/sysv-rc_2.86.ds1-15_all.deb"
 D: Return code: 0
 P: Validating sysv-rc
 P: Retrieving sysvinit
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysvinit_2.86.ds1-15_amd64.deb http://ftp.jp.debian.org/debian/pool/main/s/sysvinit/sysvinit_2.86.ds1-15_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sysvinit_2.86.ds1-15_amd64.deb http://glantank/debian/pool/main/s/sysvinit/sysvinit_2.86.ds1-15_amd64.deb"
 D: Return code: 0
 P: Validating sysvinit
 P: Retrieving makedev
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/makedev_2.3.1-82_all.deb http://ftp.jp.debian.org/debian/pool/main/m/makedev/makedev_2.3.1-82_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/makedev_2.3.1-82_all.deb http://glantank/debian/pool/main/m/makedev/makedev_2.3.1-82_all.deb"
 D: Return code: 0
 P: Validating makedev
 P: Retrieving ncurses-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ncurses-base_5.5-2_all.deb http://ftp.jp.debian.org/debian/pool/main/n/ncurses/ncurses-base_5.5-2_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ncurses-base_5.5-2_all.deb http://glantank/debian/pool/main/n/ncurses/ncurses-base_5.5-2_all.deb"
 D: Return code: 0
 P: Validating ncurses-base
 P: Retrieving findutils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/findutils_4.2.28-1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/f/findutils/findutils_4.2.28-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/findutils_4.2.28-1_amd64.deb http://glantank/debian/pool/main/f/findutils/findutils_4.2.28-1_amd64.deb"
 D: Return code: 0
 P: Validating findutils
 P: Retrieving util-linux
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/util-linux_2.12r-10_amd64.deb http://ftp.jp.debian.org/debian/pool/main/u/util-linux/util-linux_2.12r-10_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/util-linux_2.12r-10_amd64.deb http://glantank/debian/pool/main/u/util-linux/util-linux_2.12r-10_amd64.deb"
 D: Return code: 0
 P: Validating util-linux
 D: call action: extract
@@ -696,8 +696,7 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-makedev.deb /var/cach
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-makedev.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-makedev.
-O: (Reading database ... 
-O: 29 files and directories currently installed.)
+O: (Reading database ... 29 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-makedev (from .../cdebootstrap-helper-makedev.deb) ...
 O: Setting up cdebootstrap-helper-makedev (1) ...
 O: 
@@ -705,17 +704,16 @@ D: Return code: 0
 D: call action: dpkg-install
 D: Execute "dpkg -i --force-all /var/cache/bootstrap/dpkg_1.13.22_amd64.deb" in chroot
 O: Selecting previously deselected package dpkg.
+O: (Reading database ... 29 files and directories currently installed.)
+O: Unpacking dpkg (from .../dpkg_1.13.22_amd64.deb) ...
+P: Unpacking package dpkg
+D: Updating dpkg to status 2
 O: dpkg: regarding .../dpkg_1.13.22_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on libc6 (>= 2.3.5-1)
 O: dpkg: warning - ignoring pre-dependency problem !
 O: dpkg: regarding .../dpkg_1.13.22_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on coreutils (>= 5.93-1)
 O: dpkg: warning - ignoring pre-dependency problem !
-O: (Reading database ... 
-O: 29 files and directories currently installed.)
-O: Unpacking dpkg (from .../dpkg_1.13.22_amd64.deb) ...
-P: Unpacking package dpkg
-D: Updating dpkg to status 2
 O: dpkg: dpkg: dependency problems, but configuring anyway as you request:
 O:  dpkg depends on libc6 (>= 2.3.5-1); however:
 O:   Package libc6 is not installed.
@@ -727,7 +725,7 @@ D: Updating dpkg to status 3
 O: 
 D: Return code: 0
 D: call action: dpkg-unpack
-D: Execute "dpkg --unpack --force-all /var/cache/bootstrap/tzdata_2006g-2_all.deb /var/cache/bootstrap/libc6_2.3.6.ds1-3_amd64.deb /var/cache/bootstrap/gcc-4.1-base_4.1.1-11_amd64.deb /var/cache/bootstrap/libgcc1_4.1.1-11_amd64.deb /var/cache/bootstrap/libstdc++6_4.1.1-11_amd64.deb /var/cache/bootstrap/libdb4.3_4.3.29-6_amd64.deb /var/cache/bootstrap/libattr1_2.4.32-1_amd64.deb /var/cache/bootstrap/libacl1_2.2.41-1_amd64.deb /var/cache/bootstrap/libsepol1_1.12.24-1_amd64.deb /var/cache/bootstrap/libselinux1_1.30.26-2_amd64.deb /var/cache/bootstrap/coreutils_5.97-3_amd64.deb /var/cache/bootstrap/mktemp_1.5-2_amd64.deb /var/cache/bootstrap/debianutils_2.17_amd64.deb /var/cache/bootstrap/perl-base_5.8.8-6.1_amd64.deb /var/cache/bootstrap/liblocale-gettext-perl_1.05-1_amd64.deb /var/cache/bootstrap/libtext-iconv-perl_1.4-3_amd64.deb /var/cache/bootstrap/libtext-charwidth-perl_0.04-4_amd64.deb /var/cache/bootstrap/libtext-wrapi18n-perl_0.06-5_all.deb /var/cache/bootstrap/debconf_1.5.3_all.deb /var/cache/bootstrap/de
+D: Execute "dpkg --unpack --force-all /var/cache/bootstrap/tzdata_2006g-2_all.deb /var/cache/bootstrap/libc6_2.3.6.ds1-4_amd64.deb /var/cache/bootstrap/gcc-4.1-base_4.1.1-11_amd64.deb /var/cache/bootstrap/libgcc1_4.1.1-11_amd64.deb /var/cache/bootstrap/libstdc++6_4.1.1-11_amd64.deb /var/cache/bootstrap/libdb4.3_4.3.29-6_amd64.deb /var/cache/bootstrap/libattr1_2.4.32-1_amd64.deb /var/cache/bootstrap/libacl1_2.2.41-1_amd64.deb /var/cache/bootstrap/libsepol1_1.12.24-1_amd64.deb /var/cache/bootstrap/libselinux1_1.30.26-2_amd64.deb /var/cache/bootstrap/coreutils_5.97-4_amd64.deb /var/cache/bootstrap/mktemp_1.5-2_amd64.deb /var/cache/bootstrap/debianutils_2.17_amd64.deb /var/cache/bootstrap/perl-base_5.8.8-6.1_amd64.deb /var/cache/bootstrap/liblocale-gettext-perl_1.05-1_amd64.deb /var/cache/bootstrap/libtext-iconv-perl_1.4-3_amd64.deb /var/cache/bootstrap/libtext-charwidth-perl_0.04-4_amd64.deb /var/cache/bootstrap/libtext-wrapi18n-perl_0.06-5_all.deb /var/cache/bootstrap/debconf_1.5.3_all.deb /var/cache/bootstrap/de
 O: Selecting previously deselected package tzdata.
 O: (Reading database ... 
 O: 220 files and directories currently installed.)
@@ -735,7 +733,7 @@ O: Unpacking tzdata (from .../tzdata_2006g-2_all.deb) ...
 P: Unpacking package tzdata
 D: Updating tzdata to status 2
 O: Selecting previously deselected package libc6.
-O: Unpacking libc6 (from .../libc6_2.3.6.ds1-3_amd64.deb) ...
+O: Unpacking libc6 (from .../libc6_2.3.6.ds1-4_amd64.deb) ...
 P: Unpacking package libc6
 D: Updating libc6 to status 2
 O: Selecting previously deselected package gcc-4.1-base.
@@ -771,19 +769,19 @@ O: Unpacking libselinux1 (from .../libselinux1_1.30.26-2_amd64.deb) ...
 P: Unpacking package libselinux1
 D: Updating libselinux1 to status 2
 O: Selecting previously deselected package coreutils.
-O: dpkg: regarding .../coreutils_5.97-3_amd64.deb containing coreutils, pre-dependency problem:
+O: dpkg: regarding .../coreutils_5.97-4_amd64.deb containing coreutils, pre-dependency problem:
 O:  coreutils pre-depends on libacl1 (>= 2.2.11-1)
 O:   libacl1 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../coreutils_5.97-3_amd64.deb containing coreutils, pre-dependency problem:
+O: dpkg: regarding .../coreutils_5.97-4_amd64.deb containing coreutils, pre-dependency problem:
 O:  coreutils pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../coreutils_5.97-3_amd64.deb containing coreutils, pre-dependency problem:
-O:  coreutils pre-depends on libselinux1 (>= 1.30)
+O: dpkg: regarding .../coreutils_5.97-4_amd64.deb containing coreutils, pre-dependency problem:
+O:  coreutils pre-depends on libselinux1 (>= 1.30.26)
 O:   libselinux1 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking coreutils (from .../coreutils_5.97-3_amd64.deb) ...
+O: Unpacking coreutils (from .../coreutils_5.97-4_amd64.deb) ...
 P: Unpacking package coreutils
 D: Updating coreutils to status 2
 O: No diversion `any diversion of /usr/share/man/man1/md5sum.textutils.1.gz', none removed
@@ -877,7 +875,7 @@ O: Unpacking ncurses-bin (from .../ncurses-bin_5.5-2_amd64.deb) ...
 P: Unpacking package ncurses-bin
 D: Updating ncurses-bin to status 2
 O: Selecting previously deselected package lsb-base.
-O: Unpacking lsb-base (from .../lsb-base_3.1-14_all.deb) ...
+O: Unpacking lsb-base (from .../lsb-base_3.1-15_all.deb) ...
 P: Unpacking package lsb-base
 D: Updating lsb-base to status 2
 O: Selecting previously deselected package zlib1g.
@@ -909,23 +907,23 @@ O: Unpacking libpam-modules (from .../libpam-modules_0.79-3.2_amd64.deb) ...
 P: Unpacking package libpam-modules
 D: Updating libpam-modules to status 2
 O: Selecting previously deselected package login.
-O: dpkg: regarding .../login_4.0.18.1-1_amd64.deb containing login, pre-dependency problem:
+O: dpkg: regarding .../login_4.0.18.1-2_amd64.deb containing login, pre-dependency problem:
 O:  login pre-depends on libc6 (>= 2.3.5-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../login_4.0.18.1-1_amd64.deb containing login, pre-dependency problem:
+O: dpkg: regarding .../login_4.0.18.1-2_amd64.deb containing login, pre-dependency problem:
 O:  login pre-depends on libpam0g (>= 0.76)
 O:   libpam0g is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../login_4.0.18.1-1_amd64.deb containing login, pre-dependency problem:
+O: dpkg: regarding .../login_4.0.18.1-2_amd64.deb containing login, pre-dependency problem:
 O:  login pre-depends on libpam-runtime (>= 0.76-14)
 O:   libpam-runtime is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Unpacking login (from .../login_4.0.18.1-1_amd64.deb) ...
+O: Unpacking login (from .../login_4.0.18.1-2_amd64.deb) ...
 P: Unpacking package login
 D: Updating login to status 2
 O: Selecting previously deselected package passwd.
-O: Unpacking passwd (from .../passwd_4.0.18.1-1_amd64.deb) ...
+O: Unpacking passwd (from .../passwd_4.0.18.1-2_amd64.deb) ...
 P: Unpacking package passwd
 D: Updating passwd to status 2
 O: Selecting previously deselected package libslang2.
@@ -949,7 +947,7 @@ O: Unpacking mawk (from .../mawk_1.3.3-11_amd64.deb) ...
 P: Unpacking package mawk
 D: Updating mawk to status 2
 O: Selecting previously deselected package base-files.
-O: Unpacking base-files (from .../base-files_3.1.15_amd64.deb) ...
+O: Unpacking base-files (from .../base-files_3.1.16_amd64.deb) ...
 P: Unpacking package base-files
 D: Updating base-files to status 2
 O: Selecting previously deselected package bash.
@@ -1168,7 +1166,7 @@ O: Setting up libpam-runtime (0.79-3.2) ...
 P: Configuring package libpam-runtime
 D: Updating libpam-runtime to status 3
 O: 
-O: Setting up libc6 (2.3.6.ds1-3) ...
+O: Setting up libc6 (2.3.6.ds1-4) ...
 P: Configuring package libc6
 D: Updating libc6 to status 3
 O: dpkg: --compare-versions takes three arguments: <version> <relation> <version>
@@ -1304,7 +1302,7 @@ D: Updating libtext-charwidth-perl to status 3
 O: Setting up libtext-wrapi18n-perl (0.06-5) ...
 P: Configuring package libtext-wrapi18n-perl
 D: Updating libtext-wrapi18n-perl to status 3
-O: Setting up coreutils (5.97-3) ...
+O: Setting up coreutils (5.97-4) ...
 P: Configuring package coreutils
 D: Updating coreutils to status 3
 O: 
@@ -1326,7 +1324,7 @@ O: Setting up libpam-modules (0.79-3.2) ...
 P: Configuring package libpam-modules
 D: Updating libpam-modules to status 3
 O: 
-O: Setting up base-files (3.1.15) ...
+O: Setting up base-files (3.1.16) ...
 P: Configuring package base-files
 D: Updating base-files to status 3
 O: 
@@ -1348,18 +1346,18 @@ O: Setting up bash (3.1-5) ...
 P: Configuring package bash
 D: Updating bash to status 3
 O: 
-O: Setting up login (4.0.18.1-1) ...
+O: Setting up login (4.0.18.1-2) ...
 P: Configuring package login
 D: Updating login to status 3
 O: 
-O: Setting up lsb-base (3.1-14) ...
+O: Setting up lsb-base (3.1-15) ...
 P: Configuring package lsb-base
 D: Updating lsb-base to status 3
 O: Setting up mount (2.12r-10) ...
 P: Configuring package mount
 D: Updating mount to status 3
 O: 
-O: Setting up passwd (4.0.18.1-1) ...
+O: Setting up passwd (4.0.18.1-2) ...
 P: Configuring package passwd
 D: Updating passwd to status 3
 O: Shadow passwords are now on.
@@ -1406,8 +1404,7 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-apt.deb /var/cache/pb
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-apt.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-apt.
-O: (Reading database ... 
-O: 4905 files and directories currently installed.)
+O: (Reading database ... 4905 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-apt (from /cdebootstrap-helper-apt.deb) ...
 O: Setting up cdebootstrap-helper-apt (1) ...
 D: Return code: 0
@@ -1428,7 +1425,6 @@ D: Return code: 0
 D: call action: apt-install
 D: Execute "apt-get install --yes -o APT::Get::AllowUnauthenticated=true apt-utils dhcp3-common dhcp3-client net-tools ifupdown iptables iputils-ping libwrap0 tcpd netbase openbsd-inetd telnet libssl0.9.8 wget info manpages groff-base bsdmainutils libgdbm3 man-db adduser cron exim4-config exim4-base libgpg-error0 libgcrypt11 liblzo1 libopencdk8 libtasn1-3 libgnutls13 libpcre3 exim4-daemon-light at cpio ed libncursesw5 nano nvi psmisc sysklogd klogd libsigc++-2.0-0c2a aptitude dmidecode laptop-detect tasksel tasksel-data libnewt0.52 libpopt0 whiptail exim4 logrotate" in chroot
 O: Reading package lists...
-O: 
 O: Building dependency tree...
 O: 
 O: Suggested packages:
@@ -1448,7 +1444,7 @@ O:   libtasn1-3 libwrap0 logrotate man-db manpages nano net-tools netbase nvi
 O:   openbsd-inetd psmisc sysklogd tasksel tasksel-data tcpd telnet wget whiptail
 O: 0 upgraded, 52 newly installed, 0 to remove and 0 not upgraded.
 O: Need to get 13.4MB of archives.
-O: After unpacking 40.9MB of additional disk space will be used.
+O: After unpacking 40.7MB of additional disk space will be used.
 O: WARNING: The following packages cannot be authenticated!
 O:   adduser apt-utils libncursesw5 libsigc++-2.0-0c2a aptitude bsdmainutils cpio
 O:   cron dmidecode ed groff-base net-tools ifupdown info iptables iputils-ping
@@ -1518,7 +1514,7 @@ O: Unpacking info (from .../info_4.8.dfsg.1-2_amd64.deb) ...
 P: Unpacking package info
 D: Updating info to status 2
 O: Selecting previously deselected package iptables.
-O: Unpacking iptables (from .../iptables_1.3.3-2_amd64.deb) ...
+O: Unpacking iptables (from .../iptables_1.3.5.0debian1-1_amd64.deb) ...
 P: Unpacking package iptables
 D: Updating iptables to status 2
 O: Selecting previously deselected package iputils-ping.
@@ -1731,7 +1727,7 @@ O: Setting up info (4.8.dfsg.1-2) ...
 P: Configuring package info
 D: Updating info to status 3
 O: 
-O: Setting up iptables (1.3.3-2) ...
+O: Setting up iptables (1.3.5.0debian1-1) ...
 P: Configuring package iptables
 D: Updating iptables to status 3
 O: 
@@ -1890,14 +1886,14 @@ D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-apt
 D: Execute "dpkg -P cdebootstrap-helper-apt" in chroot
 O: (Reading database ... 
-O: 6903 files and directories currently installed.)
+O: 6878 files and directories currently installed.)
 O: Removing cdebootstrap-helper-apt ...
 D: Return code: 0
 D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-diverts
 D: Execute "dpkg -P cdebootstrap-helper-diverts" in chroot
 O: (Reading database ... 
-O: 6902 files and directories currently installed.)
+O: 6877 files and directories currently installed.)
 O: Removing cdebootstrap-helper-diverts ...
 O: Purging configuration files for cdebootstrap-helper-diverts ...
 O: Removing `diversion of /sbin/start-stop-daemon to /sbin/start-stop-daemon.REAL by cdebootstrap-helper-diverts'
@@ -1907,7 +1903,7 @@ D: call action: helper-remove
 P: Deconfiguring helper cdebootstrap-helper-makedev
 D: Execute "dpkg -P cdebootstrap-helper-makedev" in chroot
 O: (Reading database ... 
-O: 6900 files and directories currently installed.)
+O: 6875 files and directories currently installed.)
 O: Removing cdebootstrap-helper-makedev ...
 D: Return code: 0
 D: call action: dev-cleanup
@@ -1924,16 +1920,15 @@ Refreshing the base.tgz
  -> mounting /proc filesystem
  -> mounting /dev/pts filesystem
  -> installing dummy policy-rc.d
-Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
-Get:2 http://ftp.jp.debian.org sid Release [67.1kB]
-Ign http://ftp.jp.debian.org sid Release
-Get:3 http://ftp.jp.debian.org sid/main Packages [5506kB]
-Fetched 5574kB in 2s (1918kB/s)
+Get:1 http://glantank sid Release.gpg [189B]
+Get:2 http://glantank sid Release [67.1kB]
+Ign http://glantank sid Release
+Get:3 http://glantank sid/main Packages [5515kB]
+Fetched 5582kB in 0s (6957kB/s)
 Reading package lists...
-W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
+W: GPG error: http://glantank sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
 dpkg - warning: ignoring request to remove lilo which isn't installed.
-Obtaining the cached apt archive contents
 Reading package lists...
 Building dependency tree...
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
@@ -1956,16 +1951,34 @@ The following NEW packages will be installed:
   gcc-4.1 libc6-dev libdb4.4 libssp0 libstdc++6-4.1-dev linux-kernel-headers
   make patch perl perl-modules
 0 upgraded, 19 newly installed, 0 to remove and 0 not upgraded.
-Need to get 26.8kB/21.5MB of archives.
+Need to get 21.5MB of archives.
 After unpacking 87.0MB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   binutils cpp-4.1 cpp perl-modules libdb4.4 perl patch make dpkg-dev libssp0
   gcc-4.1 gcc linux-kernel-headers libc6-dev libstdc++6-4.1-dev g++-4.1 g++
   build-essential cowdancer
-Get:1 http://ftp.jp.debian.org sid/main cowdancer 0.21 [26.8kB]
-Fetched 26.8kB in 0s (98.2kB/s)
+Get:1 http://glantank sid/main binutils 2.17-2 [2625kB]
+Get:2 http://glantank sid/main cpp-4.1 4.1.1-11 [2476kB]
+Get:3 http://glantank sid/main cpp 4:4.1.1-6 [9776B]
+Get:4 http://glantank sid/main perl-modules 5.8.8-6.1 [2309kB]
+Get:5 http://glantank sid/main libdb4.4 4.4.20-8 [474kB]
+Get:6 http://glantank sid/main perl 5.8.8-6.1 [4233kB]
+Get:7 http://glantank sid/main patch 2.5.9-4 [98.7kB]
+Get:8 http://glantank sid/main make 3.81-2 [390kB]
+Get:9 http://glantank sid/main dpkg-dev 1.13.22 [109kB]
+Get:10 http://glantank sid/main libssp0 4.1.1-11 [4968B]
+Get:11 http://glantank sid/main gcc-4.1 4.1.1-11 [458kB]
+Get:12 http://glantank sid/main gcc 4:4.1.1-6 [5046B]
+Get:13 http://glantank sid/main linux-kernel-headers 2.6.17.10-1 [1820kB]
+Get:14 http://glantank sid/main libc6-dev 2.3.6.ds1-4 [2107kB]
+Get:15 http://glantank sid/main libstdc++6-4.1-dev 4.1.1-11 [1615kB]
+Get:16 http://glantank sid/main g++-4.1 4.1.1-11 [2776kB]
+Get:17 http://glantank sid/main g++ 4:4.1.1-6 [1356B]
+Get:18 http://glantank sid/main build-essential 11.3 [6982B]
+Get:19 http://glantank sid/main cowdancer 0.22 [27.0kB]
+Fetched 21.5MB in 0s (24.4MB/s)
 Selecting previously deselected package binutils.
-(Reading database ... 6900 files and directories currently installed.)
+(Reading database ... 6875 files and directories currently installed.)
 Unpacking binutils (from .../binutils_2.17-2_amd64.deb) ...
 Selecting previously deselected package cpp-4.1.
 Unpacking cpp-4.1 (from .../cpp-4.1_4.1.1-11_amd64.deb) ...
@@ -1992,7 +2005,7 @@ Unpacking gcc (from .../gcc_4%3a4.1.1-6_amd64.deb) ...
 Selecting previously deselected package linux-kernel-headers.
 Unpacking linux-kernel-headers (from .../linux-kernel-headers_2.6.17.10-1_amd64.deb) ...
 Selecting previously deselected package libc6-dev.
-Unpacking libc6-dev (from .../libc6-dev_2.3.6.ds1-3_amd64.deb) ...
+Unpacking libc6-dev (from .../libc6-dev_2.3.6.ds1-4_amd64.deb) ...
 Selecting previously deselected package libstdc++6-4.1-dev.
 Unpacking libstdc++6-4.1-dev (from .../libstdc++6-4.1-dev_4.1.1-11_amd64.deb) ...
 Selecting previously deselected package g++-4.1.
@@ -2002,7 +2015,7 @@ Unpacking g++ (from .../g++_4%3a4.1.1-6_amd64.deb) ...
 Selecting previously deselected package build-essential.
 Unpacking build-essential (from .../build-essential_11.3_amd64.deb) ...
 Selecting previously deselected package cowdancer.
-Unpacking cowdancer (from .../cowdancer_0.21_amd64.deb) ...
+Unpacking cowdancer (from .../cowdancer_0.22_amd64.deb) ...
 Setting up binutils (2.17-2) ...
 
 Setting up cpp-4.1 (4.1.1-11) ...
@@ -2017,8 +2030,8 @@ Setting up gcc-4.1 (4.1.1-11) ...
 Setting up gcc (4.1.1-6) ...
 
 Setting up linux-kernel-headers (2.6.17.10-1) ...
-Setting up libc6-dev (2.3.6.ds1-3) ...
-Setting up cowdancer (0.21) ...
+Setting up libc6-dev (2.3.6.ds1-4) ...
+Setting up cowdancer (0.22) ...
 Setting up libstdc++6-4.1-dev (4.1.1-11) ...
 Setting up perl-modules (5.8.8-6.1) ...
 Setting up g++-4.1 (4.1.1-11) ...
@@ -2028,8 +2041,6 @@ Setting up perl (5.8.8-6.1) ...
 
 Setting up dpkg-dev (1.13.22) ...
 Setting up build-essential (11.3) ...
-Copying back the cached apt archive contents
- -> new cache content cowdancer_0.21_amd64.deb added
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
  -> Invoking pbuilder
@@ -2042,19 +2053,18 @@ W: /home/dancer/.pbuilderrc does not exist
  -> policy-rc.d already exists
 Refreshing the base.tgz 
  -> upgrading packages
-Get:1 http://ftp.jp.debian.org sid Release.gpg [189B]
-Hit http://ftp.jp.debian.org sid Release
-Err http://ftp.jp.debian.org sid Release
+Get:1 http://glantank sid Release.gpg [189B]
+Hit http://glantank sid Release
+Err http://glantank sid Release
   
-Get:2 http://ftp.jp.debian.org sid Release [67.1kB]
-Ign http://ftp.jp.debian.org sid Release
-Get:3 http://ftp.jp.debian.org sid/main Packages/DiffIndex [12.6kB]
-Fetched 79.9kB in 0s (230kB/s)
+Get:2 http://glantank sid Release [67.1kB]
+Ign http://glantank sid Release
+Get:3 http://glantank sid/main Packages/DiffIndex [12.6kB]
+Fetched 79.9kB in 0s (344kB/s)
 Reading package lists...
-W: GPG error: http://ftp.jp.debian.org sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
+W: GPG error: http://glantank sid Release: Could not execute '/usr/bin/gpgv' to verify signature (is gnupg installed?)
 W: You may want to run apt-get update to correct these problems
 dpkg - warning: ignoring request to remove lilo which isn't installed.
-Obtaining the cached apt archive contents
 Reading package lists...
 Building dependency tree...
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
@@ -2064,7 +2074,6 @@ build-essential is already the newest version.
 dpkg-dev is already the newest version.
 apt is already the newest version.
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
-Copying back the cached apt archive contents
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
  -> Copying COW directory
@@ -2074,9 +2083,9 @@ Copying back the cached apt archive contents
 W: /home/dancer/.pbuilderrc does not exist
   -> using cowbuilder as pbuilder
 dpkg-buildpackage: source package is cowdancer
-dpkg-buildpackage: source version is 0.22
+dpkg-buildpackage: source version is 0.23
 dpkg-buildpackage: source changed by Junichi Uekawa <dancer@debian.org>
-dpkg-buildpackage: source version without epoch 0.22
+dpkg-buildpackage: source version without epoch 0.23
  fakeroot debian/rules clean
 dh_testdir
 dh_testroot
@@ -2087,9 +2096,9 @@ rm -f *~ *.o *.lo libcowdancer.so cow-shell cowbuilder
 make[1]: Leaving directory `/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer'
 dh_clean
  dpkg-source -b cowdancer
-dpkg-source: warning: source directory `./cowdancer' is not <sourcepackage>-<upstreamversion> `cowdancer-0.22'
-dpkg-source: building cowdancer in cowdancer_0.22.tar.gz
-dpkg-source: building cowdancer in cowdancer_0.22.dsc
+dpkg-source: warning: source directory `./cowdancer' is not <sourcepackage>-<upstreamversion> `cowdancer-0.23'
+dpkg-source: building cowdancer in cowdancer_0.23.tar.gz
+dpkg-source: building cowdancer in cowdancer_0.23.dsc
  dpkg-genchanges -S
 dpkg-genchanges: including full source code in upload
 dpkg-buildpackage: source only upload: Debian-native package
@@ -2099,13 +2108,12 @@ I: using fakeroot in build.
 pbuilder-buildpackage/amd64 $Id$
 $Id$
 
-Current time: Sat Aug 26 09:11:10 JST 2006
-pbuilder-time-stamp: 1156551070
+Current time: Thu Aug 31 07:58:15 JST 2006
+pbuilder-time-stamp: 1156978695
  -> copying local configuration
  -> mounting /proc filesystem
  -> mounting /dev/pts filesystem
  -> policy-rc.d already exists
-Obtaining the cached apt archive contents
 Installing the build-deps
  -> Attempting to parse the build-deps : pbuilder-satisfydepends,v 1.28 2006/05/30 23:45:45 dancer Exp $
  -> Considering  debhelper (>> 4.0.0)
@@ -2123,13 +2131,22 @@ The following NEW packages will be installed:
   debhelper file gettext gettext-base html2text intltool-debian libmagic1
   po-debconf
 0 upgraded, 8 newly installed, 0 to remove and 0 not upgraded.
-Need to get 0B/3172kB of archives.
+Need to get 3172kB of archives.
 After unpacking 10.9MB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   gettext-base libmagic1 file html2text gettext intltool-debian po-debconf
   debhelper
+Get:1 http://glantank sid/main gettext-base 0.15-1 [124kB]
+Get:2 http://glantank sid/main libmagic1 4.17-3 [277kB]
+Get:3 http://glantank sid/main file 4.17-3 [31.7kB]
+Get:4 http://glantank sid/main html2text 1.3.2a-3 [92.7kB]
+Get:5 http://glantank sid/main gettext 0.15-1 [1999kB]
+Get:6 http://glantank sid/main intltool-debian 0.35.0+20060710 [31.4kB]
+Get:7 http://glantank sid/main po-debconf 1.0.5 [109kB]
+Get:8 http://glantank sid/main debhelper 5.0.37.3 [508kB]
+Fetched 3172kB in 0s (7846kB/s)
 Selecting previously deselected package gettext-base.
-(Reading database ... 11726 files and directories currently installed.)
+(Reading database ... 11701 files and directories currently installed.)
 Unpacking gettext-base (from .../gettext-base_0.15-1_amd64.deb) ...
 Selecting previously deselected package libmagic1.
 Unpacking libmagic1 (from .../libmagic1_4.17-3_amd64.deb) ...
@@ -2163,38 +2180,39 @@ Building dependency tree...
 The following NEW packages will be installed:
   fakeroot
 0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
-Need to get 0B/97.4kB of archives.
+Need to get 97.4kB of archives.
 After unpacking 406kB of additional disk space will be used.
 WARNING: The following packages cannot be authenticated!
   fakeroot
+Get:1 http://glantank sid/main fakeroot 1.5.10 [97.4kB]
+Fetched 97.4kB in 0s (1953kB/s)
 Selecting previously deselected package fakeroot.
-(Reading database ... 12356 files and directories currently installed.)
+(Reading database ... 12331 files and directories currently installed.)
 Unpacking fakeroot (from .../fakeroot_1.5.10_amd64.deb) ...
 Setting up fakeroot (1.5.10) ...
 
-Copying back the cached apt archive contents
 Copying source file
-    -> copying [/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.22.dsc]
-    -> copying [/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.22.tar.gz]
+    -> copying [/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.23.dsc]
+    -> copying [/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer_0.23.tar.gz]
 Extracting source
 dpkg-source: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
-dpkg-source: warning: extracting unsigned source package (./cowdancer_0.22.dsc)
-dpkg-source: extracting cowdancer in cowdancer-0.22
-dpkg-source: unpacking cowdancer_0.22.tar.gz
+dpkg-source: warning: extracting unsigned source package (./cowdancer_0.23.dsc)
+dpkg-source: extracting cowdancer in cowdancer-0.23
+dpkg-source: unpacking cowdancer_0.23.tar.gz
  -> Building the package
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-buildpackage: source package is cowdancer
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
-dpkg-buildpackage: source version is 0.22
+dpkg-buildpackage: source version is 0.23
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-buildpackage: source changed by Junichi Uekawa <dancer@debian.org>
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-buildpackage: host architecture amd64
-dpkg-buildpackage: source version without epoch 0.22
+dpkg-buildpackage: source version without epoch 0.23
 dpkg-checkbuilddeps: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
@@ -2203,37 +2221,37 @@ dh_testdir
 dh_testroot
 rm -f build-stamp configure-stamp
 /usr/bin/make clean
-make[1]: Entering directory `/tmp/buildd/cowdancer-0.22'
+make[1]: Entering directory `/tmp/buildd/cowdancer-0.23'
 rm -f *~ *.o *.lo libcowdancer.so cow-shell cowbuilder
-make[1]: Leaving directory `/tmp/buildd/cowdancer-0.22'
+make[1]: Leaving directory `/tmp/buildd/cowdancer-0.23'
 dh_clean
- dpkg-source -b cowdancer-0.22
+ dpkg-source -b cowdancer-0.23
 dpkg-source: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
-dpkg-source: building cowdancer in cowdancer_0.22.tar.gz
-dpkg-source: building cowdancer in cowdancer_0.22.dsc
+dpkg-source: building cowdancer in cowdancer_0.23.tar.gz
+dpkg-source: building cowdancer in cowdancer_0.23.dsc
  debian/rules build
 dh_testdir
 touch configure-stamp
 dh_testdir
 /usr/bin/make
-make[1]: Entering directory `/tmp/buildd/cowdancer-0.22'
+make[1]: Entering directory `/tmp/buildd/cowdancer-0.23'
 gcc -D_REENTRANT -fPIC cowdancer.c -o cowdancer.lo -c -Wall -O2 -g
 gcc -ldl -shared -o libcowdancer.so cowdancer.lo
 gcc cow-shell.c -o cow-shell.o -c -Wall -O2 -g 
 cc   cow-shell.o   -o cow-shell
 gcc cowbuilder.c -o cowbuilder.o -c -Wall -O2 -g 
 cowbuilder.c: In function 'main':
+cowbuilder.c:629: warning: dereferencing type-punned pointer will break strict-aliasing rules
+cowbuilder.c:630: warning: dereferencing type-punned pointer will break strict-aliasing rules
+cowbuilder.c:631: warning: dereferencing type-punned pointer will break strict-aliasing rules
 cowbuilder.c:632: warning: dereferencing type-punned pointer will break strict-aliasing rules
 cowbuilder.c:633: warning: dereferencing type-punned pointer will break strict-aliasing rules
 cowbuilder.c:634: warning: dereferencing type-punned pointer will break strict-aliasing rules
-cowbuilder.c:635: warning: dereferencing type-punned pointer will break strict-aliasing rules
-cowbuilder.c:636: warning: dereferencing type-punned pointer will break strict-aliasing rules
-cowbuilder.c:637: warning: dereferencing type-punned pointer will break strict-aliasing rules
 cc   cowbuilder.o   -o cowbuilder
-make[1]: Leaving directory `/tmp/buildd/cowdancer-0.22'
+make[1]: Leaving directory `/tmp/buildd/cowdancer-0.23'
 #/usr/bin/make check
 touch build-stamp
  fakeroot debian/rules binary
@@ -2242,17 +2260,17 @@ dh_testroot
 dh_clean -k
 dh_installdirs
 # Add here commands to install the package into debian/dsh.
-/usr/bin/make install DESTDIR=/tmp/buildd/cowdancer-0.22/debian/cowdancer
-make[1]: Entering directory `/tmp/buildd/cowdancer-0.22'
-install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.22/debian/cowdancer/usr/lib/cowdancer/
-install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.22/debian/cowdancer/usr/share/man/man1/
-install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.22/debian/cowdancer/usr/share/man/man8/
-install -o root -g root -m 644  cow-shell.1 /tmp/buildd/cowdancer-0.22/debian/cowdancer/usr/share/man/man1/cow-shell.1
-install -o root -g root -m 644  cowbuilder.8 /tmp/buildd/cowdancer-0.22/debian/cowdancer/usr/share/man/man8/cowbuilder.8
-install -o root -g root -m 644  libcowdancer.so /tmp/buildd/cowdancer-0.22/debian/cowdancer/usr/lib/cowdancer/libcowdancer.so
-install -o root -g root -m 755 cow-shell /tmp/buildd/cowdancer-0.22/debian/cowdancer/usr/bin/cow-shell
-install -o root -g root -m 755 cowbuilder /tmp/buildd/cowdancer-0.22/debian/cowdancer/usr/sbin/cowbuilder
-make[1]: Leaving directory `/tmp/buildd/cowdancer-0.22'
+/usr/bin/make install DESTDIR=/tmp/buildd/cowdancer-0.23/debian/cowdancer
+make[1]: Entering directory `/tmp/buildd/cowdancer-0.23'
+install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.23/debian/cowdancer/usr/lib/cowdancer/
+install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.23/debian/cowdancer/usr/share/man/man1/
+install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.23/debian/cowdancer/usr/share/man/man8/
+install -o root -g root -m 644  cow-shell.1 /tmp/buildd/cowdancer-0.23/debian/cowdancer/usr/share/man/man1/cow-shell.1
+install -o root -g root -m 644  cowbuilder.8 /tmp/buildd/cowdancer-0.23/debian/cowdancer/usr/share/man/man8/cowbuilder.8
+install -o root -g root -m 644  libcowdancer.so /tmp/buildd/cowdancer-0.23/debian/cowdancer/usr/lib/cowdancer/libcowdancer.so
+install -o root -g root -m 755 cow-shell /tmp/buildd/cowdancer-0.23/debian/cowdancer/usr/bin/cow-shell
+install -o root -g root -m 755 cowbuilder /tmp/buildd/cowdancer-0.23/debian/cowdancer/usr/sbin/cowbuilder
+make[1]: Leaving directory `/tmp/buildd/cowdancer-0.23'
 dh_testdir
 dh_testroot
 dh_installdocs NEWS
@@ -2281,7 +2299,7 @@ dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; usi
 dh_md5sums
 dh_builddeb
 tar: -: file name read contains nul character
-dpkg-deb: building package `cowdancer' in `../cowdancer_0.22_amd64.deb'.
+dpkg-deb: building package `cowdancer' in `../cowdancer_0.23_amd64.deb'.
  dpkg-genchanges
 dpkg-genchanges: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-architecture: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
@@ -2289,11 +2307,10 @@ dpkg-parsechangelog: warning: no utmp entry available and LOGNAME not defined; u
 debian: warning: no utmp entry available and LOGNAME not defined; using uid of process (1234)
 dpkg-genchanges: including full source code in upload
 dpkg-buildpackage: full upload; Debian-native package (full source is included)
-Copying back the cached apt archive contents
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-Current time: Sat Aug 26 09:11:24 JST 2006
-pbuilder-time-stamp: 1156551084
+Current time: Thu Aug 31 07:58:22 JST 2006
+pbuilder-time-stamp: 1156978702
  -> Copying COW directory
  -> Invoking pbuilder
  -> Cleaning COW directory
