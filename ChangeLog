@@ -1,3 +1,11 @@
+2006-10-29  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/902_test_cowbuilder_fail.sh: use workaround hooks.
+
+	* tests/901_test_pbuilder_create.sh: use workaround hooks.
+
+	* tests/900_test_pbuilder.sh: use workaround hooks.
+
 2006-08-31  Junichi Uekawa  <dancer@debian.org>
 
 	* cowbuilder.c (cpbuilder_update): fix to use command-line options.

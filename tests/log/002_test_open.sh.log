@@ -1,8 +1,8 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.fnkqw20090
++ TESTDIR=/tmp/tmp.Lccpw15328
 ++ readlink -f tests/002_test_open.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c
-+ cd /tmp/tmp.fnkqw20090
++ cd /tmp/tmp.Lccpw15328
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
@@ -16,24 +16,24 @@
    2/ before
 + ls -li 2/
 合計 4
-189152 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 a
-189156 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 b
-189157 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 c
-189158 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 d
-189159 -rw-r--r-- 2 dancer dancer 1024 2006-08-31 07:56 e
+1180369 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 a
+1180373 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 b
+1180374 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 c
+1180375 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 d
+1180376 -rw-r--r-- 2 dancer dancer 1024 2006-10-29 13:29 e
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-189152 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 a
-189204 -rw-r--r-- 1 dancer dancer    3 2006-08-31 07:56 b
-189209 -rw-r--r-- 1 dancer dancer    3 2006-08-31 07:56 c
-189158 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 d
-189159 -rw-r--r-- 2 dancer dancer 1024 2006-08-31 07:56 e
+1180369 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 a
+1180421 -rw-r--r-- 1 dancer dancer    3 2006-10-29 13:29 b
+1180426 -rw-r--r-- 1 dancer dancer    3 2006-10-29 13:29 c
+1180375 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 d
+1180376 -rw-r--r-- 2 dancer dancer 1024 2006-10-29 13:29 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.fnkqw20090
++ rm -rf /tmp/tmp.Lccpw15328

@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.HPsQN20150
++ TESTDIR=/tmp/tmp.EnygS15388
 ++ readlink -f tests/004_test_fopen64.c
 + TESTCODE=/home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/004_test_fopen64.c
-+ cd /tmp/tmp.HPsQN20150
++ cd /tmp/tmp.EnygS15388
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3e-05 seconds, 44.5 MB/s
+1024 bytes (1.0 kB) copied, 2.4e-05 seconds, 42.7 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -16,24 +16,24 @@
    2/ before
 + ls -li 2/
 合計 4
-189324 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 a
-189328 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 b
-189329 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 c
-189330 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 d
-189331 -rw-r--r-- 2 dancer dancer 1024 2006-08-31 07:56 e
+1180533 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 a
+1180537 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 b
+1180538 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 c
+1180539 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 d
+1180540 -rw-r--r-- 2 dancer dancer 1024 2006-10-29 13:29 e
 + cow-shell /home/dancer/cvscheckout/whole/cpbuilder/cowdancer/cowdancer/tests/004_test_fopen64.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-189324 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 a
-189376 -rw-r--r-- 1 dancer dancer    4 2006-08-31 07:56 b
-189381 -rw-r--r-- 1 dancer dancer    4 2006-08-31 07:56 c
-189330 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 d
-189331 -rw-r--r-- 2 dancer dancer 1024 2006-08-31 07:56 e
+1180533 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 a
+1180585 -rw-r--r-- 1 dancer dancer    4 2006-10-29 13:29 b
+1180590 -rw-r--r-- 1 dancer dancer    4 2006-10-29 13:29 c
+1180539 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 d
+1180540 -rw-r--r-- 2 dancer dancer 1024 2006-10-29 13:29 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.HPsQN20150
++ rm -rf /tmp/tmp.EnygS15388

@@ -1,3 +1,9 @@
+cowdancer (0.24) UNRELEASED; urgency=low
+
+  * testsuite update
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 29 Oct 2006 13:31:42 +0900
+
 cowdancer (0.23) unstable; urgency=low
 
   * cowbuilder --update ignored command-line options; fix.

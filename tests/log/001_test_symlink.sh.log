@@ -1,6 +1,6 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.vCPbR20063
-+ cd /tmp/tmp.vCPbR20063
++ TESTDIR=/tmp/tmp.hdfHF15300
++ cd /tmp/tmp.hdfHF15300
 + mkdir 1/
 + touch 1/b 1/c 1/d 1/a.real
 + dd if=/dev/zero of=1/e bs=512 count=2
@@ -15,30 +15,30 @@
    2/ before
 + ls -li 2/
 合計 4
-189073 lrwxrwxrwx 2 dancer dancer    6 2006-08-31 07:56 a -> a.real
-189071 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 a.real
-189065 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 b
-189069 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 c
-189070 -rw-r--r-- 2 dancer dancer    0 2006-08-31 07:56 d
-189072 -rw-r--r-- 2 dancer dancer 1024 2006-08-31 07:56 e
+1180282 lrwxrwxrwx 2 dancer dancer    6 2006-10-29 13:29 a -> a.real
+1180280 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 a.real
+1180274 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 b
+1180278 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 c
+1180279 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 d
+1180281 -rw-r--r-- 2 dancer dancer 1024 2006-10-29 13:29 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/bash
 0+1 records in
 0+1 records out
-160 bytes (160 B) copied, 2.6e-05 seconds, 6.2 MB/s
+160 bytes (160 B) copied, 2.8e-05 seconds, 5.7 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-189073 lrwxrwxrwx 2 dancer dancer    6 2006-08-31 07:56 a -> a.real
-189112 -rw-r--r-- 1 dancer dancer    2 2006-08-31 07:56 a.real
-189119 -rw-r--r-- 1 dancer dancer    0 2006-08-31 07:56 c
-189127 -rw-r--r-- 1 dancer dancer  160 2006-08-31 07:56 d
-189072 -rw-r--r-- 2 dancer dancer 1024 2006-08-31 07:56 e
+1180282 lrwxrwxrwx 2 dancer dancer    6 2006-10-29 13:29 a -> a.real
+1180321 -rw-r--r-- 1 dancer dancer    2 2006-10-29 13:29 a.real
+1180328 -rw-r--r-- 1 dancer dancer    0 2006-10-29 13:29 c
+1180344 -rw-r--r-- 1 dancer dancer  160 2006-10-29 13:29 d
+1180281 -rw-r--r-- 2 dancer dancer 1024 2006-10-29 13:29 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.vCPbR20063
++ rm -rf /tmp/tmp.hdfHF15300

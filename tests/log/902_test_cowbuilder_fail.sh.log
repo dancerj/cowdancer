@@ -1,5 +1,5 @@
 + echo exit 1
-+ sudo cowbuilder --login --basepath /var/cache/pbuilder/base-test.cow
++ sudo cowbuilder --login --hookdir /usr/share/doc/pbuilder/examples/workaround/ --basepath /var/cache/pbuilder/base-test.cow
 W: /home/dancer/.pbuilderrc does not exist
  -> Running in no-targz mode
  -> copying local configuration
@@ -7,6 +7,7 @@ W: /home/dancer/.pbuilderrc does not exist
  -> mounting /dev/pts filesystem
  -> policy-rc.d already exists
  -> entering the shell
+W: no hooks of type F found -- ignoring
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
  -> Copying COW directory
