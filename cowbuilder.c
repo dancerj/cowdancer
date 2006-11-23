@@ -441,7 +441,10 @@ int cpbuilder_login(const struct pbuilderconfig* pc)
       
       if (pc->save_after_login)
 	{
+	  if (0!=forkexeclp("chroot", "chroot", pc->buildplace, "apt-get", "clean", NULL))
+	    ret=-1;
 	  if (cpbuilder_internal_saveupdate(pc))
+
 	    ret=-1;
 	}
       else
@@ -498,6 +501,8 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
     {
       if (pc->save_after_login)
 	{
+	  if (0!=forkexeclp("chroot", "chroot", pc->buildplace, "apt-get", "clean", NULL))
+	    ret=-1;
 	  if (cpbuilder_internal_saveupdate(pc))
 	    ret=-1;
 	}

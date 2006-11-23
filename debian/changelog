@@ -1,8 +1,10 @@
-cowdancer (0.24) UNRELEASED; urgency=low
+cowdancer (0.24) unstable; urgency=low
 
   * testsuite update
+  * Bug fix: "--save-after-login hardlinks aptcache contents in base.cow",
+    thanks to Matti Lindell (Closes: #384132).
 
- -- Junichi Uekawa <dancer@debian.org>  Sun, 29 Oct 2006 13:31:42 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 23 Nov 2006 15:00:59 +0900
 
 cowdancer (0.23) unstable; urgency=low
 
