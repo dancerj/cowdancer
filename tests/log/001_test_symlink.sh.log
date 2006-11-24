@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.hdfHF15300
-+ cd /tmp/tmp.hdfHF15300
++ TESTDIR=/tmp/tmp.tGYhe26282
++ cd /tmp/tmp.tGYhe26282
 + mkdir 1/
 + touch 1/b 1/c 1/d 1/a.real
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3e-05 seconds, 44.5 MB/s
+1024 bytes (1.0 kB) copied, 3.6e-05 seconds, 28.4 MB/s
 + ln -s a.real 1/a
 + ls -li 1/
 + sleep 1s
@@ -15,30 +15,30 @@
    2/ before
 + ls -li 2/
 合計 4
-1180282 lrwxrwxrwx 2 dancer dancer    6 2006-10-29 13:29 a -> a.real
-1180280 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 a.real
-1180274 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 b
-1180278 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 c
-1180279 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 d
-1180281 -rw-r--r-- 2 dancer dancer 1024 2006-10-29 13:29 e
+1402135 lrwxrwxrwx 2 dancer dancer    6 2006-11-24 14:32 a -> a.real
+1402133 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 a.real
+1402127 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 b
+1402131 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 c
+1402132 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 d
+1402134 -rw-r--r-- 2 dancer dancer 1024 2006-11-24 14:32 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/bash
 0+1 records in
 0+1 records out
-160 bytes (160 B) copied, 2.8e-05 seconds, 5.7 MB/s
+160 bytes (160 B) copied, 9.8e-05 seconds, 1.6 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-1180282 lrwxrwxrwx 2 dancer dancer    6 2006-10-29 13:29 a -> a.real
-1180321 -rw-r--r-- 1 dancer dancer    2 2006-10-29 13:29 a.real
-1180328 -rw-r--r-- 1 dancer dancer    0 2006-10-29 13:29 c
-1180344 -rw-r--r-- 1 dancer dancer  160 2006-10-29 13:29 d
-1180281 -rw-r--r-- 2 dancer dancer 1024 2006-10-29 13:29 e
+1402135 lrwxrwxrwx 2 dancer dancer    6 2006-11-24 14:32 a -> a.real
+1402174 -rw-r--r-- 1 dancer dancer    2 2006-11-24 14:32 a.real
+1402181 -rw-r--r-- 1 dancer dancer    0 2006-11-24 14:32 c
+1402189 -rw-r--r-- 1 dancer dancer  160 2006-11-24 14:32 d
+1402134 -rw-r--r-- 2 dancer dancer 1024 2006-11-24 14:32 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.hdfHF15300
++ rm -rf /tmp/tmp.tGYhe26282

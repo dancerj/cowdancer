@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.shOZL15606
-+ cd /tmp/tmp.shOZL15606
++ TESTDIR=/tmp/tmp.CcNES26605
++ cd /tmp/tmp.CcNES26605
 + mkdir 1/
 + touch '1/a'\''f' '1/b g' '1/c h' '1/d i'
 + dd if=/dev/zero 'of=1/e j' bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3e-05 seconds, 44.5 MB/s
+1024 bytes (1.0 kB) copied, 2.4e-05 seconds, 42.7 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -14,28 +14,28 @@
    2/ before
 + ls -li 2/
 合計 4
-1181027 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 a'f
-1181031 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 b g
-1181032 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 c h
-1181033 -rw-r--r-- 2 dancer dancer    0 2006-10-29 13:29 d i
-1181034 -rw-r--r-- 2 dancer dancer 1024 2006-10-29 13:29 e j
+1402935 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 a'f
+1402939 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 b g
+1402940 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 c h
+1402941 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 d i
+1402942 -rw-r--r-- 2 dancer dancer 1024 2006-11-24 14:32 e j
 + echo 'cd 2 && echo a > "a'\''f" && mv '\''b g'\'' '\''c h'\'' && touch '\''c h'\'' && dd if='\''e j'\'' of='\''d i'\'''
 + cow-shell
 Invoking /bin/bash
 0+1 records in
 0+1 records out
-160 bytes (160 B) copied, 2.8e-05 seconds, 5.7 MB/s
+160 bytes (160 B) copied, 2.7e-05 seconds, 5.9 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-1181073 -rw-r--r-- 1 dancer dancer    2 2006-10-29 13:29 a'f
-1181080 -rw-r--r-- 1 dancer dancer    0 2006-10-29 13:29 c h
-1181088 -rw-r--r-- 1 dancer dancer  160 2006-10-29 13:29 d i
-1181034 -rw-r--r-- 2 dancer dancer 1024 2006-10-29 13:29 e j
+1402989 -rw-r--r-- 1 dancer dancer    2 2006-11-24 14:32 a'f
+1402996 -rw-r--r-- 1 dancer dancer    0 2006-11-24 14:32 c h
+1403004 -rw-r--r-- 1 dancer dancer  160 2006-11-24 14:32 d i
+1402942 -rw-r--r-- 2 dancer dancer 1024 2006-11-24 14:32 e j
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.shOZL15606
++ rm -rf /tmp/tmp.CcNES26605

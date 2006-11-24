@@ -1,7 +1,7 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.MXHLk15561
++ TESTDIR=/tmp/tmp.JzYVj26557
 + set -ex
-+ cd /tmp/tmp.MXHLk15561
++ cd /tmp/tmp.JzYVj26557
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d 1/a~~
 + dd if=/dev/zero of=1/e bs=512 count=2
@@ -13,5 +13,5 @@
 + ls 1/a~~
 1/a~~
 + RESULT=0
-+ rm -rf /tmp/tmp.MXHLk15561
++ rm -rf /tmp/tmp.JzYVj26557
 + exit 0
