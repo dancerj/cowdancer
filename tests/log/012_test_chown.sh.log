@@ -1,5 +1,5 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.DRWfT26416
++ TESTDIR=/tmp/tmp.YbYSY20444
 ++ readlink -f tests/012_test_chown.c
 + TESTCODE=/home/dancer/cvscheckout/git/cowdancer/cowdancer/tests/012_test_chown.c
 ++ id -G
@@ -7,7 +7,7 @@
 + ORIGID=1000
 + NEWID=4
 + ((  11 < 3  ))
-+ cd /tmp/tmp.DRWfT26416
++ cd /tmp/tmp.YbYSY20444
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
@@ -22,24 +22,24 @@
    2/ before
 + ls -li 2/
 合計 4
-1402516 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 a
-1402520 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 b
-1402521 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 c
-1402522 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 d
-1402523 -rw-r--r-- 2 dancer dancer 1024 2006-11-24 14:32 e
+111006 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 a
+111010 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 b
+111011 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 c
+111012 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 d
+111013 -rw-r--r-- 2 dancer dancer 1024 2006-12-21 07:51 e
 + cow-shell /home/dancer/cvscheckout/git/cowdancer/cowdancer/tests/012_test_chown.c 4 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 4
-1402581 -rw-r--r-- 1 dancer adm       0 2006-11-24 14:32 a
-1402520 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 b
-1402586 -rw-r--r-- 1 dancer adm       0 2006-11-24 14:32 c
-1402522 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 d
-1402523 -rw-r--r-- 2 dancer dancer 1024 2006-11-24 14:32 e
+111068 -rw-r--r-- 1 dancer adm       0 2006-12-21 07:51 a
+111010 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 b
+111073 -rw-r--r-- 1 dancer adm       0 2006-12-21 07:51 c
+111012 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 d
+111013 -rw-r--r-- 2 dancer dancer 1024 2006-12-21 07:51 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.DRWfT26416
++ rm -rf /tmp/tmp.YbYSY20444

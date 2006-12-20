@@ -1,20 +1,20 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.nyaxv26508
++ TESTDIR=/tmp/tmp.iPZwf20535
 ++ readlink -f tests/015_test_ilistdelete.c
 + TESTCODE=/home/dancer/cvscheckout/git/cowdancer/cowdancer/tests/015_test_ilistdelete.c
-+ cd /tmp/tmp.nyaxv26508
++ cd /tmp/tmp.iPZwf20535
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + cp -al 1 2
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.5e-05 seconds, 41 MB/s
+1024 bytes (1.0 kB) copied, 2.3e-05 seconds, 44.5 MB/s
 + cow-shell /home/dancer/cvscheckout/git/cowdancer/cowdancer/tests/015_test_ilistdelete.c
-cowdancer: cannot open ilistfile /tmp/tmp.nyaxv26508/.ilist
+cowdancer: cannot open ilistfile /tmp/tmp.iPZwf20535/.ilist
 open: Cannot allocate memory
-cowdancer: cannot open ilistfile /tmp/tmp.nyaxv26508/.ilist
+cowdancer: cannot open ilistfile /tmp/tmp.iPZwf20535/.ilist
 open: Cannot allocate memory
 + RET=0
-+ rm -rf /tmp/tmp.nyaxv26508
++ rm -rf /tmp/tmp.iPZwf20535
 + exit 0

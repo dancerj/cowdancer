@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.ZmXPQ26372
++ TESTDIR=/tmp/tmp.DnZTO20410
 ++ readlink -f tests/004_test_fopen64.c
 + TESTCODE=/home/dancer/cvscheckout/git/cowdancer/cowdancer/tests/004_test_fopen64.c
-+ cd /tmp/tmp.ZmXPQ26372
++ cd /tmp/tmp.DnZTO20410
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.4e-05 seconds, 42.7 MB/s
+1024 bytes (1.0 kB) copied, 2.3e-05 seconds, 44.5 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -16,24 +16,24 @@
    2/ before
 + ls -li 2/
 合計 4
-1402405 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 a
-1402409 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 b
-1402410 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 c
-1402411 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 d
-1402412 -rw-r--r-- 2 dancer dancer 1024 2006-11-24 14:32 e
+110918 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 a
+110922 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 b
+110923 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 c
+110924 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 d
+110925 -rw-r--r-- 2 dancer dancer 1024 2006-12-21 07:51 e
 + cow-shell /home/dancer/cvscheckout/git/cowdancer/cowdancer/tests/004_test_fopen64.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-1402405 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 a
-1402480 -rw-r--r-- 1 dancer dancer    4 2006-11-24 14:32 b
-1402485 -rw-r--r-- 1 dancer dancer    4 2006-11-24 14:32 c
-1402411 -rw-r--r-- 2 dancer dancer    0 2006-11-24 14:32 d
-1402412 -rw-r--r-- 2 dancer dancer 1024 2006-11-24 14:32 e
+110918 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 a
+110970 -rw-r--r-- 1 dancer dancer    4 2006-12-21 07:51 b
+110975 -rw-r--r-- 1 dancer dancer    4 2006-12-21 07:51 c
+110924 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 d
+110925 -rw-r--r-- 2 dancer dancer 1024 2006-12-21 07:51 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.ZmXPQ26372
++ rm -rf /tmp/tmp.DnZTO20410
