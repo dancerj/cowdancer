@@ -1,3 +1,9 @@
+cowdancer (0.25) UNRELEASED; urgency=low
+
+  * 
+
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 21 Dec 2006 07:50:22 +0900
+
 cowdancer (0.24) unstable; urgency=low
 
   * testsuite update
