@@ -1,3 +1,7 @@
+2006-12-21  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/900_test_pbuilder.sh: do not call pdebuild through sudo.
+
 2006-10-29  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/902_test_cowbuilder_fail.sh: use workaround hooks.
