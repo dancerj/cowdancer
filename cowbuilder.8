@@ -77,6 +77,13 @@ Run
 against the current directory.
 The current directory should be an extracted Debian source package directory.
 
+Edit
+.B /etc/pbuilderrc 
+to have
+.B PDEBUILD_PBUILDER=cowbuilder
+to make this the default behavior for 
+.B pdebuild.
+
 .TP
 .B "cowbuilder --login --bindmounts /home/dancer"
 Start a cow-shell session inside base.cow, with /home/dancer being bind-mounted to within
