@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.ssXDi20625
-+ cd /tmp/tmp.ssXDi20625
++ TESTDIR=/tmp/tmp.rgolTn8314
++ cd /tmp/tmp.rgolTn8314
 + mkdir 1/
 + touch '1/a'\''f' '1/b g' '1/c h' '1/d i'
 + dd if=/dev/zero 'of=1/e j' bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.2e-05 seconds, 46.5 MB/s
+1024 bytes (1.0 kB) copied, 2.4e-05 seconds, 42.7 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -14,28 +14,28 @@
    2/ before
 + ls -li 2/
 合計 4
-111402 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 a'f
-111406 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 b g
-111407 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 c h
-111408 -rw-r--r-- 2 dancer dancer    0 2006-12-21 07:51 d i
-111409 -rw-r--r-- 2 dancer dancer 1024 2006-12-21 07:51 e j
+967110 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:26 a'f
+967114 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:26 b g
+967115 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:26 c h
+967116 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:26 d i
+967117 -rw-r--r-- 2 dancer dancer 1024 2006-12-31 15:26 e j
 + echo 'cd 2 && echo a > "a'\''f" && mv '\''b g'\'' '\''c h'\'' && touch '\''c h'\'' && dd if='\''e j'\'' of='\''d i'\'''
 + cow-shell
 Invoking /bin/bash
 0+1 records in
 0+1 records out
-160 bytes (160 B) copied, 2.7e-05 seconds, 5.9 MB/s
+160 bytes (160 B) copied, 2.9e-05 seconds, 5.5 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-111448 -rw-r--r-- 1 dancer dancer    2 2006-12-21 07:51 a'f
-111455 -rw-r--r-- 1 dancer dancer    0 2006-12-21 07:51 c h
-111463 -rw-r--r-- 1 dancer dancer  160 2006-12-21 07:51 d i
-111409 -rw-r--r-- 2 dancer dancer 1024 2006-12-21 07:51 e j
+967160 -rw-r--r-- 1 dancer dancer    2 2006-12-31 15:26 a'f
+967167 -rw-r--r-- 1 dancer dancer    0 2006-12-31 15:26 c h
+967175 -rw-r--r-- 1 dancer dancer  160 2006-12-31 15:26 d i
+967117 -rw-r--r-- 2 dancer dancer 1024 2006-12-31 15:26 e j
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.ssXDi20625
++ rm -rf /tmp/tmp.rgolTn8314

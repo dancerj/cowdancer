@@ -1,0 +1,51 @@
+++ mktemp -d
++ TESTDIR=/tmp/tmp.saoZBw8341
+++ readlink -f tests/012_test_chown.c
++ TESTCODE=/home/dancer/cvscheckout/git/cowdancer/cowdancer/tests/012_test_chown.c
+++ id -G
++ set -- 1000 4 20 24 25 29 44 46 100 109 112
++ ORIGID=1000
++ NEWID=4
++ ((  11 < 3  ))
++ cd /tmp/tmp.saoZBw8341
++ mkdir 1/
++ touch 1/a 1/b 1/c 1/d
++ ln -s a 1/f
++ ln -s b 1/g
++ dd if=/dev/zero of=1/e bs=512 count=2
+2+0 records in
+2+0 records out
+1024 bytes (1.0 kB) copied, 2.4e-05 seconds, 42.7 MB/s
++ chgrp 1000 1/a 1/b 1/c 1/d
++ ls -li 1/
++ sleep 1s
++ cp -al 1/ 2
++ echo '   2/ before'
+   2/ before
++ ls -li 2/
+合計 4
+967206 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:26 a
+967210 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:26 b
+967211 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:26 c
+967212 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:26 d
+967215 -rw-r--r-- 2 dancer dancer 1024 2006-12-31 15:26 e
+967213 lrwxrwxrwx 2 dancer dancer    1 2006-12-31 15:26 f -> a
+967214 lrwxrwxrwx 2 dancer dancer    1 2006-12-31 15:26 g -> b
++ cow-shell /home/dancer/cvscheckout/git/cowdancer/cowdancer/tests/012_test_chown.c 4 2/f 2/b 2/g
++ echo '   2/ after'
+   2/ after
++ ls -li 2/
+合計 4
+967266 -rw-r--r-- 1 dancer adm       0 2006-12-31 15:26 a
+967210 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:26 b
+967211 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:26 c
+967212 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:26 d
+967215 -rw-r--r-- 2 dancer dancer 1024 2006-12-31 15:26 e
+967213 lrwxrwxrwx 2 dancer dancer    1 2006-12-31 15:26 f -> a
+967274 lrwxrwxrwx 1 dancer adm       1 2006-12-31 15:26 g -> b
++ rm -rf 2/
++ ls -li 1/
++ echo '   1/ differences; should not exist'
+   1/ differences; should not exist
++ diff -u ls.prev ls.after
++ rm -rf /tmp/tmp.saoZBw8341
