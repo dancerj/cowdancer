@@ -1,4 +1,4 @@
-cowdancer (0.25) UNRELEASED; urgency=low
+cowdancer (0.25) unstable; urgency=low
 
   * Bug fix: "cowdancer: Better explain how to use cowbuilder to build
     packages", thanks to Nelson A. de Oliveira (Closes: #405090).
@@ -6,7 +6,7 @@ cowdancer (0.25) UNRELEASED; urgency=low
     thanks to Hubert Chan (Closes: #402669).
     Do not canonicalize lchown.
 
- -- Junichi Uekawa <dancer@debian.org>  Sun, 31 Dec 2006 15:53:50 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 31 Dec 2006 15:54:09 +0900
 
 cowdancer (0.24) unstable; urgency=low
 
