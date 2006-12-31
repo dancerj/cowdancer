@@ -1,5 +1,7 @@
 /*BINFMTC:
-chown test */
+chown test
+Used by 012 and 020 tests.
+ */
 
 /* for fchown */
 #define _BSD_SOURCE

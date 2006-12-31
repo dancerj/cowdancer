@@ -183,10 +183,12 @@ static int initialize_functions ()
    function may fail, but the error cannot really be recovered; how
    should the default be ?
    
+   canonicalize flag should be 1 except for non-symlink-following functions.
+
    @return 1 on failure, 0 on success
 */
 __attribute__ ((warn_unused_result)) 
-static int check_inode_and_copy(const char* s)
+static int check_inode_and_copy(const char* s, int canonicalize)
 {
   struct ilist_struct search_target;
   char* canonical=NULL;/* the canonical filename, the filename of the protected inode and the newly generated*/
@@ -200,12 +202,12 @@ static int check_inode_and_copy(const char* s)
   if(lstat(s, &buf))
     return 0;			/* if stat fails, the file probably 
 				   doesn't exist; return, success */
-  if (S_ISLNK(buf.st_mode))
+  if (canonicalize && S_ISLNK(buf.st_mode))
     {
       /* for symbollic link, canonicalize and get the real filename */
       if (!(canonical=canonicalize_file_name(s)))
 	return 0;			/* if canonicalize_file_name fails, 
-				   the file probably doesn't exist. */
+					   the file probably doesn't exist. */
       
       if(stat(canonical, &buf))	/* if I can't stat this file, I don't think 
 				   I can write to it; ignore */
@@ -218,11 +220,17 @@ static int check_inode_and_copy(const char* s)
   search_target.inode = buf.st_ino;
   search_target.dev = buf.st_dev;
 
-  /* I probably want to check if hardlink no is 1, so that I don't
-     need to check, if performance is wrong. c.f. fl-cow */
-
+  //do some hardcore debugging here:
+  if (getenv("COWDANCER_DEBUG"))
+    {
+      printf ("%s=%s %i %i %i %p\n", s, canonical, buf.st_nlink, S_ISREG(buf.st_mode), S_ISLNK(buf.st_mode),
+	      bsearch(&search_target, ilist, ilist_len, 
+		      sizeof(search_target), compare_ilist));
+    }
+  
   if((buf.st_nlink > 1) && 	/* it is hardlinked */
-     S_ISREG(buf.st_mode) && 	/* it is a regular file */
+     (S_ISREG(buf.st_mode) || 
+      S_ISLNK(buf.st_mode)) && 	/* it is a regular file or a symbollic link */
      bsearch(&search_target, ilist, ilist_len, 
 	     sizeof(search_target), compare_ilist)) /* and a match is
 						       found in ilist
@@ -322,7 +330,7 @@ int open(const char * a, int flags, ...)
 	{
 	case O_WRONLY:
 	case O_RDWR:
-	  if (check_inode_and_copy(a))
+	  if (check_inode_and_copy(a,1))
 	    {
 	      errno=ENOMEM;
 	      return -1;
@@ -354,7 +362,7 @@ int open64(const char * a, int flags, ...)
 	{
 	case O_WRONLY:
 	case O_RDWR:
-	  if (check_inode_and_copy(a))
+	  if (check_inode_and_copy(a,1))
 	    {
 	      errno=ENOMEM;
 	      return -1;
@@ -377,7 +385,7 @@ int creat(const char * a, mode_t mode)
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("creat", a);
-      if (check_inode_and_copy(a))
+      if (check_inode_and_copy(a,1))
 	{
 	  errno=ENOMEM;
 	  return -1;
@@ -398,7 +406,7 @@ int creat64(const char * a, mode_t mode)
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("creat64", a);
-      if (check_inode_and_copy(a))
+      if (check_inode_and_copy(a,1))
 	    {
 	      errno=ENOMEM;
 	      return -1;
@@ -427,7 +435,7 @@ FILE* fopen(const char* s, const char* t)
      likely_fopen_write(t))
     {
       debug_cowdancer_2 ("fopen", s);
-      if (check_inode_and_copy(s))
+      if (check_inode_and_copy(s,1))
 	{
 	  errno=ENOMEM;
 	  return NULL;
@@ -450,7 +458,7 @@ FILE* fopen64(const char* s, const char* t)
      likely_fopen_write(t))
     {
       debug_cowdancer_2 ("fopen64", s);
-      if(check_inode_and_copy(s))
+      if(check_inode_and_copy(s,1))
 	{
 	  errno=ENOMEM;
 	  return NULL;
@@ -472,7 +480,7 @@ int chown(const char* s, uid_t u, gid_t g)
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("chown", s);
-      if(check_inode_and_copy(s))
+      if(check_inode_and_copy(s,1))
 	{
 	  errno=ENOMEM;
 	  return -1;
@@ -539,6 +547,7 @@ int fchown(int fd, uid_t u, gid_t g)
 }
 
 #undef lchown
+/* chown that does not follow the symbollic links. */
 int lchown(const char* s, uid_t u, gid_t g)
 {
   int ret;
@@ -550,7 +559,7 @@ int lchown(const char* s, uid_t u, gid_t g)
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("lchown", s);
-      if (check_inode_and_copy(s))
+      if (check_inode_and_copy(s,0))
 	{
 	  errno=ENOMEM;
 	  return -1;
@@ -572,7 +581,7 @@ int chmod(const char* s, mode_t mode)
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("chmod", s);
-      if (check_inode_and_copy(s))
+      if (check_inode_and_copy(s,1))
 	{
 	  errno=ENOMEM;
 	  return -1;

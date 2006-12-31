@@ -37,7 +37,7 @@ static int ilistcreate(const char* ilistpath)
       return 1;
     }
   ilist_len=2000;
-  if (NULL==(inf=popen("find . -xdev -type f -links +1 -print0 | xargs -0 stat --format '%d %i '","r")))
+  if (NULL==(inf=popen("find . -xdev \\( -type l -o -type f \\) -a -links +1 -print0 | xargs -0 stat --format '%d %i '","r")))
     {
       outofmemory("popen find failed");
       return 1;
@@ -48,6 +48,9 @@ static int ilistcreate(const char* ilistpath)
       (ilist+i)->dev=(dev_t)dev;
       (ilist+i)->inode=(ino_t)ino;
 
+      if (getenv("COWDANCER_DEBUG")) 
+	printf("%i %i \n ", dev, ino);
+      
       i++;
       if (i>=ilist_len)
 	{

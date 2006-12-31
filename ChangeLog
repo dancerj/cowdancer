@@ -1,3 +1,15 @@
+2006-12-31  Junichi Uekawa  <dancer@debian.org>
+
+	* cow-shell.c (ilistcreate): add debug hook.
+
+	* tests/020_test_lchown.sh: add new test.
+
+	* cow-shell.c (ilistcreate): include symbollic links to the list.
+
+	* cowdancer.c (check_inode_and_copy, and others): do not
+	canonicalize file name for lchown case. Add a new flag and change
+	every function to use it.
+
 2006-12-21  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/900_test_pbuilder.sh: do not call pdebuild through sudo.
