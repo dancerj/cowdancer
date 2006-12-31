@@ -223,7 +223,7 @@ static int check_inode_and_copy(const char* s, int canonicalize)
   //do some hardcore debugging here:
   if (getenv("COWDANCER_DEBUG"))
     {
-      printf ("%s=%s %i %i %i %p\n", s, canonical, buf.st_nlink, S_ISREG(buf.st_mode), S_ISLNK(buf.st_mode),
+      printf ("%s=%s %i %i %i %p\n", s, canonical, (int)buf.st_nlink, S_ISREG(buf.st_mode), S_ISLNK(buf.st_mode),
 	      bsearch(&search_target, ilist, ilist_len, 
 		      sizeof(search_target), compare_ilist));
     }

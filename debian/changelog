@@ -6,7 +6,7 @@ cowdancer (0.25) UNRELEASED; urgency=low
     thanks to Hubert Chan (Closes: #402669).
     Do not canonicalize lchown.
 
- -- Junichi Uekawa <dancer@debian.org>  Sun, 31 Dec 2006 14:33:01 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 31 Dec 2006 15:53:50 +0900
 
 cowdancer (0.24) unstable; urgency=low
 

@@ -1,5 +1,8 @@
 2006-12-31  Junichi Uekawa  <dancer@debian.org>
 
+	* Makefile (%.o): do not use strict aliasing for compiling
+	cow-shell.c
+
 	* cow-shell.c (ilistcreate): add debug hook.
 
 	* tests/020_test_lchown.sh: add new test.

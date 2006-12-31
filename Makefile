@@ -28,7 +28,7 @@ cowbuilder: cowbuilder.o
 	gcc -D_REENTRANT -fPIC $< -o $@ -c -Wall -O2 -g
 
 %.o: %.c
-	gcc $< -o $@ -c -Wall -O2 -g 
+	gcc $< -o $@ -c -Wall -O2 -g -fno-strict-aliasing
 
 clean: 
 	-rm -f *~ *.o *.lo $(BINARY)

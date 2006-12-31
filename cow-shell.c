@@ -49,7 +49,7 @@ static int ilistcreate(const char* ilistpath)
       (ilist+i)->inode=(ino_t)ino;
 
       if (getenv("COWDANCER_DEBUG")) 
-	printf("%i %i \n ", dev, ino);
+	printf("%li %li \n ", (long int)dev, (long int)ino);
       
       i++;
       if (i>=ilist_len)
