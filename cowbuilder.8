@@ -9,37 +9,84 @@ Executes the specified pbuilder operation with
 .B cowdancer
 
 .SH "COMMANDS"
+
+Most commands invoke pbuilder with the specified commands, see
+pbuilder manual for details.
+
 .TP
 .B "--create"
+
+Create the base.cow image.
+The directory for base.cow should be empty, or this command will fail.
 
 .TP
 .B "--update"
 
+Update the base.cow image.
+
 .TP
-.B "--build"
+.BI "--build " ".dsc-file"
+
+Build a package given a .dsc file
 
 .TP
 .B "--login"
 
-Invoke pbuilder with the specified commands, see pbuilder manual for
-details.
+Start a session within the base.cow.
+
+.TP
+.B "--execute"
+
+Execute a command within the base.cow.
 
 .SH "OPTIONS"
 
 Most options are the same as pbuilder, except for the following which are handled specially
 
-.SH
+.TP
 .B "--buildplace"
 
 The place where COW operation takes place.
 
-.SH
+.TP
 .B "--basepath" 
 has a very different meaning to 
 .B basetgz
 option of pbuilder, since there is no tgz.  This option specifies the
-directory in which the COW master data is stored.
+directory in which the COW master data is stored, the default being 
+.B "/var/cache/pbuilder/base.cow"
 
+.SH  "EXAMPLES"
+
+.TP
+.B "cowbuilder --create"
+Create a base.cow image.
+
+.TP 
+.B "cowbuilder --update"
+Update the base.cow image.
+
+.TP
+.B "cowbuilder --build test_0.1.dsc"
+Build the package specified in dsc file, with the base.cow image.
+
+.TP
+.B "pdebuild --pbuilder cowbuilder"
+Run
+.B "cowbuilder --build"
+against the current directory.
+The current directory should be an extracted Debian source package directory.
+
+.TP
+.B "cowbuilder --login --bindmounts /home/dancer"
+Start a cow-shell session inside base.cow, with /home/dancer being bind-mounted to within
+chroot.
+
+.TP
+.B "cowbuilder --create --distribution sid --basepath /var/cache/pbuilder/base-test.cow"
+Create a base.cow image with the path 
+.B "/var/cache/pbuilder/base-test.cow"
+and distribution sid.
 
 
 .SH "AUTHOR"

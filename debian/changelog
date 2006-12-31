@@ -1,8 +1,9 @@
 cowdancer (0.25) UNRELEASED; urgency=low
 
-  * 
+  * Bug fix: "cowdancer: Better explain how to use cowbuilder to build
+    packages", thanks to Nelson A. de Oliveira (Closes: #405090).
 
- -- Junichi Uekawa <dancer@debian.org>  Thu, 21 Dec 2006 07:50:22 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 31 Dec 2006 14:18:05 +0900
 
 cowdancer (0.24) unstable; urgency=low
 
