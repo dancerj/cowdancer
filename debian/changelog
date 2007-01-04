@@ -1,3 +1,9 @@
+cowdancer (0.26) UNRELEASED; urgency=low
+
+  * 
+
+ -- Junichi Uekawa <dancer@debian.org>  Thu,  4 Jan 2007 15:12:40 +0900
+
 cowdancer (0.25) unstable; urgency=low
 
   * Bug fix: "cowdancer: Better explain how to use cowbuilder to build
