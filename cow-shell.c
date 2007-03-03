@@ -105,7 +105,7 @@ int main(int ac, char** av)
   asprintf(&buf, "%s%s%s",
 	   getenv("LD_PRELOAD")?:"",
 	   getenv("LD_PRELOAD")?" ":"",
-	   "/usr/lib/cowdancer/libcowdancer.so"
+	   LIBDIR "/cowdancer/libcowdancer.so"
 	   );
 
   if (getenv("COWDANCER_REUSE") && 

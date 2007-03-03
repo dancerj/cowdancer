@@ -1,6 +1,6 @@
 cowdancer (0.26) UNRELEASED; urgency=low
 
-  * 
+  * spec file, port to rpm-based systems.
 
  -- Junichi Uekawa <dancer@debian.org>  Thu,  4 Jan 2007 15:12:40 +0900
 

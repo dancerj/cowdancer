@@ -1,3 +1,12 @@
+2007-03-04  Junichi Uekawa  <dancer@debian.org>
+
+	* cow-shell.c (main): remove use of /usr/lib and use value of
+	LIBDIR
+
+	* cowdancer.spec: create specfile
+
+	* Makefile (install): fix makefile
+
 2006-12-31  Junichi Uekawa  <dancer@debian.org>
 
 	* Makefile (%.o): do not use strict aliasing for compiling
