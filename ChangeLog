@@ -1,3 +1,9 @@
+2007-03-08  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/021_test_open.c (main): C source for testing it.
+
+	* tests/021_test_open.sh (TESTCODE): create test for close(0);open(XXX,XXXX)=0;
+
 2007-03-04  Junichi Uekawa  <dancer@debian.org>
 
 	* cow-shell.c (main): remove use of /usr/lib and use value of
