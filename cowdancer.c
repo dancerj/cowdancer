@@ -322,7 +322,6 @@ int open(const char * a, int flags, ...)
       return -1;
     }
   
-  
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("open", a);

@@ -1,6 +1,7 @@
 2007-03-08  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/021_test_open.c (main): C source for testing it.
+	(main): add check that initial open is the problem.
 
 	* tests/021_test_open.sh (TESTCODE): create test for close(0);open(XXX,XXXX)=0;
 
