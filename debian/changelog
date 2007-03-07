@@ -1,9 +1,11 @@
 cowdancer (0.26) UNRELEASED; urgency=low
 
   * spec file, port to rpm-based systems.
-  * add test for close(0);open() not returning 0 for fd.
+  * load .ilist file in the constructor, which should make .ilist 
+  file be loaded at file descriptor 4.
+  - add test for close(0);open() not returning 0 for fd.
 
- -- Junichi Uekawa <dancer@debian.org>  Thu,  8 Mar 2007 07:46:31 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Thu,  8 Mar 2007 08:38:59 +0900
 
 cowdancer (0.25) unstable; urgency=low
 

@@ -178,6 +178,14 @@ static int initialize_functions ()
     return 0;
 }
 
+/* the constructor for this library */
+__attribute__ ((constructor)) 
+     void ctor()
+{
+  initialize_functions();
+}
+
+
 /**
    check if i-node is to be protected, and if so, copy the file.  This
    function may fail, but the error cannot really be recovered; how
