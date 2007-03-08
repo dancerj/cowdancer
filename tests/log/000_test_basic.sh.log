@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.bkuZVF7984
-+ cd /tmp/tmp.bkuZVF7984
++ TESTDIR=/tmp/tmp.vOvWq31340
++ cd /tmp/tmp.vOvWq31340
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.4e-05 seconds, 42.7 MB/s
+1024 bytes (1.0 kB) copied, 2.4116e-05 seconds, 42.5 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -14,28 +14,28 @@
    2/ before
 + ls -li 2/
 合計 4
-966232 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:25 a
-966236 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:25 b
-966237 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:25 c
-966238 -rw-r--r-- 2 dancer dancer    0 2006-12-31 15:25 d
-966239 -rw-r--r-- 2 dancer dancer 1024 2006-12-31 15:25 e
+187775 -rw-r--r-- 2 dancer dancer    0 2007-03-08 08:39 a
+187779 -rw-r--r-- 2 dancer dancer    0 2007-03-08 08:39 b
+187780 -rw-r--r-- 2 dancer dancer    0 2007-03-08 08:39 c
+187781 -rw-r--r-- 2 dancer dancer    0 2007-03-08 08:39 d
+187782 -rw-r--r-- 2 dancer dancer 1024 2007-03-08 08:39 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/bash
-0+1 records in
-0+1 records out
-160 bytes (160 B) copied, 2.8e-05 seconds, 5.7 MB/s
+2+0 records in
+2+0 records out
+1024 bytes (1.0 kB) copied, 3.1017e-05 seconds, 33.0 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-966282 -rw-r--r-- 1 dancer dancer    2 2006-12-31 15:25 a
-966289 -rw-r--r-- 1 dancer dancer    0 2006-12-31 15:25 c
-966297 -rw-r--r-- 1 dancer dancer  160 2006-12-31 15:25 d
-966239 -rw-r--r-- 2 dancer dancer 1024 2006-12-31 15:25 e
+187881 -rw-r--r-- 1 dancer dancer    2 2007-03-08 08:39 a
+187898 -rw-r--r-- 1 dancer dancer    0 2007-03-08 08:39 c
+187906 -rw-r--r-- 1 dancer dancer 1024 2007-03-08 08:39 d
+187782 -rw-r--r-- 2 dancer dancer 1024 2007-03-08 08:39 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.bkuZVF7984
++ rm -rf /tmp/tmp.vOvWq31340

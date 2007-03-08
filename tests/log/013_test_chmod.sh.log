@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.WzajRS8165
++ TESTDIR=/tmp/tmp.mvzUd31641
 ++ readlink -f tests/013_test_chmod.c
-+ TESTCODE=/home/dancer/cvscheckout/git/cowdancer/cowdancer/tests/013_test_chmod.c
-+ cd /tmp/tmp.WzajRS8165
++ TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/013_test_chmod.c
++ cd /tmp/tmp.mvzUd31641
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.4e-05 seconds, 42.7 MB/s
+1024 bytes (1.0 kB) copied, 2.4485e-05 seconds, 41.8 MB/s
 + chmod 600 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -17,24 +17,24 @@
    2/ before
 + ls -li 2/
 合計 4
-966792 -rw------- 2 dancer dancer    0 2006-12-31 15:25 a
-966796 -rw------- 2 dancer dancer    0 2006-12-31 15:25 b
-966797 -rw------- 2 dancer dancer    0 2006-12-31 15:25 c
-966798 -rw------- 2 dancer dancer    0 2006-12-31 15:25 d
-966799 -rw-r--r-- 2 dancer dancer 1024 2006-12-31 15:25 e
-+ cow-shell /home/dancer/cvscheckout/git/cowdancer/cowdancer/tests/013_test_chmod.c 2/a 2/b
+188809 -rw------- 2 dancer dancer    0 2007-03-08 08:39 a
+188813 -rw------- 2 dancer dancer    0 2007-03-08 08:39 b
+188814 -rw------- 2 dancer dancer    0 2007-03-08 08:39 c
+188815 -rw------- 2 dancer dancer    0 2007-03-08 08:39 d
+188816 -rw-r--r-- 2 dancer dancer 1024 2007-03-08 08:39 e
++ cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/013_test_chmod.c 2/a 2/b
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 4
-966848 -r-------- 1 dancer dancer    0 2006-12-31 15:25 a
-966796 -rw------- 2 dancer dancer    0 2006-12-31 15:25 b
-966797 -rw------- 2 dancer dancer    0 2006-12-31 15:25 c
-966798 -rw------- 2 dancer dancer    0 2006-12-31 15:25 d
-966799 -rw-r--r-- 2 dancer dancer 1024 2006-12-31 15:25 e
+188922 -r-------- 1 dancer dancer    0 2007-03-08 08:39 a
+188813 -rw------- 2 dancer dancer    0 2007-03-08 08:39 b
+188814 -rw------- 2 dancer dancer    0 2007-03-08 08:39 c
+188815 -rw------- 2 dancer dancer    0 2007-03-08 08:39 d
+188816 -rw-r--r-- 2 dancer dancer 1024 2007-03-08 08:39 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.WzajRS8165
++ rm -rf /tmp/tmp.mvzUd31641
