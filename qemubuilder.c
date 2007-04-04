@@ -794,7 +794,8 @@ int qemubuilder_create(const struct pbuilderconfig* pc)
 	   "cp /proc/mounts /etc/mtab\n"
 	   "export PBUILDER_MOUNTPOINT=/var/cache/pbuilder/pbuilder-mnt\n"
 	   "mkdir -p $PBUILDER_MOUNTPOINT\n"
-	   "mount -n -t ext3 /dev/%sb $PBUILDER_MOUNTPOINT \n"	   "$PBUILDER_MOUNTPOINT/pbuilder-run \n",
+	   "mount -n -t ext3 /dev/%sb $PBUILDER_MOUNTPOINT \n"
+	   "$PBUILDER_MOUNTPOINT/pbuilder-run \n",
 	   qemu_arch_diskdevice(pc->arch)
 	   );
   
@@ -802,6 +803,7 @@ int qemubuilder_create(const struct pbuilderconfig* pc)
   create_script(pc->buildplace, 
 		"pbuilder-run",
 		s);
+  free(s); s=0;
 
   ret=loop_umount(pc->buildplace);
 
@@ -812,40 +814,43 @@ int qemubuilder_create(const struct pbuilderconfig* pc)
   loop_mount(workblockdevicepath, pc->buildplace);
 
   /* this is specific to my configuration, fix it later. */
-  create_script(pc->buildplace, "pbuilder-run",
-		"#!/bin/bash\n"
-		"export RET=0"
-		"echo \n"
-		"echo ' -> qemu-pbuilder second-stage' \n"
-		"/debootstrap/debootstrap --second-stage\n"
-		//TODO: copy hook scripts
-		"mount -n /proc /proc -t proc\n"
-		"dhclient eth0\n"
-		"cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
-		"cp $PBUILDER_MOUNTPOINT/resolv.conf /etc/resolv.conf\n"
-		"cp $PBUILDER_MOUNTPOINT/hostname /etc/hostname\n"
-		"hostname pbuilder-$(cat /etc/hostname)\n"
-		//TODO: installaptlines
-		//"echo 'deb http://192.168.1.26/debian/ sid main ' > /etc/apt/sources.list\n"
-		//TODO: run G hook
-		"apt-get update\n"
-		//TODO: "dpkg --purge $REMOVEPACKAGES\n"
-		//recover aptcache
-		"apt-get -y --force-yes -o DPkg::Options::=--force-confnew dist-upgrade\n"
-		"apt-get install --force-yes -y build-essential dpkg-dev apt pbuilder\n"
-		//TODO: EXTRAPACKAGES handling
-		//save aptcache
-		//optionally autoclean aptcache
-		//run E hook
-		"apt-get clean || true\n"
-		"export RET=0"
-		":EXIT"
-		"sync\n"
-		"while sleep 3s; do\n"
-		"  echo ' -> qemu-pbuilder END OF WORK EXIT CODE=$RET'\n"
-		"done\n"
-		"bash\n"
-		);
+  asprintf(&s,
+	   "#!/bin/bash\n"
+	   "export RET=0"
+	   "echo \n"
+	   "echo ' -> qemu-pbuilder second-stage' \n"
+	   "/debootstrap/debootstrap --second-stage %s\n"
+	   //TODO: copy hook scripts
+	   "mount -n /proc /proc -t proc\n"
+	   "dhclient eth0\n"
+	   "cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
+	   "cp $PBUILDER_MOUNTPOINT/resolv.conf /etc/resolv.conf\n"
+	   "cp $PBUILDER_MOUNTPOINT/hostname /etc/hostname\n"
+	   "hostname pbuilder-$(cat /etc/hostname)\n"
+	   //TODO: installaptlines
+	   //"echo 'deb http://192.168.1.26/debian/ sid main ' > /etc/apt/sources.list\n"
+	   //TODO: run G hook
+	   "apt-get update\n"
+	   //TODO: "dpkg --purge $REMOVEPACKAGES\n"
+	   //recover aptcache
+	   "apt-get -y --force-yes -o DPkg::Options::=--force-confnew dist-upgrade\n"
+	   "apt-get install --force-yes -y build-essential dpkg-dev apt pbuilder\n"
+	   //TODO: EXTRAPACKAGES handling
+	   //save aptcache
+	   //optionally autoclean aptcache
+	   //run E hook
+	   "apt-get clean || true\n"
+	   "export RET=0"
+	   ":EXIT"
+	   "sync\n"
+	   "while sleep 3s; do\n"
+	   "  echo ' -> qemu-pbuilder END OF WORK EXIT CODE=$RET'\n"
+	   "done\n"
+	   "bash\n",
+	   pc->mirror);
+  create_script(pc->buildplace,
+		"pbuilder-run",
+		s);
 
   /* TODO: can I do 'date --set' from output of 'LC_ALL=C date' */
 
@@ -874,7 +879,6 @@ int qemubuilder_create(const struct pbuilderconfig* pc)
       free(workblockdevicepath);
     }
   if(s) free(s);
-
   return ret;
 
  umount_out:
