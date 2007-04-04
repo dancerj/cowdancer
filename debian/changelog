@@ -1,3 +1,9 @@
+cowdancer (0.27) UNRELEASED; urgency=low
+
+  * add prototype program qemubuilder in package for now.
+
+ -- Junichi Uekawa <dancer@debian.org>  Thu,  5 Apr 2007 07:09:47 +0900
+
 cowdancer (0.26) unstable; urgency=low
 
   * spec file, port to rpm-based systems.
