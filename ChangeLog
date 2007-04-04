@@ -1,3 +1,7 @@
+2007-04-05  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.c: initial import to cowdancer repository.
+
 2007-03-08  Junichi Uekawa  <dancer@debian.org>
 
 	* cowdancer.c(ctor): add constructor
