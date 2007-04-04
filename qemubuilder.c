@@ -1,4 +1,4 @@
-/*BINFMTC:
+/*BINFMTC: 
  *  qemubuilder: pbuilder with qemu
  *  Copyright (C) 2007 Junichi Uekawa
  *
@@ -81,6 +81,7 @@ int offset=2;
  {pbuildercommandline[offset++]=a;} \
  else \
  {pbuildercommandline[offset]=NULL; fprintf(stderr, "pbuilder-command-line: Max command-line exceeded\n");}
+
 
 /*
   execvp that does fork.
@@ -174,7 +175,6 @@ forkexeclp (const char *path, const char *arg0, ...)
     }
   return ret;
 }
-
 
 /**
  * arch-specific routine; the console device to make
@@ -711,7 +711,7 @@ out:
   return ret?NULL:memstr;
 }
 
-int cpbuilder_create(const struct pbuilderconfig* pc)
+int qemubuilder_create(const struct pbuilderconfig* pc)
 {
   int ret;
   char* s = NULL;  
@@ -886,7 +886,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 /*
  * @return: return code of pbuilder, or <0 on failure
  */
-int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
+int qemubuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
 {
   int ret;
   char* hoststr;
@@ -915,7 +915,7 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
   return ret;
 }
 
-int cpbuilder_login(const struct pbuilderconfig* pc)
+int qemubuilder_login(const struct pbuilderconfig* pc)
 {
   return run_second_stage_script(pc->save_after_login, "bash", pc, NULL);
 }
@@ -925,7 +925,7 @@ int cpbuilder_login(const struct pbuilderconfig* pc)
 Mostly a copy of pbuilder login, executes a script.
 
  */
-int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
+int qemubuilder_execute(const struct pbuilderconfig* pc, char** av)
 {
   char* hostcommand;
   char* runcommandline;
@@ -946,7 +946,7 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
 
    @return 0 on success, other values on failure.
  */
-int cpbuilder_update(const struct pbuilderconfig* pc)
+int qemubuilder_update(const struct pbuilderconfig* pc)
 {
   return run_second_stage_script
     (1,	   
@@ -962,9 +962,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
      NULL);
 }
 
-
-
-int cpbuilder_help(void)
+int qemubuilder_help(void)
 {
   printf("pbuilder [operation] [options]\n"
 	 "operation:\n"
@@ -1192,22 +1190,22 @@ int main(int ac, char** av)
   switch(pc.operation)
     {
     case pbuilder_build:
-      return cpbuilder_build(&pc, av[optind]);
+      return qemubuilder_build(&pc, av[optind]);
       
     case pbuilder_create:
-      return cpbuilder_create(&pc);
+      return qemubuilder_create(&pc);
       
     case pbuilder_update:
-      return cpbuilder_update(&pc);
+      return qemubuilder_update(&pc);
       
     case pbuilder_login:
-      return cpbuilder_login(&pc);
+      return qemubuilder_login(&pc);
 
     case pbuilder_execute:
-      return cpbuilder_execute(&pc, &av[optind]);
+      return qemubuilder_execute(&pc, &av[optind]);
 
     case pbuilder_help:
-      return cpbuilder_help();
+      return qemubuilder_help();
 
     default:			
       return 1;
