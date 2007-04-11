@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.FZcBZ31444
++ TESTDIR=/tmp/tmp.saraq19535
 ++ readlink -f tests/002_test_open.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/002_test_open.c
-+ cd /tmp/tmp.FZcBZ31444
++ cd /tmp/tmp.saraq19535
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.5584e-05 seconds, 40.0 MB/s
+1024 bytes (1.0 kB) copied, 2.5221e-05 seconds, 40.6 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -16,24 +16,24 @@
    2/ before
 + ls -li 2/
 合計 4
-188123 -rw-r--r-- 2 dancer dancer    0 2007-03-08 08:39 a
-188127 -rw-r--r-- 2 dancer dancer    0 2007-03-08 08:39 b
-188128 -rw-r--r-- 2 dancer dancer    0 2007-03-08 08:39 c
-188129 -rw-r--r-- 2 dancer dancer    0 2007-03-08 08:39 d
-188130 -rw-r--r-- 2 dancer dancer 1024 2007-03-08 08:39 e
+668813 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:19 a
+668817 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:19 b
+668818 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:19 c
+668819 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:19 d
+668820 -rw-r--r-- 2 dancer dancer 1024 2007-04-12 07:19 e
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-188123 -rw-r--r-- 2 dancer dancer    0 2007-03-08 08:39 a
-188207 -rw-r--r-- 1 dancer dancer    3 2007-03-08 08:39 b
-188212 -rw-r--r-- 1 dancer dancer    3 2007-03-08 08:39 c
-188129 -rw-r--r-- 2 dancer dancer    0 2007-03-08 08:39 d
-188130 -rw-r--r-- 2 dancer dancer 1024 2007-03-08 08:39 e
+668813 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:19 a
+668959 -rw-r--r-- 1 dancer dancer    3 2007-04-12 07:20 b
+668964 -rw-r--r-- 1 dancer dancer    3 2007-04-12 07:20 c
+668819 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:19 d
+668820 -rw-r--r-- 2 dancer dancer 1024 2007-04-12 07:19 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.FZcBZ31444
++ rm -rf /tmp/tmp.saraq19535
