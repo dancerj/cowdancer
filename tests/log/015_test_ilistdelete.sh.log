@@ -1,18 +1,18 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.BnRxk19753
++ TESTDIR=/tmp/tmp.ivSnP15358
 ++ readlink -f tests/015_test_ilistdelete.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/015_test_ilistdelete.c
-+ cd /tmp/tmp.BnRxk19753
++ cd /tmp/tmp.ivSnP15358
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + cp -al 1 2
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.4083e-05 seconds, 42.5 MB/s
+1024 bytes (1.0 kB) copied, 2.3283e-05 seconds, 44.0 MB/s
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/015_test_ilistdelete.c
 open: No such file or directory
 open: No such file or directory
 + RET=0
-+ rm -rf /tmp/tmp.BnRxk19753
++ rm -rf /tmp/tmp.ivSnP15358
 + exit 0

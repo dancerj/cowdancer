@@ -1,41 +1,41 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.fYzUf19476
-+ cd /tmp/tmp.fYzUf19476
++ TESTDIR=/tmp/tmp.wvqFZ15116
++ cd /tmp/tmp.wvqFZ15116
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3964e-05 seconds, 42.7 MB/s
+1024 bytes (1.0 kB) copied, 2.8013e-05 seconds, 36.6 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-合計 4
-668595 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:19 a
-668599 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:19 b
-668600 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:19 c
-668601 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:19 d
-668602 -rw-r--r-- 2 dancer dancer 1024 2007-04-12 07:19 e
+total 4
+2695207 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 a
+2695211 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 b
+2695212 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 c
+2695213 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 d
+2695227 -rw-r--r-- 2 dancer dancer 1024 2007-04-12 14:00 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
-Invoking /bin/bash
+Invoking /bin/sh
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 3.0523e-05 seconds, 33.5 MB/s
+1024 bytes (1.0 kB) copied, 2.9812e-05 seconds, 34.3 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-合計 12
-668669 -rw-r--r-- 1 dancer dancer    2 2007-04-12 07:19 a
-668676 -rw-r--r-- 1 dancer dancer    0 2007-04-12 07:19 c
-668684 -rw-r--r-- 1 dancer dancer 1024 2007-04-12 07:19 d
-668602 -rw-r--r-- 2 dancer dancer 1024 2007-04-12 07:19 e
+total 12
+2695281 -rw-r--r-- 1 dancer dancer    2 2007-04-12 14:00 a
+2695288 -rw-r--r-- 1 dancer dancer    0 2007-04-12 14:00 c
+2695296 -rw-r--r-- 1 dancer dancer 1024 2007-04-12 14:00 d
+2695227 -rw-r--r-- 2 dancer dancer 1024 2007-04-12 14:00 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.fYzUf19476
++ rm -rf /tmp/tmp.wvqFZ15116

@@ -1,5 +1,5 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.xecOz19652
++ TESTDIR=/tmp/tmp.wWWTw15267
 ++ readlink -f tests/012_test_chown.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c
 ++ id -G
@@ -7,13 +7,13 @@
 + ORIGID=1000
 + NEWID=4
 + ((  11 < 3  ))
-+ cd /tmp/tmp.xecOz19652
++ cd /tmp/tmp.wWWTw15267
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3594e-05 seconds, 43.4 MB/s
+1024 bytes (1.0 kB) copied, 2.462e-05 seconds, 41.6 MB/s
 + chgrp 1000 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -21,25 +21,25 @@
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-合計 4
-669228 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:20 a
-669232 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:20 b
-669233 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:20 c
-669234 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:20 d
-669235 -rw-r--r-- 2 dancer dancer 1024 2007-04-12 07:20 e
+total 4
+2695729 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 a
+2695733 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 b
+2695734 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 c
+2695735 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 d
+2695736 -rw-r--r-- 2 dancer dancer 1024 2007-04-12 14:00 e
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c 4 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-合計 4
-669316 -rw-r--r-- 1 dancer adm       0 2007-04-12 07:20 a
-669232 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:20 b
-669321 -rw-r--r-- 1 dancer adm       0 2007-04-12 07:20 c
-669234 -rw-r--r-- 2 dancer dancer    0 2007-04-12 07:20 d
-669235 -rw-r--r-- 2 dancer dancer 1024 2007-04-12 07:20 e
+total 4
+2695797 -rw-r--r-- 1 dancer adm       0 2007-04-12 14:00 a
+2695733 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 b
+2695802 -rw-r--r-- 1 dancer adm       0 2007-04-12 14:00 c
+2695735 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 d
+2695736 -rw-r--r-- 2 dancer dancer 1024 2007-04-12 14:00 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.xecOz19652
++ rm -rf /tmp/tmp.wWWTw15267

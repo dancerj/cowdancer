@@ -1,8 +1,8 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.mTwOF19722
++ TESTDIR=/tmp/tmp.EdSRF15329
 ++ readlink -f tests/014_ilistdump_test.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/014_ilistdump_test.c
-+ cd /tmp/tmp.mTwOF19722
++ cd /tmp/tmp.EdSRF15329
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + ln 1/a 1/aa
@@ -11,7 +11,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3059e-05 seconds, 44.4 MB/s
+1024 bytes (1.0 kB) copied, 9.963e-05 seconds, 10.3 MB/s
 + cd 1
 + find -links +1 -type f -printf '%D %i\n'
 + sort +2 -n
@@ -23,6 +23,6 @@ hello
 + sort +2 -n
 sort: Warning: "+number" syntax is deprecated, please use "-k number"
 ilist_struct size on this architecture: 16
-+ diff -u /tmp/tmp.mTwOF19722/mylist.1 /tmp/tmp.mTwOF19722/mylist.2
-+ rm -rf /tmp/tmp.mTwOF19722
++ diff -u /tmp/tmp.EdSRF15329/mylist.1 /tmp/tmp.EdSRF15329/mylist.2
++ rm -rf /tmp/tmp.EdSRF15329
 + exit 0
