@@ -239,7 +239,7 @@ static const char* qemu_arch_qemu(const char* arch)
       char*s;
       fscanf(f, "%as", &s);
       pclose(f);
-      if(!strcmp(s,arch))
+      if(!strcmp(s,arch) && !(system("which kvm")))
 	return "kvm";
       else if(!strcmp(s, "i386"))
 	return "qemu";
@@ -816,10 +816,11 @@ int qemubuilder_create(const struct pbuilderconfig* pc)
   /* this is specific to my configuration, fix it later. */
   asprintf(&s,
 	   "#!/bin/bash\n"
-	   "export RET=0"
+	   "export RET=0\n"
 	   "echo \n"
 	   "echo ' -> qemu-pbuilder second-stage' \n"
-	   "/debootstrap/debootstrap --second-stage %s\n"
+	   "/debootstrap/debootstrap --second-stage\n"
+	   "echo deb %s %s main contrib non-free > /etc/apt/sources.list \n"
 	   //TODO: copy hook scripts
 	   "mount -n /proc /proc -t proc\n"
 	   "dhclient eth0\n"
@@ -847,7 +848,8 @@ int qemubuilder_create(const struct pbuilderconfig* pc)
 	   "  echo ' -> qemu-pbuilder END OF WORK EXIT CODE=$RET'\n"
 	   "done\n"
 	   "bash\n",
-	   pc->mirror);
+	   pc->mirror, 
+	   pc->distribution);
   create_script(pc->buildplace,
 		"pbuilder-run",
 		s);
