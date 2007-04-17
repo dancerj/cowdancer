@@ -1,5 +1,7 @@
 2007-04-18  Junichi Uekawa  <dancer@debian.org>
 
+	* Makefile: do not install qemubuilder for now.
+
 	* qemubuilder.c (qemubuilder_create): fix deb source line.
 	(qemu_arch_qemu): return kvm only when kvm is available.
 	make this work with x86_64 host x86_64 target.	
