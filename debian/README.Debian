@@ -8,10 +8,16 @@ Restrictions:
 		e.g. chroot /path/to/chroot cow-shell command-to-execute
 	cowbuilder handles this for you.
 
+
 	Might potentially have some problems with fakeroot; although
 it seems to be working fine at the moment.
 
+
 BUGS:
+	Requires a file descriptor for maintaining '.ilist' file. May
+break applications that have expectations on having a reliable file
+descriptor number.
+
 	O_CREAT may be better implemented without cp -a, but the implication
 of owner of created file vs truncated file is unclear.
 	fchown/fchmod cannot possibly work reliably
@@ -19,4 +25,4 @@ of owner of created file vs truncated file is unclear.
 	upgrading cowdancer while running under cowdancer causes
 problems due to incompatibility in data format.
 
- -- Junichi Uekawa <dancer@debian.org>, Sat, 26 Aug 2006 09:06:01 +0900
+ -- Junichi Uekawa <dancer@debian.org>, Sun,  6 May 2007 08:35:04 +0900

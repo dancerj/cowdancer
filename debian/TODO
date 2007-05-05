@@ -2,16 +2,9 @@
 
 	sudo cowbuilder -M aaa bbb cccc
 
-* cowbuilder implementation
+* cowbuilder should support configuration files for some configs.
 
-A prototype exists, but I need a good test environment with network
-connection, and a chunk of time allocated for it. A Codefest ?
-
-   I had a lot of time allocated for it at Debconf2006, in Mexico,
-   although network was lacking, I have now a very good idea.
-
- - cowbuilder should support configuration files for some configs.
- - signal handling; do I support ctrl-C reasonably? (no)
+* signal handling; do I support ctrl-C reasonably? (no)
 
 * .ilist file position
 
@@ -21,7 +14,6 @@ connection, and a chunk of time allocated for it. A Codefest ?
   Operationally, a file in ./.ilist is inconvenient.
   If I put it in /tmp, I need to delete it, or a tmpreaper is
    required; and the file isn't too small.
-
 
 * hardlink behavior.
 
@@ -39,12 +31,6 @@ echo test > 2/b
 will result in 2/b being different to 2/a.
 
 This has implications, and I think this should be documented.
-
-* count number of hardlinks
-
-before searching for the file in i-node list, I can decide that 
-if the hardlink count=1, it's definitely not hardlinked.
-Would it be worth the change? benchmark it.
 
 * Investigate fchmod/fchown
 It is partially implemented, but difficult to really do.
