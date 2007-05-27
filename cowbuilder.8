@@ -14,28 +14,28 @@ Most commands invoke pbuilder with the specified commands, see
 pbuilder manual for details.
 
 .TP
-.B "--create"
+.B "\-\-create"
 
 Create the base.cow image.
 The directory for base.cow should be empty, or this command will fail.
 
 .TP
-.B "--update"
+.B "\-\-update"
 
 Update the base.cow image.
 
 .TP
-.BI "--build " ".dsc-file"
+.BI "\-\-build " ".dsc-file"
 
 Build a package given a .dsc file
 
 .TP
-.B "--login"
+.B "\-\-login"
 
 Start a session within the base.cow.
 
 .TP
-.B "--execute"
+.B "\-\-execute"
 
 Execute a command within the base.cow.
 
@@ -44,19 +44,60 @@ Execute a command within the base.cow.
 Most options are the same as pbuilder, except for the following which are handled specially
 
 .TP
-.B "--buildplace"
+.B "\-\-buildplace"
 
 The place where COW operation takes place.
 
 .TP
-.B "--basepath" 
+.B "\-\-basepath" 
 has a very different meaning to 
 .B basetgz
 option of pbuilder, since there is no tgz.  This option specifies the
 directory in which the COW master data is stored, the default being 
 .B "/var/cache/pbuilder/base.cow"
 
-.SH  "EXAMPLES"
+.TP
+.BI "\-\-configfile [" "configuration file to load" "]"
+Additional configuration file to read after all other
+configuration files have been read.
+
+.SH "CONFIGURATION FILES"
+
+cowbuilder reads the following configuration files per default.
+
+.TP
+.B "/usr/share/pbuilder/pbuilderrc"
+Application default, not to be changed.
+
+.TP
+.B "/etc/pbuilderrc"
+System-wide default.
+
+.TP
+.B "~/.pbuilderrc"
+User default
+
+.TP
+.I "anything specified with \-\-configfile option"
+Additional configuration at runtime.
+
+
+.SH "CONFIGURATION FILE OPTIONS"
+
+The possible configuration options are as follows.  Others are
+ignored.
+
+.TP
+.BI "DISTRIBUTION=" "distribution"
+
+.TP
+.BI "BASEPATH=" "distribution"
+
+.TP
+.BI "MIRRORSITE=" "distribution"
+
+
+.SH "EXAMPLES"
 
 .TP
 .B "cowbuilder --create"
@@ -78,9 +119,9 @@ against the current directory.
 The current directory should be an extracted Debian source package directory.
 
 Edit
-.B /etc/pbuilderrc 
+.B "/etc/pbuilderrc"
 to have
-.B PDEBUILD_PBUILDER=cowbuilder
+.B "PDEBUILD_PBUILDER=cowbuilder"
 to make this the default behavior for 
 .B pdebuild.
 
@@ -100,6 +141,7 @@ and distribution sid.
 Junichi Uekawa (dancer@debian.org)
 
 .SH "SEE ALSO"
-.RI "pbuilder (" 8 "), "
-.RI "pdebuild (" 1 ") "
+.BR "/usr/share/doc/pbuilder/pbuilder-doc.html, "
+.BR "pbuilder (" 8 "), "
+.BR "pdebuild (" 1 ") "
 

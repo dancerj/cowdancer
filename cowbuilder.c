@@ -1,6 +1,6 @@
 /*BINFMTC:
  *  cowbuilder / pbuilder with cowdancer
- *  Copyright (C) 2005-2006 Junichi Uekawa
+ *  Copyright (C) 2005-2007 Junichi Uekawa
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -131,6 +131,8 @@ typedef struct pbuilderconfig
   int save_after_login;
   char* buildplace;		/* /var/cache/pbuilder/build/XXX.$$ */
   char* basepath;		/* /var/cache/pbuilder/cow */
+  char* mirror;
+  char* distribution;
   enum {
     pbuilder_do_nothing=0,
     pbuilder_help,
@@ -335,6 +337,11 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
   pbuildercommandline[1]="build";
   PBUILDER_ADD_PARAM("--buildplace");
   PBUILDER_ADD_PARAM(pc->buildplace);
+  if (pc->mirror)
+    {
+      PBUILDER_ADD_PARAM("--mirror");
+      PBUILDER_ADD_PARAM(pc->mirror);
+    }
   PBUILDER_ADD_PARAM("--no-targz");
   PBUILDER_ADD_PARAM("--internal-chrootexec");
   PBUILDER_ADD_PARAM(buf_chroot);
@@ -360,6 +367,11 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   pbuildercommandline[1]="create";
   PBUILDER_ADD_PARAM("--buildplace");
   PBUILDER_ADD_PARAM(pc->basepath);
+  if (pc->mirror)
+    {
+      PBUILDER_ADD_PARAM("--mirror");
+      PBUILDER_ADD_PARAM(pc->mirror);
+    }
   PBUILDER_ADD_PARAM("--no-targz");
   PBUILDER_ADD_PARAM("--extrapackages");
   PBUILDER_ADD_PARAM("cowdancer");
@@ -438,7 +450,6 @@ int cpbuilder_login(const struct pbuilderconfig* pc)
   free(buf_chroot);
   if (ret < 128)
     {
-      
       if (pc->save_after_login)
 	{
 	  if (0!=forkexeclp("chroot", "chroot", pc->buildplace, "apt-get", "clean", NULL))
@@ -562,6 +573,11 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
   pbuildercommandline[1]="update";
   PBUILDER_ADD_PARAM("--buildplace");
   PBUILDER_ADD_PARAM(pc->buildplace);
+  if (pc->mirror)
+    {
+      PBUILDER_ADD_PARAM("--mirror");
+      PBUILDER_ADD_PARAM(pc->mirror);
+    }
   PBUILDER_ADD_PARAM("--no-targz");
   PBUILDER_ADD_PARAM("--internal-chrootexec");
   PBUILDER_ADD_PARAM(buf_chroot);
@@ -611,6 +627,52 @@ int cpbuilder_help(void)
   return 0;
 }
 
+
+int load_config_file(const char* config, pbuilderconfig* pc)
+{
+  char *s;
+  FILE* f;
+
+  char* buf=NULL;
+  size_t bufsiz=0;
+  char* delim;
+
+  asprintf(&s, "env - bash -c '. %s; set '", config);
+  f=popen(s, "r");
+  while (getline(&buf,&bufsiz,f)>0)
+    {
+      if (strrchr(buf,'\n'))
+	{
+	  *(strrchr(buf,'\n'))=0;
+	}
+      
+      if ((delim=strchr(buf,'=')))
+	{
+	  /* assuming config entry */
+	  *(delim++)=0;
+	  if (!strcmp(buf, "MIRRORSITE"))
+	    {
+	      pc->mirror=strdup(delim);
+	      //printf("DEBUG: %s, %s\n", buf, delim);
+	    }
+	  else if (!strcmp(buf, "DISTRIBUTION"))
+	    {
+	      pc->distribution=strdup(delim);
+	      //printf("DEBUG: %s, %s\n", buf, delim);
+	    }
+	  else if (!strcmp(buf, "BASEPATH"))
+	    {
+	      pc->basepath=strdup(delim);
+	      //printf("DEBUG: %s, %s\n", buf, delim);
+	    }
+	}
+    }
+  if(buf) free(buf);
+  if(s) free(s);
+  pclose(f);
+  return 0;
+}
+
 int main(int ac, char** av)
 {
   int c;			/* option */
@@ -638,9 +700,10 @@ int main(int ac, char** av)
     {"execute", no_argument, (int*)&pc.operation, pbuilder_execute},
     {"help", no_argument, (int*)&pc.operation, pbuilder_help},
     {"version", no_argument, 0, 'v'},
+    {"configfile", required_argument, 0, 'c'},
+    {"mirror", required_argument, 0, 0},
 
     /* verbatim options, synced as of pbuilder 0.153 */
-    {"mirror", required_argument, 0, 'M'},
     {"othermirror", required_argument, 0, 'M'},
     {"buildresult", required_argument, 0, 'M'},
     {"http-proxy", required_argument, 0, 'M'},
@@ -674,6 +737,10 @@ int main(int ac, char** av)
   /* default command-line component */
   pbuildercommandline[0]="pbuilder";
 
+  load_config_file("/usr/share/pbuilder/pbuilderrc", &pc);
+  load_config_file("/etc/pbuilderrc", &pc);
+  load_config_file("~/.pbuilderrc", &pc);
+
   /* load config files here. */
   while((c = getopt_long (ac, av, "b:d:Mmhv", long_options, &index_point)) != -1)
     {
@@ -702,6 +769,9 @@ int main(int ac, char** av)
 	case 'B':		/* buildplace */
 	  pc.buildplace = strdup(optarg);
 	  break;
+	case 'c':		/* --config */
+	  load_config_file(optarg, &pc);
+	  break;
 	case 'M':		/* pass through to pbuilder: duplicate with param */
 	  if (0>asprintf(&cmdstr, "--%s", long_options[index_point].name))
 	    {
@@ -722,10 +792,16 @@ int main(int ac, char** av)
 	  PBUILDER_ADD_PARAM(cmdstr);
 	  break;
 	case 0:
-	  /* other cases with long option with flags,
-	     this is expected behavior, so ignore it.
+	  /* other cases with long option with flags, this is expected
+	     behavior, so ignore it, for most of the time.
 	  */
-	  break;	  
+	  
+	  /* handle specific options which also give 0. */
+	  if (!strcmp(long_options[index_point].name,"mirror"))
+	    {
+	      pc.mirror=strdup(optarg);
+	    }
+	  break;
 	case 'h':		/* -h */
 	case 'v':		/* -v --version */
 	  pc.operation=pbuilder_help;

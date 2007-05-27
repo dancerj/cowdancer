@@ -48,6 +48,7 @@ typedef struct pbuilderconfig
 
   /* more qemu-isque options */
   char* kernel_image;
+  char* initrd;
   int memory_megs;		/* megabytes of memory */
 
   enum {
@@ -81,42 +82,6 @@ int offset=2;
  {pbuildercommandline[offset++]=a;} \
  else \
  {pbuildercommandline[offset]=NULL; fprintf(stderr, "pbuilder-command-line: Max command-line exceeded\n");}
-
-
-/*
-  execvp that does fork.
-  
-  @return < 0 for failure, exit code for other cases.
- */
-static int
-forkexecvp (char *const argv[])
-{
-  int ret;
-  pid_t pid;
-  int status;
-  
-  switch(pid=fork())
-    {
-    case 0:
-      execvp(argv[0], (char*const*)argv);
-      perror("pbuilder: execvp");
-      exit(EXIT_FAILURE);
-    case -1:
-      /* error condition in fork(); something is really wrong */
-      perror("pbuilder: fork");
-      return -1;
-    default:
-      /* parent process, waiting for termination */
-      waitpid(pid, &status, 0);
-      if (!WIFEXITED(status))
-	{
-	  /* something unexpected */
-	  return -1;
-	}
-      ret = WEXITSTATUS(status);
-    }
-  return ret;
-}
 
 /*
   execlp that does fork.
@@ -483,28 +448,44 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 		  
 		  count=read(sp[0],buf,buffer_size);
 		  
-		  /* this won't work, since things are more split-up than this. */
+		  /* this won't work sometimes, since things are more split-up than this,
+		     but this is a good best-effort thing. */
 		  if (memmem(buf, count, qemu_keyword, strlen(qemu_keyword)))
 		    {
 		      int status;
 		      
-		      kill(child, SIGTERM); 
+		      printf("  -> received termination signal, sending exit monitor signal to qemu\n");
+		      write(sp[0],"x",2);
+		      sleep (1);
+
+		      /* try to send kill signal after graceful exit */
+		      printf("  -> killing child process (qemu)\n");
+		      if (!kill(child, SIGTERM))
+			printf("   -> killed (qemu)\n");
+		      else
+			perror("   -> ");
 		      waitpid(child, &status, 0);
-		      //assert(!WIFSIGNALED(status));
+		      printf("  -> child process terminated with status: %x\n", status);
+		      break;
 		    }
 		  write(1,buf,count);
 		}
 	    }
+	  else
+	    {
+	      perror("select");
+	      break;
+	    }
 	}
-      
-      perror("select");
     }
   else if(child == 0)
     {
+      /* this is the child process */
       const char* qemu = qemu_arch_qemu(pc->arch); 
       const char* machine = qemu_arch_qemumachine(pc->arch);
       char* append_command;
       const char* kernel_image = pc->kernel_image;
+      const char* initrd = pc->initrd;
       char* mem;
 
       asprintf(&mem, "%i\n", pc->memory_megs);
@@ -514,22 +495,36 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 	       qemu_arch_diskdevice(pc->arch),
 	       qemu_arch_tty(pc->arch));
             
-      /* this is child process */
       dup2(sp[1],0);
       dup2(sp[1],1);
       dup2(sp[1],2);
       close(sp[0]);
       
-      
-      execlp(qemu, qemu, 
-	     "-nographic",
-	     "-M", machine, 
-	     "-m", mem,
-	     "-kernel", kernel_image, 
-	     "-hda", hda,
-	     "-hdb", hdb, 
-	     "-append", append_command, 
-	     "-serial", "stdio", NULL);
+      if (initrd)
+	{
+	  execlp(qemu, qemu, 
+		 "-nographic",
+		 "-M", machine, 
+		 "-m", mem,
+		 "-kernel", kernel_image, 
+		 "-initrd", initrd, 
+		 "-hda", hda,
+		 "-hdb", hdb, 
+		 "-append", append_command, 
+		 "-serial", "stdio", NULL);
+	}
+      else
+	{
+	  execlp(qemu, qemu, 
+		 "-nographic",
+		 "-M", machine, 
+		 "-m", mem,
+		 "-kernel", kernel_image, 
+		 "-hda", hda,
+		 "-hdb", hdb, 
+		 "-append", append_command, 
+		 "-serial", "stdio", NULL);
+	}
       perror("execlp");
       exit (1);
     }
@@ -588,6 +583,7 @@ static int run_second_stage_script(int save_result,
 	   "%s\n"
 	   "apt-get clean || true\n"
 	   "sync\n"
+	   "sync\n"
 	   "while sleep 3s; do\n"
 	   "  echo ' -> qemu-pbuilder END OF WORK EXIT CODE=0'\n"
 	   "done\n",
@@ -634,6 +630,7 @@ static int run_second_stage_script(int save_result,
   /* commit the change here */
   if (save_result)
     {
+      printf(" -> commit change to qemu image\n");
       ret=forkexeclp("qemu-img", "qemu-img", 
 		     "commit",
 		     cowdevpath, 
@@ -641,6 +638,7 @@ static int run_second_stage_script(int save_result,
     }
 
   /* TODO: is this being ran? I don't think files are deleted properly. */
+  printf(" -> clean up COW device files\n");
   unlink(workblockdevicepath);
   unlink(cowdevpath);
   ret=0;
@@ -844,8 +842,9 @@ int qemubuilder_create(const struct pbuilderconfig* pc)
 	   "export RET=0"
 	   ":EXIT"
 	   "sync\n"
+	   "sync\n"
 	   "while sleep 3s; do\n"
-	   "  echo ' -> qemu-pbuilder END OF WORK EXIT CODE=$RET'\n"
+	   "  echo \" -> qemu-pbuilder END OF WORK EXIT CODE=$RET\"\n"
 	   "done\n"
 	   "bash\n",
 	   pc->mirror, 
@@ -1012,32 +1011,37 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	  if (!strcmp(buf, "MIRRORSITE"))
 	    {
 	      pc->mirror=strdup(delim);
-	      printf("DEBUG: %s, %s\n", buf, delim);
+	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	  else if (!strcmp(buf, "DISTRIBUTION"))
 	    {
 	      pc->distribution=strdup(delim);
-	      printf("DEBUG: %s, %s\n", buf, delim);
+	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	  else if (!strcmp(buf, "KERNEL_IMAGE"))
 	    {
 	      pc->kernel_image=strdup(delim);
-	      printf("DEBUG: %s, %s\n", buf, delim);
+	      //printf("DEBUG: %s, %s\n", buf, delim);
+	    }
+	  else if (!strcmp(buf, "INITRD"))
+	    {
+	      pc->initrd=strdup(delim);
+	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	  else if (!strcmp(buf, "MEMORY_MEGS"))
 	    {
 	      pc->memory_megs=atoi(delim);
-	      printf("DEBUG: %s, %s\n", buf, delim);
+	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	  else if (!strcmp(buf, "ARCH"))
 	    {
 	      pc->arch=strdup(delim);
-	      printf("DEBUG: %s, %s\n", buf, delim);
+	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	  else if (!strcmp(buf, "BASEPATH"))
 	    {
 	      pc->basepath=strdup(delim);
-	      printf("DEBUG: %s, %s\n", buf, delim);
+	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	}
     }
@@ -1075,9 +1079,9 @@ int main(int ac, char** av)
     {"help", no_argument, (int*)&pc.operation, pbuilder_help},
     {"version", no_argument, 0, 'v'},
     {"configfile", required_argument, 0, 'c'},
+    {"mirror", required_argument, 0, 0},
 
     /* verbatim options, synced as of pbuilder 0.153 */
-    {"mirror", required_argument, 0, 'M'},
     {"othermirror", required_argument, 0, 'M'},
     {"buildresult", required_argument, 0, 'M'},
     {"http-proxy", required_argument, 0, 'M'},
@@ -1165,10 +1169,16 @@ int main(int ac, char** av)
 	  PBUILDER_ADD_PARAM(cmdstr);
 	  break;
 	case 0:
-	  /* other cases with long option with flags,
-	     this is expected behavior, so ignore it.
+	  /* other cases with long option with flags, this is expected
+	     behavior, so ignore it, for most of the time.
 	  */
-	  break;	  
+	  
+	  /* handle specific options which also give 0. */
+	  if (!strcmp(long_options[index_point].name,"mirror"))
+	    {
+	      pc.mirror=strdup(optarg);
+	    }
+	  break;
 	case 'h':		/* -h */
 	case 'v':		/* -v --version */
 	  pc.operation=pbuilder_help;

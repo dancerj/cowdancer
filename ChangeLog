@@ -1,3 +1,15 @@
+2007-05-27  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.c: sync twice before shutdown.
+
+	* qemubuilder.1: create from cowbuilder doc.
+
+	* cowbuilder.8: fix doc
+
+	* qemubuilder.c: support INITRD config option.
+
+	* Makefile (install): add install target for qemubuilder.
+
 2007-04-18  Junichi Uekawa  <dancer@debian.org>
 
 	* Makefile: do not install qemubuilder for now.

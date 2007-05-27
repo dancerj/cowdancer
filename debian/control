@@ -22,3 +22,18 @@ Description: Copy-on-write directory tree utility.
  'cowbuilder' command is a wrapper for pbuilder which allows using 
  pbuilder-like interface over cowdancer environment.
 
+Package: qemubuilder
+Architecture: any
+Depends: ${shlibs:Depends}
+Recommends: pbuilder
+Description: pbuilder using QEMU as backend
+ pbuilder implementation for QEMU.
+ .
+ qemubuilder create -- builds QEMU cow base image.
+ . 
+ qemubuilder update -- updates QEMU cow base image.
+ . 
+ qemubuilder build -- builds package inside QEMU cow base image.
+ .
+ Gives a pbuilder interface for emulated cross-building environments
+ using qemu.

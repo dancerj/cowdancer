@@ -19,7 +19,8 @@ install: $(BINARY)
 	$(INSTALL_FILE)  libcowdancer.so $(DESTDIR)${LIBDIR}/cowdancer/libcowdancer.so
 	$(INSTALL_PROGRAM) cow-shell $(DESTDIR)/usr/bin/cow-shell
 	$(INSTALL_PROGRAM) cowbuilder $(DESTDIR)/usr/sbin/cowbuilder
-	#$(INSTALL_PROGRAM) qemubuilder $(DESTDIR)/usr/sbin/qemubuilder
+	$(INSTALL_PROGRAM) qemubuilder $(DESTDIR)/usr/bin/qemubuilder
+	$(INSTALL_FILE)  qemubuilder.1 $(DESTDIR)/usr/share/man/man1/qemubuilder.1
 
 libcowdancer.so: cowdancer.lo
 	gcc -ldl -shared -o $@ $<
@@ -27,6 +28,8 @@ libcowdancer.so: cowdancer.lo
 cow-shell: cow-shell.o
 
 cowbuilder: cowbuilder.o
+
+qemubuilder: qemubuilder.o
 
 %.lo: %.c
 	gcc -D_REENTRANT -fPIC $< -o $@ -c -Wall -O2 -g

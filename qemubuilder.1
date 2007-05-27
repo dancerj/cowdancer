@@ -1,0 +1,138 @@
+.TH "qemubuilder" 1 "2007 May 27" "pbuilder" "pbuilder"
+.SH "NAME"
+qemubuilder \- a pbuilder wrapper for qemu.
+.SH SYNOPSIS
+.BI "qemubuilder [" "commands" "] [" "options" "]"
+.SH DESCRIPTION
+.B qemubuilder
+Executes the specified pbuilder operation with
+.B qemu
+
+.SH "COMMANDS"
+
+Most commands imitate pbuilder, see pbuilder manual for details.
+
+.TP
+.B "--create"
+
+Create the base.qemu image.
+
+.TP
+.B "--update"
+
+Update the base.qemu image.
+
+.TP
+.BI "--build " ".dsc-file"
+
+Build a package given a .dsc file
+
+.TP
+.B "--login"
+
+Start a session within the base.qemu.
+
+.TP
+.B "--execute"
+
+Execute a command within the base.qemu.
+
+.SH "OPTIONS"
+
+Most options are the same as pbuilder, except for the following which are handled specially
+
+I don't think I can support bind-mounts in qemu.
+
+TBD
+
+
+.SH "CONFIGURATION FILES"
+
+cowbuilder reads the following configuration files per default.
+
+.TP
+.B "/usr/share/pbuilder/pbuilderrc"
+Application default, not to be changed.
+
+.TP
+.B "/etc/pbuilderrc"
+System-wide default.
+
+.TP
+.B "~/.pbuilderrc"
+User default
+
+.TP
+.I "anything specified with \-\-configfile option"
+Additional configuration at runtime.
+
+
+.SH "CONFIGURATION FILE OPTIONS"
+
+The possible configuration options are as follows.  Others are
+ignored.
+
+.TP
+.BI "DISTRIBUTION=" "distribution"
+
+.TP
+.BI "BASEPATH=" "distribution"
+
+.TP
+.BI "MIRRORSITE=" "distribution"
+
+.TP
+.BI "KERNEL_IMAGE=" "vmlinuz"
+Linux kernel to use.
+
+.TP
+.BI "INITRD=" "initrd"
+initrd to use.
+
+.TP
+.BI "MEMORY_MEGS=" "64"
+memory size to use in qemu session, in MB.
+
+.SH  "EXAMPLES"
+
+.TP
+.B "qemubuilder --create"
+Create a base.qemu image.
+
+.TP 
+.B "qemubuilder --update"
+Update the base.qemu image.
+
+.TP
+.B "qemubuilder --build test_0.1.dsc"
+Build the package specified in dsc file, with the base.qemu image.
+
+.TP
+.B "pdebuild --pbuilder qemubuilder"
+Run
+.B "qemubuilder --build"
+against the current directory.
+The current directory should be an extracted Debian source package directory.
+
+Edit
+.B /etc/pbuilderrc 
+to have
+.B PDEBUILD_PBUILDER=qemubuilder
+to make this the default behavior for 
+.B pdebuild.
+
+.TP
+.B "qemubuilder --create --distribution sid --basepath /var/cache/pbuilder/base-test.qemu"
+Create a base.qemu image with the path 
+.B "/var/cache/pbuilder/base-test.qemu"
+and distribution sid.
+
+
+.SH "AUTHOR"
+Junichi Uekawa (dancer@debian.org)
+
+.SH "SEE ALSO"
+.BR "/usr/share/doc/pbuilder/pbuilder-doc.html, "
+.BR "pbuilder (" 8 "), "
+.BR "pdebuild (" 1 ") "
+

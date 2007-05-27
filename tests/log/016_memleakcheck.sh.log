@@ -1,43 +1,43 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.fqQcG15381
++ TESTDIR=/tmp/tmp.NEKPW32291
 ++ readlink -f tests/016_memleakcheck.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/016_memleakcheck.c
-+ gcc /home/dancer/DEBIAN/cowdancer/cowdancer/tests/016_memleakcheck.c -o /tmp/tmp.fqQcG15381/tracer -g
++ gcc /home/dancer/DEBIAN/cowdancer/cowdancer/tests/016_memleakcheck.c -o /tmp/tmp.NEKPW32291/tracer -g
 + set -ex
-+ cd /tmp/tmp.fqQcG15381
++ cd /tmp/tmp.NEKPW32291
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3484e-05 seconds, 43.6 MB/s
+1024 bytes (1.0 kB) copied, 2.3145e-05 seconds, 44.2 MB/s
 + cp -al 1 2
 + MALLOC_TRACE=log
-+ cow-shell /tmp/tmp.fqQcG15381/tracer
-00400000-00401000 r-xp 00000000 00:0e 2695985                            /tmp/tmp.fqQcG15381/tracer
-00500000-00501000 rw-p 00000000 00:0e 2695985                            /tmp/tmp.fqQcG15381/tracer
-00501000-00522000 rw-p 00501000 00:00 0                                  [heap]
-2ba550207000-2ba55021e000 r-xp 00000000 08:01 357176                     /lib/ld-2.3.6.so
-2ba55021e000-2ba550220000 rw-p 2ba55021e000 00:00 0 
-2ba55031d000-2ba55031f000 rw-p 00016000 08:01 357176                     /lib/ld-2.3.6.so
-2ba55031f000-2ba550322000 r-xp 00000000 08:01 129542                     /usr/lib/cowdancer/libcowdancer.so
-2ba550322000-2ba550421000 ---p 00003000 08:01 129542                     /usr/lib/cowdancer/libcowdancer.so
-2ba550421000-2ba550422000 rw-p 00002000 08:01 129542                     /usr/lib/cowdancer/libcowdancer.so
-2ba550422000-2ba550423000 r--p 00000000 00:0e 2696004                    /tmp/tmp.fqQcG15381/.ilist
-2ba550423000-2ba550426000 rw-p 2ba550423000 00:00 0 
-2ba550436000-2ba550557000 r-xp 00000000 08:01 357150                     /lib/libc-2.3.6.so
-2ba550557000-2ba550657000 ---p 00121000 08:01 357150                     /lib/libc-2.3.6.so
-2ba550657000-2ba55066c000 r--p 00121000 08:01 357150                     /lib/libc-2.3.6.so
-2ba55066c000-2ba55066f000 rw-p 00136000 08:01 357150                     /lib/libc-2.3.6.so
-2ba55066f000-2ba550674000 rw-p 2ba55066f000 00:00 0 
-2ba550674000-2ba550676000 r-xp 00000000 08:01 357152                     /lib/libdl-2.3.6.so
-2ba550676000-2ba550775000 ---p 00002000 08:01 357152                     /lib/libdl-2.3.6.so
-2ba550775000-2ba550777000 rw-p 00001000 08:01 357152                     /lib/libdl-2.3.6.so
-2ba550777000-2ba550778000 rw-p 2ba550777000 00:00 0 
-7fff5a88d000-7fff5a8a3000 rw-p 7fff5a88d000 00:00 0                      [stack]
++ cow-shell /tmp/tmp.NEKPW32291/tracer
+00400000-00401000 r-xp 00000000 00:10 3711983                            /tmp/tmp.NEKPW32291/tracer
+00600000-00601000 rw-p 00000000 00:10 3711983                            /tmp/tmp.NEKPW32291/tracer
+00601000-00622000 rw-p 00601000 00:00 0                                  [heap]
+2b9ce02ae000-2b9ce02ca000 r-xp 00000000 08:01 357164                     /lib/ld-2.5.so
+2b9ce02ca000-2b9ce02cd000 rw-p 2b9ce02ca000 00:00 0 
+2b9ce02cd000-2b9ce02d0000 r-xp 00000000 08:01 129542                     /usr/lib/cowdancer/libcowdancer.so
+2b9ce02d0000-2b9ce03cf000 ---p 00003000 08:01 129542                     /usr/lib/cowdancer/libcowdancer.so
+2b9ce03cf000-2b9ce03d0000 rw-p 00002000 08:01 129542                     /usr/lib/cowdancer/libcowdancer.so
+2b9ce03d0000-2b9ce03d1000 r--p 00000000 00:10 3712002                    /tmp/tmp.NEKPW32291/.ilist
+2b9ce03d1000-2b9ce03d4000 rw-p 2b9ce03d1000 00:00 0 
+2b9ce04c9000-2b9ce04cb000 rw-p 0001b000 08:01 357164                     /lib/ld-2.5.so
+2b9ce04cb000-2b9ce0613000 r-xp 00000000 08:01 358873                     /lib/libc-2.5.so
+2b9ce0613000-2b9ce0812000 ---p 00148000 08:01 358873                     /lib/libc-2.5.so
+2b9ce0812000-2b9ce0815000 r--p 00147000 08:01 358873                     /lib/libc-2.5.so
+2b9ce0815000-2b9ce0817000 rw-p 0014a000 08:01 358873                     /lib/libc-2.5.so
+2b9ce0817000-2b9ce081c000 rw-p 2b9ce0817000 00:00 0 
+2b9ce081c000-2b9ce081e000 r-xp 00000000 08:01 358912                     /lib/libdl-2.5.so
+2b9ce081e000-2b9ce0a1e000 ---p 00002000 08:01 358912                     /lib/libdl-2.5.so
+2b9ce0a1e000-2b9ce0a20000 rw-p 00002000 08:01 358912                     /lib/libdl-2.5.so
+2b9ce0a20000-2b9ce0a22000 rw-p 2b9ce0a20000 00:00 0 
+7fffca7e6000-7fffca7fc000 rw-p 7fffca7e6000 00:00 0                      [stack]
 ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vdso]
 + RESULT=0
-+ mtrace /tmp/tmp.fqQcG15381/tracer /tmp/tmp.fqQcG15381/log
++ mtrace /tmp/tmp.NEKPW32291/tracer /tmp/tmp.NEKPW32291/log
 No memory leaks.
-+ rm -rf /tmp/tmp.fqQcG15381
++ rm -rf /tmp/tmp.NEKPW32291
 + exit 0

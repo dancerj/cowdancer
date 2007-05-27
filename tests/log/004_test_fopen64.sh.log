@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.KyTkA15233
++ TESTDIR=/tmp/tmp.jOKSq32120
 ++ readlink -f tests/004_test_fopen64.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/004_test_fopen64.c
-+ cd /tmp/tmp.KyTkA15233
++ cd /tmp/tmp.jOKSq32120
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3345e-05 seconds, 43.9 MB/s
+1024 bytes (1.0 kB) copied, 2.3944e-05 seconds, 42.8 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -16,24 +16,24 @@
    2/ before
 + ls -li 2/
 total 4
-2695637 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 a
-2695641 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 b
-2695642 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 c
-2695643 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 d
-2695644 -rw-r--r-- 2 dancer dancer 1024 2007-04-12 14:00 e
+3704980 -rw-r--r-- 2 dancer dancer    0 2007-05-27 15:00 a
+3704984 -rw-r--r-- 2 dancer dancer    0 2007-05-27 15:00 b
+3704985 -rw-r--r-- 2 dancer dancer    0 2007-05-27 15:00 c
+3704986 -rw-r--r-- 2 dancer dancer    0 2007-05-27 15:00 d
+3704987 -rw-r--r-- 2 dancer dancer 1024 2007-05-27 15:00 e
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/004_test_fopen64.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 total 12
-2695637 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 a
-2695693 -rw-r--r-- 1 dancer dancer    4 2007-04-12 14:00 b
-2695698 -rw-r--r-- 1 dancer dancer    4 2007-04-12 14:00 c
-2695643 -rw-r--r-- 2 dancer dancer    0 2007-04-12 14:00 d
-2695644 -rw-r--r-- 2 dancer dancer 1024 2007-04-12 14:00 e
+3704980 -rw-r--r-- 2 dancer dancer    0 2007-05-27 15:00 a
+3705092 -rw-r--r-- 1 dancer dancer    4 2007-05-27 15:00 b
+3705097 -rw-r--r-- 1 dancer dancer    4 2007-05-27 15:00 c
+3704986 -rw-r--r-- 2 dancer dancer    0 2007-05-27 15:00 d
+3704987 -rw-r--r-- 2 dancer dancer 1024 2007-05-27 15:00 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.KyTkA15233
++ rm -rf /tmp/tmp.jOKSq32120
