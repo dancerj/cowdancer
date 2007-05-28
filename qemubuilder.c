@@ -41,6 +41,7 @@ typedef struct pbuilderconfig
   int mountdevpts;
   int save_after_login;
   char* buildplace;		/* /var/cache/pbuilder/build/XXX.$$ */
+  char* buildresult;		/* /var/cache/pbuilder/result/ */
   char* basepath;		/* /var/cache/pbuilder/cow */
   char* arch;
   char* mirror;
@@ -544,10 +545,12 @@ static int do_fsck(const char* devfile)
 		    NULL);
 }
 
-static int run_second_stage_script(int save_result,
-			    const char* commandline,
-			    const struct pbuilderconfig* pc,
-			    const char* hostcommand)
+static int run_second_stage_script
+(int save_result,
+ const char* commandline,
+ const struct pbuilderconfig* pc,
+ const char* hostcommand1,
+ const char* hostcommand2)
 {
   char* script;
   char* workblockdevicepath;
@@ -604,14 +607,13 @@ static int run_second_stage_script(int save_result,
   /* TODO: hooks probably need copying here. */
   /* TODO: recover aptcache */
 
-  if(hostcommand) 
+  if(hostcommand1) 
     {
-      printf("running host command: %s\n", hostcommand);
-      system(hostcommand);
+      printf("running host command: %s\n", hostcommand1);
+      system(hostcommand1);
     }
 
   loop_umount(workblockdevicepath);
-  rmdir(pc->buildplace);
 
   asprintf(&cowdevpath, "%s.cowdev", pc->buildplace);
   ret=forkexeclp("qemu-img", "qemu-img", 
@@ -637,7 +639,16 @@ static int run_second_stage_script(int save_result,
 		     NULL);  
     }
 
-  /* TODO: is this being ran? I don't think files are deleted properly. */
+  /* after-run */
+  loop_mount(workblockdevicepath, pc->buildplace);
+  printf(" -> running post-run process\n");
+  if(hostcommand2) 
+    {
+      printf("running host command: %s\n", hostcommand2);
+      system(hostcommand2);
+    }
+  loop_umount(workblockdevicepath);
+  rmdir(pc->buildplace);
   printf(" -> clean up COW device files\n");
   unlink(workblockdevicepath);
   unlink(cowdevpath);
@@ -652,7 +663,7 @@ static int run_second_stage_script(int save_result,
 }
 
 /* 
-   @return shelle command to copy the dsc file.
+   @return shell command to copy the dsc file.
  */
 static char* copy_dscfile(const char* dscfile_, const char* destdir)
 {
@@ -663,6 +674,7 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
   char* origdir;
   char* dscfile=canonicalize_file_name(dscfile_);
   FILE* f=fopen(dscfile,"r");
+
   char* memstr=0;
   size_t len=0;
   FILE* fmem=open_memstream(&memstr, &len);
@@ -895,7 +907,9 @@ int qemubuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
 {
   int ret;
   char* hoststr;
+  char* hoststr2;
   char* commandline;
+
   const char* buildopt="--binary-all"; /* TODO: add --binary-arch option */
   
   hoststr=copy_dscfile(dscfile, pc->buildplace);
@@ -910,11 +924,20 @@ int qemubuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
 	   buildopt,
 	   dscfile);
 
+  /* Obscure assumption!: assume _ is significant for package name and
+     no other file will have _. */
+
+  asprintf(&hoststr2, 
+	   "cp -p \"%s\"/*_* \"%s\" 2>/dev/null || true",
+	   pc->buildplace, pc->buildresult);
+  
   ret=run_second_stage_script
     (0,
      commandline, pc, 
-     hoststr);
+     hoststr,
+     hoststr2);
 
+  if(hoststr2) free(hoststr2);
   if(hoststr) free(hoststr);
   if(commandline) free(commandline);
   return ret;
@@ -922,7 +945,7 @@ int qemubuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
 
 int qemubuilder_login(const struct pbuilderconfig* pc)
 {
-  return run_second_stage_script(pc->save_after_login, "bash", pc, NULL);
+  return run_second_stage_script(pc->save_after_login, "bash", pc, NULL, NULL);
 }
 
 /* 
@@ -940,7 +963,7 @@ int qemubuilder_execute(const struct pbuilderconfig* pc, char** av)
   /* TODO: add options too */
   asprintf(&runcommandline, "sh $PBUILDER_MOUNTPOINT/run");
   ret=run_second_stage_script(pc->save_after_login, runcommandline, pc, 
-			      hostcommand);
+			      hostcommand, NULL);
   free(hostcommand);
   free(runcommandline);
   return ret;
@@ -964,7 +987,7 @@ int qemubuilder_update(const struct pbuilderconfig* pc)
      //optionally autoclean aptcache
      //run E hook
      , pc, 
-     NULL);
+     NULL, NULL);
 }
 
 int qemubuilder_help(void)
@@ -1012,6 +1035,10 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    {
 	      pc->mirror=strdup(delim);
 	      //printf("DEBUG: %s, %s\n", buf, delim);
+	    }
+	  else if (!strcmp(buf, "BUILDRESULT"))
+	    {
+	      pc->buildresult=strdup(delim);
 	    }
 	  else if (!strcmp(buf, "DISTRIBUTION"))
 	    {
@@ -1080,10 +1107,10 @@ int main(int ac, char** av)
     {"version", no_argument, 0, 'v'},
     {"configfile", required_argument, 0, 'c'},
     {"mirror", required_argument, 0, 0},
+    {"buildresult", required_argument, 0, 0},
 
     /* verbatim options, synced as of pbuilder 0.153 */
     {"othermirror", required_argument, 0, 'M'},
-    {"buildresult", required_argument, 0, 'M'},
     {"http-proxy", required_argument, 0, 'M'},
     {"aptcache", required_argument, 0, 'M'},
     {"extrapackages", required_argument, 0, 'M'},
@@ -1178,6 +1205,10 @@ int main(int ac, char** av)
 	    {
 	      pc.mirror=strdup(optarg);
 	    }
+	  else if (!strcmp(long_options[index_point].name,"buildresult"))
+	    {
+	      pc.buildresult=strdup(optarg);
+	    }
 	  break;
 	case 'h':		/* -h */
 	case 'v':		/* -v --version */
@@ -1224,6 +1255,7 @@ int main(int ac, char** av)
       return qemubuilder_help();
 
     default:			
+      fprintf (stderr, "E: No operation specified\n");
       return 1;
     }
   

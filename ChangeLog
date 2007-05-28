@@ -1,3 +1,12 @@
+2007-05-28  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.1: document buildresult.
+	* cowbuilder.8: 
+
+	* cowbuilder.c: support buildresult
+
+	* qemubuilder.c: support buildresult
+
 2007-05-27  Junichi Uekawa  <dancer@debian.org>
 
 	* qemubuilder.c: sync twice before shutdown.

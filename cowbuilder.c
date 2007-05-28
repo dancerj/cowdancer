@@ -130,6 +130,7 @@ typedef struct pbuilderconfig
   int mountdevpts;
   int save_after_login;
   char* buildplace;		/* /var/cache/pbuilder/build/XXX.$$ */
+  char* buildresult;		/* /var/cache/pbuilder/result/ */
   char* basepath;		/* /var/cache/pbuilder/cow */
   char* mirror;
   char* distribution;
@@ -341,6 +342,11 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
     {
       PBUILDER_ADD_PARAM("--mirror");
       PBUILDER_ADD_PARAM(pc->mirror);
+    }
+  if (pc->buildresult)
+    {
+      PBUILDER_ADD_PARAM("--buildresult");
+      PBUILDER_ADD_PARAM(pc->buildresult);
     }
   PBUILDER_ADD_PARAM("--no-targz");
   PBUILDER_ADD_PARAM("--internal-chrootexec");
@@ -801,6 +807,10 @@ int main(int ac, char** av)
 	    {
 	      pc.mirror=strdup(optarg);
 	    }
+	  else if (!strcmp(long_options[index_point].name,"buildresult"))
+	    {
+	      pc.buildresult=strdup(optarg);
+	    }
 	  break;
 	case 'h':		/* -h */
 	case 'v':		/* -v --version */
@@ -843,6 +853,7 @@ int main(int ac, char** av)
       return cpbuilder_help();
 
     default:			
+      fprintf (stderr, "E: No operation specified\n");
       return 1;
     }
   
