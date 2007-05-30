@@ -7,8 +7,7 @@ Standards-Version: 3.7.2
 
 Package: cowdancer
 Architecture: any
-Depends: ${shlibs:Depends}
-Recommends: pbuilder
+Depends: ${shlibs:Depends}, pbuilder
 Description: Copy-on-write directory tree utility.
  Tries to make copy-on-write semantics upon hard-link copied
  directory trees generated with 'cp -la'
@@ -24,8 +23,7 @@ Description: Copy-on-write directory tree utility.
 
 Package: qemubuilder
 Architecture: any
-Depends: ${shlibs:Depends}
-Recommends: pbuilder
+Depends: ${shlibs:Depends}, qemu, pbuilder
 Description: pbuilder using QEMU as backend
  pbuilder implementation for QEMU.
  .
