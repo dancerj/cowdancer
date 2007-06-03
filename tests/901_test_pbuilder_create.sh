@@ -1,6 +1,16 @@
 #!/bin/bash
 set -x
 
+if [[ $(uname -mn ) != "dancer64 x86_64" ]]; then
+    echo 'skip this test'
+    exit 0;
+fi
+
+if [[ "$PBCURRENTCOMMANDLINEOPERATION" = build ]]; then
+    echo 'skip this test'
+    exit 0;
+fi
+
 : > tests/log/901_test_pbuilder_create_distributions.log
 
 FAIL=n

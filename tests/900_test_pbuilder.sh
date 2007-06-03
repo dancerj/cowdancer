@@ -11,6 +11,11 @@ if [[ $(uname -mn ) != "dancer64 x86_64" ]]; then
     exit 0;
 fi
 
+if [[ "$PBCURRENTCOMMANDLINEOPERATION" = build ]]; then
+    echo 'skip this test'
+    exit 0;
+fi
+
 set -ex
 
 if [ ! -x /usr/sbin/pbuilder ]; then
