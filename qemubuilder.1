@@ -93,6 +93,10 @@ Linux kernel to use.
 initrd to use.
 
 .TP
+.BI "ARCH=" "arch"
+The target architecture.
+
+.TP
 .BI "MEMORY_MEGS=" "64"
 memory size to use in qemu session, in MB.
 
@@ -129,6 +133,17 @@ to make this the default behavior for
 Create a base.qemu image with the path 
 .B "/var/cache/pbuilder/base-test.qemu"
 and distribution sid.
+
+.TP 
+.B "Example pbuilderrc for i386"
+
+.nf
+KERNEL_IMAGE=vmlinuz-2.6.18-4-k7
+INITRD=initrd.img-2.6.18-4-k7
+ARCH=i386
+BASEPATH=/home/dancer/tmp/base-i386.qemu
+MEMORY_MEGS=64
+.qy
 
 
 .SH "AUTHOR"

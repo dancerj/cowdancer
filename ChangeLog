@@ -1,3 +1,8 @@
+2007-06-04  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.1: document ARCH= option, and 
+	add a sample pbuidlerrc
+
 2007-05-28  Junichi Uekawa  <dancer@debian.org>
 
 	* qemubuilder.1: document buildresult.

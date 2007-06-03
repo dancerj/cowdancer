@@ -1,8 +1,9 @@
-cowdancer (0.28) UNRELEASED; urgency=low
+cowdancer (0.28) unstable; urgency=low
 
-  * 
+  * qemubuilder: add example pbuilderrc and document ARCH= option in
+    manpage.
 
- -- Junichi Uekawa <dancer@debian.org>  Wed, 30 May 2007 20:45:48 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 04 Jun 2007 07:01:15 +0900
 
 cowdancer (0.27) unstable; urgency=low
 
