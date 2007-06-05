@@ -1,14 +1,14 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.Yxcou30491
++ TESTDIR=/tmp/tmp.JghPSD2840
 ++ readlink -f tests/002_test_open.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/002_test_open.c
-+ cd /tmp/tmp.Yxcou30491
++ cd /tmp/tmp.JghPSD2840
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3073e-05 seconds, 44.4 MB/s
+1024 bytes (1.0 kB) copied, 2.3403e-05 seconds, 43.8 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -16,24 +16,24 @@
    2/ before
 + ls -li 2/
 total 4
-1337538 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 a
-1337542 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 b
-1337543 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 c
-1337544 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 d
-1337545 -rw-r--r-- 2 dancer dancer 1024 2007-06-01 15:00 e
+1610281 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 a
+1610285 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 b
+1610286 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 c
+1610287 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 d
+1610288 -rw-r--r-- 2 dancer dancer 1024 2007-06-05 15:00 e
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 total 12
-1337538 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 a
-1337614 -rw-r--r-- 1 dancer dancer    3 2007-06-01 15:00 b
-1337619 -rw-r--r-- 1 dancer dancer    3 2007-06-01 15:00 c
-1337544 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 d
-1337545 -rw-r--r-- 2 dancer dancer 1024 2007-06-01 15:00 e
+1610281 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 a
+1610357 -rw-r--r-- 1 dancer dancer    3 2007-06-05 15:00 b
+1610362 -rw-r--r-- 1 dancer dancer    3 2007-06-05 15:00 c
+1610287 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 d
+1610288 -rw-r--r-- 2 dancer dancer 1024 2007-06-05 15:00 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.Yxcou30491
++ rm -rf /tmp/tmp.JghPSD2840

@@ -44,6 +44,11 @@ upload-dist-all:
 	scp ../cowdancer_$(VERSION).tar.gz aegis.netfort.gr.jp:public_html/software/downloads
 
 check:
-	set -e; set -o pipefail; for A in tests/???_*.sh; do echo $$A; bash $$A  2>&1 | tee tests/log/$${A/*\//}.log; done
+	set -e; set -o pipefail; for A in tests/???_*.sh; do echo $$A; bash $$A  2>&1 | \
+	sed -e's,/tmp/[^/]*/,/tmp/XXXX/,g' \
+	    -e "s,^Current time:.*,Current time: TIME," \
+	    -e "s,^pbuilder-time-stamp: .*,pbuilder-time-stamp: XXXX," \
+	    -e "s,^Fetched .*B in .*s (.*B/s),Fetched XXXB in Xs (XXXXXB/s)," \
+	| tee tests/log/$${A/*\//}.log; done
 
 .PHONY: clean check upload-dist-all

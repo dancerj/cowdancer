@@ -1,5 +1,5 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.JPdin30793
++ TESTDIR=/tmp/tmp.UBfvwr3144
 ++ readlink -f tests/012_test_chown.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c
 ++ id -G
@@ -7,7 +7,7 @@
 + ORIGID=1000
 + NEWID=4
 + ((  11 < 3  ))
-+ cd /tmp/tmp.JPdin30793
++ cd /tmp/tmp.UBfvwr3144
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + ln -s a 1/f
@@ -15,7 +15,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.4082e-05 seconds, 42.5 MB/s
+1024 bytes (1.0 kB) copied, 2.4386e-05 seconds, 42.0 MB/s
 + chgrp 1000 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -24,28 +24,28 @@
    2/ before
 + ls -li 2/
 total 4
-1338341 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 a
-1338345 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 b
-1338346 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 c
-1338347 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 d
-1338350 -rw-r--r-- 2 dancer dancer 1024 2007-06-01 15:00 e
-1338348 lrwxrwxrwx 2 dancer dancer    1 2007-06-01 15:00 f -> a
-1338349 lrwxrwxrwx 2 dancer dancer    1 2007-06-01 15:00 g -> b
+1611076 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 a
+1611080 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 b
+1611081 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 c
+1611082 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 d
+1611085 -rw-r--r-- 2 dancer dancer 1024 2007-06-05 15:00 e
+1611083 lrwxrwxrwx 2 dancer dancer    1 2007-06-05 15:00 f -> a
+1611084 lrwxrwxrwx 2 dancer dancer    1 2007-06-05 15:00 g -> b
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c 4 2/f 2/b 2/g
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 total 4
-1338401 -rw-r--r-- 1 dancer adm       0 2007-06-01 15:00 a
-1338345 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 b
-1338346 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 c
-1338347 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 d
-1338350 -rw-r--r-- 2 dancer dancer 1024 2007-06-01 15:00 e
-1338348 lrwxrwxrwx 2 dancer dancer    1 2007-06-01 15:00 f -> a
-1338409 lrwxrwxrwx 1 dancer adm       1 2007-06-01 15:00 g -> b
+1611136 -rw-r--r-- 1 dancer adm       0 2007-06-05 15:00 a
+1611080 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 b
+1611081 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 c
+1611082 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 d
+1611085 -rw-r--r-- 2 dancer dancer 1024 2007-06-05 15:00 e
+1611083 lrwxrwxrwx 2 dancer dancer    1 2007-06-05 15:00 f -> a
+1611144 lrwxrwxrwx 1 dancer adm       1 2007-06-05 15:00 g -> b
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.JPdin30793
++ rm -rf /tmp/tmp.UBfvwr3144

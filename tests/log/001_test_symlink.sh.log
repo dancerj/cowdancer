@@ -1,12 +1,12 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.maYQG30463
-+ cd /tmp/tmp.maYQG30463
++ TESTDIR=/tmp/tmp.hrVOOU2812
++ cd /tmp/tmp.hrVOOU2812
 + mkdir 1/
 + touch 1/b 1/c 1/d 1/a.real
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3637e-05 seconds, 43.3 MB/s
+1024 bytes (1.0 kB) copied, 2.3078e-05 seconds, 44.4 MB/s
 + ln -s a.real 1/a
 + ls -li 1/
 + sleep 1s
@@ -15,30 +15,30 @@
    2/ before
 + ls -li 2/
 total 4
-1337455 lrwxrwxrwx 2 dancer dancer    6 2007-06-01 15:00 a -> a.real
-1337453 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 a.real
-1337447 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 b
-1337451 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 c
-1337452 -rw-r--r-- 2 dancer dancer    0 2007-06-01 15:00 d
-1337454 -rw-r--r-- 2 dancer dancer 1024 2007-06-01 15:00 e
+1610198 lrwxrwxrwx 2 dancer dancer    6 2007-06-05 15:00 a -> a.real
+1610196 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 a.real
+1610190 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 b
+1610194 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 c
+1610195 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 d
+1610197 -rw-r--r-- 2 dancer dancer 1024 2007-06-05 15:00 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/sh
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.9505e-05 seconds, 34.7 MB/s
+1024 bytes (1.0 kB) copied, 3.0225e-05 seconds, 33.9 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 total 12
-1337455 lrwxrwxrwx 2 dancer dancer    6 2007-06-01 15:00 a -> a.real
-1337498 -rw-r--r-- 1 dancer dancer    2 2007-06-01 15:00 a.real
-1337505 -rw-r--r-- 1 dancer dancer    0 2007-06-01 15:00 c
-1337513 -rw-r--r-- 1 dancer dancer 1024 2007-06-01 15:00 d
-1337454 -rw-r--r-- 2 dancer dancer 1024 2007-06-01 15:00 e
+1610198 lrwxrwxrwx 2 dancer dancer    6 2007-06-05 15:00 a -> a.real
+1610241 -rw-r--r-- 1 dancer dancer    2 2007-06-05 15:00 a.real
+1610248 -rw-r--r-- 1 dancer dancer    0 2007-06-05 15:00 c
+1610256 -rw-r--r-- 1 dancer dancer 1024 2007-06-05 15:00 d
+1610197 -rw-r--r-- 2 dancer dancer 1024 2007-06-05 15:00 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.maYQG30463
++ rm -rf /tmp/tmp.hrVOOU2812
