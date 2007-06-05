@@ -1,5 +1,7 @@
 2007-06-06  Junichi Uekawa  <dancer@debian.org>
 
+	* qemubuilder.c (copy_dscfile): support signed .dsc file.
+
 	* parameter.h: 
 	* parameter.c: new files, moved common code from cowbuilder/qemubuilder
 

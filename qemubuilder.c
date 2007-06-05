@@ -588,11 +588,14 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
       if(filelist)
 	{
 	  if(sscanf(buf, " %*s %*s %as", &filename)!=1)
-	    goto out;
-	  fprintf(fmem, "cp %s/%s %s/\n", 
-		  origdir, filename, destdir);
-	  assert(filename);
-	  free(filename);
+	    filelist=0;
+	  else
+	    {
+	      fprintf(fmem, "cp %s/%s %s/\n", 
+		      origdir, filename, destdir);
+	      assert(filename);
+	      free(filename);
+	    }
 	}  
       if (!(buf[0]==' ')&&
 	  !strcmp(buf,"Files: "))

@@ -1,3 +1,9 @@
+cowdancer (0.33) UNRELEASED; urgency=low
+
+  * qemubuilder: support signed .dsc files
+
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 06 Jun 2007 08:47:32 +0900
+
 cowdancer (0.32) unstable; urgency=low
 
   * Try again, call debhelper with '-s' so that it doesn't try to build
