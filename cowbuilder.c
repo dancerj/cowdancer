@@ -643,7 +643,7 @@ int load_config_file(const char* config, pbuilderconfig* pc)
   size_t bufsiz=0;
   char* delim;
 
-  asprintf(&s, "env - bash -c '. %s; set '", config);
+  asprintf(&s, "env - bash -c 'set -e ; . %s; set '", config);
   f=popen(s, "r");
   while (getline(&buf,&bufsiz,f)>0)
     {

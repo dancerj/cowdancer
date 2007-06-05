@@ -1,3 +1,8 @@
+2007-06-05  Junichi Uekawa  <dancer@debian.org>
+
+	* cowbuilder.c (load_config_file): 
+	* qemubuilder.c (load_config_file): set -e in sourcing configuration file.
+
 2007-06-04  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/902_test_cowbuilder_fail.sh, etc.: skip when ran inside
