@@ -1,8 +1,10 @@
-cowdancer (0.30) UNRELEASED; urgency=low
+cowdancer (0.30) unstable; urgency=low
 
-  * 
+  * Bug fix: "FTBFS: cowdancer_0.29(alpha/unstable): b-d on qemu not
+    satisfiable on all archs", thanks to Steve Langasek (Closes: #427650).
+    only build on i386, amd64, and powerpc.
 
- -- Junichi Uekawa <dancer@debian.org>  Tue, 05 Jun 2007 21:13:55 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 05 Jun 2007 22:50:30 +0900
 
 cowdancer (0.29) unstable; urgency=low
 

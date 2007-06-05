@@ -2,7 +2,7 @@ Source: cowdancer
 Section: utils
 Priority: optional
 Maintainer: Junichi Uekawa <dancer@debian.org>
-Build-Depends: debhelper (>> 4.0.0), pbuilder, qemu
+Build-Depends: debhelper (>> 4.0.0), pbuilder, qemu [i386 amd64 powerpc]
 Standards-Version: 3.7.2
 
 Package: cowdancer
@@ -22,7 +22,7 @@ Description: Copy-on-write directory tree utility.
  pbuilder-like interface over cowdancer environment.
 
 Package: qemubuilder
-Architecture: any
+Architecture: i386 amd64 powerpc
 Depends: ${shlibs:Depends}, qemu, pbuilder
 Description: pbuilder using QEMU as backend
  pbuilder implementation for QEMU.
