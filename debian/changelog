@@ -1,8 +1,9 @@
 cowdancer (0.29) unstable; urgency=low
 
   * qemubuilder, cowbuilder: 'set -e' when sourcing configuration file.
-
- -- Junichi Uekawa <dancer@debian.org>  Tue, 05 Jun 2007 21:10:23 +0900
+  * Build-Depend on qemu, which is needed for testing.
+  
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 05 Jun 2007 21:12:02 +0900
 
 cowdancer (0.28) unstable; urgency=low
 
