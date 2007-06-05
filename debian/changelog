@@ -1,3 +1,11 @@
+cowdancer (0.31) UNRELEASED; urgency=low
+
+  * cowbuilder: pass --configfile option through to pbuilder.
+  * cowbuilder, qemubuilder: reorganize code, to put shared code into
+    parameter.[ch]
+
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 06 Jun 2007 07:11:50 +0900
+
 cowdancer (0.30) unstable; urgency=low
 
   * Bug fix: "FTBFS: cowdancer_0.29(alpha/unstable): b-d on qemu not

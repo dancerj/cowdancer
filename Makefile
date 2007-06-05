@@ -27,14 +27,14 @@ libcowdancer.so: cowdancer.lo
 
 cow-shell: cow-shell.o
 
-cowbuilder: cowbuilder.o
+cowbuilder: cowbuilder.o parameter.o
 
-qemubuilder: qemubuilder.o
+qemubuilder: qemubuilder.o parameter.o
 
-%.lo: %.c
+%.lo: %.c 
 	gcc -D_REENTRANT -fPIC $< -o $@ -c -Wall -O2 -g
 
-%.o: %.c
+%.o: %.c parameter.h
 	gcc $< -o $@ -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"${LIBDIR}\""
 
 clean: 
@@ -45,7 +45,7 @@ upload-dist-all:
 
 check:
 	set -e; set -o pipefail; for A in tests/???_*.sh; do echo $$A; bash $$A  2>&1 | \
-	sed -e's,/tmp/[^/]*/,/tmp/XXXX/,g' \
+	sed -e's,/tmp/[^/]*,/tmp/XXXX,g' \
 	    -e "s,^Current time:.*,Current time: TIME," \
 	    -e "s,^pbuilder-time-stamp: .*,pbuilder-time-stamp: XXXX," \
 	    -e "s,^Fetched .*B in .*s (.*B/s),Fetched XXXB in Xs (XXXXXB/s)," \

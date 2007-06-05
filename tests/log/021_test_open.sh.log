@@ -1,8 +1,8 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.HZwqSz3178
++ TESTDIR=/tmp/tmp.ZQrQF25838
 ++ readlink -f tests/021_test_open.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/021_test_open.c
-+ cd /tmp/tmp.HZwqSz3178
++ cd /tmp/tmp.ZQrQF25838
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + ln -s a 1/f
@@ -15,4 +15,4 @@ close(0)open(): try1: 0, try2: 0
 + RET=0
 + echo 0
 0
-+ rm -rf /tmp/tmp.HZwqSz3178
++ rm -rf /tmp/tmp.ZQrQF25838

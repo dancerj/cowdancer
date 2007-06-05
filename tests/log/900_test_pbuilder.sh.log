@@ -24,9 +24,12 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_di
 D: Return code: 0
 P: Validating Release
 D: Execute "gpgv --status-fd 1 --keyring /usr/share/keyrings/debian-archive-keyring.gpg /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._Release.gpg /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._Release"
+O: gpgv: 
+O: Signature made Tue Jun  5 05:15:26 2007 JST using DSA key ID 6070D3A1
 I: Good signature from "Debian Archive Automatic Signing Key (4.0/etch) <ftpmaster@debian.org>"
-O: gpgv: Signature made Tue Jun  5 05:15:26 2007 JST using DSA key ID 6070D3A1
-O: gpgv: Good signature from "Debian Archive Automatic Signing Key (4.0/etch) <ftpmaster@debian.org>"
+O: gpgv: 
+O: Good signature from "Debian Archive Automatic Signing Key (4.0/etch) <ftpmaster@debian.org>"
+O: 
 D: Return code: 0
 P: Parsing Release
 P: Retrieving Packages.gz
@@ -737,14 +740,14 @@ O: dpkg: warning - ignoring pre-dependency problem !
 O: dpkg: regarding .../dpkg_1.14.4_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on coreutils (>= 5.93-1)
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Setting up dpkg (1.14.4) ...
-P: Configuring package dpkg
-D: Updating dpkg to status 3
 O: dpkg: dpkg: dependency problems, but configuring anyway as you request:
 O:  dpkg depends on libc6 (>= 2.5-5); however:
 O:   Package libc6 is not installed.
 O:  dpkg depends on coreutils (>= 5.93-1); however:
 O:   Package coreutils is not installed.
+O: Setting up dpkg (1.14.4) ...
+P: Configuring package dpkg
+D: Updating dpkg to status 3
 O: 
 D: Return code: 0
 D: call action: helper-install
@@ -9395,7 +9398,6 @@ O:
 O: makedev rd/c1d31p5 b 49 253 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
-O: 
 O: makedev rd/c1d31p6 b 49 254 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -10175,7 +10177,6 @@ O:
 O: makedev rd/c2d24 b 50 192 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
-O: 
 O: makedev rd/c2d24p1 b 50 193 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -11675,7 +11676,6 @@ O:
 O: makedev rd/c4d6p7 b 52 55 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
-O: 
 O: makedev rd/c4d7 b 52 56 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -15546,10 +15546,13 @@ O: `root:disk': invalid user
 O: 
 O: makedev rd/c7d31p7 b 55 255 root disk 0660: failed
 O: chown: 
-O: makedev dac960_gam c 10 252 root disk 0660: failed
-O: makedev dpti1 c 151 0 root disk 0660: failed
 O: `root:disk': invalid user
-O: chown: `root:disk': invalid user
+O: 
+O: makedev dac960_gam c 10 252 root disk 0660: failed
+O: chown: 
+O: `root:disk': invalid user
+O: 
+O: makedev dpti1 c 151 0 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
 O: 
@@ -19609,6 +19612,7 @@ O:
 O: makedev cciss/c0d11p13 b 104 189 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
+O: 
 O: makedev cciss/c0d11p14 b 104 190 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -22825,8 +22829,8 @@ P: Configuring package tzdata
 D: Updating tzdata to status 3
 O: 
 O: Current default timezone: 'Etc/UTC'
-O: Local time is now:      Tue Jun  5 06:01:28 UTC 2007.
-O: Universal Time is now:  Tue Jun  5 06:01:28 UTC 2007.
+O: Local time is now:      Tue Jun  5 22:26:16 UTC 2007.
+O: Universal Time is now:  Tue Jun  5 22:26:16 UTC 2007.
 O: Run 'dpkg-reconfigure tzdata' if you wish to change it.
 O: 
 O: 
@@ -22988,8 +22992,6 @@ O: Setting up debian-archive-keyring (2007.02.19-0.1) ...
 P: Configuring package debian-archive-keyring
 D: Updating debian-archive-keyring to status 3
 O: gpg: 
-O: keyring `/etc/apt/secring.gpg' created
-O: gpg: 
 O: keyring `/etc/apt/trusted.gpg' created
 O: gpg: 
 O: /etc/apt/trustdb.gpg: trustdb created
@@ -23028,8 +23030,7 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-apt.deb /var/cache/pb
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-apt.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-apt.
-O: (Reading database ... 
-O: 5283 files and directories currently installed.)
+O: (Reading database ... 5283 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-apt (from /cdebootstrap-helper-apt.deb) ...
 O: Setting up cdebootstrap-helper-apt (1) ...
 O: Get:1 bootstrap: . Release.gpg [189B]
@@ -23478,7 +23479,7 @@ umount: /proc/bus/usb: not found
 umount: /dev/shm: not mounted
 umount: /proc: not mounted
 umount: /dev/pts: not mounted
- -> user script /var/cache/pbuilder/base-test.cow/tmp/hooks/G50-initscripts-2.86.ds1-11-cdebootstrap0.3.9.sh finished
+ -> user script /var/cache/pbuilder/base-test.cow/tmp/XXXX/G50-initscripts-2.86.ds1-11-cdebootstrap0.3.9.sh finished
 Refreshing the base.tgz 
  -> upgrading packages
  -> mounting /proc filesystem
@@ -23487,7 +23488,7 @@ Refreshing the base.tgz
 Get:1 http://glantank sid Release.gpg [189B]
 Get:2 http://glantank sid Release [79.6kB]
 Get:3 http://glantank sid/main Packages [6251kB]
-Fetched 6331kB in 0s (6687kB/s)
+Fetched XXXB in Xs (XXXXXB/s)
 Reading package lists...
 dpkg - warning: ignoring request to remove lilo which isn't installed.
 Reading package lists...
@@ -23537,7 +23538,7 @@ Get:18 http://glantank sid/main libdebian-installer-extra4 0.51 [10.6kB]
 Get:19 http://glantank sid/main cdebootstrap 0.4.3 [29.0kB]
 Get:20 http://glantank sid/main pbuilder 0.168 [87.3kB]
 Get:21 http://glantank sid/main cowdancer 0.28 [30.2kB]
-Fetched 20.1MB in 1s (14.6MB/s)
+Fetched XXXB in Xs (XXXXXB/s)
 Selecting previously deselected package patch.
 (Reading database ... 7173 files and directories currently installed.)
 Unpacking patch (from .../patch_2.5.9-4_amd64.deb) ...
@@ -23616,7 +23617,7 @@ umount: /dev/shm: not mounted
 umount: /lib/init/rw: not mounted
 cat: /var/run/inetd.pid: No such file or directory
 kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
- -> user script /var/cache/pbuilder/base-test.cow/tmp/hooks/E50-initscripts-2.86.ds1-7.workaround.sh finished
+ -> user script /var/cache/pbuilder/base-test.cow/tmp/XXXX/E50-initscripts-2.86.ds1-7.workaround.sh finished
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
  -> Invoking pbuilder
@@ -23633,7 +23634,7 @@ Refreshing the base.tgz
 Get:1 http://glantank sid Release.gpg [189B]
 Hit http://glantank sid Release
 Get:2 http://glantank sid/main Packages/DiffIndex [2038B]
-Fetched 2039B in 0s (8145B/s)
+Fetched XXXB in Xs (XXXXXB/s)
 Reading package lists...
 dpkg - warning: ignoring request to remove lilo which isn't installed.
 Reading package lists...
@@ -23652,7 +23653,7 @@ umount: /dev/shm: not mounted
 umount: /lib/init/rw: not mounted
 cat: /var/run/inetd.pid: No such file or directory
 kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
- -> user script /var/cache/pbuilder/build/cow.19963/tmp/hooks/E50-initscripts-2.86.ds1-7.workaround.sh finished
+ -> user script /var/cache/pbuilder/build/cow.24250/tmp/XXXX/E50-initscripts-2.86.ds1-7.workaround.sh finished
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
  -> Copying COW directory
@@ -23662,9 +23663,9 @@ kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill 
 W: /home/dancer/.pbuilderrc does not exist
   -> using cowbuilder as pbuilder
 dpkg-buildpackage: source package is cowdancer
-dpkg-buildpackage: source version is 0.28
+dpkg-buildpackage: source version is 0.31
 dpkg-buildpackage: source changed by Junichi Uekawa <dancer@debian.org>
-dpkg-buildpackage: source version without epoch 0.28
+dpkg-buildpackage: source version without epoch 0.31
  fakeroot debian/rules clean
 make[1]: Entering directory `/home/dancer/DEBIAN/cowdancer/cowdancer'
 dh_testdir
@@ -23677,9 +23678,9 @@ make[2]: Leaving directory `/home/dancer/DEBIAN/cowdancer/cowdancer'
 dh_clean
 make[1]: Leaving directory `/home/dancer/DEBIAN/cowdancer/cowdancer'
  dpkg-source -b cowdancer
-dpkg-source: warning: source directory './cowdancer' is not <sourcepackage>-<upstreamversion> 'cowdancer-0.28'
-dpkg-source: building cowdancer in cowdancer_0.28.tar.gz
-dpkg-source: building cowdancer in cowdancer_0.28.dsc
+dpkg-source: warning: source directory './cowdancer' is not <sourcepackage>-<upstreamversion> 'cowdancer-0.31'
+dpkg-source: building cowdancer in cowdancer_0.31.tar.gz
+dpkg-source: building cowdancer in cowdancer_0.31.dsc
  dpkg-genchanges -S
 dpkg-genchanges: including full source code in upload
 dpkg-buildpackage: source only upload: Debian-native package
@@ -23687,8 +23688,8 @@ bash: /root/.pbuilderrc: No such file or directory
 W: /home/dancer/.pbuilderrc does not exist
  -> Running in no-targz mode
 I: using fakeroot in build.
-Current time: Tue Jun  5 15:02:05 JST 2007
-pbuilder-time-stamp: 1181023325
+Current time: TIME
+pbuilder-time-stamp: XXXX
  -> copying local configuration
  -> mounting /proc filesystem
  -> mounting /dev/pts filesystem
@@ -23699,22 +23700,27 @@ Installing the build-deps
    -> Trying debhelper
  -> Considering build-dep pbuilder
    -> Trying pbuilder
- -> Installing  debhelper pbuilder
+ -> Considering build-dep qemu [i386 amd64 powerpc]
+   -> Trying qemu
+ -> Installing  debhelper pbuilder qemu
 Reading package lists...
 Building dependency tree...
 pbuilder is already the newest version.
 The following extra packages will be installed:
-  file gettext gettext-base html2text intltool-debian libmagic1 po-debconf
+  bochsbios file gettext gettext-base html2text intltool-debian libasound2
+  libdirectfb-0.9-25 libmagic1 libsdl1.2debian libsdl1.2debian-alsa libsvga1
+  libsysfs2 openhackware po-debconf proll svgalibg1 vgabios
 Suggested packages:
-  dh-make cvs gettext-doc
+  dh-make cvs gettext-doc libasound2-plugins sudo
 Recommended packages:
-  libmail-sendmail-perl libcompress-zlib-perl
+  libmail-sendmail-perl libcompress-zlib-perl debootstrap sharutils vde2
 The following NEW packages will be installed:
-  debhelper file gettext gettext-base html2text intltool-debian libmagic1
-  po-debconf
-0 upgraded, 8 newly installed, 0 to remove and 0 not upgraded.
-Need to get 3516kB of archives.
-After unpacking 11.8MB of additional disk space will be used.
+  bochsbios debhelper file gettext gettext-base html2text intltool-debian
+  libasound2 libdirectfb-0.9-25 libmagic1 libsdl1.2debian libsdl1.2debian-alsa
+  libsvga1 libsysfs2 openhackware po-debconf proll qemu svgalibg1 vgabios
+0 upgraded, 20 newly installed, 0 to remove and 0 not upgraded.
+Need to get 10.1MB of archives.
+After unpacking 30.2MB of additional disk space will be used.
 Get:1 http://glantank sid/main libmagic1 4.21-1 [332kB]
 Get:2 http://glantank sid/main file 4.21-1 [40.0kB]
 Get:3 http://glantank sid/main gettext-base 0.16.1-1 [132kB]
@@ -23723,7 +23729,19 @@ Get:5 http://glantank sid/main gettext 0.16.1-1 [2261kB]
 Get:6 http://glantank sid/main intltool-debian 0.35.0+20060710.1 [30.8kB]
 Get:7 http://glantank sid/main po-debconf 1.0.8 [111kB]
 Get:8 http://glantank sid/main debhelper 5.0.49 [517kB]
-Fetched 3516kB in 0s (8593kB/s)
+Get:9 http://glantank sid/main libasound2 1.0.13-2 [378kB]
+Get:10 http://glantank sid/main libsysfs2 2.1.0-2 [28.2kB]
+Get:11 http://glantank sid/main libdirectfb-0.9-25 0.9.25.1-5 [870kB]
+Get:12 http://glantank sid/main libsvga1 1:1.4.3-24 [323kB]
+Get:13 http://glantank sid/main svgalibg1 1:1.4.3-24 [762B]
+Get:14 http://glantank sid/main libsdl1.2debian-alsa 1.2.11-9 [207kB]
+Get:15 http://glantank sid/main libsdl1.2debian 1.2.11-9 [20.9kB]
+Get:16 http://glantank sid/main openhackware 0.4.1-2 [73.3kB]
+Get:17 http://glantank sid/main proll 18-2 [246kB]
+Get:18 http://glantank sid/main vgabios 0.6a-1 [77.1kB]
+Get:19 http://glantank sid/main bochsbios 2.3-2 [80.3kB]
+Get:20 http://glantank sid/main qemu 0.9.0-2 [4319kB]
+Fetched XXXB in Xs (XXXXXB/s)
 Selecting previously deselected package libmagic1.
 (Reading database ... 11179 files and directories currently installed.)
 Unpacking libmagic1 (from .../libmagic1_4.21-1_amd64.deb) ...
@@ -23741,6 +23759,30 @@ Selecting previously deselected package po-debconf.
 Unpacking po-debconf (from .../po-debconf_1.0.8_all.deb) ...
 Selecting previously deselected package debhelper.
 Unpacking debhelper (from .../debhelper_5.0.49_all.deb) ...
+Selecting previously deselected package libasound2.
+Unpacking libasound2 (from .../libasound2_1.0.13-2_amd64.deb) ...
+Selecting previously deselected package libsysfs2.
+Unpacking libsysfs2 (from .../libsysfs2_2.1.0-2_amd64.deb) ...
+Selecting previously deselected package libdirectfb-0.9-25.
+Unpacking libdirectfb-0.9-25 (from .../libdirectfb-0.9-25_0.9.25.1-5_amd64.deb) ...
+Selecting previously deselected package libsvga1.
+Unpacking libsvga1 (from .../libsvga1_1%3a1.4.3-24_amd64.deb) ...
+Selecting previously deselected package svgalibg1.
+Unpacking svgalibg1 (from .../svgalibg1_1%3a1.4.3-24_all.deb) ...
+Selecting previously deselected package libsdl1.2debian-alsa.
+Unpacking libsdl1.2debian-alsa (from .../libsdl1.2debian-alsa_1.2.11-9_amd64.deb) ...
+Selecting previously deselected package libsdl1.2debian.
+Unpacking libsdl1.2debian (from .../libsdl1.2debian_1.2.11-9_amd64.deb) ...
+Selecting previously deselected package openhackware.
+Unpacking openhackware (from .../openhackware_0.4.1-2_all.deb) ...
+Selecting previously deselected package proll.
+Unpacking proll (from .../archives/proll_18-2_all.deb) ...
+Selecting previously deselected package vgabios.
+Unpacking vgabios (from .../vgabios_0.6a-1_all.deb) ...
+Selecting previously deselected package bochsbios.
+Unpacking bochsbios (from .../bochsbios_2.3-2_all.deb) ...
+Selecting previously deselected package qemu.
+Unpacking qemu (from .../qemu_0.9.0-2_amd64.deb) ...
 Setting up libmagic1 (4.21-1) ...
 
 Setting up file (4.21-1) ...
@@ -23753,6 +23795,24 @@ Setting up gettext (0.16.1-1) ...
 Setting up intltool-debian (0.35.0+20060710.1) ...
 Setting up po-debconf (1.0.8) ...
 Setting up debhelper (5.0.49) ...
+Setting up libasound2 (1.0.13-2) ...
+
+Setting up libsysfs2 (2.1.0-2) ...
+
+Setting up libdirectfb-0.9-25 (0.9.25.1-5) ...
+
+Setting up libsvga1 (1:1.4.3-24) ...
+
+Setting up svgalibg1 (1:1.4.3-24) ...
+Setting up libsdl1.2debian-alsa (1.2.11-9) ...
+
+Setting up libsdl1.2debian (1.2.11-9) ...
+Setting up openhackware (0.4.1-2) ...
+Setting up proll (18-2) ...
+Setting up vgabios (0.6a-1) ...
+Setting up bochsbios (2.3-2) ...
+Setting up qemu (0.9.0-2) ...
+
  -> Finished parsing the build-deps
 Reading package lists...
 Building dependency tree...
@@ -23762,43 +23822,43 @@ The following NEW packages will be installed:
 Need to get 111kB of archives.
 After unpacking 451kB of additional disk space will be used.
 Get:1 http://glantank sid/main fakeroot 1.7.1 [111kB]
-Fetched 111kB in 0s (2615kB/s)
+Fetched XXXB in Xs (XXXXXB/s)
 Selecting previously deselected package fakeroot.
-(Reading database ... 11815 files and directories currently installed.)
+(Reading database ... 12143 files and directories currently installed.)
 Unpacking fakeroot (from .../fakeroot_1.7.1_amd64.deb) ...
 Setting up fakeroot (1.7.1) ...
 
 Copying source file
-    -> copying [/home/dancer/DEBIAN/cowdancer/cowdancer_0.28.dsc]
-    -> copying [/home/dancer/DEBIAN/cowdancer/cowdancer_0.28.tar.gz]
+    -> copying [/home/dancer/DEBIAN/cowdancer/cowdancer_0.31.dsc]
+    -> copying [/home/dancer/DEBIAN/cowdancer/cowdancer_0.31.tar.gz]
 Extracting source
-dpkg-source: warning: extracting unsigned source package (./cowdancer_0.28.dsc)
-dpkg-source: extracting cowdancer in cowdancer-0.28
-dpkg-source: unpacking cowdancer_0.28.tar.gz
+dpkg-source: warning: extracting unsigned source package (./cowdancer_0.31.dsc)
+dpkg-source: extracting cowdancer in cowdancer-0.31
+dpkg-source: unpacking cowdancer_0.31.tar.gz
  -> Building the package
 dpkg-buildpackage: source package is cowdancer
-dpkg-buildpackage: source version is 0.28
+dpkg-buildpackage: source version is 0.31
 dpkg-buildpackage: source changed by Junichi Uekawa <dancer@debian.org>
 dpkg-buildpackage: host architecture amd64
-dpkg-buildpackage: source version without epoch 0.28
+dpkg-buildpackage: source version without epoch 0.31
  fakeroot debian/rules clean
 dh_testdir
 dh_testroot
 rm -f build-stamp configure-stamp
 /usr/bin/make clean
-make[1]: Entering directory `/tmp/buildd/cowdancer-0.28'
+make[1]: Entering directory `/tmp/XXXX/cowdancer-0.31'
 rm -f *~ *.o *.lo libcowdancer.so cow-shell cowbuilder qemubuilder
-make[1]: Leaving directory `/tmp/buildd/cowdancer-0.28'
+make[1]: Leaving directory `/tmp/XXXX/cowdancer-0.31'
 dh_clean
- dpkg-source -b cowdancer-0.28
-dpkg-source: building cowdancer in cowdancer_0.28.tar.gz
-dpkg-source: building cowdancer in cowdancer_0.28.dsc
+ dpkg-source -b cowdancer-0.31
+dpkg-source: building cowdancer in cowdancer_0.31.tar.gz
+dpkg-source: building cowdancer in cowdancer_0.31.dsc
  debian/rules build
 dh_testdir
 touch configure-stamp
 dh_testdir
 /usr/bin/make
-make[1]: Entering directory `/tmp/buildd/cowdancer-0.28'
+make[1]: Entering directory `/tmp/XXXX/cowdancer-0.31'
 gcc -D_REENTRANT -fPIC cowdancer.c -o cowdancer.lo -c -Wall -O2 -g
 cowdancer.c: In function 'ctor':
 cowdancer.c:185: warning: ignoring return value of 'initialize_functions', declared with attribute warn_unused_result
@@ -23806,10 +23866,11 @@ gcc -ldl -shared -o libcowdancer.so cowdancer.lo
 gcc cow-shell.c -o cow-shell.o -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"/usr/lib\""
 cc   cow-shell.o   -o cow-shell
 gcc cowbuilder.c -o cowbuilder.o -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"/usr/lib\""
-cc   cowbuilder.o   -o cowbuilder
+gcc parameter.c -o parameter.o -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"/usr/lib\""
+cc   cowbuilder.o parameter.o   -o cowbuilder
 gcc qemubuilder.c -o qemubuilder.o -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"/usr/lib\""
-cc   qemubuilder.o   -o qemubuilder
-make[1]: Leaving directory `/tmp/buildd/cowdancer-0.28'
+cc   qemubuilder.o parameter.o   -o qemubuilder
+make[1]: Leaving directory `/tmp/XXXX/cowdancer-0.31'
 #/usr/bin/make check
 touch build-stamp
  fakeroot debian/rules binary
@@ -23817,20 +23878,20 @@ dh_testdir
 dh_testroot
 dh_clean -k
 dh_installdirs
-/usr/bin/make install DESTDIR=/tmp/buildd/cowdancer-0.28/debian/cowdancer
-make[1]: Entering directory `/tmp/buildd/cowdancer-0.28'
-install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.28/debian/cowdancer/usr/bin
-install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.28/debian/cowdancer/usr/lib/cowdancer
-install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.28/debian/cowdancer/usr/share/man/man1
-install -d -o root -g root -m 755 /tmp/buildd/cowdancer-0.28/debian/cowdancer/usr/share/man/man8
-install -o root -g root -m 644  cow-shell.1 /tmp/buildd/cowdancer-0.28/debian/cowdancer/usr/share/man/man1/cow-shell.1
-install -o root -g root -m 644  cowbuilder.8 /tmp/buildd/cowdancer-0.28/debian/cowdancer/usr/share/man/man8/cowbuilder.8
-install -o root -g root -m 644  libcowdancer.so /tmp/buildd/cowdancer-0.28/debian/cowdancer/usr/lib/cowdancer/libcowdancer.so
-install -o root -g root -m 755 cow-shell /tmp/buildd/cowdancer-0.28/debian/cowdancer/usr/bin/cow-shell
-install -o root -g root -m 755 cowbuilder /tmp/buildd/cowdancer-0.28/debian/cowdancer/usr/sbin/cowbuilder
-install -o root -g root -m 755 qemubuilder /tmp/buildd/cowdancer-0.28/debian/cowdancer/usr/bin/qemubuilder
-install -o root -g root -m 644  qemubuilder.1 /tmp/buildd/cowdancer-0.28/debian/cowdancer/usr/share/man/man1/qemubuilder.1
-make[1]: Leaving directory `/tmp/buildd/cowdancer-0.28'
+/usr/bin/make install DESTDIR=/tmp/XXXX/cowdancer-0.31/debian/cowdancer
+make[1]: Entering directory `/tmp/XXXX/cowdancer-0.31'
+install -d -o root -g root -m 755 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/bin
+install -d -o root -g root -m 755 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/lib/cowdancer
+install -d -o root -g root -m 755 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/share/man/man1
+install -d -o root -g root -m 755 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/share/man/man8
+install -o root -g root -m 644  cow-shell.1 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/share/man/man1/cow-shell.1
+install -o root -g root -m 644  cowbuilder.8 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/share/man/man8/cowbuilder.8
+install -o root -g root -m 644  libcowdancer.so /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/lib/cowdancer/libcowdancer.so
+install -o root -g root -m 755 cow-shell /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/bin/cow-shell
+install -o root -g root -m 755 cowbuilder /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/sbin/cowbuilder
+install -o root -g root -m 755 qemubuilder /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/bin/qemubuilder
+install -o root -g root -m 644  qemubuilder.1 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/share/man/man1/qemubuilder.1
+make[1]: Leaving directory `/tmp/XXXX/cowdancer-0.31'
 dh_movefiles -pqemubuilder --sourcedir=debian/cowdancer
 dh_testdir
 dh_testroot
@@ -23848,15 +23909,15 @@ dh_installdeb
 dh_gencontrol
 dh_md5sums
 dh_builddeb
-dpkg-deb: building package `cowdancer' in `../cowdancer_0.28_amd64.deb'.
-dpkg-deb: building package `qemubuilder' in `../qemubuilder_0.28_amd64.deb'.
+dpkg-deb: building package `cowdancer' in `../cowdancer_0.31_amd64.deb'.
+dpkg-deb: building package `qemubuilder' in `../qemubuilder_0.31_amd64.deb'.
  dpkg-genchanges
 dpkg-genchanges: including full source code in upload
 dpkg-buildpackage: full upload; Debian-native package (full source is included)
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
-Current time: Tue Jun  5 15:02:13 JST 2007
-pbuilder-time-stamp: 1181023333
+Current time: TIME
+pbuilder-time-stamp: XXXX
  -> Copying COW directory
  -> Invoking pbuilder
  -> Cleaning COW directory

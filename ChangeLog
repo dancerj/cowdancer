@@ -1,3 +1,8 @@
+2007-06-06  Junichi Uekawa  <dancer@debian.org>
+
+	* parameter.h: 
+	* parameter.c: new files, moved common code from cowbuilder/qemubuilder
+
 2007-06-05  Junichi Uekawa  <dancer@debian.org>
 
 	* cowbuilder.c (load_config_file): 

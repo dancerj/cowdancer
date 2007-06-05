@@ -1,19 +1,19 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.ScDMbl2935
++ TESTDIR=/tmp/tmp.yQkHK25202
 ++ readlink -f tests/012_test_chown.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c
 ++ id -G
-+ set -- 1000 4 20 24 25 29 44 46 100 109 112
++ set -- 1000 4 20 24 25 29 44 46 100 107 109 112
 + ORIGID=1000
 + NEWID=4
-+ ((  11 < 3  ))
-+ cd /tmp/tmp.ScDMbl2935
++ ((  12 < 3  ))
++ cd /tmp/tmp.yQkHK25202
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3745e-05 seconds, 43.1 MB/s
+1024 bytes (1.0 kB) copied, 2.2719e-05 seconds, 45.1 MB/s
 + chgrp 1000 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -21,25 +21,25 @@
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-total 4
-1610575 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 a
-1610579 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 b
-1610580 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 c
-1610581 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 d
-1610582 -rw-r--r-- 2 dancer dancer 1024 2007-06-05 15:00 e
+合計 4
+162839 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 a
+162843 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 b
+162844 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 c
+162845 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 d
+162846 -rw-r--r-- 2 dancer dancer 1024 2007-06-06 07:20 e
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c 4 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-total 4
-1610633 -rw-r--r-- 1 dancer adm       0 2007-06-05 15:00 a
-1610579 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 b
-1610638 -rw-r--r-- 1 dancer adm       0 2007-06-05 15:00 c
-1610581 -rw-r--r-- 2 dancer dancer    0 2007-06-05 15:00 d
-1610582 -rw-r--r-- 2 dancer dancer 1024 2007-06-05 15:00 e
+合計 4
+162955 -rw-r--r-- 1 dancer adm       0 2007-06-06 07:20 a
+162843 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 b
+162970 -rw-r--r-- 1 dancer adm       0 2007-06-06 07:20 c
+162845 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 d
+162846 -rw-r--r-- 2 dancer dancer 1024 2007-06-06 07:20 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.ScDMbl2935
++ rm -rf /tmp/tmp.yQkHK25202

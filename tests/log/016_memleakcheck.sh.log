@@ -1,43 +1,43 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.vEMUaY3049
++ TESTDIR=/tmp/tmp.CHAXY25465
 ++ readlink -f tests/016_memleakcheck.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/016_memleakcheck.c
-+ gcc /home/dancer/DEBIAN/cowdancer/cowdancer/tests/016_memleakcheck.c -o /tmp/tmp.vEMUaY3049/tracer -g
++ gcc /home/dancer/DEBIAN/cowdancer/cowdancer/tests/016_memleakcheck.c -o /tmp/XXXX/tracer -g
 + set -ex
-+ cd /tmp/tmp.vEMUaY3049
++ cd /tmp/tmp.CHAXY25465
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.2689e-05 seconds, 45.1 MB/s
+1024 bytes (1.0 kB) copied, 2.2737e-05 seconds, 45.0 MB/s
 + cp -al 1 2
 + MALLOC_TRACE=log
-+ cow-shell /tmp/tmp.vEMUaY3049/tracer
-00400000-00401000 r-xp 00000000 00:10 1610821                            /tmp/tmp.vEMUaY3049/tracer
-00600000-00601000 rw-p 00000000 00:10 1610821                            /tmp/tmp.vEMUaY3049/tracer
++ cow-shell /tmp/XXXX/tracer
+00400000-00401000 r-xp 00000000 00:10 163369                             /tmp/XXXX/tracer
+00600000-00601000 rw-p 00000000 00:10 163369                             /tmp/XXXX/tracer
 00601000-00622000 rw-p 00601000 00:00 0                                  [heap]
-2b0f424aa000-2b0f424c6000 r-xp 00000000 08:01 83486                      /lib/ld-2.5.so
-2b0f424c6000-2b0f424c9000 rw-p 2b0f424c6000 00:00 0 
-2b0f426c5000-2b0f426c7000 rw-p 0001b000 08:01 83486                      /lib/ld-2.5.so
-2b0f426c7000-2b0f426ca000 r-xp 00000000 08:01 129056                     /usr/lib/cowdancer/libcowdancer.so
-2b0f426ca000-2b0f428c9000 ---p 00003000 08:01 129056                     /usr/lib/cowdancer/libcowdancer.so
-2b0f428c9000-2b0f428ca000 rw-p 00002000 08:01 129056                     /usr/lib/cowdancer/libcowdancer.so
-2b0f428ca000-2b0f428cb000 r--p 00000000 00:10 1610840                    /tmp/tmp.vEMUaY3049/.ilist
-2b0f428cb000-2b0f428ce000 rw-p 2b0f428cb000 00:00 0 
-2b0f428de000-2b0f42a26000 r-xp 00000000 08:01 83476                      /lib/libc-2.5.so
-2b0f42a26000-2b0f42c25000 ---p 00148000 08:01 83476                      /lib/libc-2.5.so
-2b0f42c25000-2b0f42c28000 r--p 00147000 08:01 83476                      /lib/libc-2.5.so
-2b0f42c28000-2b0f42c2a000 rw-p 0014a000 08:01 83476                      /lib/libc-2.5.so
-2b0f42c2a000-2b0f42c2f000 rw-p 2b0f42c2a000 00:00 0 
-2b0f42c2f000-2b0f42c31000 r-xp 00000000 08:01 83477                      /lib/libdl-2.5.so
-2b0f42c31000-2b0f42e31000 ---p 00002000 08:01 83477                      /lib/libdl-2.5.so
-2b0f42e31000-2b0f42e33000 rw-p 00002000 08:01 83477                      /lib/libdl-2.5.so
-2b0f42e33000-2b0f42e35000 rw-p 2b0f42e33000 00:00 0 
-7fff685ea000-7fff68600000 rw-p 7fff685ea000 00:00 0                      [stack]
+2adb94a7c000-2adb94a98000 r-xp 00000000 08:01 83486                      /lib/ld-2.5.so
+2adb94a98000-2adb94a9b000 rw-p 2adb94a98000 00:00 0 
+2adb94c97000-2adb94c99000 rw-p 0001b000 08:01 83486                      /lib/ld-2.5.so
+2adb94c99000-2adb94c9c000 r-xp 00000000 08:01 129056                     /usr/lib/cowdancer/libcowdancer.so
+2adb94c9c000-2adb94e9b000 ---p 00003000 08:01 129056                     /usr/lib/cowdancer/libcowdancer.so
+2adb94e9b000-2adb94e9c000 rw-p 00002000 08:01 129056                     /usr/lib/cowdancer/libcowdancer.so
+2adb94e9c000-2adb94e9d000 r--p 00000000 00:10 163398                     /tmp/XXXX/.ilist
+2adb94e9d000-2adb94ea0000 rw-p 2adb94e9d000 00:00 0 
+2adb94eb0000-2adb94ff8000 r-xp 00000000 08:01 83476                      /lib/libc-2.5.so
+2adb94ff8000-2adb951f7000 ---p 00148000 08:01 83476                      /lib/libc-2.5.so
+2adb951f7000-2adb951fa000 r--p 00147000 08:01 83476                      /lib/libc-2.5.so
+2adb951fa000-2adb951fc000 rw-p 0014a000 08:01 83476                      /lib/libc-2.5.so
+2adb951fc000-2adb95201000 rw-p 2adb951fc000 00:00 0 
+2adb95201000-2adb95203000 r-xp 00000000 08:01 83477                      /lib/libdl-2.5.so
+2adb95203000-2adb95403000 ---p 00002000 08:01 83477                      /lib/libdl-2.5.so
+2adb95403000-2adb95405000 rw-p 00002000 08:01 83477                      /lib/libdl-2.5.so
+2adb95405000-2adb95407000 rw-p 2adb95405000 00:00 0 
+7fff16018000-7fff1602e000 rw-p 7fff16018000 00:00 0                      [stack]
 ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vdso]
 + RESULT=0
-+ mtrace /tmp/tmp.vEMUaY3049/tracer /tmp/tmp.vEMUaY3049/log
++ mtrace /tmp/XXXX/tracer /tmp/XXXX/log
 No memory leaks.
-+ rm -rf /tmp/tmp.vEMUaY3049
++ rm -rf /tmp/tmp.CHAXY25465
 + exit 0
