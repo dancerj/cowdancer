@@ -1,10 +1,17 @@
-cowdancer (0.31) UNRELEASED; urgency=low
+cowdancer (0.32) unstable; urgency=low
+
+  * Try again, call debhelper with '-s' so that it doesn't try to build
+    everything on all architectures (Closes: #427650).
+
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 06 Jun 2007 08:11:54 +0900
+
+cowdancer (0.31) unstable; urgency=low
 
   * cowbuilder: pass --configfile option through to pbuilder.
   * cowbuilder, qemubuilder: reorganize code, to put shared code into
     parameter.[ch]
 
- -- Junichi Uekawa <dancer@debian.org>  Wed, 06 Jun 2007 07:11:50 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 06 Jun 2007 07:54:24 +0900
 
 cowdancer (0.30) unstable; urgency=low
 
