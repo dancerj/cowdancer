@@ -154,9 +154,9 @@ static const char* qemu_arch_tty(const char* arch)
  */
 static int create_ext3_block_device(const char* filename, int gigabyte)
 {
-  int ret;
-  char *s;
-  char *s2;
+  int ret = 0;
+  char *s = NULL;
+  char *s2 = NULL;
 
   /* create 10GB sparse data */
   if (0>asprintf(&s, "of=%s", filename))
@@ -178,8 +178,8 @@ static int create_ext3_block_device(const char* filename, int gigabyte)
       goto out;
     }
 
-  free(s);
-  s=NULL;
+  free(s); s=NULL;
+
   if (0>asprintf(&s, "yes | mke2fs -j -O sparse_super %s", filename))
     {
       /* out of memory */
@@ -225,8 +225,8 @@ static int loop_umount(const char* device)
 */
 static int create_script(const char* mountpoint, const char* relative_path, const char* scriptcontent)
 {
-  char *s;
-  FILE* f;
+  char *s = NULL;
+  FILE* f = NULL;
   int ret=-1;
   
   asprintf(&s, "%s/%s", mountpoint, relative_path);
@@ -257,8 +257,7 @@ static int copy_file_internal(const char* orig, const char*dest)
   FILE* fin;
   FILE* fout;
   size_t count;
-  
-  
+
   fin=fopen(orig, "r");
   fout=fopen(dest, "w");
   if (!fin)
@@ -282,6 +281,8 @@ static int copy_file_internal(const char* orig, const char*dest)
   fclose(fout);
   ret=0;
  out:
+  if (buf) free (buf);
+  
   return ret;
 }
 
@@ -445,9 +446,9 @@ static int run_second_stage_script
  const char* hostcommand1,
  const char* hostcommand2)
 {
-  char* script;
-  char* workblockdevicepath;
-  char* cowdevpath;
+  char* script=NULL;
+  char* workblockdevicepath=NULL;
+  char* cowdevpath=NULL;
   
   int ret=1;
   
@@ -550,9 +551,8 @@ static int run_second_stage_script
  out:
   if(workblockdevicepath) free(workblockdevicepath);
   if(cowdevpath) free(cowdevpath);
-	   if(script) free(script);
+  if(script) free(script);
   return ret;
-
 }
 
 /* 
@@ -562,9 +562,9 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
 {
   int ret=1;
   size_t bufsiz=0;
-  char* buf;
-  char* filename;
-  char* origdir;
+  char* buf=NULL;
+  char* filename=NULL;
+  char* origdir=NULL;
   char* dscfile=canonicalize_file_name(dscfile_);
   FILE* f=fopen(dscfile,"r");
 
@@ -610,7 +610,6 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
   fclose(fmem);
   fclose(f);
 
-out:
   if(buf) free(buf);
   if(origdir) free(origdir);
   if(dscfile) free(dscfile);
@@ -620,8 +619,8 @@ out:
 int cpbuilder_create(const struct pbuilderconfig* pc)
 {
   int ret;
-  char* s = NULL;  
-  char* workblockdevicepath;
+  char* s=NULL;  
+  char* workblockdevicepath=NULL;
 
   if((ret=unlink(pc->basepath)))
     {
@@ -802,9 +801,9 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
 {
   int ret;
-  char* hoststr;
-  char* hoststr2;
-  char* commandline;
+  char* hoststr=NULL;
+  char* hoststr2=NULL;
+  char* commandline=NULL;
 
   const char* buildopt="--binary-all"; /* TODO: add --binary-arch option */
   

@@ -1,41 +1,41 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.wfNjT25008
-+ cd /tmp/tmp.wfNjT25008
++ TESTDIR=/tmp/XXXX
++ cd /tmp/XXXX
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.428e-05 seconds, 42.2 MB/s
+1024 bytes (1.0 kB) copied, 2.3068e-05 seconds, 44.4 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-合計 4
-162115 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 a
-162119 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 b
-162120 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 c
-162121 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 d
-162122 -rw-r--r-- 2 dancer dancer 1024 2007-06-06 07:20 e
+total 4
+1957815 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 a
+1957819 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 b
+1957820 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 c
+1957821 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 d
+1957822 -rw-r--r-- 2 dancer dancer 1024 2007-06-06 15:00 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
-Invoking /bin/bash
+Invoking /bin/sh
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 3.0807e-05 seconds, 33.2 MB/s
+1024 bytes (1.0 kB) copied, 2.9929e-05 seconds, 34.2 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-合計 12
-162175 -rw-r--r-- 1 dancer dancer    2 2007-06-06 07:20 a
-162192 -rw-r--r-- 1 dancer dancer    0 2007-06-06 07:20 c
-162210 -rw-r--r-- 1 dancer dancer 1024 2007-06-06 07:20 d
-162122 -rw-r--r-- 2 dancer dancer 1024 2007-06-06 07:20 e
+total 12
+1957865 -rw-r--r-- 1 dancer dancer    2 2007-06-06 15:00 a
+1957872 -rw-r--r-- 1 dancer dancer    0 2007-06-06 15:00 c
+1957880 -rw-r--r-- 1 dancer dancer 1024 2007-06-06 15:00 d
+1957822 -rw-r--r-- 2 dancer dancer 1024 2007-06-06 15:00 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.wfNjT25008
++ rm -rf /tmp/XXXX

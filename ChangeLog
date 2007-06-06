@@ -1,5 +1,7 @@
 2007-06-06  Junichi Uekawa  <dancer@debian.org>
 
+	* qemubuilder.c: clean up code and generally initialize variables.
+
 	* Makefile (install): qemubuilder installed to sbin, since it
 	needs root privilege
 

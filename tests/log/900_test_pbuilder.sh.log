@@ -24,12 +24,9 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_di
 D: Return code: 0
 P: Validating Release
 D: Execute "gpgv --status-fd 1 --keyring /usr/share/keyrings/debian-archive-keyring.gpg /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._Release.gpg /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._Release"
-O: gpgv: 
-O: Signature made Tue Jun  5 05:15:26 2007 JST using DSA key ID 6070D3A1
 I: Good signature from "Debian Archive Automatic Signing Key (4.0/etch) <ftpmaster@debian.org>"
-O: gpgv: 
-O: Good signature from "Debian Archive Automatic Signing Key (4.0/etch) <ftpmaster@debian.org>"
-O: 
+O: gpgv: Signature made Wed Jun  6 05:12:05 2007 JST using DSA key ID 6070D3A1
+O: gpgv: Good signature from "Debian Archive Automatic Signing Key (4.0/etch) <ftpmaster@debian.org>"
 D: Return code: 0
 P: Parsing Release
 P: Retrieving Packages.gz
@@ -348,7 +345,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/fin
 D: Return code: 0
 P: Validating findutils
 P: Retrieving gcc-4.1-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gcc-4.1-base_4.1.2-11_amd64.deb http://glantank/debian/pool/main/g/gcc-4.1/gcc-4.1-base_4.1.2-11_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gcc-4.1-base_4.1.2-12_amd64.deb http://glantank/debian/pool/main/g/gcc-4.1/gcc-4.1-base_4.1.2-12_amd64.deb"
 D: Return code: 0
 P: Validating gcc-4.1-base
 P: Retrieving grep
@@ -740,14 +737,14 @@ O: dpkg: warning - ignoring pre-dependency problem !
 O: dpkg: regarding .../dpkg_1.14.4_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on coreutils (>= 5.93-1)
 O: dpkg: warning - ignoring pre-dependency problem !
+O: Setting up dpkg (1.14.4) ...
+P: Configuring package dpkg
+D: Updating dpkg to status 3
 O: dpkg: dpkg: dependency problems, but configuring anyway as you request:
 O:  dpkg depends on libc6 (>= 2.5-5); however:
 O:   Package libc6 is not installed.
 O:  dpkg depends on coreutils (>= 5.93-1); however:
 O:   Package coreutils is not installed.
-O: Setting up dpkg (1.14.4) ...
-P: Configuring package dpkg
-D: Updating dpkg to status 3
 O: 
 D: Return code: 0
 D: call action: helper-install
@@ -9398,6 +9395,7 @@ O:
 O: makedev rd/c1d31p5 b 49 253 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
+O: 
 O: makedev rd/c1d31p6 b 49 254 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -10177,6 +10175,7 @@ O:
 O: makedev rd/c2d24 b 50 192 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
+O: 
 O: makedev rd/c2d24p1 b 50 193 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -11676,6 +11675,7 @@ O:
 O: makedev rd/c4d6p7 b 52 55 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
+O: 
 O: makedev rd/c4d7 b 52 56 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -16570,7 +16570,6 @@ O:
 O: makedev ida/c0d15p6 b 72 246 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
-O: 
 O: makedev ida/c0d15p7 b 72 247 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -22486,7 +22485,7 @@ O: Unpacking findutils (from .../findutils_4.2.31-1_amd64.deb) ...
 P: Unpacking package findutils
 D: Updating findutils to status 2
 O: Selecting previously deselected package gcc-4.1-base.
-O: Unpacking gcc-4.1-base (from .../gcc-4.1-base_4.1.2-11_amd64.deb) ...
+O: Unpacking gcc-4.1-base (from .../gcc-4.1-base_4.1.2-12_amd64.deb) ...
 P: Unpacking package gcc-4.1-base
 D: Updating gcc-4.1-base to status 2
 O: Selecting previously deselected package grep.
@@ -22619,7 +22618,7 @@ D: Execute "dpkg --configure -a" in chroot
 O: Setting up sysv-rc (2.86.ds1-38) ...
 P: Configuring package sysv-rc
 D: Updating sysv-rc to status 3
-O: Setting up gcc-4.1-base (4.1.2-11) ...
+O: Setting up gcc-4.1-base (4.1.2-12) ...
 P: Configuring package gcc-4.1-base
 D: Updating gcc-4.1-base to status 3
 O: 
@@ -22829,8 +22828,8 @@ P: Configuring package tzdata
 D: Updating tzdata to status 3
 O: 
 O: Current default timezone: 'Etc/UTC'
-O: Local time is now:      Tue Jun  5 22:26:16 UTC 2007.
-O: Universal Time is now:  Tue Jun  5 22:26:16 UTC 2007.
+O: Local time is now:      Wed Jun  6 06:01:25 UTC 2007.
+O: Universal Time is now:  Wed Jun  6 06:01:25 UTC 2007.
 O: Run 'dpkg-reconfigure tzdata' if you wish to change it.
 O: 
 O: 
@@ -23030,7 +23029,8 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-apt.deb /var/cache/pb
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-apt.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-apt.
-O: (Reading database ... 5283 files and directories currently installed.)
+O: (Reading database ... 
+O: 5283 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-apt (from /cdebootstrap-helper-apt.deb) ...
 O: Setting up cdebootstrap-helper-apt (1) ...
 O: Get:1 bootstrap: . Release.gpg [189B]
@@ -23487,7 +23487,7 @@ Refreshing the base.tgz
  -> installing dummy policy-rc.d
 Get:1 http://glantank sid Release.gpg [189B]
 Get:2 http://glantank sid Release [79.6kB]
-Get:3 http://glantank sid/main Packages [6251kB]
+Get:3 http://glantank sid/main Packages [6252kB]
 Fetched XXXB in Xs (XXXXXB/s)
 Reading package lists...
 dpkg - warning: ignoring request to remove lilo which isn't installed.
@@ -23515,20 +23515,20 @@ The following NEW packages will be installed:
   libdebian-installer4 libstdc++6-4.1-dev linux-libc-dev make patch pbuilder
   perl perl-modules
 0 upgraded, 21 newly installed, 0 to remove and 0 not upgraded.
-Need to get 20.1MB of archives.
-After unpacking 79.5MB of additional disk space will be used.
+Need to get 20.2MB of archives.
+After unpacking 79.6MB of additional disk space will be used.
 Get:1 http://glantank sid/main patch 2.5.9-4 [98.7kB]
 Get:2 http://glantank sid/main perl-modules 5.8.8-7 [2310kB]
 Get:3 http://glantank sid/main perl 5.8.8-7 [4240kB]
 Get:4 http://glantank sid/main binutils 2.17cvs20070426-8 [2559kB]
 Get:5 http://glantank sid/main linux-libc-dev 2.6.21-4 [698kB]
 Get:6 http://glantank sid/main libc6-dev 2.5-10 [2473kB]
-Get:7 http://glantank sid/main cpp-4.1 4.1.2-11 [2514kB]
+Get:7 http://glantank sid/main cpp-4.1 4.1.2-12 [2514kB]
 Get:8 http://glantank sid/main cpp 4:4.1.2-2 [11.9kB]
-Get:9 http://glantank sid/main gcc-4.1 4.1.2-11 [424kB]
+Get:9 http://glantank sid/main gcc-4.1 4.1.2-12 [424kB]
 Get:10 http://glantank sid/main gcc 4:4.1.2-2 [5056B]
-Get:11 http://glantank sid/main libstdc++6-4.1-dev 4.1.2-11 [1155kB]
-Get:12 http://glantank sid/main g++-4.1 4.1.2-11 [2822kB]
+Get:11 http://glantank sid/main libstdc++6-4.1-dev 4.1.2-12 [1155kB]
+Get:12 http://glantank sid/main g++-4.1 4.1.2-12 [2822kB]
 Get:13 http://glantank sid/main g++ 4:4.1.2-2 [1374B]
 Get:14 http://glantank sid/main make 3.81-3 [395kB]
 Get:15 http://glantank sid/main dpkg-dev 1.14.4 [178kB]
@@ -23536,8 +23536,8 @@ Get:16 http://glantank sid/main build-essential 11.3 [6982B]
 Get:17 http://glantank sid/main libdebian-installer4 0.51 [28.1kB]
 Get:18 http://glantank sid/main libdebian-installer-extra4 0.51 [10.6kB]
 Get:19 http://glantank sid/main cdebootstrap 0.4.3 [29.0kB]
-Get:20 http://glantank sid/main pbuilder 0.168 [87.3kB]
-Get:21 http://glantank sid/main cowdancer 0.28 [30.2kB]
+Get:20 http://glantank sid/main pbuilder 0.169 [163kB]
+Get:21 http://glantank sid/main cowdancer 0.30 [30.4kB]
 Fetched XXXB in Xs (XXXXXB/s)
 Selecting previously deselected package patch.
 (Reading database ... 7173 files and directories currently installed.)
@@ -23553,17 +23553,17 @@ Unpacking linux-libc-dev (from .../linux-libc-dev_2.6.21-4_amd64.deb) ...
 Selecting previously deselected package libc6-dev.
 Unpacking libc6-dev (from .../libc6-dev_2.5-10_amd64.deb) ...
 Selecting previously deselected package cpp-4.1.
-Unpacking cpp-4.1 (from .../cpp-4.1_4.1.2-11_amd64.deb) ...
+Unpacking cpp-4.1 (from .../cpp-4.1_4.1.2-12_amd64.deb) ...
 Selecting previously deselected package cpp.
 Unpacking cpp (from .../cpp_4%3a4.1.2-2_amd64.deb) ...
 Selecting previously deselected package gcc-4.1.
-Unpacking gcc-4.1 (from .../gcc-4.1_4.1.2-11_amd64.deb) ...
+Unpacking gcc-4.1 (from .../gcc-4.1_4.1.2-12_amd64.deb) ...
 Selecting previously deselected package gcc.
 Unpacking gcc (from .../gcc_4%3a4.1.2-2_amd64.deb) ...
 Selecting previously deselected package libstdc++6-4.1-dev.
-Unpacking libstdc++6-4.1-dev (from .../libstdc++6-4.1-dev_4.1.2-11_amd64.deb) ...
+Unpacking libstdc++6-4.1-dev (from .../libstdc++6-4.1-dev_4.1.2-12_amd64.deb) ...
 Selecting previously deselected package g++-4.1.
-Unpacking g++-4.1 (from .../g++-4.1_4.1.2-11_amd64.deb) ...
+Unpacking g++-4.1 (from .../g++-4.1_4.1.2-12_amd64.deb) ...
 Selecting previously deselected package g++.
 Unpacking g++ (from .../g++_4%3a4.1.2-2_amd64.deb) ...
 Selecting previously deselected package make.
@@ -23579,18 +23579,18 @@ Unpacking libdebian-installer-extra4 (from .../libdebian-installer-extra4_0.51_a
 Selecting previously deselected package cdebootstrap.
 Unpacking cdebootstrap (from .../cdebootstrap_0.4.3_amd64.deb) ...
 Selecting previously deselected package pbuilder.
-Unpacking pbuilder (from .../pbuilder_0.168_all.deb) ...
+Unpacking pbuilder (from .../pbuilder_0.169_all.deb) ...
 Selecting previously deselected package cowdancer.
-Unpacking cowdancer (from .../cowdancer_0.28_amd64.deb) ...
+Unpacking cowdancer (from .../cowdancer_0.30_amd64.deb) ...
 Setting up patch (2.5.9-4) ...
 Setting up binutils (2.17cvs20070426-8) ...
 
 Setting up linux-libc-dev (2.6.21-4) ...
 Setting up libc6-dev (2.5-10) ...
-Setting up cpp-4.1 (4.1.2-11) ...
+Setting up cpp-4.1 (4.1.2-12) ...
 Setting up cpp (4:4.1.2-2) ...
 
-Setting up gcc-4.1 (4.1.2-11) ...
+Setting up gcc-4.1 (4.1.2-12) ...
 Setting up gcc (4:4.1.2-2) ...
 
 Setting up make (3.81-3) ...
@@ -23599,13 +23599,14 @@ Setting up libdebian-installer4 (0.51) ...
 Setting up libdebian-installer-extra4 (0.51) ...
 
 Setting up cdebootstrap (0.4.3) ...
-Setting up pbuilder (0.168) ...
-Setting up cowdancer (0.28) ...
+Setting up pbuilder (0.169) ...
+
+Setting up cowdancer (0.30) ...
 Setting up perl-modules (5.8.8-7) ...
-Setting up libstdc++6-4.1-dev (4.1.2-11) ...
+Setting up libstdc++6-4.1-dev (4.1.2-12) ...
 Setting up perl (5.8.8-7) ...
 
-Setting up g++-4.1 (4.1.2-11) ...
+Setting up g++-4.1 (4.1.2-12) ...
 Setting up g++ (4:4.1.2-2) ...
 
 Setting up dpkg-dev (1.14.4) ...
@@ -23653,7 +23654,7 @@ umount: /dev/shm: not mounted
 umount: /lib/init/rw: not mounted
 cat: /var/run/inetd.pid: No such file or directory
 kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
- -> user script /var/cache/pbuilder/build/cow.24250/tmp/XXXX/E50-initscripts-2.86.ds1-7.workaround.sh finished
+ -> user script /var/cache/pbuilder/build/cow.1920/tmp/XXXX/E50-initscripts-2.86.ds1-7.workaround.sh finished
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
  -> Copying COW directory
@@ -23663,9 +23664,9 @@ kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill 
 W: /home/dancer/.pbuilderrc does not exist
   -> using cowbuilder as pbuilder
 dpkg-buildpackage: source package is cowdancer
-dpkg-buildpackage: source version is 0.31
+dpkg-buildpackage: source version is 0.33
 dpkg-buildpackage: source changed by Junichi Uekawa <dancer@debian.org>
-dpkg-buildpackage: source version without epoch 0.31
+dpkg-buildpackage: source version without epoch 0.33
  fakeroot debian/rules clean
 make[1]: Entering directory `/home/dancer/DEBIAN/cowdancer/cowdancer'
 dh_testdir
@@ -23678,12 +23679,13 @@ make[2]: Leaving directory `/home/dancer/DEBIAN/cowdancer/cowdancer'
 dh_clean
 make[1]: Leaving directory `/home/dancer/DEBIAN/cowdancer/cowdancer'
  dpkg-source -b cowdancer
-dpkg-source: warning: source directory './cowdancer' is not <sourcepackage>-<upstreamversion> 'cowdancer-0.31'
-dpkg-source: building cowdancer in cowdancer_0.31.tar.gz
-dpkg-source: building cowdancer in cowdancer_0.31.dsc
+dpkg-source: warning: source directory './cowdancer' is not <sourcepackage>-<upstreamversion> 'cowdancer-0.33'
+dpkg-source: building cowdancer in cowdancer_0.33.tar.gz
+dpkg-source: building cowdancer in cowdancer_0.33.dsc
  dpkg-genchanges -S
 dpkg-genchanges: including full source code in upload
 dpkg-buildpackage: source only upload: Debian-native package
+Merged changes with ../cowdancer_0.33_source.changes
 bash: /root/.pbuilderrc: No such file or directory
 W: /home/dancer/.pbuilderrc does not exist
  -> Running in no-targz mode
@@ -23728,7 +23730,7 @@ Get:4 http://glantank sid/main html2text 1.3.2a-3 [92.7kB]
 Get:5 http://glantank sid/main gettext 0.16.1-1 [2261kB]
 Get:6 http://glantank sid/main intltool-debian 0.35.0+20060710.1 [30.8kB]
 Get:7 http://glantank sid/main po-debconf 1.0.8 [111kB]
-Get:8 http://glantank sid/main debhelper 5.0.49 [517kB]
+Get:8 http://glantank sid/main debhelper 5.0.50 [517kB]
 Get:9 http://glantank sid/main libasound2 1.0.13-2 [378kB]
 Get:10 http://glantank sid/main libsysfs2 2.1.0-2 [28.2kB]
 Get:11 http://glantank sid/main libdirectfb-0.9-25 0.9.25.1-5 [870kB]
@@ -23743,7 +23745,7 @@ Get:19 http://glantank sid/main bochsbios 2.3-2 [80.3kB]
 Get:20 http://glantank sid/main qemu 0.9.0-2 [4319kB]
 Fetched XXXB in Xs (XXXXXB/s)
 Selecting previously deselected package libmagic1.
-(Reading database ... 11179 files and directories currently installed.)
+(Reading database ... 11181 files and directories currently installed.)
 Unpacking libmagic1 (from .../libmagic1_4.21-1_amd64.deb) ...
 Selecting previously deselected package file.
 Unpacking file (from .../archives/file_4.21-1_amd64.deb) ...
@@ -23758,7 +23760,7 @@ Unpacking intltool-debian (from .../intltool-debian_0.35.0+20060710.1_all.deb) .
 Selecting previously deselected package po-debconf.
 Unpacking po-debconf (from .../po-debconf_1.0.8_all.deb) ...
 Selecting previously deselected package debhelper.
-Unpacking debhelper (from .../debhelper_5.0.49_all.deb) ...
+Unpacking debhelper (from .../debhelper_5.0.50_all.deb) ...
 Selecting previously deselected package libasound2.
 Unpacking libasound2 (from .../libasound2_1.0.13-2_amd64.deb) ...
 Selecting previously deselected package libsysfs2.
@@ -23794,7 +23796,7 @@ Setting up gettext (0.16.1-1) ...
 
 Setting up intltool-debian (0.35.0+20060710.1) ...
 Setting up po-debconf (1.0.8) ...
-Setting up debhelper (5.0.49) ...
+Setting up debhelper (5.0.50) ...
 Setting up libasound2 (1.0.13-2) ...
 
 Setting up libsysfs2 (2.1.0-2) ...
@@ -23824,41 +23826,41 @@ After unpacking 451kB of additional disk space will be used.
 Get:1 http://glantank sid/main fakeroot 1.7.1 [111kB]
 Fetched XXXB in Xs (XXXXXB/s)
 Selecting previously deselected package fakeroot.
-(Reading database ... 12143 files and directories currently installed.)
+(Reading database ... 12145 files and directories currently installed.)
 Unpacking fakeroot (from .../fakeroot_1.7.1_amd64.deb) ...
 Setting up fakeroot (1.7.1) ...
 
 Copying source file
-    -> copying [/home/dancer/DEBIAN/cowdancer/cowdancer_0.31.dsc]
-    -> copying [/home/dancer/DEBIAN/cowdancer/cowdancer_0.31.tar.gz]
+    -> copying [/home/dancer/DEBIAN/cowdancer/cowdancer_0.33.dsc]
+    -> copying [/home/dancer/DEBIAN/cowdancer/cowdancer_0.33.tar.gz]
 Extracting source
-dpkg-source: warning: extracting unsigned source package (./cowdancer_0.31.dsc)
-dpkg-source: extracting cowdancer in cowdancer-0.31
-dpkg-source: unpacking cowdancer_0.31.tar.gz
+dpkg-source: warning: extracting unsigned source package (./cowdancer_0.33.dsc)
+dpkg-source: extracting cowdancer in cowdancer-0.33
+dpkg-source: unpacking cowdancer_0.33.tar.gz
  -> Building the package
 dpkg-buildpackage: source package is cowdancer
-dpkg-buildpackage: source version is 0.31
+dpkg-buildpackage: source version is 0.33
 dpkg-buildpackage: source changed by Junichi Uekawa <dancer@debian.org>
 dpkg-buildpackage: host architecture amd64
-dpkg-buildpackage: source version without epoch 0.31
+dpkg-buildpackage: source version without epoch 0.33
  fakeroot debian/rules clean
 dh_testdir
 dh_testroot
 rm -f build-stamp configure-stamp
 /usr/bin/make clean
-make[1]: Entering directory `/tmp/XXXX/cowdancer-0.31'
+make[1]: Entering directory `/tmp/XXXX/cowdancer-0.33'
 rm -f *~ *.o *.lo libcowdancer.so cow-shell cowbuilder qemubuilder
-make[1]: Leaving directory `/tmp/XXXX/cowdancer-0.31'
+make[1]: Leaving directory `/tmp/XXXX/cowdancer-0.33'
 dh_clean
- dpkg-source -b cowdancer-0.31
-dpkg-source: building cowdancer in cowdancer_0.31.tar.gz
-dpkg-source: building cowdancer in cowdancer_0.31.dsc
+ dpkg-source -b cowdancer-0.33
+dpkg-source: building cowdancer in cowdancer_0.33.tar.gz
+dpkg-source: building cowdancer in cowdancer_0.33.dsc
  debian/rules build
 dh_testdir
 touch configure-stamp
 dh_testdir
 /usr/bin/make
-make[1]: Entering directory `/tmp/XXXX/cowdancer-0.31'
+make[1]: Entering directory `/tmp/XXXX/cowdancer-0.33'
 gcc -D_REENTRANT -fPIC cowdancer.c -o cowdancer.lo -c -Wall -O2 -g
 cowdancer.c: In function 'ctor':
 cowdancer.c:185: warning: ignoring return value of 'initialize_functions', declared with attribute warn_unused_result
@@ -23869,8 +23871,10 @@ gcc cowbuilder.c -o cowbuilder.o -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR=
 gcc parameter.c -o parameter.o -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"/usr/lib\""
 cc   cowbuilder.o parameter.o   -o cowbuilder
 gcc qemubuilder.c -o qemubuilder.o -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"/usr/lib\""
+qemubuilder.c: In function 'copy_dscfile':
+qemubuilder.c:613: warning: label 'out' defined but not used
 cc   qemubuilder.o parameter.o   -o qemubuilder
-make[1]: Leaving directory `/tmp/XXXX/cowdancer-0.31'
+make[1]: Leaving directory `/tmp/XXXX/cowdancer-0.33'
 #/usr/bin/make check
 touch build-stamp
  fakeroot debian/rules binary
@@ -23878,39 +23882,39 @@ dh_testdir
 dh_testroot
 dh_clean -k
 dh_installdirs
-/usr/bin/make install DESTDIR=/tmp/XXXX/cowdancer-0.31/debian/cowdancer
-make[1]: Entering directory `/tmp/XXXX/cowdancer-0.31'
-install -d -o root -g root -m 755 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/bin
-install -d -o root -g root -m 755 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/lib/cowdancer
-install -d -o root -g root -m 755 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/share/man/man1
-install -d -o root -g root -m 755 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/share/man/man8
-install -o root -g root -m 644  cow-shell.1 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/share/man/man1/cow-shell.1
-install -o root -g root -m 644  cowbuilder.8 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/share/man/man8/cowbuilder.8
-install -o root -g root -m 644  libcowdancer.so /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/lib/cowdancer/libcowdancer.so
-install -o root -g root -m 755 cow-shell /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/bin/cow-shell
-install -o root -g root -m 755 cowbuilder /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/sbin/cowbuilder
-install -o root -g root -m 755 qemubuilder /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/bin/qemubuilder
-install -o root -g root -m 644  qemubuilder.1 /tmp/XXXX/cowdancer-0.31/debian/cowdancer/usr/share/man/man1/qemubuilder.1
-make[1]: Leaving directory `/tmp/XXXX/cowdancer-0.31'
+/usr/bin/make install DESTDIR=/tmp/XXXX/cowdancer-0.33/debian/cowdancer
+make[1]: Entering directory `/tmp/XXXX/cowdancer-0.33'
+install -d -o root -g root -m 755 /tmp/XXXX/cowdancer-0.33/debian/cowdancer/usr/bin
+install -d -o root -g root -m 755 /tmp/XXXX/cowdancer-0.33/debian/cowdancer/usr/lib/cowdancer
+install -d -o root -g root -m 755 /tmp/XXXX/cowdancer-0.33/debian/cowdancer/usr/share/man/man1
+install -d -o root -g root -m 755 /tmp/XXXX/cowdancer-0.33/debian/cowdancer/usr/share/man/man8
+install -o root -g root -m 644  cow-shell.1 /tmp/XXXX/cowdancer-0.33/debian/cowdancer/usr/share/man/man1/cow-shell.1
+install -o root -g root -m 644  cowbuilder.8 /tmp/XXXX/cowdancer-0.33/debian/cowdancer/usr/share/man/man8/cowbuilder.8
+install -o root -g root -m 644  libcowdancer.so /tmp/XXXX/cowdancer-0.33/debian/cowdancer/usr/lib/cowdancer/libcowdancer.so
+install -o root -g root -m 755 cow-shell /tmp/XXXX/cowdancer-0.33/debian/cowdancer/usr/bin/cow-shell
+install -o root -g root -m 755 cowbuilder /tmp/XXXX/cowdancer-0.33/debian/cowdancer/usr/sbin/cowbuilder
+install -o root -g root -m 755 qemubuilder /tmp/XXXX/cowdancer-0.33/debian/cowdancer/usr/sbin/qemubuilder
+install -o root -g root -m 644  qemubuilder.8 /tmp/XXXX/cowdancer-0.33/debian/cowdancer/usr/share/man/man8/qemubuilder.8
+make[1]: Leaving directory `/tmp/XXXX/cowdancer-0.33'
 dh_movefiles -pqemubuilder --sourcedir=debian/cowdancer
-dh_testdir
-dh_testroot
-dh_installdocs NEWS
-dh_installexamples
-dh_installmenu
-dh_installman
-dh_installchangelogs ChangeLog
-dh_link
-dh_strip
-dh_shlibdeps
-dh_compress
-dh_fixperms
-dh_installdeb
-dh_gencontrol
-dh_md5sums
-dh_builddeb
-dpkg-deb: building package `cowdancer' in `../cowdancer_0.31_amd64.deb'.
-dpkg-deb: building package `qemubuilder' in `../qemubuilder_0.31_amd64.deb'.
+dh_testdir -s 
+dh_testroot -s 
+dh_installdocs -s NEWS
+dh_installexamples -s 
+dh_installmenu -s 
+dh_installman -s 
+dh_installchangelogs -s ChangeLog
+dh_link -s 
+dh_strip -s 
+dh_shlibdeps -s 
+dh_compress -s 
+dh_fixperms -s 
+dh_installdeb -s 
+dh_gencontrol -s 
+dh_md5sums -s 
+dh_builddeb -s 
+dpkg-deb: building package `cowdancer' in `../cowdancer_0.33_amd64.deb'.
+dpkg-deb: building package `qemubuilder' in `../qemubuilder_0.33_amd64.deb'.
  dpkg-genchanges
 dpkg-genchanges: including full source code in upload
 dpkg-buildpackage: full upload; Debian-native package (full source is included)

@@ -1,39 +1,39 @@
 ++ mktemp -d
-+ TESTDIR=/tmp/tmp.dZEJt25067
++ TESTDIR=/tmp/XXXX
 ++ readlink -f tests/002_test_open.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/002_test_open.c
-+ cd /tmp/tmp.dZEJt25067
++ cd /tmp/XXXX
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3649e-05 seconds, 43.3 MB/s
+1024 bytes (1.0 kB) copied, 2.3187e-05 seconds, 44.2 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-合計 4
-162361 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 a
-162365 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 b
-162366 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 c
-162367 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 d
-162368 -rw-r--r-- 2 dancer dancer 1024 2007-06-06 07:20 e
+total 4
+1958006 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 a
+1958010 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 b
+1958011 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 c
+1958012 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 d
+1958013 -rw-r--r-- 2 dancer dancer 1024 2007-06-06 15:00 e
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-合計 12
-162361 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 a
-162457 -rw-r--r-- 1 dancer dancer    3 2007-06-06 07:20 b
-162462 -rw-r--r-- 1 dancer dancer    3 2007-06-06 07:20 c
-162367 -rw-r--r-- 2 dancer dancer    0 2007-06-06 07:20 d
-162368 -rw-r--r-- 2 dancer dancer 1024 2007-06-06 07:20 e
+total 12
+1958006 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 a
+1958082 -rw-r--r-- 1 dancer dancer    3 2007-06-06 15:00 b
+1958087 -rw-r--r-- 1 dancer dancer    3 2007-06-06 15:00 c
+1958012 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 d
+1958013 -rw-r--r-- 2 dancer dancer 1024 2007-06-06 15:00 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
-+ rm -rf /tmp/tmp.dZEJt25067
++ rm -rf /tmp/XXXX
