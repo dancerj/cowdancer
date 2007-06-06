@@ -1,2 +1,2 @@
-/usr/bin/qemubuilder
-/usr/share/man/man1/qemubuilder.1
+/usr/sbin/qemubuilder
+/usr/share/man/man8/qemubuilder.8

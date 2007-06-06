@@ -1,5 +1,8 @@
 2007-06-06  Junichi Uekawa  <dancer@debian.org>
 
+	* Makefile (install): qemubuilder installed to sbin, since it
+	needs root privilege
+
 	* qemubuilder.c (copy_dscfile): support signed .dsc file.
 
 	* parameter.h: 
