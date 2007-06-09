@@ -1,0 +1,32 @@
+= qemubuilder =
+
+This page is README.Debian of qemubuilder, a pbuilder implementation using qemu.
+
+= Running each architectures =
+
+To run qemubuilder you need a kernel image and initrd (optional).
+
+== i386 ==
+
+Debian kernel package should work.
+
+== amd64 ==
+
+Debian kernel package should work.
+
+== arm ==
+
+kernel for versatile architecture is available from http://www.aurel32.net/info/debian_arm_qemu.php
+
+versatile is not a Debian official architecture.
+
+== other architecture ==
+
+support needs to be added.
+Please mail Junichi Uekawa with information on a kernel configuration that works.
+
+= Location of README.Debian =
+
+canonical version is available at http://wiki.debian.org/qemubuilder
+the file in Debian package is updated from the contents from time to time by running debian/rules debian/qemubuilder.README.Debian
+
