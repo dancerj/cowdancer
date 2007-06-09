@@ -8,7 +8,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.4541e-05 seconds, 41.7 MB/s
+1024 bytes (1.0 kB) copied, 2.3293e-05 seconds, 44.0 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -16,21 +16,21 @@
    2/ before
 + ls -li 2/
 total 4
-1958210 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 a
-1958214 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 b
-1958215 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 c
-1958216 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 d
-1958217 -rw-r--r-- 2 dancer dancer 1024 2007-06-06 15:00 e
+1459727 -rw-r--r-- 2 dancer dancer    0 2007-06-08 15:00 a
+1459731 -rw-r--r-- 2 dancer dancer    0 2007-06-08 15:00 b
+1459732 -rw-r--r-- 2 dancer dancer    0 2007-06-08 15:00 c
+1459733 -rw-r--r-- 2 dancer dancer    0 2007-06-08 15:00 d
+1459734 -rw-r--r-- 2 dancer dancer 1024 2007-06-08 15:00 e
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/004_test_fopen64.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 total 12
-1958210 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 a
-1958266 -rw-r--r-- 1 dancer dancer    4 2007-06-06 15:00 b
-1958271 -rw-r--r-- 1 dancer dancer    4 2007-06-06 15:00 c
-1958216 -rw-r--r-- 2 dancer dancer    0 2007-06-06 15:00 d
-1958217 -rw-r--r-- 2 dancer dancer 1024 2007-06-06 15:00 e
+1459727 -rw-r--r-- 2 dancer dancer    0 2007-06-08 15:00 a
+1459783 -rw-r--r-- 1 dancer dancer    4 2007-06-08 15:00 b
+1459788 -rw-r--r-- 1 dancer dancer    4 2007-06-08 15:00 c
+1459733 -rw-r--r-- 2 dancer dancer    0 2007-06-08 15:00 d
+1459734 -rw-r--r-- 2 dancer dancer 1024 2007-06-08 15:00 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
