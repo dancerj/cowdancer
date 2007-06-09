@@ -125,7 +125,7 @@ sys     0m3.792s
 #include "parameter.h"
 #include "ilist.h"
 
-const char* PRGNAME="cowbuilder";
+const char* ilist_PRGNAME="cowbuilder";
 
 /* 
    @return 0 on success, 1 on failure.
@@ -479,7 +479,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
       goto out;
       
     }
-  printf(" -> removing %s working copy\n", PRGNAME);
+  printf(" -> removing %s working copy\n", ilist_PRGNAME);
   cpbuilder_internal_saveupdate(pc);
  out:
   free(buf_chroot);
@@ -500,7 +500,7 @@ int cpbuilder_help(void)
 	 " --basepath:\n"
 	 " --buildplace:\n"
 	 " --distribution:\n"
-	 " ... and other pbuilder options \n", PRGNAME
+	 " ... and other pbuilder options \n", ilist_PRGNAME
 	 );
   return 0;
 }

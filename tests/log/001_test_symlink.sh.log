@@ -6,7 +6,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3848e-05 seconds, 42.9 MB/s
+1024 bytes (1.0 kB) copied, 2.3873e-05 seconds, 42.9 MB/s
 + ln -s a.real 1/a
 + ls -li 1/
 + sleep 1s
@@ -15,27 +15,27 @@
    2/ before
 + ls -li 2/
 合計 4
-1189203 lrwxrwxrwx 2 dancer dancer    6 2007-06-09 15:05 a -> a.real
-1189201 -rw-r--r-- 2 dancer dancer    0 2007-06-09 15:05 a.real
-1189195 -rw-r--r-- 2 dancer dancer    0 2007-06-09 15:05 b
-1189199 -rw-r--r-- 2 dancer dancer    0 2007-06-09 15:05 c
-1189200 -rw-r--r-- 2 dancer dancer    0 2007-06-09 15:05 d
-1189202 -rw-r--r-- 2 dancer dancer 1024 2007-06-09 15:05 e
+2056096 lrwxrwxrwx 2 dancer dancer    6 2007-06-09 22:09 a -> a.real
+2056094 -rw-r--r-- 2 dancer dancer    0 2007-06-09 22:09 a.real
+2056088 -rw-r--r-- 2 dancer dancer    0 2007-06-09 22:09 b
+2056092 -rw-r--r-- 2 dancer dancer    0 2007-06-09 22:09 c
+2056093 -rw-r--r-- 2 dancer dancer    0 2007-06-09 22:09 d
+2056095 -rw-r--r-- 2 dancer dancer 1024 2007-06-09 22:09 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
 Invoking /bin/bash
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 3.0372e-05 seconds, 33.7 MB/s
+1024 bytes (1.0 kB) copied, 3.0344e-05 seconds, 33.7 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-1189203 lrwxrwxrwx 2 dancer dancer    6 2007-06-09 15:05 a -> a.real
-1189246 -rw-r--r-- 1 dancer dancer    2 2007-06-09 15:05 a.real
-1189253 -rw-r--r-- 1 dancer dancer    0 2007-06-09 15:05 c
-1189261 -rw-r--r-- 1 dancer dancer 1024 2007-06-09 15:05 d
-1189202 -rw-r--r-- 2 dancer dancer 1024 2007-06-09 15:05 e
+2056096 lrwxrwxrwx 2 dancer dancer    6 2007-06-09 22:09 a -> a.real
+2056148 -rw-r--r-- 1 dancer dancer    2 2007-06-09 22:09 a.real
+2056155 -rw-r--r-- 1 dancer dancer    0 2007-06-09 22:09 c
+2056163 -rw-r--r-- 1 dancer dancer 1024 2007-06-09 22:09 d
+2056095 -rw-r--r-- 2 dancer dancer 1024 2007-06-09 22:09 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'

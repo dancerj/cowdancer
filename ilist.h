@@ -7,9 +7,9 @@ struct ilist_struct
   ino_t inode;
 };
 
-void outofmemory(const char* msg);
+void ilist_outofmemory(const char* msg);
 int ilistcreate(const char* ilistpath, const char* findcommandline);
 int compare_ilist (const void *a, const void *b);
 
 
-extern const char* PRGNAME;
+extern const char* ilist_PRGNAME;

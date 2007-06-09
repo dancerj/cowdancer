@@ -1,8 +1,9 @@
 cowdancer (0.35) UNRELEASED; urgency=low
 
   * add README.Debian to qemubuilder.
+  * libcowdancer: change exported symbol names to be less generic.
 
- -- Junichi Uekawa <dancer@debian.org>  Sat, 09 Jun 2007 22:04:01 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 09 Jun 2007 22:08:52 +0900
 
 cowdancer (0.34) unstable; urgency=low
 

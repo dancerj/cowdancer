@@ -13,7 +13,7 @@
 #include <sys/stat.h>
 #include <string.h>
 #include "ilist.h"
-const char* PRGNAME="cow-shell";
+const char* ilist_PRGNAME="cow-shell";
 
 int main(int ac, char** av)
 {
@@ -52,7 +52,7 @@ int main(int ac, char** av)
 	}
       if(ilistcreate(ilistpath, NULL))
 	{
-	  outofmemory(".ilist creation failed");
+	  ilist_outofmemory(".ilist creation failed");
 	  return 1;
 	}
     }

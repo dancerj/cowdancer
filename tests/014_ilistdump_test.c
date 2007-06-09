@@ -20,7 +20,7 @@
 #include <sys/signal.h>
 #include <sys/mman.h>
 #include "../ilist.h"
-const char* PRGNAME="test";
+const char* ilist_PRGNAME="test";
 
 int main(int argc, char** argv)
 {

@@ -22,7 +22,7 @@
 #include <errno.h>
 #include "ilist.h"
 
-const char* PRGNAME="cowdancer";
+const char* ilist_PRGNAME="cowdancer";
 
 /* libc functions. */
 static int (*origlibc_open)(const char *, int, ...) = NULL;
@@ -60,12 +60,12 @@ static int load_ilist(void)
   
   if (-1==(fd=origlibc_open(getenv("COWDANCER_ILISTFILE"),O_RDONLY,0)))
     {
-      fprintf(stderr, "%s: cannot open ilistfile %s\n", PRGNAME, getenv("COWDANCER_ILISTFILE"));
+      fprintf(stderr, "%s: cannot open ilistfile %s\n", ilist_PRGNAME, getenv("COWDANCER_ILISTFILE"));
       return 1;
     }
   if (-1==fstat(fd,&stbuf))
     {
-      fprintf(stderr, "%s: cannot fstat ilistfile %s\n", PRGNAME, getenv("COWDANCER_ILISTFILE"));
+      fprintf(stderr, "%s: cannot fstat ilistfile %s\n", ilist_PRGNAME, getenv("COWDANCER_ILISTFILE"));
       return 1;
     }
 
@@ -73,7 +73,7 @@ static int load_ilist(void)
 
   if (stbuf.st_size != (sizeof(struct ilist_struct) * local_ilist_len))
     {
-      outofmemory(".ilist size unexpected");
+      ilist_outofmemory(".ilist size unexpected");
       return 1;
     }
   
@@ -85,13 +85,13 @@ static int load_ilist(void)
       /* fall back to non-mmap method. */
       if (NULL==(f=fdopen(fd, "r")))
 	{
-	  fprintf(stderr, "%s: cannot fdopen ilistfile %s\n", PRGNAME, getenv("COWDANCER_ILISTFILE"));
+	  fprintf(stderr, "%s: cannot fdopen ilistfile %s\n", ilist_PRGNAME, getenv("COWDANCER_ILISTFILE"));
 	  return 1;
 	}
       
       if (NULL==(local_ilist=malloc(stbuf.st_size)))
 	{
-	  fprintf(stderr, "%s: out of memory while trying to allocate memory for ilist\n", PRGNAME);
+	  fprintf(stderr, "%s: out of memory while trying to allocate memory for ilist\n", ilist_PRGNAME);
 	  return 1;
 	}
       fread(local_ilist, sizeof(struct ilist_struct), local_ilist_len, f);
@@ -115,13 +115,13 @@ static int load_ilist(void)
 static void debug_cowdancer (const char * s)
 {
   if (getenv("COWDANCER_DEBUG")) 
-    fprintf (stderr, "%s: DEBUG %s\n", PRGNAME, s);
+    fprintf (stderr, "%s: DEBUG %s\n", ilist_PRGNAME, s);
 }
 
 static void debug_cowdancer_2 (const char * s, const char*e)
 {
   if (getenv("COWDANCER_DEBUG"))
-    fprintf (stderr, "%s: DEBUG %s:%s\n", PRGNAME, s, e);
+    fprintf (stderr, "%s: DEBUG %s:%s\n", ilist_PRGNAME, s, e);
 }
 
 /** 
@@ -248,7 +248,7 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 
       if (asprintf(&backup_file, "%sXXXXXX", canonical)==-1)
 	{
-	  outofmemory("out of memory in check_inode_and_copy, 1");
+	  ilist_outofmemory("out of memory in check_inode_and_copy, 1");
 	  goto error_canonical;
 	}
       
@@ -270,7 +270,7 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	  exit(EXIT_FAILURE);
 	case -1:
 	  /* error condition in fork(); something is really wrong */
-	  outofmemory("out of memory in check_inode_and_copy, 2");
+	  ilist_outofmemory("out of memory in check_inode_and_copy, 2");
 	  goto error_buf;
 	default:
 	  /* parent process, waiting for cp -a to terminate */
@@ -278,20 +278,20 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	  if (!WIFEXITED(status))
 	    {
 	      /* something unexpected */
-	      outofmemory("unexpected WIFEXITED status in waitpid");
+	      ilist_outofmemory("unexpected WIFEXITED status in waitpid");
 	      goto error_buf;
 	    }
 	  else if (WEXITSTATUS(status))
 	    {
 	      /* cp -a failed */
-	      fprintf(stderr, "%s: cp -a failed for %s\n", PRGNAME, backup_file);
+	      fprintf(stderr, "%s: cp -a failed for %s\n", ilist_PRGNAME, backup_file);
 	      goto error_buf;
 	    }
 	  /* when cp -a succeeded, overwrite the target file from the temporary file with rename */
 	  else if (-1==rename(backup_file, canonical))
 	    {
 	      perror ("file overwrite with rename");
-	      fprintf(stderr, "%s: while trying rename of %s to %s\n",  PRGNAME, canonical, backup_file);
+	      fprintf(stderr, "%s: while trying rename of %s to %s\n",  ilist_PRGNAME, canonical, backup_file);
 	      goto error_buf;
 	    }
 	}

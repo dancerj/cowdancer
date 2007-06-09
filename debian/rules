@@ -73,5 +73,9 @@ binary-arch: build install
 	dh_md5sums -s 
 	dh_builddeb -s 
 
+debian/qemubuilder.README.Debian:
+	python debian/xmlrpc.py qemubuilder > $@.tmp
+	mv $@.tmp $@
+
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install configure
+.PHONY: build clean binary-indep binary-arch binary install configure debian/qemubuilder.README.Debian

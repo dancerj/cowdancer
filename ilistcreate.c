@@ -9,9 +9,9 @@
 #include "ilist.h"
 
 /* I will die when things get too wrong. */
-void outofmemory(const char* msg)
+void ilist_outofmemory(const char* msg)
 {
-  fprintf (stderr, "%s: %s\n", PRGNAME, msg);
+  fprintf (stderr, "%s: %s\n", ilist_PRGNAME, msg);
 }
 
 /* return 1 on error, 0 on success */
@@ -28,13 +28,13 @@ int ilistcreate(const char* ilistpath, const char* findcommandline)
   
   if (!(ilist=calloc(2000,sizeof(struct ilist_struct))))
     {
-      outofmemory("memory allocation failed");
+      ilist_outofmemory("memory allocation failed");
       return 1;
     }
   ilist_len=2000;
   if (NULL==(inf=popen(findcommandline, "r")))
     {
-      outofmemory("popen find failed");
+      ilist_outofmemory("popen find failed");
       return 1;
     }
 
@@ -52,7 +52,7 @@ int ilistcreate(const char* ilistpath, const char* findcommandline)
 	  ilist=realloc(ilist, (ilist_len*=2)*sizeof(struct ilist_struct));
 	  if (!ilist)
 	    {
-	      outofmemory("realloc failed");
+	      ilist_outofmemory("realloc failed");
 	      pclose(inf);
 	      return 1;
 	    }
@@ -61,7 +61,7 @@ int ilistcreate(const char* ilistpath, const char* findcommandline)
   ilist_len=i;
   if (pclose(inf))
     {
-      outofmemory("pclose returned non-zero, probably the directory contains no hardlinked file, don't bother using cow-shell here.");
+      ilist_outofmemory("pclose returned non-zero, probably the directory contains no hardlinked file, don't bother using cow-shell here.");
       return 1;
     }
 
@@ -71,19 +71,19 @@ int ilistcreate(const char* ilistpath, const char* findcommandline)
   /* write out the ilist file */
   if (NULL==(outf=fopen(ilistpath,"w")))
     {
-      outofmemory("cannot open .ilist file");
+      ilist_outofmemory("cannot open .ilist file");
       return 1;
     }
   
   if (ilist_len != fwrite(ilist, sizeof(struct ilist_struct), ilist_len, outf))
     {
-      outofmemory("failed writing to .ilist file");
+      ilist_outofmemory("failed writing to .ilist file");
       return 1;
     }
   
   if (fclose (outf))
     {
-      outofmemory("error flushing to .ilist file");
+      ilist_outofmemory("error flushing to .ilist file");
       return 1;
     }
   return 0;
