@@ -1,4 +1,4 @@
-cowdancer (0.34) UNRELEASED; urgency=low
+cowdancer (0.34) unstable; urgency=low
 
   * qemubuilder: fix segv.
   * Bug fix: "big bind mounts make login take a looong time", thanks to
@@ -8,7 +8,7 @@ cowdancer (0.34) UNRELEASED; urgency=low
     only the filesystem outside of /home is interesting for cowbuilder
     sessions.
   
- -- Junichi Uekawa <dancer@debian.org>  Sat, 09 Jun 2007 13:34:19 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 09 Jun 2007 15:16:07 +0900
 
 cowdancer (0.33) unstable; urgency=low
 
