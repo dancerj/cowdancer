@@ -17,12 +17,12 @@ TESTCODE=$(readlink -f tests/014_ilistdump_test.c)
     dd if=/dev/zero of=1/e bs=512 count=2
 
     cd 1 
-    find -links +1 -type f -printf "%D %i\n" | sort +2 -n > ../mylist.1
+    find -links +1 -type f -printf "%D %i\n" | sort -k 2 -n > ../mylist.1
     cow-shell echo hello
 )
 RET=$?
 
-$TESTCODE < ${TESTDIR}/1/.ilist | sort +2 -n > ${TESTDIR}/mylist.2
+$TESTCODE < ${TESTDIR}/1/.ilist | sort -k 2 -n > ${TESTDIR}/mylist.2
 
 diff -u ${TESTDIR}/mylist.1 ${TESTDIR}/mylist.2
 

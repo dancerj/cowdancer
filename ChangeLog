@@ -1,5 +1,9 @@
 2007-06-09  Junichi Uekawa  <dancer@debian.org>
 
+	* tests/014_ilistdump_test.sh: change deprecated sort +2 to -k 2
+
+	* tests/014_ilistdump_test.c: fix testsuite
+
 	* Makefile: fix rules to include ilistcreate.
 
 	* cowbuilder.c: ignore ./home

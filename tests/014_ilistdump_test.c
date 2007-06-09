@@ -1,4 +1,4 @@
-/*BINFMTC:
+/*BINFMTC: ../ilistcreate.c
  *
  * Debug program for dumping ilist file contents.
  * Run this with  < .ilist
@@ -20,6 +20,7 @@
 #include <sys/signal.h>
 #include <sys/mman.h>
 #include "../ilist.h"
+const char* PRGNAME="test";
 
 int main(int argc, char** argv)
 {

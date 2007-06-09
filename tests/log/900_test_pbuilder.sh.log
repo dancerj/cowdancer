@@ -727,16 +727,17 @@ D: call action: mount
 D: call action: dpkg-install
 D: Execute "dpkg -i --force-all /var/cache/bootstrap/dpkg_1.14.4_amd64.deb" in chroot
 O: Selecting previously deselected package dpkg.
-O: (Reading database ... 0 files and directories currently installed.)
-O: Unpacking dpkg (from .../dpkg_1.14.4_amd64.deb) ...
-P: Unpacking package dpkg
-D: Updating dpkg to status 2
 O: dpkg: regarding .../dpkg_1.14.4_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on libc6 (>= 2.5-5)
 O: dpkg: warning - ignoring pre-dependency problem !
 O: dpkg: regarding .../dpkg_1.14.4_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on coreutils (>= 5.93-1)
 O: dpkg: warning - ignoring pre-dependency problem !
+O: (Reading database ... 
+O: 0 files and directories currently installed.)
+O: Unpacking dpkg (from .../dpkg_1.14.4_amd64.deb) ...
+P: Unpacking package dpkg
+D: Updating dpkg to status 2
 O: Setting up dpkg (1.14.4) ...
 P: Configuring package dpkg
 D: Updating dpkg to status 3
@@ -3260,6 +3261,7 @@ O:
 O: makedev sdh11 b 8 123 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
+O: 
 O: makedev sdh12 b 8 124 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -5035,7 +5037,6 @@ O:
 O: makedev ptyx1 c 2 129 root tty 0666: failed
 O: chown: 
 O: `root:tty': invalid user
-O: 
 O: makedev ttyx1 c 3 129 root tty 0666: failed
 O: chown: 
 O: `root:tty': invalid user
@@ -12214,7 +12215,6 @@ O:
 O: makedev rd/c4d23p6 b 52 190 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
-O: 
 O: makedev rd/c4d23p7 b 52 191 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -15545,8 +15545,9 @@ O: `root:disk': invalid user
 O: 
 O: makedev rd/c7d31p7 b 55 255 root disk 0660: failed
 O: chown: 
-O: makedev dac960_gam c 10 252 root disk 0660: failed
 O: `root:disk': invalid user
+O: 
+O: makedev dac960_gam c 10 252 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
 O: 
@@ -17656,7 +17657,6 @@ O:
 O: makedev ida/c2d0p6 b 74 6 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
-O: 
 O: makedev ida/c2d0p7 b 74 7 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -22827,8 +22827,8 @@ P: Configuring package tzdata
 D: Updating tzdata to status 3
 O: 
 O: Current default timezone: 'Etc/UTC'
-O: Local time is now:      Fri Jun  8 06:01:26 UTC 2007.
-O: Universal Time is now:  Fri Jun  8 06:01:26 UTC 2007.
+O: Local time is now:      Sat Jun  9 06:06:56 UTC 2007.
+O: Universal Time is now:  Sat Jun  9 06:06:56 UTC 2007.
 O: Run 'dpkg-reconfigure tzdata' if you wish to change it.
 O: 
 O: 
@@ -22860,8 +22860,7 @@ D: Return code: 0
 D: call action: dpkg-install
 D: Execute "dpkg -i /var/cache/bootstrap/libbz2-1.0_1.0.3-7_amd64.deb /var/cache/bootstrap/libgpg-error0_1.4-2_amd64.deb /var/cache/bootstrap/libgcrypt11_1.2.4-2_amd64.deb /var/cache/bootstrap/liblzo2-2_2.02-2_amd64.deb /var/cache/bootstrap/libopencdk8_0.5.13-2_amd64.deb /var/cache/bootstrap/libtasn1-3_0.3.9-1_amd64.deb /var/cache/bootstrap/libgnutls13_1.6.3-1_amd64.deb /var/cache/bootstrap/libdb4.2_4.2.52+dfsg-2_amd64.deb /var/cache/bootstrap/libsasl2-2_2.1.22.dfsg1-10_amd64.deb /var/cache/bootstrap/libldap2_2.1.30-13.4_amd64.deb /var/cache/bootstrap/readline-common_5.2-3_all.deb /var/cache/bootstrap/libreadline5_5.2-3_amd64.deb /var/cache/bootstrap/libusb-0.1-4_0.1.12-7_amd64.deb /var/cache/bootstrap/gpgv_1.4.6-2_amd64.deb /var/cache/bootstrap/gnupg_1.4.6-2_amd64.deb /var/cache/bootstrap/debian-archive-keyring_2007.02.19-0.1_all.deb /var/cache/bootstrap/apt_0.6.46.4-0.1_amd64.deb" in chroot
 O: Selecting previously deselected package libbz2-1.0.
-O: (Reading database ... 
-O: 4876 files and directories currently installed.)
+O: (Reading database ... 4876 files and directories currently installed.)
 O: Unpacking libbz2-1.0 (from .../libbz2-1.0_1.0.3-7_amd64.deb) ...
 P: Unpacking package libbz2-1.0
 D: Updating libbz2-1.0 to status 2
@@ -23653,7 +23652,7 @@ umount: /dev/shm: not mounted
 umount: /lib/init/rw: not mounted
 cat: /var/run/inetd.pid: No such file or directory
 kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
- -> user script /var/cache/pbuilder/build/cow.10494/tmp/XXXX/E50-initscripts-2.86.ds1-7.workaround.sh finished
+ -> user script /var/cache/pbuilder/build/cow.21214/tmp/XXXX/E50-initscripts-2.86.ds1-7.workaround.sh finished
  -> unmounting dev/pts filesystem
  -> unmounting proc filesystem
  -> Copying COW directory
@@ -23684,6 +23683,7 @@ dpkg-source: building cowdancer in cowdancer_0.34.dsc
  dpkg-genchanges -S
 dpkg-genchanges: including full source code in upload
 dpkg-buildpackage: source only upload: Debian-native package
+Merged changes with ../cowdancer_0.34_source.changes
 bash: /root/.pbuilderrc: No such file or directory
 W: /home/dancer/.pbuilderrc does not exist
  -> Running in no-targz mode
@@ -23861,15 +23861,17 @@ dh_testdir
 make[1]: Entering directory `/tmp/XXXX/cowdancer-0.34'
 gcc -D_REENTRANT -fPIC cowdancer.c -o cowdancer.lo -c -Wall -O2 -g
 cowdancer.c: In function 'ctor':
-cowdancer.c:185: warning: ignoring return value of 'initialize_functions', declared with attribute warn_unused_result
-gcc -ldl -shared -o libcowdancer.so cowdancer.lo
+cowdancer.c:180: warning: ignoring return value of 'initialize_functions', declared with attribute warn_unused_result
+gcc -D_REENTRANT -fPIC ilistcreate.c -o ilistcreate.lo -c -Wall -O2 -g
+gcc -O2 -Wall -ldl -shared -o libcowdancer.so cowdancer.lo ilistcreate.lo
 gcc cow-shell.c -o cow-shell.o -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"/usr/lib\""
-cc   cow-shell.o   -o cow-shell
+gcc ilistcreate.c -o ilistcreate.o -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"/usr/lib\""
+gcc -O2 -Wall -o cow-shell cow-shell.o ilistcreate.o
 gcc cowbuilder.c -o cowbuilder.o -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"/usr/lib\""
 gcc parameter.c -o parameter.o -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"/usr/lib\""
-cc   cowbuilder.o parameter.o   -o cowbuilder
+gcc -O2 -Wall -o cowbuilder cowbuilder.o parameter.o ilistcreate.o
 gcc qemubuilder.c -o qemubuilder.o -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"/usr/lib\""
-cc   qemubuilder.o parameter.o   -o qemubuilder
+gcc -O2 -Wall -o qemubuilder qemubuilder.o parameter.o
 make[1]: Leaving directory `/tmp/XXXX/cowdancer-0.34'
 #/usr/bin/make check
 touch build-stamp

@@ -6874,6 +6874,7 @@ O:
 O: makedev ptyzf c 2 175 root tty 0666: failed
 O: chown: 
 O: `root:tty': invalid user
+O: 
 O: makedev ttyzf c 3 175 root tty 0666: failed
 O: chown: 
 O: `root:tty': invalid user
@@ -8725,6 +8726,7 @@ O:
 O: makedev edb3 b 36 67 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
+O: 
 O: makedev edb4 b 36 68 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -12551,7 +12553,6 @@ O:
 O: makedev rd/c3d20p3 b 51 163 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
-O: 
 O: makedev rd/c3d20p4 b 51 164 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -14967,7 +14968,6 @@ O:
 O: makedev rd/c5d31p7 b 53 255 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
-O: 
 O: makedev rd/c6d0 b 54 0 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -24483,8 +24483,7 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-apt.deb /var/cache/pb
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-apt.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-apt.
-O: (Reading database ... 
-O: 5215 files and directories currently installed.)
+O: (Reading database ... 5215 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-apt (from /cdebootstrap-helper-apt.deb) ...
 O: Setting up cdebootstrap-helper-apt (1) ...
 O: Get:1 bootstrap: . Release.gpg [378B]
@@ -25793,16 +25792,17 @@ D: call action: mount
 D: call action: dpkg-install
 D: Execute "dpkg -i --force-all /var/cache/bootstrap/dpkg_1.14.4_amd64.deb" in chroot
 O: Selecting previously deselected package dpkg.
-O: (Reading database ... 0 files and directories currently installed.)
-O: Unpacking dpkg (from .../dpkg_1.14.4_amd64.deb) ...
-P: Unpacking package dpkg
-D: Updating dpkg to status 2
 O: dpkg: regarding .../dpkg_1.14.4_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on libc6 (>= 2.5-5)
 O: dpkg: warning - ignoring pre-dependency problem !
 O: dpkg: regarding .../dpkg_1.14.4_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on coreutils (>= 5.93-1)
 O: dpkg: warning - ignoring pre-dependency problem !
+O: (Reading database ... 
+O: 0 files and directories currently installed.)
+O: Unpacking dpkg (from .../dpkg_1.14.4_amd64.deb) ...
+P: Unpacking package dpkg
+D: Updating dpkg to status 2
 O: Setting up dpkg (1.14.4) ...
 P: Configuring package dpkg
 D: Updating dpkg to status 3
@@ -25832,8 +25832,7 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-makedev.deb /var/cach
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-makedev.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-makedev.
-O: (Reading database ... 
-O: 238 files and directories currently installed.)
+O: (Reading database ... 238 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-makedev (from .../cdebootstrap-helper-makedev.deb) ...
 O: Setting up cdebootstrap-helper-makedev (1) ...
 O: chown: 
@@ -27894,7 +27893,6 @@ O:
 O: makedev sda15 b 8 15 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
-O: 
 O: makedev sdb b 8 16 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -30018,7 +30016,6 @@ O:
 O: makedev ttyw6 c 3 118 root tty 0666: failed
 O: chown: 
 O: `root:tty': invalid user
-O: 
 O: makedev ptyw7 c 2 119 root tty 0666: failed
 O: chown: 
 O: `root:tty': invalid user
@@ -31994,7 +31991,6 @@ O:
 O: makedev lp2 c 6 2 root lp 0660: failed
 O: chown: 
 O: `root:lp': invalid user
-O: 
 O: makedev par0 c 6 0 root lp 0660: failed
 O: chown: 
 O: `root:lp': invalid user
@@ -33953,7 +33949,6 @@ O:
 O: makedev rd/c1d15p6 b 49 126 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
-O: 
 O: makedev rd/c1d15p7 b 49 127 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -41940,7 +41935,6 @@ O:
 O: makedev ida/c1d4p2 b 73 66 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
-O: 
 O: makedev ida/c1d4p3 b 73 67 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -46170,7 +46164,6 @@ O:
 O: makedev cciss/c2d3p2 b 106 50 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
-O: 
 O: makedev cciss/c2d3p3 b 106 51 root disk 0660: failed
 O: chown: 
 O: `root:disk': invalid user
@@ -47895,8 +47888,8 @@ P: Configuring package tzdata
 D: Updating tzdata to status 3
 O: 
 O: Current default timezone: 'Etc/UTC'
-O: Local time is now:      Fri Jun  8 06:07:03 UTC 2007.
-O: Universal Time is now:  Fri Jun  8 06:07:03 UTC 2007.
+O: Local time is now:      Sat Jun  9 06:13:44 UTC 2007.
+O: Universal Time is now:  Sat Jun  9 06:13:44 UTC 2007.
 O: Run 'dpkg-reconfigure tzdata' if you wish to change it.
 O: 
 O: 
@@ -47928,8 +47921,7 @@ D: Return code: 0
 D: call action: dpkg-install
 D: Execute "dpkg -i /var/cache/bootstrap/libbz2-1.0_1.0.3-7_amd64.deb /var/cache/bootstrap/libgpg-error0_1.4-2_amd64.deb /var/cache/bootstrap/libgcrypt11_1.2.4-2_amd64.deb /var/cache/bootstrap/liblzo2-2_2.02-2_amd64.deb /var/cache/bootstrap/libopencdk8_0.5.13-2_amd64.deb /var/cache/bootstrap/libtasn1-3_0.3.9-1_amd64.deb /var/cache/bootstrap/libgnutls13_1.6.3-1_amd64.deb /var/cache/bootstrap/libdb4.2_4.2.52+dfsg-2_amd64.deb /var/cache/bootstrap/libsasl2-2_2.1.22.dfsg1-10_amd64.deb /var/cache/bootstrap/libldap2_2.1.30-13.4_amd64.deb /var/cache/bootstrap/readline-common_5.2-3_all.deb /var/cache/bootstrap/libreadline5_5.2-3_amd64.deb /var/cache/bootstrap/libusb-0.1-4_0.1.12-7_amd64.deb /var/cache/bootstrap/gpgv_1.4.6-2_amd64.deb /var/cache/bootstrap/gnupg_1.4.6-2_amd64.deb /var/cache/bootstrap/debian-archive-keyring_2007.02.19-0.1_all.deb /var/cache/bootstrap/apt_0.6.46.4-0.1_amd64.deb" in chroot
 O: Selecting previously deselected package libbz2-1.0.
-O: (Reading database ... 
-O: 4876 files and directories currently installed.)
+O: (Reading database ... 4876 files and directories currently installed.)
 O: Unpacking libbz2-1.0 (from .../libbz2-1.0_1.0.3-7_amd64.deb) ...
 P: Unpacking package libbz2-1.0
 D: Updating libbz2-1.0 to status 2
@@ -48057,8 +48049,6 @@ D: Updating gnupg to status 3
 O: Setting up debian-archive-keyring (2007.02.19-0.1) ...
 P: Configuring package debian-archive-keyring
 D: Updating debian-archive-keyring to status 3
-O: gpg: 
-O: keyring `/etc/apt/secring.gpg' created
 O: gpg: 
 O: keyring `/etc/apt/trusted.gpg' created
 O: gpg: 
