@@ -23,13 +23,16 @@ install: $(BINARY)
 	$(INSTALL_FILE)  qemubuilder.8 $(DESTDIR)/usr/share/man/man8/qemubuilder.8
 
 libcowdancer.so: cowdancer.lo
-	gcc -ldl -shared -o $@ $<
+	gcc -O2 -Wall -ldl -shared -o $@ $<
 
-cow-shell: cow-shell.o
+cow-shell: cow-shell.o ilistcreate.o
+	gcc -O2 -Wall -o $@ $^
 
 cowbuilder: cowbuilder.o parameter.o
+	gcc -O2 -Wall -o $@ $^
 
 qemubuilder: qemubuilder.o parameter.o
+	gcc -O2 -Wall -o $@ $^
 
 %.lo: %.c 
 	gcc -D_REENTRANT -fPIC $< -o $@ -c -Wall -O2 -g

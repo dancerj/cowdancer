@@ -1,7 +1,7 @@
 /*
  * cowdancer -- a Copy-on-write data-access; No-cow-easy-replacement
  *
- * Copyright 2005-2006 Junichi Uekawa
+ * Copyright 2005-2007 Junichi Uekawa
  * GPL v2 or later.
  */
 #define _GNU_SOURCE
@@ -20,8 +20,9 @@
 #include <sys/wait.h>
 #include <sched.h>
 #include <errno.h>
-#define PRGNAME "cowdancer"
 #include "ilist.h"
+
+const char* PRGNAME="cowdancer";
 
 /* libc functions. */
 static int (*origlibc_open)(const char *, int, ...) = NULL;
@@ -39,12 +40,6 @@ static int (*origlibc_fchmod)(int fd, mode_t) = NULL;
 
 static struct ilist_struct* ilist=NULL;
 static long ilist_len=0;
-
-/* I will die when things get too wrong. */
-static void outofmemory(const char* msg)
-{
-  fprintf (stderr, "%s: %s\n", PRGNAME, msg);
-}
 
 /* load ilist file
 
@@ -120,13 +115,13 @@ static int load_ilist(void)
 static void debug_cowdancer (const char * s)
 {
   if (getenv("COWDANCER_DEBUG")) 
-    fprintf (stderr, PRGNAME ": DEBUG %s\n", s);
+    fprintf (stderr, "%s: DEBUG %s\n", PRGNAME, s);
 }
 
 static void debug_cowdancer_2 (const char * s, const char*e)
 {
   if (getenv("COWDANCER_DEBUG"))
-    fprintf (stderr, PRGNAME ": DEBUG %s:%s\n", s, e);
+    fprintf (stderr, "%s: DEBUG %s:%s\n", PRGNAME, s, e);
 }
 
 /** 
@@ -260,7 +255,7 @@ static int check_inode_and_copy(const char* s, int canonicalize)
       close(ret=mkstemp(backup_file));
       if (ret==-1)
 	{
-	  perror(PRGNAME ": mkstemp");
+	  perror("mkstemp");
 	  goto error_buf;
 	}
       
@@ -289,14 +284,14 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	  else if (WEXITSTATUS(status))
 	    {
 	      /* cp -a failed */
-	      fprintf(stderr, PRGNAME": cp -a failed for %s\n", backup_file);
+	      fprintf(stderr, "%s: cp -a failed for %s\n", PRGNAME, backup_file);
 	      goto error_buf;
 	    }
 	  /* when cp -a succeeded, overwrite the target file from the temporary file with rename */
 	  else if (-1==rename(backup_file, canonical))
 	    {
-	      perror (PRGNAME ": file overwrite with rename");
-	      fprintf(stderr, PRGNAME": while trying rename of %s to %s\n",  canonical, backup_file);
+	      perror ("file overwrite with rename");
+	      fprintf(stderr, "%s: while trying rename of %s to %s\n",  PRGNAME, canonical, backup_file);
 	      goto error_buf;
 	    }
 	}

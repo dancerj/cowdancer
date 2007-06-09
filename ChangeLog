@@ -1,3 +1,8 @@
+2007-06-09  Junichi Uekawa  <dancer@debian.org>
+
+	* cow-shell.c:
+	* ilistcreate.c (ilistcreate): move function, and reorganize code.
+
 2007-06-06  Junichi Uekawa  <dancer@debian.org>
 
 	* qemubuilder.c: clean up code and generally initialize variables.
