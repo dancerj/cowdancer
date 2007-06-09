@@ -1,5 +1,7 @@
 2007-06-09  Junichi Uekawa  <dancer@debian.org>
 
+	* Makefile: fix rules to include ilistcreate.
+
 	* cowbuilder.c: ignore ./home
 
 	* cow-shell.c:
