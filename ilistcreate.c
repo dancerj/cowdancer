@@ -15,28 +15,30 @@ void outofmemory(const char* msg)
 }
 
 /* return 1 on error, 0 on success */
-int ilistcreate(const char* ilistpath)
+int ilistcreate(const char* ilistpath, const char* findcommandline)
 {
   int i=0;
   long dev, ino;
   FILE* inf;
   FILE* outf;
-  struct ilist_struct* ilist=NULL;
+  struct ilist_struct* ilist=NULL;  
   long ilist_len=0;
-
+  if(!findcommandline)
+    findcommandline="find . -xdev \\( -type l -o -type f \\) -a -links +1 -print0 | xargs -0 stat --format '%d %i '";
+  
   if (!(ilist=calloc(2000,sizeof(struct ilist_struct))))
     {
       outofmemory("memory allocation failed");
       return 1;
     }
   ilist_len=2000;
-  if (NULL==(inf=popen("find . -xdev \\( -type l -o -type f \\) -a -links +1 -print0 | xargs -0 stat --format '%d %i '","r")))
+  if (NULL==(inf=popen(findcommandline, "r")))
     {
       outofmemory("popen find failed");
       return 1;
     }
 
-  while (fscanf(inf,"%li %li",&dev, &ino)>0)
+  while (fscanf(inf,"%li %li", &dev, &ino)>0)
     {
       (ilist+i)->dev=(dev_t)dev;
       (ilist+i)->inode=(ino_t)ino;

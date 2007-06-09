@@ -50,7 +50,7 @@ int main(int ac, char** av)
 	      return 1;
 	    }
 	}
-      if(ilistcreate(ilistpath))
+      if(ilistcreate(ilistpath, NULL))
 	{
 	  outofmemory(".ilist creation failed");
 	  return 1;

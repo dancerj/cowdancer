@@ -28,7 +28,7 @@ libcowdancer.so: cowdancer.lo
 cow-shell: cow-shell.o ilistcreate.o
 	gcc -O2 -Wall -o $@ $^
 
-cowbuilder: cowbuilder.o parameter.o
+cowbuilder: cowbuilder.o parameter.o ilistcreate.o
 	gcc -O2 -Wall -o $@ $^
 
 qemubuilder: qemubuilder.o parameter.o

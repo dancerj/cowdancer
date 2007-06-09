@@ -123,6 +123,9 @@ sys     0m3.792s
 #include <getopt.h>
 #include <stdarg.h>
 #include "parameter.h"
+#include "ilist.h"
+
+const char* PRGNAME="cowbuilder";
 
 /* 
    @return 0 on success, 1 on failure.
@@ -157,6 +160,7 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
   char* ilistfile;
   char* buf_chroot=NULL;
   int ret;
+  char * prevdir;
 
   if (!dscfile)
     {
@@ -178,14 +182,27 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
       return -1;
     }
   
-  /* delete existing ilist file and use COWDANCER_REUSE */
-  asprintf(&ilistfile, "%s/.ilist", pc->buildplace);  
+  /* delete existing ilist file if it exists, and use COWDANCER_REUSE */
+  if (0>asprintf(&ilistfile, "%s/.ilist", pc->buildplace))
+    {
+      /* outofmemory */
+      fprintf(stderr, "cowdancer: out of memory.\n");
+      return -1;
+    }
   if (unlink(ilistfile))
     {
-      /* no ilist file, but this is no problem */
+      /* if there was no ilist file in the beginning, that's not a
+	 problem.
+       */
     }
-    
-  free(ilistfile);
+
+  prevdir=get_current_dir_name();
+  chdir(pc->buildplace);
+  ilistcreate(ilistfile,
+	      "find . -xdev -path ./home -prune -o \\( \\( -type l -o -type f \\) -a -links +1 -print0 \\) | xargs -0 stat --format '%d %i '");
+  chdir(prevdir);
+  free(prevdir);
+
   setenv("COWDANCER_REUSE","yes",1);
 
   printf(" -> Invoking pbuilder\n");
@@ -214,6 +231,7 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
   else
     printf("pbuilder build aborted, not cleaning\n");
 
+  free(ilistfile);
   return ret;
 }
 
@@ -461,7 +479,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
       goto out;
       
     }
-  printf(" -> removing cowbuilder working copy\n");
+  printf(" -> removing %s working copy\n", PRGNAME);
   cpbuilder_internal_saveupdate(pc);
  out:
   free(buf_chroot);
@@ -470,7 +488,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
 
 int cpbuilder_help(void)
 {
-  printf("cowbuilder [operation] [options]\n"
+  printf("%s [operation] [options]\n"
 	 "operation:\n"
 	 " --build\n"
 	 " --create\n"
@@ -482,7 +500,7 @@ int cpbuilder_help(void)
 	 " --basepath:\n"
 	 " --buildplace:\n"
 	 " --distribution:\n"
-	 " ... and other pbuilder options \n"
+	 " ... and other pbuilder options \n", PRGNAME
 	 );
   return 0;
 }

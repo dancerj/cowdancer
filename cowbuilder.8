@@ -132,6 +132,9 @@ to make this the default behavior for
 Start a cow-shell session inside base.cow, with /home/dancer being bind-mounted to within
 chroot.
 
+Note that cowbuilder will not cow-protect
+.B /home/
+
 .TP
 .B "cowbuilder --create --distribution sid --basepath /var/cache/pbuilder/base-test.cow"
 Create a base.cow image with the path 

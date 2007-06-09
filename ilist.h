@@ -8,7 +8,7 @@ struct ilist_struct
 };
 
 void outofmemory(const char* msg);
-int ilistcreate(const char* ilistpath);
+int ilistcreate(const char* ilistpath, const char* findcommandline);
 int compare_ilist (const void *a, const void *b);
 
 
