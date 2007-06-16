@@ -1,3 +1,7 @@
+2007-06-17  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.c (qemu_arch_qemu): change x86_64/i386 logic.
+
 2007-06-09  Junichi Uekawa  <dancer@debian.org>
 
 	* tests/014_ilistdump_test.sh: change deprecated sort +2 to -k 2

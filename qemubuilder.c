@@ -95,12 +95,18 @@ static const char* qemu_arch_qemu(const char* arch)
 	   !strcmp(arch, "amd64"))
     {
       FILE*f=popen("dpkg --print-architecture", "r");
-      char*s;
-      fscanf(f, "%as", &s);
+      char*host_arch;
+      fscanf(f, "%as", &host_arch);
       pclose(f);
-      if(!strcmp(s,arch) && !(system("which kvm")))
+
+      /* special-case
+	 use kvm if possible
+	 use qemu if i386/i386
+	 use qemu-system-x86_64 otherwise
+       */
+      if(!strcmp(host_arch,arch) && !(system("which kvm")))
 	return "kvm";
-      else if(!strcmp(s, "i386"))
+      else if((!strcmp(host_arch, "i386")) && (!strcmp(arch, "i386")))
 	return "qemu";
       else 
 	return "qemu-system-x86_64";
