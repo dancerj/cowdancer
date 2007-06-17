@@ -1,8 +1,9 @@
 cowdancer (0.36) UNRELEASED; urgency=low
 
   * fix logic for running amd64 on i386.
+  * add example for cowbuilder manpage.
 
- -- Junichi Uekawa <dancer@debian.org>  Sun, 17 Jun 2007 03:54:57 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 17 Jun 2007 23:43:32 +0900
 
 cowdancer (0.35) unstable; urgency=low
 

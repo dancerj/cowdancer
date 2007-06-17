@@ -1,4 +1,4 @@
-.TH "cowbuilder" 8 "2006 Aug 26" "cowdancer" "cowdancer"
+.TH "cowbuilder" 8 "2007 Jun 17" "cowdancer" "cowdancer"
 .SH "NAME"
 cowbuilder \- a pbuilder wrapper for cowdancer.
 .SH SYNOPSIS
@@ -105,9 +105,40 @@ ignored.
 .B "cowbuilder --create"
 Create a base.cow image.
 
+.nf
+# cowbuilder --create --hookdir /usr/share/doc/pbuilder/examples/workaround/ --distribution etch --debootstrap debootstrap --basepath /var/cache/pbuilder/base-test.cow
+bash: /root/.pbuilderrc: No such file or directory
+W: /home/dancer/.pbuilderrc does not exist
+ -> Running in no-targz mode
+Distribution is etch.
+Building the build environment
+ -> running debootstrap
+/usr/sbin/debootstrap
+I: Retrieving Release
+	.
+	.
+.hy
+
 .TP 
 .B "cowbuilder --update"
 Update the base.cow image.
+
+.nf
+# cowbuilder --update
+bash: /root/.pbuilderrc: No such file or directory
+ -> Copying COW directory
+ -> Invoking pbuilder
+W: /home/dancer/.pbuilderrc does not exist
+ -> Running in no-targz mode
+ -> copying local configuration
+ -> mounting /proc filesystem
+ -> mounting /dev/pts filesystem
+ -> policy-rc.d already exists
+Refreshing the base.tgz
+ -> upgrading packages
+	.
+	.
+.hy
 
 .TP
 .B "cowbuilder --build test_0.1.dsc"
@@ -129,11 +160,28 @@ to make this the default behavior for
 
 .TP
 .B "cowbuilder --login --bindmounts /home/dancer"
-Start a cow-shell session inside base.cow, with /home/dancer being bind-mounted to within
-chroot.
+Start a cow-shell session inside base.cow, with 
+.I "/home/dancer"
+ being bind-mounted to within chroot.
 
-Note that cowbuilder will not cow-protect
+Note that cowbuilder will not cow-protect what is inside
 .B /home/
+
+.nf
+# cowbuilder --login --bindmount ${HOME}
+bash: /root/.pbuilderrc: No such file or directory
+ -> Copying COW directory
+ -> Invoking pbuilder
+W: /home/dancer/.pbuilderrc does not exist
+ -> Running in no-targz mode
+ -> copying local configuration
+ -> mounting /proc filesystem
+ -> mounting /dev/pts filesystem
+-> Mounting /home/dancer
+ -> policy-rc.d already exists
+ -> entering the shell
+#
+man .hy
 
 .TP
 .B "cowbuilder --create --distribution sid --basepath /var/cache/pbuilder/base-test.cow"

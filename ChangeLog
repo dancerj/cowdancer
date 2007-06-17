@@ -1,5 +1,7 @@
 2007-06-17  Junichi Uekawa  <dancer@debian.org>
 
+	* cowbuilder.8: add examples
+
 	* qemubuilder.c (qemu_arch_qemu): change x86_64/i386 logic.
 
 2007-06-09  Junichi Uekawa  <dancer@debian.org>
