@@ -1,3 +1,17 @@
+2007-06-19  Junichi Uekawa  <dancer@debian.org>
+
+	* parameter.c (load_config_file): support BUILDPLACE
+	configuration.
+	(parse_parameter): make it an error that BUILDPLACE is not
+	set. Default is set in pbuilderrc.
+
+	* qemubuilder.8: 
+	* cowbuilder.8: update documentation for dumpconfig.
+
+	* qemubuilder.c (cpbuilder_help): 
+	* cowbuilder.c (cpbuilder_help): 
+	* parameter.c (parse_parameter): add dumpconfig command.
+
 2007-06-17  Junichi Uekawa  <dancer@debian.org>
 
 	* cowbuilder.8: add examples

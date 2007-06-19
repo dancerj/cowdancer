@@ -215,6 +215,10 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	      pc->basepath=strdup(delim);
 	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
+	  else if (!strcmp(buf, "BUILDPLACE"))
+	    {
+	      pc->buildplace=strdup(delim);
+	    }
 	}
     }
   if(buf) free(buf);
@@ -223,6 +227,30 @@ int load_config_file(const char* config, pbuilderconfig* pc)
   return 0;
 }
 
+
+int cpbuilder_dumpconfig(pbuilderconfig* pc)
+{
+  /* dump configuration */
+
+  printf("dump config\n");
+#define DUMPINT(S) printf("  "#S": %i\n", pc->S);
+#define DUMPSTR(S) printf("  "#S": %s\n", pc->S);
+
+  DUMPINT(mountproc);
+  DUMPINT(mountdev);
+  DUMPINT(mountdevpts);
+  DUMPINT(save_after_login);
+  DUMPINT(memory_megs);
+  DUMPSTR(buildplace);
+  DUMPSTR(buildresult);
+  DUMPSTR(basepath);
+  DUMPSTR(mirror);
+  DUMPSTR(distribution);
+  DUMPSTR(kernel_image);
+  DUMPSTR(initrd);
+  DUMPSTR(arch);
+  return 0;
+}
 
 int parse_parameter(int ac, char** av, 
 		    const char* keyword)
@@ -250,6 +278,7 @@ int parse_parameter(int ac, char** av,
     {"login", no_argument, (int*)&(pc.operation), pbuilder_login},
     {"execute", no_argument, (int*)&(pc.operation), pbuilder_execute},
     {"help", no_argument, (int*)&(pc.operation), pbuilder_help},
+    {"dumpconfig", no_argument, (int*)&(pc.operation), pbuilder_dumpconfig},
     {"version", no_argument, 0, 'v'},
     {"configfile", required_argument, 0, 'c'},
     {"mirror", required_argument, 0, 0},
@@ -380,9 +409,16 @@ int parse_parameter(int ac, char** av,
     asprintf(&(pc.basepath), "/var/cache/pbuilder/base.%s", keyword);
   if (!pc.buildplace)
     {
-      mkdir("/var/cache/pbuilder/build",0777); /* create if it does not exist */
-      asprintf(&(pc.buildplace), "/var/cache/pbuilder/build/%s.%i",
-	       keyword, (int)getpid());
+      fprintf(stderr, "E: BUILDPLACE is not set\n");
+      return 1;
+    }
+  else
+    {
+      char* buildplace_ = pc.buildplace;
+      mkdir(buildplace_,0777); /* create if it does not exist */
+      asprintf(&(pc.buildplace), "%s/%s.%i",
+	       buildplace_, keyword, (int)getpid());
+      free(buildplace_);
     }
   if (!pc.distribution)
     pc.distribution=strdup("sid");
@@ -408,6 +444,9 @@ int parse_parameter(int ac, char** av,
 
     case pbuilder_help:
       return cpbuilder_help();
+
+    case pbuilder_dumpconfig:
+      return cpbuilder_dumpconfig(&pc);
 
     default:			
       fprintf (stderr, "E: No operation specified\n");

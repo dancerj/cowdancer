@@ -20,6 +20,7 @@
 
 typedef struct pbuilderconfig 
 {
+  /* if you edit here, please add to parameter.c: dumpconfig */
   int mountproc;
   int mountdev;
   int mountdevpts;
@@ -43,7 +44,8 @@ typedef struct pbuilderconfig
     pbuilder_create,
     pbuilder_update,
     pbuilder_execute,
-    pbuilder_login
+    pbuilder_login,
+    pbuilder_dumpconfig
   } operation;
 }pbuilderconfig;
 

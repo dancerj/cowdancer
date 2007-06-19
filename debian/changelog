@@ -2,8 +2,11 @@ cowdancer (0.36) UNRELEASED; urgency=low
 
   * fix logic for running amd64 on i386.
   * add example for cowbuilder manpage.
+  * add --dumpconfig option.
+  * Bug fix: "cowbuilder ignores BUILDPLACE", thanks to Guido Guenther
+    (Closes: #429058).
 
- -- Junichi Uekawa <dancer@debian.org>  Sun, 17 Jun 2007 23:43:32 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 19 Jun 2007 22:17:40 +0900
 
 cowdancer (0.35) unstable; urgency=low
 

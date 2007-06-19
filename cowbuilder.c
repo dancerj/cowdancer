@@ -496,6 +496,7 @@ int cpbuilder_help(void)
 	 " --login\n"
 	 " --execute\n"
 	 " --help\n"
+	 " --dumpconfig\n"
 	 "options:\n"
 	 " --basepath:\n"
 	 " --buildplace:\n"
