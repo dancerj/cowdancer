@@ -4,6 +4,8 @@
 	configuration.
 	(parse_parameter): make it an error that BUILDPLACE is not
 	set. Default is set in pbuilderrc.
+	(parse_parameter): process --distribution command-line option
+	properly.
 
 	* qemubuilder.8: 
 	* cowbuilder.8: update documentation for dumpconfig.

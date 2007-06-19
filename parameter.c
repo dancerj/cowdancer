@@ -283,6 +283,7 @@ int parse_parameter(int ac, char** av,
     {"configfile", required_argument, 0, 'c'},
     {"mirror", required_argument, 0, 0},
     {"buildresult", required_argument, 0, 0},
+    {"distribution", required_argument, 0, 0},
 
     /* verbatim options, synced as of pbuilder 0.153 */
     {"othermirror", required_argument, 0, 'M'},
@@ -298,7 +299,6 @@ int parse_parameter(int ac, char** av,
     {"bindmounts", required_argument, 0, 'M'},
     {"debootstrapopts", required_argument, 0, 'M'},
     {"debootstrap", required_argument, 0, 'M'},
-    {"distribution", required_argument, 0, 'M'},
 
     {"removepackages", no_argument, 0, 'm'},
     {"override-config", no_argument, 0, 'm'},
@@ -392,6 +392,10 @@ int parse_parameter(int ac, char** av,
 	    {
 	      pc.buildresult=strdup(optarg);
 	    }
+	  else if (!strcmp(long_options[index_point].name,"distribution"))
+	    {
+	      pc.distribution=strdup(optarg);
+	    }
 	  break;
 	case 'h':		/* -h */
 	case 'v':		/* -v --version */
@@ -420,8 +424,14 @@ int parse_parameter(int ac, char** av,
 	       buildplace_, keyword, (int)getpid());
       free(buildplace_);
     }
+
   if (!pc.distribution)
     pc.distribution=strdup("sid");
+  
+  /* add mandatory command-line options */
+  PBUILDER_ADD_PARAM("--distribution");
+  PBUILDER_ADD_PARAM(pc.distribution);
+
   if (!pc.memory_megs)
     pc.memory_megs=128;
 
