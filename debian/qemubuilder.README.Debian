@@ -6,19 +6,48 @@ This page is README.Debian of qemubuilder, a pbuilder implementation using qemu.
 
 To run qemubuilder you need a kernel image and initrd (optional).
 
+To get qemubuilder working, qemu support for that target architecture, the kernel image (and  optionally initrd image) for the target architecture, and a way to invoke the kernel from the command-line using -kernel command-line option is required. Support for specifying disk devices through -hda and -hdb is required for operation.
+
+
 == i386 ==
 
-Debian kernel package should work.
+Files from Debian kernel package (linux-image-xxx) should work.
 
 == amd64 ==
 
-Debian kernel package should work.
+Files from Debian kernel package (linux-image-xxx) should work.
 
 == arm ==
 
 kernel for versatile architecture is available from http://www.aurel32.net/info/debian_arm_qemu.php
 
 versatile is not a Debian official architecture.
+
+== mips ==
+
+Get the kernel and initrd from 
+http://mirror/debian/dists/sid/main/installer-mips/current/images/qemu/netboot/
+
+
+== mipsel ==
+
+Get the kernel and initrd from 
+http://mirror/debian/dists/sid/main/installer-mips/current/images/qemu/netboot/
+
+== powerpc ==
+
+cannot get it working as of 17 June 2007.
+
+== sparc ==
+
+requires openbios.
+
+found it from: http://fly.srk.fer.hr/~jelly/qemu/openbios-builtin.elf
+
+http://mirror/debian/dists/sid/main/installer-sparc/20070308/images/combined/2.6/mini.iso
+
+Does not support loading kernel through -kernel ?
+
 
 == other architecture ==
 

@@ -73,6 +73,7 @@ binary-arch: build install
 	dh_md5sums -s 
 	dh_builddeb -s 
 
+# (shell-command "cd ../ ; debian/rules debian/qemubuilder.README.Debian")
 debian/qemubuilder.README.Debian:
 	python debian/xmlrpc.py qemubuilder > $@.tmp
 	mv $@.tmp $@
