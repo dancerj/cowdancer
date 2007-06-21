@@ -145,12 +145,31 @@ static int initialize_functions ()
       origlibc_creat64 = dlsym(RTLD_NEXT, "creat64");
       origlibc_fopen = dlsym(RTLD_NEXT, "fopen64");
       origlibc_fopen64 = dlsym(RTLD_NEXT, "fopen64");
-      origlibc_chown = dlsym(RTLD_NEXT, "chown");
+      dlerror();
+      if (!(origlibc_chown = dlvsym(RTLD_NEXT, "chown", "GLIBC_2.1")))
+	{
+	  const char* d=dlerror();
+	  if(!d)
+	    {
+	      /* success */
+	    }
+	  else
+	    {
+	      /* fallback to loading unsymboled */
+	      debug_cowdancer(d);
+	      origlibc_chown = dlsym(RTLD_NEXT, "chown");
+	    }
+	}
       origlibc_fchown = dlsym(RTLD_NEXT, "fchown");
       origlibc_lchown = dlsym(RTLD_NEXT, "lchown");
       origlibc_chmod = dlsym(RTLD_NEXT, "chmod");
       origlibc_fchmod = dlsym(RTLD_NEXT, "fchmod");
 
+      if (getenv("COWDANCER_DEBUG"))
+	{
+	  printf("chown:%p lchown:%p\n", origlibc_chown, origlibc_lchown);
+	}
+      
       /* load the ilist */
       if (!ilist)
 	{
@@ -226,7 +245,7 @@ static int check_inode_and_copy(const char* s, int canonicalize)
   //do some hardcore debugging here:
   if (getenv("COWDANCER_DEBUG"))
     {
-      printf ("%s=%s %i %i %i %p\n", s, canonical, (int)buf.st_nlink, S_ISREG(buf.st_mode), S_ISLNK(buf.st_mode),
+      printf ("ciac: s:%s=canonical:%s nlink:%i reg:%i lnk:%i match:%p\n", s, canonical, (int)buf.st_nlink, S_ISREG(buf.st_mode), S_ISLNK(buf.st_mode),
 	      bsearch(&search_target, ilist, ilist_len, 
 		      sizeof(search_target), compare_ilist));
     }
@@ -489,6 +508,7 @@ int chown(const char* s, uid_t u, gid_t g)
 	}
     }
   ret = origlibc_chown(s, u, g);
+  debug_cowdancer_2 ("end-chown", s);
   return ret;
 }
 
@@ -568,6 +588,7 @@ int lchown(const char* s, uid_t u, gid_t g)
 	}
     }
   ret = origlibc_lchown(s, u, g);
+  debug_cowdancer_2 ("end-lchown", s);
   return ret;
 }
 

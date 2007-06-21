@@ -9,7 +9,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.391e-05 seconds, 42.8 MB/s
+1024 bytes (1.0 kB) copied, 1.8228e-05 seconds, 56.2 MB/s
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/015_test_ilistdelete.c
 open: No such file or directory
 open: No such file or directory

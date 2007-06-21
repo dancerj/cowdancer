@@ -7,8 +7,10 @@ cowdancer (0.36) UNRELEASED; urgency=low
     (Closes: #429058).
   * Bug fix: "qemubuilder: --distribution is not honored", thanks to Ben
     Voui (Closes: #429026).
+  * load proper chown for architectures (e.g. i386) which have two
+    versions of chown.
 
- -- Junichi Uekawa <dancer@debian.org>  Tue, 19 Jun 2007 22:24:44 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 21 Jun 2007 19:45:27 +0900
 
 cowdancer (0.35) unstable; urgency=low
 

@@ -3,7 +3,7 @@
 ++ readlink -f tests/012_test_chown.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c
 ++ id -G
-+ set -- 1000 4 20 24 25 29 44 46 100 107 109 112
++ set -- 1000 4 20 24 25 29 44 46 107 111 113 115
 + ORIGID=1000
 + NEWID=4
 + ((  12 < 3  ))
@@ -15,7 +15,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.4111e-05 seconds, 42.5 MB/s
+1024 bytes (1.0 kB) copied, 2.3047e-05 seconds, 44.4 MB/s
 + chgrp 1000 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -24,25 +24,27 @@
    2/ before
 + ls -li 2/
 合計 4
-2057002 -rw-r--r-- 2 dancer dancer    0 2007-06-09 22:09 a
-2057006 -rw-r--r-- 2 dancer dancer    0 2007-06-09 22:09 b
-2057007 -rw-r--r-- 2 dancer dancer    0 2007-06-09 22:09 c
-2057008 -rw-r--r-- 2 dancer dancer    0 2007-06-09 22:09 d
-2057011 -rw-r--r-- 2 dancer dancer 1024 2007-06-09 22:09 e
-2057009 lrwxrwxrwx 2 dancer dancer    1 2007-06-09 22:09 f -> a
-2057010 lrwxrwxrwx 2 dancer dancer    1 2007-06-09 22:09 g -> b
+275591 -rw-r--r-- 2 dancer dancer    0 2007-06-21 19:47 a
+275595 -rw-r--r-- 2 dancer dancer    0 2007-06-21 19:47 b
+275596 -rw-r--r-- 2 dancer dancer    0 2007-06-21 19:47 c
+275597 -rw-r--r-- 2 dancer dancer    0 2007-06-21 19:47 d
+275600 -rw-r--r-- 2 dancer dancer 1024 2007-06-21 19:47 e
+275598 lrwxrwxrwx 2 dancer dancer    1 2007-06-21 19:47 f -> a
+275599 lrwxrwxrwx 2 dancer dancer    1 2007-06-21 19:47 g -> b
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c 4 2/f 2/b 2/g
+chown 2/f
+lchown 2/g
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 4
-2057062 -rw-r--r-- 1 dancer adm       0 2007-06-09 22:09 a
-2057006 -rw-r--r-- 2 dancer dancer    0 2007-06-09 22:09 b
-2057007 -rw-r--r-- 2 dancer dancer    0 2007-06-09 22:09 c
-2057008 -rw-r--r-- 2 dancer dancer    0 2007-06-09 22:09 d
-2057011 -rw-r--r-- 2 dancer dancer 1024 2007-06-09 22:09 e
-2057009 lrwxrwxrwx 2 dancer dancer    1 2007-06-09 22:09 f -> a
-2057070 lrwxrwxrwx 1 dancer adm       1 2007-06-09 22:09 g -> b
+275661 -rw-r--r-- 1 dancer adm       0 2007-06-21 19:47 a
+275595 -rw-r--r-- 2 dancer dancer    0 2007-06-21 19:47 b
+275596 -rw-r--r-- 2 dancer dancer    0 2007-06-21 19:47 c
+275597 -rw-r--r-- 2 dancer dancer    0 2007-06-21 19:47 d
+275600 -rw-r--r-- 2 dancer dancer 1024 2007-06-21 19:47 e
+275598 lrwxrwxrwx 2 dancer dancer    1 2007-06-21 19:47 f -> a
+275669 lrwxrwxrwx 1 dancer adm       1 2007-06-21 19:47 g -> b
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'

@@ -1,3 +1,9 @@
+2007-06-21  Junichi Uekawa  <dancer@debian.org>
+
+	* cowdancer.c (initialize_functions): try to load chown@@GLIBC_2.1
+	if it exists.
+	It is translated to lchown on i386, if I try to load the unversioned symbol.
+
 2007-06-19  Junichi Uekawa  <dancer@debian.org>
 
 	* parameter.c (load_config_file): support BUILDPLACE
