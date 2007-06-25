@@ -1,3 +1,9 @@
+cowdancer (0.37) UNRELEASED; urgency=low
+
+  * 
+
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 26 Jun 2007 07:42:26 +0900
+
 cowdancer (0.36) unstable; urgency=low
 
   * fix logic for running amd64 on i386.
