@@ -97,6 +97,8 @@ static int load_ilist(void)
       fread(local_ilist, sizeof(struct ilist_struct), local_ilist_len, f);
       fclose(f);
     }
+  else 
+    close(fd);
 
   /* commit, this should really be atomic, 
      but I don't want to have a lock here.

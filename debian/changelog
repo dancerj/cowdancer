@@ -3,8 +3,9 @@ cowdancer (0.37) UNRELEASED; urgency=low
   * Trying to fix: "tar segfaulting within cowbuilder chroot", thanks to Michael
     Ablassmeier (closes: #430636).
   - work around glibc bug on dlvsym/dlerror failure case.
-
- -- Junichi Uekawa <dancer@debian.org>  Wed, 27 Jun 2007 07:06:56 +0900
+  * close mmap fd after use.
+  
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 27 Jun 2007 07:10:53 +0900
 
 cowdancer (0.36) unstable; urgency=low
 

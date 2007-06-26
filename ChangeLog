@@ -1,8 +1,8 @@
 2007-06-27  Junichi Uekawa  <dancer@debian.org>
 
-	* cowdancer.c (load_ilist): close fd used for mmap after use.
-	(initialize_functions): work around glibc bug: dlvsym failure
+	* cowdancer.c (initialize_functions): work around glibc bug: dlvsym failure
 	isn't setting dlerror.
+	(load_ilist): close fd used for mmap after use.
 
 2007-06-21  Junichi Uekawa  <dancer@debian.org>
 

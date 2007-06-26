@@ -1,1 +1,53 @@
-skip this test
++ '[' '!' -x /usr/sbin/pbuilder ']'
++ sudo rm -rf /var/cache/pbuilder/base-test.cow
++ sudo cowbuilder --create --hookdir /usr/share/doc/pbuilder/examples/workaround/ --debootstrapopts --debug --basepath /var/cache/pbuilder/base-test.cow
+bash: /root/.pbuilderrc: No such file or directory
+W: /home/dancer/.pbuilderrc does not exist
+ -> Running in no-targz mode
+Distribution is sid.
+Building the build environment
+ -> running cdebootstrap
+/usr/bin/cdebootstrap
+D: Init suite sid
+D: Using keyring /usr/share/keyrings/debian-archive-keyring.gpg
+D: Execute "mkdir -p /var/cache/pbuilder/base-test.cow//var/cache/bootstrap"
+D: Return code: 0
+D: Execute "mkdir -p /var/cache/pbuilder/base-test.cow//var/lib/dpkg"
+D: Return code: 0
+D: Execute "mkdir -p /var/cache/pbuilder/base-test.cow//var/log"
+D: Return code: 0
+P: Retrieving Release
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._Release http://glantank/debian/dists/sid/Release"
+D: Return code: 0
+P: Retrieving Release.gpg
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._Release.gpg http://glantank/debian/dists/sid/Release.gpg"
+D: Return code: 0
+P: Validating Release
+D: Execute "gpgv --status-fd 1 --keyring /usr/share/keyrings/debian-archive-keyring.gpg /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._Release.gpg /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._Release"
+I: Good signature from "Debian Archive Automatic Signing Key (4.0/etch) <ftpmaster@debian.org>"
+O: gpgv: Signature made Tue Jun 26 17:12:56 2007 JST using DSA key ID 6070D3A1
+O: gpgv: Good signature from "Debian Archive Automatic Signing Key (4.0/etch) <ftpmaster@debian.org>"
+D: Return code: 0
+P: Parsing Release
+P: Retrieving Packages.gz
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._main_binary-amd64_Packages.gz http://glantank/debian/dists/sid/main/binary-amd64/Packages.gz"
+D: Return code: 0
+P: Validating Packages.gz
+D: Execute "gunzip -c /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._main_binary-amd64_Packages.gz > /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._main_binary-amd64_Packages"
+D: Return code: 0
+P: Parsing Packages
+P: Retrieving gcc-4.2-base
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/gcc-4.2-base_4.2-20070609-1_amd64.deb http://glantank/debian/pool/main/g/gcc-4.2/gcc-4.2-base_4.2-20070609-1_amd64.deb"
+D: Return code: 0
+P: Validating gcc-4.2-base
+P: Retrieving libgcc1
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libgcc1_4.2-20070609-1_amd64.deb http://glantank/debian/pool/main/g/gcc-4.2/libgcc1_4.2-20070609-1_amd64.deb"
+D: Return code: 0
+P: Validating libgcc1
+P: Retrieving libc6
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libc6_2.5-11_amd64.deb http://glantank/debian/pool/main/g/glibc/libc6_2.5-11_amd64.deb"
+D: Return code: 256
+E: Couldn't download pool/main/g/glibc/libc6_2.5-11_amd64.deb!
+pbuilder: cdebootstrap failed
+ -> Aborting with an error
+ -> Invoking pbuilder
