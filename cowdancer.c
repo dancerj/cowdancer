@@ -148,17 +148,26 @@ static int initialize_functions ()
       dlerror();
       if (!(origlibc_chown = dlvsym(RTLD_NEXT, "chown", "GLIBC_2.1")))
 	{
+	  /* I should really check dlerror, but due to a possible bug in glibc,
+	     dlerror doesn't seem to work at all.
+	   */
 	  const char* d=dlerror();
 	  if(!d)
 	    {
+	      debug_cowdancer("dlerror does not return anything, chown returned NULL but OK");
 	      /* success */
 	    }
 	  else
 	    {
-	      /* fallback to loading unsymboled */
 	      debug_cowdancer(d);
-	      origlibc_chown = dlsym(RTLD_NEXT, "chown");
 	    }
+	  
+	  
+	  /* fallback to loading unversioned symbol doing it anyway
+	     since glibc does not seem to set dlerror on dlsym failure.
+	  */
+	  origlibc_chown = dlsym(RTLD_NEXT, "chown");
+	  
 	}
       origlibc_fchown = dlsym(RTLD_NEXT, "fchown");
       origlibc_lchown = dlsym(RTLD_NEXT, "lchown");
