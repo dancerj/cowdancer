@@ -1,8 +1,9 @@
 cowdancer (0.38) UNRELEASED; urgency=low
 
-  * 
+  * document that i386/amd64 cross-arch building is not supported using
+    cowbuilder.
 
- -- Junichi Uekawa <dancer@debian.org>  Wed, 27 Jun 2007 07:23:59 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 11 Jul 2007 07:13:15 +0900
 
 cowdancer (0.37) unstable; urgency=low
 

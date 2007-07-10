@@ -197,6 +197,11 @@ Create a base.cow image with the path
 .B "/var/cache/pbuilder/base-test.cow"
 and distribution sid.
 
+.SH "BUGS"
+
+Does not support cross-arch building. This is because ilist file is
+architecture specific. Does not allow building i386 package on amd64
+systems.
 
 .SH "AUTHOR"
 Junichi Uekawa (dancer@debian.org)
