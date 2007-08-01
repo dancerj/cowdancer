@@ -77,7 +77,6 @@ static const char* qemu_arch_diskdevice(const char* arch)
     return NULL;
 }
 
-
 /**
  * arch-specific routine; qemu command to use.
  */
@@ -445,11 +444,21 @@ static int do_fsck(const char* devfile)
 		    NULL);
 }
 
+/**
+ * Invoke qemu, and run the second-stage script within QEMU.
+ *
+ * 
+ */
 static int run_second_stage_script
-(int save_result,
+(
+ /** save the result of this command*/
+ int save_result,
+ /** the command-line to invoke within QEMU */
  const char* commandline,
  const struct pbuilderconfig* pc,
+ /** the commands to invoke in the host OS */
  const char* hostcommand1,
+ /** the commands to invoke in the guest OS */
  const char* hostcommand2)
 {
   char* script=NULL;
@@ -493,7 +502,6 @@ static int run_second_stage_script
 	   commandline
 	   );
 
-  /* this is specific to my configuration, fix it later. */
   create_script(pc->buildplace, "pbuilder-run",
 		script);
   /* TODO: can I do 'date --set' from output of 'LC_ALL=C date' */
