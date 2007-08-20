@@ -10,32 +10,33 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.386e-05 seconds, 42.9 MB/s
+1024 bytes (1.0 kB) copied, 2.2468e-05 seconds, 45.6 MB/s
 + cp -al 1 2
 + MALLOC_TRACE=log
 + cow-shell /tmp/XXXX/tracer
-00400000-00401000 r-xp 00000000 00:10 1388508                            /tmp/XXXX/tracer
-00600000-00601000 rw-p 00000000 00:10 1388508                            /tmp/XXXX/tracer
+00400000-00401000 r-xp 00000000 00:10 1464708                            /tmp/XXXX/tracer
+00600000-00601000 rw-p 00000000 00:10 1464708                            /tmp/XXXX/tracer
 00601000-00622000 rw-p 00601000 00:00 0                                  [heap]
-2b6bb3897000-2b6bb38b4000 r-xp 00000000 08:01 114813                     /lib/ld-2.6.so
-2b6bb38b4000-2b6bb38b7000 rw-p 2b6bb38b4000 00:00 0 
-2b6bb3ab3000-2b6bb3ab5000 rw-p 0001c000 08:01 114813                     /lib/ld-2.6.so
-2b6bb3ab5000-2b6bb3ab9000 r-xp 00000000 08:01 129033                     /usr/lib/cowdancer/libcowdancer.so
-2b6bb3ab9000-2b6bb3cb8000 ---p 00004000 08:01 129033                     /usr/lib/cowdancer/libcowdancer.so
-2b6bb3cb8000-2b6bb3cb9000 rw-p 00003000 08:01 129033                     /usr/lib/cowdancer/libcowdancer.so
-2b6bb3cb9000-2b6bb3cba000 r--p 00000000 00:10 1388545                    /tmp/XXXX/.ilist
-2b6bb3cba000-2b6bb3cbd000 rw-p 2b6bb3cba000 00:00 0 
-2b6bb3ccf000-2b6bb3e1c000 r-xp 00000000 08:01 114816                     /lib/libc-2.6.so
-2b6bb3e1c000-2b6bb401c000 ---p 0014d000 08:01 114816                     /lib/libc-2.6.so
-2b6bb401c000-2b6bb401f000 r--p 0014d000 08:01 114816                     /lib/libc-2.6.so
-2b6bb401f000-2b6bb4021000 rw-p 00150000 08:01 114816                     /lib/libc-2.6.so
-2b6bb4021000-2b6bb4026000 rw-p 2b6bb4021000 00:00 0 
-2b6bb4026000-2b6bb4028000 r-xp 00000000 08:01 114820                     /lib/libdl-2.6.so
-2b6bb4028000-2b6bb4228000 ---p 00002000 08:01 114820                     /lib/libdl-2.6.so
-2b6bb4228000-2b6bb422a000 rw-p 00002000 08:01 114820                     /lib/libdl-2.6.so
-2b6bb422a000-2b6bb422c000 rw-p 2b6bb422a000 00:00 0 
-7ffff71fe000-7ffff7213000 rw-p 7ffff71fe000 00:00 0                      [stack]
-ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vdso]
+2b78de3e3000-2b78de400000 r-xp 00000000 08:01 114813                     /lib/ld-2.6.so
+2b78de400000-2b78de403000 rw-p 2b78de400000 00:00 0 
+2b78de5ff000-2b78de601000 rw-p 0001c000 08:01 114813                     /lib/ld-2.6.so
+2b78de601000-2b78de605000 r-xp 00000000 08:01 129033                     /usr/lib/cowdancer/libcowdancer.so
+2b78de605000-2b78de804000 ---p 00004000 08:01 129033                     /usr/lib/cowdancer/libcowdancer.so
+2b78de804000-2b78de805000 rw-p 00003000 08:01 129033                     /usr/lib/cowdancer/libcowdancer.so
+2b78de805000-2b78de806000 r--p 00000000 00:10 1464734                    /tmp/XXXX/.ilist
+2b78de806000-2b78de809000 rw-p 2b78de806000 00:00 0 
+2b78de819000-2b78de966000 r-xp 00000000 08:01 114816                     /lib/libc-2.6.so
+2b78de966000-2b78deb66000 ---p 0014d000 08:01 114816                     /lib/libc-2.6.so
+2b78deb66000-2b78deb69000 r--p 0014d000 08:01 114816                     /lib/libc-2.6.so
+2b78deb69000-2b78deb6b000 rw-p 00150000 08:01 114816                     /lib/libc-2.6.so
+2b78deb6b000-2b78deb70000 rw-p 2b78deb6b000 00:00 0 
+2b78deb70000-2b78deb72000 r-xp 00000000 08:01 114820                     /lib/libdl-2.6.so
+2b78deb72000-2b78ded72000 ---p 00002000 08:01 114820                     /lib/libdl-2.6.so
+2b78ded72000-2b78ded74000 rw-p 00002000 08:01 114820                     /lib/libdl-2.6.so
+2b78ded74000-2b78ded76000 rw-p 2b78ded74000 00:00 0 
+7fffcc6b1000-7fffcc6c6000 rw-p 7ffffffea000 00:00 0                      [stack]
+7fffcc7fe000-7fffcc800000 r-xp 7fffcc7fe000 00:00 0                      [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
 + RESULT=0
 + mtrace /tmp/XXXX/tracer /tmp/XXXX/log
 No memory leaks.
