@@ -153,6 +153,14 @@ forkexeclp (const char *path, const char *arg0, ...)
 
 /**
  * load configuration.
+ *
+ * Returns bash return codes or -1 on popen error.
+ * 
+ * Most interesting codes:
+ *  -1 = popen failed
+ *   0 = ok
+ *   1 = file not found
+ *   2 = syntax error
  */
 int load_config_file(const char* config, pbuilderconfig* pc)
 {
@@ -162,10 +170,13 @@ int load_config_file(const char* config, pbuilderconfig* pc)
   char* buf=NULL;
   size_t bufsiz=0;
   char* delim;
+  int result;
 
-  asprintf(&s, "env - bash -c 'set -e ; . %s; set '", config);
+  asprintf(&s, "env bash -c 'set -e ; . %s; set ' 2>&1", config);
   f=popen(s, "r");
-  while (getline(&buf,&bufsiz,f)>0)
+  if( NULL == f )
+    return -1;
+  while ( (0 == feof(f)) && (getline(&buf,&bufsiz,f)>0) )
     {
       if (strrchr(buf,'\n'))
 	{
@@ -221,10 +232,16 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    }
 	}
     }
-  if(buf) free(buf);
+
+  result = WEXITSTATUS( pclose(f) );
+  if(buf) {
+    // Don't warn of missing config files
+    if( result > 1 )
+      printf( "(exit %i) -> %s\n", result, buf );
+    free(buf);
+  }
   if(s) free(s);
-  pclose(f);
-  return 0;
+  return result;
 }
 
 
@@ -257,6 +274,7 @@ int parse_parameter(int ac, char** av,
 {
   int c;			/* option */
   int index_point;
+  int config_ok = -1, load_ok;
   char * cmdstr=NULL;
   static pbuilderconfig pc;
   
@@ -316,9 +334,22 @@ int parse_parameter(int ac, char** av,
   /* default command-line component */
   pbuildercommandline[0]="pbuilder";
   
-  load_config_file("/usr/share/pbuilder/pbuilderrc", &pc);
-  load_config_file("/etc/pbuilderrc", &pc);
-  load_config_file("~/.pbuilderrc", &pc);
+  /**
+   * Try to load all standard config files.
+   * Skip non existing, but exit on broken ones.
+   * config_ok is 0, if any load was successfull
+   **/
+  load_ok = load_config_file("/usr/share/pbuilder/pbuilderrc", &pc);
+  if( load_ok > 1 ) exit( 2 );
+  if( config_ok != 0 ) config_ok = load_ok;
+
+  load_ok = load_config_file("/etc/pbuilderrc", &pc);
+  if( load_ok > 1 ) exit( 3 );
+  if( config_ok != 0 ) config_ok = load_ok;
+
+  load_ok = load_config_file("~/.pbuilderrc", &pc);
+  if( load_ok > 1 ) exit( 4 );
+  if( config_ok != 0 ) config_ok = load_ok;
 
   /* load config files here. */
   while((c = getopt_long (ac, av, "b:d:Mmhv", long_options, &index_point)) != -1)
@@ -349,7 +380,10 @@ int parse_parameter(int ac, char** av,
 	  pc.buildplace = strdup(optarg);
 	  break;
 	case 'c':		/* --config */
-	  load_config_file(optarg, &pc);
+	  load_ok = load_config_file(optarg, &pc);
+	  if( load_ok > 1 ) exit( 5 );
+	  if( config_ok != 0 ) config_ok = load_ok;
+
 	  if (0>asprintf(&cmdstr, "--%s", long_options[index_point].name))
 	    {
 	      /* error */
@@ -407,6 +441,11 @@ int parse_parameter(int ac, char** av,
 	  return 1;
 	}
     }
+
+  if( 0 != config_ok ) {
+    printf( "Couldn't load any valid config file.\n" );
+    exit( 6 );
+  }
 
   /* set default values */
   if (!pc.basepath) 

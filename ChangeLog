@@ -1,3 +1,7 @@
+2007-08-21  Junichi Uekawa  <dancer@debian.org>
+
+	* parameter.c: config file parsing improved by patch from Jan-Marek Glogowski 
+
 2007-06-27  Junichi Uekawa  <dancer@debian.org>
 
 	* cowdancer.c (initialize_functions): work around glibc bug: dlvsym failure
