@@ -1,14 +1,14 @@
 cowdancer (0.38) UNRELEASED; urgency=low
 
- [ Junichi Uekawa ]
+  [ Junichi Uekawa ]
   * document that i386/amd64 cross-arch building is not supported using
     cowbuilder.
 
- [ Jan-Marek Glogowski ] 
+  [ Jan-Marek Glogowski ] 
   * Don't clean the environment when invoking dumpconfig 
   * Better error handling when loading config
 
- -- Junichi Uekawa <dancer@debian.org>  Tue, 21 Aug 2007 08:18:57 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 21 Aug 2007 08:20:56 +0900
 
 cowdancer (0.37) unstable; urgency=low
 
