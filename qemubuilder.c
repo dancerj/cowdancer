@@ -754,7 +754,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	   //TODO: "dpkg --purge $REMOVEPACKAGES\n"
 	   //recover aptcache
 	   "apt-get -y --force-yes -o DPkg::Options::=--force-confnew dist-upgrade\n"
-	   "apt-get install --force-yes -y build-essential dpkg-dev apt pbuilder\n"
+	   "apt-get install --force-yes -y build-essential dpkg-dev apt aptitude pbuilder\n"
 	   //TODO: EXTRAPACKAGES handling
 	   //save aptcache
 	   //optionally autoclean aptcache
@@ -891,7 +891,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
      //TODO: "dpkg --purge $REMOVEPACKAGES\n"
      "apt-get update\n"
      "apt-get -y --force-yes -o DPkg::Options::=--force-confnew dist-upgrade\n"
-     "apt-get install --force-yes -y build-essential dpkg-dev apt pbuilder\n"
+     "apt-get install --force-yes -y build-essential dpkg-dev apt aptitude pbuilder\n"
      //TODO: EXTRAPACKAGES handling
      //optionally autoclean aptcache
      //run E hook

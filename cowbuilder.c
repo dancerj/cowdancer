@@ -311,6 +311,7 @@ int cpbuilder_login(const struct pbuilderconfig* pc)
       return 1;
     }
   
+  /* this is the option passed to internal-chrootexec */
   if (0>asprintf(&buf_chroot, "chroot %s cow-shell", pc->buildplace))
     {
       /* outofmemory */

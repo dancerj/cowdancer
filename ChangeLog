@@ -1,3 +1,7 @@
+2007-08-29  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.c (cpbuilder_create): add aptitude into chroot.
+
 2007-08-21  Junichi Uekawa  <dancer@debian.org>
 
 	* parameter.c: config file parsing improved by patch from Jan-Marek Glogowski 
