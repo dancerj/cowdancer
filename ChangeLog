@@ -1,3 +1,10 @@
+2007-08-31  Junichi Uekawa  <dancer@debian.org>
+
+	* cow-shell.1: add reference to cowdancer-ilistcreate
+	* cowdancer-ilistcreate.1: document.
+	* Makefile (install): install ilistcreate.
+	* cowdancer-ilistcreate.c: create new command.
+
 2007-08-29  Junichi Uekawa  <dancer@debian.org>
 
 	* qemubuilder.c (cpbuilder_create): add aptitude into chroot.

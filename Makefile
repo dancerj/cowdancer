@@ -1,4 +1,4 @@
-BINARY=libcowdancer.so cow-shell cowbuilder qemubuilder
+BINARY=libcowdancer.so cow-shell cowbuilder qemubuilder cowdancer-ilistcreate
 INSTALL_DIR=install -d -o root -g root -m 755
 INSTALL_FILE=install -o root -g root -m 644
 INSTALL_PROGRAM=install -o root -g root -m 755
@@ -15,17 +15,22 @@ install: $(BINARY)
 	$(INSTALL_DIR) $(DESTDIR)${PREFIX}/share/man/man1
 	$(INSTALL_DIR) $(DESTDIR)${PREFIX}/share/man/man8
 	$(INSTALL_FILE)  cow-shell.1 $(DESTDIR)/usr/share/man/man1/cow-shell.1
+	$(INSTALL_FILE)  cowdancer-ilistcreate.1 $(DESTDIR)/usr/share/man/man1/cowdancer-ilistcreate.1
 	$(INSTALL_FILE)  cowbuilder.8 $(DESTDIR)/usr/share/man/man8/cowbuilder.8
+	$(INSTALL_FILE)  qemubuilder.8 $(DESTDIR)/usr/share/man/man8/qemubuilder.8
 	$(INSTALL_FILE)  libcowdancer.so $(DESTDIR)${LIBDIR}/cowdancer/libcowdancer.so
 	$(INSTALL_PROGRAM) cow-shell $(DESTDIR)/usr/bin/cow-shell
 	$(INSTALL_PROGRAM) cowbuilder $(DESTDIR)/usr/sbin/cowbuilder
 	$(INSTALL_PROGRAM) qemubuilder $(DESTDIR)/usr/sbin/qemubuilder
-	$(INSTALL_FILE)  qemubuilder.8 $(DESTDIR)/usr/share/man/man8/qemubuilder.8
+	$(INSTALL_PROGRAM) cowdancer-ilistcreate $(DESTDIR)/usr/sbin/cowdancer-ilistcreate
 
 libcowdancer.so: cowdancer.lo ilistcreate.lo
 	gcc -O2 -Wall -ldl -shared -o $@ $^
 
 cow-shell: cow-shell.o ilistcreate.o
+	gcc -O2 -Wall -o $@ $^
+
+cowdancer-ilistcreate: cowdancer-ilistcreate.o ilistcreate.o
 	gcc -O2 -Wall -o $@ $^
 
 cowbuilder: cowbuilder.o parameter.o ilistcreate.o

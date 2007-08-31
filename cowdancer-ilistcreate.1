@@ -1,0 +1,24 @@
+.TH "cowdancer\-ilistcreate" 1 "2007 Aug 31" "cowdancer" "cowdancer"
+.SH "NAME"
+cowdancer\-ilistcreate \- create .ilist file for use with cowdancer.
+.SH "SYNOPSIS"
+.BI "cowdancer-ilistcreate " "ilist-path find-option "
+.SH "DESCRIPTION"
+.B cowdancer\-ilistcreate
+generates .ilist file with custom find operation.
+Low-level command for use internally.
+
+
+.SH "EXAMPLES"
+.TP
+.B "cowdancer-ilistcreate .ilist 'find . -xdev -path ./home -prune -o \( \( -type l -o -type f \) -a -links +1 -print0 \) | xargs -0 stat --format \"%d %i \"'"
+Create .ilist file with excluding "./home/" directory.
+
+.SH "AUTHOR"
+Junichi Uekawa (dancer@debian.org)
+
+Upstream page is available at 
+.B "http://www.netfort.gr.jp/~dancer/software/cowdancer.html"
+
+.SH "SEE ALSO"
+.BR "cow-shell (" 1 ")"
