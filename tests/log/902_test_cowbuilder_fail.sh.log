@@ -3,7 +3,6 @@
 + [[ '' = build ]]
 + echo exit 1
 + sudo cowbuilder --login --hookdir /usr/share/doc/pbuilder/examples/workaround/ --basepath /var/cache/pbuilder/base-test.cow
-bash: /root/.pbuilderrc: No such file or directory
 W: /home/dancer/.pbuilderrc does not exist
  -> Running in no-targz mode
  -> copying local configuration

@@ -22,7 +22,7 @@ install: $(BINARY)
 	$(INSTALL_PROGRAM) cow-shell $(DESTDIR)/usr/bin/cow-shell
 	$(INSTALL_PROGRAM) cowbuilder $(DESTDIR)/usr/sbin/cowbuilder
 	$(INSTALL_PROGRAM) qemubuilder $(DESTDIR)/usr/sbin/qemubuilder
-	$(INSTALL_PROGRAM) cowdancer-ilistcreate $(DESTDIR)/usr/sbin/cowdancer-ilistcreate
+	$(INSTALL_PROGRAM) cowdancer-ilistcreate $(DESTDIR)/usr/bin/cowdancer-ilistcreate
 
 libcowdancer.so: cowdancer.lo ilistcreate.lo
 	gcc -O2 -Wall -ldl -shared -o $@ $^
