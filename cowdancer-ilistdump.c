@@ -1,8 +1,6 @@
-/*BINFMTC: ../ilistcreate.c
+/*BINFMTC: ilistcreate.c
  *
  * Debug program for dumping ilist file contents.
- * Run this with  < .ilist
- *
  */
 
 #include <stdio.h>
@@ -19,19 +17,39 @@
 #include <unistd.h>
 #include <sys/signal.h>
 #include <sys/mman.h>
-#include "../ilist.h"
-const char* ilist_PRGNAME="test";
+#include "ilist.h"
+const char* ilist_PRGNAME="cowdancer-ilistdump";
 
 int main(int argc, char** argv)
 {
   struct ilist_struct s;
+  FILE*f;
+  
+  if (argc != 2)
+    {
+      fprintf (stderr,
+	       "%s ilist-path \n\n\tdump contents of .ilist file\n\n",
+	       argv[0]);
+      return 1;
+    }
+  
   fprintf (stderr, "ilist_struct size on this architecture: %i\n", (int)sizeof(struct ilist_struct));
-  while(fread(&s, sizeof(struct ilist_struct), 1, stdin))
+
+  f=fopen (argv[1], "r");
+  if (!f)
+    {
+      fprintf (stderr,
+	       "%s: cannot open file %s\n",
+	       argv[0], argv[1]);
+      return 1;
+    }
+  
+  while(fread(&s, sizeof(struct ilist_struct), 1, f))
     {
       printf ("%li %li\n", (long)s.dev, (long)s.inode);
     }
 
-  /* dummy call to quiet gcc down. */
-  compare_ilist(&s,&s);
+  fclose(f);
+  
   return 0;
 }

@@ -10,8 +10,11 @@ cowdancer (0.38) UNRELEASED; urgency=low
     cowbuilder.
   * add aptitude into chroot for pbuilder-satisfydepends-aptitude.
   * add cowdancer-ilistcreate command, which creates ilist file.
-
- -- Junichi Uekawa <dancer@debian.org>  Fri, 31 Aug 2007 09:06:07 +0900
+  * add cowdancer-ilistdump command, for debugging purposes. It was
+    included in the testsuite, but it is generally useful for
+    troubleshooting.
+  
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 01 Sep 2007 12:07:52 +0900
 
 cowdancer (0.37) unstable; urgency=low
 

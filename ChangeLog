@@ -1,3 +1,10 @@
+2007-09-01  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/014_ilistdump_test.sh: rewrite testsuite to use the generic dumping code.
+	* Makefile: install dumping code.
+	* cowdancer-ilistdump.1: document
+	* cowdancer-ilistdump.c: create dumping code, from testsuite data.
+
 2007-08-31  Junichi Uekawa  <dancer@debian.org>
 
 	* cow-shell.1: add reference to cowdancer-ilistcreate
