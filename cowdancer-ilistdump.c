@@ -3,20 +3,9 @@
  * Debug program for dumping ilist file contents.
  */
 
-#include <stdio.h>
 #define _GNU_SOURCE
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <sys/types.h>
 #include <sys/stat.h>
-#include <dlfcn.h>
-#include <dirent.h>
-#include <string.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <sys/signal.h>
-#include <sys/mman.h>
 #include "ilist.h"
 const char* ilist_PRGNAME="cowdancer-ilistdump";
 

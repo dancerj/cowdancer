@@ -1,5 +1,8 @@
 2007-09-01  Junichi Uekawa  <dancer@debian.org>
 
+	* Makefile (check-syntax): add check-syntax target for flymake mode.
+	Remove redundant #include statements.
+
 	* cowbuilder.c: run cowdancer-ilistcreate within chroot if it
 	exists.
 

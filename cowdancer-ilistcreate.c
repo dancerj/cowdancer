@@ -21,7 +21,7 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <sys/stat.h>
 #include "ilist.h"
 const char* ilist_PRGNAME="cowdancer-ilistcreate";
 

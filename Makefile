@@ -62,4 +62,8 @@ check:
 	    -e "s,^Fetched .*B in .*s (.*B/s),Fetched XXXB in Xs (XXXXXB/s)," \
 	| tee tests/log/$${A/*\//}.log; done
 
-.PHONY: clean check upload-dist-all
+check-syntax:
+	gcc -c -O2 -Wall $(CHK_SOURCES)  -o/dev/null
+
+.PHONY: clean check upload-dist-all check-syntax
+

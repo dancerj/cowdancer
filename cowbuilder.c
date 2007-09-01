@@ -115,13 +115,9 @@ sys     0m3.792s
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
 #include <sys/stat.h>
-#include <sys/wait.h>
 #include <string.h>
 #include <unistd.h>
-#include <getopt.h>
-#include <stdarg.h>
 #include "parameter.h"
 #include "ilist.h"
 

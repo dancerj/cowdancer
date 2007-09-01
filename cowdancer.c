@@ -11,11 +11,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <dlfcn.h>
-#include <dirent.h>
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <sys/signal.h>
 #include <sys/mman.h>
 #include <sys/wait.h>
 #include <sched.h>
