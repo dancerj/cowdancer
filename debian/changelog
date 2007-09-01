@@ -1,4 +1,4 @@
-cowdancer (0.38) UNRELEASED; urgency=low
+cowdancer (0.38) unstable; urgency=low
 
   [ Jan-Marek Glogowski ] 
   * Don't clean the environment when invoking dumpconfig 
@@ -15,7 +15,7 @@ cowdancer (0.38) UNRELEASED; urgency=low
   - Bug fix: "cowbuilder cross-arch building support."
     (Closes: #432573).
 
- -- Junichi Uekawa <dancer@debian.org>  Sat, 01 Sep 2007 13:04:49 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 01 Sep 2007 13:10:45 +0900
 
 cowdancer (0.37) unstable; urgency=low
 
