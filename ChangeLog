@@ -1,5 +1,8 @@
 2007-09-01  Junichi Uekawa  <dancer@debian.org>
 
+	* cowbuilder.c: run cowdancer-ilistcreate within chroot if it
+	exists.
+
 	* parameter.c: 
 	* forkexec.c: move fork/exec code from parameter.c
 

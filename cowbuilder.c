@@ -198,8 +198,20 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
 
   prevdir=get_current_dir_name();
   chdir(pc->buildplace);
-  ilistcreate(ilistfile,
-	      "find . -xdev -path ./home -prune -o \\( \\( -type l -o -type f \\) -a -links +1 -print0 \\) | xargs -0 stat --format '%d %i '");
+
+  if (forkexeclp("chroot", 
+		 "chroot",
+		 pc->buildplace,
+		 "cowdancer-ilistcreate", 
+		 ilistfile, 
+		 "find . -xdev -path ./home -prune -o \\( \\( -type l -o -type f \\) -a -links +1 -print0 \\) | xargs -0 stat --format '%d %i '", 
+		 NULL))
+    {
+      /* if there was an error, back off to manual form */
+      fprintf(stderr, "W: cowdancer-ilistcreate failed to run within chroot, falling back to old method\n");
+      ilistcreate(ilistfile,
+		  "find . -xdev -path ./home -prune -o \\( \\( -type l -o -type f \\) -a -links +1 -print0 \\) | xargs -0 stat --format '%d %i '");
+    }
   chdir(prevdir);
   free(prevdir);
 
