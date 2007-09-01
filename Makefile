@@ -36,10 +36,10 @@ cow-shell: cow-shell.o ilistcreate.o
 cowdancer-ilistcreate: cowdancer-ilistcreate.o ilistcreate.o
 	gcc -O2 -Wall -o $@ $^
 
-cowbuilder: cowbuilder.o parameter.o ilistcreate.o
+cowbuilder: cowbuilder.o parameter.o forkexec.o ilistcreate.o
 	gcc -O2 -Wall -o $@ $^
 
-qemubuilder: qemubuilder.o parameter.o
+qemubuilder: qemubuilder.o parameter.o forkexec.o
 	gcc -O2 -Wall -o $@ $^
 
 %.lo: %.c 
