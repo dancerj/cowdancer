@@ -1,8 +1,9 @@
 cowdancer (0.39) UNRELEASED; urgency=low
 
-  * 
+  * Bug fix: "qemubuilder: Problem when non-US locale", thanks to
+    Jean-Baptiste Note (Closes: #440558).
 
- -- Junichi Uekawa <dancer@debian.org>  Sat, 01 Sep 2007 15:19:01 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 03 Sep 2007 07:57:27 +0900
 
 cowdancer (0.38) unstable; urgency=low
 

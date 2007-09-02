@@ -185,7 +185,7 @@ static int create_ext3_block_device(const char* filename, int gigabyte)
 
   free(s); s=NULL;
 
-  if (0>asprintf(&s, "yes | mke2fs -j -O sparse_super %s", filename))
+  if (0>asprintf(&s, "mke2fs -F -j -O sparse_super %s", filename))
     {
       /* out of memory */
       ret=-1;
