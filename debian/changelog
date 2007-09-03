@@ -4,8 +4,10 @@ cowdancer (0.39) UNRELEASED; urgency=low
     Jean-Baptiste Note (Closes: #440558).
   * Give fd0 directly to qemu to allow tty control.
   * Handle exit codes.
+  * apply patch to more easily handle newer architecture support, 
+    thanks to Jean-Baptiste Note: #440555
 
- -- Junichi Uekawa <dancer@debian.org>  Mon, 03 Sep 2007 08:46:12 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 04 Sep 2007 08:25:30 +0900
 
 cowdancer (0.38) unstable; urgency=low
 

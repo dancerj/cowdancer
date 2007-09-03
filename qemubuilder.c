@@ -35,6 +35,7 @@
 #include "parameter.h"
 
 /* 
+ * example exit codes: 
  *
  * END OF WORK EXIT CODE=1
  * END OF WORK EXIT CODE=0
@@ -51,16 +52,7 @@ static const char* qemu_arch_serialdevice(const char* arch)
     {
       return "mknod dev/console c 204 64; ";
     }
-  else if (!strcmp(arch, "i386") ||
-	   !strcmp(arch, "amd64") ||
-	   !strcmp(arch, "mips") ||
-	   !strcmp(arch, "mipsel")
-	   )
-    {
-      return "mknod dev/console c 4 64; ";
-    }
-  else
-    return NULL;
+  return "mknod dev/console c 4 64; ";
 }
 
 /**
@@ -72,16 +64,7 @@ static const char* qemu_arch_diskdevice(const char* arch)
     {
       return "sd";
     }
-  else if (!strcmp(arch, "i386") ||
-	   !strcmp(arch, "amd64")||
-	   !strcmp(arch, "mips")||
-	   !strcmp(arch, "mipsel")
-	   )
-    {
-      return "hd";
-    }
-  else
-    return NULL;
+  return "hd";
 }
 
 /**
@@ -117,6 +100,8 @@ static const char* qemu_arch_qemu(const char* arch)
       else 
 	return "qemu-system-x86_64";
     }
+  else if (!strcmp(arch, "powerpc"))
+    return "qemu-system-ppc";
   else
     return NULL;
 }
@@ -134,8 +119,9 @@ static const char* qemu_arch_qemumachine(const char* arch)
   else if (!strcmp(arch, "mips")||
 	   !strcmp(arch, "mipsel"))
     return "mips";
-  else
-    return NULL;
+  else if (!strcmp(arch, "powerpc"))
+    return "prep";
+  return NULL;
 }
 
 
@@ -148,15 +134,7 @@ static const char* qemu_arch_tty(const char* arch)
     {
       return "ttyAMA0";
     }
-  else if (!strcmp(arch, "i386") ||
-	   !strcmp(arch, "amd64")||
-	   !strcmp(arch, "mips")||
-	   !strcmp(arch, "mipsel"))
-    {
-      return "ttyS0";
-    }
-  else
-    return NULL;
+  return "ttyS0";
 }
 
 /** create a sparse ext3 block device suitable for 
@@ -402,6 +380,11 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       const char* kernel_image = pc->kernel_image;
       const char* initrd = pc->initrd;
       char* mem;
+
+      if (qemu == NULL || machine == NULL) {
+	fprintf(stderr, "Your arch %s does not seem to be supported\n", pc->arch);
+	exit(1);
+      }
 
       asprintf(&mem, "%i\n", pc->memory_megs);
       
