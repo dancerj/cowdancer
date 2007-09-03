@@ -310,7 +310,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
   pid_t child;
   int sp[2];
   fd_set readfds;
-  int fork_qemu_exit_code=-1;
+  int exit_code=-1;
   const int buffer_size=4096;
   char* buf=malloc(buffer_size);
   size_t count;
@@ -346,13 +346,14 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 		  count=read(sp[0],buf,buffer_size);
 		  
 		  /* this won't work sometimes, but this is a good best-effort thing. */
-		  if (matchptr=memmem(buf, count, qemu_keyword, strlen(qemu_keyword)))
+		  if ((matchptr=memmem(buf, count, 
+				       qemu_keyword, strlen(qemu_keyword)))!=0)
 		    {
 		      int status;
 
-		      fork_qemu_exit_code = atoi(matchptr + strlen(qemu_keyword));
+		      exit_code = atoi(matchptr + strlen(qemu_keyword));
 		      printf("\n  -> received termination signal with exit-code %i, killing child process (qemu)\n", 
-			     fork_qemu_exit_code);
+			     exit_code);
 		      if (!kill(child, SIGTERM))
 			printf("   -> killed (qemu)\n");
 		      else
@@ -432,7 +433,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
     }
 
   fix_terminal();
-  return fork_qemu_exit_code;
+  return exit_code;
 }
 
 static int do_fsck(const char* devfile)

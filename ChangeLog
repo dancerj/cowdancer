@@ -1,3 +1,7 @@
+2007-09-04  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.c: cosmetic fixes.
+
 2007-09-03  Junichi Uekawa  <dancer@debian.org>
 
 	* qemubuilder.c (create_ext3_block_device): use mke2fs -F instead
