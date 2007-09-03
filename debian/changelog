@@ -2,8 +2,10 @@ cowdancer (0.39) UNRELEASED; urgency=low
 
   * Bug fix: "qemubuilder: Problem when non-US locale", thanks to
     Jean-Baptiste Note (Closes: #440558).
+  * Give fd0 directly to qemu to allow tty control.
+  * Handle exit codes.
 
- -- Junichi Uekawa <dancer@debian.org>  Mon, 03 Sep 2007 07:57:27 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 03 Sep 2007 08:46:12 +0900
 
 cowdancer (0.38) unstable; urgency=low
 

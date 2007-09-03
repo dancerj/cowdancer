@@ -1,7 +1,12 @@
 2007-09-03  Junichi Uekawa  <dancer@debian.org>
 
-	* qemubuilder.c (create_ext3_block_device): use mke2fs -F instead of 
-	yes|mke2fs
+	* qemubuilder.c (create_ext3_block_device): use mke2fs -F instead
+	of yes|mke2fs
+	(fork_qemu): do not handle fd '0', so that tty control can be
+	done.  
+	(fix_terminal): fix termios after exit from qemu, at least put
+	echo on.
+	(fork_qemu): Handle exit-codes.
 
 2007-09-01  Junichi Uekawa  <dancer@debian.org>
 
