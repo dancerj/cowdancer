@@ -280,11 +280,11 @@ static int copy_file_internal(const char* orig, const char*dest)
 /* minimally fix terminal I/O */
 static void fix_terminal(void)
 {
-  struct termios t;
+  struct termios t; 
 
-  tcgetattr(0, &t);
+  tcgetattr(0, &t); 
   t.c_lflag |= ECHO;
-  tcsetattr(0, TCSADRAIN, &t);
+  tcsetattr(0, TCSADRAIN, &t); 
 }
 
 static int copy_file_contents_to_temp(const char* orig, const char*temppath, const char* filename)
@@ -352,8 +352,12 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 		      int status;
 
 		      exit_code = atoi(matchptr + strlen(qemu_keyword));
-		      printf("\n  -> received termination signal with exit-code %i, killing child process (qemu)\n", 
-			     exit_code);
+		      printf("\n  -> received termination signal with exit-code %i, killing child process (qemu:%i)\n", 
+			     exit_code,
+			     child);
+		      
+		      assert(child != 0);assert(child > 0);
+
 		      if (!kill(child, SIGTERM))
 			printf("   -> killed (qemu)\n");
 		      else
