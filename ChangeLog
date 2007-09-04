@@ -1,5 +1,7 @@
 2007-09-04  Junichi Uekawa  <dancer@debian.org>
 
+	* cowbuilder.c (cpbuilder_create): add cleanup code.
+
 	* qemubuilder.c: cosmetic fixes.
 
 2007-09-03  Junichi Uekawa  <dancer@debian.org>

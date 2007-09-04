@@ -263,6 +263,15 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   PBUILDER_ADD_PARAM("cowdancer");
   PBUILDER_ADD_PARAM(NULL);
   ret=forkexecvp(pbuildercommandline);
+
+  if (ret)
+    {	  
+      printf("pbuilder create failed\n");
+      if (0!=forkexeclp("rm", "rm", "-rf", pc->basepath, NULL))
+	{
+	  fprintf(stderr, "Could not remove original tree\n");
+	}
+    }
   return ret;
 }
 
@@ -478,7 +487,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
 	  printf("pbuilder update failed\n");
 	  if (0!=forkexeclp("rm", "rm", "-rf", pc->buildplace, NULL))
 	    {
-	      printf("Could not remove original tree\n");
+	      fprintf(stderr, "Could not remove original tree\n");
 	    }
 	}
       else
