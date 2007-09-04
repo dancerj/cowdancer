@@ -10,32 +10,32 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3471e-05 seconds, 43.6 MB/s
+1024 bytes (1.0 kB) copied, 2.2516e-05 seconds, 45.5 MB/s
 + cp -al 1 2
 + MALLOC_TRACE=log
 + cow-shell /tmp/XXXX/tracer
-00400000-00401000 r-xp 00000000 00:10 2348467                            /tmp/XXXX/tracer
-00600000-00601000 rw-p 00000000 00:10 2348467                            /tmp/XXXX/tracer
+00400000-00401000 r-xp 00000000 00:10 796658                             /tmp/XXXX/tracer
+00600000-00601000 rw-p 00000000 00:10 796658                             /tmp/XXXX/tracer
 00601000-00622000 rw-p 00601000 00:00 0                                  [heap]
-2ad918f2f000-2ad918f4c000 r-xp 00000000 08:01 114813                     /lib/ld-2.6.so
-2ad918f4c000-2ad918f4f000 rw-p 2ad918f4c000 00:00 0 
-2ad91914b000-2ad91914d000 rw-p 0001c000 08:01 114813                     /lib/ld-2.6.so
-2ad91914d000-2ad919151000 r-xp 00000000 08:01 129070                     /usr/lib/cowdancer/libcowdancer.so
-2ad919151000-2ad919350000 ---p 00004000 08:01 129070                     /usr/lib/cowdancer/libcowdancer.so
-2ad919350000-2ad919351000 rw-p 00003000 08:01 129070                     /usr/lib/cowdancer/libcowdancer.so
-2ad919351000-2ad919352000 r--p 00000000 00:10 2348493                    /tmp/XXXX/.ilist
-2ad919352000-2ad919355000 rw-p 2ad919352000 00:00 0 
-2ad919365000-2ad9194b2000 r-xp 00000000 08:01 114816                     /lib/libc-2.6.so
-2ad9194b2000-2ad9196b2000 ---p 0014d000 08:01 114816                     /lib/libc-2.6.so
-2ad9196b2000-2ad9196b5000 r--p 0014d000 08:01 114816                     /lib/libc-2.6.so
-2ad9196b5000-2ad9196b7000 rw-p 00150000 08:01 114816                     /lib/libc-2.6.so
-2ad9196b7000-2ad9196bc000 rw-p 2ad9196b7000 00:00 0 
-2ad9196bc000-2ad9196be000 r-xp 00000000 08:01 114820                     /lib/libdl-2.6.so
-2ad9196be000-2ad9198be000 ---p 00002000 08:01 114820                     /lib/libdl-2.6.so
-2ad9198be000-2ad9198c0000 rw-p 00002000 08:01 114820                     /lib/libdl-2.6.so
-2ad9198c0000-2ad9198c2000 rw-p 2ad9198c0000 00:00 0 
-7fff91b66000-7fff91b7b000 rw-p 7ffffffea000 00:00 0                      [stack]
-7fff91bfe000-7fff91c00000 r-xp 7fff91bfe000 00:00 0                      [vdso]
+2b1204b2f000-2b1204b4c000 r-xp 00000000 08:01 81117                      /lib/ld-2.6.1.so
+2b1204b4c000-2b1204b4f000 rw-p 2b1204b4c000 00:00 0 
+2b1204d4b000-2b1204d4d000 rw-p 0001c000 08:01 81117                      /lib/ld-2.6.1.so
+2b1204d4d000-2b1204d51000 r-xp 00000000 08:01 129486                     /usr/lib/cowdancer/libcowdancer.so
+2b1204d51000-2b1204f50000 ---p 00004000 08:01 129486                     /usr/lib/cowdancer/libcowdancer.so
+2b1204f50000-2b1204f51000 rw-p 00003000 08:01 129486                     /usr/lib/cowdancer/libcowdancer.so
+2b1204f51000-2b1204f52000 r--p 00000000 00:10 796684                     /tmp/XXXX/.ilist
+2b1204f52000-2b1204f55000 rw-p 2b1204f52000 00:00 0 
+2b1204f65000-2b12050b2000 r-xp 00000000 08:01 82421                      /lib/libc-2.6.1.so
+2b12050b2000-2b12052b2000 ---p 0014d000 08:01 82421                      /lib/libc-2.6.1.so
+2b12052b2000-2b12052b5000 r--p 0014d000 08:01 82421                      /lib/libc-2.6.1.so
+2b12052b5000-2b12052b7000 rw-p 00150000 08:01 82421                      /lib/libc-2.6.1.so
+2b12052b7000-2b12052bc000 rw-p 2b12052b7000 00:00 0 
+2b12052bc000-2b12052be000 r-xp 00000000 08:01 84783                      /lib/libdl-2.6.1.so
+2b12052be000-2b12054be000 ---p 00002000 08:01 84783                      /lib/libdl-2.6.1.so
+2b12054be000-2b12054c0000 rw-p 00002000 08:01 84783                      /lib/libdl-2.6.1.so
+2b12054c0000-2b12054c2000 rw-p 2b12054c0000 00:00 0 
+7fffa5f66000-7fffa5f7b000 rw-p 7ffffffea000 00:00 0                      [stack]
+7fffa5ffe000-7fffa6000000 r-xp 7fffa5ffe000 00:00 0                      [vdso]
 ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
 + RESULT=0
 + mtrace /tmp/XXXX/tracer /tmp/XXXX/log

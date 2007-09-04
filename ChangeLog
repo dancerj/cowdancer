@@ -1,5 +1,7 @@
 2007-09-04  Junichi Uekawa  <dancer@debian.org>
 
+	* cow-shell.c: delete .ilist file if reuse flag is not set.
+
 	* cowbuilder.c (cpbuilder_create): add cleanup code.
 
 	* qemubuilder.c: cosmetic fixes.

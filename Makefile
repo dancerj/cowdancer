@@ -63,7 +63,7 @@ check:
 	| tee tests/log/$${A/*\//}.log; done
 
 check-syntax:
-	gcc -c -O2 -Wall $(CHK_SOURCES)  -o/dev/null
+	gcc -c -O2 -Wall $(CHK_SOURCES)  -o/dev/null -D LIBDIR="\"${LIBDIR}\""
 
 .PHONY: clean check upload-dist-all check-syntax
 

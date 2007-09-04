@@ -2,8 +2,9 @@ cowdancer (0.40) UNRELEASED; urgency=low
 
   * Bug fix: "cowdancer: Should remove base directory when failed to
     create it", thanks to Nelson A. de Oliveira (Closes: #440651).
+  * cow-shell: if COWDANCER_REUSE is not set, remove .ilist file after use.
 
- -- Junichi Uekawa <dancer@debian.org>  Tue, 04 Sep 2007 09:16:31 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 04 Sep 2007 10:20:28 +0900
 
 cowdancer (0.39) unstable; urgency=low
 

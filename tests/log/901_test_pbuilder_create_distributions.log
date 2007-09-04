@@ -1,4 +1,4 @@
 [OK]   debootstrap etch
-[FAIL] debootstrap sid
+[OK]   debootstrap sid
 [OK]   cdebootstrap etch
 [OK]   cdebootstrap sid
