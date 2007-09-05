@@ -3,10 +3,11 @@ cowdancer (0.40) UNRELEASED; urgency=low
   * Bug fix: "cowdancer: Should remove base directory when failed to
     create it", thanks to Nelson A. de Oliveira (Closes: #440651).
   * cow-shell: if COWDANCER_REUSE is not set, remove .ilist file after use.
+    (Closes: #350268).
   * Bug fix: "cowdancer: <sys/types.h> needed in cowdancer-ilistcreate.c
     for Etch backport", thanks to Sven Hartge (Closes: #440879).
 
- -- Junichi Uekawa <dancer@debian.org>  Wed, 05 Sep 2007 18:03:11 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 05 Sep 2007 18:03:47 +0900
 
 cowdancer (0.39) unstable; urgency=low
 
