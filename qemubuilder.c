@@ -390,7 +390,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 	exit(1);
       }
 
-      asprintf(&mem, "%i\n", pc->memory_megs);
+      asprintf(&mem, "%i", pc->memory_megs);
       
       asprintf(&append_command,
 	       "root=/dev/%sa init=/pbuilder-run console=%s",

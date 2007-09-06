@@ -1,3 +1,7 @@
+2007-09-07  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.c: fix typo from "Jean-Baptiste Note" <jbnote@gmail.com>
+
 2007-09-06  Junichi Uekawa  <dancer@debian.org>
 
 	* qemubuilder.c (fork_qemu): change 'termination signal' to
