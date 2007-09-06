@@ -1,4 +1,4 @@
-/*BINFMTC: parameter.c
+/*BINFMTC: parameter.c forkexec.c
  *  qemubuilder: pbuilder with qemu
  *  Copyright (C) 2007 Junichi Uekawa
  *
@@ -282,9 +282,9 @@ static void fix_terminal(void)
 {
   struct termios t; 
 
-  tcgetattr(0, &t); 
+  tcgetattr(1, &t); 
   t.c_lflag |= ECHO;
-  tcsetattr(0, TCSADRAIN, &t); 
+  tcsetattr(1, TCSANOW, &t); 
 }
 
 static int copy_file_contents_to_temp(const char* orig, const char*temppath, const char* filename)
@@ -352,18 +352,17 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 		      int status;
 
 		      exit_code = atoi(matchptr + strlen(qemu_keyword));
-		      printf("\n  -> received termination signal with exit-code %i, killing child process (qemu:%i)\n", 
+		      printf("\n  -> received termination message from inside qemu with exit-code %i, killing child process (qemu:%i)\n", 
 			     exit_code,
 			     child);
 		      
 		      assert(child != 0);assert(child > 0);
 
 		      if (!kill(child, SIGTERM))
-			printf("   -> killed (qemu)\n");
+			printf("   -> successfully killed qemu\n");
 		      else
 			perror("   -> failed to kill qemu? :");
 		      waitpid(child, &status, 0);
-		      printf("  -> child process terminated with status: %x\n", status);
 		      break;
 		    }
 		  write(1,buf,count);

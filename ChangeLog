@@ -1,3 +1,8 @@
+2007-09-06  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.c (fork_qemu): change 'termination signal' to
+	'termination message' so that it's not confusing.
+
 2007-09-04  Junichi Uekawa  <dancer@debian.org>
 
 	* cow-shell.c: delete .ilist file if reuse flag is not set.
