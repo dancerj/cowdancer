@@ -2,6 +2,18 @@
 
 This page is README.Debian of qemubuilder, a pbuilder implementation using qemu.
 
+= Configuration file =
+
+Example configuration is like this:
+
+{{{
+KERNEL_IMAGE=vmlinuz-2.6.18-4-k7
+INITRD=initrd.img-2.6.18-4-k7
+ARCH=i386
+BASEPATH=/var/cache/pbuilder/base-i386.qemu
+MEMORY_MEGS=64
+}}}
+
 = Running each architectures =
 
 To run qemubuilder you need a kernel image and initrd (optional).
@@ -32,11 +44,11 @@ http://mirror/debian/dists/sid/main/installer-mips/current/images/qemu/netboot/
 == mipsel ==
 
 Get the kernel and initrd from 
-http://mirror/debian/dists/sid/main/installer-mips/current/images/qemu/netboot/
+http://mirror/debian/dists/sid/main/installer-mipsel/current/images/qemu/netboot/
 
 == powerpc ==
 
-cannot get it working as of 17 June 2007.
+cannot get it working as of 4 Sep 2007.
 
 == sparc ==
 
