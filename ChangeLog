@@ -1,6 +1,9 @@
 2007-09-07  Junichi Uekawa  <dancer@debian.org>
 
-	* qemubuilder.c: fix typo from "Jean-Baptiste Note" <jbnote@gmail.com>
+	* qemubuilder.c: fix typo from "Jean-Baptiste Note"
+	<jbnote@gmail.com>
+	(run_second_stage_script): get network device name with ifconfig
+	and grep. Can I assume 'ethX' here?
 
 2007-09-06  Junichi Uekawa  <dancer@debian.org>
 

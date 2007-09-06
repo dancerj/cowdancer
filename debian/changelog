@@ -7,8 +7,10 @@ cowdancer (0.40) UNRELEASED; urgency=low
   * Bug fix: "cowdancer: <sys/types.h> needed in cowdancer-ilistcreate.c
     for Etch backport", thanks to Sven Hartge (Closes: #440879).
   * update qemubuilder README.Debian 
+  * Don't assume network is always available as 'eth0', and try to find
+    out. patch thanks to Jean-Baptiste Note (Closes: #440888).
 
- -- Junichi Uekawa <dancer@debian.org>  Thu, 06 Sep 2007 23:23:17 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Fri, 07 Sep 2007 08:09:32 +0900
 
 cowdancer (0.39) unstable; urgency=low
 

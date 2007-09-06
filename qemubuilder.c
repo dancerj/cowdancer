@@ -489,7 +489,10 @@ static int run_second_stage_script
 	   "echo ' -> qemu-pbuilder second-stage' \n"
 	   //TODO: copy hook scripts
 	   //"mount -n /proc /proc -t proc\n" // this is done in first stage.
-	   "dhclient eth0\n"
+	   "echo '  -> configuring network' \n"
+	   "ifconfig -a\n"
+	   "export IFNAME=`/sbin/ifconfig -a | grep eth | head -n1 | awk '{print $1}'`\n"
+	   "dhclient $IFNAME\n"
 	   "cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
 	   "cp $PBUILDER_MOUNTPOINT/resolv.conf /etc/resolv.conf\n"
 	   "cp $PBUILDER_MOUNTPOINT/hostname /etc/hostname\n"
