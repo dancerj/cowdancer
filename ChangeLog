@@ -1,5 +1,7 @@
 2007-09-07  Junichi Uekawa  <dancer@debian.org>
 
+	* cow-shell.c: fix case where .ilist didn't exist before.
+	
 	* qemubuilder.c: fix typo from "Jean-Baptiste Note"
 	<jbnote@gmail.com>
 	(run_second_stage_script): get network device name with ifconfig

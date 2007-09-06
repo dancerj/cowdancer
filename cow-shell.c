@@ -51,8 +51,7 @@ int main(int ac, char** av)
 {
   /* give me a command-line to exec, 
      and I will cow-keep what's under this directory. */
-  const char* ilistpath=canonicalize_file_name("./.ilist");
-  
+  const char* ilistpath="./.ilist";
   char*buf;
   struct stat st;
   int cowdancer_reuse;
@@ -91,7 +90,9 @@ int main(int ac, char** av)
 	  return 1;
 	}
     }
-  
+
+  ilistpath=canonicalize_file_name(ilistpath);
+    
   setenv("COWDANCER_ILISTFILE",
 	  ilistpath,1);
   setenv("LD_PRELOAD",buf,1);

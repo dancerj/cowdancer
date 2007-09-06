@@ -1,4 +1,4 @@
-cowdancer (0.40) UNRELEASED; urgency=low
+cowdancer (0.40) unstable; urgency=low
 
   * Bug fix: "cowdancer: Should remove base directory when failed to
     create it", thanks to Nelson A. de Oliveira (Closes: #440651).
@@ -10,7 +10,7 @@ cowdancer (0.40) UNRELEASED; urgency=low
   * Don't assume network is always available as 'eth0', and try to find
     out. patch thanks to Jean-Baptiste Note (Closes: #440888).
 
- -- Junichi Uekawa <dancer@debian.org>  Fri, 07 Sep 2007 08:09:32 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Fri, 07 Sep 2007 08:29:31 +0900
 
 cowdancer (0.39) unstable; urgency=low
 
