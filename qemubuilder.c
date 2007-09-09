@@ -32,6 +32,8 @@
 #include <sys/socket.h>
 #include <assert.h>
 #include <termios.h>
+#include <time.h>
+#include <locale.h>
 #include "parameter.h"
 
 /* 
@@ -467,7 +469,8 @@ static int run_second_stage_script
   char* script=NULL;
   char* workblockdevicepath=NULL;
   char* cowdevpath=NULL;
-  
+  char* locsave, *timestring;
+  time_t currenttime;
   int ret=1;
   
   if (mkdir(pc->buildplace,0777))
@@ -479,6 +482,13 @@ static int run_second_stage_script
 
   do_fsck(pc->basepath);
 
+  /* save/set/restore locale settings to get current time in POSIX format */
+  locsave = setlocale(LC_TIME, NULL);
+  (void) setlocale(LC_TIME, "POSIX");
+  currenttime=time(NULL); 
+  timestring=asctime(gmtime(&currenttime));
+  (void) setlocale(LC_TIME, locsave);
+
   asprintf(&workblockdevicepath, "%s.dev", pc->buildplace);
   ret=create_ext3_block_device(workblockdevicepath, 1);
   loop_mount(workblockdevicepath, pc->buildplace);
@@ -489,6 +499,8 @@ static int run_second_stage_script
 	   "echo ' -> qemu-pbuilder second-stage' \n"
 	   //TODO: copy hook scripts
 	   //"mount -n /proc /proc -t proc\n" // this is done in first stage.
+	   "echo '  -> setting time to %s' \n"
+	   "date --set=\"%s\"\n"
 	   "echo '  -> configuring network' \n"
 	   "ifconfig -a\n"
 	   "export IFNAME=`/sbin/ifconfig -a | grep eth | head -n1 | awk '{print $1}'`\n"
@@ -505,13 +517,14 @@ static int run_second_stage_script
 	   "while sleep 3s; do\n"
 	   "  echo ' -> qemu-pbuilder %s0'\n"
 	   "done\n",
+	   timestring,
+	   timestring,
 	   commandline, 
 	   qemu_keyword
 	   );
 
   create_script(pc->buildplace, "pbuilder-run",
 		script);
-  /* TODO: can I do 'date --set' from output of 'LC_ALL=C date' */
 
   /* TODO: copy /etc/hosts etc. to inside chroot, or it won't know the hosts info. */
   copy_file_contents_to_temp("/etc/hosts", pc->buildplace, "hosts");

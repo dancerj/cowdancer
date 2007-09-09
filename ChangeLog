@@ -1,3 +1,8 @@
+2007-09-10  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.c (run_second_stage_script): set date / time inside
+	chroot with date command; it will be different by a few seconds.
+
 2007-09-07  Junichi Uekawa  <dancer@debian.org>
 
 	* cow-shell.c: fix case where .ilist didn't exist before.

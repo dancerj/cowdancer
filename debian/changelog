@@ -1,3 +1,10 @@
+cowdancer (0.41) UNRELEASED; urgency=low
+
+  * Bug fix: "qemubuilder: build of package failing due to date problems",
+    thanks to Jean-Baptiste Note (Closes: #441132).
+
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 10 Sep 2007 08:33:29 +0900
+
 cowdancer (0.40) unstable; urgency=low
 
   * Bug fix: "cowdancer: Should remove base directory when failed to
