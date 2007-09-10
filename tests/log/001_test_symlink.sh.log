@@ -6,7 +6,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.242e-05 seconds, 45.7 MB/s
+1024 bytes (1.0 kB) copied, 2.2115e-05 seconds, 46.3 MB/s
 + ln -s a.real 1/a
 + ls -li 1/
 + sleep 1s
@@ -14,31 +14,32 @@
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-total 4
-796076 lrwxrwxrwx 2 dancer dancer    6 2007-09-04 15:00 a -> a.real
-796074 -rw-r--r-- 2 dancer dancer    0 2007-09-04 15:00 a.real
-796071 -rw-r--r-- 2 dancer dancer    0 2007-09-04 15:00 b
-796072 -rw-r--r-- 2 dancer dancer    0 2007-09-04 15:00 c
-796073 -rw-r--r-- 2 dancer dancer    0 2007-09-04 15:00 d
-796075 -rw-r--r-- 2 dancer dancer 1024 2007-09-04 15:00 e
+合計 4
+2662438 lrwxrwxrwx 2 dancer dancer    6 2007-09-10 19:28 a -> a.real
+2662426 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:28 a.real
+2662423 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:28 b
+2662424 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:28 c
+2662425 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:28 d
+2662427 -rw-r--r-- 2 dancer dancer 1024 2007-09-10 19:28 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
-Invoking /bin/sh
+Invoking /bin/bash
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.6989e-05 seconds, 37.9 MB/s
+1024 bytes (1.0 kB) copied, 2.8507e-05 seconds, 35.9 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-total 12
-796076 lrwxrwxrwx 2 dancer dancer    6 2007-09-04 15:00 a -> a.real
-796128 -rw-r--r-- 1 dancer dancer    2 2007-09-04 15:00 a.real
-796133 -rw-r--r-- 1 dancer dancer    0 2007-09-04 15:00 c
-796136 -rw-r--r-- 1 dancer dancer 1024 2007-09-04 15:00 d
-796075 -rw-r--r-- 2 dancer dancer 1024 2007-09-04 15:00 e
+合計 12
+2662438 lrwxrwxrwx 2 dancer dancer    6 2007-09-10 19:28 a -> a.real
+2662977 -rw-r--r-- 1 dancer dancer    2 2007-09-10 19:28 a.real
+2662982 -rw-r--r-- 1 dancer dancer    0 2007-09-10 19:28 c
+2662985 -rw-r--r-- 1 dancer dancer 1024 2007-09-10 19:28 d
+2662427 -rw-r--r-- 2 dancer dancer 1024 2007-09-10 19:28 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
 + rm -rf /tmp/XXXX
+cow-shell unlink .ilist: No such file or directory

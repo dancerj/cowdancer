@@ -8,32 +8,33 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3759e-05 seconds, 43.1 MB/s
+1024 bytes (1.0 kB) copied, 2.2712e-05 seconds, 45.1 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-total 4
-796250 -rw-r--r-- 2 dancer dancer    0 2007-09-04 15:00 a
-796251 -rw-r--r-- 2 dancer dancer    0 2007-09-04 15:00 b
-796252 -rw-r--r-- 2 dancer dancer    0 2007-09-04 15:00 c
-796253 -rw-r--r-- 2 dancer dancer    0 2007-09-04 15:00 d
-796254 -rw-r--r-- 2 dancer dancer 1024 2007-09-04 15:00 e
+合計 4
+2663195 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:28 a
+2663196 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:28 b
+2663197 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:28 c
+2663198 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:28 d
+2663199 -rw-r--r-- 2 dancer dancer 1024 2007-09-10 19:28 e
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/003_test_fopen.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-total 12
-796250 -rw-r--r-- 2 dancer dancer    0 2007-09-04 15:00 a
-796303 -rw-r--r-- 1 dancer dancer    4 2007-09-04 15:00 b
-796306 -rw-r--r-- 1 dancer dancer    4 2007-09-04 15:00 c
-796253 -rw-r--r-- 2 dancer dancer    0 2007-09-04 15:00 d
-796254 -rw-r--r-- 2 dancer dancer 1024 2007-09-04 15:00 e
+合計 12
+2663195 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:28 a
+2663258 -rw-r--r-- 1 dancer dancer    4 2007-09-10 19:28 b
+2663261 -rw-r--r-- 1 dancer dancer    4 2007-09-10 19:28 c
+2663198 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:28 d
+2663199 -rw-r--r-- 2 dancer dancer 1024 2007-09-10 19:28 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
    1/ differences; should not exist
 + diff -u ls.prev ls.after
 + rm -rf /tmp/XXXX
+cow-shell unlink .ilist: No such file or directory

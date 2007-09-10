@@ -1,6 +1,6 @@
 env var COWDANCER_ILISTFILE not defined
 env var COWDANCER_ILISTFILE not defined
-dd: opening `/dev/zero': Cannot allocate memory
+dd: opening `/dev/zero': メモリを確保できません
 cowdancer: cannot open ilistfile ./nonexistent-file
 cowdancer: cannot open ilistfile ./nonexistent-file
-dd: opening `/dev/zero': Cannot allocate memory
+dd: opening `/dev/zero': メモリを確保できません
