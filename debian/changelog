@@ -2,8 +2,11 @@ cowdancer (0.41) UNRELEASED; urgency=low
 
   * Bug fix: "qemubuilder: build of package failing due to date problems",
     thanks to Jean-Baptiste Note (Closes: #441132).
+  * Bug fix: "newly created cowdancer chroot cannot be updated", thanks to
+    Paul Wise (Closes: #441463).
+  - there was a race condition with .ilist handling.
 
- -- Junichi Uekawa <dancer@debian.org>  Mon, 10 Sep 2007 08:33:29 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 10 Sep 2007 18:58:27 +0900
 
 cowdancer (0.40) unstable; urgency=low
 

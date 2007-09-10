@@ -1,5 +1,10 @@
 2007-09-10  Junichi Uekawa  <dancer@debian.org>
 
+	* cowbuilder.c (main): specify cowdancer-reuse
+	(cpbuilder_internal_cowcopy): remove .ilist file here.
+	(get_ilistfile_path, cpbuilder_internal_cowcopy)
+	(cpbuilder_build): consolidate common code to get_ilistfile_path.
+
 	* qemubuilder.c (run_second_stage_script): set date / time inside
 	chroot with date command; it will be different by a few seconds.
 

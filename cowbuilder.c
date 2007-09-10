@@ -124,16 +124,49 @@ sys     0m3.792s
 
 const char* ilist_PRGNAME="cowbuilder";
 
+/**
+ * @return .ilist path as malloc()ed string, or NULL on error.
+ */
+static char* get_ilistfile_path(const struct pbuilderconfig* pc)
+{
+  char *ilistfile;
+  if (0>asprintf(&ilistfile, "%s/.ilist", pc->buildplace))
+    {
+      /* outofmemory */
+      fprintf(stderr, "cowdancer: out of memory.\n");
+      return NULL;
+    }
+  return ilistfile;
+}
+
 /* 
    @return 0 on success, 1 on failure.
  */
 static int cpbuilder_internal_cowcopy(const struct pbuilderconfig* pc)
 {
+  char *ilistfile;
+
   printf(" -> Copying COW directory\n");
   if (0!=forkexeclp("rm", "rm", "-rvf", pc->buildplace, NULL))
     return 1;
   if (0!=forkexeclp("cp", "cp", "-al", pc->basepath, pc->buildplace, NULL))
     return 1;
+
+  /* delete existing ilist file if it exists, because I use COWDANCER_REUSE */
+  if(!(ilistfile=get_ilistfile_path(pc)))
+    {
+      /* outofmemory */
+      fprintf(stderr, "cowdancer: out of memory.\n");
+      return 1;
+    }
+  if (unlink(ilistfile))
+    {
+      /* if there was no ilist file in the beginning, that's not a
+	 problem.
+       */
+    }
+  free(ilistfile);
+  
   return 0;
 }
 
@@ -179,18 +212,11 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
       return -1;
     }
   
-  /* delete existing ilist file if it exists, and use COWDANCER_REUSE */
-  if (0>asprintf(&ilistfile, "%s/.ilist", pc->buildplace))
+  if(!(ilistfile=get_ilistfile_path(pc)))
     {
       /* outofmemory */
       fprintf(stderr, "cowdancer: out of memory.\n");
-      return -1;
-    }
-  if (unlink(ilistfile))
-    {
-      /* if there was no ilist file in the beginning, that's not a
-	 problem.
-       */
+      return 1;
     }
 
   prevdir=get_current_dir_name();
@@ -211,8 +237,6 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
     }
   chdir(prevdir);
   free(prevdir);
-
-  setenv("COWDANCER_REUSE","yes",1);
 
   printf(" -> Invoking pbuilder\n");
   pbuildercommandline[1]="build";
@@ -352,7 +376,6 @@ int cpbuilder_login(const struct pbuilderconfig* pc)
 	  if (0!=forkexeclp("chroot", "chroot", pc->buildplace, "apt-get", "clean", NULL))
 	    ret=-1;
 	  if (cpbuilder_internal_saveupdate(pc))
-
 	    ret=-1;
 	}
       else
@@ -527,6 +550,6 @@ int cpbuilder_help(void)
 
 int main(int ac, char** av)
 {
+  setenv("COWDANCER_REUSE","yes",1);
   return parse_parameter(ac, av, "cow");
 }
-
