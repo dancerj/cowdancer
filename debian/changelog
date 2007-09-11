@@ -1,3 +1,9 @@
+cowdancer (0.42) UNRELEASED; urgency=low
+
+  * 
+
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 11 Sep 2007 18:27:08 +0900
+
 cowdancer (0.41) unstable; urgency=low
 
   * Bug fix: "qemubuilder: build of package failing due to date problems",
