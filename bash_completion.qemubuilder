@@ -1,0 +1,28 @@
+# Debian GNU/Linux cowbuilder(1) completion
+# Copyright 2007 Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>
+#
+# This script can be distributed under the same license as the
+# cowdancer or bash packages.
+
+have qemubuilder &&
+_qemubuilder()
+{
+    local cur prev options
+
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+    prev=${COMP_WORDS[COMP_CWORD-1]}
+    options='--create --update --build --login --execute --dumpconfig'
+
+    case $prev in
+        --build)
+            COMPREPLY=( $( compgen -o filenames -G "$cur*.dsc" ) )
+            ;;
+        *)
+            COMPREPLY=( $( compgen -W "$options" | grep "^$cur" ) )
+            ;;
+    esac
+
+    return 0
+}
+[ "$have" ] && complete -F _qemubuilder -o filenames qemubuilder

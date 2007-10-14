@@ -1,3 +1,13 @@
+2007-10-15  Junichi Uekawa  <dancer@debian.org>
+
+	* debian/qemubuilder.files: install bash-completion file to qemubuilder
+
+	* Makefile: install bash_completion.
+
+	* bash_completion.qemubuilder: create (a start of) qemubuilder bash completion script.
+
+	* bash_completion.cowbuilder: add cowbuilder bash completion script.
+
 2007-09-10  Junichi Uekawa  <dancer@debian.org>
 
 	* cowbuilder.c (main): specify cowdancer-reuse

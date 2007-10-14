@@ -1,2 +1,3 @@
 /usr/sbin/qemubuilder
 /usr/share/man/man8/qemubuilder.8
+/etc/bash_completion.d/qemubuilder
