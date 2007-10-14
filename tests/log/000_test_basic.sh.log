@@ -6,33 +6,33 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.2941e-05 seconds, 44.6 MB/s
+1024 bytes (1.0 kB) copied, 9.0138e-05 seconds, 11.4 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-合計 4
-2661472 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:27 a
-2661473 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:27 b
-2661474 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:27 c
-2661475 -rw-r--r-- 2 dancer dancer    0 2007-09-10 19:27 d
-2661476 -rw-r--r-- 2 dancer dancer 1024 2007-09-10 19:27 e
+total 4
+616131 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 a
+616132 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 b
+616133 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 c
+616134 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 d
+616135 -rw-r--r-- 2 dancer dancer 1024 2007-10-09 15:00 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
-Invoking /bin/bash
+Invoking /bin/sh
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.7922e-05 seconds, 36.7 MB/s
+1024 bytes (1.0 kB) copied, 2.8994e-05 seconds, 35.3 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-合計 12
-2661653 -rw-r--r-- 1 dancer dancer    2 2007-09-10 19:27 a
-2661660 -rw-r--r-- 1 dancer dancer    0 2007-09-10 19:27 c
-2661663 -rw-r--r-- 1 dancer dancer 1024 2007-09-10 19:27 d
-2661476 -rw-r--r-- 2 dancer dancer 1024 2007-09-10 19:27 e
+total 12
+616178 -rw-r--r-- 1 dancer dancer    2 2007-10-09 15:00 a
+616183 -rw-r--r-- 1 dancer dancer    0 2007-10-09 15:00 c
+616186 -rw-r--r-- 1 dancer dancer 1024 2007-10-09 15:00 d
+616135 -rw-r--r-- 2 dancer dancer 1024 2007-10-09 15:00 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
