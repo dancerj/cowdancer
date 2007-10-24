@@ -209,6 +209,8 @@ int parse_parameter(int ac, char** av,
     {"bindmounts", required_argument, 0, 'M'},
     {"debootstrapopts", required_argument, 0, 'M'},
     {"debootstrap", required_argument, 0, 'M'},
+    {"components", required_argument, 0, 'M'},
+
 
     {"removepackages", no_argument, 0, 'm'},
     {"override-config", no_argument, 0, 'm'},

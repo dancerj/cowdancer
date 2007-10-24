@@ -1,3 +1,7 @@
+2007-10-25  Junichi Uekawa  <dancer@debian.org>
+
+	* parameter.c (parse_parameter): add --components option.
+
 2007-10-15  Junichi Uekawa  <dancer@debian.org>
 
 	* debian/qemubuilder.files: install bash-completion file to qemubuilder

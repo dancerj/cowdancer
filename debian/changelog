@@ -2,8 +2,9 @@ cowdancer (0.42) UNRELEASED; urgency=low
 
   * Bug fix: "cowdancer: Please ship a (basic) bash completion file",
     thanks to Cyril Brulebois (Closes: #446498).
+  * --components support.
 
- -- Junichi Uekawa <dancer@debian.org>  Mon, 15 Oct 2007 08:11:07 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 25 Oct 2007 08:16:50 +0900
 
 cowdancer (0.41) unstable; urgency=low
 
