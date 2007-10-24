@@ -31,6 +31,7 @@ typedef struct pbuilderconfig
   char* mirror;
   char* distribution;
   char* components;
+  char* debbuildopts;
 
   /* more qemu-isque options */
   char* kernel_image;

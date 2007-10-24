@@ -1,5 +1,9 @@
 2007-10-25  Junichi Uekawa  <dancer@debian.org>
 
+	* qemubuilder.c (cpbuilder_build): support debbuildopts
+	* parameter.c (parse_parameter, load_config_file): 
+	* parameter.h: support debbuildopts
+
 	* qemubuilder.c: add support for --components in qemubuilder.
 	* parameter.c (parse_parameter): add --components option.
 	(load_config_file): support COMPONENTS option

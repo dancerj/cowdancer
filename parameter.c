@@ -126,6 +126,10 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    {
 	      pc->components=strdup(delim);
 	    }
+	  else if (!strcmp(buf, "DEBBUILDOPTS"))
+	    {
+	      pc->debbuildopts=strdup(delim);
+	    }
 	}
     }
 
@@ -199,6 +203,7 @@ int parse_parameter(int ac, char** av,
     {"buildresult", required_argument, 0, 0},
     {"distribution", required_argument, 0, 0},
     {"components", required_argument, 0, 0},
+    {"debbuildopts", required_argument, 0, 0},
 
     /* verbatim options, synced as of pbuilder 0.153 */
     {"othermirror", required_argument, 0, 'M'},
@@ -207,7 +212,6 @@ int parse_parameter(int ac, char** av,
     {"extrapackages", required_argument, 0, 'M'},
     {"hookdir", required_argument, 0, 'M'},
     {"debemail", required_argument, 0, 'M'},
-    {"debbuildopts", required_argument, 0, 'M'},
     {"logfile", required_argument, 0, 'M'},
     {"aptconfdir", required_argument, 0, 'M'},
     {"timeout", required_argument, 0, 'M'},
@@ -331,6 +335,15 @@ int parse_parameter(int ac, char** av,
 	    {
 	      /* this is for qemubuilder */
 	      pc.components=strdup(optarg);
+	      
+	      /* pass it for cowbuilder */
+	      PBUILDER_ADD_PARAM(cmdstr);
+	      PBUILDER_ADD_PARAM(strdup(optarg));
+	    }
+	  else if (!strcmp(long_options[index_point].name,"debbuildopts"))
+	    {
+	      /* this is for qemubuilder */
+	      pc.debbuildopts=strdup(optarg);
 	      
 	      /* pass it for cowbuilder */
 	      PBUILDER_ADD_PARAM(cmdstr);

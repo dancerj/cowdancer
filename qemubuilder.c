@@ -850,9 +850,10 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
 	   "cd $PBUILDER_MOUNTPOINT; /usr/bin/dpkg-source -x $(basename %s) \n"
 	   "echo ' -> Building the package'\n"
 	   /* TODO: executehooks A: */
-	   "cd $PBUILDER_MOUNTPOINT/*-*/; dpkg-buildpackage -us -uc \n",
+	   "cd $PBUILDER_MOUNTPOINT/*-*/; dpkg-buildpackage -us -uc %s\n",
 	   buildopt,
-	   dscfile);
+	   dscfile,
+	   pc->debbuildopts);
 
   /* Obscure assumption!: assume _ is significant for package name and
      no other file will have _. */
