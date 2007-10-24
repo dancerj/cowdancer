@@ -13,7 +13,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3919e-05 seconds, 42.8 MB/s
+1024 bytes (1.0 kB) copied, 2.4795e-05 seconds, 41.3 MB/s
 + chgrp 1000 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -22,11 +22,11 @@
    2/ before
 + ls -li 2/
 total 4
-616656 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 a
-616657 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 b
-616658 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 c
-616659 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 d
-616660 -rw-r--r-- 2 dancer dancer 1024 2007-10-09 15:00 e
+540090 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 a
+540091 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 b
+540092 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 c
+540093 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 d
+540094 -rw-r--r-- 2 dancer dancer 1024 2007-10-23 15:00 e
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c 4 2/a 2/b 2/c
 chown 2/a
 lchown 2/c
@@ -34,11 +34,11 @@ lchown 2/c
    2/ after
 + ls -li 2/
 total 4
-616711 -rw-r--r-- 1 dancer adm       0 2007-10-09 15:00 a
-616657 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 b
-616714 -rw-r--r-- 1 dancer adm       0 2007-10-09 15:00 c
-616659 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 d
-616660 -rw-r--r-- 2 dancer dancer 1024 2007-10-09 15:00 e
+540145 -rw-r--r-- 1 dancer adm       0 2007-10-23 15:00 a
+540091 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 b
+540148 -rw-r--r-- 1 dancer adm       0 2007-10-23 15:00 c
+540093 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 d
+540094 -rw-r--r-- 2 dancer dancer 1024 2007-10-23 15:00 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'

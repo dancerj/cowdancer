@@ -6,7 +6,7 @@
 + dd if=/dev/zero 'of=1/e j' bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.2652e-05 seconds, 45.2 MB/s
+1024 bytes (1.0 kB) copied, 2.3788e-05 seconds, 43.0 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -14,25 +14,25 @@
    2/ before
 + ls -li 2/
 total 4
-617150 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 a'f
-617151 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 b g
-617152 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 c h
-617153 -rw-r--r-- 2 dancer dancer    0 2007-10-09 15:00 d i
-617154 -rw-r--r-- 2 dancer dancer 1024 2007-10-09 15:00 e j
-+ echo 'cd 2 && echo a > "a'\''f" && mv '\''b g'\'' '\''c h'\'' && touch '\''c h'\'' && dd if='\''e j'\'' of='\''d i'\'''
+540596 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 a'f
+540597 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 b g
+540598 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 c h
+540599 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 d i
+540600 -rw-r--r-- 2 dancer dancer 1024 2007-10-23 15:00 e j
 + cow-shell
 Invoking /bin/sh
++ echo 'cd 2 && echo a > "a'\''f" && mv '\''b g'\'' '\''c h'\'' && touch '\''c h'\'' && dd if='\''e j'\'' of='\''d i'\'''
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.8486e-05 seconds, 35.9 MB/s
+1024 bytes (1.0 kB) copied, 2.8161e-05 seconds, 36.4 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 total 12
-617197 -rw-r--r-- 1 dancer dancer    2 2007-10-09 15:00 a'f
-617202 -rw-r--r-- 1 dancer dancer    0 2007-10-09 15:00 c h
-617205 -rw-r--r-- 1 dancer dancer 1024 2007-10-09 15:00 d i
-617154 -rw-r--r-- 2 dancer dancer 1024 2007-10-09 15:00 e j
+540643 -rw-r--r-- 1 dancer dancer    2 2007-10-23 15:00 a'f
+540648 -rw-r--r-- 1 dancer dancer    0 2007-10-23 15:00 c h
+540651 -rw-r--r-- 1 dancer dancer 1024 2007-10-23 15:00 d i
+540600 -rw-r--r-- 2 dancer dancer 1024 2007-10-23 15:00 e j
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
