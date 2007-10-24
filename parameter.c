@@ -122,6 +122,10 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    {
 	      pc->buildplace=strdup(delim);
 	    }
+	  else if (!strcmp(buf, "COMPONENTS"))
+	    {
+	      pc->components=strdup(delim);
+	    }
 	}
     }
 
@@ -194,6 +198,7 @@ int parse_parameter(int ac, char** av,
     {"mirror", required_argument, 0, 0},
     {"buildresult", required_argument, 0, 0},
     {"distribution", required_argument, 0, 0},
+    {"components", required_argument, 0, 0},
 
     /* verbatim options, synced as of pbuilder 0.153 */
     {"othermirror", required_argument, 0, 'M'},
@@ -209,9 +214,7 @@ int parse_parameter(int ac, char** av,
     {"bindmounts", required_argument, 0, 'M'},
     {"debootstrapopts", required_argument, 0, 'M'},
     {"debootstrap", required_argument, 0, 'M'},
-    {"components", required_argument, 0, 'M'},
-
-
+    
     {"removepackages", no_argument, 0, 'm'},
     {"override-config", no_argument, 0, 'm'},
     {"pkgname-logfile", no_argument, 0, 'm'},
@@ -323,6 +326,15 @@ int parse_parameter(int ac, char** av,
 	  else if (!strcmp(long_options[index_point].name,"distribution"))
 	    {
 	      pc.distribution=strdup(optarg);
+	    }
+	  else if (!strcmp(long_options[index_point].name,"components"))
+	    {
+	      /* this is for qemubuilder */
+	      pc.components=strdup(optarg);
+	      
+	      /* pass it for cowbuilder */
+	      PBUILDER_ADD_PARAM(cmdstr);
+	      PBUILDER_ADD_PARAM(strdup(optarg));
 	    }
 	  break;
 	case 'h':		/* -h */

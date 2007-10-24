@@ -30,6 +30,7 @@ typedef struct pbuilderconfig
   char* basepath;		/* /var/cache/pbuilder/cow */
   char* mirror;
   char* distribution;
+  char* components;
 
   /* more qemu-isque options */
   char* kernel_image;

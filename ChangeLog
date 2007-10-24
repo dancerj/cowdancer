@@ -1,6 +1,8 @@
 2007-10-25  Junichi Uekawa  <dancer@debian.org>
 
+	* qemubuilder.c: add support for --components in qemubuilder.
 	* parameter.c (parse_parameter): add --components option.
+	(load_config_file): support COMPONENTS option
 
 2007-10-15  Junichi Uekawa  <dancer@debian.org>
 

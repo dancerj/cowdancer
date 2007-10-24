@@ -760,7 +760,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	   "echo \n"
 	   "echo ' -> qemu-pbuilder second-stage' \n"
 	   "/debootstrap/debootstrap --second-stage\n"
-	   "echo deb %s %s main contrib non-free > /etc/apt/sources.list \n"
+	   "echo deb %s %s %s > /etc/apt/sources.list \n"
 	   //TODO: copy hook scripts
 	   "mount -n /proc /proc -t proc\n"
 	   "dhclient eth0\n"
@@ -791,6 +791,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	   "bash\n",
 	   pc->mirror, 
 	   pc->distribution,
+	   pc->components,
 	   qemu_keyword);
   create_script(pc->buildplace,
 		"pbuilder-run",
@@ -905,6 +906,7 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
  */
 int cpbuilder_update(const struct pbuilderconfig* pc)
 {
+  /* TODO: --override-config */
   return run_second_stage_script
     (1,	   
      //TODO: installaptlines if required.
