@@ -1,4 +1,4 @@
-cowdancer (0.42) UNRELEASED; urgency=low
+cowdancer (0.42) unstable; urgency=low
 
   * Bug fix: "cowdancer: Please ship a (basic) bash completion file",
     thanks to Cyril Brulebois (Closes: #446498).
@@ -6,7 +6,7 @@ cowdancer (0.42) UNRELEASED; urgency=low
   * Bug fix: "qemubuilder doesn&#39;t pass --debbuildopts to
     dpkg-buildpackage", thanks to Alexander Gerasiov (Closes: #447510).
 
- -- Junichi Uekawa <dancer@debian.org>  Thu, 25 Oct 2007 08:29:45 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 25 Oct 2007 20:18:28 +0900
 
 cowdancer (0.41) unstable; urgency=low
 
