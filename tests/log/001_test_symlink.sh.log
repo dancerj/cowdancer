@@ -6,7 +6,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3165e-05 seconds, 44.2 MB/s
+1024 bytes (1.0 kB) copied, 2.4633e-05 seconds, 41.6 MB/s
 + ln -s a.real 1/a
 + ls -li 1/
 + sleep 1s
@@ -15,27 +15,27 @@
    2/ before
 + ls -li 2/
 total 4
-539678 lrwxrwxrwx 2 dancer dancer    6 2007-10-23 15:00 a -> a.real
-539676 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 a.real
-539673 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 b
-539674 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 c
-539675 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 d
-539677 -rw-r--r-- 2 dancer dancer 1024 2007-10-23 15:00 e
+1208530 lrwxrwxrwx 2 dancer dancer    6 2007-10-25 11:47 a -> a.real
+1208528 -rw-r--r-- 2 dancer dancer    0 2007-10-25 11:47 a.real
+1208525 -rw-r--r-- 2 dancer dancer    0 2007-10-25 11:47 b
+1208526 -rw-r--r-- 2 dancer dancer    0 2007-10-25 11:47 c
+1208527 -rw-r--r-- 2 dancer dancer    0 2007-10-25 11:47 d
+1208529 -rw-r--r-- 2 dancer dancer 1024 2007-10-25 11:47 e
 + echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 + cow-shell
-Invoking /bin/sh
+Invoking /bin/bash
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.7759e-05 seconds, 36.9 MB/s
+1024 bytes (1.0 kB) copied, 2.8622e-05 seconds, 35.8 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 total 12
-539678 lrwxrwxrwx 2 dancer dancer    6 2007-10-23 15:00 a -> a.real
-539721 -rw-r--r-- 1 dancer dancer    2 2007-10-23 15:00 a.real
-539736 -rw-r--r-- 1 dancer dancer    0 2007-10-23 15:00 c
-539739 -rw-r--r-- 1 dancer dancer 1024 2007-10-23 15:00 d
-539677 -rw-r--r-- 2 dancer dancer 1024 2007-10-23 15:00 e
+1208530 lrwxrwxrwx 2 dancer dancer    6 2007-10-25 11:47 a -> a.real
+1208573 -rw-r--r-- 1 dancer dancer    2 2007-10-25 11:47 a.real
+1208578 -rw-r--r-- 1 dancer dancer    0 2007-10-25 11:47 c
+1208581 -rw-r--r-- 1 dancer dancer 1024 2007-10-25 11:47 d
+1208529 -rw-r--r-- 2 dancer dancer 1024 2007-10-25 11:47 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'

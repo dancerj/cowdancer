@@ -319,6 +319,15 @@ int parse_parameter(int ac, char** av,
 	  */
 	  
 	  /* handle specific options which also give 0. */
+
+	  /* first, generate 'cmdstr' which is useful anyway */
+	  if (0>asprintf(&cmdstr, "--%s", long_options[index_point].name))
+	    {
+	      /* error */
+	      fprintf(stderr, "out of memory constructing command-line options\n");
+	      exit (1);
+	    }
+
 	  if (!strcmp(long_options[index_point].name,"mirror"))
 	    {
 	      pc.mirror=strdup(optarg);

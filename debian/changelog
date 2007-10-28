@@ -1,3 +1,10 @@
+cowdancer (0.43) unstable; urgency=low
+
+  * make cowbuilder work with pdebuild. --debbuildopts handling was broken
+    for cowbuilder. (Closes: #448330).
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 28 Oct 2007 23:13:42 +0900
+
 cowdancer (0.42) unstable; urgency=low
 
   * Bug fix: "cowdancer: Please ship a (basic) bash completion file",

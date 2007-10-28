@@ -15,7 +15,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.233e-05 seconds, 45.9 MB/s
+1024 bytes (1.0 kB) copied, 4.3007e-05 seconds, 23.8 MB/s
 + chgrp 1000 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -24,13 +24,13 @@
    2/ before
 + ls -li 2/
 total 4
-540700 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 a
-540701 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 b
-540702 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 c
-540703 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 d
-540706 -rw-r--r-- 2 dancer dancer 1024 2007-10-23 15:00 e
-540704 lrwxrwxrwx 2 dancer dancer    1 2007-10-23 15:00 f -> a
-540705 lrwxrwxrwx 2 dancer dancer    1 2007-10-23 15:00 g -> b
+1209538 -rw-r--r-- 2 dancer dancer    0 2007-10-25 11:47 a
+1209539 -rw-r--r-- 2 dancer dancer    0 2007-10-25 11:47 b
+1209540 -rw-r--r-- 2 dancer dancer    0 2007-10-25 11:47 c
+1209541 -rw-r--r-- 2 dancer dancer    0 2007-10-25 11:47 d
+1209544 -rw-r--r-- 2 dancer dancer 1024 2007-10-25 11:47 e
+1209542 lrwxrwxrwx 2 dancer dancer    1 2007-10-25 11:47 f -> a
+1209543 lrwxrwxrwx 2 dancer dancer    1 2007-10-25 11:47 g -> b
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c 4 2/f 2/b 2/g
 chown 2/f
 lchown 2/g
@@ -38,13 +38,13 @@ lchown 2/g
    2/ after
 + ls -li 2/
 total 4
-540757 -rw-r--r-- 1 dancer adm       0 2007-10-23 15:00 a
-540701 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 b
-540702 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 c
-540703 -rw-r--r-- 2 dancer dancer    0 2007-10-23 15:00 d
-540706 -rw-r--r-- 2 dancer dancer 1024 2007-10-23 15:00 e
-540704 lrwxrwxrwx 2 dancer dancer    1 2007-10-23 15:00 f -> a
-540763 lrwxrwxrwx 1 dancer adm       1 2007-10-23 15:00 g -> b
+1209605 -rw-r--r-- 1 dancer adm       0 2007-10-25 11:47 a
+1209539 -rw-r--r-- 2 dancer dancer    0 2007-10-25 11:47 b
+1209540 -rw-r--r-- 2 dancer dancer    0 2007-10-25 11:47 c
+1209541 -rw-r--r-- 2 dancer dancer    0 2007-10-25 11:47 d
+1209544 -rw-r--r-- 2 dancer dancer 1024 2007-10-25 11:47 e
+1209542 lrwxrwxrwx 2 dancer dancer    1 2007-10-25 11:47 f -> a
+1209611 lrwxrwxrwx 1 dancer adm       1 2007-10-25 11:47 g -> b
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'

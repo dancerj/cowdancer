@@ -1,3 +1,7 @@
+2007-10-28  Junichi Uekawa  <dancer@debian.org>
+
+	* parameter.c (parse_parameter): fix parameter passing for --debbuildopts.
+
 2007-10-25  Junichi Uekawa  <dancer@debian.org>
 
 	* qemubuilder.c (cpbuilder_build): support debbuildopts

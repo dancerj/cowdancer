@@ -10,32 +10,32 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.1975e-05 seconds, 46.6 MB/s
+1024 bytes (1.0 kB) copied, 2.2415e-05 seconds, 45.7 MB/s
 + cp -al 1 2
 + MALLOC_TRACE=log
 + cow-shell /tmp/XXXX/tracer
-00400000-00401000 r-xp 00000000 00:11 540407                             /tmp/XXXX/tracer
-00600000-00601000 rw-p 00000000 00:11 540407                             /tmp/XXXX/tracer
+00400000-00401000 r-xp 00000000 00:11 1209245                            /tmp/XXXX/tracer
+00600000-00601000 rw-p 00000000 00:11 1209245                            /tmp/XXXX/tracer
 00601000-00622000 rw-p 00601000 00:00 0                                  [heap]
-2b137c8b7000-2b137c8d4000 r-xp 00000000 08:01 356217                     /lib/ld-2.6.1.so
-2b137c8d4000-2b137c8d7000 rw-p 2b137c8d4000 00:00 0 
-2b137cad3000-2b137cad5000 rw-p 0001c000 08:01 356217                     /lib/ld-2.6.1.so
-2b137cad5000-2b137cad9000 r-xp 00000000 08:01 130837                     /usr/lib/cowdancer/libcowdancer.so
-2b137cad9000-2b137ccd8000 ---p 00004000 08:01 130837                     /usr/lib/cowdancer/libcowdancer.so
-2b137ccd8000-2b137ccd9000 rw-p 00003000 08:01 130837                     /usr/lib/cowdancer/libcowdancer.so
-2b137ccd9000-2b137ccda000 r--p 00000000 00:11 540423                     /tmp/XXXX/.ilist
-2b137ccda000-2b137ccdd000 rw-p 2b137ccda000 00:00 0 
-2b137ccef000-2b137ce3d000 r-xp 00000000 08:01 356222                     /lib/libc-2.6.1.so
-2b137ce3d000-2b137d03c000 ---p 0014e000 08:01 356222                     /lib/libc-2.6.1.so
-2b137d03c000-2b137d03f000 r--p 0014d000 08:01 356222                     /lib/libc-2.6.1.so
-2b137d03f000-2b137d041000 rw-p 00150000 08:01 356222                     /lib/libc-2.6.1.so
-2b137d041000-2b137d046000 rw-p 2b137d041000 00:00 0 
-2b137d046000-2b137d048000 r-xp 00000000 08:01 356225                     /lib/libdl-2.6.1.so
-2b137d048000-2b137d248000 ---p 00002000 08:01 356225                     /lib/libdl-2.6.1.so
-2b137d248000-2b137d24a000 rw-p 00002000 08:01 356225                     /lib/libdl-2.6.1.so
-2b137d24a000-2b137d24c000 rw-p 2b137d24a000 00:00 0 
-7fff2e1dd000-7fff2e1f2000 rw-p 7ffffffea000 00:00 0                      [stack]
-7fff2e1fd000-7fff2e200000 r-xp 7fff2e1fd000 00:00 0                      [vdso]
+2b03202ea000-2b0320307000 r-xp 00000000 08:01 356217                     /lib/ld-2.6.1.so
+2b0320307000-2b032030a000 rw-p 2b0320307000 00:00 0 
+2b0320506000-2b0320508000 rw-p 0001c000 08:01 356217                     /lib/ld-2.6.1.so
+2b0320508000-2b032050c000 r-xp 00000000 08:01 790657                     /usr/lib/cowdancer/libcowdancer.so
+2b032050c000-2b032070b000 ---p 00004000 08:01 790657                     /usr/lib/cowdancer/libcowdancer.so
+2b032070b000-2b032070c000 rw-p 00003000 08:01 790657                     /usr/lib/cowdancer/libcowdancer.so
+2b032070c000-2b032070d000 r--p 00000000 00:11 1209261                    /tmp/XXXX/.ilist
+2b032070d000-2b0320710000 rw-p 2b032070d000 00:00 0 
+2b0320722000-2b0320870000 r-xp 00000000 08:01 356222                     /lib/libc-2.6.1.so
+2b0320870000-2b0320a6f000 ---p 0014e000 08:01 356222                     /lib/libc-2.6.1.so
+2b0320a6f000-2b0320a72000 r--p 0014d000 08:01 356222                     /lib/libc-2.6.1.so
+2b0320a72000-2b0320a74000 rw-p 00150000 08:01 356222                     /lib/libc-2.6.1.so
+2b0320a74000-2b0320a79000 rw-p 2b0320a74000 00:00 0 
+2b0320a79000-2b0320a7b000 r-xp 00000000 08:01 356225                     /lib/libdl-2.6.1.so
+2b0320a7b000-2b0320c7b000 ---p 00002000 08:01 356225                     /lib/libdl-2.6.1.so
+2b0320c7b000-2b0320c7d000 rw-p 00002000 08:01 356225                     /lib/libdl-2.6.1.so
+2b0320c7d000-2b0320c7f000 rw-p 2b0320c7d000 00:00 0 
+7fff8a7aa000-7fff8a7bf000 rw-p 7ffffffea000 00:00 0                      [stack]
+7fff8a7fd000-7fff8a800000 r-xp 7fff8a7fd000 00:00 0                      [vdso]
 ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
 + RESULT=0
 + mtrace /tmp/XXXX/tracer /tmp/XXXX/log
