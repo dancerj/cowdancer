@@ -1,3 +1,9 @@
+cowdancer (0.44) UNRELEASED; urgency=low
+
+  * add Vcs-Git, Vcs-Browser.
+
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 30 Oct 2007 09:23:26 +0900
+
 cowdancer (0.43) unstable; urgency=low
 
   * make cowbuilder work with pdebuild. --debbuildopts handling was broken

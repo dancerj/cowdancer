@@ -4,6 +4,8 @@ Priority: optional
 Maintainer: Junichi Uekawa <dancer@debian.org>
 Build-Depends: debhelper (>> 4.0.0), pbuilder, qemu [i386 amd64 powerpc]
 Standards-Version: 3.7.2
+Vcs-Git: git://git.debian.org/git/pbuilder/cowdancer.git
+Vcs-Browser: http://git.debian.org/?p=pbuilder/cowdancer.git
 
 Package: cowdancer
 Architecture: any
