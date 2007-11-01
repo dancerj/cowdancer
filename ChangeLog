@@ -1,3 +1,8 @@
+2007-11-02  Junichi Uekawa  <dancer@debian.org>
+
+	* cowbuilder.c (cpbuilder_build): write to "/.ilist" inside chroot, not
+	ilistpath.
+
 2007-10-28  Junichi Uekawa  <dancer@debian.org>
 
 	* parameter.c (parse_parameter): fix parameter passing for --debbuildopts.

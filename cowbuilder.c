@@ -226,7 +226,7 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
 		 "chroot",
 		 pc->buildplace,
 		 "cowdancer-ilistcreate", 
-		 ilistfile, 
+		 "/.ilist", 
 		 "find . -xdev -path ./home -prune -o \\( \\( -type l -o -type f \\) -a -links +1 -print0 \\) | xargs -0 stat --format '%d %i '", 
 		 NULL))
     {
