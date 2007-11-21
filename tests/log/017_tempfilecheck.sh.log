@@ -7,7 +7,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.2733e-05 seconds, 45.0 MB/s
+1024 bytes (1.0 kB) copied, 2.276e-05 seconds, 45.0 MB/s
 + cp -al 1 2
 + cow-shell touch 1/a
 + ls 1/a~~

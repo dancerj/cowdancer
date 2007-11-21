@@ -1,9 +1,9 @@
-cowdancer (0.44) UNRELEASED; urgency=low
+cowdancer (0.44) unstable; urgency=low
 
   * add Vcs-Git, Vcs-Browser.
   * fix invocation to cowdancer-ilistcreate
 
- -- Junichi Uekawa <dancer@debian.org>  Fri, 02 Nov 2007 07:53:37 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 21 Nov 2007 22:47:22 +0900
 
 cowdancer (0.43) unstable; urgency=low
 
