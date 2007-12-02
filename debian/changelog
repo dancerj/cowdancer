@@ -1,3 +1,9 @@
+cowdancer (0.45) UNRELEASED; urgency=low
+
+  * 
+
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 03 Dec 2007 08:37:53 +0900
+
 cowdancer (0.44) unstable; urgency=low
 
   * add Vcs-Git, Vcs-Browser.
