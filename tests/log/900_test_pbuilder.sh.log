@@ -24,7 +24,7 @@ D: Return code: 0
 P: Validating Release
 D: Execute "gpgv --status-fd 1 --keyring /usr/share/keyrings/debian-archive-keyring.gpg /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._Release.gpg /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/_dists_._Release"
 I: Good signature from "Debian Archive Automatic Signing Key (4.0/etch) <ftpmaster@debian.org>"
-O: gpgv: Signature made Tue Nov 27 05:18:16 2007 JST using DSA key ID 6070D3A1
+O: gpgv: Signature made Tue Dec  4 05:13:43 2007 JST using DSA key ID 6070D3A1
 O: gpgv: Good signature from "Debian Archive Automatic Signing Key (4.0/etch) <ftpmaster@debian.org>"
 D: Return code: 0
 P: Parsing Release
@@ -44,7 +44,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libgcc1
 P: Retrieving libc6
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libc6_2.7-1_amd64.deb http://glantank:9999/debian/pool/main/g/glibc/libc6_2.7-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libc6_2.7-3_amd64.deb http://glantank:9999/debian/pool/main/g/glibc/libc6_2.7-3_amd64.deb"
 D: Return code: 0
 P: Validating libc6
 P: Retrieving perl-base
@@ -140,11 +140,11 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/zli
 D: Return code: 0
 P: Validating zlib1g
 P: Retrieving libopencdk10
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libopencdk10_0.6.5-1_amd64.deb http://glantank:9999/debian/pool/main/o/opencdk10/libopencdk10_0.6.5-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libopencdk10_0.6.6-1_amd64.deb http://glantank:9999/debian/pool/main/o/opencdk10/libopencdk10_0.6.6-1_amd64.deb"
 D: Return code: 0
 P: Validating libopencdk10
 P: Retrieving libtasn1-3
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtasn1-3_0.3.10-1_amd64.deb http://glantank:9999/debian/pool/main/libt/libtasn1-3/libtasn1-3_0.3.10-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libtasn1-3_1.1-1_amd64.deb http://glantank:9999/debian/pool/main/libt/libtasn1-3/libtasn1-3_1.1-1_amd64.deb"
 D: Return code: 0
 P: Validating libtasn1-3
 P: Retrieving libgnutls13
@@ -168,7 +168,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/rea
 D: Return code: 0
 P: Validating readline-common
 P: Retrieving libncurses5
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libncurses5_5.6+20071103-1_amd64.deb http://glantank:9999/debian/pool/main/n/ncurses/libncurses5_5.6+20071103-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libncurses5_5.6+20071124-1_amd64.deb http://glantank:9999/debian/pool/main/n/ncurses/libncurses5_5.6+20071124-1_amd64.deb"
 D: Return code: 0
 P: Validating libncurses5
 P: Retrieving libreadline5
@@ -208,7 +208,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/apt
 D: Return code: 0
 P: Validating apt-utils
 P: Retrieving libncursesw5
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libncursesw5_5.6+20071103-1_amd64.deb http://glantank:9999/debian/pool/main/n/ncurses/libncursesw5_5.6+20071103-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libncursesw5_5.6+20071124-1_amd64.deb http://glantank:9999/debian/pool/main/n/ncurses/libncursesw5_5.6+20071124-1_amd64.deb"
 D: Return code: 0
 P: Validating libncursesw5
 P: Retrieving libsigc++-2.0-0c2a
@@ -252,7 +252,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libacl1
 P: Retrieving coreutils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/coreutils_5.97-5.5_amd64.deb http://glantank:9999/debian/pool/main/c/coreutils/coreutils_5.97-5.5_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/coreutils_5.97-5.6_amd64.deb http://glantank:9999/debian/pool/main/c/coreutils/coreutils_5.97-5.6_amd64.deb"
 D: Return code: 0
 P: Validating coreutils
 P: Retrieving cpio
@@ -260,11 +260,11 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/cpi
 D: Return code: 0
 P: Validating cpio
 P: Retrieving sed
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sed_4.1.5-4_amd64.deb http://glantank:9999/debian/pool/main/s/sed/sed_4.1.5-4_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/sed_4.1.5-5_amd64.deb http://glantank:9999/debian/pool/main/s/sed/sed_4.1.5-5_amd64.deb"
 D: Return code: 0
 P: Validating sed
 P: Retrieving ncurses-bin
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ncurses-bin_5.6+20071103-1_amd64.deb http://glantank:9999/debian/pool/main/n/ncurses/ncurses-bin_5.6+20071103-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ncurses-bin_5.6+20071124-1_amd64.deb http://glantank:9999/debian/pool/main/n/ncurses/ncurses-bin_5.6+20071124-1_amd64.deb"
 D: Return code: 0
 P: Validating ncurses-bin
 P: Retrieving lsb-base
@@ -292,11 +292,11 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dmi
 D: Return code: 0
 P: Validating dmidecode
 P: Retrieving dpkg
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dpkg_1.14.11_amd64.deb http://glantank:9999/debian/pool/main/d/dpkg/dpkg_1.14.11_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dpkg_1.14.12_amd64.deb http://glantank:9999/debian/pool/main/d/dpkg/dpkg_1.14.12_amd64.deb"
 D: Return code: 0
 P: Validating dpkg
 P: Retrieving dselect
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dselect_1.14.11_amd64.deb http://glantank:9999/debian/pool/main/d/dpkg/dselect_1.14.11_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/dselect_1.14.12_amd64.deb http://glantank:9999/debian/pool/main/d/dpkg/dselect_1.14.12_amd64.deb"
 D: Return code: 0
 P: Validating dselect
 P: Retrieving e2fslibs
@@ -336,7 +336,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/nan
 D: Return code: 0
 P: Validating nano
 P: Retrieving findutils
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/findutils_4.2.31-2_amd64.deb http://glantank:9999/debian/pool/main/f/findutils/findutils_4.2.31-2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/findutils_4.2.31-3_amd64.deb http://glantank:9999/debian/pool/main/f/findutils/findutils_4.2.31-3_amd64.deb"
 D: Return code: 0
 P: Validating findutils
 P: Retrieving grep
@@ -356,7 +356,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/hos
 D: Return code: 0
 P: Validating hostname
 P: Retrieving net-tools
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/net-tools_1.60-17.2_amd64.deb http://glantank:9999/debian/pool/main/n/net-tools/net-tools_1.60-17.2_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/net-tools_1.60-19_amd64.deb http://glantank:9999/debian/pool/main/n/net-tools/net-tools_1.60-19_amd64.deb"
 D: Return code: 0
 P: Validating net-tools
 P: Retrieving ifupdown
@@ -416,7 +416,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/lib
 D: Return code: 0
 P: Validating libgdbm3
 P: Retrieving libslang2
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libslang2_2.1.3-1_amd64.deb http://glantank:9999/debian/pool/main/s/slang2/libslang2_2.1.3-1_amd64.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/libslang2_2.1.3-2_amd64.deb http://glantank:9999/debian/pool/main/s/slang2/libslang2_2.1.3-2_amd64.deb"
 D: Return code: 0
 P: Validating libslang2
 P: Retrieving libnewt0.52
@@ -456,7 +456,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/mod
 D: Return code: 0
 P: Validating module-init-tools
 P: Retrieving ncurses-base
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ncurses-base_5.6+20071103-1_all.deb http://glantank:9999/debian/pool/main/n/ncurses/ncurses-base_5.6+20071103-1_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/ncurses-base_5.6+20071124-1_all.deb http://glantank:9999/debian/pool/main/n/ncurses/ncurses-base_5.6+20071124-1_all.deb"
 D: Return code: 0
 P: Validating ncurses-base
 P: Retrieving netbase
@@ -472,7 +472,7 @@ D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/pro
 D: Return code: 0
 P: Validating procps
 P: Retrieving tzdata
-D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tzdata_2007i-2_all.deb http://glantank:9999/debian/pool/main/t/tzdata/tzdata_2007i-2_all.deb"
+D: Execute "wget -q -O /var/cache/pbuilder/base-test.cow/var/cache/bootstrap/tzdata_2007j-1_all.deb http://glantank:9999/debian/pool/main/t/tzdata/tzdata_2007j-1_all.deb"
 D: Return code: 0
 P: Validating tzdata
 P: Retrieving util-linux
@@ -716,19 +716,19 @@ D: Execute "tar -xz -C /var/cache/pbuilder/base-test.cow -f -"
 D: Return code: 0
 D: call action: mount
 D: call action: dpkg-install
-D: Execute "dpkg -i --force-all /var/cache/bootstrap/dpkg_1.14.11_amd64.deb" in chroot
+D: Execute "dpkg -i --force-all /var/cache/bootstrap/dpkg_1.14.12_amd64.deb" in chroot
 O: Selecting previously deselected package dpkg.
 O: (Reading database ... 0 files and directories currently installed.)
-O: Unpacking dpkg (from .../dpkg_1.14.11_amd64.deb) ...
+O: Unpacking dpkg (from .../dpkg_1.14.12_amd64.deb) ...
 P: Unpacking package dpkg
 D: Updating dpkg to status 2
-O: dpkg: regarding .../dpkg_1.14.11_amd64.deb containing dpkg, pre-dependency problem:
+O: dpkg: regarding .../dpkg_1.14.12_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on coreutils (>= 5.93-1)
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../dpkg_1.14.11_amd64.deb containing dpkg, pre-dependency problem:
+O: dpkg: regarding .../dpkg_1.14.12_amd64.deb containing dpkg, pre-dependency problem:
 O:  dpkg pre-depends on libc6 (>= 2.7-1)
 O: dpkg: warning - ignoring pre-dependency problem !
-O: Setting up dpkg (1.14.11) ...
+O: Setting up dpkg (1.14.12) ...
 P: Configuring package dpkg
 D: Updating dpkg to status 3
 O: dpkg: dpkg: dependency problems, but configuring anyway as you request:
@@ -11465,14 +11465,14 @@ O: chown: `root:disk': invalid user
 O: makedev i2o/hdd15 b 80 63 root disk 0660: failed
 D: Return code: 0
 D: call action: dpkg-unpack
-D: Execute "dpkg --unpack --force-all /var/cache/bootstrap/gcc-4.2-base_4.2.2-4_amd64.deb /var/cache/bootstrap/libc6_2.7-1_amd64.deb /var/cache/bootstrap/libgcc1_4.2.2-4_amd64.deb /var/cache/bootstrap/perl-base_5.8.8-12_amd64.deb /var/cache/bootstrap/liblocale-gettext-perl_1.05-1_amd64.deb /var/cache/bootstrap/libtext-iconv-perl_1.4-3_amd64.deb /var/cache/bootstrap/libtext-charwidth-perl_0.04-4_amd64.deb /var/cache/bootstrap/libtext-wrapi18n-perl_0.06-5_all.deb /var/cache/bootstrap/debconf_1.5.17_all.deb /var/cache/bootstrap/debconf-i18n_1.5.17_all.deb /var/cache/bootstrap/libpam-runtime_0.99.7.1-5_all.deb /var/cache/bootstrap/libpam0g_0.99.7.1-5_amd64.deb /var/cache/bootstrap/libsepol1_2.0.3-1+b1_amd64.deb /var/cache/bootstrap/libselinux1_2.0.15-2+b1_amd64.deb /var/cache/bootstrap/libdb4.6_4.6.21-4_amd64.deb /var/cache/bootstrap/libpam-modules_0.99.7.1-5_amd64.deb /var/cache/bootstrap/login_4.0.18.2-1_amd64.deb /var/cache/bootstrap/debianutils_2.28_amd64.deb /var/cache/bootstrap/passwd_4.0.18.2-1_amd64.deb /va
+D: Execute "dpkg --unpack --force-all /var/cache/bootstrap/gcc-4.2-base_4.2.2-4_amd64.deb /var/cache/bootstrap/libc6_2.7-3_amd64.deb /var/cache/bootstrap/libgcc1_4.2.2-4_amd64.deb /var/cache/bootstrap/perl-base_5.8.8-12_amd64.deb /var/cache/bootstrap/liblocale-gettext-perl_1.05-1_amd64.deb /var/cache/bootstrap/libtext-iconv-perl_1.4-3_amd64.deb /var/cache/bootstrap/libtext-charwidth-perl_0.04-4_amd64.deb /var/cache/bootstrap/libtext-wrapi18n-perl_0.06-5_all.deb /var/cache/bootstrap/debconf_1.5.17_all.deb /var/cache/bootstrap/debconf-i18n_1.5.17_all.deb /var/cache/bootstrap/libpam-runtime_0.99.7.1-5_all.deb /var/cache/bootstrap/libpam0g_0.99.7.1-5_amd64.deb /var/cache/bootstrap/libsepol1_2.0.3-1+b1_amd64.deb /var/cache/bootstrap/libselinux1_2.0.15-2+b1_amd64.deb /var/cache/bootstrap/libdb4.6_4.6.21-4_amd64.deb /var/cache/bootstrap/libpam-modules_0.99.7.1-5_amd64.deb /var/cache/bootstrap/login_4.0.18.2-1_amd64.deb /var/cache/bootstrap/debianutils_2.28_amd64.deb /var/cache/bootstrap/passwd_4.0.18.2-1_amd64.deb /va
 O: Selecting previously deselected package gcc-4.2-base.
 O: (Reading database ... 253 files and directories currently installed.)
 O: Unpacking gcc-4.2-base (from .../gcc-4.2-base_4.2.2-4_amd64.deb) ...
 P: Unpacking package gcc-4.2-base
 D: Updating gcc-4.2-base to status 2
 O: Selecting previously deselected package libc6.
-O: Unpacking libc6 (from .../libc6_2.7-1_amd64.deb) ...
+O: Unpacking libc6 (from .../libc6_2.7-3_amd64.deb) ...
 P: Unpacking package libc6
 D: Updating libc6 to status 2
 O: Selecting previously deselected package libgcc1.
@@ -11584,7 +11584,7 @@ O: Unpacking zlib1g (from .../zlib1g_1.2.3.3.dfsg-7_amd64.deb) ...
 P: Unpacking package zlib1g
 D: Updating zlib1g to status 2
 O: Selecting previously deselected package libncurses5.
-O: Unpacking libncurses5 (from .../libncurses5_5.6+20071103-1_amd64.deb) ...
+O: Unpacking libncurses5 (from .../libncurses5_5.6+20071124-1_amd64.deb) ...
 P: Unpacking package libncurses5
 D: Updating libncurses5 to status 2
 O: Selecting previously deselected package base-passwd.
@@ -11632,40 +11632,40 @@ O: Unpacking libacl1 (from .../libacl1_2.2.45-1_amd64.deb) ...
 P: Unpacking package libacl1
 D: Updating libacl1 to status 2
 O: Selecting previously deselected package coreutils.
-O: Unpacking coreutils (from .../coreutils_5.97-5.5_amd64.deb) ...
+O: Unpacking coreutils (from .../coreutils_5.97-5.6_amd64.deb) ...
 P: Unpacking package coreutils
 D: Updating coreutils to status 2
-O: dpkg: regarding .../coreutils_5.97-5.5_amd64.deb containing coreutils, pre-dependency problem:
+O: dpkg: regarding .../coreutils_5.97-5.6_amd64.deb containing coreutils, pre-dependency problem:
 O:  coreutils pre-depends on libacl1 (>= 2.2.11-1)
 O:   libacl1 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../coreutils_5.97-5.5_amd64.deb containing coreutils, pre-dependency problem:
+O: dpkg: regarding .../coreutils_5.97-5.6_amd64.deb containing coreutils, pre-dependency problem:
 O:  coreutils pre-depends on libc6 (>= 2.7-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../coreutils_5.97-5.5_amd64.deb containing coreutils, pre-dependency problem:
+O: dpkg: regarding .../coreutils_5.97-5.6_amd64.deb containing coreutils, pre-dependency problem:
 O:  coreutils pre-depends on libselinux1 (>= 2.0.15)
 O:   libselinux1 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
 O: No diversion `any diversion of /usr/share/man/man1/md5sum.textutils.1.gz', none removed
 O: No diversion `any diversion of /usr/bin/md5sum.textutils', none removed
 O: Selecting previously deselected package sed.
-O: Unpacking sed (from .../sed_4.1.5-4_amd64.deb) ...
+O: dpkg: regarding .../sed_4.1.5-5_amd64.deb containing sed, pre-dependency problem:
+O:  sed pre-depends on libc6 (>= 2.7-1)
+O:   libc6 is unpacked, but has never been configured.
+O: dpkg: warning - ignoring pre-dependency problem !
+O: Unpacking sed (from .../sed_4.1.5-5_amd64.deb) ...
 P: Unpacking package sed
 D: Updating sed to status 2
-O: dpkg: regarding .../sed_4.1.5-4_amd64.deb containing sed, pre-dependency problem:
-O:  sed pre-depends on libc6 (>= 2.6.1-1)
-O:   libc6 is unpacked, but has never been configured.
-O: dpkg: warning - ignoring pre-dependency problem !
 O: Selecting previously deselected package ncurses-bin.
-O: Unpacking ncurses-bin (from .../ncurses-bin_5.6+20071103-1_amd64.deb) ...
+O: Unpacking ncurses-bin (from .../ncurses-bin_5.6+20071124-1_amd64.deb) ...
 P: Unpacking package ncurses-bin
 D: Updating ncurses-bin to status 2
-O: dpkg: regarding .../ncurses-bin_5.6+20071103-1_amd64.deb containing ncurses-bin, pre-dependency problem:
-O:  ncurses-bin pre-depends on libc6 (>= 2.6.1-1)
+O: dpkg: regarding .../ncurses-bin_5.6+20071124-1_amd64.deb containing ncurses-bin, pre-dependency problem:
+O:  ncurses-bin pre-depends on libc6 (>= 2.7-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
-O: dpkg: regarding .../ncurses-bin_5.6+20071103-1_amd64.deb containing ncurses-bin, pre-dependency problem:
+O: dpkg: regarding .../ncurses-bin_5.6+20071124-1_amd64.deb containing ncurses-bin, pre-dependency problem:
 O:  ncurses-bin pre-depends on libncurses5 (>= 5.6+20071006-3)
 O:   libncurses5 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
@@ -11682,7 +11682,7 @@ O:  diff pre-depends on libc6 (>= 2.5)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
 O: Selecting previously deselected package dselect.
-O: Unpacking dselect (from .../dselect_1.14.11_amd64.deb) ...
+O: Unpacking dselect (from .../dselect_1.14.12_amd64.deb) ...
 P: Unpacking package dselect
 D: Updating dselect to status 2
 O: Selecting previously deselected package e2fslibs.
@@ -11738,10 +11738,10 @@ O:  e2fsprogs pre-depends on libuuid1 (>= 1.34-1)
 O:   libuuid1 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
 O: Selecting previously deselected package findutils.
-O: Unpacking findutils (from .../findutils_4.2.31-2_amd64.deb) ...
+O: Unpacking findutils (from .../findutils_4.2.31-3_amd64.deb) ...
 P: Unpacking package findutils
 D: Updating findutils to status 2
-O: dpkg: regarding .../findutils_4.2.31-2_amd64.deb containing findutils, pre-dependency problem:
+O: dpkg: regarding .../findutils_4.2.31-3_amd64.deb containing findutils, pre-dependency problem:
 O:  findutils pre-depends on libc6 (>= 2.7-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
@@ -11790,7 +11790,7 @@ O: Unpacking libdb4.3 (from .../libdb4.3_4.3.29-11_amd64.deb) ...
 P: Unpacking package libdb4.3
 D: Updating libdb4.3 to status 2
 O: Selecting previously deselected package libslang2.
-O: Unpacking libslang2 (from .../libslang2_2.1.3-1_amd64.deb) ...
+O: Unpacking libslang2 (from .../libslang2_2.1.3-2_amd64.deb) ...
 P: Unpacking package libslang2
 D: Updating libslang2 to status 2
 O: Selecting previously deselected package mktemp.
@@ -11802,7 +11802,7 @@ O:  mktemp pre-depends on libc6 (>= 2.6-1)
 O:   libc6 is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
 O: Selecting previously deselected package ncurses-base.
-O: Unpacking ncurses-base (from .../ncurses-base_5.6+20071103-1_all.deb) ...
+O: Unpacking ncurses-base (from .../ncurses-base_5.6+20071124-1_all.deb) ...
 P: Unpacking package ncurses-base
 D: Updating ncurses-base to status 2
 O: Selecting previously deselected package procps.
@@ -11810,13 +11810,10 @@ O: Unpacking procps (from .../procps_3.2.7-5_amd64.deb) ...
 P: Unpacking package procps
 D: Updating procps to status 2
 O: Selecting previously deselected package tzdata.
-O: Unpacking tzdata (from .../tzdata_2007i-2_all.deb) ...
+O: Unpacking tzdata (from .../tzdata_2007j-1_all.deb) ...
 P: Unpacking package tzdata
 D: Updating tzdata to status 2
 O: Selecting previously deselected package util-linux.
-O: Unpacking util-linux (from .../util-linux_2.13-12_amd64.deb) ...
-P: Unpacking package util-linux
-D: Updating util-linux to status 2
 O: dpkg: regarding .../util-linux_2.13-12_amd64.deb containing util-linux, pre-dependency problem:
 O:  util-linux pre-depends on libc6 (>= 2.6.1-1)
 O:   libc6 is unpacked, but has never been configured.
@@ -11841,6 +11838,9 @@ O: dpkg: regarding .../util-linux_2.13-12_amd64.deb containing util-linux, pre-d
 O:  util-linux pre-depends on zlib1g (>= 1:1.2.3.3.dfsg-1)
 O:   zlib1g is unpacked, but has never been configured.
 O: dpkg: warning - ignoring pre-dependency problem !
+O: Unpacking util-linux (from .../util-linux_2.13-12_amd64.deb) ...
+P: Unpacking package util-linux
+D: Updating util-linux to status 2
 O: Selecting previously deselected package sysv-rc.
 O: Unpacking sysv-rc (from .../sysv-rc_2.86.ds1-38.1_all.deb) ...
 P: Unpacking package sysv-rc
@@ -11881,7 +11881,7 @@ D: Updating gcc-4.2-base to status 3
 O: Setting up libpam-runtime (0.99.7.1-5) ...
 P: Configuring package libpam-runtime
 D: Updating libpam-runtime to status 3
-O: Setting up libc6 (2.7-1) ...
+O: Setting up libc6 (2.7-3) ...
 P: Configuring package libc6
 D: Updating libc6 to status 3
 O: Use of uninitialized value in concatenation (.) or string at /usr/share/perl5/Debconf/Config.pm line 22.
@@ -11919,13 +11919,13 @@ D: Updating libgcc1 to status 3
 O: Setting up libtext-iconv-perl (1.4-3) ...
 P: Configuring package libtext-iconv-perl
 D: Updating libtext-iconv-perl to status 3
-O: Setting up libncurses5 (5.6+20071103-1) ...
+O: Setting up libncurses5 (5.6+20071124-1) ...
 P: Configuring package libncurses5
 D: Updating libncurses5 to status 3
 O: Setting up libattr1 (1:2.4.39-1) ...
 P: Configuring package libattr1
 D: Updating libattr1 to status 3
-O: Setting up sed (4.1.5-4) ...
+O: Setting up sed (4.1.5-5) ...
 P: Configuring package sed
 D: Updating sed to status 3
 O: install-info(/usr/share/info/sed.info): no backup file /var/backups/infodir.bak available, retrieving default file.
@@ -11956,13 +11956,13 @@ D: Updating hostname to status 3
 O: Setting up libacl1 (2.2.45-1) ...
 P: Configuring package libacl1
 D: Updating libacl1 to status 3
-O: Setting up libslang2 (2.1.3-1) ...
+O: Setting up libslang2 (2.1.3-2) ...
 P: Configuring package libslang2
 D: Updating libslang2 to status 3
 O: Setting up libss2 (1.40.2-1) ...
 P: Configuring package libss2
 D: Updating libss2 to status 3
-O: Setting up findutils (4.2.31-2) ...
+O: Setting up findutils (4.2.31-3) ...
 P: Configuring package findutils
 D: Updating findutils to status 3
 O: Setting up gzip (1.3.12-3.2) ...
@@ -11987,16 +11987,16 @@ D: Updating libtext-charwidth-perl to status 3
 O: Setting up libtext-wrapi18n-perl (0.06-5) ...
 P: Configuring package libtext-wrapi18n-perl
 D: Updating libtext-wrapi18n-perl to status 3
-O: Setting up coreutils (5.97-5.5) ...
+O: Setting up coreutils (5.97-5.6) ...
 P: Configuring package coreutils
 D: Updating coreutils to status 3
 O: Setting up makedev (2.3.1-84) ...
 P: Configuring package makedev
 D: Updating makedev to status 3
-O: Setting up ncurses-base (5.6+20071103-1) ...
+O: Setting up ncurses-base (5.6+20071124-1) ...
 P: Configuring package ncurses-base
 D: Updating ncurses-base to status 3
-O: Setting up ncurses-bin (5.6+20071103-1) ...
+O: Setting up ncurses-bin (5.6+20071124-1) ...
 P: Configuring package ncurses-bin
 D: Updating ncurses-bin to status 3
 O: Setting up base-files (4.0.2) ...
@@ -12014,7 +12014,7 @@ D: Updating libblkid1 to status 3
 O: Setting up e2fsprogs (1.40.2-1) ...
 P: Configuring package e2fsprogs
 D: Updating e2fsprogs to status 3
-O: Setting up dselect (1.14.11) ...
+O: Setting up dselect (1.14.12) ...
 P: Configuring package dselect
 D: Updating dselect to status 3
 O: Setting up sysvinit-utils (2.86.ds1-38.1) ...
@@ -12038,13 +12038,13 @@ D: Updating libpam0g to status 3
 O: Setting up libpam-modules (0.99.7.1-5) ...
 P: Configuring package libpam-modules
 D: Updating libpam-modules to status 3
-O: Setting up tzdata (2007i-2) ...
+O: Setting up tzdata (2007j-1) ...
 P: Configuring package tzdata
 D: Updating tzdata to status 3
 O: 
 O: Current default timezone: 'Etc/UTC'
-O: Local time is now:      Tue Nov 27 06:02:06 UTC 2007.
-O: Universal Time is now:  Tue Nov 27 06:02:06 UTC 2007.
+O: Local time is now:      Tue Dec  4 06:01:53 UTC 2007.
+O: Universal Time is now:  Tue Dec  4 06:01:53 UTC 2007.
 O: Run 'dpkg-reconfigure tzdata' if you wish to change it.
 O: 
 O: Setting up mount (2.13-12) ...
@@ -12070,9 +12070,9 @@ O: sysvinit: creating /dev/initctl
 O: init: timeout opening/writing control channel /dev/initctl
 D: Return code: 0
 D: call action: dpkg-install
-D: Execute "dpkg -i /var/cache/bootstrap/libbz2-1.0_1.0.3-7_amd64.deb /var/cache/bootstrap/libgpg-error0_1.4-2_amd64.deb /var/cache/bootstrap/libgcrypt11_1.2.4-2_amd64.deb /var/cache/bootstrap/liblzo2-2_2.02-3_amd64.deb /var/cache/bootstrap/libopencdk10_0.6.5-1_amd64.deb /var/cache/bootstrap/libtasn1-3_0.3.10-1_amd64.deb /var/cache/bootstrap/libgnutls13_2.0.4-1_amd64.deb /var/cache/bootstrap/libdb4.4_4.4.20-11_amd64.deb /var/cache/bootstrap/libsasl2-2_2.1.22.dfsg1-16_amd64.deb /var/cache/bootstrap/libldap2_2.1.30.dfsg-13.5_amd64.deb /var/cache/bootstrap/readline-common_5.2-3_all.deb /var/cache/bootstrap/libreadline5_5.2-3_amd64.deb /var/cache/bootstrap/libusb-0.1-4_0.1.12-8_amd64.deb /var/cache/bootstrap/gpgv_1.4.6-2_amd64.deb /var/cache/bootstrap/gnupg_1.4.6-2_amd64.deb /var/cache/bootstrap/debian-archive-keyring_2007.07.31_all.deb /var/cache/bootstrap/apt_0.7.9_amd64.deb" in chroot
+D: Execute "dpkg -i /var/cache/bootstrap/libbz2-1.0_1.0.3-7_amd64.deb /var/cache/bootstrap/libgpg-error0_1.4-2_amd64.deb /var/cache/bootstrap/libgcrypt11_1.2.4-2_amd64.deb /var/cache/bootstrap/liblzo2-2_2.02-3_amd64.deb /var/cache/bootstrap/libopencdk10_0.6.6-1_amd64.deb /var/cache/bootstrap/libtasn1-3_1.1-1_amd64.deb /var/cache/bootstrap/libgnutls13_2.0.4-1_amd64.deb /var/cache/bootstrap/libdb4.4_4.4.20-11_amd64.deb /var/cache/bootstrap/libsasl2-2_2.1.22.dfsg1-16_amd64.deb /var/cache/bootstrap/libldap2_2.1.30.dfsg-13.5_amd64.deb /var/cache/bootstrap/readline-common_5.2-3_all.deb /var/cache/bootstrap/libreadline5_5.2-3_amd64.deb /var/cache/bootstrap/libusb-0.1-4_0.1.12-8_amd64.deb /var/cache/bootstrap/gpgv_1.4.6-2_amd64.deb /var/cache/bootstrap/gnupg_1.4.6-2_amd64.deb /var/cache/bootstrap/debian-archive-keyring_2007.07.31_all.deb /var/cache/bootstrap/apt_0.7.9_amd64.deb" in chroot
 O: Selecting previously deselected package libbz2-1.0.
-O: (Reading database ... 5024 files and directories currently installed.)
+O: (Reading database ... 5029 files and directories currently installed.)
 O: Unpacking libbz2-1.0 (from .../libbz2-1.0_1.0.3-7_amd64.deb) ...
 P: Unpacking package libbz2-1.0
 D: Updating libbz2-1.0 to status 2
@@ -12089,11 +12089,11 @@ O: Unpacking liblzo2-2 (from .../liblzo2-2_2.02-3_amd64.deb) ...
 P: Unpacking package liblzo2-2
 D: Updating liblzo2-2 to status 2
 O: Selecting previously deselected package libopencdk10.
-O: Unpacking libopencdk10 (from .../libopencdk10_0.6.5-1_amd64.deb) ...
+O: Unpacking libopencdk10 (from .../libopencdk10_0.6.6-1_amd64.deb) ...
 P: Unpacking package libopencdk10
 D: Updating libopencdk10 to status 2
 O: Selecting previously deselected package libtasn1-3.
-O: Unpacking libtasn1-3 (from .../libtasn1-3_0.3.10-1_amd64.deb) ...
+O: Unpacking libtasn1-3 (from .../libtasn1-3_1.1-1_amd64.deb) ...
 P: Unpacking package libtasn1-3
 D: Updating libtasn1-3 to status 2
 O: Selecting previously deselected package libgnutls13.
@@ -12152,10 +12152,10 @@ D: Updating libgcrypt11 to status 3
 O: Setting up liblzo2-2 (2.02-3) ...
 P: Configuring package liblzo2-2
 D: Updating liblzo2-2 to status 3
-O: Setting up libopencdk10 (0.6.5-1) ...
+O: Setting up libopencdk10 (0.6.6-1) ...
 P: Configuring package libopencdk10
 D: Updating libopencdk10 to status 3
-O: Setting up libtasn1-3 (0.3.10-1) ...
+O: Setting up libtasn1-3 (1.1-1) ...
 P: Configuring package libtasn1-3
 D: Updating libtasn1-3 to status 3
 O: Setting up libgnutls13 (2.0.4-1) ...
@@ -12213,7 +12213,7 @@ D: Execute "cp /usr/share/cdebootstrap/cdebootstrap-helper-apt.deb /var/cache/pb
 D: Return code: 0
 D: Execute "dpkg -i /cdebootstrap-helper-apt.deb" in chroot
 O: Selecting previously deselected package cdebootstrap-helper-apt.
-O: (Reading database ... 5462 files and directories currently installed.)
+O: (Reading database ... 5467 files and directories currently installed.)
 O: Unpacking cdebootstrap-helper-apt (from /cdebootstrap-helper-apt.deb) ...
 O: Setting up cdebootstrap-helper-apt (1) ...
 O: Get:1 bootstrap: . Release.gpg [189B]
@@ -12340,7 +12340,7 @@ O: Err bootstrap: ./main xml-core 0.11
 O:   
 O: Failed to fetch bootstrap:/pool/main/a/adduser/adduser_3.105_all.deb  Hash Sum mismatch
 O: Failed to fetch bootstrap:/pool/main/a/apt/apt-utils_0.7.9_amd64.deb  Hash Sum mismatch
-O: Failed to fetch bootstrap:/pool/main/n/ncurses/libncursesw5_5.6+20071103-1_amd64.deb  Hash Sum mismatch
+O: Failed to fetch bootstrap:/pool/main/n/ncurses/libncursesw5_5.6+20071124-1_amd64.deb  Hash Sum mismatch
 O: Failed to fetch bootstrap:/pool/main/libs/libsigc++-2.0/libsigc++-2.0-0c2a_2.0.17-2_amd64.deb  Hash Sum mismatch
 O: Failed to fetch bootstrap:/pool/main/c/cwidget/libcwidget0_0.5.5-4_amd64.deb  Hash Sum mismatch
 O: Failed to fetch bootstrap:/pool/main/a/aptitude/aptitude_0.4.9-2_amd64.deb  Hash Sum mismatch
@@ -12352,7 +12352,7 @@ O: Failed to fetch bootstrap:/pool/main/d/dhcp3/dhcp3-client_3.0.6.dfsg-1_amd64.
 O: Failed to fetch bootstrap:/pool/main/d/dmidecode/dmidecode_2.9-1_amd64.deb  Hash Sum mismatch
 O: Failed to fetch bootstrap:/pool/main/e/ed/ed_0.7-1_amd64.deb  Hash Sum mismatch
 O: Failed to fetch bootstrap:/pool/main/g/groff/groff-base_1.18.1.1-14_amd64.deb  Hash Sum mismatch
-O: Failed to fetch bootstrap:/pool/main/n/net-tools/net-tools_1.60-17.2_amd64.deb  Hash Sum mismatch
+O: Failed to fetch bootstrap:/pool/main/n/net-tools/net-tools_1.60-19_amd64.deb  Hash Sum mismatch
 O: Failed to fetch bootstrap:/pool/main/i/ifupdown/ifupdown_0.6.8_amd64.deb  Hash Sum mismatch
 O: Failed to fetch bootstrap:/pool/main/t/texinfo/info_4.11.dfsg.1-2_amd64.deb  Hash Sum mismatch
 O: Failed to fetch bootstrap:/pool/main/i/iptables/iptables_1.3.8.0debian1-1_amd64.deb  Hash Sum mismatch
