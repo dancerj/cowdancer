@@ -1,3 +1,8 @@
+2007-12-04  Junichi Uekawa  <dancer@debian.org>
+
+	* tests/900_test_pbuilder.sh: use debootstrap instead of
+	cdebootstrap, which is currently broken.
+
 2007-12-03  Junichi Uekawa  <dancer@debian.org>
 
 	* cow-shell.1: add a comment on ENOMEM
