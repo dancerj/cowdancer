@@ -1,4 +1,4 @@
-/*
+/*BINFMTC: -g -DILISTCREATEBENCH
  * cowdancer -- a Copy-on-write data-access; No-cow-easy-replacement
  *
  * Copyright 2007 Junichi Uekawa
@@ -106,3 +106,23 @@ compare_ilist (const void *a, const void *b)
     }
   return ret;
 }
+
+#ifdef ILISTCREATEBENCH
+/* test code for performance tuning */
+const char* ilist_PRGNAME="testbench";
+
+int 
+main()
+{
+  int i;
+  
+  if (-1==chdir("/home/dancer/shared/git/linux-2.6/"))
+    exit (1);
+  
+  for(i=0; i<100; ++i)
+    ilistcreate("/home/dancer/shared/git/linux-2.6/.ilist", NULL);
+
+  exit (0);
+}
+
+#endif
