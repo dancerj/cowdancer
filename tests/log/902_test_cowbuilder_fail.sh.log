@@ -1,5 +1,19 @@
 ++ uname -mn
-+ [[ coreduo i686 != \d\a\n\c\e\r\6\4\ \x\8\6\_\6\4 ]]
-+ echo 'skip this test'
-skip this test
++ [[ dancer64 x86_64 != \d\a\n\c\e\r\6\4\ \x\8\6\_\6\4 ]]
++ [[ '' = build ]]
++ echo exit 1
++ sudo cowbuilder --login --hookdir /usr/share/doc/pbuilder/examples/workaround/ --basepath /var/cache/pbuilder/base-test.cow
+W: /home/dancer/.pbuilderrc does not exist
+ -> Running in no-targz mode
+ -> copying local configuration
+ -> mounting /proc filesystem
+ -> mounting /dev/pts filesystem
+ -> policy-rc.d already exists
+ -> entering the shell
+W: no hooks of type F found -- ignoring
+ -> unmounting dev/pts filesystem
+ -> unmounting proc filesystem
+ -> Copying COW directory
+ -> Invoking pbuilder
+ -> Cleaning COW directory
 + exit 0

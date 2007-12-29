@@ -93,6 +93,9 @@ value of
 .B ENOMEM
 when there is a problem.
 
+System isn't really out of memory, but this error code is chosen
+because this error is usually handled gracefully by applications.
+
 .SH "RESTRICTIONS"
 
 Can only support directories that are scanned by 
@@ -117,3 +120,7 @@ Junichi Uekawa (dancer@debian.org)
 
 Upstream page is available at 
 .B "http://www.netfort.gr.jp/~dancer/software/cowdancer.html"
+
+
+.SH "SEE ALSO"
+.BR "cowdancer-ilistcreate (" 1 ")"

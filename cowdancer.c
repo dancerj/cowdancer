@@ -11,11 +11,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <dlfcn.h>
-#include <dirent.h>
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <sys/signal.h>
 #include <sys/mman.h>
 #include <sys/wait.h>
 #include <sched.h>
@@ -97,6 +95,8 @@ static int load_ilist(void)
       fread(local_ilist, sizeof(struct ilist_struct), local_ilist_len, f);
       fclose(f);
     }
+  else 
+    close(fd);
 
   /* commit, this should really be atomic, 
      but I don't want to have a lock here.
@@ -152,17 +152,26 @@ static int initialize_functions ()
       dlerror();
       if (!(origlibc_chown = dlvsym(RTLD_NEXT, "chown", "GLIBC_2.1")))
 	{
+	  /* I should really check dlerror, but due to a possible bug in glibc,
+	     dlerror doesn't seem to work at all.
+	   */
 	  const char* d=dlerror();
 	  if(!d)
 	    {
+	      debug_cowdancer("dlerror does not return anything, chown returned NULL but OK");
 	      /* success */
 	    }
 	  else
 	    {
-	      /* fallback to loading unsymboled */
 	      debug_cowdancer(d);
-	      origlibc_chown = dlsym(RTLD_NEXT, "chown");
 	    }
+	  
+	  
+	  /* fallback to loading unversioned symbol doing it anyway
+	     since glibc does not seem to set dlerror on dlsym failure.
+	  */
+	  origlibc_chown = dlsym(RTLD_NEXT, "chown");
+	  
 	}
       origlibc_fchown = dlsym(RTLD_NEXT, "fchown");
       origlibc_lchown = dlsym(RTLD_NEXT, "lchown");
@@ -205,7 +214,6 @@ __attribute__ ((constructor))
 {
   initialize_functions();
 }
-
 
 /**
    check if i-node is to be protected, and if so, copy the file.  This

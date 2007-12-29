@@ -21,16 +21,10 @@
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
 #include <sys/stat.h>
-#include <sys/wait.h>
 #include <string.h>
 #include <unistd.h>
 #include <getopt.h>
-#include <stdarg.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <assert.h>
 #include "parameter.h"
 
 
@@ -49,110 +43,16 @@ PBUILDER_ADD_PARAM(NULL);
 char* pbuildercommandline[MAXPBUILDERCOMMANDLINE];
 int offset=2;
 
-/*
-  execvp that does fork.
-  
-  @return < 0 for failure, exit code for other cases.
- */
-int forkexecvp (char *const argv[])
-{
-  int ret;
-  pid_t pid;
-  int status;
-  
-  /* DEBUG: */
-  {
-    int i=0;
-    while(argv[i])
-      {
-	//printf("DEBUG: %i: %s\n", i, argv[i]);
-	i++;
-      }
-  }
-
-  switch(pid=fork())
-    {
-    case 0:
-      execvp(argv[0], (char*const*)argv);
-      perror("cowbuilder: execvp");
-      exit(EXIT_FAILURE);
-    case -1:
-      /* error condition in fork(); something is really wrong */
-      perror("cowbuilder: fork");
-      return -1;
-    default:
-      /* parent process, waiting for termination */
-      waitpid(pid, &status, 0);
-      if (!WIFEXITED(status))
-	{
-	  /* something unexpected */
-	  return -1;
-	}
-      ret = WEXITSTATUS(status);
-    }
-  return ret;
-}
-
-/*
-  execlp that does fork.
-  
-  NULL-terminated list of parameters.
-
-  cf. execl from FreeBSD sources, and glibc posix/execl.c, 
-  and cygwin exec.cc
-
-  @return < 0 for failure, exit code for other cases.
- */
-int
-forkexeclp (const char *path, const char *arg0, ...)
-{
-  int i, ret;
-  va_list args;
-  const char *argv[1024];
-  pid_t pid;
-  int status;
-
-  va_start(args, arg0);
-  argv[0] = arg0;
-  i = 1;
-  do
-    {
-      argv[i] = va_arg(args, const char *);
-      
-      if ( i >= 1023 ) 
-	{
-	  return -1;
-	}
-      
-    }
-  while (argv[i++] != NULL);
-  va_end (args);
-
-  switch(pid=fork())
-    {
-    case 0:
-      execvp(path, (char*const*)argv);
-      perror("pbuilder: execlp");
-      exit(EXIT_FAILURE);
-    case -1:
-      /* error condition in fork(); something is really wrong */
-      perror("pbuilder: fork");
-      return -1;
-    default:
-      /* parent process, waiting for termination */
-      waitpid(pid, &status, 0);
-      if (!WIFEXITED(status))
-	{
-	  /* something unexpected */
-	  return -1;
-	}
-      ret = WEXITSTATUS(status);
-    }
-  return ret;
-}
-
 /**
  * load configuration.
+ *
+ * Returns bash return codes or -1 on popen error.
+ * 
+ * Most interesting codes:
+ *  -1 = popen failed
+ *   0 = ok
+ *   1 = file not found
+ *   2 = syntax error
  */
 int load_config_file(const char* config, pbuilderconfig* pc)
 {
@@ -162,10 +62,13 @@ int load_config_file(const char* config, pbuilderconfig* pc)
   char* buf=NULL;
   size_t bufsiz=0;
   char* delim;
+  int result;
 
-  asprintf(&s, "env - bash -c 'set -e ; . %s; set '", config);
+  asprintf(&s, "env bash -c 'set -e ; . %s; set ' 2>&1", config);
   f=popen(s, "r");
-  while (getline(&buf,&bufsiz,f)>0)
+  if( NULL == f )
+    return -1;
+  while ( (0 == feof(f)) && (getline(&buf,&bufsiz,f)>0) )
     {
       if (strrchr(buf,'\n'))
 	{
@@ -219,12 +122,26 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    {
 	      pc->buildplace=strdup(delim);
 	    }
+	  else if (!strcmp(buf, "COMPONENTS"))
+	    {
+	      pc->components=strdup(delim);
+	    }
+	  else if (!strcmp(buf, "DEBBUILDOPTS"))
+	    {
+	      pc->debbuildopts=strdup(delim);
+	    }
 	}
     }
-  if(buf) free(buf);
+
+  result = WEXITSTATUS( pclose(f) );
+  if(buf) {
+    // Don't warn of missing config files
+    if( result > 1 )
+      printf( "(exit %i) -> %s\n", result, buf );
+    free(buf);
+  }
   if(s) free(s);
-  pclose(f);
-  return 0;
+  return result;
 }
 
 
@@ -257,6 +174,7 @@ int parse_parameter(int ac, char** av,
 {
   int c;			/* option */
   int index_point;
+  int config_ok = -1, load_ok;
   char * cmdstr=NULL;
   static pbuilderconfig pc;
   
@@ -284,6 +202,8 @@ int parse_parameter(int ac, char** av,
     {"mirror", required_argument, 0, 0},
     {"buildresult", required_argument, 0, 0},
     {"distribution", required_argument, 0, 0},
+    {"components", required_argument, 0, 0},
+    {"debbuildopts", required_argument, 0, 0},
 
     /* verbatim options, synced as of pbuilder 0.153 */
     {"othermirror", required_argument, 0, 'M'},
@@ -292,14 +212,13 @@ int parse_parameter(int ac, char** av,
     {"extrapackages", required_argument, 0, 'M'},
     {"hookdir", required_argument, 0, 'M'},
     {"debemail", required_argument, 0, 'M'},
-    {"debbuildopts", required_argument, 0, 'M'},
     {"logfile", required_argument, 0, 'M'},
     {"aptconfdir", required_argument, 0, 'M'},
     {"timeout", required_argument, 0, 'M'},
     {"bindmounts", required_argument, 0, 'M'},
     {"debootstrapopts", required_argument, 0, 'M'},
     {"debootstrap", required_argument, 0, 'M'},
-
+    
     {"removepackages", no_argument, 0, 'm'},
     {"override-config", no_argument, 0, 'm'},
     {"pkgname-logfile", no_argument, 0, 'm'},
@@ -316,9 +235,22 @@ int parse_parameter(int ac, char** av,
   /* default command-line component */
   pbuildercommandline[0]="pbuilder";
   
-  load_config_file("/usr/share/pbuilder/pbuilderrc", &pc);
-  load_config_file("/etc/pbuilderrc", &pc);
-  load_config_file("~/.pbuilderrc", &pc);
+  /**
+   * Try to load all standard config files.
+   * Skip non existing, but exit on broken ones.
+   * config_ok is 0, if any load was successfull
+   **/
+  load_ok = load_config_file("/usr/share/pbuilder/pbuilderrc", &pc);
+  if( load_ok > 1 ) exit( 2 );
+  if( config_ok != 0 ) config_ok = load_ok;
+
+  load_ok = load_config_file("/etc/pbuilderrc", &pc);
+  if( load_ok > 1 ) exit( 3 );
+  if( config_ok != 0 ) config_ok = load_ok;
+
+  load_ok = load_config_file("~/.pbuilderrc", &pc);
+  if( load_ok > 1 ) exit( 4 );
+  if( config_ok != 0 ) config_ok = load_ok;
 
   /* load config files here. */
   while((c = getopt_long (ac, av, "b:d:Mmhv", long_options, &index_point)) != -1)
@@ -349,7 +281,10 @@ int parse_parameter(int ac, char** av,
 	  pc.buildplace = strdup(optarg);
 	  break;
 	case 'c':		/* --config */
-	  load_config_file(optarg, &pc);
+	  load_ok = load_config_file(optarg, &pc);
+	  if( load_ok > 1 ) exit( 5 );
+	  if( config_ok != 0 ) config_ok = load_ok;
+
 	  if (0>asprintf(&cmdstr, "--%s", long_options[index_point].name))
 	    {
 	      /* error */
@@ -384,6 +319,15 @@ int parse_parameter(int ac, char** av,
 	  */
 	  
 	  /* handle specific options which also give 0. */
+
+	  /* first, generate 'cmdstr' which is useful anyway */
+	  if (0>asprintf(&cmdstr, "--%s", long_options[index_point].name))
+	    {
+	      /* error */
+	      fprintf(stderr, "out of memory constructing command-line options\n");
+	      exit (1);
+	    }
+
 	  if (!strcmp(long_options[index_point].name,"mirror"))
 	    {
 	      pc.mirror=strdup(optarg);
@@ -396,6 +340,24 @@ int parse_parameter(int ac, char** av,
 	    {
 	      pc.distribution=strdup(optarg);
 	    }
+	  else if (!strcmp(long_options[index_point].name,"components"))
+	    {
+	      /* this is for qemubuilder */
+	      pc.components=strdup(optarg);
+	      
+	      /* pass it for cowbuilder */
+	      PBUILDER_ADD_PARAM(cmdstr);
+	      PBUILDER_ADD_PARAM(strdup(optarg));
+	    }
+	  else if (!strcmp(long_options[index_point].name,"debbuildopts"))
+	    {
+	      /* this is for qemubuilder */
+	      pc.debbuildopts=strdup(optarg);
+	      
+	      /* pass it for cowbuilder */
+	      PBUILDER_ADD_PARAM(cmdstr);
+	      PBUILDER_ADD_PARAM(strdup(optarg));
+	    }
 	  break;
 	case 'h':		/* -h */
 	case 'v':		/* -v --version */
@@ -407,6 +369,11 @@ int parse_parameter(int ac, char** av,
 	  return 1;
 	}
     }
+
+  if( 0 != config_ok ) {
+    printf( "Couldn't load any valid config file.\n" );
+    exit( 6 );
+  }
 
   /* set default values */
   if (!pc.basepath) 

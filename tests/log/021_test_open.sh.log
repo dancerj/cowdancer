@@ -16,3 +16,4 @@ close(0)open(): try1: 0, try2: 0
 + echo 0
 0
 + rm -rf /tmp/XXXX
+cow-shell unlink .ilist: No such file or directory

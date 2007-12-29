@@ -10,31 +10,36 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.3467e-05 seconds, 43.6 MB/s
+1024 bytes (1.0 kB) copied, 2.3177e-05 seconds, 44.2 MB/s
 + cp -al 1 2
 + MALLOC_TRACE=log
 + cow-shell /tmp/XXXX/tracer
-08048000-08049000 r-xp 00000000 00:11 275350     /tmp/XXXX/tracer
-08049000-0804a000 rw-p 00000000 00:11 275350     /tmp/XXXX/tracer
-0804a000-0806b000 rw-p 0804a000 00:00 0          [heap]
-40000000-40002000 rw-p 40000000 00:00 0 
-40002000-40005000 r-xp 00000000 08:04 717237     /usr/lib/cowdancer/libcowdancer.so
-40005000-40006000 rw-p 00002000 08:04 717237     /usr/lib/cowdancer/libcowdancer.so
-40006000-40007000 r--p 00000000 00:11 275369     /tmp/XXXX/.ilist
-40007000-4000a000 rw-p 40007000 00:00 0 
-40019000-4001b000 rw-p 40019000 00:00 0 
-4f36f000-4f38a000 r-xp 00000000 08:04 362233     /lib/ld-2.5.so
-4f38a000-4f38c000 rw-p 0001b000 08:04 362233     /lib/ld-2.5.so
-4f38e000-4f4cb000 r-xp 00000000 08:04 374903     /lib/i686/cmov/libc-2.5.so
-4f4cb000-4f4cc000 r--p 0013d000 08:04 374903     /lib/i686/cmov/libc-2.5.so
-4f4cc000-4f4ce000 rw-p 0013e000 08:04 374903     /lib/i686/cmov/libc-2.5.so
-4f4ce000-4f4d1000 rw-p 4f4ce000 00:00 0 
-4f4d3000-4f4d5000 r-xp 00000000 08:04 375286     /lib/i686/cmov/libdl-2.5.so
-4f4d5000-4f4d7000 rw-p 00001000 08:04 375286     /lib/i686/cmov/libdl-2.5.so
-bfe2e000-bfe43000 rw-p bfe2e000 00:00 0          [stack]
-ffffe000-fffff000 r-xp 00000000 00:00 0          [vdso]
+00400000-00401000 r-xp 00000000 00:11 3380161                            /tmp/XXXX/tracer
+00600000-00601000 rw-p 00000000 00:11 3380161                            /tmp/XXXX/tracer
+00601000-00622000 rw-p 00601000 00:00 0                                  [heap]
+2b35b7d2a000-2b35b7d47000 r-xp 00000000 08:01 356208                     /lib/ld-2.6.1.so
+2b35b7d47000-2b35b7d4a000 rw-p 2b35b7d47000 00:00 0 
+2b35b7f46000-2b35b7f48000 rw-p 0001c000 08:01 356208                     /lib/ld-2.6.1.so
+2b35b7f48000-2b35b7f4c000 r-xp 00000000 08:01 842540                     /usr/lib/cowdancer/libcowdancer.so
+2b35b7f4c000-2b35b814b000 ---p 00004000 08:01 842540                     /usr/lib/cowdancer/libcowdancer.so
+2b35b814b000-2b35b814c000 rw-p 00003000 08:01 842540                     /usr/lib/cowdancer/libcowdancer.so
+2b35b814c000-2b35b814d000 r--p 00000000 00:11 3380177                    /tmp/XXXX/.ilist
+2b35b814d000-2b35b8150000 rw-p 2b35b814d000 00:00 0 
+2b35b8161000-2b35b82af000 r-xp 00000000 08:01 306713                     /lib/libc-2.6.1.so
+2b35b82af000-2b35b84ae000 ---p 0014e000 08:01 306713                     /lib/libc-2.6.1.so
+2b35b84ae000-2b35b84b1000 r--p 0014d000 08:01 306713                     /lib/libc-2.6.1.so
+2b35b84b1000-2b35b84b3000 rw-p 00150000 08:01 306713                     /lib/libc-2.6.1.so
+2b35b84b3000-2b35b84b8000 rw-p 2b35b84b3000 00:00 0 
+2b35b84b8000-2b35b84ba000 r-xp 00000000 08:01 306716                     /lib/libdl-2.6.1.so
+2b35b84ba000-2b35b86ba000 ---p 00002000 08:01 306716                     /lib/libdl-2.6.1.so
+2b35b86ba000-2b35b86bc000 rw-p 00002000 08:01 306716                     /lib/libdl-2.6.1.so
+2b35b86bc000-2b35b86be000 rw-p 2b35b86bc000 00:00 0 
+7ffff2d6a000-7ffff2d7f000 rw-p 7ffffffea000 00:00 0                      [stack]
+7ffff2dfe000-7ffff2e00000 r-xp 7ffff2dfe000 00:00 0                      [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
 + RESULT=0
 + mtrace /tmp/XXXX/tracer /tmp/XXXX/log
 No memory leaks.
 + rm -rf /tmp/XXXX
 + exit 0
+cow-shell unlink .ilist: No such file or directory

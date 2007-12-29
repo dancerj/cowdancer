@@ -1,4 +1,97 @@
-cowdancer (0.36) UNRELEASED; urgency=low
+cowdancer (0.45) UNRELEASED; urgency=low
+
+  * 
+
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 03 Dec 2007 08:37:53 +0900
+
+cowdancer (0.44) unstable; urgency=low
+
+  * add Vcs-Git, Vcs-Browser.
+  * fix invocation to cowdancer-ilistcreate
+
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 21 Nov 2007 22:47:22 +0900
+
+cowdancer (0.43) unstable; urgency=low
+
+  * make cowbuilder work with pdebuild. --debbuildopts handling was broken
+    for cowbuilder. (Closes: #448330).
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 28 Oct 2007 23:13:42 +0900
+
+cowdancer (0.42) unstable; urgency=low
+
+  * Bug fix: "cowdancer: Please ship a (basic) bash completion file",
+    thanks to Cyril Brulebois (Closes: #446498).
+  * --components support.
+  * Bug fix: "qemubuilder doesn&#39;t pass --debbuildopts to
+    dpkg-buildpackage", thanks to Alexander Gerasiov (Closes: #447510).
+
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 25 Oct 2007 20:18:28 +0900
+
+cowdancer (0.41) unstable; urgency=low
+
+  * Bug fix: "qemubuilder: build of package failing due to date problems",
+    thanks to Jean-Baptiste Note (Closes: #441132).
+  * Bug fix: "newly created cowdancer chroot cannot be updated", thanks to
+    Paul Wise (Closes: #441463).
+  - there was a race condition with .ilist handling.
+
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 10 Sep 2007 19:50:31 +0900
+
+cowdancer (0.40) unstable; urgency=low
+
+  * Bug fix: "cowdancer: Should remove base directory when failed to
+    create it", thanks to Nelson A. de Oliveira (Closes: #440651).
+  * cow-shell: if COWDANCER_REUSE is not set, remove .ilist file after use.
+    (Closes: #350268).
+  * Bug fix: "cowdancer: <sys/types.h> needed in cowdancer-ilistcreate.c
+    for Etch backport", thanks to Sven Hartge (Closes: #440879).
+  * update qemubuilder README.Debian 
+  * Don't assume network is always available as 'eth0', and try to find
+    out. patch thanks to Jean-Baptiste Note (Closes: #440888).
+
+ -- Junichi Uekawa <dancer@debian.org>  Fri, 07 Sep 2007 08:29:31 +0900
+
+cowdancer (0.39) unstable; urgency=low
+
+  * Bug fix: "qemubuilder: Problem when non-US locale", thanks to
+    Jean-Baptiste Note (Closes: #440558).
+  * Give fd0 directly to qemu to allow tty control.
+  * Handle exit codes.
+  * apply patch to more easily handle newer architecture support, 
+    thanks to Jean-Baptiste Note: #440555
+
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 04 Sep 2007 08:31:55 +0900
+
+cowdancer (0.38) unstable; urgency=low
+
+  [ Jan-Marek Glogowski ] 
+  * Don't clean the environment when invoking dumpconfig 
+  (closes: #431993)
+  * Better error handling when loading config
+
+  [ Junichi Uekawa ]
+  * add aptitude into chroot for pbuilder-satisfydepends-aptitude.
+  * add cowdancer-ilistcreate command, which creates ilist file.
+  * add cowdancer-ilistdump command, for debugging purposes. It was
+    included in the testsuite, but it is generally useful for
+    troubleshooting.
+  * run cowdancer-ilistcreate within chroot if it exists
+  - Bug fix: "cowbuilder cross-arch building support."
+    (Closes: #432573).
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 01 Sep 2007 13:10:45 +0900
+
+cowdancer (0.37) unstable; urgency=low
+
+  * Trying to fix: "tar segfaulting within cowbuilder chroot", thanks to Michael
+    Ablassmeier (closes: #430636).
+  - work around glibc bug on dlvsym/dlerror failure case.
+  * close mmap fd after use.
+  
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 27 Jun 2007 07:12:20 +0900
+
+cowdancer (0.36) unstable; urgency=low
 
   * fix logic for running amd64 on i386.
   * add example for cowbuilder manpage.
@@ -12,7 +105,7 @@ cowdancer (0.36) UNRELEASED; urgency=low
   * Bug fix: "qemubuilder: manpage talks of cowbuilder instead of
     qemubuilder", thanks to Ben Voui (Closes: #428959).
 
- -- Junichi Uekawa <dancer@debian.org>  Sat, 23 Jun 2007 04:47:26 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 25 Jun 2007 21:26:02 +0900
 
 cowdancer (0.35) unstable; urgency=low
 

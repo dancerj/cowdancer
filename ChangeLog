@@ -1,3 +1,115 @@
+2007-12-03  Junichi Uekawa  <dancer@debian.org>
+
+	* cow-shell.1: add a comment on ENOMEM
+
+2007-11-02  Junichi Uekawa  <dancer@debian.org>
+
+	* cowbuilder.c (cpbuilder_build): write to "/.ilist" inside chroot, not
+	ilistpath.
+
+2007-10-28  Junichi Uekawa  <dancer@debian.org>
+
+	* parameter.c (parse_parameter): fix parameter passing for --debbuildopts.
+
+2007-10-25  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.c (cpbuilder_build): support debbuildopts
+	* parameter.c (parse_parameter, load_config_file): 
+	* parameter.h: support debbuildopts
+
+	* qemubuilder.c: add support for --components in qemubuilder.
+	* parameter.c (parse_parameter): add --components option.
+	(load_config_file): support COMPONENTS option
+
+2007-10-15  Junichi Uekawa  <dancer@debian.org>
+
+	* debian/qemubuilder.files: install bash-completion file to qemubuilder
+
+	* Makefile: install bash_completion.
+
+	* bash_completion.qemubuilder: create (a start of) qemubuilder bash completion script.
+
+	* bash_completion.cowbuilder: add cowbuilder bash completion script.
+
+2007-09-10  Junichi Uekawa  <dancer@debian.org>
+
+	* cowbuilder.c (main): specify cowdancer-reuse
+	(cpbuilder_internal_cowcopy): remove .ilist file here.
+	(get_ilistfile_path, cpbuilder_internal_cowcopy)
+	(cpbuilder_build): consolidate common code to get_ilistfile_path.
+
+	* qemubuilder.c (run_second_stage_script): set date / time inside
+	chroot with date command; it will be different by a few seconds.
+
+2007-09-07  Junichi Uekawa  <dancer@debian.org>
+
+	* cow-shell.c: fix case where .ilist didn't exist before.
+	
+	* qemubuilder.c: fix typo from "Jean-Baptiste Note"
+	<jbnote@gmail.com>
+	(run_second_stage_script): get network device name with ifconfig
+	and grep. Can I assume 'ethX' here?
+
+2007-09-06  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.c (fork_qemu): change 'termination signal' to
+	'termination message' so that it's not confusing.
+
+2007-09-04  Junichi Uekawa  <dancer@debian.org>
+
+	* cow-shell.c: delete .ilist file if reuse flag is not set.
+
+	* cowbuilder.c (cpbuilder_create): add cleanup code.
+
+	* qemubuilder.c: cosmetic fixes.
+
+2007-09-03  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.c (create_ext3_block_device): use mke2fs -F instead
+	of yes|mke2fs
+	(fork_qemu): do not handle fd '0', so that tty control can be
+	done.  
+	(fix_terminal): fix termios after exit from qemu, at least put
+	echo on.
+	(fork_qemu): Handle exit-codes.
+
+2007-09-01  Junichi Uekawa  <dancer@debian.org>
+
+	* Makefile (check-syntax): add check-syntax target for flymake mode.
+	Remove redundant #include statements.
+
+	* cowbuilder.c: run cowdancer-ilistcreate within chroot if it
+	exists.
+
+	* parameter.c: 
+	* forkexec.c: move fork/exec code from parameter.c
+
+	* tests/014_ilistdump_test.sh: rewrite testsuite to use the generic dumping code.
+	* Makefile: install dumping code.
+	* cowdancer-ilistdump.1: document
+	* cowdancer-ilistdump.c: create dumping code, from testsuite data.
+
+2007-08-31  Junichi Uekawa  <dancer@debian.org>
+
+	* cow-shell.1: add reference to cowdancer-ilistcreate
+	* cowdancer-ilistcreate.1: document.
+	* Makefile (install): install ilistcreate.
+	* cowdancer-ilistcreate.c: create new command.
+
+2007-08-29  Junichi Uekawa  <dancer@debian.org>
+
+	* qemubuilder.c (cpbuilder_create): add aptitude into chroot.
+
+2007-08-21  Junichi Uekawa  <dancer@debian.org>
+
+	* parameter.c: config file parsing improved by patch from Jan-Marek Glogowski 
+
+2007-06-27  Junichi Uekawa  <dancer@debian.org>
+
+	* cowdancer.c (initialize_functions): work around glibc bug: dlvsym failure
+	isn't setting dlerror.
+	(load_ilist): close fd used for mmap after use.
+
 2007-06-21  Junichi Uekawa  <dancer@debian.org>
 
 	* cowdancer.c (initialize_functions): try to load chown@@GLIBC_2.1

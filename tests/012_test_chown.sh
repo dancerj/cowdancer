@@ -6,6 +6,8 @@ TESTDIR=$(mktemp -d )
 TESTCODE=$(readlink -f tests/012_test_chown.c)
 set -- $(id -G)
 
+#export COWDANCER_DEBUG=yes
+
 # assumes that this user has multiple groups.
 ORIGID=$1
 NEWID=$2
