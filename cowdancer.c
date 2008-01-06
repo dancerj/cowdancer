@@ -1,6 +1,6 @@
 /*
  * cowdancer -- a Copy-on-write data-access; No-cow-easy-replacement
- *
+ * 
  * Copyright 2005-2007 Junichi Uekawa
  * GPL v2 or later.
  */
@@ -136,7 +136,11 @@ static int initialize_functions ()
   /* this code is quasi-reentrant; 
      shouldn't suffer too much if it is called multiple times. */
   
-  if (!initialized)
+  /* this code is __unlikely__ to be true 
+     It is initialized==0 only for the first time
+     so should be !initialized==0 most of the time.
+  */
+  if (__builtin_expect(!initialized,0))
     {
       initialized = 1;
       origlibc_open = dlsym(RTLD_NEXT, "open");
@@ -191,8 +195,11 @@ static int initialize_functions ()
 	  debug_cowdancer ("Initialization successfully finished.\n");
 	}
     }  
-  /* wait until somebody else finishes his job */
-  while (initialized == 1)
+  /* 
+     Wait until somebody else finishes his job
+     This is very unlikely
+  */
+  while (__builtin_expect(initialized == 1,0))
     sched_yield();
   
   if (initialized==0)
