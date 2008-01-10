@@ -405,6 +405,13 @@ int parse_parameter(int ac, char** av,
   switch(pc.operation)
     {
     case pbuilder_build:
+      if (!av[optind])
+	{
+	  /* parameter missing */
+	  fprintf(stderr, "E: parameter missing for build operation\n");
+	  return 1;
+	}
+      
       return cpbuilder_build(&pc, av[optind]);
       
     case pbuilder_create:
@@ -417,6 +424,12 @@ int parse_parameter(int ac, char** av,
       return cpbuilder_login(&pc);
 
     case pbuilder_execute:
+      if (!av[optind])
+	{
+	  /* parameter missing */
+	  fprintf(stderr, "E: parameter missing for execute operation\n");
+	  return 1;
+	}
       return cpbuilder_execute(&pc, &av[optind]);
 
     case pbuilder_help:
