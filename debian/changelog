@@ -2,8 +2,10 @@ cowdancer (0.45) UNRELEASED; urgency=low
 
   * cowbuilder, qemubuilder: Give error message when '--build' is invoked
     without .dsc file parameter.  (Closes: #460041).
+  * add header to .ilist, so that it is possible to know a little bit more
+    about the structure.
 
- -- Junichi Uekawa <dancer@debian.org>  Thu, 10 Jan 2008 20:11:43 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 26 Jan 2008 12:26:33 +0900
 
 cowdancer (0.44) unstable; urgency=low
 
