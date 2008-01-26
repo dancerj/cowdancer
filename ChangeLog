@@ -1,3 +1,11 @@
+2008-01-26  Junichi Uekawa  <dancer@debian.org>
+
+	* cowdancer-ilistdump.c (main): update for test.
+
+	* cowdancer.c (verify_ilist_header, load_ilist): 
+	* ilist.h (ILISTSIG): 
+	* ilistcreate.c (ilistcreate): add header and signature checking.
+
 2008-01-10  Junichi Uekawa  <dancer@debian.org>
 
 	* parameter.c (parse_parameter): add error checking.

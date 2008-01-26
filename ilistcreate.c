@@ -24,6 +24,11 @@ int ilistcreate(const char* ilistpath, const char* findcommandline)
   FILE* inf;
   FILE* outf;
   struct ilist_struct* ilist=NULL;  
+  struct ilist_header header=
+    {
+      ILISTSIG,      
+      ILISTREVISION
+    };
   long ilist_len=0;
   if(!findcommandline)
     findcommandline="find . -xdev \\( -type l -o -type f \\) -a -links +1 -print0 | xargs -0 stat --format '%d %i '";
@@ -74,6 +79,13 @@ int ilistcreate(const char* ilistpath, const char* findcommandline)
   if (NULL==(outf=fopen(ilistpath,"w")))
     {
       ilist_outofmemory("cannot open .ilist file");
+      return 1;
+    }
+  
+
+  if(1 != fwrite(&header, sizeof(struct ilist_header), 1, outf))
+    {
+      ilist_outofmemory("failed writing header to .ilist file");
       return 1;
     }
   

@@ -8,11 +8,14 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include "ilist.h"
+
 const char* ilist_PRGNAME="cowdancer-ilistdump";
 
 int main(int argc, char** argv)
 {
   struct ilist_struct s;
+  struct ilist_header h;
+
   FILE*f;
   
   if (argc != 2)
@@ -33,6 +36,14 @@ int main(int argc, char** argv)
 	       argv[0], argv[1]);
       return 1;
     }
+  
+  fread(&h, sizeof(struct ilist_header), 1, f);
+  fprintf(stderr, 
+	  "Signature: %x\n"
+	  "Revision: %i\n\n",
+	  h.ilistsig, 
+	  h.revision
+	  );
   
   while(fread(&s, sizeof(struct ilist_struct), 1, f))
     {

@@ -39,6 +39,19 @@ static int (*origlibc_fchmod)(int fd, mode_t) = NULL;
 static struct ilist_struct* ilist=NULL;
 static long ilist_len=0;
 
+
+int verify_ilist_header(struct ilist_header header)
+{
+  if (header.revision != ILISTREVISION || 
+      header.ilistsig != ILISTSIG)
+    {
+      ilist_outofmemory(".ilist header unexpected");
+      return 1;
+    }
+  return 0;
+}
+
+
 /* load ilist file
 
    @return 1 on error, 0 on success */
@@ -48,6 +61,7 @@ static int load_ilist(void)
   int fd=0;
   struct stat stbuf;
   struct ilist_struct* local_ilist=NULL;
+  struct ilist_header header;
   long local_ilist_len=0;  
 
   if (!getenv("COWDANCER_ILISTFILE"))
@@ -67,9 +81,9 @@ static int load_ilist(void)
       return 1;
     }
 
-  local_ilist_len=stbuf.st_size / sizeof(struct ilist_struct);
+  local_ilist_len=(stbuf.st_size - sizeof (struct ilist_header)) / sizeof(struct ilist_struct);
 
-  if (stbuf.st_size != (sizeof(struct ilist_struct) * local_ilist_len))
+  if (stbuf.st_size != (sizeof(struct ilist_struct) * local_ilist_len + sizeof (struct ilist_header)))
     {
       ilist_outofmemory(".ilist size unexpected");
       return 1;
@@ -92,11 +106,17 @@ static int load_ilist(void)
 	  fprintf(stderr, "%s: out of memory while trying to allocate memory for ilist\n", ilist_PRGNAME);
 	  return 1;
 	}
+      fread(&header, sizeof(struct ilist_header), 1, f);
+      if(verify_ilist_header(header)) return 1;
       fread(local_ilist, sizeof(struct ilist_struct), local_ilist_len, f);
       fclose(f);
     }
   else 
-    close(fd);
+    {
+      if (verify_ilist_header(*(struct ilist_header *)local_ilist)) return 1;
+      local_ilist=(void*)local_ilist+sizeof (struct ilist_header);
+      close(fd);
+    }
 
   /* commit, this should really be atomic, 
      but I don't want to have a lock here.
