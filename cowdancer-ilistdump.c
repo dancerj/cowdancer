@@ -39,10 +39,12 @@ int main(int argc, char** argv)
   
   fread(&h, sizeof(struct ilist_header), 1, f);
   fprintf(stderr, 
-	  "Signature: %x\n"
-	  "Revision: %i\n\n",
-	  h.ilistsig, 
-	  h.revision
+	  "Signature: %x (expect %x)\n"
+	  "Revision: %i (expect %i)\n"
+	  "Struct size: %i\n\n",
+	  h.ilistsig, ILISTSIG, 
+	  h.revision, ILISTREVISION, 
+	  h.ilist_struct_size
 	  );
   
   while(fread(&s, sizeof(struct ilist_struct), 1, f))

@@ -27,7 +27,9 @@ int ilistcreate(const char* ilistpath, const char* findcommandline)
   struct ilist_header header=
     {
       ILISTSIG,      
-      ILISTREVISION
+      ILISTREVISION,
+      sizeof (struct ilist_struct),
+      0
     };
   long ilist_len=0;
   if(!findcommandline)

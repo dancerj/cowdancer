@@ -39,18 +39,20 @@ static int (*origlibc_fchmod)(int fd, mode_t) = NULL;
 static struct ilist_struct* ilist=NULL;
 static long ilist_len=0;
 
-
+/* 
+   verify the header content
+ */
 int verify_ilist_header(struct ilist_header header)
 {
   if (header.revision != ILISTREVISION || 
-      header.ilistsig != ILISTSIG)
+      header.ilistsig != ILISTSIG || 
+      header.ilist_struct_size != sizeof (struct ilist_struct))
     {
       ilist_outofmemory(".ilist header unexpected");
       return 1;
     }
   return 0;
 }
-
 
 /* load ilist file
 
