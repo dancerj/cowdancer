@@ -14,7 +14,11 @@ cowdancer (0.45) UNRELEASED; urgency=low
       dpkg-split: unable to read part file `/tmp/buildd/qemubuilder_0.45_amd64.deb': Cannot allocate memory
       dpkg: error processing /tmp/buildd/qemubuilder_0.45_amd64.deb (--install):
 
- -- Junichi Uekawa <dancer@debian.org>  Sat, 02 Feb 2008 11:55:10 +0900
+  TODO: 
+  . LARGEFILE support
+  . do not error on cowbuilder upgrade (ignore errors?)
+  
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 02 Feb 2008 11:56:40 +0900
 
 cowdancer (0.44) unstable; urgency=low
 
