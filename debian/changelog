@@ -3,9 +3,18 @@ cowdancer (0.45) UNRELEASED; urgency=low
   * cowbuilder, qemubuilder: Give error message when '--build' is invoked
     without .dsc file parameter.  (Closes: #460041).
   * add header to .ilist, so that it is possible to know a little bit more
-    about the structure.
+    about the structure.  Note that upgrade will fail within cowdancer
+    session, please re-create chroot:
 
- -- Junichi Uekawa <dancer@debian.org>  Sat, 26 Jan 2008 12:26:33 +0900
+      Unpacking cowdancer (from .../cowdancer_0.45_amd64.deb) ...
+      ERROR: ld.so: object '/usr/lib/cowdancer/libcowdancer.so' from LD_PRELOAD cannot be preloaded: ignored.
+      cowdancer: .ilist header unexpected
+      cowdancer: .ilist header unexpected
+      cowdancer: .ilist header unexpected
+      dpkg-split: unable to read part file `/tmp/buildd/qemubuilder_0.45_amd64.deb': Cannot allocate memory
+      dpkg: error processing /tmp/buildd/qemubuilder_0.45_amd64.deb (--install):
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 02 Feb 2008 11:55:10 +0900
 
 cowdancer (0.44) unstable; urgency=low
 
