@@ -19,7 +19,7 @@ for DEBOOTSTRAP in debootstrap cdebootstrap; do
     for DISTRIBUTION in etch sid; do
 	sudo rm -rf /var/cache/pbuilder/base-test.cow
 	if [ $DEBOOTSTRAP = cdebootstrap ]; then
-	    DEBUG="--debootstrapopts --debug"
+	    DEBUG="--debootstrapopts --verbose"
 	else
 	    DEBUG=
 	fi
