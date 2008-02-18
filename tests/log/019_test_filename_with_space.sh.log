@@ -6,33 +6,33 @@
 + dd if=/dev/zero 'of=1/e j' bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 1.9872e-05 s, 51.5 MB/s
+1024 bytes (1.0 kB) copied, 2.0644e-05 s, 49.6 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-合計 4
-129078 -rw-r--r-- 2 dancer dancer    0 2008-02-02 10:59 a'f
-129079 -rw-r--r-- 2 dancer dancer    0 2008-02-02 10:59 b g
-129080 -rw-r--r-- 2 dancer dancer    0 2008-02-02 10:59 c h
-129081 -rw-r--r-- 2 dancer dancer    0 2008-02-02 10:59 d i
-129082 -rw-r--r-- 2 dancer dancer 1024 2008-02-02 10:59 e j
+total 4
+732621 -rw-r--r-- 2 dancer dancer    0 2008-02-12 15:00 a'f
+732622 -rw-r--r-- 2 dancer dancer    0 2008-02-12 15:00 b g
+732623 -rw-r--r-- 2 dancer dancer    0 2008-02-12 15:00 c h
+732624 -rw-r--r-- 2 dancer dancer    0 2008-02-12 15:00 d i
+732625 -rw-r--r-- 2 dancer dancer 1024 2008-02-12 15:00 e j
 + echo 'cd 2 && echo a > "a'\''f" && mv '\''b g'\'' '\''c h'\'' && touch '\''c h'\'' && dd if='\''e j'\'' of='\''d i'\'''
 + cow-shell
-Invoking /bin/bash
+Invoking /bin/sh
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.5731e-05 s, 39.8 MB/s
+1024 bytes (1.0 kB) copied, 2.5941e-05 s, 39.5 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-合計 12
-129150 -rw-r--r-- 1 dancer dancer    2 2008-02-02 10:59 a'f
-129158 -rw-r--r-- 1 dancer dancer    0 2008-02-02 10:59 c h
-129161 -rw-r--r-- 1 dancer dancer 1024 2008-02-02 10:59 d i
-129082 -rw-r--r-- 2 dancer dancer 1024 2008-02-02 10:59 e j
+total 12
+732676 -rw-r--r-- 1 dancer dancer    2 2008-02-12 15:00 a'f
+732681 -rw-r--r-- 1 dancer dancer    0 2008-02-12 15:00 c h
+732684 -rw-r--r-- 1 dancer dancer 1024 2008-02-12 15:00 d i
+732625 -rw-r--r-- 2 dancer dancer 1024 2008-02-12 15:00 e j
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'

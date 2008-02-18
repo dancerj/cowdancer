@@ -10,32 +10,32 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 1.9851e-05 s, 51.6 MB/s
+1024 bytes (1.0 kB) copied, 2.0719e-05 s, 49.4 MB/s
 + cp -al 1 2
 + MALLOC_TRACE=log
 + cow-shell /tmp/XXXX/tracer
-00400000-00401000 r-xp 00000000 00:12 128847                             /tmp/XXXX/tracer
-00600000-00601000 rw-p 00000000 00:12 128847                             /tmp/XXXX/tracer
+00400000-00401000 r-xp 00000000 00:12 732444                             /tmp/XXXX/tracer
+00600000-00601000 rw-p 00000000 00:12 732444                             /tmp/XXXX/tracer
 00601000-00622000 rw-p 00601000 00:00 0                                  [heap]
-2ad0623f2000-2ad06240f000 r-xp 00000000 08:01 355314                     /lib/ld-2.7.so
-2ad06240f000-2ad062412000 rw-p 2ad06240f000 00:00 0 
-2ad06260e000-2ad062610000 rw-p 0001c000 08:01 355314                     /lib/ld-2.7.so
-2ad062610000-2ad062614000 r-xp 00000000 08:01 629221                     /usr/lib/cowdancer/libcowdancer.so
-2ad062614000-2ad062813000 ---p 00004000 08:01 629221                     /usr/lib/cowdancer/libcowdancer.so
-2ad062813000-2ad062814000 rw-p 00003000 08:01 629221                     /usr/lib/cowdancer/libcowdancer.so
-2ad062814000-2ad062815000 r--p 00000000 00:12 128863                     /tmp/XXXX/.ilist
-2ad062815000-2ad062818000 rw-p 2ad062815000 00:00 0 
-2ad06282d000-2ad062981000 r-xp 00000000 08:01 355324                     /lib/libc-2.7.so
-2ad062981000-2ad062b81000 ---p 00154000 08:01 355324                     /lib/libc-2.7.so
-2ad062b81000-2ad062b84000 r--p 00154000 08:01 355324                     /lib/libc-2.7.so
-2ad062b84000-2ad062b86000 rw-p 00157000 08:01 355324                     /lib/libc-2.7.so
-2ad062b86000-2ad062b8b000 rw-p 2ad062b86000 00:00 0 
-2ad062b8b000-2ad062b8d000 r-xp 00000000 08:01 355411                     /lib/libdl-2.7.so
-2ad062b8d000-2ad062d8d000 ---p 00002000 08:01 355411                     /lib/libdl-2.7.so
-2ad062d8d000-2ad062d8f000 rw-p 00002000 08:01 355411                     /lib/libdl-2.7.so
-2ad062d8f000-2ad062d91000 rw-p 2ad062d8f000 00:00 0 
-7fff486a2000-7fff486b7000 rw-p 7ffffffea000 00:00 0                      [stack]
-7fff487fe000-7fff48800000 r-xp 7fff487fe000 00:00 0                      [vdso]
+2b448f7a1000-2b448f7be000 r-xp 00000000 08:01 355314                     /lib/ld-2.7.so
+2b448f7be000-2b448f7c1000 rw-p 2b448f7be000 00:00 0 
+2b448f9bd000-2b448f9bf000 rw-p 0001c000 08:01 355314                     /lib/ld-2.7.so
+2b448f9bf000-2b448f9c3000 r-xp 00000000 08:01 629221                     /usr/lib/cowdancer/libcowdancer.so
+2b448f9c3000-2b448fbc2000 ---p 00004000 08:01 629221                     /usr/lib/cowdancer/libcowdancer.so
+2b448fbc2000-2b448fbc3000 rw-p 00003000 08:01 629221                     /usr/lib/cowdancer/libcowdancer.so
+2b448fbc3000-2b448fbc4000 r--p 00000000 00:12 732460                     /tmp/XXXX/.ilist
+2b448fbc4000-2b448fbc7000 rw-p 2b448fbc4000 00:00 0 
+2b448fbdc000-2b448fd30000 r-xp 00000000 08:01 355324                     /lib/libc-2.7.so
+2b448fd30000-2b448ff30000 ---p 00154000 08:01 355324                     /lib/libc-2.7.so
+2b448ff30000-2b448ff33000 r--p 00154000 08:01 355324                     /lib/libc-2.7.so
+2b448ff33000-2b448ff35000 rw-p 00157000 08:01 355324                     /lib/libc-2.7.so
+2b448ff35000-2b448ff3a000 rw-p 2b448ff35000 00:00 0 
+2b448ff3a000-2b448ff3c000 r-xp 00000000 08:01 355411                     /lib/libdl-2.7.so
+2b448ff3c000-2b449013c000 ---p 00002000 08:01 355411                     /lib/libdl-2.7.so
+2b449013c000-2b449013e000 rw-p 00002000 08:01 355411                     /lib/libdl-2.7.so
+2b449013e000-2b4490140000 rw-p 2b449013e000 00:00 0 
+7fff1b2f4000-7fff1b309000 rw-p 7ffffffea000 00:00 0                      [stack]
+7fff1b3fe000-7fff1b400000 r-xp 7fff1b3fe000 00:00 0                      [vdso]
 ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
 + RESULT=0
 + mtrace /tmp/XXXX/tracer /tmp/XXXX/log
