@@ -334,7 +334,8 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	  if (!WIFEXITED(status))
 	    {
 	      /* something unexpected */
-	      ilist_outofmemory("unexpected WIFEXITED status in waitpid");
+	      fprintf(stderr, "%s: unexpected WIFEXITED status in waitpid: %x", ilist_PRGNAME, 
+		      (int)status);
 	      goto error_buf;
 	    }
 	  else if (WEXITSTATUS(status))

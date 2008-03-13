@@ -2,6 +2,7 @@ cowdancer (0.45) UNRELEASED; urgency=low
 
   * cowbuilder, qemubuilder: Give error message when '--build' is invoked
     without .dsc file parameter.  (Closes: #460041).
+  * output more useful info on waitpid WIFEXITED debug message.
   * add header to .ilist, so that it is possible to know a little bit more
     about the structure.  Note that upgrade will fail within cowdancer
     session, please re-create chroot:
@@ -17,8 +18,8 @@ cowdancer (0.45) UNRELEASED; urgency=low
   TODO: 
   . LARGEFILE support
   . do not error on cowbuilder upgrade (ignore errors?)
-  
- -- Junichi Uekawa <dancer@debian.org>  Sat, 02 Feb 2008 11:56:40 +0900
+
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 13 Mar 2008 19:14:31 +0900
 
 cowdancer (0.44) unstable; urgency=low
 
