@@ -59,7 +59,11 @@ int forkexecvp (char *const argv[])
       return -1;
     default:
       /* parent process, waiting for termination */
-      waitpid(pid, &status, 0);
+      if (-1==waitpid(pid, &status, 0))
+	{
+	  perror("cowbuilder: waitpid");
+	  return -1;
+	}
       if (!WIFEXITED(status))
 	{
 	  /* something unexpected */
@@ -117,7 +121,11 @@ forkexeclp (const char *path, const char *arg0, ...)
       return -1;
     default:
       /* parent process, waiting for termination */
-      waitpid(pid, &status, 0);
+      if (-1==waitpid(pid, &status, 0))
+	{
+	  perror("cowbuilder: waitpid");
+	  return -1;
+	}
       if (!WIFEXITED(status))
 	{
 	  /* something unexpected */
