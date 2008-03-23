@@ -330,7 +330,12 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	  goto error_buf;
 	default:
 	  /* parent process, waiting for cp -a to terminate */
-	  waitpid(pid, &status, 0);
+	  if(-1==waitpid(pid, &status, 0))
+	    {
+	      perror("waitpid");
+	      goto error_buf;
+	    }
+
 	  if (!WIFEXITED(status))
 	    {
 	      /* something unexpected */
