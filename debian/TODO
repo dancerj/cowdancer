@@ -1,3 +1,5 @@
+* biarch support ?
+
 * fix segv in parameter parsing
 
 	sudo cowbuilder -M aaa bbb cccc

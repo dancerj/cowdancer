@@ -16,8 +16,11 @@ cowdancer (0.45) UNRELEASED; urgency=low
       dpkg: error processing /tmp/buildd/qemubuilder_0.45_amd64.deb (--install):
 
   TODO: 
-  . LARGEFILE support
-  . do not error on cowbuilder upgrade (ignore errors?)
+  . add LARGEFILE support for i386 ?
+  . do not error on cowbuilder upgrade (ignore errors?) 
+
+     -- tzdata package upgrade seems to break applications, and even
+    /bin/cp fails to run.
 
  -- Junichi Uekawa <dancer@debian.org>  Thu, 13 Mar 2008 19:14:31 +0900
 
