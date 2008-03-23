@@ -364,7 +364,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 			printf("   -> successfully killed qemu\n");
 		      else
 			perror("   -> failed to kill qemu? :");
-		      if (-1==waitpid(pid, &status, 0))
+		      if (-1==waitpid(child, &status, 0))
 			{
 			  perror("qemubuilder: waitpid");
 			}
