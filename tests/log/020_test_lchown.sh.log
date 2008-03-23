@@ -15,7 +15,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 2.0174e-05 s, 50.8 MB/s
+1024 bytes (1.0 kB) copied, 2.5067e-05 s, 40.9 MB/s
 + chgrp 1000 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -24,13 +24,13 @@
    2/ before
 + ls -li 2/
 total 4
-732733 -rw-r--r-- 2 dancer dancer    0 2008-02-12 15:00 a
-732734 -rw-r--r-- 2 dancer dancer    0 2008-02-12 15:00 b
-732735 -rw-r--r-- 2 dancer dancer    0 2008-02-12 15:00 c
-732736 -rw-r--r-- 2 dancer dancer    0 2008-02-12 15:00 d
-732739 -rw-r--r-- 2 dancer dancer 1024 2008-02-12 15:00 e
-732737 lrwxrwxrwx 2 dancer dancer    1 2008-02-12 15:00 f -> a
-732738 lrwxrwxrwx 2 dancer dancer    1 2008-02-12 15:00 g -> b
+775625 -rw-r--r-- 2 dancer dancer    0 2008-03-18 15:00 a
+775626 -rw-r--r-- 2 dancer dancer    0 2008-03-18 15:00 b
+775627 -rw-r--r-- 2 dancer dancer    0 2008-03-18 15:00 c
+775628 -rw-r--r-- 2 dancer dancer    0 2008-03-18 15:00 d
+775631 -rw-r--r-- 2 dancer dancer 1024 2008-03-18 15:00 e
+775629 lrwxrwxrwx 2 dancer dancer    1 2008-03-18 15:00 f -> a
+775630 lrwxrwxrwx 2 dancer dancer    1 2008-03-18 15:00 g -> b
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c 4 2/f 2/b 2/g
 chown 2/f
 lchown 2/g
@@ -38,13 +38,13 @@ lchown 2/g
    2/ after
 + ls -li 2/
 total 4
-732790 -rw-r--r-- 1 dancer adm       0 2008-02-12 15:00 a
-732734 -rw-r--r-- 2 dancer dancer    0 2008-02-12 15:00 b
-732735 -rw-r--r-- 2 dancer dancer    0 2008-02-12 15:00 c
-732736 -rw-r--r-- 2 dancer dancer    0 2008-02-12 15:00 d
-732739 -rw-r--r-- 2 dancer dancer 1024 2008-02-12 15:00 e
-732737 lrwxrwxrwx 2 dancer dancer    1 2008-02-12 15:00 f -> a
-732796 lrwxrwxrwx 1 dancer adm       1 2008-02-12 15:00 g -> b
+775692 -rw-r--r-- 1 dancer adm       0 2008-03-18 15:00 a
+775626 -rw-r--r-- 2 dancer dancer    0 2008-03-18 15:00 b
+775627 -rw-r--r-- 2 dancer dancer    0 2008-03-18 15:00 c
+775628 -rw-r--r-- 2 dancer dancer    0 2008-03-18 15:00 d
+775631 -rw-r--r-- 2 dancer dancer 1024 2008-03-18 15:00 e
+775629 lrwxrwxrwx 2 dancer dancer    1 2008-03-18 15:00 f -> a
+775698 lrwxrwxrwx 1 dancer adm       1 2008-03-18 15:00 g -> b
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
