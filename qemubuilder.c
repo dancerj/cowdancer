@@ -764,6 +764,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	   "echo ' -> qemu-pbuilder second-stage' \n"
 	   "/debootstrap/debootstrap --second-stage\n"
 	   "echo deb %s %s %s > /etc/apt/sources.list \n"
+	   "echo 'APT::Install-Recommends \"false\"' > /etc/apt/apt.conf.d/15pbuilder"
 	   //TODO: copy hook scripts
 	   "mount -n /proc /proc -t proc\n"
 	   "dhclient eth0\n"

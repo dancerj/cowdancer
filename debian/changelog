@@ -14,6 +14,11 @@ cowdancer (0.45) UNRELEASED; urgency=low
       cowdancer: .ilist header unexpected
       dpkg-split: unable to read part file `/tmp/buildd/qemubuilder_0.45_amd64.deb': Cannot allocate memory
       dpkg: error processing /tmp/buildd/qemubuilder_0.45_amd64.deb (--install):
+  * Bug fix: "qemubuilder --create installs many useless? packages",
+    thanks to David Bremner (Closes: #476547).
+    Do not install recommended packages. 
+    Qemubuilder now creates '/etc/apt/apt.conf.d/15pbuilder' in the same
+    manner as pbuilder.
 
   TODO: 
   . add LARGEFILE support for i386 ?
@@ -22,7 +27,7 @@ cowdancer (0.45) UNRELEASED; urgency=low
      -- tzdata package upgrade seems to break applications, and even
     /bin/cp fails to run.
 
- -- Junichi Uekawa <dancer@debian.org>  Thu, 13 Mar 2008 19:14:31 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 19 Apr 2008 01:04:33 +0900
 
 cowdancer (0.44) unstable; urgency=low
 
