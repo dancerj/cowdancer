@@ -1,1 +1,11 @@
+*.lo
+*.o
+*.so
 *~
+/build-stamp
+/configure-stamp
+/cow-shell
+/cowbuilder
+/cowdancer-ilistcreate
+/cowdancer-ilistdump
+/qemubuilder
