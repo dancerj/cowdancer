@@ -2,7 +2,7 @@
   Copy-on-write filesystem invocation.
 
   GPL v2 or later
-  Copyright 2005-2007 Junichi Uekawa.
+  Copyright 2005-2008 Junichi Uekawa.
  */
 #define _GNU_SOURCE
 

@@ -1,7 +1,7 @@
 /*BINFMTC: ilistcreate.c
  *
  *  ilist creation command-line interface
- *  Copyright (C) 2007 Junichi Uekawa
+ *  Copyright (C) 2007-2008 Junichi Uekawa
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

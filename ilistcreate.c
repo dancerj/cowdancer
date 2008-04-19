@@ -1,7 +1,7 @@
 /*BINFMTC: -g -DILISTCREATEBENCH
  * cowdancer -- a Copy-on-write data-access; No-cow-easy-replacement
  *
- * Copyright 2007 Junichi Uekawa
+ * Copyright 2007-2008 Junichi Uekawa
  * GPL v2 or later.
  */
 #include <stdlib.h>
