@@ -157,14 +157,18 @@ int cpbuilder_dumpconfig(pbuilderconfig* pc)
   DUMPINT(mountdev);
   DUMPINT(mountdevpts);
   DUMPINT(save_after_login);
-  DUMPINT(memory_megs);
+
   DUMPSTR(buildplace);
   DUMPSTR(buildresult);
   DUMPSTR(basepath);
   DUMPSTR(mirror);
   DUMPSTR(distribution);
+  DUMPSTR(components);
+  DUMPSTR(debbuildopts);
+
   DUMPSTR(kernel_image);
   DUMPSTR(initrd);
+  DUMPINT(memory_megs);
   DUMPSTR(arch);
   return 0;
 }
