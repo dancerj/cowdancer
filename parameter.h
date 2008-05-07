@@ -33,6 +33,9 @@ typedef struct pbuilderconfig
   char* components;
   char* debbuildopts;
 
+  /* cow-specific options */
+  int no_cowdancer_update;		/* --no-cowdancer-update */
+
   /* more qemu-isque options */
   char* kernel_image;
   char* initrd;

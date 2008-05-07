@@ -5,7 +5,7 @@ cowdancer (0.45) UNRELEASED; urgency=low
   * output more useful info on waitpid WIFEXITED debug message.
   * add header to .ilist, so that it is possible to know a little bit more
     about the structure.  Note that upgrade will fail within cowdancer
-    session, please re-create chroot:
+    session, please re-create chroot, or use the --no-cowdancer-update option:
 
       Unpacking cowdancer (from .../cowdancer_0.45_amd64.deb) ...
       ERROR: ld.so: object '/usr/lib/cowdancer/libcowdancer.so' from LD_PRELOAD cannot be preloaded: ignored.
@@ -19,13 +19,6 @@ cowdancer (0.45) UNRELEASED; urgency=low
     Do not install recommended packages. 
     Qemubuilder now creates '/etc/apt/apt.conf.d/15pbuilder' in the same
     manner as pbuilder.
-
-  TODO: 
-  . add LARGEFILE support for i386 ?
-  . do not error on cowbuilder upgrade (ignore errors?) 
-
-     -- tzdata package upgrade seems to break applications, and even
-    /bin/cp fails to run.
 
  -- Junichi Uekawa <dancer@debian.org>  Sat, 19 Apr 2008 01:04:33 +0900
 
