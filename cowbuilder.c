@@ -478,11 +478,13 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
   */
   
   if (0>asprintf(&buf_chroot, 
-		 pc->no_cowdancer_update?"chroot %s":
+		 (pc->no_cowdancer_update)?"chroot %s":	/* try to not use cow-shell, when
+							   no-cowdancer-update option is used */
 		 "chroot %s cow-shell",
 		 pc->buildplace))
     {
-      /* outofmemory */
+      /* if outofmemory, die. */
+      fprintf(stderr, "Out of memory.\n");
       return -1;
     }
   
@@ -519,7 +521,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
 	    }
 	}
       else
-	  printf("pbuilder update aborted, not cleaning\n");
+	printf("pbuilder update aborted, not cleaning\n");
       
       /* either way, I don't want to touch the original tree */
       goto out;
