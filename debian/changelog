@@ -19,8 +19,10 @@ cowdancer (0.45) UNRELEASED; urgency=low
     Do not install recommended packages. 
     Qemubuilder now creates '/etc/apt/apt.conf.d/15pbuilder' in the same
     manner as pbuilder.
+  * Bug fix: "qemubuilder: Please add kvm as alternate dependency", thanks
+    to Josh Triplett (Closes: #479277).
 
- -- Junichi Uekawa <dancer@debian.org>  Sat, 19 Apr 2008 01:04:33 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 08 May 2008 13:36:03 +0900
 
 cowdancer (0.44) unstable; urgency=low
 
