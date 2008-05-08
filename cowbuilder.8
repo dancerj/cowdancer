@@ -66,6 +66,13 @@ directory in which the COW master data is stored, the default being
 Additional configuration file to read after all other
 configuration files have been read.
 
+.TP
+.BI "\-\-no\-cowdancer\-update"
+
+Do not use cowdancer on cowbuilder --update. Please use this option
+when cowdancer is interfering with upgrade process, or cowdancer
+itself is being upgraded within chroot.
+
 .SH "CONFIGURATION FILES"
 
 cowbuilder reads the following configuration files per default.
@@ -86,7 +93,6 @@ User default
 .I "anything specified with \-\-configfile option"
 Additional configuration at runtime.
 
-
 .SH "CONFIGURATION FILE OPTIONS"
 
 The possible configuration options are as follows.  Others are
@@ -106,6 +112,12 @@ ignored.
 
 .TP
 .BI "MIRRORSITE=" "http://mirror"
+
+.TP
+.BI "NO_COWDANCER_UPDATE=" "1"
+
+See
+.B "--no-cowdancer-update"
 
 .SH "EXAMPLES"
 

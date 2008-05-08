@@ -130,6 +130,10 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    {
 	      pc->debbuildopts=strdup(delim);
 	    }
+	  else if (!strcmp(buf, "NO_COWDANCER_UPDATE"))
+	    {
+	      pc->no_cowdancer_update=1;
+	    }
 	}
     }
 
@@ -157,14 +161,20 @@ int cpbuilder_dumpconfig(pbuilderconfig* pc)
   DUMPINT(mountdev);
   DUMPINT(mountdevpts);
   DUMPINT(save_after_login);
-  DUMPINT(memory_megs);
+
   DUMPSTR(buildplace);
   DUMPSTR(buildresult);
   DUMPSTR(basepath);
   DUMPSTR(mirror);
   DUMPSTR(distribution);
+  DUMPSTR(components);
+  DUMPSTR(debbuildopts);
+
+  DUMPINT(no_cowdancer_update);
+  
   DUMPSTR(kernel_image);
   DUMPSTR(initrd);
+  DUMPINT(memory_megs);
   DUMPSTR(arch);
   return 0;
 }
@@ -204,6 +214,7 @@ int parse_parameter(int ac, char** av,
     {"distribution", required_argument, 0, 0},
     {"components", required_argument, 0, 0},
     {"debbuildopts", required_argument, 0, 0},
+    {"no-cowdancer-update", no_argument, 0, 0},
 
     /* verbatim options, synced as of pbuilder 0.153 */
     {"othermirror", required_argument, 0, 'M'},
@@ -339,6 +350,10 @@ int parse_parameter(int ac, char** av,
 	  else if (!strcmp(long_options[index_point].name,"distribution"))
 	    {
 	      pc.distribution=strdup(optarg);
+	    }
+	  else if (!strcmp(long_options[index_point].name,"no-cowdancer-update"))
+	    {
+	      pc.no_cowdancer_update=1;
 	    }
 	  else if (!strcmp(long_options[index_point].name,"components"))
 	    {

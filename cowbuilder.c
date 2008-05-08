@@ -476,12 +476,18 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
      but it will not work with new pbuilder-cow sessions until this process finishes, 
      and any failure to pbuilder update will leave crap.
   */
-  if (0>asprintf(&buf_chroot, "chroot %s cow-shell", pc->buildplace))
+  
+  if (0>asprintf(&buf_chroot, 
+		 (pc->no_cowdancer_update)?"chroot %s":	/* try to not use cow-shell, when
+							   no-cowdancer-update option is used */
+		 "chroot %s cow-shell",
+		 pc->buildplace))
     {
-      /* outofmemory */
+      /* if outofmemory, die. */
+      fprintf(stderr, "Out of memory.\n");
       return -1;
     }
-
+  
   if (cpbuilder_internal_cowcopy(pc))
     {
       fprintf(stderr, "Failed cowcopy.\n");
@@ -515,7 +521,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
 	    }
 	}
       else
-	  printf("pbuilder update aborted, not cleaning\n");
+	printf("pbuilder update aborted, not cleaning\n");
       
       /* either way, I don't want to touch the original tree */
       goto out;
