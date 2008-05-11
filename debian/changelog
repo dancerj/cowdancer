@@ -1,4 +1,4 @@
-cowdancer (0.45) UNRELEASED; urgency=low
+cowdancer (0.45) unstable; urgency=low
 
   * cowbuilder, qemubuilder: Give error message when '--build' is invoked
     without .dsc file parameter.  (Closes: #460041).
@@ -22,7 +22,7 @@ cowdancer (0.45) UNRELEASED; urgency=low
   * Bug fix: "qemubuilder: Please add kvm as alternate dependency", thanks
     to Josh Triplett (Closes: #479277).
 
- -- Junichi Uekawa <dancer@debian.org>  Thu, 08 May 2008 13:36:03 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 12 May 2008 08:47:40 +0900
 
 cowdancer (0.44) unstable; urgency=low
 
