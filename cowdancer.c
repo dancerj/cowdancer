@@ -334,6 +334,8 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	  if(-1==waitpid(pid, &status, 0))
 	    {
 	      perror("waitpid:cp");
+	      fprintf(stderr, "%s: unexpected waitpid error when waiting for process %i with status %x\n",
+		      ilist_PRGNAME, pid, status);
 	      goto error_buf;
 	    }
 
