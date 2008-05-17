@@ -323,6 +323,7 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	  /* child process, run cp */
 	  putenv("COWDANCER_IGNORE=yes");
 	  execl("/bin/cp", "/bin/cp", "-a", canonical, backup_file, NULL);
+	  perror("execl:cp:");
 	  exit(EXIT_FAILURE);
 	case -1:
 	  /* error condition in fork(); something is really wrong */
@@ -332,7 +333,7 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	  /* parent process, waiting for cp -a to terminate */
 	  if(-1==waitpid(pid, &status, 0))
 	    {
-	      perror("waitpid");
+	      perror("waitpid:cp");
 	      goto error_buf;
 	    }
 
