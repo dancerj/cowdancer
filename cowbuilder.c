@@ -222,6 +222,7 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
   prevdir=get_current_dir_name();
   chdir(pc->buildplace);
 
+
   if (forkexeclp("chroot", 
 		 "chroot",
 		 pc->buildplace,
@@ -231,9 +232,34 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
 		 NULL))
     {
       /* if there was an error, back off to manual form */
-      fprintf(stderr, "W: cowdancer-ilistcreate failed to run within chroot, falling back to old method\n");
-      ilistcreate(ilistfile,
-		  "find . -xdev -path ./home -prune -o \\( \\( -type l -o -type f \\) -a -links +1 -print0 \\) | xargs -0 stat --format '%d %i '");
+
+      /* but first, try etch-workaround */
+      if (pc->debian_etch_workaround)
+	{
+	  fprintf(stderr, "W: Trying my backup method for working with Debian Etch chroots.\n");
+	  if (forkexeclp("chroot", 
+			 "chroot",
+			 pc->buildplace,
+			 "cow-shell", 
+			 "/bin/true", 
+			 NULL))
+	    {
+	      /* I failed, what can I do? noooo */
+	      fprintf(stderr, "E: failed running Debian Etch compatibility backup plan, I'm in panic, eek.\n");
+	      return 1;
+	    }
+	}
+      else
+	{
+	  /* 
+	     try the normal backup method
+
+	     It probably doesn't work but try it anyway.
+	   */
+	  fprintf(stderr, "W: cowdancer-ilistcreate failed to run within chroot, falling back to old method\n");
+	  ilistcreate(ilistfile,
+		      "find . -xdev -path ./home -prune -o \\( \\( -type l -o -type f \\) -a -links +1 -print0 \\) | xargs -0 stat --format '%d %i '");
+	}
     }
   chdir(prevdir);
   free(prevdir);

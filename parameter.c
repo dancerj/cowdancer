@@ -134,6 +134,10 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    {
 	      pc->no_cowdancer_update=1;
 	    }
+	  else if (!strcmp(buf, "DEBIAN_ETCH_WORKAROUND"))
+	    {
+	      pc->debian_etch_workaround=1;
+	    }
 	}
     }
 
@@ -215,6 +219,7 @@ int parse_parameter(int ac, char** av,
     {"components", required_argument, 0, 0},
     {"debbuildopts", required_argument, 0, 0},
     {"no-cowdancer-update", no_argument, 0, 0},
+    {"debian-etch-workaround", no_argument, 0, 0},
 
     /* verbatim options, synced as of pbuilder 0.153 */
     {"othermirror", required_argument, 0, 'M'},
@@ -354,6 +359,10 @@ int parse_parameter(int ac, char** av,
 	  else if (!strcmp(long_options[index_point].name,"no-cowdancer-update"))
 	    {
 	      pc.no_cowdancer_update=1;
+	    }
+	  else if (!strcmp(long_options[index_point].name,"debian-etch-workaround")) 
+	    {
+	      pc.debian_etch_workaround=1;
 	    }
 	  else if (!strcmp(long_options[index_point].name,"components"))
 	    {

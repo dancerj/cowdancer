@@ -1,3 +1,12 @@
+cowdancer (0.46) UNRELEASED; urgency=low
+
+  * make cowbuilder work with cowbuilder in etch.  Bug 410723 will revive,
+    so it will need --debian-etch-workaround option to enable.
+    "provide cowdancer etch support", thanks to Patrick Winnertz
+    (Closes: #481344).
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 17 May 2008 23:55:28 +0900
+
 cowdancer (0.45) unstable; urgency=low
 
   * cowbuilder, qemubuilder: Give error message when '--build' is invoked

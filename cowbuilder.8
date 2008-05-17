@@ -73,6 +73,12 @@ Do not use cowdancer on cowbuilder --update. Please use this option
 when cowdancer is interfering with upgrade process, or cowdancer
 itself is being upgraded within chroot.
 
+.TP
+.BI "\-\-debian\-etch\-workaround"
+
+Work around on Debian etch compatibility. cow-shell will search for
+all files in chroot, but will work.
+
 .SH "CONFIGURATION FILES"
 
 cowbuilder reads the following configuration files per default.
@@ -118,6 +124,12 @@ ignored.
 
 See
 .B "--no-cowdancer-update"
+
+.TP
+.BI "DEBIAN_ETCH_WORKAROUND=" "1"
+
+See
+.B "--debian-etch-workaround"
 
 .SH "EXAMPLES"
 

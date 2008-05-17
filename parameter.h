@@ -35,6 +35,7 @@ typedef struct pbuilderconfig
 
   /* cow-specific options */
   int no_cowdancer_update;		/* --no-cowdancer-update */
+  int debian_etch_workaround;		/* --debian-etch-workaround */
 
   /* more qemu-isque options */
   char* kernel_image;
