@@ -540,7 +540,14 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
     {
       if (ret < 128)
 	{
-	  printf("pbuilder update failed\n");
+	  fprintf(stderr, "pbuilder update failed\n");
+
+	  if (!pc->no_cowdancer_update)
+	    {
+	      /* advise the user to try this option first */
+	      fprintf(stderr, "E: could not update with cowdancer, try --no-cowdancer-update option\n");
+	    }
+
 	  if (0!=forkexeclp("rm", "rm", "-rf", pc->buildplace, NULL))
 	    {
 	      fprintf(stderr, "Could not remove original tree\n");
