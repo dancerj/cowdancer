@@ -1,3 +1,9 @@
+cowdancer (0.47) UNRELEASED; urgency=low
+
+  * 
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 18 May 2008 12:36:15 +0900
+
 cowdancer (0.46) unstable; urgency=low
 
   * make cowbuilder work with cowbuilder in etch.  Bug 410723 will revive,
