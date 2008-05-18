@@ -18,11 +18,9 @@ TESTCODE=$(readlink -f cowdancer-ilistdump.c)
 
     cd 1 
     find -links +1 -type f -printf "%D %i\n" | sort -k 2 -n > ../mylist.1
-    cow-shell echo hello
+    cow-shell "${TESTCODE}" ${TESTDIR}/1/.ilist | sort -k 2 -n > ${TESTDIR}/mylist.2
 )
 RET=$?
-
-"${TESTCODE}" ${TESTDIR}/1/.ilist | sort -k 2 -n > ${TESTDIR}/mylist.2
 
 diff -u ${TESTDIR}/mylist.1 ${TESTDIR}/mylist.2
 
