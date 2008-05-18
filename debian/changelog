@@ -7,7 +7,7 @@ cowdancer (0.46) unstable; urgency=low
   * Add reference to --no-cowdancer-update option in the error message so
     that it's more obvious. (Closes: #481609).
 
- -- Junichi Uekawa <dancer@debian.org>  Sun, 18 May 2008 00:29:58 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 18 May 2008 12:24:21 +0900
 
 cowdancer (0.45) unstable; urgency=low
 
