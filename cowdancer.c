@@ -316,12 +316,21 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	}
       
       /* let cp do the task, 
-	 it probably knows about filesystem details more than I do. */
+	 it probably knows about filesystem details more than I do. 
+	 
+	 forking here is really difficult; I should rewrite this code
+	 to not fork/exec. Signal handling and process waiting is too
+	 unreliable.
+      */
       switch(pid=fork())
 	{
 	case 0:
 	  /* child process, run cp */
 	  putenv("COWDANCER_IGNORE=yes");
+	  sched_yield();	/* give parent process a chance to run waitpid.
+				   However, doing this is not perfect, and in some OSs (Solaris?),
+				   waitpid is overridden with SIGCHLD handler.
+				 */
 	  execl("/bin/cp", "/bin/cp", "-a", canonical, backup_file, NULL);
 	  perror("execl:cp:");
 	  exit(EXIT_FAILURE);
