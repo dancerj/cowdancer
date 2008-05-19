@@ -62,6 +62,8 @@ int forkexecvp (char *const argv[])
       if (-1==waitpid(pid, &status, 0))
 	{
 	  perror("cowbuilder: waitpid");
+	  fprintf(stderr, "unexpected waitpid error when waiting for process %i with status %x\n",
+		  pid, status);
 	  return -1;
 	}
       if (!WIFEXITED(status))
