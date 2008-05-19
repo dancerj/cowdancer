@@ -256,6 +256,7 @@ static int check_inode_and_copy(const char* s, int canonicalize)
   int ret;
   pid_t pid;
   int status;
+  sigset_t newmask, omask;
   
   debug_cowdancer_2("DEBUG: test for", s);
   if(lstat(s, &buf))
@@ -314,7 +315,17 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	  perror("mkstemp");
 	  goto error_buf;
 	}
-      
+
+      /* mask the SIGCHLD signal, I want waitpid to work.
+       */
+      sigemptyset (&newmask);
+      sigaddset (&newmask, SIGCHLD);
+      if (sigprocmask (SIG_BLOCK, &newmask, &omask) < 0)
+	{
+	  perror("sigprocmask");
+	  goto error_buf;
+	}
+
       /* let cp do the task, 
 	 it probably knows about filesystem details more than I do. 
 	 
@@ -327,17 +338,14 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	case 0:
 	  /* child process, run cp */
 	  putenv("COWDANCER_IGNORE=yes");
-	  sched_yield();	/* give parent process a chance to run waitpid.
-				   However, doing this is not perfect, and in some OSs (Solaris?),
-				   waitpid is overridden with SIGCHLD handler.
-				 */
+	  sigprocmask (SIG_SETMASK, &omask, (sigset_t *) NULL); /* unmask SIGCHLD signal */
 	  execl("/bin/cp", "/bin/cp", "-a", canonical, backup_file, NULL);
 	  perror("execl:cp:");
 	  exit(EXIT_FAILURE);
 	case -1:
 	  /* error condition in fork(); something is really wrong */
 	  ilist_outofmemory("out of memory in check_inode_and_copy, 2");
-	  goto error_buf;
+	  goto error_spm;
 	default:
 	  /* parent process, waiting for cp -a to terminate */
 	  if(-1==waitpid(pid, &status, 0))
@@ -345,7 +353,7 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	      perror("waitpid:cp");
 	      fprintf(stderr, "%s: unexpected waitpid error when waiting for process %i with status %x\n",
 		      ilist_PRGNAME, pid, status);
-	      goto error_buf;
+	      goto error_spm;
 	    }
 
 	  if (!WIFEXITED(status))
@@ -353,23 +361,24 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	      /* something unexpected */
 	      fprintf(stderr, "%s: unexpected WIFEXITED status in waitpid: %x\n", ilist_PRGNAME, 
 		      (int)status);
-	      goto error_buf;
+	      goto error_spm;
 	    }
 	  else if (WEXITSTATUS(status))
 	    {
 	      /* cp -a failed */
 	      fprintf(stderr, "%s: cp -a failed for %s\n", ilist_PRGNAME, backup_file);
-	      goto error_buf;
+	      goto error_spm;
 	    }
 	  /* when cp -a succeeded, overwrite the target file from the temporary file with rename */
 	  else if (-1==rename(backup_file, canonical))
 	    {
 	      perror ("file overwrite with rename");
 	      fprintf(stderr, "%s: while trying rename of %s to %s\n",  ilist_PRGNAME, canonical, backup_file);
-	      goto error_buf;
+	      goto error_spm;
 	    }
 	}
       free(backup_file);
+      sigprocmask (SIG_SETMASK, &omask, (sigset_t *) NULL);
     }
   else				
     debug_cowdancer_2("DEBUG: did not match ", s);
@@ -378,6 +387,8 @@ static int check_inode_and_copy(const char* s, int canonicalize)
   return 0;
 
   /* error-processing routine. */
+ error_spm:
+  sigprocmask (SIG_SETMASK, &omask, (sigset_t *) NULL);
  error_buf:
   free(backup_file);
  error_canonical:

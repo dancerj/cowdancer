@@ -1,11 +1,10 @@
-cowdancer (0.47) UNRELEASED; urgency=low
+cowdancer (0.47) unstable; urgency=low
 
   * Bug fix: "cowdancer: unexpected WIFEXITED status in waitpid", thanks
     to Andreas Beckmann (Closes: #466709).
-    As a workaround, sched_yield() after fork before exec. Fundamental fix 
-    will be to reimplement cp without fork/exec.
+    Block SIGCHLD when forking cp.
 
- -- Junichi Uekawa <dancer@debian.org>  Mon, 19 May 2008 09:41:05 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 20 May 2008 07:58:24 +0900
 
 cowdancer (0.46) unstable; urgency=low
 
