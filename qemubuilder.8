@@ -153,6 +153,16 @@ BASEPATH=/home/dancer/tmp/base-i386.qemu
 MEMORY_MEGS=64
 .qy
 
+Note. INITRD may or may not be required for your system.  Debian Installer
+initrd may or may not work depending on which one you choose, use the
+one from an installed system.
+
+.TP
+.B "CAVEATS"
+
+Note that for mirror specification, http://localhost/debian/ usually
+doesn't work, it will be searching for files on the virtual machine
+itself, not the host OS.
 
 .SH "AUTHOR"
 Junichi Uekawa (dancer@debian.org)
