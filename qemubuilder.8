@@ -1,4 +1,4 @@
-.TH "qemubuilder" 8 "2007 May 27" "pbuilder" "pbuilder"
+.TH "qemubuilder" 8 "2008 Aug 10" "pbuilder" "pbuilder"
 .SH "NAME"
 qemubuilder \- a pbuilder wrapper for qemu.
 .SH SYNOPSIS
@@ -41,6 +41,12 @@ Execute a command within the base.qemu.
 .B "--dumpconfig"
 
 dump configuration information.
+
+.TP
+.BI "--arch-diskdevice " "sd/hd"
+
+specify whether disk device inside the virtual machine is called /dev/sda or
+/dev/hda. The possible value is 'sd' or 'hd'.
 
 .SH "OPTIONS"
 
@@ -107,6 +113,12 @@ The target architecture.
 .TP
 .BI "MEMORY_MEGS=" "64"
 memory size to use in qemu session, in MB.
+
+.TP
+.BI "ARCH_DISKDEVICE=" "hd"
+
+The architecture-specific disk device specifier. Most arches use sd,
+except for i386 and amd64, which use hd.
 
 .SH  "EXAMPLES"
 

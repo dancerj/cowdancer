@@ -138,6 +138,10 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    {
 	      pc->debian_etch_workaround=1;
 	    }
+	  else if (!strcmp(buf, "ARCH_DISKDEVICE"))
+	    {
+	      pc->arch_diskdevice=strdup(delim);
+	    }
 	}
     }
 
@@ -218,8 +222,13 @@ int parse_parameter(int ac, char** av,
     {"distribution", required_argument, 0, 0},
     {"components", required_argument, 0, 0},
     {"debbuildopts", required_argument, 0, 0},
+
+    /* cowbuilder specific options */
     {"no-cowdancer-update", no_argument, 0, 0},
     {"debian-etch-workaround", no_argument, 0, 0},
+
+    /* qemubuilder specific options */
+    {"arch-diskdevice", no_argument, 0, 0},
 
     /* verbatim options, synced as of pbuilder 0.153 */
     {"othermirror", required_argument, 0, 'M'},
@@ -363,6 +372,10 @@ int parse_parameter(int ac, char** av,
 	  else if (!strcmp(long_options[index_point].name,"debian-etch-workaround")) 
 	    {
 	      pc.debian_etch_workaround=1;
+	    }
+	  else if (!strcmp(long_options[index_point].name,"arch-diskdevice"))
+	    {
+	      pc.arch_diskdevice=strdup(optarg);
 	    }
 	  else if (!strcmp(long_options[index_point].name,"components"))
 	    {

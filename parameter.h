@@ -32,7 +32,7 @@ typedef struct pbuilderconfig
   char* distribution;
   char* components;
   char* debbuildopts;
-
+  
   /* cow-specific options */
   int no_cowdancer_update;		/* --no-cowdancer-update */
   int debian_etch_workaround;		/* --debian-etch-workaround */
@@ -42,6 +42,7 @@ typedef struct pbuilderconfig
   char* initrd;
   int memory_megs;		/* megabytes of memory */
   char* arch;
+  char* arch_diskdevice;
 
   enum {
     pbuilder_do_nothing=0,

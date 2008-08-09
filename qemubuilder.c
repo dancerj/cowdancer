@@ -61,10 +61,13 @@ static const char* qemu_arch_serialdevice(const char* arch)
 /**
  * arch-specific routine; disk device name to use
  */
-static const char* qemu_arch_diskdevice(const char* arch)
+static const char* qemu_arch_diskdevice(const struct pbuilderconfig* pc)
 {
-  if (!strcmp(arch, "arm") || 
-      !strcmp(arch, "armel"))
+  if (pc->arch_diskdevice)
+    return pc->arch_diskdevice;
+
+  if (!strcmp(pc->arch, "arm") || 
+      !strcmp(pc->arch, "armel"))
     {
       return "sd";
     }
@@ -401,7 +404,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       
       asprintf(&append_command,
 	       "root=/dev/%sa init=/pbuilder-run console=%s",
-	       qemu_arch_diskdevice(pc->arch),
+	       qemu_arch_diskdevice(pc),
 	       qemu_arch_tty(pc->arch));
             
       dup2(sp[1],1);
@@ -728,7 +731,6 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
     }
   free(s);
   
-  /* this 'sdb' part is arch specific. */
   asprintf(&s,
 	   "#!/bin/bash\n"
 	   "echo \n"
@@ -741,7 +743,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	   "mkdir -p $PBUILDER_MOUNTPOINT\n"
 	   "mount -n -t ext3 /dev/%sb $PBUILDER_MOUNTPOINT \n"
 	   "$PBUILDER_MOUNTPOINT/pbuilder-run \n",
-	   qemu_arch_diskdevice(pc->arch)
+	   qemu_arch_diskdevice(pc)
 	   );
   
   create_script(pc->buildplace, 
