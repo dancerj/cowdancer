@@ -130,7 +130,6 @@ static const char* qemu_arch_qemumachine(const char* arch)
   return NULL;
 }
 
-
 /**
  * arch-specific routine; the serial device
  */
@@ -242,8 +241,6 @@ static int create_script(const char* mountpoint, const char* relative_path, cons
   return ret;
 }
 
-
-
 /**
    copy file contents to temporary filesystem, so that it can be used inside qemu.
  */
@@ -283,7 +280,6 @@ static int copy_file_internal(const char* orig, const char*dest)
   
   return ret;
 }
-
 
 /* minimally fix terminal I/O */
 static void fix_terminal(void)
@@ -747,7 +743,6 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	   "$PBUILDER_MOUNTPOINT/pbuilder-run \n",
 	   qemu_arch_diskdevice(pc->arch)
 	   );
-  
   
   create_script(pc->buildplace, 
 		"pbuilder-run",
