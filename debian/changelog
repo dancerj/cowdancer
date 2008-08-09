@@ -1,3 +1,9 @@
+cowdancer (0.48) UNRELEASED; urgency=low
+
+  * qemubuilder: add support for armel.
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 10 Aug 2008 04:38:33 +0900
+
 cowdancer (0.47) unstable; urgency=low
 
   * Bug fix: "cowdancer: unexpected WIFEXITED status in waitpid", thanks

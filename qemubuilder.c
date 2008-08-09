@@ -50,7 +50,8 @@ const char* qemu_keyword="END OF WORK EXIT CODE=";
  */
 static const char* qemu_arch_serialdevice(const char* arch)
 {
-  if (!strcmp(arch, "arm"))
+  if (!strcmp(arch, "arm") || 
+      !strcmp(arch, "armel"))
     {
       return "mknod dev/console c 204 64; ";
     }
@@ -62,7 +63,8 @@ static const char* qemu_arch_serialdevice(const char* arch)
  */
 static const char* qemu_arch_diskdevice(const char* arch)
 {
-  if (!strcmp(arch, "arm"))
+  if (!strcmp(arch, "arm") || 
+      !strcmp(arch, "armel"))
     {
       return "sd";
     }
@@ -74,7 +76,8 @@ static const char* qemu_arch_diskdevice(const char* arch)
  */
 static const char* qemu_arch_qemu(const char* arch)
 {
-  if (!strcmp(arch, "arm"))
+  if (!strcmp(arch, "arm") || 
+      !strcmp(arch, "armel"))
     {
       return "qemu-system-arm";
     }
@@ -113,7 +116,8 @@ static const char* qemu_arch_qemu(const char* arch)
  */
 static const char* qemu_arch_qemumachine(const char* arch)
 {
-  if (!strcmp(arch, "arm"))
+  if (!strcmp(arch, "arm") || 
+      !strcmp(arch, "armel"))
     return "versatilepb";
   else if (!strcmp(arch, "i386") ||
 	   !strcmp(arch, "amd64"))
@@ -132,7 +136,9 @@ static const char* qemu_arch_qemumachine(const char* arch)
  */
 static const char* qemu_arch_tty(const char* arch)
 {
-  if (!strcmp(arch, "arm"))
+
+  if (!strcmp(arch, "arm")||
+      !strcmp(arch, "armel"))
     {
       return "ttyAMA0";
     }
