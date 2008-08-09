@@ -439,9 +439,21 @@ int parse_parameter(int ac, char** av,
       return cpbuilder_build(&pc, av[optind]);
       
     case pbuilder_create:
+      if (av[optind])
+	{
+	  /* extra parameter */
+	  fprintf(stderr, "E: too many parameters for create\n");
+	  return 1;
+	}
       return cpbuilder_create(&pc);
       
     case pbuilder_update:
+      if (av[optind])
+	{
+	  /* extra parameter */
+	  fprintf(stderr, "E: too many parameters for update\n");
+	  return 1;
+	}
       return cpbuilder_update(&pc);
       
     case pbuilder_login:
