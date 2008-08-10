@@ -1,10 +1,10 @@
-cowdancer (0.48) UNRELEASED; urgency=low
+cowdancer (0.48) unstable; urgency=low
 
   * qemubuilder: add support for armel.
   * qemubuilder: add support for --arch-diskdevice option so that users of
     Ubuntu i386 kernels can override from default hd to sd.
 
- -- Junichi Uekawa <dancer@debian.org>  Sun, 10 Aug 2008 08:20:29 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 10 Aug 2008 23:40:39 +0900
 
 cowdancer (0.47) unstable; urgency=low
 
