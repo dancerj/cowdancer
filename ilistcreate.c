@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include "ilist.h"
 
-/* I will die when things get too wrong. */
+/* Output error message. You need to process the error result. */
 void ilist_outofmemory(const char* msg)
 {
   fprintf (stderr, "%s: %s\n", ilist_PRGNAME, msg);
