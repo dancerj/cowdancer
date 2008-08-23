@@ -25,7 +25,7 @@ Description: Copy-on-write directory tree utility.
 
 Package: qemubuilder
 Architecture: i386 amd64 powerpc
-Depends: ${shlibs:Depends}, qemu | kvm, pbuilder (>= 0.174)
+Depends: ${shlibs:Depends}, qemu | kvm, pbuilder (>= 0.174), debootstrap
 Description: pbuilder using QEMU as backend
  pbuilder implementation for QEMU.
  .
