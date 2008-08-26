@@ -1,0 +1,32 @@
+cowbuilder for Debian
+---------------------
+
+This is a note on how to use cowbuilder
+
+First, create the chroot image in /var/cache/pbuilder/base.cow/ with
+
+        cowbuilder --create
+
+You can update this image with
+
+        cowbuilder --update
+
+
+
+To build a package, 
+
+        cowbuilder --build XXX.dsc
+
+or more simpler
+
+        pdebuild --pbuilder cowbuilder
+
+or even more simpler
+
+        edit /etc/pbuilderrc to have PDEBUILD_PBUILDER=cowbuilder
+
+        pdebuild
+
+
+ -- Junichi Uekawa <dancer@debian.org>, Mon, 25 Aug 2008 21:22:56 -0700
+

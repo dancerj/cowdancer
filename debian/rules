@@ -49,6 +49,7 @@ install: build
 
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/cowdancer
 	dh_movefiles -pqemubuilder --sourcedir=debian/cowdancer
+	dh_movefiles -pcowbuilder --sourcedir=debian/cowdancer
 
 # Build architecture-independent files here.
 binary-indep: build install

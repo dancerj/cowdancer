@@ -1,7 +1,6 @@
+/*.debhelper.log
+/*.substvars
+/cowbuilder
 /cowdancer
-/cowdancer.debhelper.log
-/cowdancer.substvars
 /files
 /qemubuilder
-/qemubuilder.debhelper.log
-/qemubuilder.substvars

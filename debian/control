@@ -9,7 +9,8 @@ Vcs-Browser: http://git.debian.org/?p=pbuilder/cowdancer.git
 
 Package: cowdancer
 Architecture: any
-Depends: ${shlibs:Depends}, pbuilder
+Depends: ${shlibs:Depends}
+Recommends: cowbuilder
 Description: Copy-on-write directory tree utility.
  Tries to make copy-on-write semantics upon hard-link copied
  directory trees generated with 'cp -la'
@@ -20,6 +21,13 @@ Description: Copy-on-write directory tree utility.
  write.
  Useful for quick scratch workspace and experimentation.
  .
+ For a useful Debian tool, try cowbuilder.
+
+Package: cowbuilder
+Architecture: any
+Depends: ${shlibs:Depends}, pbuilder, cowdancer
+Replaces: cowdancer (<= 0.49)
+Description: pbuilder running on cowdancer
  'cowbuilder' command is a wrapper for pbuilder which allows using 
  pbuilder-like interface over cowdancer environment.
 
