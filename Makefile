@@ -32,25 +32,25 @@ install: $(BINARY)
 	$(INSTALL_FILE) bash_completion.cowbuilder $(DESTDIR)/etc/bash_completion.d/cowbuilder
 
 libcowdancer.so: cowdancer.lo ilistcreate.lo
-	gcc -O2 -Wall -ldl -shared -o $@ $^
+	$(CC) -O2 -Wall -ldl -shared -o $@ $^
 
 cow-shell: cow-shell.o ilistcreate.o
-	gcc -O2 -Wall -o $@ $^
+	$(CC) -O2 -Wall -o $@ $^
 
 cowdancer-ilistcreate: cowdancer-ilistcreate.o ilistcreate.o
-	gcc -O2 -Wall -o $@ $^
+	$(CC) -O2 -Wall -o $@ $^
 
 cowbuilder: cowbuilder.o parameter.o forkexec.o ilistcreate.o
-	gcc -O2 -Wall -o $@ $^
+	$(CC) -O2 -Wall -o $@ $^
 
 qemubuilder: qemubuilder.o parameter.o forkexec.o
-	gcc -O2 -Wall -o $@ $^
+	$(CC) -O2 -Wall -o $@ $^
 
 %.lo: %.c 
-	gcc -D_REENTRANT -fPIC $< -o $@ -c -Wall -O2 -g
+	$(CC) -D_REENTRANT -fPIC $< -o $@ -c -Wall -O2 -g
 
 %.o: %.c parameter.h
-	gcc $< -o $@ -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"${LIBDIR}\""
+	$(CC) $< -o $@ -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"${LIBDIR}\""
 
 clean: 
 	-rm -f *~ *.o *.lo $(BINARY)
@@ -73,6 +73,6 @@ slowcheck:
 check: fastcheck slowcheck
 
 check-syntax:
-	gcc -c -O2 -Wall $(CHK_SOURCES)  -o/dev/null -D LIBDIR="\"${LIBDIR}\""
+	$(CC) -c -O2 -Wall $(CHK_SOURCES)  -o/dev/null -D LIBDIR="\"${LIBDIR}\""
 
 .PHONY: clean check upload-dist-all check-syntax fastcheck slowcheck
