@@ -35,6 +35,7 @@
 #include <time.h>
 #include <locale.h>
 #include "parameter.h"
+#include <netdb.h>
 
 /* 
  * example exit codes: 
@@ -659,6 +660,22 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
   return ret?NULL:memstr;
 }
 
+const char* sanitize_mirror(const char*addr)
+{
+  /* return 10.0.2.2 (qemu host OS address) if localhost */
+  const char* local_host="10.0.2.2";
+  struct hostent* h;
+  h=gethostbyname(addr);
+  if(h)
+    {
+      if (h->h_addr[0]==127)
+	{
+	  return local_host;
+	}
+    }
+  return addr;
+}
+
 int cpbuilder_create(const struct pbuilderconfig* pc)
 {
   int ret;
@@ -796,7 +813,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	   "  echo \" -> qemu-pbuilder %s$RET\"\n"
 	   "done\n"
 	   "bash\n",
-	   pc->mirror, 
+	   sanitize_mirror(pc->mirror), 
 	   pc->distribution,
 	   pc->components,
 	   qemu_keyword);
@@ -949,7 +966,11 @@ int cpbuilder_help(void)
   return 0;
 }
 
+#ifndef TEST_QEMUBUILDER
+
 int main(int ac, char** av)
 {
   return parse_parameter(ac, av, "qemu");
 }
+
+#endif
