@@ -35,7 +35,7 @@
 #include <time.h>
 #include <locale.h>
 #include "parameter.h"
-#include <netdb.h>
+#include "qemuipsanitize.h"
 
 /* 
  * example exit codes: 
@@ -658,22 +658,6 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
   if(origdir) free(origdir);
   if(dscfile) free(dscfile);
   return ret?NULL:memstr;
-}
-
-const char* sanitize_mirror(const char*addr)
-{
-  /* return 10.0.2.2 (qemu host OS address) if localhost */
-  const char* local_host="10.0.2.2";
-  struct hostent* h;
-  h=gethostbyname(addr);
-  if(h)
-    {
-      if (h->h_addr[0]==127)
-	{
-	  return local_host;
-	}
-    }
-  return addr;
 }
 
 int cpbuilder_create(const struct pbuilderconfig* pc)
