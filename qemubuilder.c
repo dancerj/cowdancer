@@ -665,6 +665,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   int ret;
   char* s=NULL;  
   char* workblockdevicepath=NULL;
+  char* t=NULL;
 
   if((ret=unlink(pc->basepath)))
     {
@@ -760,7 +761,6 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 
   loop_mount(workblockdevicepath, pc->buildplace);
 
-  /* this is specific to my configuration, fix it later. */
   asprintf(&s,
 	   "#!/bin/bash\n"
 	   "export RET=0\n"
@@ -797,10 +797,11 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	   "  echo \" -> qemu-pbuilder %s$RET\"\n"
 	   "done\n"
 	   "bash\n",
-	   sanitize_mirror(pc->mirror), 
+	   t=sanitize_mirror(pc->mirror), 
 	   pc->distribution,
 	   pc->components,
 	   qemu_keyword);
+  free(t);
   create_script(pc->buildplace,
 		"pbuilder-run",
 		s);

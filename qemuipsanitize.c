@@ -44,7 +44,11 @@ char* sanitize_mirror(const char*addr)
   int e;
   regmatch_t m[5];
   char*buf=NULL;
-    
+  char* a;
+  char* b;
+  char* c;
+  char* d;
+  
   if((e=regcomp(&r, "^([^:]*://)([^:/]*)(:[0-9]+)?(.*)$", REG_EXTENDED)))
     {
       /* error */
@@ -57,10 +61,14 @@ char* sanitize_mirror(const char*addr)
       return strdup(addr);
     }
   asprintf(&buf,"%s%s%s%s",
-	   r_offstr(m[1],addr),
-	   sanitize_ipaddress(r_offstr(m[2],addr)),
-	   r_offstr(m[3],addr),
-	   r_offstr(m[4],addr));
+	   a=r_offstr(m[1],addr),
+	   sanitize_ipaddress(b=r_offstr(m[2],addr)),
+	   c=r_offstr(m[3],addr),
+	   d=r_offstr(m[4],addr));
+  free(a);
+  free(b);
+  free(c);
+  free(d);
   regfree(&r);
   return buf;
 }
