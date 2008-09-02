@@ -951,11 +951,7 @@ int cpbuilder_help(void)
   return 0;
 }
 
-#ifndef TEST_QEMUBUILDER
-
 int main(int ac, char** av)
 {
   return parse_parameter(ac, av, "qemu");
 }
-
-#endif

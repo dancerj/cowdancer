@@ -1,4 +1,4 @@
-/*BINFMTC: -DTEST_QEMUBUILDER qemuipsanitize.c
+/*BINFMTC: qemuipsanitize.c
  * test qemubuilder code
  */
 
