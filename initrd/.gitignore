@@ -1,2 +1,4 @@
+/init
+/initrd.gz
 /qemuinit-static
 /qemuinit-static-klibc
