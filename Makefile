@@ -43,7 +43,7 @@ cowdancer-ilistcreate: cowdancer-ilistcreate.o ilistcreate.o
 cowbuilder: cowbuilder.o parameter.o forkexec.o ilistcreate.o
 	$(CC) -O2 -Wall -o $@ $^
 
-qemubuilder: qemubuilder.o parameter.o forkexec.o qemuipsanitize.o
+qemubuilder: qemubuilder.o parameter.o forkexec.o qemuipsanitize.o qemuarch.o
 	$(CC) -O2 -Wall -o $@ $^
 
 %.lo: %.c 
