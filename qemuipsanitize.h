@@ -5,6 +5,11 @@
 
  */
 
+
+#ifndef __QEMUIPSANITIZE_H__
+#define __QEMUIPSANITIZE_H__
+
 const char* sanitize_ipaddress(const char*addr);
 char* sanitize_mirror(const char*addr);
 
+#endif
