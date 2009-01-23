@@ -80,13 +80,21 @@ static int create_ext3_block_device(const char* filename, int gigabyte)
 
   free(s); s=NULL;
 
-  if (0>asprintf(&s, "mke2fs -F -j -O sparse_super %s", filename))
+  if ((ret=forkexeclp("mke2fs", "mke2fs", 
+		      "-F",
+		      "-j", 
+		      "-O",
+		      "sparse_super", 
+		      filename, NULL)))
     {
-      /* out of memory */
       ret=-1;
       goto out;
     }
-  if ((ret=system(s)))
+
+  if ((ret=forkexeclp("tune2fs", "tune2fs", 
+		      "-c", "0", 
+		      "-i", "0",
+		      filename, NULL)))
     {
       ret=-1;
     }
