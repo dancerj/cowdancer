@@ -76,6 +76,19 @@ static const char* qemu_arch_diskdevice(const struct pbuilderconfig* pc)
 }
 
 /**
+ * get output of dpkg --print-architecture
+ * returns a malloc'd string, you need to free it.
+ */
+char* get_host_dpkg_arch()
+{
+  FILE*f=popen("dpkg --print-architecture", "r");
+  char*host_arch;
+  fscanf(f, "%as", &host_arch);
+  pclose(f);
+  return host_arch;
+}
+
+/**
  * arch-specific routine; qemu command to use.
  */
 static const char* qemu_arch_qemu(const char* arch)
@@ -92,10 +105,8 @@ static const char* qemu_arch_qemu(const char* arch)
   else if (!strcmp(arch, "i386") ||
 	   !strcmp(arch, "amd64"))
     {
-      FILE*f=popen("dpkg --print-architecture", "r");
-      char*host_arch;
-      fscanf(f, "%as", &host_arch);
-      pclose(f);
+      /* we're leaking this memory, but don't care too much */
+      char* host_arch = get_host_dpkg_arch();
 
       /* special-case
 	 use kvm if possible
