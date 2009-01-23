@@ -18,6 +18,9 @@
  *
  */
 
+#ifndef __PARAMETER_H__
+#define __PARAMETER_H__
+
 typedef struct pbuilderconfig 
 {
   /* if you edit here, please add to parameter.c: dumpconfig */
@@ -88,3 +91,6 @@ PBUILDER_ADD_PARAM(NULL);
  {pbuildercommandline[offset]=NULL; fprintf(stderr, "pbuilder-command-line: Max command-line exceeded\n");}
 extern char* pbuildercommandline[MAXPBUILDERCOMMANDLINE];
 extern int offset;
+
+#endif
+
