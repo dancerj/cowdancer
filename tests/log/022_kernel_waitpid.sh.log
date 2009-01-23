@@ -1,0 +1,5 @@
+++ readlink -f tests/022_kernel_waitpid.c
++ TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/022_kernel_waitpid.c
++ /home/dancer/DEBIAN/cowdancer/cowdancer/tests/022_kernel_waitpid.c
+/bin/cp: cannot stat `/tmp/XXXX
+waitpid: 100
