@@ -54,17 +54,30 @@ const char* qemu_arch_diskdevice(const struct pbuilderconfig* pc)
   return "hd";
 }
 
+/* mknod with prepended pathname */
+int mknod_inside_chroot(const char* chroot, const char* pathname, mode_t mode, dev_t dev)
+{
+  char* p = NULL;
+  int ret;
+  
+  asprintf(&p, "%s%s", chroot, pathname);
+  ret=mknod(p, mode, dev);
+  free(p);
+  return ret;
+}
+
+
 /**
  * arch-specific routine; the console device to make
  */
-const char* qemu_arch_serialdevice(const char* arch)
+const int qemu_create_arch_serialdevice(const char* basedir, const char* arch)
 {
   if (!strcmp(arch, "arm") || 
       !strcmp(arch, "armel"))
     {
-      return "mknod dev/console c 204 64; ";
+      return mknod_inside_chroot(basedir, "dev/console", S_IFCHR, makedev(204, 64));
     }
-  return "mknod dev/console c 4 64; ";
+  return mknod_inside_chroot(basedir, "dev/console", S_IFCHR, makedev(4, 64));
 }
 
 

@@ -624,21 +624,14 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
      other OSes will require different, but hey, they probably don't even boot from ext3, 
      we'll need think of other ways to work with them.
    */
-  asprintf(&s, 
-	   "cd %s; "
-	   "%s"
-	   "mknod dev/ttyS0 c 4 64; "
-	   "mknod dev/ttyAMA0 c 204 64; "
-	   "mknod dev/sda b 8 0; mknod dev/sdb b 8 16; "
-	   "mknod dev/hda b 3 0; mknod dev/hdb b 3 64; ", 
-	   pc->buildplace,
-	   qemu_arch_serialdevice(pc->arch)
-	   );
-  if ((ret=system(s)))
-    {
-      goto umount_out;
-    }
-  free(s);
+
+  qemu_create_arch_serialdevice(pc->buildplace, pc->arch);
+  mknod_inside_chroot(pc->buildplace, "dev/ttyS0", S_IFCHR, makedev(4, 64));
+  mknod_inside_chroot(pc->buildplace, "dev/ttyAMA0", S_IFCHR, makedev(204, 64));
+  mknod_inside_chroot(pc->buildplace, "dev/sda", S_IFBLK, makedev(8, 0));
+  mknod_inside_chroot(pc->buildplace, "dev/sdb", S_IFBLK, makedev(8, 16));
+  mknod_inside_chroot(pc->buildplace, "dev/hda", S_IFBLK, makedev(3, 0));
+  mknod_inside_chroot(pc->buildplace, "dev/hdb", S_IFBLK, makedev(3, 64));
   
   asprintf(&s,
 	   "#!/bin/bash\n"
