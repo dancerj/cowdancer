@@ -670,7 +670,9 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	   "echo deb %s %s %s > /etc/apt/sources.list \n"
 	   "echo 'APT::Install-Recommends \"false\"; ' > /etc/apt/apt.conf.d/15pbuilder\n"
 	   //TODO: copy hook scripts
-	   "mount -n /proc /proc -t proc\n"
+	   "mount -n proc /proc -t proc\n"
+	   "mount -n sysfs /sys -t sysfs\n"
+	   "mount -n devpts /dev/pts -t devpts\n"
 	   "dhclient eth0\n"
 	   "cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
 	   "cp $PBUILDER_MOUNTPOINT/resolv.conf /etc/resolv.conf\n"
