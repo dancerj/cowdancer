@@ -72,12 +72,18 @@ int mknod_inside_chroot(const char* chroot, const char* pathname, mode_t mode, d
  */
 const int qemu_create_arch_serialdevice(const char* basedir, const char* arch)
 {
+  dev_t consoledev;
+
   if (!strcmp(arch, "arm") || 
       !strcmp(arch, "armel"))
     {
-      return mknod_inside_chroot(basedir, "dev/console", S_IFCHR, makedev(204, 64));
+      consoledev = makedev(204, 64)
     }
-  return mknod_inside_chroot(basedir, "dev/console", S_IFCHR, makedev(4, 64));
+  else
+    {
+      consoledev = makedev(4, 64);
+    }
+  return mknod_inside_chroot(basedir, "dev/console", S_IFCHR, consoledev);;
 }
 
 
