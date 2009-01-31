@@ -1,3 +1,4 @@
+/.initrd
 /init
 /initrd.gz
 /qemuinit-static
