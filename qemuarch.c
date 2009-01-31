@@ -77,7 +77,7 @@ const int qemu_create_arch_serialdevice(const char* basedir, const char* arch)
   if (!strcmp(arch, "arm") || 
       !strcmp(arch, "armel"))
     {
-      consoledev = makedev(204, 64)
+      consoledev = makedev(204, 64);
     }
   else
     {
