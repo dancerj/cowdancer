@@ -51,17 +51,18 @@ int forkexecvp (char *const argv[])
     {
     case 0:
       execvp(argv[0], (char*const*)argv);
-      perror("cowbuilder: execvp");
+      perror("execvp");
+      fprintf(stderr, "Could not execute %s\n", argv[0]);
       exit(EXIT_FAILURE);
     case -1:
       /* error condition in fork(); something is really wrong */
-      perror("cowbuilder: fork");
+      perror("fork");
       return -1;
     default:
       /* parent process, waiting for termination */
       if (-1==waitpid(pid, &status, 0))
 	{
-	  perror("cowbuilder: waitpid");
+	  perror("waitpid");
 	  fprintf(stderr, "unexpected waitpid error when waiting for process %i with status %x\n",
 		  pid, status);
 	  return -1;
@@ -116,6 +117,7 @@ forkexeclp (const char *path, const char *arg0, ...)
     case 0:
       execvp(path, (char*const*)argv);
       perror("pbuilder: execlp");
+      fprintf(stderr, "Could not execute %s\n", path);
       exit(EXIT_FAILURE);
     case -1:
       /* error condition in fork(); something is really wrong */
@@ -125,7 +127,7 @@ forkexeclp (const char *path, const char *arg0, ...)
       /* parent process, waiting for termination */
       if (-1==waitpid(pid, &status, 0))
 	{
-	  perror("cowbuilder: waitpid");
+	  perror("waitpid");
 	  return -1;
 	}
       if (!WIFEXITED(status))
