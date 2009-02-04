@@ -214,7 +214,8 @@ static int copy_file_contents_to_temp(const char* orig, const char*temppath, con
 }
 
 /**
-   run qemu until exit signal is given.
+   run qemu until exit signal is received from within QEMU via serial
+   console.
 
    exit code:
    -1: error
@@ -319,8 +320,9 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       dup2(sp[1],2);
       close(sp[0]);
       
-      if (initrd)
+      if (initrd && strcmp(initrd, "")) 
 	{
+	  /* use initrd only if initrd is not NULL and initrd!='' */
 	  execlp(qemu, qemu, 
 		 "-nographic",
 		 "-M", machine, 
