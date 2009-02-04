@@ -430,9 +430,11 @@ static int run_second_stage_script
 	   "apt-get clean || true\n"
 	   "sync\n"
 	   "sync\n"
-	   "while sleep 3s; do\n"
-	   "  echo ' -> qemu-pbuilder %s0'\n"
-	   "done\n",
+	   "echo\n"
+	   "sleep 1s\n"		/* sleep before sending dying message */
+	   "echo ' -> qemu-pbuilder %s0'\n"
+	   "sleep 1s\n"
+	   "halt -f -p\n",	/* just halt myself if possible */
 	   timestring,
 	   timestring,
 	   commandline, 
