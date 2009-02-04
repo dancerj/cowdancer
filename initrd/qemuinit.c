@@ -11,6 +11,7 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <sys/mount.h>
+#include <sys/reboot.h>
 
 #include "../parameter.h"
 
@@ -55,5 +56,10 @@ int main(int argc, char** argv)
   chroot("root/");
   chdir("/");
   forkexeclp("bin/sh", "bin/sh", PBUILDER_MOUNTPOINT "/pbuilder-run");
+
+  /* turn the machine off */
+  sync();
+  sync();
+  reboot(RB_POWER_OFF);
   return 0;
 }
