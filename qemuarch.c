@@ -62,6 +62,13 @@ int mknod_inside_chroot(const char* chroot, const char* pathname, mode_t mode, d
   
   asprintf(&p, "%s%s", chroot, pathname);
   ret=mknod(p, mode, dev);
+
+  if (ret == -1)  
+    {
+      /* output the error message for debug, but ignore it here. */
+      perror(pathname);
+    }
+  
   free(p);
   return ret;
 }
