@@ -676,6 +676,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	   //TODO: copy hook scripts
 	   "mount -n proc /proc -t proc\n"
 	   "mount -n sysfs /sys -t sysfs\n"
+	   "mkdir /dev/pts\n"
 	   "mount -n devpts /dev/pts -t devpts\n"
 	   "dhclient eth0\n"
 	   "cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
