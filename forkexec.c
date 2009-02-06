@@ -40,11 +40,14 @@ int forkexecvp (char *const argv[])
   /* DEBUG: */
   {
     int i=0;
+    printf("  forking: ");
+	
     while(argv[i])
       {
-	//printf("DEBUG: %i: %s\n", i, argv[i]);
+	printf("%s ", argv[i]);
 	i++;
       }
+    printf("\n");
   }
 
   switch(pid=fork())
@@ -99,9 +102,13 @@ forkexeclp (const char *path, const char *arg0, ...)
   va_start(args, arg0);
   argv[0] = arg0;
   i = 1;
+
+  printf("  forking: ");	/* debug message */
+  
   do
     {
       argv[i] = va_arg(args, const char *);
+      printf("%s ", argv[i]);   /* debug message */
       
       if ( i >= 1023 ) 
 	{
@@ -111,6 +118,8 @@ forkexeclp (const char *path, const char *arg0, ...)
     }
   while (argv[i++] != NULL);
   va_end (args);
+
+  printf("\n");			/* debug message */
 
   switch(pid=fork())
     {
