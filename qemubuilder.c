@@ -629,6 +629,12 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
      we'll need think of other ways to work with them.
    */
 
+  asprintf(&s, "%s%s", pc->buildplace, "dev");
+  if (-1==mkdir(s, 0777)) 
+    {
+      perror("mkdir /dev");
+      goto umount_out;
+    }
   qemu_create_arch_serialdevice(pc->buildplace, pc->arch);
   mknod_inside_chroot(pc->buildplace, "dev/ttyS0", S_IFCHR, makedev(4, 64));
   mknod_inside_chroot(pc->buildplace, "dev/ttyAMA0", S_IFCHR, makedev(204, 64));
