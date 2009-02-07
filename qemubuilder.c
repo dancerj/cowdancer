@@ -482,8 +482,6 @@ static int run_second_stage_script
 		 cowdevpath, 
 		 NULL);
 
-  // this will have wrong time within qemu, for ARM
-  // how to workaround?
   fork_qemu(cowdevpath, workblockdevicepath, pc);
   /* this will always return 0. */
 
