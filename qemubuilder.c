@@ -657,12 +657,12 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   free(s); s=0;
   
   qemu_create_arch_serialdevice(pc->buildplace, pc->arch);
-  mknod_inside_chroot(pc->buildplace, "dev/ttyS0", S_IFCHR, makedev(4, 64));
-  mknod_inside_chroot(pc->buildplace, "dev/ttyAMA0", S_IFCHR, makedev(204, 64));
-  mknod_inside_chroot(pc->buildplace, "dev/sda", S_IFBLK, makedev(8, 0));
-  mknod_inside_chroot(pc->buildplace, "dev/sdb", S_IFBLK, makedev(8, 16));
-  mknod_inside_chroot(pc->buildplace, "dev/hda", S_IFBLK, makedev(3, 0));
-  mknod_inside_chroot(pc->buildplace, "dev/hdb", S_IFBLK, makedev(3, 64));
+  mknod_inside_chroot(pc->buildplace, "dev/ttyS0", S_IFCHR | 0660, makedev(4, 64));
+  mknod_inside_chroot(pc->buildplace, "dev/ttyAMA0", S_IFCHR | 0660, makedev(204, 64));
+  mknod_inside_chroot(pc->buildplace, "dev/sda", S_IFBLK | 0660, makedev(8, 0));
+  mknod_inside_chroot(pc->buildplace, "dev/sdb", S_IFBLK | 0660, makedev(8, 16));
+  mknod_inside_chroot(pc->buildplace, "dev/hda", S_IFBLK | 0660, makedev(3, 0));
+  mknod_inside_chroot(pc->buildplace, "dev/hdb", S_IFBLK | 0660, makedev(3, 64));
   
   asprintf(&s,
 	   "#!/bin/bash\n"

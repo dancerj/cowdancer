@@ -26,12 +26,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <sys/socket.h>
 #include <string.h>
 #include <unistd.h>
 #include <getopt.h>
 #include <stdarg.h>
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <assert.h>
 #include <termios.h>
 #include <time.h>
@@ -54,13 +53,20 @@ const char* qemu_arch_diskdevice(const struct pbuilderconfig* pc)
   return "hd";
 }
 
-/* mknod with prepended pathname */
+/* mknod with prepended pathname
+   return -1 on failure.
+ */
 int mknod_inside_chroot(const char* chroot, const char* pathname, mode_t mode, dev_t dev)
 {
   char* p = NULL;
   int ret;
   
-  asprintf(&p, "%s%s", chroot, pathname);
+  if (-1==asprintf(&p, "%s%s", chroot, pathname))
+    {
+      fprintf(stderr, "out of memory on asprintf\n");      
+      return -1;
+    }
+  
   ret=mknod(p, mode, dev);
 
   if (ret == -1)  
@@ -90,7 +96,7 @@ const int qemu_create_arch_serialdevice(const char* basedir, const char* arch)
     {
       consoledev = makedev(4, 64);
     }
-  return mknod_inside_chroot(basedir, "dev/console", S_IFCHR, consoledev);;
+  return mknod_inside_chroot(basedir, "dev/console", S_IFCHR | 0660, consoledev);
 }
 
 
