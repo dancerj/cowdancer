@@ -347,7 +347,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       argv[argc]=NULL;
       assert(argc < MAX_ARGS);
 
-      printf("   fork_qemu: ");
+      printf("  forking qemu: ");
       for (i=0; i<argc; ++i) 
 	{
 	  printf("%s ", argv[i]);
