@@ -303,6 +303,10 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       const char* kernel_image = pc->kernel_image;
       const char* initrd = pc->initrd;
       char* mem;
+      int argc = 0;
+      const int MAX_ARGS = 30;
+      char *argv[MAX_ARGS];
+      int i;
 
       if (qemu == NULL || machine == NULL) {
 	fprintf(stderr, "Your arch %s does not seem to be supported\n", pc->arch);
@@ -319,34 +323,40 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       dup2(sp[1],1);
       dup2(sp[1],2);
       close(sp[0]);
+
+      argv[argc++]=strdupa(qemu);
+      argv[argc++]="-nographic";
+      argv[argc++]="-M";
+      argv[argc++]=strdupa(machine);
+      argv[argc++]="-m";
+      argv[argc++]=mem;
+      argv[argc++]="-kernel";
+      argv[argc++]=strdupa(kernel_image);
+      if (initrd && strcmp(initrd, ""))
+	{
+	  argv[argc++]="-initrd";
+	  argv[argc++]=strdupa(initrd);
+	}
+      argv[argc++]="-hda";
+      argv[argc++]=strdupa(hda);
+      argv[argc++]="-hdb";
+      argv[argc++]=strdupa(hdb);
+      argv[argc++]="-append";
+      argv[argc++]=append_command;
+      argv[argc++]="-serial";
+      argv[argc++]="stdio";
+      argv[argc]=NULL;
+      assert(argc < MAX_ARGS);
+
+      printf("   fork_qemu: ");
+      for (i=0; i<argc; ++i) 
+	{
+	  printf("%s ", argv[i]);
+	}
+      printf("\n");
       
-      if (initrd && strcmp(initrd, "")) 
-	{
-	  /* use initrd only if initrd is not NULL and initrd!='' */
-	  execlp(qemu, qemu, 
-		 "-nographic",
-		 "-M", machine, 
-		 "-m", mem,
-		 "-kernel", kernel_image, 
-		 "-initrd", initrd, 
-		 "-hda", hda,
-		 "-hdb", hdb, 
-		 "-append", append_command, 
-		 "-serial", "stdio", NULL);
-	}
-      else
-	{
-	  execlp(qemu, qemu, 
-		 "-nographic",
-		 "-M", machine, 
-		 "-m", mem,
-		 "-kernel", kernel_image, 
-		 "-hda", hda,
-		 "-hdb", hdb, 
-		 "-append", append_command, 
-		 "-serial", "stdio", NULL);
-	}
-      perror("execlp");
+      execvp(argv[0], argv);
+      perror("fork_qemu");
       exit (1);
     }
   else
@@ -628,19 +638,19 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 
   /* arch-dependent code here.
      create required device files.
-   */
 
-  /* 
      ttyAMA0 is probably ARM-specific 
      others are probably linux-portable as documented in linux/Documentation/devices.txt
      other OSes will require different, but hey, they probably don't even boot from ext3, 
      we'll need think of other ways to work with them.
+
    */
+  printf(" -> Doing arch-specific /dev population\n");
 
   asprintf(&s, "%s%s", pc->buildplace, "dev");
   if (-1==mkdir(s, 0777)) 
     {
-      perror("mkdir /dev");
+      perror("mkdir chroot-/dev");
       ret=1;      
       goto umount_out;
     }
