@@ -14,6 +14,7 @@
 #include <sys/reboot.h>
 
 #include "../parameter.h"
+#include "../file.h"
 
 #define PBUILDER_MOUNTPOINT "/var/cache/pbuilder/pbuilder-mnt"
 #define ROOT_MOUNTPOINT "/root"
@@ -43,7 +44,10 @@ int main(int argc, char** argv)
     }
 
   forkexeclp("/bin/insmod", "/bin/insmod", "lib/modules/ext3.ko", NULL);
-  forkexeclp("/bin/cp", "/bin/cp", "/proc/mounts", "/etc/mtab", NULL);
+  if (copy_file("/proc/mounts", "/etc/mtab")) 
+    {
+      fprintf(stderr, "Cannot copy file /proc/mounts to /etc/mtab.\n");
+    }
   mount("/dev/rootdevice", ROOT_MOUNTPOINT, "ext3", 
 	MS_MGC_VAL, NULL);
   mount("/dev/commanddevice", 

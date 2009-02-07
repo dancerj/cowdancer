@@ -36,6 +36,7 @@
 #include "parameter.h"
 #include "qemuipsanitize.h"
 #include "qemuarch.h"
+#include "file.h"
 
 /* 
  * example exit codes: 
@@ -151,46 +152,6 @@ static int create_script(const char* mountpoint, const char* relative_path, cons
   return ret;
 }
 
-/**
-   copy file contents to temporary filesystem, so that it can be used inside qemu.
- */
-static int copy_file_internal(const char* orig, const char*dest)
-{
-  const int buffer_size=4096;
-  char *buf = malloc (buffer_size);
-  int ret=-1;
-  FILE* fin;
-  FILE* fout;
-  size_t count;
-
-  fin=fopen(orig, "r");
-  fout=fopen(dest, "w");
-  if (!fin)
-    {
-      goto out;
-    }
-  if (!fout)
-    {
-      goto out;
-    }
-  while((count=fread(buf, 1, buffer_size, fin)))
-    {
-      fwrite(buf, 1, count, fout);
-    }
-  if(ferror(fin))
-    {
-      /* TODO: handle error */
-      goto out;
-    }
-  fclose(fin);
-  fclose(fout);
-  ret=0;
- out:
-  if (buf) free (buf);
-  
-  return ret;
-}
-
 /* minimally fix terminal I/O */
 static void fix_terminal(void)
 {
@@ -207,7 +168,7 @@ static int copy_file_contents_to_temp(const char* orig, const char*temppath, con
   int ret;
 
   asprintf(&s, "%s/%s", temppath, filename);
-  ret=copy_file_internal(orig, s);
+  ret=copy_file(orig, s);
   free(s);
   return ret;
 }

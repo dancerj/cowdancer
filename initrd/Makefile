@@ -2,13 +2,13 @@ KLCC=klcc
 
 all: qemuinit-static qemuinit-static-klibc initrd.gz
 
-%-static: %.o ../forkexec.o
+%-static: %.o ../forkexec.o ../file.o
 	$(CC) -static -O2 -Wall -o $@ $^
 
 %.o: %.c
 	$(CC) -c -O2 -Wall -o $@ $^
 
-%-static-klibc: %.c ../forkexec.c 
+%-static-klibc: %.c ../forkexec.c ../file.c
 	$(KLCC) -Wall -o $@ $^
 
 initrd.gz: qemuinit-static-klibc Makefile
