@@ -108,7 +108,8 @@ forkexeclp (const char *path, const char *arg0, ...)
   do
     {
       argv[i] = va_arg(args, const char *);
-      printf("%s ", argv[i]);   /* debug message */
+      if (argv[i]) 
+	printf("%s ", argv[i]);   /* debug message */
       
       if ( i >= 1023 ) 
 	{
