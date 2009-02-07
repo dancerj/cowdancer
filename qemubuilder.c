@@ -571,9 +571,14 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
   return ret?NULL:memstr;
 }
 
+/* 
+   return 0 on success, nonzero on failure.
+
+   variable ret holds the state.
+ */
 int cpbuilder_create(const struct pbuilderconfig* pc)
 {
-  int ret;
+  int ret=0;
   char* s=NULL;  		/* generic asprintf buffer */
   char* workblockdevicepath=NULL;
   char* t=NULL;
@@ -594,6 +599,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   if (mkdir(pc->buildplace,0777))
     {
       /* could not create the buildplace here. */
+      ret=1;
       perror("mkdir");
       goto out;
     }
@@ -615,6 +621,8 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 		 NULL);
   if (ret)
     {
+      fprintf(stderr, "debootstrap failed with %i\n", 
+	      ret);
       goto umount_out;
     }
 
@@ -633,6 +641,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   if (-1==mkdir(s, 0777)) 
     {
       perror("mkdir /dev");
+      ret=1;      
       goto umount_out;
     }
   free(s); s=0;
