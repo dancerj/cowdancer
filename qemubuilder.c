@@ -24,12 +24,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <sys/socket.h>
 #include <string.h>
 #include <unistd.h>
 #include <getopt.h>
 #include <stdarg.h>
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <assert.h>
 #include <termios.h>
 #include <time.h>
@@ -647,22 +646,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
    */
   printf(" -> Doing arch-specific /dev population\n");
 
-  asprintf(&s, "%s%s", pc->buildplace, "dev");
-  if (-1==mkdir(s, 0777)) 
-    {
-      perror("mkdir chroot-/dev");
-      ret=1;      
-      goto umount_out;
-    }
-  free(s); s=0;
-  
-  qemu_create_arch_serialdevice(pc->buildplace, pc->arch);
-  mknod_inside_chroot(pc->buildplace, "dev/ttyS0", S_IFCHR | 0660, makedev(4, 64));
-  mknod_inside_chroot(pc->buildplace, "dev/ttyAMA0", S_IFCHR | 0660, makedev(204, 64));
-  mknod_inside_chroot(pc->buildplace, "dev/sda", S_IFBLK | 0660, makedev(8, 0));
-  mknod_inside_chroot(pc->buildplace, "dev/sdb", S_IFBLK | 0660, makedev(8, 16));
-  mknod_inside_chroot(pc->buildplace, "dev/hda", S_IFBLK | 0660, makedev(3, 0));
-  mknod_inside_chroot(pc->buildplace, "dev/hdb", S_IFBLK | 0660, makedev(3, 64));
+  qemu_create_arch_devices(pc->buildplace, pc->arch);
   
   asprintf(&s,
 	   "#!/bin/bash\n"

@@ -61,7 +61,7 @@ int mknod_inside_chroot(const char* chroot, const char* pathname, mode_t mode, d
   char* p = NULL;
   int ret;
   
-  if (-1==asprintf(&p, "%s%s", chroot, pathname))
+  if (-1==asprintf(&p, "%s/%s", chroot, pathname))
     {
       fprintf(stderr, "out of memory on asprintf\n");      
       return -1;
@@ -83,7 +83,7 @@ int mknod_inside_chroot(const char* chroot, const char* pathname, mode_t mode, d
 /**
  * arch-specific routine; the console device to make
  */
-const int qemu_create_arch_serialdevice(const char* basedir, const char* arch)
+ const int qemu_create_arch_serialdevice(const char* basedir, const char* arch)
 {
   dev_t consoledev;
 
@@ -99,6 +99,31 @@ const int qemu_create_arch_serialdevice(const char* basedir, const char* arch)
   return mknod_inside_chroot(basedir, "dev/console", S_IFCHR | 0660, consoledev);
 }
 
+/**
+ * arch-specific routine; make device files inside chroot
+ */
+const int qemu_create_arch_devices(const char* basedir, const char* arch)  
+{
+  int ret=0;
+  char* s=0;
+
+  asprintf(&s, "%s/%s", basedir, "dev");
+  if (-1==mkdir(s, 0777)) 
+    {
+      perror("mkdir chroot-/dev");
+      ret=1;
+    }
+  free(s);
+
+  ret+=qemu_create_arch_serialdevice(basedir, arch);
+  ret+=mknod_inside_chroot(basedir, "dev/ttyS0", S_IFCHR | 0660, makedev(4, 64));
+  ret+=mknod_inside_chroot(basedir, "dev/ttyAMA0", S_IFCHR | 0660, makedev(204, 64));
+  ret+=mknod_inside_chroot(basedir, "dev/sda", S_IFBLK | 0660, makedev(8, 0));
+  ret+=mknod_inside_chroot(basedir, "dev/sdb", S_IFBLK | 0660, makedev(8, 16));
+  ret+=mknod_inside_chroot(basedir, "dev/hda", S_IFBLK | 0660, makedev(3, 0));
+  ret+=mknod_inside_chroot(basedir, "dev/hdb", S_IFBLK | 0660, makedev(3, 64));
+  return ret;
+}
 
 /**
  * get output of dpkg --print-architecture

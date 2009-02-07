@@ -9,6 +9,7 @@
 
 const char* qemu_arch_diskdevice(const struct pbuilderconfig* pc);
 const int qemu_create_arch_serialdevice(const char* basedir, const char* arch);
+const int qemu_create_arch_devices(const char* basedir, const char* arch);
 char* get_host_dpkg_arch();
 const char* qemu_arch_qemu(const char* arch);
 const char* qemu_arch_qemumachine(const char* arch);
