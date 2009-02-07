@@ -103,7 +103,7 @@ forkexeclp (const char *path, const char *arg0, ...)
   argv[0] = arg0;
   i = 1;
 
-  printf("  forking: ");	/* debug message */
+  printf("  forking: %s", argv[0]);/* debug message */
   
   do
     {
