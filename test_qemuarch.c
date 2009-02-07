@@ -41,7 +41,7 @@ int test_mknod_inside_chroot()
 	 this would be the tested codepath.
       */
       struct stat s;
-      umask(002);
+      umask(S_IWOTH);
       unlink("/root/dev5");
       assert(mknod_inside_chroot("/root", 
 				 "/dev5", 
@@ -75,7 +75,7 @@ int test_qemu_create_arch_devices()
 	 this would be the tested codepath.
       */
       struct stat s;
-      umask(002);
+      umask(S_IWOTH);
       assert(qemu_create_arch_devices(temp, "x86_64")
 	     == 0);
       chdir(temp);
