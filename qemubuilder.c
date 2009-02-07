@@ -574,7 +574,7 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
 int cpbuilder_create(const struct pbuilderconfig* pc)
 {
   int ret;
-  char* s=NULL;  
+  char* s=NULL;  		/* generic asprintf buffer */
   char* workblockdevicepath=NULL;
   char* t=NULL;
 
@@ -635,6 +635,8 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
       perror("mkdir /dev");
       goto umount_out;
     }
+  free(s); s=0;
+  
   qemu_create_arch_serialdevice(pc->buildplace, pc->arch);
   mknod_inside_chroot(pc->buildplace, "dev/ttyS0", S_IFCHR, makedev(4, 64));
   mknod_inside_chroot(pc->buildplace, "dev/ttyAMA0", S_IFCHR, makedev(204, 64));
