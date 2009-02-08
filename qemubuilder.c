@@ -318,6 +318,10 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 
 static int do_fsck(const char* devfile)
 {
+  /* force-running this fsck isn't a good idea; let it fail.
+     If it's mounted by someone else, I don't want to touch it, 
+     and chroots can be re-created any time, right?
+   */
   return forkexeclp("/sbin/fsck",
 		    "/sbin/fsck",
 		    devfile, 
