@@ -20,7 +20,6 @@ initrd.gz: qemuinit-static-klibc Makefile
 	-ln -sf /usr/lib/klibc/bin/insmod .initrd/bin/insmod
 	-ln -sf /usr/lib/klibc/bin/sh.shared .initrd/bin/sh
 	-ln -sf /lib/klibc*.so .initrd/lib/
-	-ln -sf /bin/busybox .initrd/bin/cp
 	cd .initrd && find . | cpio --dereference -H newc -o > ../$@.1.tmp
 	gzip -9 -n < $@.1.tmp > $@.2.tmp
 	rm $@.1.tmp
