@@ -31,6 +31,7 @@ int main(int argc, char** argv)
   mkdir("/proc", 0777);
   mkdir("/dev", 0777);
   mkdir("/dev/pts", 0777);
+  
   if (mount("/proc", "/proc", 
 	    "proc", MS_MGC_VAL, NULL) == -1) 
     {
@@ -42,7 +43,7 @@ int main(int argc, char** argv)
     {
       perror("mount devpts");
     }
-
+  
   forkexeclp("/bin/insmod", "/bin/insmod", "lib/modules/ext3.ko", NULL);
   if (copy_file("/proc/mounts", "/etc/mtab")) 
     {
@@ -54,12 +55,11 @@ int main(int argc, char** argv)
 	ROOT_MOUNTPOINT PBUILDER_MOUNTPOINT, 
 	"ext3", MS_MGC_VAL, NULL);
   
-  /* invoke debug shell for the fun of it -- why doesn't it accept any input?? */
-  forkexeclp("/bin/sh", "/bin/sh");
+  forkexeclp("/bin/sh", "/bin/sh", NULL);
   
   chroot("root/");
   chdir("/");
-  forkexeclp("bin/sh", "bin/sh", PBUILDER_MOUNTPOINT "/pbuilder-run");
+  forkexeclp("bin/sh", "bin/sh", PBUILDER_MOUNTPOINT "/pbuilder-run", NULL);
 
   /* turn the machine off */
   sync();
