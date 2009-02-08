@@ -23,5 +23,5 @@
 #ifndef __FILE_H__
 #define __FILE_H__
 int copy_file(const char*orig, const char*dest);
-
+int create_sparse_file(const char* filename, unsigned long int size);
 #endif

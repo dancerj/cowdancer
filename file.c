@@ -33,6 +33,7 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <assert.h>
 #include "file.h"
 
 /**
@@ -90,4 +91,49 @@ int copy_file(const char*orig, const char*dest)
  out:
   free(buf);
   return ret;
+}
+
+/**
+   Create sparse file of specified size.
+
+   returns 0 on success, 1 on fail.
+ */
+int create_sparse_file(const char* filename, unsigned long int size) 
+{
+  int fd=creat(filename, 0660);
+  const off_t seeksize = 1 << 30;	/* try with 30-bit seeks (1GB / seek) */
+  assert(size > 1);  
+  size--;
+  if (-1==lseek(fd, 0, SEEK_SET)) 
+    {
+	perror("initial lseek");
+	return 1;
+    }
+
+  while(size > seeksize) {
+    if (-1==lseek(fd, seeksize, SEEK_CUR)) 
+      {
+	perror("intermediate lseek");
+	return 1;
+      }
+    size -= seeksize;
+  }
+  if (-1==lseek(fd, size - 1, SEEK_CUR)) 
+    {
+      perror("final lseek");
+      return 1;
+    }
+  
+  if (-1==write(fd, "", 1))		/* A string consists of \0, write 0 to end of file */
+    {
+      perror("write");
+      return 1;
+    }
+  
+  if (-1==close(fd)) 
+    {
+      perror("close");
+      return 1;
+    }
+  return 0;
 }
