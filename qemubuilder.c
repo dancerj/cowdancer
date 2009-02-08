@@ -1,4 +1,4 @@
-/*BINFMTC: parameter.c forkexec.c qemuipsanitize.c qemuarch.c
+/*BINFMTC: parameter.c forkexec.c qemuipsanitize.c qemuarch.c file.c
  *  qemubuilder: pbuilder with qemu
  *  Copyright (C) 2007-2009 Junichi Uekawa
  *
@@ -52,33 +52,20 @@ const char* qemu_keyword="END OF WORK EXIT CODE=";
 
    @returns -1 on error, 0 on success
  */
-static int create_ext3_block_device(const char* filename, int gigabyte)
+static int create_ext3_block_device(const char* filename, 
+				    unsigned long int gigabyte)
 {
   int ret = 0;
   char *s = NULL;
   char *s2 = NULL;
 
   /* create 10GB sparse data */
-  if (0>asprintf(&s, "of=%s", filename))
-    {
-      /* out of memory */
-      return -1;
-    }
-  if (0>asprintf(&s2, "seek=%i", gigabyte * 1024))
-    {
-      /* out of memory */
-      return -1;
-    }
-  ret=forkexeclp("dd", "dd", "if=/dev/zero", s,
-		 "bs=1M",
-		 s2, "count=1", NULL);
-  if (ret)
+  if (create_sparse_file(filename,
+			 gigabyte*1UL<<30UL))
     {
       ret=-1;
       goto out;
     }
-
-  free(s); s=NULL;
 
   if ((ret=forkexeclp("mke2fs", "mke2fs", 
 		      "-F",
@@ -383,6 +370,18 @@ static int run_second_stage_script
 
   asprintf(&script, 
 	   "#!/bin/bash\n"
+
+	   /* define function to terminate qemu */
+	   "function exit_from_qemu() {\n"
+	   "sync\n"
+	   "sync\n"
+	   "sleep 1s\n"		/* sleep before sending dying message */
+	   "echo ' -> qemu-pbuilder %s$1'\n"
+	   "sleep 1s\n"
+	   "halt -f -p\n"	/* just halt myself if possible */
+	   "}\n"
+
+	   /* main code */
 	   "echo \n"
 	   "echo ' -> qemu-pbuilder second-stage' \n"
 	   //TODO: copy hook scripts
@@ -400,18 +399,11 @@ static int run_second_stage_script
 	   //TODO: run G hook
 	   "%s\n"
 	   "apt-get clean || true\n"
-	   "sync\n"
-	   "sync\n"
-	   "echo\n"
-	   "sleep 1s\n"		/* sleep before sending dying message */
-	   "echo ' -> qemu-pbuilder %s0'\n"
-	   "sleep 1s\n"
-	   "halt -f -p\n",	/* just halt myself if possible */
+	   "exit_from_qemu 0\n",
+	   qemu_keyword,
 	   timestring,
 	   timestring,
-	   commandline, 
-	   qemu_keyword
-	   );
+	   commandline);
 
   create_script(pc->buildplace, "pbuilder-run",
 		script);
@@ -637,6 +629,17 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 
   asprintf(&s,
 	   "#!/bin/bash\n"
+	   /* define function to terminate qemu */
+	   "function exit_from_qemu() {\n"
+	   "sync\n"
+	   "sync\n"
+	   "sleep 1s\n"		/* sleep before sending dying message */
+	   "echo ' -> qemu-pbuilder %s$1'\n"
+	   "sleep 1s\n"
+	   "halt -f -p\n"	/* just halt myself if possible */
+	   "}\n"
+
+	   /* start of main code */
 	   "export RET=0\n"
 	   "echo \n"
 	   "echo ' -> qemu-pbuilder second-stage' \n"
@@ -656,28 +659,22 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	   //TODO: installaptlines
 	   //"echo 'deb http://192.168.1.26/debian/ sid main ' > /etc/apt/sources.list\n"
 	   //TODO: run G hook
-	   "apt-get update\n"
+	   "apt-get update || exit_from_qemu 1\n"
 	   //TODO: "dpkg --purge $REMOVEPACKAGES\n"
 	   //recover aptcache
-	   "apt-get -y --force-yes -o DPkg::Options::=--force-confnew dist-upgrade\n"
-	   "apt-get install --force-yes -y build-essential dpkg-dev apt aptitude pbuilder\n"
+	   "apt-get -y --force-yes -o DPkg::Options::=--force-confnew dist-upgrade || exit_from_qemu 1\n"
+	   "apt-get install --force-yes -y build-essential dpkg-dev apt aptitude pbuilder || exit_from_qemu 1\n"
 	   //TODO: EXTRAPACKAGES handling
 	   //save aptcache
 	   //optionally autoclean aptcache
 	   //run E hook
 	   "apt-get clean || true\n"
-	   "export RET=0"
-	   ":EXIT"
-	   "sync\n"
-	   "sync\n"
-	   "while sleep 3s; do\n"
-	   "  echo \" -> qemu-pbuilder %s$RET\"\n"
-	   "done\n"
+	   "exit_from_qemu $RET\n"
 	   "bash\n",
+	   qemu_keyword,
 	   t=sanitize_mirror(pc->mirror), 
 	   pc->distribution,
-	   pc->components,
-	   qemu_keyword);
+	   pc->components);
   free(t);
   create_script(pc->buildplace,
 		"pbuilder-run",
