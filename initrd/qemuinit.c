@@ -49,11 +49,19 @@ int main(int argc, char** argv)
     {
       fprintf(stderr, "Cannot copy file /proc/mounts to /etc/mtab.\n");
     }
-  mount("/dev/rootdevice", ROOT_MOUNTPOINT, "ext3", 
-	MS_MGC_VAL, NULL);
-  mount("/dev/commanddevice", 
-	ROOT_MOUNTPOINT PBUILDER_MOUNTPOINT, 
-	"ext3", MS_MGC_VAL, NULL);
+  if (mount("/dev/rootdevice", ROOT_MOUNTPOINT, "ext3", 
+	    MS_MGC_VAL, NULL) == -1) 
+    {
+      perror("mount root device");
+    }
+  
+  if (mount("/dev/commanddevice", 
+	    ROOT_MOUNTPOINT PBUILDER_MOUNTPOINT, 
+	    "ext3", MS_MGC_VAL, NULL) == -1)
+    {
+      perror("mount command device");
+    }
+  
   
   forkexeclp("/bin/sh", "/bin/sh", NULL);
   
