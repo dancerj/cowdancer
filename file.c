@@ -29,11 +29,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <assert.h>
+#include <alloca.h>
 #include "file.h"
 
 /**
@@ -137,3 +139,35 @@ int create_sparse_file(const char* filename, unsigned long int size)
     }
   return 0;
 }
+
+/* mknod with prepended pathname
+   return -1 on failure.
+ */
+int mknod_inside_chroot(const char* chroot, const char* pathname, mode_t mode, dev_t dev)
+{
+  char* p = alloca(strlen(chroot)+strlen(pathname)+2);
+  int ret;
+
+  if (!p) 
+    {
+      fprintf(stderr, "error on alloca\n");
+      return -1;
+    }
+  
+  if (-1==sprintf(p, "%s/%s", chroot, pathname))
+    {
+      fprintf(stderr, "error on sprintf\n");
+      return -1;
+    }
+  
+  ret=mknod(p, mode, dev);
+
+  if (ret == -1)  
+    {
+      /* output the error message for debug, but ignore it here. */
+      perror(p);
+    }
+  
+  return ret;
+}
+

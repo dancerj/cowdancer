@@ -14,6 +14,5 @@ char* get_host_dpkg_arch();
 const char* qemu_arch_qemu(const char* arch);
 const char* qemu_arch_qemumachine(const char* arch);
 const char* qemu_arch_tty(const char* arch);
-int mknod_inside_chroot(const char* chroot, const char* pathname, mode_t mode, dev_t dev);
 
 #endif

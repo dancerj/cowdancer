@@ -24,4 +24,5 @@
 #define __FILE_H__
 int copy_file(const char*orig, const char*dest);
 int create_sparse_file(const char* filename, unsigned long int size);
+int mknod_inside_chroot(const char* chroot, const char* pathname, mode_t mode, dev_t dev);
 #endif

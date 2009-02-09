@@ -1,4 +1,4 @@
-/*BINFMTC: qemuarch.c
+/*BINFMTC: qemuarch.c file.c
  * test qemubuilder code
  */
 
@@ -24,43 +24,12 @@ int test_get_host_dpkg_arch()
   return 0;
 }
 
-int test_mknod_inside_chroot()
-{
-  /* if you are running this in normal user, or running through 
-     fakeroot, you would (probably) get this */
-  if (getuid()!=0 || 
-      (getenv("FAKEROOTKEY") && strcmp(getenv("FAKEROOTKEY"),"")))
-    {
-      assert(mknod_inside_chroot("/root", "/dev", 
-				 S_IFCHR, makedev(204, 64))
-	     == -1);
-    }
-  else 
-    {
-      /* if you are running this as root, 
-	 this would be the tested codepath.
-      */
-      struct stat s;
-      umask(S_IWOTH);
-      unlink("/root/dev5");
-      assert(mknod_inside_chroot("/root", 
-				 "/dev5", 
-				 S_IFCHR | 0660, 
-				 makedev(204, 64))
-	     == 0);
-      assert(stat("/root/dev5", &s)==0);
-      assert(S_ISCHR(s.st_mode));
-    }
-  return 0;
-}
-
 int test_qemu_create_arch_devices()
 {
   char* temp=strdupa("/tmp/dancerXXXXXX");
   temp=mkdtemp(temp);
   printf("%s\n", temp);
   
-  mkdir("./tmp.work111", 0777);
   /* if you are running this in normal user, or running through 
      fakeroot, you would (probably) get this */
   if (getuid()!=0 || 
@@ -89,7 +58,6 @@ int main()
 {
   int val=0;
   val+=test_get_host_dpkg_arch();
-  val+=test_mknod_inside_chroot();
   val+=test_qemu_create_arch_devices();
   return val;
 }

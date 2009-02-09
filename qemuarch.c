@@ -36,6 +36,8 @@
 #include <time.h>
 #include <locale.h>
 #include "parameter.h"
+#include "qemuarch.h"
+#include "file.h"
 
 /**
  * arch-specific routine; disk device name to use
@@ -52,33 +54,6 @@ const char* qemu_arch_diskdevice(const struct pbuilderconfig* pc)
     }
   return "hd";
 }
-
-/* mknod with prepended pathname
-   return -1 on failure.
- */
-int mknod_inside_chroot(const char* chroot, const char* pathname, mode_t mode, dev_t dev)
-{
-  char* p = NULL;
-  int ret;
-  
-  if (-1==asprintf(&p, "%s/%s", chroot, pathname))
-    {
-      fprintf(stderr, "out of memory on asprintf\n");      
-      return -1;
-    }
-  
-  ret=mknod(p, mode, dev);
-
-  if (ret == -1)  
-    {
-      /* output the error message for debug, but ignore it here. */
-      perror(p);
-    }
-  
-  free(p);
-  return ret;
-}
-
 
 /**
  * arch-specific routine; the console device to make
