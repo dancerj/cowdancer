@@ -147,6 +147,8 @@ const char* qemu_arch_qemu(const char* arch)
     }
   else if (!strcmp(arch, "powerpc"))
     return "qemu-system-ppc";
+  else if (!strcmp(arch, "sparc"))
+    return "qemu-system-sparc";
   else
     return NULL;
 }
@@ -167,6 +169,8 @@ const char* qemu_arch_qemumachine(const char* arch)
     return "mips";
   else if (!strcmp(arch, "powerpc"))
     return "prep";
+  else if (!strcmp(arch, "sparc"))
+    return "SS-5";
   return NULL;
 }
 
