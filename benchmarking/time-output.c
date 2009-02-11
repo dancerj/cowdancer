@@ -10,16 +10,12 @@ int main()
 {
   time_t start = time(NULL);
   char b[4096];
-  char timestr[256];
-  ssize_t len;
-    
-  while((len=read(0,b,sizeof(b)))>0)
+
+  while(fgets(b,sizeof(b),stdin)!=0)
     {
-      sprintf(timestr, "[%i] ", (int)difftime(time(NULL), start));
-      write(1,timestr,strlen(timestr));
-      write(1,b,len);
+      printf("[%i] %s", 
+	     (int)difftime(time(NULL), start), 
+	     b);
     }
-  perror("read");
   return 0;
 }
-
