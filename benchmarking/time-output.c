@@ -11,6 +11,16 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <termios.h>
+
+void fix_terminal() 
+{
+  struct termios t; 
+
+  tcgetattr(1, &t); 
+  t.c_lflag |= ECHO;
+  tcsetattr(1, TCSANOW, &t); 
+}
 
 int main()
 {
@@ -23,5 +33,7 @@ int main()
 	     (int)difftime(time(NULL), start), 
 	     b);
     }
+
+  fix_terminal();
   return 0;
 }
