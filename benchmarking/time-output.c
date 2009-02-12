@@ -1,4 +1,10 @@
 /*BINFMTC:
+
+  Pipe through this program to get time information on each line of text.
+
+    Use it like:
+    sudo cowbuilder --update  | ./time-output.c
+
  */
 #include <stdio.h>
 #include <time.h>
