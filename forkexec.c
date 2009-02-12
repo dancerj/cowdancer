@@ -50,6 +50,8 @@ int forkexecvp (char *const argv[])
     printf("\n");
   }
 
+  fflush(NULL);
+
   switch(pid=fork())
     {
     case 0:
@@ -121,6 +123,8 @@ forkexeclp (const char *path, const char *arg0, ...)
   va_end (args);
 
   printf("\n");			/* debug message */
+
+  fflush(NULL);
 
   switch(pid=fork())
     {

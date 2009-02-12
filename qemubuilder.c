@@ -184,6 +184,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       return -1;
     }
   
+  fflush(NULL);
   if ((child=fork()))
     {
       /* this is parent process */
