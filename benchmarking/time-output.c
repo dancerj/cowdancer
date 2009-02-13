@@ -17,9 +17,12 @@ void fix_terminal()
 {
   struct termios t; 
 
-  tcgetattr(1, &t); 
-  t.c_lflag |= ECHO;
-  tcsetattr(1, TCSANOW, &t); 
+  if (isatty(1)) 
+    {
+      tcgetattr(1, &t); 
+      t.c_lflag |= ECHO;
+      tcsetattr(1, TCSANOW, &t); 
+    }
 }
 
 int main()
