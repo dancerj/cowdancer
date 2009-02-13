@@ -35,6 +35,7 @@ int main()
       printf("[%i] %s", 
 	     (int)difftime(time(NULL), start), 
 	     b);
+      fflush(stdout);
     }
 
   fix_terminal();
