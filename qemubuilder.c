@@ -144,9 +144,12 @@ static void fix_terminal(void)
 {
   struct termios t; 
 
-  tcgetattr(1, &t); 
-  t.c_lflag |= ECHO;
-  tcsetattr(1, TCSANOW, &t); 
+  if (isatty(1)) 
+    {
+      tcgetattr(1, &t); 
+      t.c_lflag |= ECHO;
+      tcsetattr(1, TCSANOW, &t);
+    }
 }
 
 static int copy_file_contents_to_temp(const char* orig, const char*temppath, const char* filename)
