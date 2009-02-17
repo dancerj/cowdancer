@@ -68,6 +68,7 @@ static int create_ext3_block_device(const char* filename,
     }
 
   if ((ret=forkexeclp("mke2fs", "mke2fs", 
+		      "-q",
 		      "-F",
 		      "-j", 
 		      "-m1",
