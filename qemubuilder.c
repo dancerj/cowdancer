@@ -407,6 +407,7 @@ static int run_second_stage_script
 	   "hostname pbuilder-$(cat /etc/hostname)\n"
 	   //TODO: run G hook
 	   "%s\n"
+	   //TODO: I can mount /var/cache/apt/archives from some scratch space to not need this:
 	   "apt-get clean || true\n"
 	   "exit_from_qemu 0\n",
 	   qemu_keyword,
@@ -677,6 +678,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	   //save aptcache
 	   //optionally autoclean aptcache
 	   //run E hook
+	   //TODO: I can mount /var/cache/apt/archives from some scratch space to not need this:
 	   "apt-get clean || true\n"
 	   "exit_from_qemu $RET\n"
 	   "bash\n",
