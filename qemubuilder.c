@@ -804,7 +804,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
     (1,	   
      //TODO: installaptlines if required.
      //TODO: "dpkg --purge $REMOVEPACKAGES\n"
-     "apt-get update\n"
+     "apt-get update -o Acquire::PDiffs=false\n"
      "apt-get -y --force-yes -o DPkg::Options::=--force-confnew dist-upgrade\n"
      "apt-get install --force-yes -y build-essential dpkg-dev apt aptitude pbuilder\n"
      //TODO: EXTRAPACKAGES handling
