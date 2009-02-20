@@ -1,0 +1,8 @@
+  forking: /bin/true 
+  forking: /bin/false 
+  forking: /bin/echo Hello world 
+Hello world
+  forking: /bin/true 
+  forking: /bin/false 
+  forking: /bin/echo Hello World 
+Hello World
