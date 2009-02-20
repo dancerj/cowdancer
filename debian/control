@@ -10,8 +10,9 @@ Vcs-Browser: http://git.debian.org/?p=pbuilder/cowdancer.git
 
 Package: cowdancer
 Architecture: any
-Depends: ${shlibs:Depends}
-Recommends: cowbuilder
+# cowbuilder dependency is for backward compatibility, will be removed
+# after squeeze is released.
+Depends: ${shlibs:Depends}, cowbuilder
 Description: Copy-on-write directory tree utility.
  Tries to make copy-on-write semantics upon hard-link copied
  directory trees generated with 'cp -la'
