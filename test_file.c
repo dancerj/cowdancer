@@ -13,9 +13,11 @@
 
 void test_copy_file()
 {
-  assert(copy_file("/proc/mounts", "test_file.c.test~")==0);
+  char* temp=strdupa("/tmp/testfileXXXXXX");
+  mkstemp(temp);
+  assert(copy_file("/proc/mounts", temp)==0);
   assert(forkexeclp("diff", "diff", "-u", "/proc/mounts", 
-		    "test_file.c.test~", NULL)==0);
+		    temp, NULL)==0);
   assert(copy_file("/proc/mounts", "/dev/path/does/not/exist")==-1);
 }
 

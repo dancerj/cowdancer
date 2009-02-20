@@ -1,6 +1,6 @@
 #!/bin/bash
 apt-get update 
-apt-get -y --force-yes install binfmtc sudo
+apt-get -y --force-yes install binfmtc sudo adduser
 addgroup --gid 1555 user1
 addgroup --gid 1556 test1
 addgroup --gid 1557 test2
