@@ -33,7 +33,7 @@ check: initrd.gz
 		-hda /dev/zero \
 		-initrd ./initrd.gz \
 		-serial stdio \
-		-append "console=ttyS0"
+		-append "console=ttyS0 pbuilderarch=i386"
 
 clean:
 	rm -f qemuinit-static qemuinit-static-klibc *.o *~ initrd.gz 
