@@ -26,7 +26,7 @@
 #include <unistd.h>
 #include <getopt.h>
 #include "parameter.h"
-
+#include <assert.h>
 
 /* 
    
@@ -42,6 +42,20 @@ PBUILDER_ADD_PARAM(NULL);
  */
 char* pbuildercommandline[MAXPBUILDERCOMMANDLINE];
 int offset=2;
+
+
+/* 
+   get size of Null Terminated array of strings
+ */
+int size_of_ntarray(char ** buf)
+{
+  int i = 0;
+  while(buf[i]) {
+    ++i;
+    assert(i < MAX_CUSTOM_FILES);
+  }
+  return i;
+}
 
 /**
  * load configuration.
@@ -160,10 +174,17 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 int cpbuilder_dumpconfig(pbuilderconfig* pc)
 {
   /* dump configuration */
-
+  int i;
+  
   printf("dump config\n");
 #define DUMPINT(S) printf("  "#S": %i\n", pc->S);
 #define DUMPSTR(S) printf("  "#S": %s\n", pc->S);
+#define DUMPSTRARRAY(S) i=0; \
+  while (pc->S[i]) \
+    { \
+      printf("  "#S"[%i]: %s\n", i, pc->S[i]); \
+      i++; \
+    }
 
   DUMPINT(mountproc);
   DUMPINT(mountdev);
@@ -177,7 +198,9 @@ int cpbuilder_dumpconfig(pbuilderconfig* pc)
   DUMPSTR(distribution);
   DUMPSTR(components);
   DUMPSTR(debbuildopts);
-
+  DUMPSTRARRAY(inputfile);
+  DUMPSTRARRAY(outputfile);
+  
   DUMPINT(no_cowdancer_update);
   
   DUMPSTR(kernel_image);
@@ -222,6 +245,8 @@ int parse_parameter(int ac, char** av,
     {"distribution", required_argument, 0, 0},
     {"components", required_argument, 0, 0},
     {"debbuildopts", required_argument, 0, 0},
+    {"inputfile", required_argument, 0, 0},
+    {"outputfile", required_argument, 0, 0},
 
     /* cowbuilder specific options */
     {"no-cowdancer-update", no_argument, 0, 0},
@@ -376,6 +401,24 @@ int parse_parameter(int ac, char** av,
 	  else if (!strcmp(long_options[index_point].name,"arch-diskdevice"))
 	    {
 	      pc.arch_diskdevice=strdup(optarg);
+	    }
+	  else if (!strcmp(long_options[index_point].name,"inputfile"))
+	    {
+	      pc.inputfile[size_of_ntarray(pc.inputfile)]=strdup(optarg);
+	      if (size_of_ntarray(pc.inputfile) >= MAX_CUSTOM_FILES)
+		{
+		  fprintf(stderr, "too many inputfile options\n");
+		  exit (1);
+		}
+	    }
+	  else if (!strcmp(long_options[index_point].name,"outputfile"))
+	    {
+	      pc.inputfile[size_of_ntarray(pc.outputfile)]=strdup(optarg);
+	      if (size_of_ntarray(pc.outputfile) >= MAX_CUSTOM_FILES)
+		{
+		  fprintf(stderr, "too many outputfile options\n");
+		  exit (1);
+		}
 	    }
 	  else if (!strcmp(long_options[index_point].name,"components"))
 	    {

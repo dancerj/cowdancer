@@ -21,6 +21,8 @@
 #ifndef __PARAMETER_H__
 #define __PARAMETER_H__
 
+#define MAX_CUSTOM_FILES 32
+
 typedef struct pbuilderconfig 
 {
   /* if you edit here, please add to parameter.c: dumpconfig */
@@ -35,7 +37,12 @@ typedef struct pbuilderconfig
   char* distribution;
   char* components;
   char* debbuildopts;
-  
+
+  /* files to be copied into the chroot, 
+     and copied out of the chroot */
+  char* inputfile[MAX_CUSTOM_FILES+1];
+  char* outputfile[MAX_CUSTOM_FILES+1];
+    
   /* cow-specific options */
   int no_cowdancer_update;		/* --no-cowdancer-update */
   int debian_etch_workaround;		/* --debian-etch-workaround */
@@ -60,7 +67,7 @@ typedef struct pbuilderconfig
 }pbuilderconfig;
 
 int load_config_file(const char* config, pbuilderconfig* pc);
-
+int size_of_ntarray(char ** buf);
 int forkexeclp (const char *path, const char *arg0, ...);
 int forkexecvp (char *const argv[]);
 int parse_parameter(int ac, char** av, const char* keyword);
