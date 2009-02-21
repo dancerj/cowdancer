@@ -54,6 +54,7 @@ qemubuilder: qemubuilder.o parameter.o forkexec.o qemuipsanitize.o qemuarch.o fi
 
 clean: 
 	-rm -f *~ *.o *.lo $(BINARY)
+	-make -C initrd clean
 
 upload-dist-all:
 	scp ../cowdancer_$(VERSION).tar.gz aegis.netfort.gr.jp:public_html/software/downloads
