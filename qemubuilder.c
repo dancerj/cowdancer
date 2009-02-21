@@ -336,7 +336,7 @@ static int do_fsck(const char* devfile)
 /**
  * Invoke qemu, and run the second-stage script within QEMU.
  *
- * 
+ * hostcommand1 is used from build and login and exeute
  */
 static int run_second_stage_script
 (
@@ -499,7 +499,9 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
   int filelist=0;
 
   origdir=strdup(dscfile);
-  (*(strrchr(origdir,'/')))=0;	/* if this isn't working, I'm dead */
+
+  assert(strrchr(origdir,'/') != 0);
+  (*(strrchr(origdir,'/')))=0;
     
   fprintf(fmem, "cp %s %s/\n", 
 	  dscfile, destdir);
@@ -527,8 +529,8 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
 	{
 	  filelist=1;
 	}
-      
     }
+
   ret=0;
   assert(fmem);
   assert(f);
@@ -758,7 +760,7 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
   
   ret=run_second_stage_script
     (0,
-     commandline, pc, 
+     commandline, pc,  
      hoststr,
      hoststr2);
 
@@ -770,7 +772,11 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
 
 int cpbuilder_login(const struct pbuilderconfig* pc)
 {
-  return run_second_stage_script(pc->save_after_login, "bash", pc, NULL, NULL);
+  return run_second_stage_script(pc->save_after_login, 
+				 "bash", 
+				 pc, 
+				 NULL, 
+				 NULL);
 }
 
 /* 

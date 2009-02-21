@@ -1,4 +1,4 @@
-/*BINFMTC: parameter.c
+/*BINFMTC: parameter.c forkexec.c ilistcreate.c
  *  cowbuilder / pbuilder with cowdancer
  *  Copyright (C) 2005-2009 Junichi Uekawa
  *
