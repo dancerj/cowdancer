@@ -453,6 +453,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
   PBUILDER_ADD_PARAM(pc->buildplace);
   if (pc->mirror)
     {
+      /* TODO: check for --override-config here */
       PBUILDER_ADD_PARAM("--mirror");
       PBUILDER_ADD_PARAM(pc->mirror);
     }
