@@ -403,7 +403,6 @@ static int run_second_stage_script
 	  "export IFNAME=`/sbin/ifconfig -a | grep eth | head -n1 | awk '{print $1}'`\n"
 	  "dhclient $IFNAME\n"
 	  "cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
-	  "cp $PBUILDER_MOUNTPOINT/resolv.conf /etc/resolv.conf\n"
 	  "cp $PBUILDER_MOUNTPOINT/hostname /etc/hostname\n"
 	  "hostname pbuilder-$(cat /etc/hostname)\n"
 	  //TODO: run G hook
@@ -420,7 +419,6 @@ static int run_second_stage_script
   /* TODO: copy /etc/hosts etc. to inside chroot, or it won't know the hosts info. */
   copy_file_contents_to_temp("/etc/hosts", pc->buildplace, "hosts");
   copy_file_contents_to_temp("/etc/hostname", pc->buildplace, "hostname");
-  copy_file_contents_to_temp("/etc/resolv.conf", pc->buildplace, "resolv.conf");
 
   /* do I not need to copy /etc/pbuilderrc, and ~/.pbuilderrc to inside chroot? */
   /* TODO: hooks probably need copying here. */
@@ -665,7 +663,6 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "mount -n devpts /dev/pts -t devpts\n"
 	  "dhclient eth0\n"
 	  "cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
-	  "cp $PBUILDER_MOUNTPOINT/resolv.conf /etc/resolv.conf\n"
 	  "cp $PBUILDER_MOUNTPOINT/hostname /etc/hostname\n"
 	  "hostname pbuilder-$(cat /etc/hostname)\n"
 	  //TODO: installaptlines
@@ -696,7 +693,6 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   /* TODO: copy /etc/hosts etc. to inside chroot, or it won't know the hosts info. */
   copy_file_contents_to_temp("/etc/hosts", pc->buildplace, "hosts");
   copy_file_contents_to_temp("/etc/hostname", pc->buildplace, "hostname");
-  copy_file_contents_to_temp("/etc/resolv.conf", pc->buildplace, "resolv.conf");
 
   /* do I not need to copy /etc/pbuilderrc, and ~/.pbuilderrc to inside chroot? */
   /* TODO: hooks probably need copying here. */
