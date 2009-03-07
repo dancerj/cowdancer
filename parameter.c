@@ -302,6 +302,9 @@ int parse_parameter(int ac, char** av,
   if( load_ok > 1 ) exit( 4 );
   if( config_ok != 0 ) config_ok = load_ok;
 
+#define PASS_TO_PBUILDER_WITH_PARAM PBUILDER_ADD_PARAM(cmdstr); \
+	      PBUILDER_ADD_PARAM(strdup(optarg));
+
   /* load config files here. */
   while((c = getopt_long (ac, av, "b:d:Mmhv", long_options, &index_point)) != -1)
     {
@@ -341,8 +344,7 @@ int parse_parameter(int ac, char** av,
 	      fprintf(stderr, "out of memory constructing command-line options\n");
 	      exit (1);
 	    }
-	  PBUILDER_ADD_PARAM(cmdstr);
-	  PBUILDER_ADD_PARAM(strdup(optarg));
+	  PASS_TO_PBUILDER_WITH_PARAM
 	  break;
 	case 'M':		/* pass through to pbuilder: duplicate with param */
 	  if (0>asprintf(&cmdstr, "--%s", long_options[index_point].name))
@@ -351,8 +353,7 @@ int parse_parameter(int ac, char** av,
 	      fprintf(stderr, "out of memory constructing command-line options\n");
 	      exit (1);
 	    }
-	  PBUILDER_ADD_PARAM(cmdstr);
-	  PBUILDER_ADD_PARAM(strdup(optarg));
+	  PASS_TO_PBUILDER_WITH_PARAM
 	  break;
 	case 'm':		/* pass through to pbuilder: duplicate without param */
 	  if (0>asprintf(&cmdstr, "--%s", long_options[index_point].name))
@@ -410,6 +411,7 @@ int parse_parameter(int ac, char** av,
 		  fprintf(stderr, "too many inputfile options\n");
 		  exit (1);
 		}
+	      PASS_TO_PBUILDER_WITH_PARAM
 	    }
 	  else if (!strcmp(long_options[index_point].name,"outputfile"))
 	    {
@@ -426,8 +428,7 @@ int parse_parameter(int ac, char** av,
 	      pc.components=strdup(optarg);
 	      
 	      /* pass it for cowbuilder */
-	      PBUILDER_ADD_PARAM(cmdstr);
-	      PBUILDER_ADD_PARAM(strdup(optarg));
+	      PASS_TO_PBUILDER_WITH_PARAM
 	    }
 	  else if (!strcmp(long_options[index_point].name,"debbuildopts"))
 	    {
@@ -435,8 +436,7 @@ int parse_parameter(int ac, char** av,
 	      pc.debbuildopts=strdup(optarg);
 	      
 	      /* pass it for cowbuilder */
-	      PBUILDER_ADD_PARAM(cmdstr);
-	      PBUILDER_ADD_PARAM(strdup(optarg));
+	      PASS_TO_PBUILDER_WITH_PARAM
 	    }
 	  break;
 	case 'h':		/* -h */
