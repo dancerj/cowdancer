@@ -115,26 +115,25 @@ static int loop_umount(const char* device)
   return ret;
 }
 
-/** create a script here. 
+/** create a script file.
     
-@returns -1 on failure, 0 on success.
+@returns NULL on failure, FILE* on success
 */
-static int create_script(const char* mountpoint, const char* relative_path, const char* scriptcontent)
+static FILE* create_script(const char* mountpoint, const char* relative_path)
 {
   char *s = NULL;
-  FILE* f = NULL;
-  int ret=-1;
-  
+  FILE *f = NULL;
+  FILE *ret = NULL;
+
   asprintf(&s, "%s/%s", mountpoint, relative_path);
   if(!(f=fopen(s, "w")))
     goto fail;
-  if(EOF==fputs(scriptcontent, f))
-    goto fail;
-  if(EOF==fclose(f))
-    goto fail;
   if(chmod(s, 0700))
-    goto fail;
-  ret=0;
+    {
+      fclose(f);
+      goto fail;
+    }
+  ret=f;
  fail:
   free(s);
   return ret;
@@ -356,6 +355,7 @@ static int run_second_stage_script
   char* locsave, *timestring;
   time_t currenttime;
   int ret=1;
+  FILE* f;
   
   if (mkdir(pc->buildplace,0777))
     {
@@ -377,46 +377,45 @@ static int run_second_stage_script
   ret=create_ext3_block_device(workblockdevicepath, 1);
   loop_mount(workblockdevicepath, pc->buildplace);
 
-  asprintf(&script, 
-	   "#!/bin/bash\n"
+  f = create_script(pc->buildplace, "pbuilder-run");
+  fprintf(f, 
+	  "#!/bin/bash\n"
 
-	   /* define function to terminate qemu */
-	   "function exit_from_qemu() {\n"
-	   "sync\n"
-	   "sync\n"
-	   "sleep 1s\n"		/* sleep before sending dying message */
-	   "echo ' -> qemu-pbuilder %s$1'\n"
-	   "sleep 1s\n"
-	   "halt -f -p\n"	/* just halt myself if possible */
-	   "}\n"
+	  /* define function to terminate qemu */
+	  "function exit_from_qemu() {\n"
+	  "sync\n"
+	  "sync\n"
+	  "sleep 1s\n"		/* sleep before sending dying message */
+	  "echo ' -> qemu-pbuilder %s$1'\n"
+	  "sleep 1s\n"
+	  "halt -f -p\n"	/* just halt myself if possible */
+	  "}\n"
 
-	   /* main code */
-	   "echo \n"
-	   "echo ' -> qemu-pbuilder second-stage' \n"
-	   //TODO: copy hook scripts
-	   //"mount -n /proc /proc -t proc\n" // this is done in first stage.
-	   "echo '  -> setting time to %s' \n"
-	   "date --set=\"%s\"\n"
-	   "echo '  -> configuring network' \n"
-	   "ifconfig -a\n"
-	   "export IFNAME=`/sbin/ifconfig -a | grep eth | head -n1 | awk '{print $1}'`\n"
-	   "dhclient $IFNAME\n"
-	   "cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
-	   "cp $PBUILDER_MOUNTPOINT/resolv.conf /etc/resolv.conf\n"
-	   "cp $PBUILDER_MOUNTPOINT/hostname /etc/hostname\n"
-	   "hostname pbuilder-$(cat /etc/hostname)\n"
-	   //TODO: run G hook
-	   "%s\n"
-	   //TODO: I can mount /var/cache/apt/archives from some scratch space to not need this:
-	   "apt-get clean || true\n"
-	   "exit_from_qemu 0\n",
-	   qemu_keyword,
-	   timestring,
-	   timestring,
-	   commandline);
-
-  create_script(pc->buildplace, "pbuilder-run",
-		script);
+	  /* main code */
+	  "echo \n"
+	  "echo ' -> qemu-pbuilder second-stage' \n"
+	  //TODO: copy hook scripts
+	  //"mount -n /proc /proc -t proc\n" // this is done in first stage.
+	  "echo '  -> setting time to %s' \n"
+	  "date --set=\"%s\"\n"
+	  "echo '  -> configuring network' \n"
+	  "ifconfig -a\n"
+	  "export IFNAME=`/sbin/ifconfig -a | grep eth | head -n1 | awk '{print $1}'`\n"
+	  "dhclient $IFNAME\n"
+	  "cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
+	  "cp $PBUILDER_MOUNTPOINT/resolv.conf /etc/resolv.conf\n"
+	  "cp $PBUILDER_MOUNTPOINT/hostname /etc/hostname\n"
+	  "hostname pbuilder-$(cat /etc/hostname)\n"
+	  //TODO: run G hook
+	  "%s\n"
+	  //TODO: I can mount /var/cache/apt/archives from some scratch space to not need this:
+	  "apt-get clean || true\n"
+	  "exit_from_qemu 0\n",
+	  qemu_keyword,
+	  timestring,
+	  timestring,
+	  commandline);
+  fclose(f);
 
   /* TODO: copy /etc/hosts etc. to inside chroot, or it won't know the hosts info. */
   copy_file_contents_to_temp("/etc/hosts", pc->buildplace, "hosts");
@@ -554,6 +553,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   char* s=NULL;  		/* generic asprintf buffer */
   char* workblockdevicepath=NULL;
   char* t=NULL;
+  FILE* f;
 
   if((ret=unlink(pc->basepath)))
     {
@@ -611,24 +611,23 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 
   qemu_create_arch_devices(pc->buildplace, pc->arch);
   
-  asprintf(&s,
-	   "#!/bin/bash\n"
-	   "echo \n"
-	   "echo ' -> qemu-pbuilder first-stage' \n"
-	   "export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\n"
-	   "mount -n /proc /proc -t proc\n"
-	   "mount -n -o rw,remount /\n"
-	   "cp /proc/mounts /etc/mtab\n"
-	   "export PBUILDER_MOUNTPOINT=/var/cache/pbuilder/pbuilder-mnt\n"
-	   "mkdir -p $PBUILDER_MOUNTPOINT\n"
-	   "mount -n -t ext3 /dev/%sb $PBUILDER_MOUNTPOINT \n"
-	   "$PBUILDER_MOUNTPOINT/pbuilder-run \n",
-	   qemu_arch_diskdevice(pc)
-	   );
-  
-  create_script(pc->buildplace, 
-		"pbuilder-run",
-		s);
+  f = create_script(pc->buildplace, "pbuilder-run");
+  fprintf(f, 
+	  "#!/bin/bash\n"
+	  "echo \n"
+	  "echo ' -> qemu-pbuilder first-stage' \n"
+	  "export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\n"
+	  "mount -n /proc /proc -t proc\n"
+	  "mount -n -o rw,remount /\n"
+	  "cp /proc/mounts /etc/mtab\n"
+	  "export PBUILDER_MOUNTPOINT=/var/cache/pbuilder/pbuilder-mnt\n"
+	  "mkdir -p $PBUILDER_MOUNTPOINT\n"
+	  "mount -n -t ext3 /dev/%sb $PBUILDER_MOUNTPOINT \n"
+	  "$PBUILDER_MOUNTPOINT/pbuilder-run \n",
+	  qemu_arch_diskdevice(pc)
+	  );
+  fclose(f);
+
   free(s); s=0;
 
   ret=loop_umount(pc->buildplace);
@@ -639,59 +638,58 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 
   loop_mount(workblockdevicepath, pc->buildplace);
 
-  asprintf(&s,
-	   "#!/bin/bash\n"
-	   /* define function to terminate qemu */
-	   "function exit_from_qemu() {\n"
-	   "sync\n"
-	   "sync\n"
-	   "sleep 1s\n"		/* sleep before sending dying message */
-	   "echo ' -> qemu-pbuilder %s$1'\n"
-	   "sleep 1s\n"
-	   "halt -f -p\n"	/* just halt myself if possible */
-	   "}\n"
-
-	   /* start of main code */
-	   "export RET=0\n"
-	   "echo \n"
-	   "echo ' -> qemu-pbuilder second-stage' \n"
-	   "/debootstrap/debootstrap --second-stage\n"
-	   "echo deb %s %s %s > /etc/apt/sources.list \n"
-	   "echo 'APT::Install-Recommends \"false\"; ' > /etc/apt/apt.conf.d/15pbuilder\n"
-	   //TODO: copy hook scripts
-	   "mount -n proc /proc -t proc\n"
-	   "mount -n sysfs /sys -t sysfs\n"
-	   "mkdir /dev/pts\n"
-	   "mount -n devpts /dev/pts -t devpts\n"
-	   "dhclient eth0\n"
-	   "cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
-	   "cp $PBUILDER_MOUNTPOINT/resolv.conf /etc/resolv.conf\n"
-	   "cp $PBUILDER_MOUNTPOINT/hostname /etc/hostname\n"
-	   "hostname pbuilder-$(cat /etc/hostname)\n"
-	   //TODO: installaptlines
-	   //"echo 'deb http://192.168.1.26/debian/ sid main ' > /etc/apt/sources.list\n"
-	   //TODO: run G hook
-	   "apt-get update || exit_from_qemu 1\n"
-	   //TODO: "dpkg --purge $REMOVEPACKAGES\n"
-	   //recover aptcache
-	   "apt-get -y --force-yes -o DPkg::Options::=--force-confnew dist-upgrade || exit_from_qemu 1\n"
-	   "apt-get install --force-yes -y build-essential dpkg-dev apt aptitude pbuilder || exit_from_qemu 1\n"
-	   //TODO: EXTRAPACKAGES handling
-	   //save aptcache
-	   //optionally autoclean aptcache
-	   //run E hook
-	   //TODO: I can mount /var/cache/apt/archives from some scratch space to not need this:
-	   "apt-get clean || true\n"
-	   "exit_from_qemu $RET\n"
-	   "bash\n",
-	   qemu_keyword,
-	   t=sanitize_mirror(pc->mirror), 
-	   pc->distribution,
-	   pc->components);
+  f = create_script(pc->buildplace, "pbuilder-run");
+  fprintf(f,
+	  "#!/bin/bash\n"
+	  /* define function to terminate qemu */
+	  "function exit_from_qemu() {\n"
+	  "sync\n"
+	  "sync\n"
+	  "sleep 1s\n"		/* sleep before sending dying message */
+	  "echo ' -> qemu-pbuilder %s$1'\n"
+	  "sleep 1s\n"
+	  "halt -f -p\n"	/* just halt myself if possible */
+	  "}\n"
+	  
+	  /* start of main code */
+	  "export RET=0\n"
+	  "echo \n"
+	  "echo ' -> qemu-pbuilder second-stage' \n"
+	  "/debootstrap/debootstrap --second-stage\n"
+	  "echo deb %s %s %s > /etc/apt/sources.list \n"
+	  "echo 'APT::Install-Recommends \"false\"; ' > /etc/apt/apt.conf.d/15pbuilder\n"
+	  //TODO: copy hook scripts
+	  "mount -n proc /proc -t proc\n"
+	  "mount -n sysfs /sys -t sysfs\n"
+	  "mkdir /dev/pts\n"
+	  "mount -n devpts /dev/pts -t devpts\n"
+	  "dhclient eth0\n"
+	  "cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
+	  "cp $PBUILDER_MOUNTPOINT/resolv.conf /etc/resolv.conf\n"
+	  "cp $PBUILDER_MOUNTPOINT/hostname /etc/hostname\n"
+	  "hostname pbuilder-$(cat /etc/hostname)\n"
+	  //TODO: installaptlines
+	  //"echo 'deb http://192.168.1.26/debian/ sid main ' > /etc/apt/sources.list\n"
+	  //TODO: run G hook
+	  "apt-get update || exit_from_qemu 1\n"
+	  //TODO: "dpkg --purge $REMOVEPACKAGES\n"
+	  //recover aptcache
+	  "apt-get -y --force-yes -o DPkg::Options::=--force-confnew dist-upgrade || exit_from_qemu 1\n"
+	  "apt-get install --force-yes -y build-essential dpkg-dev apt aptitude pbuilder || exit_from_qemu 1\n"
+	  //TODO: EXTRAPACKAGES handling
+	  //save aptcache
+	  //optionally autoclean aptcache
+	  //run E hook
+	  //TODO: I can mount /var/cache/apt/archives from some scratch space to not need this:
+	  "apt-get clean || true\n"
+	  "exit_from_qemu $RET\n"
+	  "bash\n",
+	  qemu_keyword,
+	  t=sanitize_mirror(pc->mirror), 
+	  pc->distribution,
+	  pc->components);
+  fclose(f);
   free(t);
-  create_script(pc->buildplace,
-		"pbuilder-run",
-		s);
 
   /* TODO: can I do 'date --set' from output of 'LC_ALL=C date' */
 
