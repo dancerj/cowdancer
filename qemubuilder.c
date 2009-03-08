@@ -152,14 +152,30 @@ static void fix_terminal(void)
     }
 }
 
-static int copy_file_contents_to_temp(const char* orig, const char*temppath, const char* filename)
+static int copy_file_contents_through_temp(FILE* f, 
+					   const char* orig, 
+					   const char* temppath, 
+					   const char* targetdir)
 {
-  char* s;
+  char* tempname;
   int ret;
+  char* file_basename = basename(orig);
+  asprintf(&tempname, "%s/%s", temppath, file_basename);
+  ret=copy_file(orig, tempname);
+  if (ret == -1) 
+    {
+      fprintf(f, "E: Copy file error in %s to %s\n", 
+	      orig, tempname);
+    }
+  
+  free(tempname);
 
-  asprintf(&s, "%s/%s", temppath, filename);
-  ret=copy_file(orig, s);
-  free(s);
+  fprintf(f,
+	  "echo \"I: copying %s/%s from temporary location\"\n"
+	  "cp $PBUILDER_MOUNTPOINT/%s %s/%s || echo \"E: Copy failed\"\n", 
+	  targetdir, file_basename,
+	  file_basename,
+	  targetdir, file_basename);
   return ret;
 }
 
@@ -356,6 +372,7 @@ static int run_second_stage_script
   time_t currenttime;
   int ret=1;
   FILE* f;
+  int i;
   
   if (mkdir(pc->buildplace,0777))
     {
@@ -402,8 +419,8 @@ static int run_second_stage_script
 	  "ifconfig -a\n"
 	  "export IFNAME=`/sbin/ifconfig -a | grep eth | head -n1 | awk '{print $1}'`\n"
 	  "dhclient $IFNAME\n"
-	  "cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
-	  "cp $PBUILDER_MOUNTPOINT/hostname /etc/hostname\n"
+	  "mkdir -p /tmp/buildd\n"
+	  "$PBUILDER_MOUNTPOINT/run-copyfiles\n"
 	  "hostname pbuilder-$(cat /etc/hostname)\n"
 	  //TODO: run G hook
 	  "%s\n"
@@ -416,9 +433,16 @@ static int run_second_stage_script
 	  commandline);
   fclose(f);
 
-  /* TODO: copy /etc/hosts etc. to inside chroot, or it won't know the hosts info. */
-  copy_file_contents_to_temp("/etc/hosts", pc->buildplace, "hosts");
-  copy_file_contents_to_temp("/etc/hostname", pc->buildplace, "hostname");
+  /* copy files script */
+  f = create_script(pc->buildplace, "run-copyfiles");
+  copy_file_contents_through_temp(f, "/etc/hosts", pc->buildplace, "/etc");
+  copy_file_contents_through_temp(f, "/etc/hostname", pc->buildplace, "/etc");
+  /* copy inputfile */
+  for (i=0; pc->inputfile[i]; ++i) 
+    {
+      copy_file_contents_through_temp(f, pc->inputfile[i], pc->buildplace, "/tmp/buildd");
+    }
+  fclose(f);
 
   /* do I not need to copy /etc/pbuilderrc, and ~/.pbuilderrc to inside chroot? */
   /* TODO: hooks probably need copying here. */
@@ -550,8 +574,8 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   int ret=0;
   char* s=NULL;  		/* generic asprintf buffer */
   char* workblockdevicepath=NULL;
-  char* t=NULL;
   FILE* f;
+  char* t;
 
   if((ret=unlink(pc->basepath)))
     {
@@ -662,8 +686,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "mkdir /dev/pts\n"
 	  "mount -n devpts /dev/pts -t devpts\n"
 	  "dhclient eth0\n"
-	  "cp $PBUILDER_MOUNTPOINT/hosts /etc/hosts\n"
-	  "cp $PBUILDER_MOUNTPOINT/hostname /etc/hostname\n"
+	  "$PBUILDER_MOUNTPOINT/run-copyfiles\n"
 	  "hostname pbuilder-$(cat /etc/hostname)\n"
 	  //TODO: installaptlines
 	  //"echo 'deb http://192.168.1.26/debian/ sid main ' > /etc/apt/sources.list\n"
@@ -690,9 +713,11 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 
   /* TODO: can I do 'date --set' from output of 'LC_ALL=C date' */
 
-  /* TODO: copy /etc/hosts etc. to inside chroot, or it won't know the hosts info. */
-  copy_file_contents_to_temp("/etc/hosts", pc->buildplace, "hosts");
-  copy_file_contents_to_temp("/etc/hostname", pc->buildplace, "hostname");
+  /* copy files script */
+  f = create_script(pc->buildplace, "run-copyfiles");
+  copy_file_contents_through_temp(f, "/etc/hosts", pc->buildplace, "/etc/");
+  copy_file_contents_through_temp(f, "/etc/hostname", pc->buildplace, "/etc/");
+  fclose(f);
 
   /* do I not need to copy /etc/pbuilderrc, and ~/.pbuilderrc to inside chroot? */
   /* TODO: hooks probably need copying here. */
