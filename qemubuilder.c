@@ -348,6 +348,25 @@ static int do_fsck(const char* devfile)
 		    NULL);
 }
 
+/* 
+   get the current time string which can be used in date command to
+   set time inside the chroot.
+ */
+static char* get_current_time_string(void)
+{
+  char* locsave, *timestring;
+  time_t currenttime;
+  
+  /* save/set/restore locale settings to get current time in POSIX format */
+  locsave = setlocale(LC_TIME, NULL);
+  (void) setlocale(LC_TIME, "POSIX");
+  currenttime=time(NULL); 
+  timestring=asctime(gmtime(&currenttime));
+  (void) setlocale(LC_TIME, locsave);
+  return timestring;
+}
+
+
 /**
  * Invoke qemu, and run the second-stage script within QEMU.
  *
@@ -368,8 +387,7 @@ static int run_second_stage_script
   char* script=NULL;
   char* workblockdevicepath=NULL;
   char* cowdevpath=NULL;
-  char* locsave, *timestring;
-  time_t currenttime;
+  char* timestring;
   int ret=1;
   FILE* f;
   int i;
@@ -383,12 +401,7 @@ static int run_second_stage_script
 
   do_fsck(pc->basepath);
 
-  /* save/set/restore locale settings to get current time in POSIX format */
-  locsave = setlocale(LC_TIME, NULL);
-  (void) setlocale(LC_TIME, "POSIX");
-  currenttime=time(NULL); 
-  timestring=asctime(gmtime(&currenttime));
-  (void) setlocale(LC_TIME, locsave);
+  timestring=get_current_time_string();
 
   asprintf(&workblockdevicepath, "%s.dev", pc->buildplace);
   ret=create_ext3_block_device(workblockdevicepath, 1);
@@ -576,6 +589,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   char* workblockdevicepath=NULL;
   FILE* f;
   char* t;
+  char* timestring;
 
   if((ret=unlink(pc->basepath)))
     {
@@ -660,6 +674,8 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 
   loop_mount(workblockdevicepath, pc->buildplace);
 
+  timestring=get_current_time_string();
+
   f = create_script(pc->buildplace, "pbuilder-run");
   fprintf(f,
 	  "#!/bin/bash\n"
@@ -677,6 +693,9 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "export RET=0\n"
 	  "echo \n"
 	  "echo ' -> qemu-pbuilder second-stage' \n"
+	  "echo '  -> setting time to %s' \n"
+	  "date --set=\"%s\"\n"
+	  "echo '  -> Running debootstrap second-stage script' \n"
 	  "/debootstrap/debootstrap --second-stage\n"
 	  "echo deb %s %s %s > /etc/apt/sources.list \n"
 	  "echo 'APT::Install-Recommends \"false\"; ' > /etc/apt/apt.conf.d/15pbuilder\n"
@@ -705,9 +724,9 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "exit_from_qemu $RET\n"
 	  "bash\n",
 	  qemu_keyword,
-	  t=sanitize_mirror(pc->mirror), 
-	  pc->distribution,
-	  pc->components);
+	  timestring,
+	  timestring,
+	  t=sanitize_mirror(pc->mirror), pc->distribution, pc->components);
   fclose(f);
   free(t);
 
