@@ -734,8 +734,8 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 
   /* copy files script */
   f = create_script(pc->buildplace, "run-copyfiles");
-  copy_file_contents_through_temp(f, "/etc/hosts", pc->buildplace, "/etc/");
-  copy_file_contents_through_temp(f, "/etc/hostname", pc->buildplace, "/etc/");
+  copy_file_contents_through_temp(f, "/etc/hosts", pc->buildplace, "/etc");
+  copy_file_contents_through_temp(f, "/etc/hostname", pc->buildplace, "/etc");
   fclose(f);
 
   /* do I not need to copy /etc/pbuilderrc, and ~/.pbuilderrc to inside chroot? */
