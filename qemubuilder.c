@@ -845,7 +845,9 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
  */
 int cpbuilder_update(const struct pbuilderconfig* pc)
 {
-  /* TODO: --override-config */
+  /* TODO: --override-config support. 
+     There is no way to change distribution in this code-path...
+   */
   return run_second_stage_script
     (1,	   
      //TODO: installaptlines if required.
