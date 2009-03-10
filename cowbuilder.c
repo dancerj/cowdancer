@@ -194,11 +194,6 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
   pbuildercommandline[1]="build";
   PBUILDER_ADD_PARAM("--buildplace");
   PBUILDER_ADD_PARAM(pc->buildplace);
-  if (pc->mirror)
-    {
-      PBUILDER_ADD_PARAM("--mirror");
-      PBUILDER_ADD_PARAM(pc->mirror);
-    }
   if (pc->buildresult)
     {
       PBUILDER_ADD_PARAM("--buildresult");
@@ -235,6 +230,8 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
       PBUILDER_ADD_PARAM("--mirror");
       PBUILDER_ADD_PARAM(pc->mirror);
     }
+  PBUILDER_ADD_PARAM("--distribution");
+  PBUILDER_ADD_PARAM(pc->distribution);
   PBUILDER_ADD_PARAM("--no-targz");
   PBUILDER_ADD_PARAM("--extrapackages");
   PBUILDER_ADD_PARAM("cowdancer");
@@ -401,6 +398,24 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
 }
 
 
+/* 
+   find matching parameter, and check if it's set.
+   @returns found=1, not found=0.
+ */
+int find_matching_param(const char* option)
+{
+  int i;
+  int found=0;
+  for (i=0; i<offset; ++i) 
+    {
+      if (!strcmp(pbuildercommandline[i], option))
+	{
+	  found=1;
+	}
+    }
+  return found;
+}
+
 /**
    implement pbuilder update
 
@@ -451,11 +466,15 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
   pbuildercommandline[1]="update";
   PBUILDER_ADD_PARAM("--buildplace");
   PBUILDER_ADD_PARAM(pc->buildplace);
-  if (pc->mirror)
+  if (find_matching_param("--override-config"))
     {
-      /* TODO: check for --override-config here */
-      PBUILDER_ADD_PARAM("--mirror");
-      PBUILDER_ADD_PARAM(pc->mirror);
+      if (pc->mirror) 
+	{
+	  PBUILDER_ADD_PARAM("--mirror");
+	  PBUILDER_ADD_PARAM(pc->mirror);
+	}
+      PBUILDER_ADD_PARAM("--distribution");
+      PBUILDER_ADD_PARAM(pc->distribution);
     }
   PBUILDER_ADD_PARAM("--no-targz");
   PBUILDER_ADD_PARAM("--internal-chrootexec");

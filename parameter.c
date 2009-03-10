@@ -475,10 +475,6 @@ int parse_parameter(int ac, char** av,
   if (!pc.distribution)
     pc.distribution=strdup("sid");
   
-  /* add mandatory command-line options */
-  PBUILDER_ADD_PARAM("--distribution");
-  PBUILDER_ADD_PARAM(pc.distribution);
-
   if (!pc.memory_megs)
     pc.memory_megs=128;
 
