@@ -283,7 +283,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       asprintf(&mem, "%i", pc->memory_megs);
       
       asprintf(&append_command,
-	       "root=/dev/%sa init=/pbuilder-run console=%s",
+	       "root=/dev/%sa quiet init=/pbuilder-run console=%s",
 	       qemu_arch_diskdevice(pc),
 	       qemu_arch_tty(pc->arch));
             
