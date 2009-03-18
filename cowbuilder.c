@@ -50,6 +50,19 @@ will show the list of files changed.
 
 const char* ilist_PRGNAME="cowbuilder";
 
+
+/**
+   remove a directory.
+
+   be careful about bind-mounted directories.
+
+   @return 0 on success
+ */
+static int rmrf(const char* path)
+{
+  return forkexeclp("rm", "rm", "-rf", path, NULL);
+}
+
 /**
  * @return .ilist path as malloc()ed string, or NULL on error.
  */
@@ -73,7 +86,7 @@ static int cpbuilder_internal_cowcopy(const struct pbuilderconfig* pc)
   char *ilistfile;
 
   printf(" -> Copying COW directory\n");
-  if (0!=forkexeclp("rm", "rm", "-rvf", pc->buildplace, NULL))
+  if (0!=rmrf(pc->buildplace))
     return 1;
   if (0!=forkexeclp("cp", "cp", "-al", pc->basepath, pc->buildplace, NULL))
     return 1;
@@ -102,7 +115,7 @@ static int cpbuilder_internal_cowcopy(const struct pbuilderconfig* pc)
 static int cpbuilder_internal_cleancow(const struct pbuilderconfig* pc)
 {
   printf(" -> Cleaning COW directory\n");
-  if (0!=forkexeclp("rm", "rm", "-rf", pc->buildplace, NULL))
+  if (0!=rmrf(pc->buildplace))
     return 1;
   return 0;
 }
@@ -241,7 +254,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   if (ret)
     {	  
       printf("pbuilder create failed\n");
-      if (0!=forkexeclp("rm", "rm", "-rf", pc->basepath, NULL))
+      if (0!=rmrf(pc->basepath))
 	{
 	  fprintf(stderr, "Could not remove original tree\n");
 	}
@@ -279,7 +292,7 @@ int cpbuilder_internal_saveupdate(const struct pbuilderconfig* pc)
       ret=-1;
       goto out;
     }
-  if (0!=forkexeclp("rm", "rm", "-rf", buf_tmpfile, NULL))
+  if (0!=rmrf(buf_tmpfile))
     {
       printf("Could not remove original tree\n");
       ret=-1;
@@ -494,7 +507,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
 	      fprintf(stderr, "E: could not update with cowdancer, try --no-cowdancer-update option\n");
 	    }
 
-	  if (0!=forkexeclp("rm", "rm", "-rf", pc->buildplace, NULL))
+	  if (0!=rmrf(pc->buildplace))
 	    {
 	      fprintf(stderr, "Could not remove original tree\n");
 	    }
