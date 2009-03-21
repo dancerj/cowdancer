@@ -1,8 +1,13 @@
-cowdancer (0.50) UNRELEASED; urgency=low
+cowdancer (0.50) unstable; urgency=low
 
-  * 
+  * add handling for inputfile / outputfile options, --inputfile is
+    implemented.
+  * do not use external resolv.conf inside qemu.
+  * add 'quiet' option to kernel booting inside qemu.
+  * Set the current time inside chroot for pbuilder create target as
+    well.
 
- -- Junichi Uekawa <dancer@debian.org>  Fri, 20 Feb 2009 22:33:35 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 21 Mar 2009 11:08:44 +0900
 
 cowdancer (0.49) unstable; urgency=low
 
