@@ -1,0 +1,5 @@
+++ ./qemubuilder.c --inputfile one --inputfile two --dumpconfig
+++ grep inputfile
++ '[' '  inputfile[0]: one
+  inputfile[1]: two' = '  inputfile[0]: one
+  inputfile[1]: two' ']'

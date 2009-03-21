@@ -11,10 +11,10 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 3.7784e-05 s, 27.1 MB/s
+1024 bytes (1.0 kB) copied, 2.1092e-05 s, 48.5 MB/s
 + cd 1
-+ find -links +1 -type f -printf '%D %i\n'
 + sort -k 2 -n
++ find -links +1 -type f -printf '%D %i\n'
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/cowdancer-ilistdump.c /tmp/XXXX/1/.ilist
 + sort -k 2 -n
 ilist_struct size on this architecture: 16
