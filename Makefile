@@ -6,6 +6,7 @@ INSTALL_PROGRAM=install -o root -g root -m 755
 DESTDIR=
 PREFIX=/usr
 LIBDIR=$(PREFIX)/lib
+CFLAGS=-O2 -Wall -g -fno-strict-aliasing
 export VERSION=$(shell sed -n '1s/.*(\(.*\)).*$$/\1/p' < debian/changelog )
 
 all: $(BINARY)
@@ -32,25 +33,25 @@ install: $(BINARY)
 	$(INSTALL_FILE) bash_completion.cowbuilder $(DESTDIR)/etc/bash_completion.d/cowbuilder
 
 libcowdancer.so: cowdancer.lo ilistcreate.lo
-	$(CC) -O2 -Wall -ldl -shared -o $@ $^
+	$(CC) $(CFLAGS) -ldl -shared -o $@ $^
 
 cow-shell: cow-shell.o ilistcreate.o
-	$(CC) -O2 -Wall -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^
 
 cowdancer-ilistcreate: cowdancer-ilistcreate.o ilistcreate.o
-	$(CC) -O2 -Wall -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^
 
 cowbuilder: cowbuilder.o parameter.o forkexec.o ilistcreate.o
-	$(CC) -O2 -Wall -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^
 
 qemubuilder: qemubuilder.o parameter.o forkexec.o qemuipsanitize.o qemuarch.o file.o
-	$(CC) -O2 -Wall -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^
 
 %.lo: %.c 
-	$(CC) -D_REENTRANT -fPIC $< -o $@ -c -Wall -O2 -g
+	$(CC) $(CFLAGS) -D_REENTRANT -fPIC $< -o $@ -c
 
 %.o: %.c parameter.h
-	$(CC) $< -o $@ -c -Wall -O2 -g -fno-strict-aliasing -D LIBDIR="\"${LIBDIR}\""
+	$(CC) $(CFLAGS) $< -o $@ -c -D LIBDIR="\"${LIBDIR}\""
 
 clean: 
 	-rm -f *~ *.o *.lo $(BINARY)
@@ -74,6 +75,6 @@ slowcheck:
 check: fastcheck slowcheck
 
 check-syntax:
-	$(CC) -c -O2 -Wall $(CHK_SOURCES)  -o/dev/null -D LIBDIR="\"${LIBDIR}\""
+	$(CC) -c $(CFLAGS) $(CHK_SOURCES)  -o/dev/null -D LIBDIR="\"${LIBDIR}\""
 
 .PHONY: clean check upload-dist-all check-syntax fastcheck slowcheck
