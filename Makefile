@@ -6,7 +6,7 @@ INSTALL_PROGRAM=install -o root -g root -m 755
 DESTDIR=
 PREFIX=/usr
 LIBDIR=$(PREFIX)/lib
-CFLAGS=-O2 -Wall -g -fno-strict-aliasing
+CFLAGS=-O2 -Wall -g -fno-strict-aliasing $(shell getconf LFS_CFLAGS)
 export VERSION=$(shell sed -n '1s/.*(\(.*\)).*$$/\1/p' < debian/changelog )
 
 all: $(BINARY)
