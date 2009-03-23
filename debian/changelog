@@ -1,3 +1,11 @@
+cowdancer (0.52) unstable; urgency=low
+
+  * Fix build error on i386. 
+    libcowdancer cannot be built with LFS on i386. Disable LFS for now.
+    (closes: #520861)
+
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 23 Mar 2009 22:27:51 +0900
+
 cowdancer (0.51) unstable; urgency=low
 
   * add largefile support flags so that qemubuilder works properly in

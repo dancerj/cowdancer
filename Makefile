@@ -7,6 +7,7 @@ DESTDIR=
 PREFIX=/usr
 LIBDIR=$(PREFIX)/lib
 CFLAGS=-O2 -Wall -g -fno-strict-aliasing $(shell getconf LFS_CFLAGS)
+COWDANCER_CFLAGS=-O2 -Wall -g -fno-strict-aliasing 
 export VERSION=$(shell sed -n '1s/.*(\(.*\)).*$$/\1/p' < debian/changelog )
 
 all: $(BINARY)
@@ -48,7 +49,7 @@ qemubuilder: qemubuilder.o parameter.o forkexec.o qemuipsanitize.o qemuarch.o fi
 	$(CC) $(CFLAGS) -o $@ $^
 
 %.lo: %.c 
-	$(CC) $(CFLAGS) -D_REENTRANT -fPIC $< -o $@ -c
+	$(CC) $(COWDANCER_CFLAGS) -D_REENTRANT -fPIC $< -o $@ -c
 
 %.o: %.c parameter.h
 	$(CC) $(CFLAGS) $< -o $@ -c -D LIBDIR="\"${LIBDIR}\""
