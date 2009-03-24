@@ -3,7 +3,7 @@
 set -ex
 
 TESTDIR=$(mktemp -d )
-TESTCODE=$(readlink -f cowdancer-ilistdump.c)
+TESTCODE=$(readlink -f cowdancer-ilistdump)
 
 (
     cd ${TESTDIR}
