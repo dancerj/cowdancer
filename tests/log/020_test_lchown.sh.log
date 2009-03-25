@@ -15,7 +15,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 3.8342e-05 s, 26.7 MB/s
+1024 bytes (1.0 kB) copied, 1.7112e-05 s, 59.8 MB/s
 + chgrp 1000 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -24,13 +24,13 @@
    2/ before
 + ls -li 2/
 合計 4
-220809 -rw-r--r-- 2 dancer dancer    0 2009-03-21 11:21 a
-220810 -rw-r--r-- 2 dancer dancer    0 2009-03-21 11:21 b
-220811 -rw-r--r-- 2 dancer dancer    0 2009-03-21 11:21 c
-220812 -rw-r--r-- 2 dancer dancer    0 2009-03-21 11:21 d
-220815 -rw-r--r-- 2 dancer dancer 1024 2009-03-21 11:21 e
-220813 lrwxrwxrwx 2 dancer dancer    1 2009-03-21 11:21 f -> a
-220814 lrwxrwxrwx 2 dancer dancer    1 2009-03-21 11:21 g -> b
+131875 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 a
+131876 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 b
+131877 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 c
+131878 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 d
+131881 -rw-r--r-- 2 dancer dancer 1024 2009-03-25 09:26 e
+131879 lrwxrwxrwx 2 dancer dancer    1 2009-03-25 09:26 f -> a
+131880 lrwxrwxrwx 2 dancer dancer    1 2009-03-25 09:26 g -> b
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c 4 2/f 2/b 2/g
 chown 2/f
 lchown 2/g
@@ -38,13 +38,13 @@ lchown 2/g
    2/ after
 + ls -li 2/
 合計 4
-221639 -rw-r--r-- 1 dancer adm       0 2009-03-21 11:21 a
-220810 -rw-r--r-- 2 dancer dancer    0 2009-03-21 11:21 b
-220811 -rw-r--r-- 2 dancer dancer    0 2009-03-21 11:21 c
-220812 -rw-r--r-- 2 dancer dancer    0 2009-03-21 11:21 d
-220815 -rw-r--r-- 2 dancer dancer 1024 2009-03-21 11:21 e
-220813 lrwxrwxrwx 2 dancer dancer    1 2009-03-21 11:21 f -> a
-221645 lrwxrwxrwx 1 dancer adm       1 2009-03-21 11:21 g -> b
+131928 -rw-r--r-- 1 dancer adm       0 2009-03-25 09:26 a
+131876 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 b
+131877 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 c
+131878 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 d
+131881 -rw-r--r-- 2 dancer dancer 1024 2009-03-25 09:26 e
+131879 lrwxrwxrwx 2 dancer dancer    1 2009-03-25 09:26 f -> a
+131934 lrwxrwxrwx 1 dancer adm       1 2009-03-25 09:26 g -> b
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
