@@ -1,3 +1,7 @@
+* make cowdancer LFS
+- run 'make check' in debian/rules so that errors can be caught in each arch.
+- 'make check' should not depend on binfmtc so that they can be ran on buildds.
+
 * biarch support ?
 
 * fix segv in parameter parsing
