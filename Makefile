@@ -6,8 +6,9 @@ INSTALL_PROGRAM=install -o root -g root -m 755
 DESTDIR=
 PREFIX=/usr
 LIBDIR=$(PREFIX)/lib
-CFLAGS=-O2 -Wall -g -fno-strict-aliasing $(shell getconf LFS_CFLAGS)
-COWDANCER_CFLAGS=-O2 -Wall -g -fno-strict-aliasing 
+CFLAGS=-O2 -Wall -g -fno-strict-aliasing -D_REENTRANT
+CFLAGS_LFS=$(CFLAGS) $(getconf LFS_CFLAGS)
+
 export VERSION=$(shell sed -n '1s/.*(\(.*\)).*$$/\1/p' < debian/changelog )
 
 all: $(BINARY)
@@ -45,17 +46,20 @@ cowdancer-ilistcreate: cowdancer-ilistcreate.o ilistcreate.o
 cowbuilder: cowbuilder.o parameter.o forkexec.o ilistcreate.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-qemubuilder: qemubuilder.o parameter.o forkexec.o qemuipsanitize.o qemuarch.o file.o
+qemubuilder: qemubuilder.lfso parameter.lfso forkexec.lfso qemuipsanitize.lfso qemuarch.lfso file.lfso
 	$(CC) $(CFLAGS) -o $@ $^
 
 %.lo: %.c 
-	$(CC) $(COWDANCER_CFLAGS) -D_REENTRANT -fPIC $< -o $@ -c
+	$(CC) $(CFLAGS) -fPIC $< -o $@ -c
+
+%.lfso: %.c 
+	$(CC) $(CFLAGS_LFS) $< -o $@ -c
 
 %.o: %.c parameter.h
 	$(CC) $(CFLAGS) $< -o $@ -c -D LIBDIR="\"${LIBDIR}\""
 
 clean: 
-	-rm -f *~ *.o *.lo $(BINARY)
+	-rm -f *~ *.o *.lo *.lfso $(BINARY)
 	-make -C initrd clean
 
 upload-dist-all:
