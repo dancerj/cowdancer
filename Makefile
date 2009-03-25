@@ -69,7 +69,7 @@ fastcheck:
 	set -e; set -o pipefail; for A in ./test_*.c; do echo $$A; $$A 2>&1 | \
 		tee tests/log/$${A/*\//}.log; done
 
-slowcheck:
+slowcheck: cowdancer-ilistcreate
 	set -e; set -o pipefail; for A in tests/???_*.sh; do echo $$A; bash $$A  2>&1 | \
 	sed -e's,/tmp/[^/]*,/tmp/XXXX,g' \
 	    -e "s,^Current time:.*,Current time: TIME," \
