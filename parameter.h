@@ -30,6 +30,7 @@ typedef struct pbuilderconfig
   int mountdev;
   int mountdevpts;
   int save_after_login;
+  int debug;
   char* buildplace;		/* /var/cache/pbuilder/build/XXX.$$ */
   char* buildresult;		/* /var/cache/pbuilder/result/ */
   char* basepath;		/* /var/cache/pbuilder/cow */

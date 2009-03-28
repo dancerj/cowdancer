@@ -96,7 +96,6 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	  if (!strcmp(buf, "MIRRORSITE"))
 	    {
 	      pc->mirror=strdup(delim);
-	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	  else if (!strcmp(buf, "BUILDRESULT"))
 	    {
@@ -105,32 +104,26 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	  else if (!strcmp(buf, "DISTRIBUTION"))
 	    {
 	      pc->distribution=strdup(delim);
-	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	  else if (!strcmp(buf, "KERNEL_IMAGE"))
 	    {
 	      pc->kernel_image=strdup(delim);
-	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	  else if (!strcmp(buf, "INITRD"))
 	    {
 	      pc->initrd=strdup(delim);
-	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	  else if (!strcmp(buf, "MEMORY_MEGS"))
 	    {
 	      pc->memory_megs=atoi(delim);
-	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	  else if (!strcmp(buf, "ARCH"))
 	    {
 	      pc->arch=strdup(delim);
-	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	  else if (!strcmp(buf, "BASEPATH"))
 	    {
 	      pc->basepath=strdup(delim);
-	      //printf("DEBUG: %s, %s\n", buf, delim);
 	    }
 	  else if (!strcmp(buf, "BUILDPLACE"))
 	    {
@@ -231,6 +224,7 @@ int parse_parameter(int ac, char** av,
     {"nomountdevpts", no_argument, &(pc.mountdevpts), 0},
     {"save-after-login", no_argument, &(pc.save_after_login), 1},
     {"save-after-exec", no_argument, &(pc.save_after_login), 1},
+    {"debug", no_argument, &(pc.debug), 1},
     {"build", no_argument, (int*)&(pc.operation), pbuilder_build},
     {"create", no_argument, (int*)&(pc.operation), pbuilder_create},
     {"update", no_argument, (int*)&(pc.operation), pbuilder_update},
@@ -274,7 +268,6 @@ int parse_parameter(int ac, char** av,
     {"pkgname-logfile", no_argument, 0, 'm'},
     {"binary-arch", no_argument, 0, 'm'},
     {"preserve-buildplace", no_argument, 0, 'm'},
-    {"debug", no_argument, 0, 'm'},
     {"autocleanaptcache", no_argument, 0, 'm'},
 
     {0,0,0,0}
