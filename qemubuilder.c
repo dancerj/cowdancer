@@ -681,6 +681,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "#!/bin/bash\n"
 	  /* define function to terminate qemu */
 	  "function exit_from_qemu() {\n"
+	  "%s\n"
 	  "sync\n"
 	  "sync\n"
 	  "sleep 1s\n"		/* sleep before sending dying message */
@@ -696,7 +697,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "echo '  -> setting time to %s' \n"
 	  "date --set=\"%s\"\n"
 	  "echo '  -> Running debootstrap second-stage script' \n"
-	  "/debootstrap/debootstrap --second-stage %s\n"
+	  "/debootstrap/debootstrap --second-stage || exit_from_qemu\n"
 	  "echo deb %s %s %s > /etc/apt/sources.list \n"
 	  "echo 'APT::Install-Recommends \"false\"; ' > /etc/apt/apt.conf.d/15pbuilder\n"
 	  //TODO: copy hook scripts
@@ -723,10 +724,10 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "apt-get clean || true\n"
 	  "exit_from_qemu $RET\n"
 	  "bash\n",
+	  pc->debug?"echo \"Debug shell\"; /bin/bash":"",
 	  qemu_keyword,
 	  timestring,
 	  timestring,
-	  pc->debug?"--verbose":"",
 	  t=sanitize_mirror(pc->mirror), pc->distribution, pc->components);
   fclose(f);
   free(t);

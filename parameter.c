@@ -183,6 +183,7 @@ int cpbuilder_dumpconfig(pbuilderconfig* pc)
   DUMPINT(mountdev);
   DUMPINT(mountdevpts);
   DUMPINT(save_after_login);
+  DUMPINT(debug);
 
   DUMPSTR(buildplace);
   DUMPSTR(buildresult);
@@ -224,7 +225,6 @@ int parse_parameter(int ac, char** av,
     {"nomountdevpts", no_argument, &(pc.mountdevpts), 0},
     {"save-after-login", no_argument, &(pc.save_after_login), 1},
     {"save-after-exec", no_argument, &(pc.save_after_login), 1},
-    {"debug", no_argument, &(pc.debug), 1},
     {"build", no_argument, (int*)&(pc.operation), pbuilder_build},
     {"create", no_argument, (int*)&(pc.operation), pbuilder_create},
     {"update", no_argument, (int*)&(pc.operation), pbuilder_update},
@@ -233,6 +233,7 @@ int parse_parameter(int ac, char** av,
     {"help", no_argument, (int*)&(pc.operation), pbuilder_help},
     {"dumpconfig", no_argument, (int*)&(pc.operation), pbuilder_dumpconfig},
     {"version", no_argument, 0, 'v'},
+    {"debug", no_argument, 0, 0},
     {"configfile", required_argument, 0, 'c'},
     {"mirror", required_argument, 0, 0},
     {"buildresult", required_argument, 0, 0},
@@ -395,6 +396,11 @@ int parse_parameter(int ac, char** av,
 	  else if (!strcmp(long_options[index_point].name,"arch-diskdevice"))
 	    {
 	      pc.arch_diskdevice=strdup(optarg);
+	    }
+	  else if (!strcmp(long_options[index_point].name,"debug"))
+	    {
+	      pc.debug=1;
+	      PBUILDER_ADD_PARAM(cmdstr);
 	    }
 	  else if (!strcmp(long_options[index_point].name,"inputfile"))
 	    {
