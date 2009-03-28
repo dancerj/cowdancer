@@ -697,7 +697,11 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "echo '  -> setting time to %s' \n"
 	  "date --set=\"%s\"\n"
 	  "echo '  -> Running debootstrap second-stage script' \n"
-	  "/debootstrap/debootstrap --second-stage || exit_from_qemu\n"
+	  "/debootstrap/debootstrap --second-stage || ( "
+	  "  echo dumping debootstrap log\n"
+	  "  cat /debootstrap/debootstrap.log\n"
+	  "  exit_from_qemu\n"
+	  "\n )\n"
 	  "echo deb %s %s %s > /etc/apt/sources.list \n"
 	  "echo 'APT::Install-Recommends \"false\"; ' > /etc/apt/apt.conf.d/15pbuilder\n"
 	  //TODO: copy hook scripts
