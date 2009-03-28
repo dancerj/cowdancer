@@ -419,8 +419,10 @@ static int run_second_stage_script
 	  "echo ' -> qemu-pbuilder %s$1'\n"
 	  "sleep 1s\n"
 	  "halt -f -p\n"	/* just halt myself if possible */
-	  "}\n"
+	  "}\n",
+	  qemu_keyword);
 
+  fprintf(f, 
 	  /* main code */
 	  "echo \n"
 	  "echo ' -> qemu-pbuilder second-stage' \n"
@@ -440,7 +442,6 @@ static int run_second_stage_script
 	  //TODO: I can mount /var/cache/apt/archives from some scratch space to not need this:
 	  "apt-get clean || true\n"
 	  "exit_from_qemu 0\n",
-	  qemu_keyword,
 	  timestring,
 	  timestring,
 	  commandline);
@@ -688,8 +689,11 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "echo ' -> qemu-pbuilder %s$1'\n"
 	  "sleep 1s\n"
 	  "halt -f -p\n"	/* just halt myself if possible */
-	  "}\n"
-	  
+	  "}\n",
+	  pc->debug?"echo \"Debug shell\"; /bin/bash":"",
+	  qemu_keyword);
+
+  fprintf(f,
 	  /* start of main code */
 	  "export RET=0\n"
 	  "echo \n"
@@ -728,8 +732,6 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "apt-get clean || true\n"
 	  "exit_from_qemu $RET\n"
 	  "bash\n",
-	  pc->debug?"echo \"Debug shell\"; /bin/bash":"",
-	  qemu_keyword,
 	  timestring,
 	  timestring,
 	  t=sanitize_mirror(pc->mirror), pc->distribution, pc->components);
