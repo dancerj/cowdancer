@@ -1,3 +1,9 @@
+cowdancer (0.54) UNRELEASED; urgency=low
+
+  * Really fix i386 qemubuilder; compile with LFS option.
+
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 07 Apr 2009 23:34:55 +0900
+
 cowdancer (0.53) unstable; urgency=low
 
   * Fix i386 cowdancer, rollback to only use large file support for
