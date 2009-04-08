@@ -1,6 +1,7 @@
 cowdancer (0.54) UNRELEASED; urgency=low
 
   * Really fix i386 qemubuilder; compile with LFS option.
+  * Run make check after build so that builds are reasonable.
 
  -- Junichi Uekawa <dancer@debian.org>  Tue, 07 Apr 2009 23:34:55 +0900
 
