@@ -70,8 +70,9 @@ fastcheck:
 		./tests/run_c.sh $$A 2>&1 | \
 		tee tests/log/$${A/*\//}.log; done
 
-slowcheck: cowdancer-ilistdump
-	set -e; set -o pipefail; for A in tests/???_*.sh; do echo $$A; bash $$A  2>&1 | \
+slowcheck: cowdancer-ilistdump qemubuilder
+	set -e; set -o pipefail; for A in tests/[0-9][0-9][0-9]_*.sh; \
+	do echo $$A; bash $$A  2>&1 | \
 	sed -e's,/tmp/[^/]*,/tmp/XXXX,g' \
 	    -e "s,^Current time:.*,Current time: TIME," \
 	    -e "s,^pbuilder-time-stamp: .*,pbuilder-time-stamp: XXXX," \
