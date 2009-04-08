@@ -14,8 +14,8 @@ ORIGID=$1
 NEWID=$2
 
 if (( $# < 3 )); then
-    echo Needs multiple groups for user $(id) for this test to succeed
-    exit 1
+    echo W: Needs multiple groups for user $(id) for this test to succeed, test skipped
+    exit 0
 fi
 
 cd ${TESTDIR}
