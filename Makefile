@@ -66,7 +66,8 @@ upload-dist-all:
 	scp ../cowdancer_$(VERSION).tar.gz aegis.netfort.gr.jp:public_html/software/downloads
 
 fastcheck:
-	set -e; set -o pipefail; for A in ./test_*.c; do echo $$A; $$A 2>&1 | \
+	set -e; set -o pipefail; for A in ./test_*.c; do echo $$A; \
+		./tests/run_c.sh $$A 2>&1 | \
 		tee tests/log/$${A/*\//}.log; done
 
 slowcheck: cowdancer-ilistdump
