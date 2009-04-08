@@ -4,6 +4,7 @@ set -ex
 
 TESTDIR=$(mktemp -d )
 TESTCODE=$(readlink -f tests/012_test_chown.c)
+RUNC=$(readlink -f tests/run_c.sh)
 set -- $(id -G)
 
 #export COWDANCER_DEBUG=yes
@@ -32,7 +33,7 @@ cp -al 1/ 2
 
 echo "   2/ before"
 ls -li 2/ 
-cow-shell $TESTCODE $NEWID 2/a 2/b 2/c
+cow-shell $RUNC $TESTCODE $NEWID 2/a 2/b 2/c
 echo "   2/ after"
 ls -li 2/
 

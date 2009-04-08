@@ -4,6 +4,7 @@ set -ex
 
 TESTDIR=$(mktemp -d )
 TESTCODE=$(readlink -f tests/021_test_open.c)
+RUNC=$(readlink -f tests/run_c.sh)
 
 cd "${TESTDIR}"
 mkdir 1/
@@ -13,9 +14,9 @@ ln -s a 1/f
 ln -s b 1/g
 cp -al 1/ 2
 # first, exclude non-cowdancer problem
-"${TESTCODE}" "${TESTCODE}"
+"$RUNC" "${TESTCODE}" "${TESTCODE}"
 #check that cowdancer works.
-cow-shell "${TESTCODE}" "${TESTCODE}"
+cow-shell "$RUNC" "${TESTCODE}" "${TESTCODE}"
 RET=$?
 echo $RET
 

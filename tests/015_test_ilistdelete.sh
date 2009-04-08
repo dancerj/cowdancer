@@ -5,6 +5,7 @@ set -ex
 
 TESTDIR=$(mktemp -d )
 TESTCODE=$(readlink -f tests/015_test_ilistdelete.c)
+RUNC=$(readlink -f tests/run_c.sh)
 
 (
     cd ${TESTDIR}
@@ -14,7 +15,7 @@ TESTCODE=$(readlink -f tests/015_test_ilistdelete.c)
     cp -al 1 2
     dd if=/dev/zero of=1/e bs=512 count=2
 
-    cow-shell $TESTCODE
+    cow-shell $RUNC $TESTCODE
 )
 RET=$?
 rm -rf ${TESTDIR}

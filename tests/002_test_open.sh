@@ -5,7 +5,7 @@ set -ex
 
 TESTDIR=$(mktemp -d )
 TESTCODE=$(readlink -f tests/002_test_open.c)
-
+RUNC=$(readlink -f tests/run_c.sh)
 cd ${TESTDIR}
 mkdir 1/
 
@@ -20,7 +20,7 @@ cp -al 1/ 2
 
 echo "   2/ before"
 ls -li 2/ 
-cow-shell $TESTCODE 2/a 2/b 2/c
+cow-shell $RUNC $TESTCODE 2/a 2/b 2/c
 echo "   2/ after"
 ls -li 2/
 
