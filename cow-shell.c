@@ -18,7 +18,7 @@
 
 const char* ilist_PRGNAME="cow-shell";
 
-/* 
+/*
  * remove ilist after use.
  */
 void ilist_deleter(const char* ilistfile)
@@ -49,25 +49,25 @@ void ilist_deleter(const char* ilistfile)
 
 int main(int ac, char** av)
 {
-  /* give me a command-line to exec, 
+  /* give me a command-line to exec,
      and I will cow-keep what's under this directory. */
   const char* ilistpath="./.ilist";
   char*buf;
   struct stat st;
   int cowdancer_reuse;
-  
+
   asprintf(&buf, "%s%s%s",
 	   getenv("LD_PRELOAD")?:"",
 	   getenv("LD_PRELOAD")?" ":"",
 	   LIBDIR "/cowdancer/libcowdancer.so"
 	   );
 
-  cowdancer_reuse=getenv("COWDANCER_REUSE") && 
+  cowdancer_reuse=getenv("COWDANCER_REUSE") &&
     !strcmp(getenv("COWDANCER_REUSE"),"yes") ;
-  
+
   if (cowdancer_reuse && !stat(ilistpath, &st))
     {
-      /* if reuse flag is on and file already exists 
+      /* if reuse flag is on and file already exists
 	 do nothing */
     }
   else
@@ -92,7 +92,7 @@ int main(int ac, char** av)
     }
 
   ilistpath=canonicalize_file_name(ilistpath);
-    
+
   setenv("COWDANCER_ILISTFILE",
 	  ilistpath,1);
   setenv("LD_PRELOAD",buf,1);
@@ -103,14 +103,14 @@ int main(int ac, char** av)
       /* if reuse flag is not on, remove the file */
       ilist_deleter(ilistpath);
     }
-  
+
   if (ac>1)
     execvp(av[1], av+1);
   else
     {
       const char* myshell=getenv("SHELL")?:"/bin/sh";
       fprintf(stderr, "Invoking %s\n", myshell);
-      
+
       execlp(myshell,
 	     myshell,
 	     NULL);
