@@ -3,8 +3,9 @@ cowdancer (0.54) UNRELEASED; urgency=low
   * Really fix i386 qemubuilder; compile with LFS option.
   * Run make check after build so that builds are reasonable.
   * change bash completion
+  * add work-around for udev bug #520742, add /etc/udev/disabled
 
- -- Junichi Uekawa <dancer@debian.org>  Thu, 09 Apr 2009 22:16:16 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 09 Apr 2009 22:55:59 +0900
 
 cowdancer (0.53) unstable; urgency=low
 

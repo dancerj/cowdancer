@@ -321,7 +321,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 	  printf("%s ", argv[i]);
 	}
       printf("\n");
-      
+
       execvp(argv[0], argv);
       perror("fork_qemu");
       exit (1);
@@ -701,11 +701,13 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "echo '  -> setting time to %s' \n"
 	  "date --set=\"%s\"\n"
 	  "echo '  -> Running debootstrap second-stage script' \n"
+	  "touch /etc/udev/disabled\n" // work-around for #520742
 	  "/debootstrap/debootstrap --second-stage || ( "
 	  "  echo dumping debootstrap log\n"
 	  "  cat /debootstrap/debootstrap.log\n"
 	  "  exit_from_qemu\n"
 	  "\n )\n"
+	  "rm /etc/udev/disabled\n" // work-around for #520742
 	  "echo deb %s %s %s > /etc/apt/sources.list \n"
 	  "echo 'APT::Install-Recommends \"false\"; ' > /etc/apt/apt.conf.d/15pbuilder\n"
 	  //TODO: copy hook scripts
