@@ -17,7 +17,7 @@
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
  *
  */
-/* 
+/*
   sudo ./cowbuilder --create --distribution sid --basepath /mnt/120g-1/dancer/cow/cow
   sudo ./cowbuilder --update --basepath /mnt/120g-1/dancer/cow/cow
 
@@ -78,7 +78,7 @@ static char* get_ilistfile_path(const struct pbuilderconfig* pc)
   return ilistfile;
 }
 
-/* 
+/*
    @return 0 on success, 1 on failure.
  */
 static int cpbuilder_internal_cowcopy(const struct pbuilderconfig* pc)
@@ -105,11 +105,11 @@ static int cpbuilder_internal_cowcopy(const struct pbuilderconfig* pc)
        */
     }
   free(ilistfile);
-  
+
   return 0;
 }
 
-/* 
+/*
    @return 0 on success, 1 on failure.
  */
 static int cpbuilder_internal_cleancow(const struct pbuilderconfig* pc)
@@ -143,14 +143,14 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
       return 1;
     }
 
-  
+
   if (0>asprintf(&buf_chroot, "chroot %s cow-shell", pc->buildplace))
     {
       /* outofmemory */
       fprintf(stderr, "cowdancer: out of memory.\n");
       return -1;
     }
-  
+
   if(!(ilistfile=get_ilistfile_path(pc)))
     {
       /* outofmemory */
@@ -162,12 +162,12 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
   chdir(pc->buildplace);
 
 
-  if (forkexeclp("chroot", 
+  if (forkexeclp("chroot",
 		 "chroot",
 		 pc->buildplace,
-		 "cowdancer-ilistcreate", 
-		 "/.ilist", 
-		 "find . -xdev -path ./home -prune -o \\( \\( -type l -o -type f \\) -a -links +1 -print0 \\) | xargs -0 stat --format '%d %i '", 
+		 "cowdancer-ilistcreate",
+		 "/.ilist",
+		 "find . -xdev -path ./home -prune -o \\( \\( -type l -o -type f \\) -a -links +1 -print0 \\) | xargs -0 stat --format '%d %i '",
 		 NULL))
     {
       /* if there was an error, back off to manual form */
@@ -176,11 +176,11 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
       if (pc->debian_etch_workaround)
 	{
 	  fprintf(stderr, "W: Trying my backup method for working with Debian Etch chroots.\n");
-	  if (forkexeclp("chroot", 
+	  if (forkexeclp("chroot",
 			 "chroot",
 			 pc->buildplace,
-			 "cow-shell", 
-			 "/bin/true", 
+			 "cow-shell",
+			 "/bin/true",
 			 NULL))
 	    {
 	      /* I failed, what can I do? noooo */
@@ -190,7 +190,7 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
 	}
       else
 	{
-	  /* 
+	  /*
 	     try the normal backup method
 
 	     It probably doesn't work but try it anyway.
@@ -231,7 +231,7 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
 int cpbuilder_create(const struct pbuilderconfig* pc)
 {
   int ret;
-  
+
   mkdir(pc->basepath,0777);
   printf(" -> Invoking pbuilder\n");
 
@@ -252,7 +252,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   ret=forkexecvp(pbuildercommandline);
 
   if (ret)
-    {	  
+    {
       printf("pbuilder create failed\n");
       if (0!=rmrf(pc->basepath))
 	{
@@ -274,7 +274,7 @@ int cpbuilder_internal_saveupdate(const struct pbuilderconfig* pc)
 {
   int ret=0;
   char* buf_tmpfile=NULL;
-  
+
   if (0>asprintf(&buf_tmpfile, "%s-%i-tmp", pc->buildplace, (int)getpid()))
     {
       /* outofmemory */
@@ -308,13 +308,13 @@ int cpbuilder_login(const struct pbuilderconfig* pc)
 {
   char *buf_chroot;
   int ret;
-  
+
   if (cpbuilder_internal_cowcopy(pc))
     {
       fprintf(stderr, "Failed cowcopy.\n");
       return 1;
     }
-  
+
   /* this is the option passed to internal-chrootexec */
   if (0>asprintf(&buf_chroot, "chroot %s cow-shell", pc->buildplace))
     {
@@ -351,7 +351,7 @@ int cpbuilder_login(const struct pbuilderconfig* pc)
   return ret;
 }
 
-/* 
+/*
 
 Mostly a copy of pbuilder login, executes a script.
 
@@ -361,13 +361,13 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
   char *buf_chroot;
   int ret;
   int i=0;
-  
+
   if (cpbuilder_internal_cowcopy(pc))
     {
       fprintf(stderr, "Failed cowcopy.\n");
       return 1;
     }
-  
+
   if (0>asprintf(&buf_chroot, "chroot %s cow-shell", pc->buildplace))
     {
       /* outofmemory */
@@ -406,12 +406,12 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
     }
   else
     printf("pbuilder execute aborted, not cleaning\n");
-  
+
   return ret;
 }
 
 
-/* 
+/*
    find matching parameter, and check if it's set.
    @returns found=1, not found=0.
  */
@@ -419,7 +419,7 @@ int find_matching_param(const char* option)
 {
   int i;
   int found=0;
-  for (i=0; i<offset; ++i) 
+  for (i=0; i<offset; ++i)
     {
       if (!strcmp(pbuildercommandline[i], option))
 	{
@@ -438,8 +438,8 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
 {
   char * buf_chroot;
   int ret;
-  
-  /* 
+
+  /*
      I want the following actions done:
      NEW=buildplace OLD=basepath
 
@@ -453,11 +453,11 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
   */
 
   /* This simple process will not disrupt already-running pbuilder-cow session,
-     but it will not work with new pbuilder-cow sessions until this process finishes, 
+     but it will not work with new pbuilder-cow sessions until this process finishes,
      and any failure to pbuilder update will leave crap.
   */
-  
-  if (0>asprintf(&buf_chroot, 
+
+  if (0>asprintf(&buf_chroot,
 		 (pc->no_cowdancer_update)?"chroot %s":	/* try to not use cow-shell, when
 							   no-cowdancer-update option is used */
 		 "chroot %s cow-shell",
@@ -467,7 +467,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
       fprintf(stderr, "Out of memory.\n");
       return -1;
     }
-  
+
   if (cpbuilder_internal_cowcopy(pc))
     {
       fprintf(stderr, "Failed cowcopy.\n");
@@ -481,7 +481,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
   PBUILDER_ADD_PARAM(pc->buildplace);
   if (find_matching_param("--override-config"))
     {
-      if (pc->mirror) 
+      if (pc->mirror)
 	{
 	  PBUILDER_ADD_PARAM("--mirror");
 	  PBUILDER_ADD_PARAM(pc->mirror);
@@ -514,10 +514,10 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
 	}
       else
 	printf("pbuilder update aborted, not cleaning\n");
-      
+
       /* either way, I don't want to touch the original tree */
       goto out;
-      
+
     }
   printf(" -> removing %s working copy\n", ilist_PRGNAME);
   cpbuilder_internal_saveupdate(pc);
