@@ -1,6 +1,7 @@
 #!/bin/bash
 # Debian GNU/Linux cowbuilder(1) completion
 # Copyright 2007 Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>
+# Copyright 2009 Junichi Uekawa
 #
 # This script can be distributed under the same license as the
 # cowdancer or bash packages.
@@ -8,20 +9,37 @@
 have qemubuilder &&
 _qemubuilder()
 {
-    local cur prev options
+    local initialcommand initialcommand_options cur prev other_options distribution
 
     COMPREPLY=()
-    cur=${COMP_WORDS[COMP_CWORD]}
+    cur=$(_get_cword)
     prev=${COMP_WORDS[COMP_CWORD-1]}
-    options='--create --update --build --login --execute --dumpconfig'
+    initialcommand=${COMP_WORDS[1]}
+    initialcommand_options='--create --update --build --login --execute'
+    other_options='--dumpconfig --distribution --mirror'
+    distribution='sid sarge etch woody lenny squeeze'
 
-    case $prev in
+    case $initialcommand in
         --build)
-            COMPREPLY=( $( compgen -o filenames -G "$cur*.dsc" ) )
+            COMPREPLY=( $( compgen -W "$other_options" | grep "^$cur" ) 
+		$( compgen -o filenames -G "$cur*.dsc" ) )
+            ;;
+        --execute)
+            COMPREPLY=( $( compgen -W "$other_options" | grep "^$cur" ) 
+		$( compgen -o filenames -G "$cur*" ) )
             ;;
         *)
-            COMPREPLY=( $( compgen -W "$options" | grep "^$cur" ) )
+            COMPREPLY=( $( compgen -W "$initialcommand_options" | grep "^$cur" ) 
+		$( compgen -W "$other_options" | grep "^$cur" ) 
+		)
             ;;
+    esac
+
+    case $prev in
+	--distribution)
+	    COMPREPLY=( $(compgen -W "$distribution" | grep "^$cur"  ) )
+	    ;;
+	*)
     esac
 
     return 0
