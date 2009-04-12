@@ -203,7 +203,8 @@ static int initialize_functions ()
 
       if (getenv("COWDANCER_DEBUG"))
 	{
-	  printf("chown:%p lchown:%p\n", origlibc_chown, origlibc_lchown);
+	  fprintf(stderr,
+		  "chown:%p lchown:%p\n", origlibc_chown, origlibc_lchown);
 	}
 
       /* load the ilist */
@@ -284,7 +285,8 @@ static int check_inode_and_copy(const char* s, int canonicalize)
   //do some hardcore debugging here:
   if (getenv("COWDANCER_DEBUG"))
     {
-      printf ("ciac: s:%s=canonical:%s nlink:%i reg:%i lnk:%i match:%p\n", s, canonical, (int)buf.st_nlink, S_ISREG(buf.st_mode), S_ISLNK(buf.st_mode),
+      fprintf (stderr,
+	       "ciac: s:%s=canonical:%s nlink:%i reg:%i lnk:%i match:%p\n", s, canonical, (int)buf.st_nlink, S_ISREG(buf.st_mode), S_ISLNK(buf.st_mode),
 	      bsearch(&search_target, ilist, ilist_len,
 		      sizeof(search_target), compare_ilist));
     }
