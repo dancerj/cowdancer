@@ -5,6 +5,13 @@
 - sending return code via control file
 - not overriding serial output to be handled via qemubuilder, but directly interacting with user
 
+* initrd support
+- klibc is a win, but file size with glibc is <1MB, which doesn't look too bad.
+  Do I need to work with nonfunctional and incomplete implementation of libc ?
+  -rwxr-xr-x 1 dancer dancer 659557 2009-04-12 15:31 qemuinit-static
+  -rwxr-xr-x 1 dancer dancer  20504 2009-04-12 15:31 qemuinit-static-klibc
+- add some daemon to monitor inside of chroot via some HTTP request?
+
 * biarch support ?
 
 * fix segv in parameter parsing
