@@ -59,8 +59,7 @@ int main(int ac, char** av)
   asprintf(&buf, "%s%s%s",
 	   getenv("LD_PRELOAD")?:"",
 	   getenv("LD_PRELOAD")?" ":"",
-	   LIBDIR "/cowdancer/libcowdancer.so"
-	   );
+	   getenv("COWDANCER_SO") ?: LIBDIR "/cowdancer/libcowdancer.so");
 
   cowdancer_reuse=getenv("COWDANCER_REUSE") &&
     !strcmp(getenv("COWDANCER_REUSE"),"yes") ;

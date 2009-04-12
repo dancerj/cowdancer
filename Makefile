@@ -8,6 +8,7 @@ PREFIX=/usr
 LIBDIR=$(PREFIX)/lib
 CFLAGS=-O2 -Wall -g -fno-strict-aliasing -D_REENTRANT
 CFLAGS_LFS=$(CFLAGS) $(shell getconf LFS_CFLAGS)
+PWD=$(shell pwd)
 
 export VERSION=$(shell sed -n '1s/.*(\(.*\)).*$$/\1/p' < debian/changelog )
 
@@ -74,7 +75,9 @@ slowcheck: cowdancer-ilistdump qemubuilder cow-shell
 	# FIXME: The tests are running installed cowdancer, not the just-built
 	set -e; set -o pipefail; for A in tests/[0-9][0-9][0-9]_*.sh; \
 	do echo $$A; \
-	PATH="$(PWD):$(PWD)/tests:/usr/bin/:/bin" bash $$A  2>&1 | \
+	PATH="$(PWD):$(PWD)/tests:/usr/bin/:/bin" \
+	COWDANCER_SO=$(PWD)/libcowdancer.so \
+	bash $$A  2>&1 | \
 	sed -e's,/tmp/[^/]*,/tmp/XXXX,g' \
 	    -e "s,^Current time:.*,Current time: TIME," \
 	    -e "s,^pbuilder-time-stamp: .*,pbuilder-time-stamp: XXXX," \
