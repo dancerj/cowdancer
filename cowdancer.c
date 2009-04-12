@@ -236,6 +236,9 @@ static int initialize_functions ()
 __attribute__ ((constructor))
      void ctor()
 {
+  /* TODO: The return value should be processed, and warn the user in
+     some way about it. It's in constructor, so I am not quite sure
+     how I can do that. */
   initialize_functions();
 }
 
