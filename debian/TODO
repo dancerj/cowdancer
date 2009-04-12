@@ -22,15 +22,6 @@
 
 * signal handling; do I support ctrl-C reasonably? (no)
 
-* .ilist file position
-
-  I think the bottleneck is now in .ilist file re-generation, on
-   multiple invocations of cowdancer; can I consolidate it in
-   cowbuilder?
-  Operationally, a file in ./.ilist is inconvenient.
-  If I put it in /tmp, I need to delete it, or a tmpreaper is
-   required; and the file isn't too small.
-
 * hardlink behavior.
 
 If I had a hardlinked file, I would expect both files to be updated 
