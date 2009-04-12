@@ -16,10 +16,12 @@
 int test_get_host_dpkg_arch()
 {
   /* just try to test x86_64 case */
-#ifdef __x86_64__
+#if defined(__x86_64__)
   assert (!strcmp(get_host_dpkg_arch(), "amd64"));
+#elif defined(__i386__)
+  assert (!strcmp(get_host_dpkg_arch(), "i386"));
 #else
-  printf("warning: no check for x86_64 stuff, other arch\n");
+  printf("warning: no check for this architecture\n");
 #endif
   return 0;
 }
