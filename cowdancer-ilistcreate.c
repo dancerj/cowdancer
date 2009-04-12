@@ -28,7 +28,7 @@ const char* ilist_PRGNAME="cowdancer-ilistcreate";
 
 int main(int argc, char** argv)
 {
-  /* 
+  /*
    */
   if (argc != 3)
     {
@@ -37,6 +37,6 @@ int main(int argc, char** argv)
 	       argv[0]);
       return 1;
     }
-  
+
   return ilistcreate(argv[1], argv[2]);
 }
