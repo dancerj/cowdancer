@@ -608,7 +608,7 @@ int check_fd_inode_and_warn(int fd)
 
 	 If there is any better way, I'd like to know.
        */
-      fprintf(stderr, "Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: %li:%li\n",
+      fprintf(stderr, "W: cowdancer: unsupported operation, read-only open and fchown/fchmod: %li:%li\n",
 	      (long)buf.st_dev, (long)buf.st_ino);
       /* emit a warning and do not fail,
 	 if you want to make it fail, add a return 1;

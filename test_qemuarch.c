@@ -21,7 +21,7 @@ int test_get_host_dpkg_arch()
 #elif defined(__i386__)
   assert (!strcmp(get_host_dpkg_arch(), "i386"));
 #else
-  printf("warning: no check for this architecture\n");
+  printf("W: no check for this architecture\n");
 #endif
   return 0;
 }
