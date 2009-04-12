@@ -87,6 +87,7 @@ static int load_ilist(void)
 
   if (stbuf.st_size != (sizeof(struct ilist_struct) * local_ilist_len + sizeof (struct ilist_header)))
     {
+      fprintf(stderr, "%s: .ilist size: %li\n", ilist_PRGNAME, (long)stbuf.st_size);
       ilist_outofmemory(".ilist size unexpected");
       return 1;
     }
