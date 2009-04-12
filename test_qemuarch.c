@@ -29,18 +29,18 @@ int test_qemu_create_arch_devices()
   char* temp=strdupa("/tmp/dancerXXXXXX");
   temp=mkdtemp(temp);
   printf("%s\n", temp);
-  
-  /* if you are running this in normal user, or running through 
+
+  /* if you are running this in normal user, or running through
      fakeroot, you would (probably) get this */
-  if (getuid()!=0 || 
+  if (getuid()!=0 ||
       (getenv("FAKEROOTKEY") && strcmp(getenv("FAKEROOTKEY"),"")))
     {
       assert(qemu_create_arch_devices(temp, "x86_64")
 	     < 0);
     }
-  else 
+  else
     {
-      /* if you are running this as root, 
+      /* if you are running this as root,
 	 this would be the tested codepath.
       */
       struct stat s;
