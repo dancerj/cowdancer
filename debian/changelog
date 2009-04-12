@@ -1,4 +1,4 @@
-cowdancer (0.55) UNRELEASED; urgency=low
+cowdancer (0.55) unstable; urgency=low
 
   * COWDANCER_DEBUG=1 sent some output to stdout which broke some cases,
     now outputs to stderr, which is more safe. (closes: #523575)
@@ -7,7 +7,7 @@ cowdancer (0.55) UNRELEASED; urgency=low
     libcowdancer.so, default is /usr/lib/cowdancer/libcowdancer.so,
     useful for running tests on just-built cowdancer.
 
- -- Junichi Uekawa <dancer@debian.org>  Sun, 12 Apr 2009 13:59:21 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 13 Apr 2009 07:58:24 +0900
 
 cowdancer (0.54) unstable; urgency=low
 
