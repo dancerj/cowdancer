@@ -13,7 +13,7 @@
 /* Output error message. You need to process the error result. */
 void ilist_outofmemory(const char* msg)
 {
-  fprintf (stderr, "%s: %s\n", ilist_PRGNAME, msg);
+  fprintf (stderr, "E: %s: %s\n", ilist_PRGNAME, msg);
 }
 
 /* return 1 on error, 0 on success */
