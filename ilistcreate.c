@@ -23,10 +23,10 @@ int ilistcreate(const char* ilistpath, const char* findcommandline)
   long dev, ino;
   FILE* inf;
   FILE* outf;
-  struct ilist_struct* ilist=NULL;  
+  struct ilist_struct* ilist=NULL;
   struct ilist_header header=
     {
-      ILISTSIG,      
+      ILISTSIG,
       ILISTREVISION,
       sizeof (struct ilist_struct),
       0
@@ -34,7 +34,7 @@ int ilistcreate(const char* ilistpath, const char* findcommandline)
   long ilist_len=0;
   if(!findcommandline)
     findcommandline="find . -xdev \\( -type l -o -type f \\) -a -links +1 -print0 | xargs -0 stat --format '%d %i '";
-  
+
   if (!(ilist=calloc(2000,sizeof(struct ilist_struct))))
     {
       ilist_outofmemory("memory allocation failed");
@@ -52,9 +52,9 @@ int ilistcreate(const char* ilistpath, const char* findcommandline)
       (ilist+i)->dev=(dev_t)dev;
       (ilist+i)->inode=(ino_t)ino;
 
-      if (getenv("COWDANCER_DEBUG")) 
+      if (getenv("COWDANCER_DEBUG"))
 	printf("%li %li \n ", (long int)dev, (long int)ino);
-      
+
       i++;
       if (i>=ilist_len)
 	{
@@ -83,20 +83,20 @@ int ilistcreate(const char* ilistpath, const char* findcommandline)
       ilist_outofmemory("cannot open .ilist file");
       return 1;
     }
-  
+
 
   if(1 != fwrite(&header, sizeof(struct ilist_header), 1, outf))
     {
       ilist_outofmemory("failed writing header to .ilist file");
       return 1;
     }
-  
+
   if (ilist_len != fwrite(ilist, sizeof(struct ilist_struct), ilist_len, outf))
     {
       ilist_outofmemory("failed writing to .ilist file");
       return 1;
     }
-  
+
   if (fclose (outf))
     {
       ilist_outofmemory("error flushing to .ilist file");
@@ -114,7 +114,7 @@ compare_ilist (const void *a, const void *b)
   const struct ilist_struct * ilista = (const struct ilist_struct*) a;
   const struct ilist_struct * ilistb = (const struct ilist_struct*) b;
   int ret;
-  
+
   ret = ilista->inode - ilistb->inode;
   if (!ret)
     {
@@ -127,14 +127,14 @@ compare_ilist (const void *a, const void *b)
 /* test code for performance tuning */
 const char* ilist_PRGNAME="testbench";
 
-int 
+int
 main()
 {
   int i;
-  
+
   if (-1==chdir("/home/dancer/shared/git/linux-2.6/"))
     exit (1);
-  
+
   for(i=0; i<100; ++i)
     ilistcreate("/home/dancer/shared/git/linux-2.6/.ilist", NULL);
 
