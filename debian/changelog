@@ -1,3 +1,10 @@
+cowdancer (0.55) UNRELEASED; urgency=low
+
+  * COWDANCER_DEBUG=1 sent some output to stdout which broke some cases,
+    now outputs to stderr, which is more safe.
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 12 Apr 2009 11:31:47 +0900
+
 cowdancer (0.54) unstable; urgency=low
 
   * Really fix i386 qemubuilder; compile with LFS option.
