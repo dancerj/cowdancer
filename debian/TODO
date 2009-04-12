@@ -1,5 +1,10 @@
 * make cowdancer LFS
 
+* qemubuilder to gracefully exit qemu
+- not get killed on usual case
+- sending return code via control file
+- not overriding serial output to be handled via qemubuilder, but directly interacting with user
+
 * biarch support ?
 
 * fix segv in parameter parsing
