@@ -1,6 +1,6 @@
 /*
  * cowdancer -- a Copy-on-write data-access; No-cow-easy-replacement
- * 
+ *
  * Copyright 2005-2009 Junichi Uekawa
  * GPL v2 or later.
  */
@@ -39,13 +39,13 @@ static int (*origlibc_fchmod)(int fd, mode_t) = NULL;
 static struct ilist_struct* ilist=NULL;
 static long ilist_len=0;
 
-/* 
+/*
    verify the header content
  */
 int verify_ilist_header(struct ilist_header header)
 {
-  if (header.revision != ILISTREVISION || 
-      header.ilistsig != ILISTSIG || 
+  if (header.revision != ILISTREVISION ||
+      header.ilistsig != ILISTSIG ||
       header.ilist_struct_size != sizeof (struct ilist_struct))
     {
       ilist_outofmemory(".ilist header unexpected");
@@ -64,14 +64,14 @@ static int load_ilist(void)
   struct stat stbuf;
   struct ilist_struct* local_ilist=NULL;
   struct ilist_header header;
-  long local_ilist_len=0;  
+  long local_ilist_len=0;
 
   if (!getenv("COWDANCER_ILISTFILE"))
     {
       fprintf(stderr, "env var COWDANCER_ILISTFILE not defined\n");
       return 1;
     }
-  
+
   if (-1==(fd=origlibc_open(getenv("COWDANCER_ILISTFILE"),O_RDONLY,0)))
     {
       fprintf(stderr, "%s: cannot open ilistfile %s\n", ilist_PRGNAME, getenv("COWDANCER_ILISTFILE"));
@@ -90,9 +90,9 @@ static int load_ilist(void)
       ilist_outofmemory(".ilist size unexpected");
       return 1;
     }
-  
+
   if (((void*)-1)==
-      (local_ilist=mmap(NULL, stbuf.st_size, PROT_READ, MAP_PRIVATE, 
+      (local_ilist=mmap(NULL, stbuf.st_size, PROT_READ, MAP_PRIVATE,
 		  fd, 0)))
     {
       perror("mmap failed, failback to other method");
@@ -102,7 +102,7 @@ static int load_ilist(void)
 	  fprintf(stderr, "%s: cannot fdopen ilistfile %s\n", ilist_PRGNAME, getenv("COWDANCER_ILISTFILE"));
 	  return 1;
 	}
-      
+
       if (NULL==(local_ilist=malloc(stbuf.st_size)))
 	{
 	  fprintf(stderr, "%s: out of memory while trying to allocate memory for ilist\n", ilist_PRGNAME);
@@ -113,14 +113,14 @@ static int load_ilist(void)
       fread(local_ilist, sizeof(struct ilist_struct), local_ilist_len, f);
       fclose(f);
     }
-  else 
+  else
     {
       if (verify_ilist_header(*(struct ilist_header *)local_ilist)) return 1;
       local_ilist=(void*)local_ilist+sizeof (struct ilist_header);
       close(fd);
     }
 
-  /* commit, this should really be atomic, 
+  /* commit, this should really be atomic,
      but I don't want to have a lock here.
      Pray that same result will result in multiple invocations,
      and ask for luck. It shouldn't change the result very much if it was called multiple times.
@@ -130,13 +130,13 @@ static int load_ilist(void)
      at this exact timing, to make this quasi-lock-free logic to be remotely successful. */
   ilist_len = local_ilist_len;
   ilist = local_ilist;
-  
+
   return 0;
 }
 
 static void debug_cowdancer (const char * s)
 {
-  if (getenv("COWDANCER_DEBUG")) 
+  if (getenv("COWDANCER_DEBUG"))
     fprintf (stderr, "%s: DEBUG %s\n", ilist_PRGNAME, s);
 }
 
@@ -146,19 +146,19 @@ static void debug_cowdancer_2 (const char * s, const char*e)
     fprintf (stderr, "%s: DEBUG %s:%s\n", ilist_PRGNAME, s, e);
 }
 
-/** 
+/**
     initialize functions to override libc functions.
 
     @return 1 on error
  */
-__attribute__ ((warn_unused_result)) 
+__attribute__ ((warn_unused_result))
 static int initialize_functions ()
 {
   static volatile int initialized = 0;
-  /* this code is quasi-reentrant; 
+  /* this code is quasi-reentrant;
      shouldn't suffer too much if it is called multiple times. */
-  
-  /* this code is __unlikely__ to be true 
+
+  /* this code is __unlikely__ to be true
      It is initialized==0 only for the first time
      so should be !initialized==0 most of the time.
   */
@@ -187,13 +187,13 @@ static int initialize_functions ()
 	    {
 	      debug_cowdancer(d);
 	    }
-	  
-	  
+
+
 	  /* fallback to loading unversioned symbol doing it anyway
 	     since glibc does not seem to set dlerror on dlsym failure.
 	  */
 	  origlibc_chown = dlsym(RTLD_NEXT, "chown");
-	  
+
 	}
       origlibc_fchown = dlsym(RTLD_NEXT, "fchown");
       origlibc_lchown = dlsym(RTLD_NEXT, "lchown");
@@ -204,7 +204,7 @@ static int initialize_functions ()
 	{
 	  printf("chown:%p lchown:%p\n", origlibc_chown, origlibc_lchown);
 	}
-      
+
       /* load the ilist */
       if (!ilist)
 	{
@@ -216,14 +216,14 @@ static int initialize_functions ()
 	  initialized = 2;
 	  debug_cowdancer ("Initialization successfully finished.\n");
 	}
-    }  
-  /* 
+    }
+  /*
      Wait until somebody else finishes his job
      This is very unlikely
   */
   while (__builtin_expect(initialized == 1,0))
     sched_yield();
-  
+
   if (initialized==0)
     return 1;			/* that somebody else failed */
   else
@@ -231,7 +231,7 @@ static int initialize_functions ()
 }
 
 /* the constructor for this library */
-__attribute__ ((constructor)) 
+__attribute__ ((constructor))
      void ctor()
 {
   initialize_functions();
@@ -241,12 +241,12 @@ __attribute__ ((constructor))
    check if i-node is to be protected, and if so, copy the file.  This
    function may fail, but the error cannot really be recovered; how
    should the default be ?
-   
+
    canonicalize flag should be 1 except for non-symlink-following functions.
 
    @return 1 on failure, 0 on success
 */
-__attribute__ ((warn_unused_result)) 
+__attribute__ ((warn_unused_result))
 static int check_inode_and_copy(const char* s, int canonicalize)
 {
   struct ilist_struct search_target;
@@ -257,19 +257,19 @@ static int check_inode_and_copy(const char* s, int canonicalize)
   pid_t pid;
   int status;
   sigset_t newmask, omask;
-  
+
   debug_cowdancer_2("DEBUG: test for", s);
   if(lstat(s, &buf))
-    return 0;			/* if stat fails, the file probably 
+    return 0;			/* if stat fails, the file probably
 				   doesn't exist; return, success */
   if (canonicalize && S_ISLNK(buf.st_mode))
     {
       /* for symbollic link, canonicalize and get the real filename */
       if (!(canonical=canonicalize_file_name(s)))
-	return 0;			/* if canonicalize_file_name fails, 
+	return 0;			/* if canonicalize_file_name fails,
 					   the file probably doesn't exist. */
-      
-      if(stat(canonical, &buf))	/* if I can't stat this file, I don't think 
+
+      if(stat(canonical, &buf))	/* if I can't stat this file, I don't think
 				   I can write to it; ignore */
 	return 0;
     }
@@ -284,19 +284,19 @@ static int check_inode_and_copy(const char* s, int canonicalize)
   if (getenv("COWDANCER_DEBUG"))
     {
       printf ("ciac: s:%s=canonical:%s nlink:%i reg:%i lnk:%i match:%p\n", s, canonical, (int)buf.st_nlink, S_ISREG(buf.st_mode), S_ISLNK(buf.st_mode),
-	      bsearch(&search_target, ilist, ilist_len, 
+	      bsearch(&search_target, ilist, ilist_len,
 		      sizeof(search_target), compare_ilist));
     }
-  
+
   if((buf.st_nlink > 1) && 	/* it is hardlinked */
-     (S_ISREG(buf.st_mode) || 
+     (S_ISREG(buf.st_mode) ||
       S_ISLNK(buf.st_mode)) && 	/* it is a regular file or a symbollic link */
-     bsearch(&search_target, ilist, ilist_len, 
+     bsearch(&search_target, ilist, ilist_len,
 	     sizeof(search_target), compare_ilist)) /* and a match is
 						       found in ilist
 						       file */
     {
-      /* There is a file that needs to be protected, 
+      /* There is a file that needs to be protected,
 	 Copy-on-write hardlink files.
 
 	 we copy the file first to a backup place, and then mv the
@@ -308,7 +308,7 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	  ilist_outofmemory("out of memory in check_inode_and_copy, 1");
 	  goto error_canonical;
 	}
-      
+
       close(ret=mkstemp(backup_file));
       if (ret==-1)
 	{
@@ -326,9 +326,9 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	  goto error_buf;
 	}
 
-      /* let cp do the task, 
-	 it probably knows about filesystem details more than I do. 
-	 
+      /* let cp do the task,
+	 it probably knows about filesystem details more than I do.
+
 	 forking here is really difficult; I should rewrite this code
 	 to not fork/exec. Signal handling and process waiting is too
 	 unreliable.
@@ -359,7 +359,7 @@ static int check_inode_and_copy(const char* s, int canonicalize)
 	  if (!WIFEXITED(status))
 	    {
 	      /* something unexpected */
-	      fprintf(stderr, "%s: unexpected WIFEXITED status in waitpid: %x\n", ilist_PRGNAME, 
+	      fprintf(stderr, "%s: unexpected WIFEXITED status in waitpid: %x\n", ilist_PRGNAME,
 		      (int)status);
 	      goto error_spm;
 	    }
@@ -380,9 +380,9 @@ static int check_inode_and_copy(const char* s, int canonicalize)
       free(backup_file);
       sigprocmask (SIG_SETMASK, &omask, (sigset_t *) NULL);
     }
-  else				
+  else
     debug_cowdancer_2("DEBUG: did not match ", s);
-  
+
   free(canonical);
   return 0;
 
@@ -409,7 +409,7 @@ int open(const char * a, int flags, ...)
       errno=ENOMEM;
       return -1;
     }
-  
+
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer_2 ("open", a);
@@ -594,20 +594,20 @@ int check_fd_inode_and_warn(int fd)
   memset(&search_target, 0, sizeof(search_target));
   search_target.inode = buf.st_ino;
   search_target.dev = buf.st_dev;
-  if(bsearch(&search_target, ilist, ilist_len, 
+  if(bsearch(&search_target, ilist, ilist_len,
 	     sizeof(search_target), compare_ilist) &&
      S_ISREG(buf.st_mode))
     {
       /* Someone opened file read-only, and called
 	 fchown/fchmod; I don't really know how to do
-	 salvation in that case, since the original filename is 
+	 salvation in that case, since the original filename is
 	 probably not available, and file is already open.
 
 	 If there is any better way, I'd like to know.
        */
-      fprintf(stderr, "Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: %li:%li\n", 
+      fprintf(stderr, "Warning: cowdancer: unsupported operation, read-only open and fchown/fchmod: %li:%li\n",
 	      (long)buf.st_dev, (long)buf.st_ino);
-      /* emit a warning and do not fail, 
+      /* emit a warning and do not fail,
 	 if you want to make it fail, add a return 1;
 	 apt seems to want to use this operation; thus apt will always fail.
        */
