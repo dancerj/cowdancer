@@ -38,8 +38,8 @@
 #include "qemuarch.h"
 #include "file.h"
 
-/* 
- * example exit codes: 
+/*
+ * example exit codes:
  *
  * END OF WORK EXIT CODE=1
  * END OF WORK EXIT CODE=0
@@ -47,12 +47,12 @@
  */
 const char* qemu_keyword="END OF WORK EXIT CODE=";
 
-/** create a sparse ext3 block device suitable for 
+/** create a sparse ext3 block device suitable for
     loop-mount.
 
    @returns -1 on error, 0 on success
  */
-static int create_ext3_block_device(const char* filename, 
+static int create_ext3_block_device(const char* filename,
 				    unsigned long int gigabyte)
 {
   int ret = 0;
@@ -67,20 +67,20 @@ static int create_ext3_block_device(const char* filename,
       goto out;
     }
 
-  if ((ret=forkexeclp("mke2fs", "mke2fs", 
+  if ((ret=forkexeclp("mke2fs", "mke2fs",
 		      "-q",
 		      "-F",
-		      "-j", 
+		      "-j",
 		      "-m1",
-		      "-O", "sparse_super", 
+		      "-O", "sparse_super",
 		      filename, NULL)))
     {
       ret=-1;
       goto out;
     }
 
-  if ((ret=forkexeclp("tune2fs", "tune2fs", 
-		      "-c", "0", 
+  if ((ret=forkexeclp("tune2fs", "tune2fs",
+		      "-c", "0",
 		      "-i", "0",
 		      filename, NULL)))
     {
@@ -116,7 +116,7 @@ static int loop_umount(const char* device)
 }
 
 /** create a script file.
-    
+
 @returns NULL on failure, FILE* on success
 */
 static FILE* create_script(const char* mountpoint, const char* relative_path)
@@ -142,19 +142,19 @@ static FILE* create_script(const char* mountpoint, const char* relative_path)
 /* minimally fix terminal I/O */
 static void fix_terminal(void)
 {
-  struct termios t; 
+  struct termios t;
 
-  if (isatty(1)) 
+  if (isatty(1))
     {
-      tcgetattr(1, &t); 
+      tcgetattr(1, &t);
       t.c_lflag |= ECHO;
       tcsetattr(1, TCSANOW, &t);
     }
 }
 
-static int copy_file_contents_through_temp(FILE* f, 
-					   const char* orig, 
-					   const char* temppath, 
+static int copy_file_contents_through_temp(FILE* f,
+					   const char* orig,
+					   const char* temppath,
 					   const char* targetdir)
 {
   char* tempname;
@@ -162,17 +162,17 @@ static int copy_file_contents_through_temp(FILE* f,
   char* file_basename = basename(orig);
   asprintf(&tempname, "%s/%s", temppath, file_basename);
   ret=copy_file(orig, tempname);
-  if (ret == -1) 
+  if (ret == -1)
     {
-      fprintf(f, "E: Copy file error in %s to %s\n", 
+      fprintf(f, "E: Copy file error in %s to %s\n",
 	      orig, tempname);
     }
-  
+
   free(tempname);
 
   fprintf(f,
 	  "echo \"I: copying %s/%s from temporary location\"\n"
-	  "cp $PBUILDER_MOUNTPOINT/%s %s/%s || echo \"E: Copy failed\"\n", 
+	  "cp $PBUILDER_MOUNTPOINT/%s %s/%s || echo \"E: Copy failed\"\n",
 	  targetdir, file_basename,
 	  file_basename,
 	  targetdir, file_basename);
@@ -196,13 +196,13 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
   const int buffer_size=4096;
   char* buf=malloc(buffer_size);
   size_t count;
-  
+
   if (-1==socketpair(AF_UNIX, SOCK_STREAM,0,sp))
     {
       /* error handle? */
       return -1;
     }
-  
+
   fflush(NULL);
   if ((child=fork()))
     {
@@ -210,7 +210,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 
       close(sp[1]);
       close(0);
-      
+
       FD_ZERO(&readfds);
       while (1)
 	{
@@ -222,23 +222,23 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 		  void* matchptr;
 
 		  /* data available from qemu */
-		  
+
 		  /* sleep a bit to let it buffer-up a bit more. */
 		  usleep(100000);
-		  
+
 		  count=read(sp[0],buf,buffer_size);
-		  
+
 		  /* this won't work sometimes, but this is a good best-effort thing. */
-		  if ((matchptr=memmem(buf, count, 
+		  if ((matchptr=memmem(buf, count,
 				       qemu_keyword, strlen(qemu_keyword)))!=0)
 		    {
 		      int status;
 
 		      exit_code = atoi(matchptr + strlen(qemu_keyword));
-		      printf("\n  -> received termination message from inside qemu with exit-code %i, killing child process (qemu:%i)\n", 
+		      printf("\n  -> received termination message from inside qemu with exit-code %i, killing child process (qemu:%i)\n",
 			     exit_code,
 			     child);
-		      
+
 		      assert(child != 0);assert(child > 0);
 
 		      if (!kill(child, SIGTERM))
@@ -264,7 +264,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
   else if(child == 0)
     {
       /* this is the child process */
-      const char* qemu = qemu_arch_qemu(pc->arch); 
+      const char* qemu = qemu_arch_qemu(pc->arch);
       const char* machine = qemu_arch_qemumachine(pc->arch);
       char* append_command;
       const char* kernel_image = pc->kernel_image;
@@ -281,12 +281,12 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       }
 
       asprintf(&mem, "%i", pc->memory_megs);
-      
+
       asprintf(&append_command,
 	       "root=/dev/%sa quiet init=/pbuilder-run console=%s",
 	       qemu_arch_diskdevice(pc),
 	       qemu_arch_tty(pc->arch));
-            
+
       dup2(sp[1],1);
       dup2(sp[1],2);
       close(sp[0]);
@@ -316,7 +316,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       assert(argc < MAX_ARGS);
 
       printf("  forking qemu: ");
-      for (i=0; i<argc; ++i) 
+      for (i=0; i<argc; ++i)
 	{
 	  printf("%s ", argv[i]);
 	}
@@ -339,16 +339,16 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 static int do_fsck(const char* devfile)
 {
   /* force-running this fsck isn't a good idea; let it fail.
-     If it's mounted by someone else, I don't want to touch it, 
+     If it's mounted by someone else, I don't want to touch it,
      and chroots can be re-created any time, right?
    */
   return forkexeclp("/sbin/fsck",
 		    "/sbin/fsck",
-		    devfile, 
+		    devfile,
 		    NULL);
 }
 
-/* 
+/*
    get the current time string which can be used in date command to
    set time inside the chroot.
  */
@@ -356,11 +356,11 @@ static char* get_current_time_string(void)
 {
   char* locsave, *timestring;
   time_t currenttime;
-  
+
   /* save/set/restore locale settings to get current time in POSIX format */
   locsave = setlocale(LC_TIME, NULL);
   (void) setlocale(LC_TIME, "POSIX");
-  currenttime=time(NULL); 
+  currenttime=time(NULL);
   timestring=asctime(gmtime(&currenttime));
   (void) setlocale(LC_TIME, locsave);
   return timestring;
@@ -391,7 +391,7 @@ static int run_second_stage_script
   int ret=1;
   FILE* f;
   int i;
-  
+
   if (mkdir(pc->buildplace,0777))
     {
       /* could not create the buildplace here. */
@@ -408,7 +408,7 @@ static int run_second_stage_script
   loop_mount(workblockdevicepath, pc->buildplace);
 
   f = create_script(pc->buildplace, "pbuilder-run");
-  fprintf(f, 
+  fprintf(f,
 	  "#!/bin/bash\n"
 
 	  /* define function to terminate qemu */
@@ -422,7 +422,7 @@ static int run_second_stage_script
 	  "}\n",
 	  qemu_keyword);
 
-  fprintf(f, 
+  fprintf(f,
 	  /* main code */
 	  "echo \n"
 	  "echo ' -> qemu-pbuilder second-stage' \n"
@@ -452,7 +452,7 @@ static int run_second_stage_script
   copy_file_contents_through_temp(f, "/etc/hosts", pc->buildplace, "/etc");
   copy_file_contents_through_temp(f, "/etc/hostname", pc->buildplace, "/etc");
   /* copy inputfile */
-  for (i=0; pc->inputfile[i]; ++i) 
+  for (i=0; pc->inputfile[i]; ++i)
     {
       copy_file_contents_through_temp(f, pc->inputfile[i], pc->buildplace, "/tmp/buildd");
     }
@@ -462,7 +462,7 @@ static int run_second_stage_script
   /* TODO: hooks probably need copying here. */
   /* TODO: recover aptcache */
 
-  if(hostcommand1) 
+  if(hostcommand1)
     {
       printf("running host command: %s\n", hostcommand1);
       system(hostcommand1);
@@ -471,13 +471,13 @@ static int run_second_stage_script
   loop_umount(workblockdevicepath);
 
   asprintf(&cowdevpath, "%s.cowdev", pc->buildplace);
-  ret=forkexeclp("qemu-img", "qemu-img", 
+  ret=forkexeclp("qemu-img", "qemu-img",
 		 "create",
 		 "-f",
-		 "qcow", 
-		 "-b", 
-		 pc->basepath, 
-		 cowdevpath, 
+		 "qcow",
+		 "-b",
+		 pc->basepath,
+		 cowdevpath,
 		 NULL);
 
   fork_qemu(cowdevpath, workblockdevicepath, pc);
@@ -487,16 +487,16 @@ static int run_second_stage_script
   if (save_result)
     {
       printf(" -> commit change to qemu image\n");
-      ret=forkexeclp("qemu-img", "qemu-img", 
+      ret=forkexeclp("qemu-img", "qemu-img",
 		     "commit",
-		     cowdevpath, 
-		     NULL);  
+		     cowdevpath,
+		     NULL);
     }
 
   /* after-run */
   loop_mount(workblockdevicepath, pc->buildplace);
   printf(" -> running post-run process\n");
-  if(hostcommand2) 
+  if(hostcommand2)
     {
       printf("running host command: %s\n", hostcommand2);
       system(hostcommand2);
@@ -515,7 +515,7 @@ static int run_second_stage_script
   return ret;
 }
 
-/* 
+/*
    @return shell command to copy the dsc file.
  */
 static char* copy_dscfile(const char* dscfile_, const char* destdir)
@@ -537,8 +537,8 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
 
   assert(strrchr(origdir,'/') != 0);
   (*(strrchr(origdir,'/')))=0;
-    
-  fprintf(fmem, "cp %s %s/\n", 
+
+  fprintf(fmem, "cp %s %s/\n",
 	  dscfile, destdir);
 
   while (getline(&buf,&bufsiz,f)>0)
@@ -553,12 +553,12 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
 	    filelist=0;
 	  else
 	    {
-	      fprintf(fmem, "cp %s/%s %s/\n", 
+	      fprintf(fmem, "cp %s/%s %s/\n",
 		      origdir, filename, destdir);
 	      assert(filename);
 	      free(filename);
 	    }
-	}  
+	}
       if (!(buf[0]==' ')&&
 	  !strcmp(buf,"Files: "))
 	{
@@ -578,7 +578,7 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
   return ret?NULL:memstr;
 }
 
-/* 
+/*
    return 0 on success, nonzero on failure.
 
    variable ret holds the state.
@@ -596,7 +596,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
     {
       //ignore this
     }
-  
+
   /* 3GB should be enough to install any Debian system; hopefully */
   ret=create_ext3_block_device(pc->basepath, 3);
 
@@ -604,7 +604,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
     {
       goto out;
     }
-  
+
   if (mkdir(pc->buildplace,0777))
     {
       /* could not create the buildplace here. */
@@ -620,17 +620,17 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
     }
 
   printf(" -> Invoking debootstrap\n");
-  ret=forkexeclp("debootstrap", "debootstrap", 
-		 "--arch", 
-		 pc->arch, 
+  ret=forkexeclp("debootstrap", "debootstrap",
+		 "--arch",
+		 pc->arch,
 		 "--foreign",
 		 pc->distribution,
-		 pc->buildplace, 
-		 pc->mirror, 
+		 pc->buildplace,
+		 pc->mirror,
 		 NULL);
   if (ret)
     {
-      fprintf(stderr, "debootstrap failed with %i\n", 
+      fprintf(stderr, "debootstrap failed with %i\n",
 	      ret);
       goto umount_out;
     }
@@ -638,18 +638,18 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   /* arch-dependent code here.
      create required device files.
 
-     ttyAMA0 is probably ARM-specific 
+     ttyAMA0 is probably ARM-specific
      others are probably linux-portable as documented in linux/Documentation/devices.txt
-     other OSes will require different, but hey, they probably don't even boot from ext3, 
+     other OSes will require different, but hey, they probably don't even boot from ext3,
      we'll need think of other ways to work with them.
 
    */
   printf(" -> Doing arch-specific /dev population\n");
 
   qemu_create_arch_devices(pc->buildplace, pc->arch);
-  
+
   f = create_script(pc->buildplace, "pbuilder-run");
-  fprintf(f, 
+  fprintf(f,
 	  "#!/bin/bash\n"
 	  "echo \n"
 	  "echo ' -> qemu-pbuilder first-stage' \n"
@@ -754,14 +754,14 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 
   loop_umount(workblockdevicepath);
   rmdir(pc->buildplace);
-  
+
   // this will have wrong time. how to workaround?
   ret=fork_qemu(pc->basepath, workblockdevicepath, pc);
-  
+
   unlink(workblockdevicepath);
-  
+
  out:
-  if(workblockdevicepath) 
+  if(workblockdevicepath)
     {
       free(workblockdevicepath);
     }
@@ -785,7 +785,7 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
   char* commandline=NULL;
 
   const char* buildopt="--binary-all"; /* TODO: add --binary-arch option */
-  
+
   hoststr=copy_dscfile(dscfile, pc->buildplace);
 
   asprintf(&commandline,
@@ -802,13 +802,13 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
   /* Obscure assumption!: assume _ is significant for package name and
      no other file will have _. */
 
-  asprintf(&hoststr2, 
+  asprintf(&hoststr2,
 	   "cp -p \"%s\"/*_* \"%s\" 2>/dev/null || true",
 	   pc->buildplace, pc->buildresult);
-  
+
   ret=run_second_stage_script
     (0,
-     commandline, pc,  
+     commandline, pc,
      hoststr,
      hoststr2);
 
@@ -820,14 +820,14 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
 
 int cpbuilder_login(const struct pbuilderconfig* pc)
 {
-  return run_second_stage_script(pc->save_after_login, 
-				 "bash", 
-				 pc, 
-				 NULL, 
+  return run_second_stage_script(pc->save_after_login,
+				 "bash",
+				 pc,
+				 NULL,
 				 NULL);
 }
 
-/* 
+/*
 
 Mostly a copy of pbuilder login, executes a script.
 
@@ -837,11 +837,11 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
   char* hostcommand;
   char* runcommandline;
   int ret;
-  
+
   asprintf(&hostcommand, "cp %s %s/run\n", av[0], pc->buildplace);
   /* TODO: add options too */
   asprintf(&runcommandline, "sh $PBUILDER_MOUNTPOINT/run");
-  ret=run_second_stage_script(pc->save_after_login, runcommandline, pc, 
+  ret=run_second_stage_script(pc->save_after_login, runcommandline, pc,
 			      hostcommand, NULL);
   free(hostcommand);
   free(runcommandline);
@@ -855,11 +855,11 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
  */
 int cpbuilder_update(const struct pbuilderconfig* pc)
 {
-  /* TODO: --override-config support. 
+  /* TODO: --override-config support.
      There is no way to change distribution in this code-path...
    */
   return run_second_stage_script
-    (1,	   
+    (1,
      //TODO: installaptlines if required.
      //TODO: "dpkg --purge $REMOVEPACKAGES\n"
      //TODO: add error code handling.
@@ -869,7 +869,7 @@ int cpbuilder_update(const struct pbuilderconfig* pc)
      //TODO: EXTRAPACKAGES handling
      //optionally autoclean aptcache
      //run E hook
-     , pc, 
+     , pc,
      NULL, NULL);
 }
 
