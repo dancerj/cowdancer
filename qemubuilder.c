@@ -50,6 +50,8 @@ const char* qemu_keyword="END OF WORK EXIT CODE=";
 /** create a sparse ext3 block device suitable for
     loop-mount.
 
+    This code takes approx 7 seconds to run, should be cached?
+
    @returns -1 on error, 0 on success
  */
 static int create_ext3_block_device(const char* filename,
