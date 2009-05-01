@@ -1,0 +1,38 @@
+
+mke2fs time speedup
+===================
+2009-05-01
+Junichi Uekawa
+
+
+Background
+==========
+
+dd / mke2fs sequence takes around 7 seconds on my system (core2duo
+macbook). This is ran every time for create / update and build, which
+means it can be optimized.  There are other parts, like kernel booting
+time and apt install time and dpkg configuration time that are taking
+majority of time (e.g. 2 minutes), and they will need to be looked at
+for individual cases, but this looks like a clear win on all cases.
+
+
+
+Plan
+====
+
+create_ext3_block_device currently creates a sparse file, and then
+runs mke2fs and tune2fs on the resulting file.  This can be modified
+so that a ext3 block device creater will create an empty file for the
+first time, and then reusing it with a copy.
+
+Initial measurement
+===================
+
+*TODO* Say that copying a 10G sparse file is faster than rerunning mke2fs
+
+
+Final measurement
+=================
+
+*TODO* Actual results
+
