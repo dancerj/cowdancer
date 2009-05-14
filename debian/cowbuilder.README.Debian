@@ -13,20 +13,20 @@ You can update this image with
 
 
 
-To build a package, 
+To build a package, run:
 
         cowbuilder --build XXX.dsc
 
-or more simpler
+or perhaps more conveniently:
 
         pdebuild --pbuilder cowbuilder
 
-or even more simpler
+or even more conveniently:
 
         edit /etc/pbuilderrc to have PDEBUILD_PBUILDER=cowbuilder
 
         pdebuild
 
 
- -- Junichi Uekawa <dancer@debian.org>, Mon, 25 Aug 2008 21:22:56 -0700
+ -- Junichi Uekawa <dancer@debian.org>, Thu, 14 May 2009 20:35:12 +0900
 
