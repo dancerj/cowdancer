@@ -2,13 +2,15 @@
 + TESTDIR=/tmp/XXXX
 ++ readlink -f tests/002_test_open.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/002_test_open.c
+++ readlink -f tests/run_c.sh
++ RUNC=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh
 + cd /tmp/XXXX
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4.0439e-05 s, 25.3 MB/s
+1024 bytes (1.0 kB) copied, 5.2241e-05 s, 19.6 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
@@ -16,21 +18,21 @@
    2/ before
 + ls -li 2/
 合計 4
-131079 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 a
-131080 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 b
-131081 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 c
-131082 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 d
-131083 -rw-r--r-- 2 dancer dancer 1024 2009-03-25 09:26 e
-+ cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
+154622 -rw-r--r-- 2 dancer dancer    0 2009-05-05 11:34 a
+154623 -rw-r--r-- 2 dancer dancer    0 2009-05-05 11:34 b
+154624 -rw-r--r-- 2 dancer dancer    0 2009-05-05 11:34 c
+154625 -rw-r--r-- 2 dancer dancer    0 2009-05-05 11:34 d
+154626 -rw-r--r-- 2 dancer dancer 1024 2009-05-05 11:34 e
++ cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh /home/dancer/DEBIAN/cowdancer/cowdancer/tests/002_test_open.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 12
-131079 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 a
-131125 -rw-r--r-- 1 dancer dancer    3 2009-03-25 09:26 b
-131128 -rw-r--r-- 1 dancer dancer    3 2009-03-25 09:26 c
-131082 -rw-r--r-- 2 dancer dancer    0 2009-03-25 09:26 d
-131083 -rw-r--r-- 2 dancer dancer 1024 2009-03-25 09:26 e
+154622 -rw-r--r-- 2 dancer dancer    0 2009-05-05 11:34 a
+154673 -rw-r--r-- 1 dancer dancer    3 2009-05-05 11:34 b
+154676 -rw-r--r-- 1 dancer dancer    3 2009-05-05 11:34 c
+154625 -rw-r--r-- 2 dancer dancer    0 2009-05-05 11:34 d
+154626 -rw-r--r-- 2 dancer dancer 1024 2009-05-05 11:34 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'

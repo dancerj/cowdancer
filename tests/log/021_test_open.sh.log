@@ -2,15 +2,17 @@
 + TESTDIR=/tmp/XXXX
 ++ readlink -f tests/021_test_open.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/021_test_open.c
+++ readlink -f tests/run_c.sh
++ RUNC=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh
 + cd /tmp/XXXX
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
 + ln -s a 1/f
 + ln -s b 1/g
 + cp -al 1/ 2
-+ /home/dancer/DEBIAN/cowdancer/cowdancer/tests/021_test_open.c /home/dancer/DEBIAN/cowdancer/cowdancer/tests/021_test_open.c
++ /home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh /home/dancer/DEBIAN/cowdancer/cowdancer/tests/021_test_open.c /home/dancer/DEBIAN/cowdancer/cowdancer/tests/021_test_open.c
 close(0)open(): try1: 0, try2: 0
-+ cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/021_test_open.c /home/dancer/DEBIAN/cowdancer/cowdancer/tests/021_test_open.c
++ cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh /home/dancer/DEBIAN/cowdancer/cowdancer/tests/021_test_open.c /home/dancer/DEBIAN/cowdancer/cowdancer/tests/021_test_open.c
 close(0)open(): try1: 0, try2: 0
 + RET=0
 + echo 0

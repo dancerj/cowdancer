@@ -2,6 +2,8 @@
 + TESTDIR=/tmp/XXXX
 ++ readlink -f tests/015_test_ilistdelete.c
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/015_test_ilistdelete.c
+++ readlink -f tests/run_c.sh
++ RUNC=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh
 + cd /tmp/XXXX
 + mkdir 1/
 + touch 1/a 1/b 1/c 1/d
@@ -9,10 +11,12 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4.4559e-05 s, 23.0 MB/s
-+ cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/015_test_ilistdelete.c
+1024 bytes (1.0 kB) copied, 6.0902e-05 s, 16.8 MB/s
++ cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh /home/dancer/DEBIAN/cowdancer/cowdancer/tests/015_test_ilistdelete.c
 open: No such file or directory
 open: No such file or directory
+cowdancer: cannot open ilistfile /tmp/XXXX/.ilist
+cowdancer: Fatal, initialize_functions failed
 + RET=0
 + rm -rf /tmp/XXXX
 + exit 0

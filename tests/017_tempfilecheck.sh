@@ -16,7 +16,7 @@ TESTDIR=$(mktemp -d )
     cow-shell touch 1/a
 # 0.9 deleted this file, not good. Test that it works now.
     ls 1/a~~
-) 
+)
 RESULT=$?
 
 rm -rf ${TESTDIR}

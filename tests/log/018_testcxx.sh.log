@@ -2,6 +2,8 @@
 + TESTDIR=/tmp/XXXX
 ++ readlink -f tests/018_testcxx.cc
 + TESTCODE=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/018_testcxx.cc
+++ readlink -f tests/run_cxx.sh
++ RUNCXX=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_cxx.sh
 + set -ex
 + cd /tmp/XXXX
 + mkdir 1/
@@ -9,15 +11,15 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 3.8971e-05 s, 26.3 MB/s
+1024 bytes (1.0 kB) copied, 4.2044e-05 s, 24.4 MB/s
 + cp -al 1 0
-+ cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/018_testcxx.cc
++ cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_cxx.sh /home/dancer/DEBIAN/cowdancer/cowdancer/tests/018_testcxx.cc
 + cat 1/a
 Hello world
 + cat 0/a
 + diff -u 1/a 0/a
---- 1/a	2009-03-25 09:26:45.464483894 +0900
-+++ 0/a	2009-03-25 09:26:43.645412964 +0900
+--- 1/a	2009-05-05 11:34:23.357039023 +0900
++++ 0/a	2009-05-05 11:34:21.449047576 +0900
 @@ -1 +0,0 @@
 -Hello world
 + RESULT=0
