@@ -1,6 +1,6 @@
 cowdancer (0.56) unstable; urgency=low
 
-  * minor fix to grammer in cowbuilder.README.Debian (closes: #528559)
+  * minor fix to grammar in cowbuilder.README.Debian (closes: #528559)
 
  -- Junichi Uekawa <dancer@debian.org>  Sun, 31 May 2009 11:10:53 +0900
 
