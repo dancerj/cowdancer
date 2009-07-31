@@ -19,7 +19,7 @@ int test_get_host_dpkg_arch()
 #if defined(__x86_64__)
   assert (!strcmp(get_host_dpkg_arch(), "amd64"));
 #elif defined(__i386__)
-  assert (!strcmp(get_host_dpkg_arch(), "i386"));
+  assert ((!strcmp(get_host_dpkg_arch(), "i386")) || (!strcmp(get_host_dpkg_arch(), "lpia")));
 #else
   printf("W: no check for this architecture\n");
 #endif

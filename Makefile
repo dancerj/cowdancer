@@ -1,3 +1,4 @@
+SHELL=/bin/bash
 BINARY=libcowdancer.so cow-shell cowbuilder qemubuilder cowdancer-ilistcreate \
 	cowdancer-ilistdump
 INSTALL_DIR=install -d -o root -g root -m 755
