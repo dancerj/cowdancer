@@ -13,6 +13,7 @@ Architecture: any
 # cowbuilder dependency is for backward compatibility, will be removed
 # after squeeze is released.
 Depends: ${shlibs:Depends}, cowbuilder
+Homepage: http://www.netfort.gr.jp/~dancer/software/cowdancer.html
 Description: Copy-on-write directory tree utility.
  Tries to make copy-on-write semantics upon hard-link copied
  directory trees generated with 'cp -la'
@@ -36,6 +37,7 @@ Description: pbuilder running on cowdancer
 Package: qemubuilder
 Architecture: i386 amd64 powerpc
 Depends: ${shlibs:Depends}, qemu | kvm, pbuilder (>= 0.174), debootstrap
+Homepage: http://wiki.debian.org/qemubuilder
 Description: pbuilder using QEMU as backend
  pbuilder implementation for QEMU.
  .
