@@ -1,3 +1,16 @@
+cowdancer (0.57) unstable; urgency=low
+
+  [ Loïc Minier ]
+  * Set SHELL=/bin/bash for pipefail; (closes: #532444)
+  * Allow for lpia dpkg arch for __i386__ arches
+
+  [ Junichi Uekawa ]
+  * modify changelog spelling mistake.
+  * add homepage for cowdancer and qemubuilder.
+  * remove 'man .hy' typo from cowbuilder.8 (closes: #541820)
+
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 25 Aug 2009 22:24:06 +0900
+
 cowdancer (0.56) unstable; urgency=low
 
   * minor fix to grammar in cowbuilder.README.Debian (closes: #528559)
