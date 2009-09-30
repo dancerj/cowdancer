@@ -291,6 +291,9 @@ int cpbuilder_internal_saveupdate(const struct pbuilderconfig* pc)
       /* outofmemory */
       return -1;
     }
+  printf(" -> Moving work directory [%s] to final location [%s] and cleaning up old copy\n",
+	 pc->buildplace, pc->basepath);
+
   if(-1==rename(pc->basepath, buf_tmpfile))
     {
       perror("rename");
