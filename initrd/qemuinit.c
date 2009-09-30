@@ -47,7 +47,7 @@ const char* parse_option(const char* option)
   return NULL;
 }
 
-/* 
+/*
    Return a strdup string, optionally NULL-terminating if it's
    space-delimited.
  */
@@ -59,21 +59,21 @@ char* strdup_spacedelimit(const char* str)
   return s;
 }
 
-/* 
+/*
    insert module and display error message when insmod returns an
    error.
  */
 int insmod(const char* module)
 {
   int ret=forkexeclp("/bin/insmod", "/bin/insmod", module, NULL);
-  if (ret) 
+  if (ret)
     {
-      fprintf(stderr, "W: insmod of %s returned %i\n", 
-	      module, 
+      fprintf(stderr, "W: insmod of %s returned %i\n",
+	      module,
 	      ret);
     }
   return ret;
-  
+
 }
 
 int main(int argc, char** argv)
@@ -90,15 +90,15 @@ int main(int argc, char** argv)
   mkdir("/proc", 0777);
   mkdir("/dev", 0777);
   mkdir("/dev/pts", 0777);
-  
-  if (mount("/proc", "/proc", 
-	    "proc", MS_MGC_VAL, NULL) == -1) 
+
+  if (mount("/proc", "/proc",
+	    "proc", MS_MGC_VAL, NULL) == -1)
     {
       perror("mount proc");
     }
 
-  if (mount("/dev/pts", "/dev/pts", 
-	    "devpts", MS_MGC_VAL, NULL) == -1) 
+  if (mount("/dev/pts", "/dev/pts",
+	    "devpts", MS_MGC_VAL, NULL) == -1)
     {
       perror("mount devpts");
     }
@@ -118,7 +118,7 @@ int main(int argc, char** argv)
   /* ne2k driver */
   insmod("lib/modules/linux-live/kernel/drivers/net/8390.ko");
   insmod("lib/modules/linux-live/kernel/drivers/net/ne2k-pci.ko");
-  if (copy_file("/proc/mounts", "/etc/mtab")) 
+  if (copy_file("/proc/mounts", "/etc/mtab"))
     {
       fprintf(stderr, "Cannot copy file /proc/mounts to /etc/mtab.\n");
     }
@@ -128,42 +128,42 @@ int main(int argc, char** argv)
   mknod_inside_chroot("", "dev/hda", S_IFBLK | 0660, makedev(3, 0));
   mknod_inside_chroot("", "dev/hdb", S_IFBLK | 0660, makedev(3, 64));
 
-  if (mount("/dev/sda", ROOT_MOUNTPOINT, "ext3", 
+  if (mount("/dev/sda", ROOT_MOUNTPOINT, "ext3",
 	     MS_MGC_VAL, NULL) == -1)
     {
       perror("mount root device try sda");
-      if (mount("/dev/hda", ROOT_MOUNTPOINT, "ext3", 
+      if (mount("/dev/hda", ROOT_MOUNTPOINT, "ext3",
 		MS_MGC_VAL, NULL) == -1)
 	{
 	  perror("mount root device try hda");
 	}
     }
-  
-  if (mount("/dev/sdb", 
-	    ROOT_MOUNTPOINT PBUILDER_MOUNTPOINT, 
-	    "ext3", MS_MGC_VAL, NULL) == -1) 
+
+  if (mount("/dev/sdb",
+	    ROOT_MOUNTPOINT PBUILDER_MOUNTPOINT,
+	    "ext3", MS_MGC_VAL, NULL) == -1)
     {
       perror("mount command device try sdb");
-      if (mount("/dev/hdb", 
-		ROOT_MOUNTPOINT PBUILDER_MOUNTPOINT, 
+      if (mount("/dev/hdb",
+		ROOT_MOUNTPOINT PBUILDER_MOUNTPOINT,
 		"ext3", MS_MGC_VAL, NULL) == -1)
 	{
 	   perror("mount command device try hdb");
 	}
     }
-  
+
   forkexeclp("/bin/sh", "/bin/sh", NULL);
-  
-  if (chroot("root/")) 
+
+  if (chroot("root/"))
     {
       perror("chroot");
     }
-  
-  if (chdir("/")) 
+
+  if (chdir("/"))
     {
       perror("chdir");
     }
-  
+
   forkexeclp("bin/sh", "bin/sh", PBUILDER_MOUNTPOINT "/pbuilder-run", NULL);
   /* debug shell inside chroot. */
   forkexeclp("bin/sh", "bin/sh", NULL);
