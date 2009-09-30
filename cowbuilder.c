@@ -168,7 +168,6 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
   prevdir=get_current_dir_name();
   chdir(pc->buildplace);
 
-
   if (forkexeclp("chroot",
 		 "chroot",
 		 pc->buildplace,
@@ -218,6 +217,11 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
     {
       PBUILDER_ADD_PARAM("--buildresult");
       PBUILDER_ADD_PARAM(pc->buildresult);
+    }
+  if (pc->debbuildopts)
+    {
+      PBUILDER_ADD_PARAM("--debbuildopts");
+      PBUILDER_ADD_PARAM(pc->debbuildopts);
     }
   PBUILDER_ADD_PARAM("--no-targz");
   PBUILDER_ADD_PARAM("--internal-chrootexec");
