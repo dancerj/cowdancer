@@ -57,8 +57,8 @@ int copy_file(const char*orig, const char*dest)
       fprintf(stderr, "Out of memory\n");
       goto out;
     }
-  
-  if (-1==(fin=open(orig,O_RDONLY))) 
+
+  if (-1==(fin=open(orig,O_RDONLY)))
     {
       perror("file copy: open for read");
       goto out;
@@ -83,8 +83,8 @@ int copy_file(const char*orig, const char*dest)
       perror("file copy: read ");
       goto out;
     }
-  if (-1==close(fin) || 
-      -1==close(fout)) 
+  if (-1==close(fin) ||
+      -1==close(fout))
     {
       perror("file copy: close ");
       goto out;
@@ -100,39 +100,39 @@ int copy_file(const char*orig, const char*dest)
 
    returns 0 on success, 1 on fail.
  */
-int create_sparse_file(const char* filename, unsigned long int size) 
+int create_sparse_file(const char* filename, unsigned long int size)
 {
   int fd=creat(filename, 0660);
   const off_t seeksize = 1 << 30;	/* try with 30-bit seeks (1GB / seek) */
-  assert(size > 1);  
+  assert(size > 1);
   size--;
-  if (-1==lseek(fd, 0, SEEK_SET)) 
+  if (-1==lseek(fd, 0, SEEK_SET))
     {
 	perror("initial lseek");
 	return 1;
     }
 
   while(size > seeksize) {
-    if (-1==lseek(fd, seeksize, SEEK_CUR)) 
+    if (-1==lseek(fd, seeksize, SEEK_CUR))
       {
 	perror("intermediate lseek");
 	return 1;
       }
     size -= seeksize;
   }
-  if (-1==lseek(fd, size - 1, SEEK_CUR)) 
+  if (-1==lseek(fd, size - 1, SEEK_CUR))
     {
       perror("final lseek");
       return 1;
     }
-  
+
   if (-1==write(fd, "", 1))		/* A string consists of \0, write 0 to end of file */
     {
       perror("write");
       return 1;
     }
-  
-  if (-1==close(fd)) 
+
+  if (-1==close(fd))
     {
       perror("close");
       return 1;
@@ -148,26 +148,26 @@ int mknod_inside_chroot(const char* chroot, const char* pathname, mode_t mode, d
   char* p = alloca(strlen(chroot)+strlen(pathname)+2);
   int ret;
 
-  if (!p) 
+  if (!p)
     {
       fprintf(stderr, "error on alloca\n");
       return -1;
     }
-  
+
   if (-1==sprintf(p, "%s/%s", chroot, pathname))
     {
       fprintf(stderr, "error on sprintf\n");
       return -1;
     }
-  
+
   ret=mknod(p, mode, dev);
 
-  if (ret == -1)  
+  if (ret == -1)
     {
       /* output the error message for debug, but ignore it here. */
       perror(p);
     }
-  
+
   return ret;
 }
 
