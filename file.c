@@ -103,6 +103,13 @@ int copy_file(const char*orig, const char*dest)
 int create_sparse_file(const char* filename, unsigned long int size)
 {
   int fd=creat(filename, 0660);
+  if (-1==fd)
+    {
+      perror("creat");
+      fprintf(stderr, "E: Could not create %s\n", filename);
+      return 1;
+    }
+
   const off_t seeksize = 1 << 30;	/* try with 30-bit seeks (1GB / seek) */
   assert(size > 1);
   size--;

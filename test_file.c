@@ -28,6 +28,11 @@ void test_create_sparse_file()
   assert(create_sparse_file(temp,18UL*1UL<<30UL)==0);
 }
 
+void test_fail_create_sparse_file()
+{
+  assert(create_sparse_file("/tmp/nonexisting/file/path/here",18UL*1UL<<30UL)==1);
+}
+
 int test_mknod_inside_chroot()
 {
   /* if you are running this in normal user, or running through 
@@ -63,5 +68,6 @@ int main()
   test_mknod_inside_chroot();
   test_copy_file();
   test_create_sparse_file();
+  test_fail_create_sparse_file();
   return 0;
 }
