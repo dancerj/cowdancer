@@ -594,10 +594,10 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   char* t;
   char* timestring;
 
-  if((ret=unlink(pc->basepath)))
-    {
-      //ignore this
-    }
+  /* remove existing file; it can be old qemu image, or a directory if
+     it didn't exist before. */
+  unlink(pc->basepath);
+  rmdir(pc->basepath);
 
   /* 3GB should be enough to install any Debian system; hopefully */
   ret=create_ext3_block_device(pc->basepath, 3);
