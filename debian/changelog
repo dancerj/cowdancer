@@ -1,3 +1,13 @@
+cowdancer (0.58) unstable; urgency=low
+
+  * support --debbuildopts for cowbuilder (closes: #548209)
+  * add debug message so that what's happening is more obvious.
+  * make qemubuilder create output more descriptive error message on
+    error to create file (closes: #551614)
+  * Improve description for cowbuilder and qemubuilder (closes: #551365)
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 01 Nov 2009 23:33:31 +0900
+
 cowdancer (0.57) unstable; urgency=low
 
   [ Loïc Minier ]
