@@ -33,6 +33,11 @@ Replaces: cowdancer (<= 0.49)
 Description: pbuilder running on cowdancer
  'cowbuilder' command is a wrapper for pbuilder which allows using 
  pbuilder-like interface over cowdancer environment.
+ .
+ pbuilder is a tool for building and testing Debian package inside a clean
+ chroot, and cowbuilder allows chroot to be recreated using
+ hard-linked copies with copy-on-write, which makes creation and
+ destruction of chroots fast.
 
 Package: qemubuilder
 Architecture: i386 amd64 powerpc
@@ -49,3 +54,8 @@ Description: pbuilder using QEMU as backend
  .
  Gives a pbuilder interface for emulated cross-building environments
  using qemu.
+ .
+ pbuilder is a tool for building and testing Debian package inside a
+ clean chroot, and qemubuilder implements similar experience over
+ emulated CPUs. This tool allows building package inside emulated
+ Debian environment for different CPU architectures supported by qemu.
