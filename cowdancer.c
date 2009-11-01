@@ -35,6 +35,7 @@ static int (*origlibc_fchown)(int fd, uid_t, gid_t) = NULL;
 static int (*origlibc_lchown)(const char *, uid_t, gid_t) = NULL;
 static int (*origlibc_chmod)(const char *, mode_t) = NULL;
 static int (*origlibc_fchmod)(int fd, mode_t) = NULL;
+static int (*origlibc_flock)(int fd, int) = NULL;
 
 static struct ilist_struct* ilist=NULL;
 static long ilist_len=0;
@@ -200,6 +201,7 @@ static int initialize_functions ()
       origlibc_lchown = dlsym(RTLD_NEXT, "lchown");
       origlibc_chmod = dlsym(RTLD_NEXT, "chmod");
       origlibc_fchmod = dlsym(RTLD_NEXT, "fchmod");
+      origlibc_flock = dlsym(RTLD_NEXT, "flock");
 
       if (getenv("COWDANCER_DEBUG"))
 	{
@@ -606,13 +608,13 @@ int check_fd_inode_and_warn(int fd)
      S_ISREG(buf.st_mode))
     {
       /* Someone opened file read-only, and called
-	 fchown/fchmod; I don't really know how to do
+	 fchown/fchmod/flock; I don't really know how to do
 	 salvation in that case, since the original filename is
 	 probably not available, and file is already open.
 
 	 If there is any better way, I'd like to know.
        */
-      fprintf(stderr, "W: cowdancer: unsupported operation, read-only open and fchown/fchmod: %li:%li\n",
+      fprintf(stderr, "W: cowdancer: unsupported operation, read-only open and fchown/fchmod/flock: %li:%li\n",
 	      (long)buf.st_dev, (long)buf.st_ino);
       /* emit a warning and do not fail,
 	 if you want to make it fail, add a return 1;
@@ -706,5 +708,27 @@ int fchmod(int fd, mode_t mode)
 	}
     }
   ret = origlibc_fchmod(fd, mode);
+  return ret;
+}
+
+#undef flock
+int flock(int fd, int operation)
+{
+  int ret;
+  if(initialize_functions())
+    {
+      errno=ENOMEM;
+      return -1;
+    }
+  if(!getenv("COWDANCER_IGNORE"))
+    {
+      debug_cowdancer ("flock");
+      if (check_fd_inode_and_warn(fd))
+	{
+	  errno=ENOMEM;
+	  return -1;
+	}
+    }
+  ret = origlibc_flock(fd, operation);
   return ret;
 }
