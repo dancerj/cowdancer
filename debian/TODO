@@ -46,3 +46,4 @@ It is partially implemented, but difficult to really do.
 open(, RDONLY) and fchmod/fchown is hard to do, because we're handling
 inodes at that timing.
 
+flock has similar problems.
