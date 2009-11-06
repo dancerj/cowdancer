@@ -1,54 +1,159 @@
 = qemubuilder =
 
-This page is README.Debian of qemubuilder, a pbuilder implementation using qemu.
+This page is README.Debian of qemubuilder, a pbuilder implementation using qemu. See also [[cowbuilder]].
 
-= Configuration file =
+= Usage =
 
-Example configuration is like this:
-
+pbuilderrc-arch.config:
 {{{
-KERNEL_IMAGE=vmlinuz-2.6.18-4-k7
-INITRD=initrd.img-2.6.18-4-k7
+KERNEL_IMAGE=/boot/vmlinuz-2.6.21-1-686
+INITRD=/boot/initrd.img-2.6.21-1-686
+MIRRORSITE=http://ftp.cz.debian.org/debian
 ARCH=i386
 BASEPATH=/var/cache/pbuilder/base-i386.qemu
 MEMORY_MEGS=64
 }}}
 
-= Running each architectures =
+and adjust the KERNEL_IMAGE and INITRD paths, so that they point to the kernel and initrd that you want to use in qemu (so obviously, for ARCH=i386, use i386 kernel, for amd64, use amd64 kernel, etc.). Adjust the MIRRORSITE to your favourite Debian mirror.
 
-To run qemubuilder you need a kernel image and initrd (optional).
+Create the base image:
+{{{
+$ sudo qemubuilder --create --configfile pbuilder-arch.config
+[...]
+Setting up g++ (4:4.2.1-6) ...
+Setting up dpkg-dev (1.14.6) ...
+Setting up build-essential (11.3) ...
+
+ -> received termination signal with exit-code 0, killing child process (qemu)
+  -> killed (qemu)
+ -> child process terminated with status: f
+}}}
+This is a correct behavior and the qemu image `/var/cache/pbuilder/base-i386.qemu` was successfully created (it will have 3.1GB).
+If this step doesn't work, read the logs first, then if you can't figure out what's wrong, please report a bug.
+
+Compile a package:
+{{{
+$ sudo qemubuilder --configfile pbuilder-arch.config --build something.dsc
+[...]
+ dpkg-genchanges
+dpkg-genchanges: including full source code in upload
+dpkg-buildpackage: full upload; Debian-native package (full source is included)
+
+  -> received termination signal with exit-code 0, killing child process (qemu)
+   -> killed (qemu)
+  -> child process terminated with status: f
+ -> running post-run process
+running host command: cp -p "/var/cache/pbuilder/build//qemu.16459"/*_* "/var/cache/pbuilder/result/" 2>/dev/null || true
+ -> clean up COW device files
+}}}
+and the source and binary package will be in `/var/cache/pbuilder/result/`.
+
+See also `man qemubuilder`, `man pbuilder` and /usr/share/doc/pbuilder/pbuilder-doc.html.
+
+= Architecture specific information =
+
+To run qemubuilder you need a kernel image, and optionally initrd.
 
 To get qemubuilder working, qemu support for that target architecture, the kernel image (and  optionally initrd image) for the target architecture, and a way to invoke the kernel from the command-line using -kernel command-line option is required. Support for specifying disk devices through -hda and -hdb is required for operation.
 
+You might have some luck finding some of the kernels from
+http://people.debian.org/~aurel32/qemu/
+Ideally you should be able to find the kernels from Debian archive, but we're not there yet.
 
 == i386 ==
 
-Files from Debian kernel package (linux-image-xxx) should work.
+Files from Debian kernel package (linux-image-xxx) should work. 
+
+An example of a working configuration as of September 7, 2007 - use sid, run on i386, emulate i386:
+{{{
+$ sudo apt-get install linux-image-2.6.22-2-686
+$ cat pbuilderrc-i386.config 
+KERNEL_IMAGE=/boot/vmlinuz-2.6.22-2-686
+INITRD=/boot/initrd.img-2.6.22-2-686
+MIRRORSITE=http://ftp.cz.debian.org/debian
+ARCH=i386
+BASEPATH=/var/cache/pbuilder/base-i386.qemu
+MEMORY_MEGS=64
+$ sudo qemubuilder --configfile pbuilderrc-i386.config --create
+[...]
+}}}
+and a working qemu image `base-i386.qemu` is created in `/var/cache/pbuilder/`.
+
+use sid, run on amd64, emulate i386:
+{{{
+# on i386 machine do:
+$ scp /boot/vmlinuz-2.6.22-2-686 /boot/initrd.img-2.6.22-2-686 some.amd64.computer.cz:debian/
+# on the amd64 machine, in the "debian" directory
+$ cat pbuilderrc-i386.config 
+KERNEL_IMAGE=vmlinuz-2.6.22-2-686
+INITRD=initrd.img-2.6.22-2-686
+MIRRORSITE=http://ftp.cz.debian.org/debian
+ARCH=i386
+BASEPATH=/var/cache/pbuilder/base-i386.qemu
+MEMORY_MEGS=64
+$ sudo qemubuilder --configfile pbuilderrc-i386.config --create
+[...]
+}}}
+and a working qemu image `base-i386.qemu` is created in `/var/cache/pbuilder/`.
 
 == amd64 ==
 
 Files from Debian kernel package (linux-image-xxx) should work.
 
+An example of a working configuration as of September 7, 2007 - use sid, run on i386, emulate amd64:
+{{{
+$ sudo apt-get install linux-image-2.6.22-2-amd64
+$ cat pbuilderrc-amd64.config
+KERNEL_IMAGE=/boot/vmlinuz-2.6.22-2-amd64
+INITRD=/boot/initrd.img-2.6.22-2-amd64
+MIRRORSITE=http://cdn.debian.net/debian
+ARCH=amd64
+BASEPATH=/home/ondra/debian/base-amd64.qemu
+MEMORY_MEGS=64
+$ sudo qemubuilder --configfile pbuilderrc-amd64.config --create
+[...]
+}}}
+and a working qemu image `base-amd64.qemu` is created in `/home/ondra/debian/`.
+
+I found that MEMORY_MEGS=64 was too small. It seemed to work much better for me with MEMORY_MEGS=512
+[DavidBremner]
 == arm ==
 
-kernel for versatile architecture is available from http://www.aurel32.net/info/debian_arm_qemu.php
+kernel for versatile architecture is available from
+Debian archive: http://cdn.debian.net/debian/pool/main/l/linux-latest-2.6/
+for example, linux-image-2.6.26-1-versatile_2.6.26-12_armel.deb
+This kernel requires initrd, and ext3 and ethernet driver module is not built-in.
 
-versatile is not a Debian official architecture.
+Currently you cannot use this kernel.
 
 == mips ==
 
-Get the kernel and initrd from 
-http://mirror/debian/dists/sid/main/installer-mips/current/images/qemu/netboot/
+For etch, there was qemu architecture, for lenny it's malta.
 
+Get the kernel and initrd from 
+http://cdn.debian.net/debian/pool/main/l/linux-latest-2.6/
+for malta architecture, is this too modularized too?
 
 == mipsel ==
 
+For etch, there was qemu architecture, for lenny it's malta.
+
 Get the kernel and initrd from 
-http://mirror/debian/dists/sid/main/installer-mipsel/current/images/qemu/netboot/
+http://cdn.debian.net/debian/pool/main/l/linux-latest-2.6/
+for malta architecture, is this too modularized too?
 
 == powerpc ==
 
-cannot get it working as of 4 Sep 2007.
+Running fine for etch, with some quirks. Solution pending for sid. DebianBug:440555
+
+ * Extract vmlinuz-2.4.27-001 from the [[http://www.overselfresearch.com/kb/download/qemu/kernel-2.4.27-ppc32-prep-debian_sarge_patches-preptool_patch.zip|following tarball]];
+ * Download preptool from http://www.olifantasia.com/qemu/kernels/2.4.25/preptool
+ * Then run prepool on the kernel image, so as to pass correct parameters to the kernel directly:
+{{{
+$ preptool -s"ide0=0x1f0,0x3f6,13 ide1=0x170,0x376,13 netdev=9,0x300,eth0 console=ttyS0 root=/dev/hda init=/pbuilder-run ro" vmlinuz-2.4.27.001
+}}}
+
+You're done. Package successfully build as of 15 of september 2007.
 
 == sparc ==
 
@@ -60,14 +165,20 @@ http://mirror/debian/dists/sid/main/installer-sparc/20070308/images/combined/2.6
 
 Does not support loading kernel through -kernel ?
 
-
 == other architecture ==
 
 support needs to be added.
 Please mail Junichi Uekawa with information on a kernel configuration that works.
 
+= troubleshooting =
+
+== kernel panic! ==
+
+The last log message may say kernel panic, but that's the symptom, not the problem.
+Look for the messages above it.
+Trying out different kernel versions may help sometimes.
+
 = Location of README.Debian =
 
 canonical version is available at http://wiki.debian.org/qemubuilder
 the file in Debian package is updated from the contents from time to time by running debian/rules debian/qemubuilder.README.Debian
-
