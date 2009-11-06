@@ -76,7 +76,7 @@ binary-arch: build install
 
 # (shell-command "cd ../ ; debian/rules debian/qemubuilder.README.Debian")
 debian/qemubuilder.README.Debian:
-	python debian/xmlrpc.py qemubuilder > $@.tmp
+	w3m -dump 'http://wiki.debian.org/qemubuilder?action=raw' > $@.tmp
 	mv $@.tmp $@
 
 binary: binary-indep binary-arch
