@@ -166,7 +166,7 @@ const char* qemu_arch_qemumachine(const char* arch)
     return "pc";
   else if (!strcmp(arch, "mips")||
 	   !strcmp(arch, "mipsel"))
-    return "mips";
+    return "malta";
   else if (!strcmp(arch, "powerpc"))
     return "prep";
   else if (!strcmp(arch, "sparc"))
