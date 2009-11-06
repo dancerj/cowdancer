@@ -47,7 +47,7 @@ const char* qemu_arch_diskdevice(const struct pbuilderconfig* pc)
   if (pc->arch_diskdevice)
     return pc->arch_diskdevice;
 
-  if (!strcmp(pc->arch, "arm") || 
+  if (!strcmp(pc->arch, "arm") ||
       !strcmp(pc->arch, "armel"))
     {
       return "sd";
@@ -62,7 +62,7 @@ const char* qemu_arch_diskdevice(const struct pbuilderconfig* pc)
 {
   dev_t consoledev;
 
-  if (!strcmp(arch, "arm") || 
+  if (!strcmp(arch, "arm") ||
       !strcmp(arch, "armel"))
     {
       consoledev = makedev(204, 64);
@@ -77,13 +77,13 @@ const char* qemu_arch_diskdevice(const struct pbuilderconfig* pc)
 /**
  * arch-specific routine; make device files inside chroot
  */
-const int qemu_create_arch_devices(const char* basedir, const char* arch)  
+const int qemu_create_arch_devices(const char* basedir, const char* arch)
 {
   int ret=0;
   char* s=0;
 
   asprintf(&s, "%s/%s", basedir, "dev");
-  if (-1==mkdir(s, 0777)) 
+  if (-1==mkdir(s, 0777))
     {
       perror("mkdir chroot-/dev");
       ret=1;
@@ -118,7 +118,7 @@ char* get_host_dpkg_arch()
  */
 const char* qemu_arch_qemu(const char* arch)
 {
-  if (!strcmp(arch, "arm") || 
+  if (!strcmp(arch, "arm") ||
       !strcmp(arch, "armel"))
     {
       return "qemu-system-arm";
@@ -142,7 +142,7 @@ const char* qemu_arch_qemu(const char* arch)
 	return "kvm";
       else if((!strcmp(host_arch, "i386")) && (!strcmp(arch, "i386")))
 	return "qemu";
-      else 
+      else
 	return "qemu-system-x86_64";
     }
   else if (!strcmp(arch, "powerpc"))
@@ -158,7 +158,7 @@ const char* qemu_arch_qemu(const char* arch)
  */
 const char* qemu_arch_qemumachine(const char* arch)
 {
-  if (!strcmp(arch, "arm") || 
+  if (!strcmp(arch, "arm") ||
       !strcmp(arch, "armel"))
     return "versatilepb";
   else if (!strcmp(arch, "i386") ||
