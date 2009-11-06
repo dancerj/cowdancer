@@ -22,8 +22,6 @@
 
 	sudo cowbuilder -M aaa bbb cccc
 
-* cowbuilder should support configuration files for some configs.
-
 * signal handling; do I support ctrl-C reasonably? (no)
 
 * hardlink behavior.
