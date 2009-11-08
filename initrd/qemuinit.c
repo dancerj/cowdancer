@@ -1,7 +1,10 @@
 /**
+   qemuinit; init for quick boot inside qemu.
+   Copyright 2009 Junichi Uekawa
 
-  An init for qemubuilder.
-  Used within qemu.
+   This init is dedicated for qemubuilder use, with goal of having a
+   very fast boot time by only initializing the essential modules
+   required for qemubuilder operation.
 
  */
 #include <stdio.h>
@@ -118,6 +121,8 @@ int main(int argc, char** argv)
   /* ne2k driver */
   insmod("lib/modules/linux-live/kernel/drivers/net/8390.ko");
   insmod("lib/modules/linux-live/kernel/drivers/net/ne2k-pci.ko");
+  /* ARM would need different driver... smc */
+
   if (copy_file("/proc/mounts", "/etc/mtab"))
     {
       fprintf(stderr, "Cannot copy file /proc/mounts to /etc/mtab.\n");
@@ -152,6 +157,8 @@ int main(int argc, char** argv)
 	}
     }
 
+  /* debug shell to see what's there. */
+  printf("command-line inside initrd, exit to continue\n");
   forkexeclp("/bin/sh", "/bin/sh", NULL);
 
   if (chroot("root/"))
@@ -165,7 +172,9 @@ int main(int argc, char** argv)
     }
 
   forkexeclp("bin/sh", "bin/sh", PBUILDER_MOUNTPOINT "/pbuilder-run", NULL);
+
   /* debug shell inside chroot. */
+  printf("command-line inside chroot, exit to continue\n");
   forkexeclp("bin/sh", "bin/sh", NULL);
 
   /* turn the machine off */
