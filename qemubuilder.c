@@ -1,4 +1,4 @@
-/*BINFMTC: parameter.c forkexec.c qemuipsanitize.c qemuarch.c file.c
+/*BINFMTC: parameter.c forkexec.c qemuipsanitize.c qemuarch.c file.c main.c
  *  qemubuilder: pbuilder with qemu
  *  Copyright (C) 2007-2009 Junichi Uekawa
  *
@@ -895,7 +895,7 @@ int cpbuilder_help(void)
   return 0;
 }
 
-int main(int ac, char** av)
+int app_main(int ac, char** av)
 {
   return parse_parameter(ac, av, "qemu");
 }

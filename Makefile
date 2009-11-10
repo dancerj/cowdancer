@@ -45,10 +45,10 @@ cow-shell: cow-shell.o ilistcreate.o
 cowdancer-ilistcreate: cowdancer-ilistcreate.o ilistcreate.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-cowbuilder: cowbuilder.o parameter.o forkexec.o ilistcreate.o
+cowbuilder: cowbuilder.o parameter.o forkexec.o ilistcreate.o main.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-qemubuilder: qemubuilder.lfso parameter.lfso forkexec.lfso qemuipsanitize.lfso qemuarch.lfso file.lfso
+qemubuilder: qemubuilder.lfso parameter.lfso forkexec.lfso qemuipsanitize.lfso qemuarch.lfso file.lfso main.lfso
 	$(CC) $(CFLAGS) -o $@ $^
 
 %.lo: %.c 
