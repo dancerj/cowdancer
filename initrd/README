@@ -17,7 +17,20 @@ an initrd which uses glibc-static-linked binary to do everything
 
 3. shell script implementation
 
-an initrd which is a bash script to do everything
+an initrd which is a bash script to do everything.
 
-
+Requires an initrd size of 40MB, out of which kernel modules is 24MB, and other binaries occupy 16MB.
  
+
+arm/ directory should contain:
+bash_4.0-7_armel.deb
+libblkid1_2.16.1-4_armel.deb
+libc6_2.10.1-5_armel.deb
+libgcc1_4.4.2-2_armel.deb
+libncurses5_5.7+20090803-2_armel.deb
+libselinux1_2.0.88-1_armel.deb
+libsepol1_2.0.39-1_armel.deb
+libuuid1_2.16.1-4_armel.deb
+linux-image-2.6.26-2-versatile_2.6.26-20_armel.deb
+module-init-tools_3.11-1_armel.deb
+mount_2.16.1-4_armel.deb
