@@ -4,3 +4,20 @@ initrd support will create initrd on-the-fly to allow use of
 Debian-stock kernel with ease.  Hopefully qemubuilder will be fed a
 Debian package of a kernel from one architecture and start off it.
 
+
+There are multiple implementations; pros and cons on each implementation.
+
+1. klibc implementation
+
+an initrd which uses klibc-linked binary to do everything
+
+2. glibc implementation
+
+an initrd which uses glibc-static-linked binary to do everything
+
+3. shell script implementation
+
+an initrd which is a bash script to do everything
+
+
+ 
