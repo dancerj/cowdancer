@@ -5,16 +5,16 @@ set -e
 rm -rf .initrd-arm
 mkdir .initrd-arm || true
 (
+for DIR in etc root proc dev dev/pts; do
+    echo "mkdir .initrd-arm/$DIR"
+done
 for DEBS in arm/*.deb; do
     echo "dpkg -x $DEBS .initrd-arm"
 done
 echo "cp ./quick-arm-init.sh .initrd-arm/init"
 echo "chmod a+x .initrd-arm/init"
 echo "mv .initrd-arm/lib/modules/{2.6.26-2-versatile,linux-live}"
-for DIR in root proc dev dev/pts; do
-    echo "mkdir $DIR"
-done
-echo 
+echo "touch .initrd-arm/etc/fstab"
 echo "(cd .initrd-arm && find . | cpio -H newc -o | gzip -9 > ../initrd.arm.gz.tmp)"
 ) | fakeroot
 mv initrd.arm.gz.tmp initrd.arm.gz
