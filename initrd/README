@@ -23,7 +23,11 @@ Requires an initrd size of 40MB, out of which kernel modules is 24MB, and other 
  
 
 arm/ directory should contain:
+
 bash_4.0-7_armel.deb
+coreutils_7.4-2_armel.deb
+libacl1_2.2.48-1_armel.deb
+libattr1_2.4.44-1_armel.deb
 libblkid1_2.16.1-4_armel.deb
 libc6_2.10.1-5_armel.deb
 libgcc1_4.4.2-2_armel.deb
