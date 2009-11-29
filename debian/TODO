@@ -1,7 +1,3 @@
-* make cowbuilder de-hardlink difficult-to-cow files.
-  known file:
-    /var/cache/debconf/config.dat
-
 * make cowdancer LFS
 
 * qemubuilder to gracefully exit qemu
