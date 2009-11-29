@@ -1,3 +1,5 @@
 /root//dev: Permission denied
-  forking: diff -u /proc/mounts /tmp/testfileBJ3FS8 
+  forking: diff -u /proc/mounts /tmp/testfilekIrwyT 
 file copy: open for write: No such file or directory
+creat: No such file or directory
+E: Could not create /tmp/nonexisting/file/path/here

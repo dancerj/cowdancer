@@ -10,7 +10,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4.0438e-05 s, 25.3 MB/s
+1024 bytes (1.0 kB) copied, 4.3302e-05 s, 23.6 MB/s
 + chmod 600 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -19,21 +19,21 @@
    2/ before
 + ls -li 2/
 合計 4
-154995 -rw------- 2 dancer dancer    0 2009-05-05 11:34 a
-154996 -rw------- 2 dancer dancer    0 2009-05-05 11:34 b
-154997 -rw------- 2 dancer dancer    0 2009-05-05 11:34 c
-154998 -rw------- 2 dancer dancer    0 2009-05-05 11:34 d
-154999 -rw-r--r-- 2 dancer dancer 1024 2009-05-05 11:34 e
+579952 -rw------- 2 dancer dancer    0 2009-11-29 19:14 a
+579953 -rw------- 2 dancer dancer    0 2009-11-29 19:14 b
+579954 -rw------- 2 dancer dancer    0 2009-11-29 19:14 c
+579955 -rw------- 2 dancer dancer    0 2009-11-29 19:14 d
+579956 -rw-r--r-- 2 dancer dancer 1024 2009-11-29 19:14 e
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh /home/dancer/DEBIAN/cowdancer/cowdancer/tests/013_test_chmod.c 2/a 2/b
 + echo '   2/ after'
    2/ after
 + ls -li 2/
 合計 4
-155052 -r-------- 1 dancer dancer    0 2009-05-05 11:34 a
-154996 -rw------- 2 dancer dancer    0 2009-05-05 11:34 b
-154997 -rw------- 2 dancer dancer    0 2009-05-05 11:34 c
-154998 -rw------- 2 dancer dancer    0 2009-05-05 11:34 d
-154999 -rw-r--r-- 2 dancer dancer 1024 2009-05-05 11:34 e
+580389 -r-------- 1 dancer dancer    0 2009-11-29 19:14 a
+579953 -rw------- 2 dancer dancer    0 2009-11-29 19:14 b
+579954 -rw------- 2 dancer dancer    0 2009-11-29 19:14 c
+579955 -rw------- 2 dancer dancer    0 2009-11-29 19:14 d
+579956 -rw-r--r-- 2 dancer dancer 1024 2009-11-29 19:14 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
