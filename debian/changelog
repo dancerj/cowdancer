@@ -1,3 +1,13 @@
+cowdancer (0.59) unstable; urgency=low
+
+  [ Junichi Uekawa ]
+  * cowbuilder fix "cannot lock DBdriver config" during parallel usage
+    (closes: #553616)
+  * qemubuilder: use malta architecture for mips and mipsel.
+  * Update README.Debian for qemubuilder
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 29 Nov 2009 19:28:48 +0900
+
 cowdancer (0.58) unstable; urgency=low
 
   * support --debbuildopts for cowbuilder (closes: #548209)
