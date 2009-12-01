@@ -594,7 +594,7 @@ int chown(const char* s, uid_t u, gid_t g)
  * @return 1 on failure, 0 on success
  *
  */
-int check_fd_inode_and_warn(int fd)
+int check_fd_inode_and_warn(int fd, const char* operation)
 {
   struct stat buf;
   struct ilist_struct search_target;
@@ -614,8 +614,9 @@ int check_fd_inode_and_warn(int fd)
 
 	 If there is any better way, I'd like to know.
        */
-      fprintf(stderr, "W: cowdancer: unsupported operation, read-only open and fchown/fchmod/flock: %li:%li\n",
-	      (long)buf.st_dev, (long)buf.st_ino);
+      fprintf(stderr,
+	      "W: cowdancer: unsupported operation %s, read-only open and fchown/fchmod/flock are not supported: tried openning dev:inode of %li:%li\n",
+	      operation, (long)buf.st_dev, (long)buf.st_ino);
       /* emit a warning and do not fail,
 	 if you want to make it fail, add a return 1;
 	 apt seems to want to use this operation; thus apt will always fail.
@@ -633,7 +634,7 @@ int fchown(int fd, uid_t u, gid_t g)
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer ("fchown");
-      if (check_fd_inode_and_warn(fd))
+      if (check_fd_inode_and_warn(fd, "fchown"))
 	{
 	  errno=ENOMEM;
 	  return -1;
@@ -701,7 +702,7 @@ int fchmod(int fd, mode_t mode)
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer ("fchmod");
-      if (check_fd_inode_and_warn(fd))
+      if (check_fd_inode_and_warn(fd, "fchmod"))
 	{
 	  errno=ENOMEM;
 	  return -1;
@@ -723,7 +724,7 @@ int flock(int fd, int operation)
   if(!getenv("COWDANCER_IGNORE"))
     {
       debug_cowdancer ("flock");
-      if (check_fd_inode_and_warn(fd))
+      if (check_fd_inode_and_warn(fd, "flock"))
 	{
 	  errno=ENOMEM;
 	  return -1;
