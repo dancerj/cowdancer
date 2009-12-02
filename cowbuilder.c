@@ -157,6 +157,17 @@ int break_cowlink(const char* s)
 }
 
 /**
+   Convenience function to call break_cowlink with basepath prepended.
+ */
+static void break_cowlink_inside_chroot(const char* basepath, const char* filepath)
+{
+  char* filename;
+  asprintf(&filename, "%s%s", basepath, filepath);
+  break_cowlink(filename);
+  free(filename);
+}
+
+/**
    hardlink-copy directory for COW use.  Un-hardlink some files which
    do not work with hardlinking.
 
@@ -165,7 +176,6 @@ int break_cowlink(const char* s)
 static int cpbuilder_internal_cowcopy(const struct pbuilderconfig* pc)
 {
   char *ilistfile;
-  char *filename;
 
   printf(" -> Copying COW directory\n");
   if (0!=rmrf(pc->buildplace))
@@ -198,9 +208,9 @@ static int cpbuilder_internal_cowcopy(const struct pbuilderconfig* pc)
 
   /* Non-hardlinkable file support
    */
-  asprintf(&filename, "%s%s", pc->buildplace, "/var/cache/debconf/config.dat");
-  break_cowlink(filename);
-  free(filename);
+  break_cowlink_inside_chroot(pc->buildplace, "/var/cache/debconf/config.dat");
+  break_cowlink_inside_chroot(pc->buildplace, "/var/cache/debconf/templates.dat");
+  break_cowlink_inside_chroot(pc->buildplace, "/var/cache/debconf/passwords.dat");
 
   return 0;
 }
