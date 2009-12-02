@@ -1,3 +1,12 @@
+cowdancer (0.60) unstable; urgency=low
+
+  * cowbuilder: output a more helpful error message when flock/fchmod/fchown is
+    called.
+  * cowbuilder: call break_cowlink on templates.dat and password.dat. 
+    (closes: #558832)
+
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 02 Dec 2009 23:14:33 +0900
+
 cowdancer (0.59) unstable; urgency=low
 
   [ Junichi Uekawa ]
