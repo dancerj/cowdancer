@@ -15,7 +15,7 @@ _cowbuilder()
     prev=${COMP_WORDS[COMP_CWORD-1]}
     initialcommand=${COMP_WORDS[1]}
     initialcommand_options='--create --update --build --login --execute'
-    other_options='--dumpconfig --distribution --mirror'
+    other_options='--dumpconfig --distribution --mirror --basepath --architecture'
     distribution='sid sarge etch woody lenny squeeze'
 
     case $initialcommand in
