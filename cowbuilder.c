@@ -353,6 +353,11 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
       PBUILDER_ADD_PARAM("--mirror");
       PBUILDER_ADD_PARAM(pc->mirror);
     }
+  if (pc->arch)
+    {
+      PBUILDER_ADD_PARAM("--architecture");
+      PBUILDER_ADD_PARAM(pc->arch);
+    }
   PBUILDER_ADD_PARAM("--distribution");
   PBUILDER_ADD_PARAM(pc->distribution);
   PBUILDER_ADD_PARAM("--no-targz");

@@ -106,8 +106,13 @@ Linux kernel to use.
 initrd to use.
 
 .TP
-.BI "ARCH=" "arch"
+.BI "ARCHITECTURE=" "arch"
+
 The target architecture.
+
+You can also use
+.BI "ARCH=" "arch"
+for compatibility with 0.60 or older.
 
 .TP
 .BI "MEMORY_MEGS=" "64"
@@ -159,7 +164,7 @@ and distribution sid.
 .nf
 KERNEL_IMAGE=vmlinuz-2.6.18-4-k7
 INITRD=initrd.img-2.6.18-4-k7
-ARCH=i386
+ARCHITECTURE=i386
 BASEPATH=/home/dancer/tmp/base-i386.qemu
 MEMORY_MEGS=64
 .qy

@@ -278,7 +278,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       int i;
 
       if (qemu == NULL || machine == NULL) {
-	fprintf(stderr, "Your arch %s does not seem to be supported\n", pc->arch);
+	fprintf(stderr, "Your architecture %s does not seem to be supported\n", pc->arch);
 	exit(1);
       }
 
@@ -646,7 +646,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
      we'll need think of other ways to work with them.
 
    */
-  printf(" -> Doing arch-specific /dev population\n");
+  printf(" -> Doing architecture-specific /dev population\n");
 
   qemu_create_arch_devices(pc->buildplace, pc->arch);
 

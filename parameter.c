@@ -88,7 +88,7 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	{
 	  *(strrchr(buf,'\n'))=0;
 	}
-      
+
       if ((delim=strchr(buf,'=')))
 	{
 	  /* assuming config entry */
@@ -116,6 +116,10 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	  else if (!strcmp(buf, "MEMORY_MEGS"))
 	    {
 	      pc->memory_megs=atoi(delim);
+	    }
+	  else if (!strcmp(buf, "ARCHITECTURE"))
+	    {
+	      pc->arch=strdup(delim);
 	    }
 	  else if (!strcmp(buf, "ARCH"))
 	    {
@@ -242,6 +246,7 @@ int parse_parameter(int ac, char** av,
     {"debbuildopts", required_argument, 0, 0},
     {"inputfile", required_argument, 0, 0},
     {"outputfile", required_argument, 0, 0},
+    {"architecture", required_argument, 0, 0},
 
     /* cowbuilder specific options */
     {"no-cowdancer-update", no_argument, 0, 0},
@@ -250,7 +255,7 @@ int parse_parameter(int ac, char** av,
     /* qemubuilder specific options */
     {"arch-diskdevice", no_argument, 0, 0},
 
-    /* verbatim options, synced as of pbuilder 0.153 */
+    /* verbatim options with argument, synced as of pbuilder 0.153 */
     {"othermirror", required_argument, 0, 'M'},
     {"http-proxy", required_argument, 0, 'M'},
     {"aptcache", required_argument, 0, 'M'},
@@ -263,7 +268,8 @@ int parse_parameter(int ac, char** av,
     {"bindmounts", required_argument, 0, 'M'},
     {"debootstrapopts", required_argument, 0, 'M'},
     {"debootstrap", required_argument, 0, 'M'},
-    
+
+    /* verbatim options without argument, synced as of pbuilder 0.153 */
     {"removepackages", no_argument, 0, 'm'},
     {"override-config", no_argument, 0, 'm'},
     {"pkgname-logfile", no_argument, 0, 'm'},
@@ -278,7 +284,7 @@ int parse_parameter(int ac, char** av,
   memset (&pc, 0, sizeof(pbuilderconfig));
   /* default command-line component */
   pbuildercommandline[0]="pbuilder";
-  
+
   /**
    * Try to load all standard config files.
    * Skip non existing, but exit on broken ones.
@@ -362,7 +368,7 @@ int parse_parameter(int ac, char** av,
 	  /* other cases with long option with flags, this is expected
 	     behavior, so ignore it, for most of the time.
 	  */
-	  
+
 	  /* handle specific options which also give 0. */
 
 	  /* first, generate 'cmdstr' which is useful anyway */
@@ -389,9 +395,13 @@ int parse_parameter(int ac, char** av,
 	    {
 	      pc.no_cowdancer_update=1;
 	    }
-	  else if (!strcmp(long_options[index_point].name,"debian-etch-workaround")) 
+	  else if (!strcmp(long_options[index_point].name,"debian-etch-workaround"))
 	    {
 	      pc.debian_etch_workaround=1;
+	    }
+	  else if (!strcmp(long_options[index_point].name,"architecture"))
+	    {
+	      pc.arch=strdup(optarg);
 	    }
 	  else if (!strcmp(long_options[index_point].name,"arch-diskdevice"))
 	    {
@@ -425,7 +435,7 @@ int parse_parameter(int ac, char** av,
 	    {
 	      /* this is for qemubuilder */
 	      pc.components=strdup(optarg);
-	      
+
 	      /* pass it for cowbuilder */
 	      PASS_TO_PBUILDER_WITH_PARAM
 	    }
@@ -433,7 +443,7 @@ int parse_parameter(int ac, char** av,
 	    {
 	      /* this is for qemubuilder */
 	      pc.debbuildopts=strdup(optarg);
-	      
+
 	      /* pass it for cowbuilder */
 	      PASS_TO_PBUILDER_WITH_PARAM
 	    }
@@ -525,10 +535,10 @@ int parse_parameter(int ac, char** av,
     case pbuilder_dumpconfig:
       return cpbuilder_dumpconfig(&pc);
 
-    default:			
+    default:
       fprintf (stderr, "E: No operation specified\n");
       return 1;
     }
-  
+
   return 0;
 }
