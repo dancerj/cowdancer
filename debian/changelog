@@ -1,3 +1,13 @@
+cowdancer (0.61) unstable; urgency=low
+
+  * add --architecture option to qemubuilder and cowbuilder and support
+    ARCHITECTURE option in pbuilderrc. (closes: #564796)
+    ARCHITECTURE is preferred over ARCH option, but both options will work.
+  * add basepath to cowbuilder bash_completion.
+  * add basepath and architecture to bash completion for qemubuilder.
+
+ -- Junichi Uekawa <dancer@debian.org>  Fri, 29 Jan 2010 23:30:35 +0900
+
 cowdancer (0.60) unstable; urgency=low
 
   * cowbuilder: output a more helpful error message when flock/fchmod/fchown is

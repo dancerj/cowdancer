@@ -15,7 +15,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 1.6063e-05 s, 63.7 MB/s
+1024 bytes (1.0 kB) copied, 1.7739e-05 s, 57.7 MB/s
 + chgrp 1000 1/a 1/b 1/c 1/d
 + ls -li 1/
 + sleep 1s
@@ -23,24 +23,24 @@
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-πÁ∑◊ 4
-579285 -rw-r--r-- 2 dancer dancer    0 2009-11-29 19:14 a
-579286 -rw-r--r-- 2 dancer dancer    0 2009-11-29 19:14 b
-579287 -rw-r--r-- 2 dancer dancer    0 2009-11-29 19:14 c
-579288 -rw-r--r-- 2 dancer dancer    0 2009-11-29 19:14 d
-579289 -rw-r--r-- 2 dancer dancer 1024 2009-11-29 19:14 e
+ÂêàË®à 4
+118834 -rw-r--r-- 2 dancer dancer    0 2010-01-23 16:47 a
+118835 -rw-r--r-- 2 dancer dancer    0 2010-01-23 16:47 b
+118836 -rw-r--r-- 2 dancer dancer    0 2010-01-23 16:47 c
+118837 -rw-r--r-- 2 dancer dancer    0 2010-01-23 16:47 d
+118838 -rw-r--r-- 2 dancer dancer 1024 2010-01-23 16:47 e
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh /home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c 4 2/a 2/b 2/c
 chown 2/a
 lchown 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-πÁ∑◊ 4
-579910 -rw-r--r-- 1 dancer adm       0 2009-11-29 19:14 a
-579286 -rw-r--r-- 2 dancer dancer    0 2009-11-29 19:14 b
-579913 -rw-r--r-- 1 dancer adm       0 2009-11-29 19:14 c
-579288 -rw-r--r-- 2 dancer dancer    0 2009-11-29 19:14 d
-579289 -rw-r--r-- 2 dancer dancer 1024 2009-11-29 19:14 e
+ÂêàË®à 4
+118888 -rw-r--r-- 1 dancer adm       0 2010-01-23 16:47 a
+118835 -rw-r--r-- 2 dancer dancer    0 2010-01-23 16:47 b
+118891 -rw-r--r-- 1 dancer adm       0 2010-01-23 16:47 c
+118837 -rw-r--r-- 2 dancer dancer    0 2010-01-23 16:47 d
+118838 -rw-r--r-- 2 dancer dancer 1024 2010-01-23 16:47 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
