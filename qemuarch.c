@@ -140,6 +140,8 @@ const char* qemu_arch_qemu(const char* arch)
        */
       if(!strcmp(host_arch,arch) && !(system("which kvm")))
 	return "kvm";
+      else if(!strcmp(host_arch, "amd64") && !(system("which kvm")))
+        return "kvm";
       else if((!strcmp(host_arch, "i386")) && (!strcmp(arch, "i386")))
 	return "qemu";
       else
