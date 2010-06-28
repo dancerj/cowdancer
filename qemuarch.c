@@ -185,6 +185,6 @@ const char* qemu_arch_tty(const char* arch)
     {
       return "ttyAMA0";
     }
-  return "ttyS0";
+  return "ttyS0,115200n8";
 }
 
