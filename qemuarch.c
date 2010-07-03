@@ -183,7 +183,7 @@ const char* qemu_arch_tty(const char* arch)
   if (!strcmp(arch, "arm")||
       !strcmp(arch, "armel"))
     {
-      return "ttyAMA0";
+      return "ttyAMA0,115200n8";
     }
   return "ttyS0,115200n8";
 }
