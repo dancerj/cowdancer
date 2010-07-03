@@ -138,9 +138,11 @@ const char* qemu_arch_qemu(const char* arch)
 	 use qemu if i386/i386
 	 use qemu-system-x86_64 otherwise
        */
-      if(!strcmp(host_arch,arch) && !(system("which kvm")))
+      int kvm_exists = !system("which kvm");
+
+      if(!strcmp(host_arch,arch) && kvm_exists)
 	return "kvm";
-      else if(!strcmp(host_arch, "amd64") && !(system("which kvm")))
+      else if(!strcmp(host_arch, "amd64") && kvm_exists)
         return "kvm";
       else if((!strcmp(host_arch, "i386")) && (!strcmp(arch, "i386")))
 	return "qemu";
