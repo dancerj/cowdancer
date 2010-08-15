@@ -1,3 +1,16 @@
+cowdancer (0.62) UNRELEASED; urgency=low
+
+  [ Stefan Kisdaroczi ]
+  * set serial console baudrate to 115200 (closes: #587424)
+  * use kvm for i386 on amd64 host (closes: #587421)
+
+  [ Junichi Uekawa ]
+  * probably, ARM does support 115200n8 too.
+  * remove implied -serial=stdio by adding -nodefault. (closes:
+    #591470)
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 15 Aug 2010 23:43:11 +0900
+
 cowdancer (0.61) unstable; urgency=low
 
   * add --architecture option to qemubuilder and cowbuilder and support
