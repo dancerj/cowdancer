@@ -1,4 +1,4 @@
-cowdancer (0.62) UNRELEASED; urgency=low
+cowdancer (0.62) unstable; urgency=low
 
   [ Stefan Kisdaroczi ]
   * set serial console baudrate to 115200 (closes: #587424)
@@ -9,7 +9,7 @@ cowdancer (0.62) UNRELEASED; urgency=low
   * remove implied -serial=stdio by adding -nodefault. (closes:
     #591470)
 
- -- Junichi Uekawa <dancer@debian.org>  Sun, 15 Aug 2010 23:43:11 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 15 Aug 2010 23:43:49 +0900
 
 cowdancer (0.61) unstable; urgency=low
 
