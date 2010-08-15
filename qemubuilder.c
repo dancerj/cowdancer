@@ -294,6 +294,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       close(sp[0]);
 
       argv[argc++]=strdupa(qemu);
+      argv[argc++]="-nodefaults";
       argv[argc++]="-nographic";
       argv[argc++]="-M";
       argv[argc++]=strdupa(machine);

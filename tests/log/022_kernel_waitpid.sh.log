@@ -3,5 +3,5 @@
 ++ readlink -f tests/run_c.sh
 + RUNC=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh
 + /home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh /home/dancer/DEBIAN/cowdancer/cowdancer/tests/022_kernel_waitpid.c
-/bin/cp: cannot stat `/tmp/XXXX
+/bin/cp: `/tmp/XXXX
 waitpid: 100

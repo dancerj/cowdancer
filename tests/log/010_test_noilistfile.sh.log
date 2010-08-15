@@ -1,8 +1,8 @@
 env var COWDANCER_ILISTFILE not defined
 cowdancer: Fatal, initialize_functions failed
 env var COWDANCER_ILISTFILE not defined
-dd: opening `/dev/zero': ãƒ¡ãƒ¢ãƒªã‚’ç¢ºä¿ã§ãã¾ã›ã‚“
+dd: opening `/dev/zero': ¥á¥â¥ê¤ò³ÎÊİ¤Ç¤­¤Ş¤»¤ó
 cowdancer: cannot open ilistfile ./nonexistent-file
 cowdancer: Fatal, initialize_functions failed
 cowdancer: cannot open ilistfile ./nonexistent-file
-dd: opening `/dev/zero': ãƒ¡ãƒ¢ãƒªã‚’ç¢ºä¿ã§ãã¾ã›ã‚“
+dd: opening `/dev/zero': ¥á¥â¥ê¤ò³ÎÊİ¤Ç¤­¤Ş¤»¤ó

@@ -10,36 +10,33 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 3.8692e-05 s, 26.5 MB/s
+1024 bytes (1.0 kB) copied, 7.2356e-05 s, 14.2 MB/s
 + cp -al 1 2
 + MALLOC_TRACE=log
 + cow-shell /tmp/XXXX/tracer
-00400000-00401000 r-xp 00000000 00:12 119126                             /tmp/XXXX/tracer
-00600000-00601000 rw-p 00000000 00:12 119126                             /tmp/XXXX/tracer
-01769000-0178a000 rw-p 01769000 00:00 0                                  [heap]
-2b4f76564000-2b4f76580000 r-xp 00000000 08:03 138709                     /lib/ld-2.7.so
-2b4f76580000-2b4f76583000 rw-p 2b4f76580000 00:00 0 
-2b4f7677f000-2b4f76781000 rw-p 0001b000 08:03 138709                     /lib/ld-2.7.so
-2b4f76781000-2b4f76785000 r-xp 00000000 fe:00 67144                      /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
-2b4f76785000-2b4f76984000 ---p 00004000 fe:00 67144                      /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
-2b4f76984000-2b4f76985000 rw-p 00003000 fe:00 67144                      /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
-2b4f76985000-2b4f76986000 r--p 00000000 00:12 119144                     /tmp/XXXX/.ilist
-2b4f76986000-2b4f76989000 rw-p 2b4f76986000 00:00 0 
-2b4f769a2000-2b4f76aec000 r-xp 00000000 08:03 138706                     /lib/libc-2.7.so
-2b4f76aec000-2b4f76ceb000 ---p 0014a000 08:03 138706                     /lib/libc-2.7.so
-2b4f76ceb000-2b4f76cee000 r--p 00149000 08:03 138706                     /lib/libc-2.7.so
-2b4f76cee000-2b4f76cf0000 rw-p 0014c000 08:03 138706                     /lib/libc-2.7.so
-2b4f76cf0000-2b4f76cf5000 rw-p 2b4f76cf0000 00:00 0 
-2b4f76cf5000-2b4f76cf7000 r-xp 00000000 08:03 138710                     /lib/libdl-2.7.so
-2b4f76cf7000-2b4f76ef7000 ---p 00002000 08:03 138710                     /lib/libdl-2.7.so
-2b4f76ef7000-2b4f76ef9000 rw-p 00002000 08:03 138710                     /lib/libdl-2.7.so
-2b4f76ef9000-2b4f76efb000 rw-p 2b4f76ef9000 00:00 0 
-7fff736eb000-7fff73700000 rw-p 7ffffffea000 00:00 0                      [stack]
-7fff737ff000-7fff73800000 r-xp 7fff737ff000 00:00 0                      [vdso]
-ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+08048000-08049000 r-xp 00000000 00:14 154258     /tmp/XXXX/tracer
+08049000-0804a000 rw-p 00000000 00:14 154258     /tmp/XXXX/tracer
+09552000-09573000 rw-p 00000000 00:00 0          [heap]
+40000000-4001b000 r-xp 00000000 08:05 910685     /lib/ld-2.11.2.so
+4001b000-4001c000 r--p 0001a000 08:05 910685     /lib/ld-2.11.2.so
+4001c000-4001d000 rw-p 0001b000 08:05 910685     /lib/ld-2.11.2.so
+4001d000-4001e000 r-xp 00000000 00:00 0          [vdso]
+4001e000-40020000 rw-p 00000000 00:00 0 
+40020000-40023000 r-xp 00000000 fe:00 665115     /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
+40023000-40024000 rw-p 00003000 fe:00 665115     /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
+40024000-40025000 r--p 00000000 00:14 154291     /tmp/XXXX/.ilist
+40025000-40028000 rw-p 00000000 00:00 0 
+4002a000-40168000 r-xp 00000000 08:05 910684     /lib/libc-2.11.2.so
+40168000-4016a000 r--p 0013d000 08:05 910684     /lib/libc-2.11.2.so
+4016a000-4016b000 rw-p 0013f000 08:05 910684     /lib/libc-2.11.2.so
+4016b000-4016f000 rw-p 00000000 00:00 0 
+4016f000-40171000 r-xp 00000000 08:05 910676     /lib/libdl-2.11.2.so
+40171000-40172000 r--p 00001000 08:05 910676     /lib/libdl-2.11.2.so
+40172000-40173000 rw-p 00002000 08:05 910676     /lib/libdl-2.11.2.so
+40173000-40174000 rw-p 00000000 00:00 0 
+bfaba000-bfacf000 rw-p 00000000 00:00 0          [stack]
 + RESULT=0
 + mtrace /tmp/XXXX/tracer /tmp/XXXX/log
-$* is no longer supported at /usr/bin/mtrace line 2.
 No memory leaks.
 + rm -rf /tmp/XXXX
 + exit 0

@@ -6,7 +6,7 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4.1905e-05 s, 24.4 MB/s
+1024 bytes (1.0 kB) copied, 6.9562e-05 s, 14.7 MB/s
 + ln -s a.real 1/a
 + ls -li 1/
 + sleep 1s
@@ -14,28 +14,28 @@
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-åˆè¨ˆ 4
-118427 lrwxrwxrwx 2 dancer dancer    6 2010-01-23 16:47 a -> a.real
-118425 -rw-r--r-- 2 dancer dancer    0 2010-01-23 16:47 a.real
-118422 -rw-r--r-- 2 dancer dancer    0 2010-01-23 16:47 b
-118423 -rw-r--r-- 2 dancer dancer    0 2010-01-23 16:47 c
-118424 -rw-r--r-- 2 dancer dancer    0 2010-01-23 16:47 d
-118426 -rw-r--r-- 2 dancer dancer 1024 2010-01-23 16:47 e
-+ echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
+¹ç·× 4
+153242 lrwxrwxrwx 1 dancer dancer    6 2010-08-15 12:56 a -> a.real
+153199 -rw-r--r-- 2 dancer dancer    0 2010-08-15 12:56 a.real
+153196 -rw-r--r-- 2 dancer dancer    0 2010-08-15 12:56 b
+153197 -rw-r--r-- 2 dancer dancer    0 2010-08-15 12:56 c
+153198 -rw-r--r-- 2 dancer dancer    0 2010-08-15 12:56 d
+153200 -rw-r--r-- 2 dancer dancer 1024 2010-08-15 12:56 e
 + cow-shell
++ echo 'cd 2 && echo a > a && mv b c && touch c && dd if=e of=d'
 Invoking /bin/sh
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 4.9866e-05 s, 20.5 MB/s
+1024 bytes (1.0 kB) copied, 9.1631e-05 s, 11.2 MB/s
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-åˆè¨ˆ 12
-118427 lrwxrwxrwx 2 dancer dancer    6 2010-01-23 16:47 a -> a.real
-118469 -rw-r--r-- 1 dancer dancer    2 2010-01-23 16:47 a.real
-118474 -rw-r--r-- 1 dancer dancer    0 2010-01-23 16:47 c
-118477 -rw-r--r-- 1 dancer dancer 1024 2010-01-23 16:47 d
-118426 -rw-r--r-- 2 dancer dancer 1024 2010-01-23 16:47 e
+¹ç·× 12
+153242 lrwxrwxrwx 1 dancer dancer    6 2010-08-15 12:56 a -> a.real
+153257 -rw-r--r-- 1 dancer dancer    2 2010-08-15 12:56 a.real
+153258 -rw-r--r-- 1 dancer dancer    0 2010-08-15 12:56 c
+153259 -rw-r--r-- 1 dancer dancer 1024 2010-08-15 12:56 d
+153200 -rw-r--r-- 2 dancer dancer 1024 2010-08-15 12:56 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'
