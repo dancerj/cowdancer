@@ -10,21 +10,21 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 7.2356e-05 s, 14.2 MB/s
+1024 bytes (1.0 kB) copied, 0.000115937 s, 8.8 MB/s
 + cp -al 1 2
 + MALLOC_TRACE=log
 + cow-shell /tmp/XXXX/tracer
-08048000-08049000 r-xp 00000000 00:14 154258     /tmp/XXXX/tracer
-08049000-0804a000 rw-p 00000000 00:14 154258     /tmp/XXXX/tracer
-09552000-09573000 rw-p 00000000 00:00 0          [heap]
+08048000-08049000 r-xp 00000000 00:14 416121     /tmp/XXXX/tracer
+08049000-0804a000 rw-p 00000000 00:14 416121     /tmp/XXXX/tracer
+08c1e000-08c3f000 rw-p 00000000 00:00 0          [heap]
 40000000-4001b000 r-xp 00000000 08:05 910685     /lib/ld-2.11.2.so
 4001b000-4001c000 r--p 0001a000 08:05 910685     /lib/ld-2.11.2.so
 4001c000-4001d000 rw-p 0001b000 08:05 910685     /lib/ld-2.11.2.so
 4001d000-4001e000 r-xp 00000000 00:00 0          [vdso]
 4001e000-40020000 rw-p 00000000 00:00 0 
-40020000-40023000 r-xp 00000000 fe:00 665115     /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
-40023000-40024000 rw-p 00003000 fe:00 665115     /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
-40024000-40025000 r--p 00000000 00:14 154291     /tmp/XXXX/.ilist
+40020000-40023000 r-xp 00000000 fe:00 665113     /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
+40023000-40024000 rw-p 00003000 fe:00 665113     /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
+40024000-40025000 r--p 00000000 00:14 416134     /tmp/XXXX/.ilist
 40025000-40028000 rw-p 00000000 00:00 0 
 4002a000-40168000 r-xp 00000000 08:05 910684     /lib/libc-2.11.2.so
 40168000-4016a000 r--p 0013d000 08:05 910684     /lib/libc-2.11.2.so
@@ -34,7 +34,7 @@
 40171000-40172000 r--p 00001000 08:05 910676     /lib/libdl-2.11.2.so
 40172000-40173000 rw-p 00002000 08:05 910676     /lib/libdl-2.11.2.so
 40173000-40174000 rw-p 00000000 00:00 0 
-bfaba000-bfacf000 rw-p 00000000 00:00 0          [stack]
+bfb31000-bfb46000 rw-p 00000000 00:00 0          [stack]
 + RESULT=0
 + mtrace /tmp/XXXX/tracer /tmp/XXXX/log
 No memory leaks.
