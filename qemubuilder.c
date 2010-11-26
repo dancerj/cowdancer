@@ -471,7 +471,7 @@ static int run_second_stage_script
       system(hostcommand1);
     }
 
-  loop_umount(workblockdevicepath);
+  loop_umount(pc->buildplace);
 
   asprintf(&cowdevpath, "%s.cowdev", pc->buildplace);
   ret=forkexeclp("qemu-img", "qemu-img",
@@ -504,7 +504,7 @@ static int run_second_stage_script
       printf("running host command: %s\n", hostcommand2);
       system(hostcommand2);
     }
-  loop_umount(workblockdevicepath);
+  loop_umount(pc->buildplace);
   rmdir(pc->buildplace);
   printf(" -> clean up COW device files\n");
   unlink(workblockdevicepath);
@@ -755,7 +755,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   /* TODO: hooks probably need copying here. */
   /* TODO: recover aptcache */
 
-  loop_umount(workblockdevicepath);
+  loop_umount(pc->buildplace);
   rmdir(pc->buildplace);
 
   // this will have wrong time. how to workaround?
