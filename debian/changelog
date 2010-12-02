@@ -1,3 +1,12 @@
+cowdancer (0.62+nmu2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Apply patch by Benoît Knecht to add the required additional arguments
+    for networking (Closes: #597102)
+  * Set urgency medium due to RC bug fix
+
+ -- Alexander Reichle-Schmehl <tolimar@debian.org>  Thu, 02 Dec 2010 14:11:51 +0100
+
 cowdancer (0.62+nmu1) unstable; urgency=low
 
   * Non-maintainer upload.

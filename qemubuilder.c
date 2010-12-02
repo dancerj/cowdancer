@@ -315,6 +315,10 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       argv[argc++]=append_command;
       argv[argc++]="-serial";
       argv[argc++]="stdio";
+      argv[argc++]="-net";
+      argv[argc++]="user";
+      argv[argc++]="-net";
+      argv[argc++]="nic";
       argv[argc]=NULL;
       assert(argc < MAX_ARGS);
 
