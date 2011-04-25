@@ -137,6 +137,10 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    {
 	      pc->components=strdup(delim);
 	    }
+	  else if (!strcmp(buf, "OTHERMIRROR"))
+	    {
+	      pc->othermirror=strdup(delim);
+	    }
 	  else if (!strcmp(buf, "DEBBUILDOPTS"))
 	    {
 	      pc->debbuildopts=strdup(delim);
@@ -199,6 +203,7 @@ int cpbuilder_dumpconfig(pbuilderconfig* pc)
   DUMPSTR(mirror);
   DUMPSTR(distribution);
   DUMPSTR(components);
+  DUMPSTR(othermirror);
   DUMPSTR(debbuildopts);
   DUMPINT(binary_arch);
   DUMPSTRARRAY(inputfile);
@@ -248,6 +253,7 @@ int parse_parameter(int ac, char** av,
     {"buildresult", required_argument, 0, 0},
     {"distribution", required_argument, 0, 0},
     {"components", required_argument, 0, 0},
+    {"othermirror", required_argument, 0, 0},
     {"debbuildopts", required_argument, 0, 0},
     {"binary-arch", no_argument, 0, 0},
     {"inputfile", required_argument, 0, 0},
@@ -262,7 +268,6 @@ int parse_parameter(int ac, char** av,
     {"arch-diskdevice", no_argument, 0, 0},
 
     /* verbatim options with argument, synced as of pbuilder 0.153 */
-    {"othermirror", required_argument, 0, 'M'},
     {"http-proxy", required_argument, 0, 'M'},
     {"aptcache", required_argument, 0, 'M'},
     {"extrapackages", required_argument, 0, 'M'},
@@ -440,6 +445,14 @@ int parse_parameter(int ac, char** av,
 	    {
 	      /* this is for qemubuilder */
 	      pc.components=strdup(optarg);
+
+	      /* pass it for cowbuilder */
+	      PASS_TO_PBUILDER_WITH_PARAM
+	    }
+	  else if (!strcmp(long_options[index_point].name,"othermirror"))
+	    {
+	      /* this is for qemubuilder */
+	      pc.othermirror=strdup(optarg);
 
 	      /* pass it for cowbuilder */
 	      PASS_TO_PBUILDER_WITH_PARAM

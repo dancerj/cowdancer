@@ -37,6 +37,7 @@ typedef struct pbuilderconfig
   char* mirror;
   char* distribution;
   char* components;
+  char* othermirror;
   char* debbuildopts;
   int binary_arch;
 

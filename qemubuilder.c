@@ -734,7 +734,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "$PBUILDER_MOUNTPOINT/run-copyfiles\n"
 	  "hostname pbuilder-$(cat /etc/hostname)\n"
 	  //TODO: installaptlines
-	  //"echo 'deb http://192.168.1.26/debian/ sid main ' > /etc/apt/sources.list\n"
+	  "echo '%s' > /etc/apt/sources.list.d/other.list\n"
 	  //TODO: run G hook
 	  "apt-get update || exit_from_qemu 1\n"
 	  //TODO: "dpkg --purge $REMOVEPACKAGES\n"
@@ -751,7 +751,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "bash\n",
 	  timestring,
 	  timestring,
-	  t=sanitize_mirror(pc->mirror), pc->distribution, pc->components);
+	  t=sanitize_mirror(pc->mirror), pc->distribution, pc->components, pc->othermirror);
   fclose(f);
   free(t);
 
@@ -815,11 +815,14 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
 
   asprintf(&commandline,
 	   /* TODO: executehooks D: */
+	   "echo '%s' > /etc/apt/sources.list.d/other.list\n"
+	   "apt-get update || exit_from_qemu 1\n"
 	   "/usr/lib/pbuilder/pbuilder-satisfydepends --control $PBUILDER_MOUNTPOINT/*.dsc --internal-chrootexec 'chroot . ' %s \n"
 	   "cd $PBUILDER_MOUNTPOINT; /usr/bin/dpkg-source -x $(basename %s) \n"
 	   "echo ' -> Building the package'\n"
 	   /* TODO: executehooks A: */
 	   "cd $PBUILDER_MOUNTPOINT/*-*/; dpkg-buildpackage -us -uc %s\n",
+	   pc->othermirror,
 	   buildopt,
 	   dscfile,
 	   debbuildopts);
