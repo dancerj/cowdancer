@@ -1,7 +1,13 @@
+cowdancer (0.63) unstable; urgency=low
+
+  * Acknowledge NMUs. (closes: #597102, #564425)
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 26 Jun 2011 09:21:02 +0900
+
 cowdancer (0.62+nmu2) unstable; urgency=medium
 
   * Non-maintainer upload.
-  * Apply patch by Benoît Knecht to add the required additional arguments
+  * Apply patch by Beno?t Knecht to add the required additional arguments
     for networking (Closes: #597102)
   * Set urgency medium due to RC bug fix
 
@@ -11,7 +17,7 @@ cowdancer (0.62+nmu1) unstable; urgency=low
 
   * Non-maintainer upload.
   * Apply fix to qemubuilder's mount problem (Closes: #564425)
-    Thanks to Benoît Knecht, Gregor Herrmann and Martijn van Brummelen for
+    Thanks to Beno?t Knecht, Gregor Herrmann and Martijn van Brummelen for
     working on the issue!
 
  -- Alexander Reichle-Schmehl <tolimar@debian.org>  Fri, 26 Nov 2010 16:16:26 +0100
