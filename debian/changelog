@@ -1,3 +1,9 @@
+cowdancer (0.64) UNRELEASED; urgency=low
+
+  * [changelog to be automatically filled by git-dch]
+
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 29 Jun 2011 20:59:34 +0900
+
 cowdancer (0.63) unstable; urgency=low
 
   * Acknowledge NMUs. (closes: #597102, #564425)
