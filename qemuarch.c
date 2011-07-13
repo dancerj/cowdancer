@@ -46,13 +46,7 @@ const char* qemu_arch_diskdevice(const struct pbuilderconfig* pc)
 {
   if (pc->arch_diskdevice)
     return pc->arch_diskdevice;
-
-  if (!strcmp(pc->arch, "arm") ||
-      !strcmp(pc->arch, "armel"))
-    {
-      return "sd";
-    }
-  return "hd";
+  return "sd";
 }
 
 /**
