@@ -268,6 +268,8 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       /* this is the child process */
       const char* qemu = qemu_arch_qemu(pc->arch);
       const char* machine = qemu_arch_qemumachine(pc->arch);
+      char* hda_command;
+      char* hdb_command;
       char* append_command;
       const char* kernel_image = pc->kernel_image;
       const char* initrd = pc->initrd;
@@ -283,6 +285,12 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       }
 
       asprintf(&mem, "%i", pc->memory_megs);
+
+      asprintf(&hda_command, "file=%s,index=0,media=disk,cache=writeback",
+	       strdupa(hda));
+
+      asprintf(&hdb_command, "file=%s,index=1,media=disk,cache=writeback",
+	       strdupa(hdb));
 
       asprintf(&append_command,
 	       "root=/dev/%sa quiet init=/pbuilder-run console=%s",
@@ -307,10 +315,10 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 	  argv[argc++]="-initrd";
 	  argv[argc++]=strdupa(initrd);
 	}
-      argv[argc++]="-hda";
-      argv[argc++]=strdupa(hda);
-      argv[argc++]="-hdb";
-      argv[argc++]=strdupa(hdb);
+      argv[argc++]="-drive";
+      argv[argc++]=hda_command;
+      argv[argc++]="-drive";
+      argv[argc++]=hdb_command;
       argv[argc++]="-append";
       argv[argc++]=append_command;
       argv[argc++]="-serial";
