@@ -798,8 +798,18 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
   char* hoststr=NULL;
   char* hoststr2=NULL;
   char* commandline=NULL;
+  const char* buildopt=NULL;
+  const char* debbuildopts=NULL;
+  char* debbuildopts_work=NULL;
 
-  const char* buildopt="--binary-all"; /* TODO: add --binary-arch option */
+  if (pc->binary_arch) {
+    asprintf(&debbuildopts_work, "%s -B", pc->debbuildopts);
+    debbuildopts=debbuildopts_work;
+    buildopt="--binary-arch";
+  } else {
+    debbuildopts=pc->debbuildopts;
+    buildopt="--binary-all";
+  }
 
   hoststr=copy_dscfile(dscfile, pc->buildplace);
 
@@ -812,7 +822,7 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
 	   "cd $PBUILDER_MOUNTPOINT/*-*/; dpkg-buildpackage -us -uc %s\n",
 	   buildopt,
 	   dscfile,
-	   pc->debbuildopts);
+	   debbuildopts);
 
   /* Obscure assumption!: assume _ is significant for package name and
      no other file will have _. */
@@ -827,6 +837,7 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
      hoststr,
      hoststr2);
 
+  if(debbuildopts_work) free(debbuildopts_work);
   if(hoststr2) free(hoststr2);
   if(hoststr) free(hoststr);
   if(commandline) free(commandline);

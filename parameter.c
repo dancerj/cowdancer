@@ -141,6 +141,10 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    {
 	      pc->debbuildopts=strdup(delim);
 	    }
+	  else if (!strcmp(buf, "BINARY_ARCH"))
+	    {
+	      pc->binary_arch=1;
+	    }
 	  else if (!strcmp(buf, "NO_COWDANCER_UPDATE"))
 	    {
 	      pc->no_cowdancer_update=1;
@@ -196,6 +200,7 @@ int cpbuilder_dumpconfig(pbuilderconfig* pc)
   DUMPSTR(distribution);
   DUMPSTR(components);
   DUMPSTR(debbuildopts);
+  DUMPINT(binary_arch);
   DUMPSTRARRAY(inputfile);
   DUMPSTRARRAY(outputfile);
   
@@ -244,6 +249,7 @@ int parse_parameter(int ac, char** av,
     {"distribution", required_argument, 0, 0},
     {"components", required_argument, 0, 0},
     {"debbuildopts", required_argument, 0, 0},
+    {"binary-arch", no_argument, 0, 0},
     {"inputfile", required_argument, 0, 0},
     {"outputfile", required_argument, 0, 0},
     {"architecture", required_argument, 0, 0},
@@ -273,7 +279,6 @@ int parse_parameter(int ac, char** av,
     {"removepackages", no_argument, 0, 'm'},
     {"override-config", no_argument, 0, 'm'},
     {"pkgname-logfile", no_argument, 0, 'm'},
-    {"binary-arch", no_argument, 0, 'm'},
     {"preserve-buildplace", no_argument, 0, 'm'},
     {"autocleanaptcache", no_argument, 0, 'm'},
 
@@ -446,6 +451,11 @@ int parse_parameter(int ac, char** av,
 
 	      /* pass it for cowbuilder */
 	      PASS_TO_PBUILDER_WITH_PARAM
+	    }
+	  else if (!strcmp(long_options[index_point].name,"binary-arch"))
+	    {
+	      pc.binary_arch=1;
+	      PBUILDER_ADD_PARAM(cmdstr);
 	    }
 	  break;
 	case 'h':		/* -h */

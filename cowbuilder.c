@@ -322,6 +322,10 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile_)
       PBUILDER_ADD_PARAM("--debbuildopts");
       PBUILDER_ADD_PARAM(pc->debbuildopts);
     }
+  if (pc->binary_arch)
+    {
+      PBUILDER_ADD_PARAM("--binary-arch");
+    }
   PBUILDER_ADD_PARAM("--no-targz");
   PBUILDER_ADD_PARAM("--internal-chrootexec");
   PBUILDER_ADD_PARAM(buf_chroot);

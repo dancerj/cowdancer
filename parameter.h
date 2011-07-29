@@ -38,6 +38,7 @@ typedef struct pbuilderconfig
   char* distribution;
   char* components;
   char* debbuildopts;
+  int binary_arch;
 
   /* files to be copied into the chroot, 
      and copied out of the chroot */
