@@ -489,7 +489,7 @@ static int run_second_stage_script
   ret=forkexeclp("qemu-img", "qemu-img",
 		 "create",
 		 "-f",
-		 "qcow",
+		 "qcow2",
 		 "-b",
 		 pc->basepath,
 		 cowdevpath,
