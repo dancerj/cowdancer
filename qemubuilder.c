@@ -815,14 +815,11 @@ int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
 
   asprintf(&commandline,
 	   /* TODO: executehooks D: */
-	   "echo '%s' > /etc/apt/sources.list.d/other.list\n"
-	   "apt-get update || exit_from_qemu 1\n"
 	   "/usr/lib/pbuilder/pbuilder-satisfydepends --control $PBUILDER_MOUNTPOINT/*.dsc --internal-chrootexec 'chroot . ' %s \n"
 	   "cd $PBUILDER_MOUNTPOINT; /usr/bin/dpkg-source -x $(basename %s) \n"
 	   "echo ' -> Building the package'\n"
 	   /* TODO: executehooks A: */
 	   "cd $PBUILDER_MOUNTPOINT/*-*/; dpkg-buildpackage -us -uc %s\n",
-	   pc->othermirror,
 	   buildopt,
 	   dscfile,
 	   debbuildopts);
@@ -884,7 +881,7 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
  */
 int cpbuilder_update(const struct pbuilderconfig* pc)
 {
-  /* TODO: --override-config support.
+  /* TODO: --override-config support, --othermirror support etc.
      There is no way to change distribution in this code-path...
    */
   return run_second_stage_script
