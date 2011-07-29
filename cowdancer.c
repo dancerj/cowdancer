@@ -615,7 +615,7 @@ int check_fd_inode_and_warn(int fd, const char* operation)
 	 If there is any better way, I'd like to know.
        */
       fprintf(stderr,
-	      "W: cowdancer: unsupported operation %s, read-only open and fchown/fchmod/flock are not supported: tried openning dev:inode of %li:%li\n",
+	      "W: cowdancer: unsupported operation %s, read-only open and fchown/fchmod/flock are not supported: tried opening dev:inode of %li:%li\n",
 	      operation, (long)buf.st_dev, (long)buf.st_ino);
       /* emit a warning and do not fail,
 	 if you want to make it fail, add a return 1;
