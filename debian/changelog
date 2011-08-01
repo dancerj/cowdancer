@@ -1,8 +1,21 @@
 cowdancer (0.64) UNRELEASED; urgency=low
 
-  * [changelog to be automatically filled by git-dch]
+  [ Junichi Uekawa ]
+  * change default to use arch diskdevice of sd; most arches probably
+    switched to /dev/sda by now.
+  * binary-arch support for cowbuilder and qemubuilder (closes: #623978,
+    #631967)
+  * fix spelling mistake (closes: #623971)
 
- -- Junichi Uekawa <dancer@debian.org>  Wed, 29 Jun 2011 20:59:34 +0900
+  [ Benoît Knecht ]
+  * qemubuilder: low read/write performance on qemu block devices
+    (closes: #600056)
+
+  [ Mike Gabriel ]
+  * adds --othermirror option functionality to qemubuilder 
+    (closes: #624012) 
+
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 02 Aug 2011 06:21:28 +0900
 
 cowdancer (0.63) unstable; urgency=low
 
