@@ -1,4 +1,4 @@
-cowdancer (0.64) UNRELEASED; urgency=low
+cowdancer (0.64) unstable; urgency=low
 
   [ Junichi Uekawa ]
   * change default to use arch diskdevice of sd; most arches probably
@@ -15,7 +15,7 @@ cowdancer (0.64) UNRELEASED; urgency=low
   * adds --othermirror option functionality to qemubuilder 
     (closes: #624012) 
 
- -- Junichi Uekawa <dancer@debian.org>  Tue, 02 Aug 2011 06:21:28 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 02 Aug 2011 07:19:33 +0900
 
 cowdancer (0.63) unstable; urgency=low
 
