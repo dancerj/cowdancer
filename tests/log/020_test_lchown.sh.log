@@ -5,11 +5,52 @@
 ++ readlink -f tests/run_c.sh
 + RUNC=/home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh
 ++ id -G
-+ set -- 1000
++ set -- 1000 20 24 25 29 30 44 46 111 116 120
 + ORIGID=1000
-+ NEWID=
-+ ((  1 < 3  ))
-++ id
-+ echo 'W: Needs multiple groups for user uid=1000(dancer) gid=1000(dancer) ½êÂ°¥°¥ë¡¼¥×=1000(dancer) for this test to succeed, test skipped'
-W: Needs multiple groups for user uid=1000(dancer) gid=1000(dancer) ½êÂ°¥°¥ë¡¼¥×=1000(dancer) for this test to succeed, test skipped
-+ exit 0
++ NEWID=20
++ ((  11 < 3  ))
++ cd /tmp/XXXX
++ mkdir 1/
++ touch 1/a 1/b 1/c 1/d
++ ln -s a 1/f
++ ln -s b 1/g
++ dd if=/dev/zero of=1/e bs=512 count=2
+2+0 records in
+2+0 records out
+1024 bytes (1.0 kB) copied, 5.0565e-05 s, 20.3 MB/s
++ chgrp 1000 1/a 1/b 1/c 1/d
++ ls -li 1/
++ sleep 1s
++ cp -al 1/ 2
++ echo '   2/ before'
+   2/ before
++ ls -li 2/
+åˆè¨ˆ 4
+45393 -rw-r--r-- 2 dancer dancer    0 2011-08-02 06:29 a
+45394 -rw-r--r-- 2 dancer dancer    0 2011-08-02 06:29 b
+45395 -rw-r--r-- 2 dancer dancer    0 2011-08-02 06:29 c
+45396 -rw-r--r-- 2 dancer dancer    0 2011-08-02 06:29 d
+45399 -rw-r--r-- 2 dancer dancer 1024 2011-08-02 06:29 e
+45426 lrwxrwxrwx 1 dancer dancer    1 2011-08-02 06:29 f -> a
+45425 lrwxrwxrwx 1 dancer dancer    1 2011-08-02 06:29 g -> b
++ cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh /home/dancer/DEBIAN/cowdancer/cowdancer/tests/012_test_chown.c 20 2/f 2/b 2/g
+chown 2/f
+lchown 2/g
++ echo '   2/ after'
+   2/ after
++ ls -li 2/
+åˆè¨ˆ 4
+45456 -rw-r--r-- 1 dancer dialout    0 2011-08-02 06:29 a
+45394 -rw-r--r-- 2 dancer dancer     0 2011-08-02 06:29 b
+45395 -rw-r--r-- 2 dancer dancer     0 2011-08-02 06:29 c
+45396 -rw-r--r-- 2 dancer dancer     0 2011-08-02 06:29 d
+45399 -rw-r--r-- 2 dancer dancer  1024 2011-08-02 06:29 e
+45426 lrwxrwxrwx 1 dancer dancer     1 2011-08-02 06:29 f -> a
+45425 lrwxrwxrwx 1 dancer dialout    1 2011-08-02 06:29 g -> b
++ rm -rf 2/
++ ls -li 1/
++ echo '   1/ differences; should not exist'
+   1/ differences; should not exist
++ diff -u ls.prev ls.after
++ rm -rf /tmp/XXXX
+cow-shell unlink .ilist: No such file or directory

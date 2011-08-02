@@ -11,15 +11,15 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 0.000200934 s, 5.1 MB/s
+1024 bytes (1.0 kB) copied, 7.5499e-05 s, 13.6 MB/s
 + cp -al 1 0
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_cxx.sh /home/dancer/DEBIAN/cowdancer/cowdancer/tests/018_testcxx.cc
 + cat 1/a
 Hello world
 + cat 0/a
 + diff -u 1/a 0/a
---- 1/a	2010-08-15 14:28:41.031643733 +0000
-+++ 0/a	2010-08-15 14:28:38.802641992 +0000
+--- 1/a	2011-08-02 06:29:40.121171554 +0900
++++ 0/a	2011-08-02 06:29:37.873173844 +0900
 @@ -1 +0,0 @@
 -Hello world
 + RESULT=0
