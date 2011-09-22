@@ -1,8 +1,12 @@
-cowdancer (0.65) UNRELEASED; urgency=low
+cowdancer (0.65) unstable; urgency=low
 
-  * 
+  [ Junichi Uekawa ]
+  * remove cowbuilder-cowdancer loop dependency. (closes: #519130)
 
- -- Junichi Uekawa <dancer@debian.org>  Tue, 02 Aug 2011 20:56:55 +0900
+  [ David Paleino ]
+  * update cowbuilder bash completion (closes: #546725)
+
+ -- Junichi Uekawa <dancer@debian.org>  Thu, 22 Sep 2011 11:29:48 +0900
 
 cowdancer (0.64) unstable; urgency=low
 
