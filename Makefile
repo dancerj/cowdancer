@@ -37,7 +37,7 @@ install: $(BINARY)
 	$(INSTALL_FILE) bash_completion.cowbuilder $(DESTDIR)/etc/bash_completion.d/cowbuilder
 
 libcowdancer.so: cowdancer.lo ilistcreate.lo
-	$(CC) $(CFLAGS) -ldl -shared -o $@ $^
+	$(CC) $(CFLAGS) -shared -o $@ $^ -ldl
 
 cow-shell: cow-shell.o ilistcreate.o
 	$(CC) $(CFLAGS) -o $@ $^

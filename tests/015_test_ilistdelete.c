@@ -1,4 +1,4 @@
-/*BINFMTC: -lpthread
+/*BINFMTC: -pthread
  *
  * Check deleting .ilist file is handled gracefully.
  *
