@@ -499,6 +499,7 @@ int parse_parameter(int ac, char** av,
     {
       char* buildplace_ = pc.buildplace;
       mkdir(buildplace_,0777); /* create if it does not exist */
+      /* Bug: 573126 This adds '//' if buildplace already ends with / */
       asprintf(&(pc.buildplace), "%s/%s.%i",
 	       buildplace_, keyword, (int)getpid());
       free(buildplace_);
