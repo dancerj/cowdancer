@@ -10,21 +10,21 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 0.000108185 s, 9.5 MB/s
+1024 bytes (1.0 kB) copied, 0.000130464 s, 7.8 MB/s
 + cp -al 1 2
 + MALLOC_TRACE=log
 + cow-shell /tmp/XXXX/tracer
-08048000-08049000 r-xp 00000000 00:11 45134      /tmp/XXXX/tracer
-08049000-0804a000 rw-p 00000000 00:11 45134      /tmp/XXXX/tracer
-0851c000-0853d000 rw-p 00000000 00:00 0          [heap]
+08048000-08049000 r-xp 00000000 00:11 350456     /tmp/XXXX/tracer
+08049000-0804a000 rw-p 00000000 00:11 350456     /tmp/XXXX/tracer
+09bbd000-09bde000 rw-p 00000000 00:00 0          [heap]
 40000000-4001b000 r-xp 00000000 08:05 286252     /lib/ld-2.11.2.so
 4001b000-4001c000 r--p 0001a000 08:05 286252     /lib/ld-2.11.2.so
 4001c000-4001d000 rw-p 0001b000 08:05 286252     /lib/ld-2.11.2.so
 4001d000-4001e000 r-xp 00000000 00:00 0          [vdso]
 4001e000-40020000 rw-p 00000000 00:00 0 
-40020000-40023000 r-xp 00000000 fe:00 447245     /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
-40023000-40024000 rw-p 00003000 fe:00 447245     /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
-40024000-40025000 r--p 00000000 00:11 45154      /tmp/XXXX/.ilist
+40020000-40023000 r-xp 00000000 fe:00 3522588    /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
+40023000-40024000 rw-p 00003000 fe:00 3522588    /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
+40024000-40025000 r--p 00000000 00:11 350474     /tmp/XXXX/.ilist
 40025000-40028000 rw-p 00000000 00:00 0 
 4003d000-4017d000 r-xp 00000000 08:05 1197055    /lib/i686/cmov/libc-2.11.2.so
 4017d000-4017f000 r--p 0013f000 08:05 1197055    /lib/i686/cmov/libc-2.11.2.so
@@ -34,7 +34,7 @@
 40186000-40187000 r--p 00001000 08:05 1197047    /lib/i686/cmov/libdl-2.11.2.so
 40187000-40188000 rw-p 00002000 08:05 1197047    /lib/i686/cmov/libdl-2.11.2.so
 40188000-40189000 rw-p 00000000 00:00 0 
-bf90a000-bf91f000 rw-p 00000000 00:00 0          [stack]
+bfac1000-bfad6000 rw-p 00000000 00:00 0          [stack]
 + RESULT=0
 + mtrace /tmp/XXXX/tracer /tmp/XXXX/log
 No memory leaks.
