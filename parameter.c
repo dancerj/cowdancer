@@ -28,8 +28,8 @@
 #include "parameter.h"
 #include <assert.h>
 
-/* 
-   
+/*
+
 The pbuilder command-line to pass
 
 0: pbuilder
@@ -44,7 +44,7 @@ char* pbuildercommandline[MAXPBUILDERCOMMANDLINE];
 int offset=2;
 
 
-/* 
+/*
    get size of Null Terminated array of strings
  */
 int size_of_ntarray(char ** buf)
@@ -61,7 +61,7 @@ int size_of_ntarray(char ** buf)
  * load configuration.
  *
  * Returns bash return codes or -1 on popen error.
- * 
+ *
  * Most interesting codes:
  *  -1 = popen failed
  *   0 = ok
@@ -180,7 +180,7 @@ int cpbuilder_dumpconfig(pbuilderconfig* pc)
 {
   /* dump configuration */
   int i;
-  
+
   printf("dump config\n");
 #define DUMPINT(S) printf("  "#S": %i\n", pc->S);
 #define DUMPSTR(S) printf("  "#S": %s\n", pc->S);
@@ -208,9 +208,9 @@ int cpbuilder_dumpconfig(pbuilderconfig* pc)
   DUMPINT(binary_arch);
   DUMPSTRARRAY(inputfile);
   DUMPSTRARRAY(outputfile);
-  
+
   DUMPINT(no_cowdancer_update);
-  
+
   DUMPSTR(kernel_image);
   DUMPSTR(initrd);
   DUMPINT(memory_megs);
@@ -218,7 +218,7 @@ int cpbuilder_dumpconfig(pbuilderconfig* pc)
   return 0;
 }
 
-int parse_parameter(int ac, char** av, 
+int parse_parameter(int ac, char** av,
 		    const char* keyword)
 {
   int c;			/* option */
@@ -226,7 +226,7 @@ int parse_parameter(int ac, char** av,
   int config_ok = -1, load_ok;
   char * cmdstr=NULL;
   static pbuilderconfig pc;
-  
+
   static struct option long_options[]=
   {
     {"basepath", required_argument, 0, 'b'},
@@ -488,7 +488,7 @@ int parse_parameter(int ac, char** av,
   }
 
   /* set default values */
-  if (!pc.basepath) 
+  if (!pc.basepath)
     asprintf(&(pc.basepath), "/var/cache/pbuilder/base.%s", keyword);
   if (!pc.buildplace)
     {
@@ -507,7 +507,7 @@ int parse_parameter(int ac, char** av,
 
   if (!pc.distribution)
     pc.distribution=strdup("sid");
-  
+
   if (!pc.memory_megs)
     pc.memory_megs=128;
 
@@ -520,9 +520,9 @@ int parse_parameter(int ac, char** av,
 	  fprintf(stderr, "E: parameter missing for build operation\n");
 	  return 1;
 	}
-      
+
       return cpbuilder_build(&pc, av[optind]);
-      
+
     case pbuilder_create:
       if (av[optind])
 	{
@@ -531,7 +531,7 @@ int parse_parameter(int ac, char** av,
 	  return 1;
 	}
       return cpbuilder_create(&pc);
-      
+
     case pbuilder_update:
       if (av[optind])
 	{
@@ -540,7 +540,7 @@ int parse_parameter(int ac, char** av,
 	  return 1;
 	}
       return cpbuilder_update(&pc);
-      
+
     case pbuilder_login:
       return cpbuilder_login(&pc);
 
