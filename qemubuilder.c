@@ -680,6 +680,22 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  );
   fclose(f);
 
+  if (pc->http_proxy != NULL)
+  {
+	f = create_script(pc->buildplace, "etc/apt/apt.conf");
+	fprintf(f,
+		"Acquire\n"
+		"{\n"
+			"http \n"
+			"{\n"
+				"Proxy \"%s\";\n"
+			"};\n"
+		"};\n",
+		pc->http_proxy
+	);
+	fclose(f);
+  }
+
   free(s); s=0;
 
   ret=loop_umount(pc->buildplace);

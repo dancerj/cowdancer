@@ -161,6 +161,10 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    {
 	      pc->arch_diskdevice=strdup(delim);
 	    }
+	  else if (!strcmp(buf, "HTTP_PROXY"))
+	    {
+	      pc->http_proxy=strdup(delim);
+	    }
 	}
     }
 
@@ -206,6 +210,7 @@ int cpbuilder_dumpconfig(pbuilderconfig* pc)
   DUMPSTR(othermirror);
   DUMPSTR(debbuildopts);
   DUMPINT(binary_arch);
+  DUMPSTR(http_proxy);
   DUMPSTRARRAY(inputfile);
   DUMPSTRARRAY(outputfile);
 

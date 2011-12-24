@@ -40,6 +40,7 @@ typedef struct pbuilderconfig
   char* othermirror;
   char* debbuildopts;
   int binary_arch;
+  char* http_proxy;
 
   /* files to be copied into the chroot, 
      and copied out of the chroot */
