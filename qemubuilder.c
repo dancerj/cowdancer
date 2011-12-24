@@ -751,7 +751,8 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "bash\n",
 	  timestring,
 	  timestring,
-	  t=sanitize_mirror(pc->mirror), pc->distribution, pc->components, pc->othermirror);
+	  t=sanitize_mirror(pc->mirror), pc->distribution, pc->components,
+	  pc->othermirror?pc->othermirror:"");
   fclose(f);
   free(t);
 
