@@ -1,3 +1,15 @@
+cowdancer (0.67) unstable; urgency=low
+
+  [ Junichi Uekawa ]
+  * qemubuilder: work around case when othermirror is NULL (unset).
+  * qemubuilder: Add --http-proxy to list of parameters for qemubuilder to override.
+
+  [ Werner Mahr ]
+  * qemubuilder: Apt inside the emulated system doesn't know
+    about outside proxy (closes: #653162)
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 25 Dec 2011 16:21:03 +0900
+
 cowdancer (0.66) unstable; urgency=low
 
   [ Colin Watson ]
