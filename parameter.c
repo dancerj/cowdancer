@@ -264,6 +264,7 @@ int parse_parameter(int ac, char** av,
     {"inputfile", required_argument, 0, 0},
     {"outputfile", required_argument, 0, 0},
     {"architecture", required_argument, 0, 0},
+    {"http-proxy", required_argument, 0, 0},
 
     /* cowbuilder specific options */
     {"no-cowdancer-update", no_argument, 0, 0},
@@ -273,7 +274,6 @@ int parse_parameter(int ac, char** av,
     {"arch-diskdevice", no_argument, 0, 0},
 
     /* verbatim options with argument, synced as of pbuilder 0.153 */
-    {"http-proxy", required_argument, 0, 'M'},
     {"aptcache", required_argument, 0, 'M'},
     {"extrapackages", required_argument, 0, 'M'},
     {"hookdir", required_argument, 0, 'M'},
@@ -458,6 +458,14 @@ int parse_parameter(int ac, char** av,
 	    {
 	      /* this is for qemubuilder */
 	      pc.othermirror=strdup(optarg);
+
+	      /* pass it for cowbuilder */
+	      PASS_TO_PBUILDER_WITH_PARAM
+	    }
+	  else if (!strcmp(long_options[index_point].name,"http-proxy"))
+	    {
+	      /* this is for qemubuilder */
+	      pc.http_proxy=strdup(optarg);
 
 	      /* pass it for cowbuilder */
 	      PASS_TO_PBUILDER_WITH_PARAM

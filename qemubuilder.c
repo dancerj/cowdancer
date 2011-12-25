@@ -603,7 +603,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
   int ret=0;
   char* s=NULL;  		/* generic asprintf buffer */
   char* workblockdevicepath=NULL;
-  FILE* f;
+  FILE* f;			/* generic FILE pointer which is reused. */
   char* t;
   char* timestring;
 
@@ -679,10 +679,11 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  qemu_arch_diskdevice(pc)
 	  );
   fclose(f);
+  f = NULL;
 
   if (pc->http_proxy != NULL)
-  {
-	f = create_script(pc->buildplace, "etc/apt/apt.conf");
+    {
+	f = create_script(pc->buildplace, "etc/apt/apt.conf.d/20pbuilder-proxy");
 	fprintf(f,
 		"Acquire\n"
 		"{\n"
@@ -694,7 +695,8 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 		pc->http_proxy
 	);
 	fclose(f);
-  }
+	f = NULL;
+    }
 
   free(s); s=0;
 
@@ -770,6 +772,8 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  t=sanitize_mirror(pc->mirror), pc->distribution, pc->components,
 	  pc->othermirror?pc->othermirror:"");
   fclose(f);
+  f = NULL;
+
   free(t);
 
   /* TODO: can I do 'date --set' from output of 'LC_ALL=C date' */
