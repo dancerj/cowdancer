@@ -2,7 +2,8 @@ Source: cowdancer
 Section: utils
 Priority: optional
 Maintainer: Junichi Uekawa <dancer@debian.org>
-Build-Depends: debhelper (>> 4.0.0), pbuilder, qemu [i386 amd64 powerpc], 
+Build-Depends: debhelper (>> 4.0.0), pbuilder, 
+	       qemu-system [i386 amd64 powerpc], 
 	       libklibc-dev, klibc-utils, cpio, busybox-static
 Standards-Version: 3.7.2
 Vcs-Git: git://git.debian.org/git/pbuilder/cowdancer.git
@@ -39,7 +40,7 @@ Description: pbuilder running on cowdancer
 
 Package: qemubuilder
 Architecture: i386 amd64 powerpc
-Depends: ${shlibs:Depends}, qemu | kvm, pbuilder (>= 0.174), debootstrap
+Depends: ${shlibs:Depends}, qemu-system | kvm, pbuilder (>= 0.174), debootstrap
 Homepage: http://wiki.debian.org/qemubuilder
 Description: pbuilder using QEMU as backend
  pbuilder implementation for QEMU.
