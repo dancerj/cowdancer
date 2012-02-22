@@ -121,8 +121,10 @@ const char* qemu_arch_qemu(const char* arch)
     return "qemu-system-mips";
   else if (!strcmp(arch, "mipsel"))
     return "qemu-system-mipsel";
-  else if (!strcmp(arch, "i386") ||
-	   !strcmp(arch, "amd64"))
+  else if (!strcmp(arch, "i386")
+        || !strcmp(arch, "amd64")
+        || !strcmp(arch, "hurd-i386")
+       )
     {
       /* we're leaking this memory, but don't care too much */
       char* host_arch = get_host_dpkg_arch();
@@ -143,6 +145,8 @@ const char* qemu_arch_qemu(const char* arch)
       else
 	return "qemu-system-x86_64";
     }
+  else if (!strcmp(arch, "hurd-i386"))
+    return "qemu";
   else if (!strcmp(arch, "powerpc"))
     return "qemu-system-ppc";
   else if (!strcmp(arch, "sparc"))
@@ -160,7 +164,8 @@ const char* qemu_arch_qemumachine(const char* arch)
       !strcmp(arch, "armel"))
     return "versatilepb";
   else if (!strcmp(arch, "i386") ||
-	   !strcmp(arch, "amd64"))
+	   !strcmp(arch, "hurd-i386") ||
+           !strcmp(arch, "amd64"))
     return "pc";
   else if (!strcmp(arch, "mips")||
 	   !strcmp(arch, "mipsel"))
