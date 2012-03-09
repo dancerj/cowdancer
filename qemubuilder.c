@@ -308,6 +308,8 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       argv[argc++]=strdupa(machine);
       argv[argc++]="-m";
       argv[argc++]=mem;
+      argv[argc++]="-smp";
+      argv[argc++]=strdupa(pc->smp);
       argv[argc++]="-kernel";
       argv[argc++]=strdupa(kernel_image);
       if (initrd && strcmp(initrd, ""))

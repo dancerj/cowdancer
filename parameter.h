@@ -54,6 +54,7 @@ typedef struct pbuilderconfig
   /* more qemu-isque options */
   char* kernel_image;
   char* initrd;
+  char* smp;
   int memory_megs;		/* megabytes of memory */
   char* arch;
   char* arch_diskdevice;
