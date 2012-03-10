@@ -1,3 +1,14 @@
+cowdancer (0.68) unstable; urgency=low
+
+  [ Junichi Uekawa ]
+  * remove build-dependency and dependency on qemu, and depend on qemu-
+    system.
+
+  [ Dmitry Smirnov ]
+  * Bug#660823: qemubuilder: Gnu Hurd support (doesn't quite yet work but first step)
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 10 Mar 2012 09:40:54 +0900
+
 cowdancer (0.67) unstable; urgency=low
 
   [ Junichi Uekawa ]
