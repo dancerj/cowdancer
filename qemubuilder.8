@@ -48,9 +48,20 @@ dump configuration information.
 specify whether disk device inside the virtual machine is called /dev/sda or
 /dev/hda. The possible value is 'sd' or 'hd'.
 
+.TP
+.BI "--smp " "2"
+
+The option passed to SMP.
+
 .SH "OPTIONS"
 
 Most options are the same as pbuilder, except for the following which are handled specially.
+
+.TP
+.BI "SMP " "2"
+
+The SMP option for qemu.
+
 
 I don't think I can support bind-mounts in qemu.
 
