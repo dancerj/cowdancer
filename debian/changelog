@@ -1,3 +1,13 @@
+cowdancer (0.69) UNRELEASED; urgency=low
+
+  [ Mike Gabriel ]
+  * Add SMP support to qemubuilder (closes: #661856)
+
+  [ Junichi Uekawa ]
+  * add --keyring and --allow-untrusted options to cowbuilder.
+
+ -- Junichi Uekawa <dancer@debian.org>  Fri, 30 Mar 2012 00:13:29 +0900
+
 cowdancer (0.68) unstable; urgency=low
 
   [ Junichi Uekawa ]
