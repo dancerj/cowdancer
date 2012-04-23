@@ -2,9 +2,13 @@ Source: cowdancer
 Section: utils
 Priority: optional
 Maintainer: Junichi Uekawa <dancer@debian.org>
-Build-Depends: debhelper (>> 4.0.0), pbuilder, 
-	       qemu-system [i386 amd64 powerpc], 
-	       libklibc-dev, klibc-utils, cpio, busybox-static
+Build-Depends: cpio,
+	       busybox-static,
+	       debhelper (>> 4.0.0),
+	       klibc-utils,
+	       libklibc-dev,
+	       pbuilder,
+	       qemu-system [i386 amd64 powerpc]
 Standards-Version: 3.7.3
 Vcs-Git: git://git.debian.org/git/pbuilder/cowdancer.git
 Vcs-Browser: http://git.debian.org/?p=pbuilder/cowdancer.git
@@ -18,8 +22,8 @@ Description: Copy-on-write directory tree utility.
  directory trees generated with 'cp -la'
  .
  'cow-shell' command invokes a shell session. Within that session,
- under the directory cow-shell was invoked, 
- cowdancer will create a new file when existing i-nodes are opened for 
+ under the directory cow-shell was invoked,
+ cowdancer will create a new file when existing i-nodes are opened for
  write.
  Useful for quick scratch workspace and experimentation.
  .
@@ -30,7 +34,7 @@ Architecture: any
 Depends: ${shlibs:Depends}, pbuilder, cowdancer
 Replaces: cowdancer (<= 0.49)
 Description: pbuilder running on cowdancer
- 'cowbuilder' command is a wrapper for pbuilder which allows using 
+ 'cowbuilder' command is a wrapper for pbuilder which allows using
  pbuilder-like interface over cowdancer environment.
  .
  pbuilder is a tool for building and testing Debian package inside a clean
@@ -46,9 +50,9 @@ Description: pbuilder using QEMU as backend
  pbuilder implementation for QEMU.
  .
  qemubuilder create -- builds QEMU cow base image.
- . 
+ .
  qemubuilder update -- updates QEMU cow base image.
- . 
+ .
  qemubuilder build -- builds package inside QEMU cow base image.
  .
  Gives a pbuilder interface for emulated cross-building environments
