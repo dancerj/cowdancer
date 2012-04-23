@@ -5,7 +5,7 @@ Maintainer: Junichi Uekawa <dancer@debian.org>
 Build-Depends: debhelper (>> 4.0.0), pbuilder, 
 	       qemu-system [i386 amd64 powerpc], 
 	       libklibc-dev, klibc-utils, cpio, busybox-static
-Standards-Version: 3.7.2
+Standards-Version: 3.7.3
 Vcs-Git: git://git.debian.org/git/pbuilder/cowdancer.git
 Vcs-Browser: http://git.debian.org/?p=pbuilder/cowdancer.git
 
