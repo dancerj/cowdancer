@@ -299,6 +299,7 @@ int parse_parameter(int ac, char** av,
     {"pkgname-logfile", no_argument, 0, 'm'},
     {"preserve-buildplace", no_argument, 0, 'm'},
     {"autocleanaptcache", no_argument, 0, 'm'},
+    {"twice", no_argument, 0, 'm'},
 
     {0,0,0,0}
   };
