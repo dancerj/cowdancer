@@ -9,7 +9,7 @@ Build-Depends: cpio,
 	       libklibc-dev,
 	       pbuilder,
 	       qemu-system [i386 amd64 powerpc]
-Standards-Version: 3.8.3
+Standards-Version: 3.8.4
 Vcs-Git: git://git.debian.org/git/pbuilder/cowdancer.git
 Vcs-Browser: http://git.debian.org/?p=pbuilder/cowdancer.git
 
