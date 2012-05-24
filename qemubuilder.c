@@ -889,9 +889,9 @@ int cpbuilder_execute(const struct pbuilderconfig* pc, char** av)
   char* runcommandline;
   int ret;
 
-  asprintf(&hostcommand, "cp %s %s/run\n", av[0], pc->buildplace);
+  asprintf(&hostcommand, "cp %s %s/runscript\n", av[0], pc->buildplace);
   /* TODO: add options too */
-  asprintf(&runcommandline, "sh $PBUILDER_MOUNTPOINT/run");
+  asprintf(&runcommandline, "sh $PBUILDER_MOUNTPOINT/runscript");
   ret=run_second_stage_script(pc->save_after_login, runcommandline, pc,
 			      hostcommand, NULL);
   free(hostcommand);
