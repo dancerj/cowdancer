@@ -35,7 +35,10 @@ build: configure-stamp build-stamp
 build-stamp:
 	dh_testdir
 	$(MAKE)
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	# Code to run the package test suite.
 	$(MAKE) check
+endif
 	touch build-stamp
 
 clean:
