@@ -5,7 +5,7 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-CFLAGS = -Wall -g -fno-strict-aliasing -D_REENTRANT
+CFLAGS = -Wall -g -fno-strict-aliasing 
 INSTALL = install
 export INSTALL_FILE    = $(INSTALL) -p    -o root -g root  -m  644
 export INSTALL_PROGRAM = $(INSTALL) -p    -o root -g root  -m  755
