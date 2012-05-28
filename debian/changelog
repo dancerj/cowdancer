@@ -1,3 +1,19 @@
+cowdancer (0.70) UNRELEASED; urgency=low
+
+  [ Junichi Uekawa ]
+  * update to policy 3.9.2
+  - delimit build-depends with a newline.
+  - add parallel= support for DEB_BUILD_OPTIONS
+  - remove -D_REENTRANT from build scripts, they are linuxthreads requirement, and probably obsolete by now.
+  - rather than /run use some other script name /runscript for 'execute'
+  - add 'nocheck' DEB_BUILD_OPTIONS support
+  - removed unneeded files.
+
+  [ Julian Taylor ]
+  * expose --twice to cowbuilder too. (closes: #563089)
+
+ -- Junichi Uekawa <dancer@netfort.gr.jp>  Tue, 29 May 2012 08:04:47 +0900
+
 cowdancer (0.69) unstable; urgency=low
 
   [ Mike Gabriel ]
