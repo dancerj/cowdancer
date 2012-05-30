@@ -1,4 +1,4 @@
-cowdancer (0.70) UNRELEASED; urgency=low
+cowdancer (0.70) unstable; urgency=low
 
   [ Junichi Uekawa ]
   * update to policy 3.9.2
@@ -12,7 +12,7 @@ cowdancer (0.70) UNRELEASED; urgency=low
   [ Julian Taylor ]
   * expose --twice to cowbuilder too. (closes: #563089)
 
- -- Junichi Uekawa <dancer@netfort.gr.jp>  Tue, 29 May 2012 08:04:47 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 30 May 2012 19:02:00 +0900
 
 cowdancer (0.69) unstable; urgency=low
 
