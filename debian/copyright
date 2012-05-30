@@ -1,16 +1,7 @@
-This package was debianized by Junichi Uekawa <dancer@debian.org> on
-Sat Aug 13 19:52:35 2005
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: cowdancer
+Upstream-Contact: Junichi Uekawa <dancer@debian.org>
 
-It was downloaded from http://www.netfort.gr.jp/~dancer/software/cowdancer.html
-
-git repository available at git://git.debian.org/git/pbuilder/cowdancer.git
-
-Upstream Authors: 
-  Junichi Uekawa <dancer@debian.org> 
-
-Copyright:
-
-Copyright (c) 2005-2007 Junichi Uekawa
-
-Licensed under GPL version 2 or later.
-Please see /usr/share/common-licenses/GPL on Debian systems.
+Files: *
+Copyright: Copyright 2005-2009 Junichi Uekawa
+License: GPL-2+
