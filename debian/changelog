@@ -1,3 +1,9 @@
+cowdancer (0.71) unstable; urgency=low
+
+  * copyright file in copyright-format-1.0 as specified in policy version 3.9.3.1
+
+ -- Junichi Uekawa <dancer@debian.org>  Fri, 24 Aug 2012 04:51:56 +0900
+
 cowdancer (0.70) unstable; urgency=low
 
   [ Junichi Uekawa ]
