@@ -1,3 +1,11 @@
+cowdancer (0.71ubuntu1) UNRELEASED; urgency=low
+
+  * A directory bind-mounted into pc->buildplace, will be cleaned out by
+    rmrf() To avoid this disaster, we skip buildplace clean-up if a directory
+    is bind-mounted under the chroot (LP: #1156540)
+
+ -- Jean-Baptiste Lallement <jean-baptiste.lallement@canonical.com>  Tue, 19 Mar 2013 09:35:26 +0100
+
 cowdancer (0.71) unstable; urgency=low
 
   * copyright file in copyright-format-1.0 as specified in policy version 3.9.3.1

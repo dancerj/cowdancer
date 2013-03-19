@@ -46,6 +46,7 @@ will show the list of files changed.
 #include <sys/wait.h>
 #include <string.h>
 #include <unistd.h>
+#include <mntent.h>
 #include "parameter.h"
 #include "ilist.h"
 
@@ -220,7 +221,61 @@ static int cpbuilder_internal_cowcopy(const struct pbuilderconfig* pc)
  */
 static int cpbuilder_internal_cleancow(const struct pbuilderconfig* pc)
 {
+  /*
+   * A directory bind-mounted into pc->buildplace, will be cleaned out by 
+   * rmrf() 
+   * To avoid that potential disaster we want to make sure that there is
+   * *nothing* mounted under the chroot before running the cleanup procedure
+   */
+
+  char dest[strlen(pc->buildplace)];
+  int i=0;
+  int j=0;
+  unsigned char ch;
+
   printf(" -> Cleaning COW directory\n");
+
+  /* Remove // from pc->buildplace */
+  while(pc->buildplace[i])
+    {
+      ch = pc->buildplace[i];
+      if(i==0)
+        {
+          j++;
+          dest[0] = pc->buildplace[0];
+        }
+      else
+        {
+          if (ch != pc->buildplace[i-1] || ch != '/')
+            {
+              dest[j] = ch;
+              j++;
+            }
+        }
+      i++;
+    }
+  dest[j] = '\0';
+
+  /* Check if buildplace is still mounted */
+  FILE *mtab = NULL;
+  struct mntent * part = NULL;
+  if ((mtab = setmntent("/etc/mtab", "r")) != NULL)
+    {
+      while ((part = getmntent(mtab) ) != NULL)
+        {
+          if ( part->mnt_fsname != NULL ) 
+            {
+              if (strstr(part->mnt_dir, dest) )
+                {
+                  printf("E: Something is still mounted under %s; unmount and remove %s manually\n", dest, dest);
+                  endmntent(mtab);
+                  return 1;
+                }
+            }
+        }
+      endmntent(mtab);
+    }
+
   if (0!=rmrf(pc->buildplace))
     return 1;
   return 0;
