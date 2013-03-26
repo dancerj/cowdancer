@@ -10,29 +10,29 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 6.9842e-05 s, 14.7 MB/s
+1024 bytes (1.0 kB) copied, 3.2046e-05 s, 32.0 MB/s
 + ls -li 1/
 + sleep 1s
 + cp -al 1/ 2
 + echo '   2/ before'
    2/ before
 + ls -li 2/
-合計 4
-24421 -rw-r--r-- 2 dancer dancer    0 2012-03-09 07:37 a
-24422 -rw-r--r-- 2 dancer dancer    0 2012-03-09 07:37 b
-24423 -rw-r--r-- 2 dancer dancer    0 2012-03-09 07:37 c
-24424 -rw-r--r-- 2 dancer dancer    0 2012-03-09 07:37 d
-24425 -rw-r--r-- 2 dancer dancer 1024 2012-03-09 07:37 e
+total 4
+4178168 -rw-r--r-- 2 dancer dancer    0 11月 20 17:51 a
+4178171 -rw-r--r-- 2 dancer dancer    0 11月 20 17:51 b
+4178172 -rw-r--r-- 2 dancer dancer    0 11月 20 17:51 c
+4178173 -rw-r--r-- 2 dancer dancer    0 11月 20 17:51 d
+4178174 -rw-r--r-- 2 dancer dancer 1024 11月 20 17:51 e
 + cow-shell /home/dancer/DEBIAN/cowdancer/cowdancer/tests/run_c.sh /home/dancer/DEBIAN/cowdancer/cowdancer/tests/004_test_fopen64.c 2/a 2/b 2/c
 + echo '   2/ after'
    2/ after
 + ls -li 2/
-合計 12
-24421 -rw-r--r-- 2 dancer dancer    0 2012-03-09 07:37 a
-24488 -rw-r--r-- 1 dancer dancer    4 2012-03-09 07:37 b
-24489 -rw-r--r-- 1 dancer dancer    4 2012-03-09 07:37 c
-24424 -rw-r--r-- 2 dancer dancer    0 2012-03-09 07:37 d
-24425 -rw-r--r-- 2 dancer dancer 1024 2012-03-09 07:37 e
+total 12
+4178168 -rw-r--r-- 2 dancer dancer    0 11月 20 17:51 a
+4178179 -rw-r--r-- 1 dancer dancer    4 11月 20 17:51 b
+4178180 -rw-r--r-- 1 dancer dancer    4 11月 20 17:51 c
+4178173 -rw-r--r-- 2 dancer dancer    0 11月 20 17:51 d
+4178174 -rw-r--r-- 2 dancer dancer 1024 11月 20 17:51 e
 + rm -rf 2/
 + ls -li 1/
 + echo '   1/ differences; should not exist'

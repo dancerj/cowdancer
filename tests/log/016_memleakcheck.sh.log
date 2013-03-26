@@ -10,32 +10,36 @@
 + dd if=/dev/zero of=1/e bs=512 count=2
 2+0 records in
 2+0 records out
-1024 bytes (1.0 kB) copied, 7.3264e-05 s, 14.0 MB/s
+1024 bytes (1.0 kB) copied, 5.3446e-05 s, 19.2 MB/s
 + cp -al 1 2
 + MALLOC_TRACE=log
 + cow-shell /tmp/XXXX/tracer
-08048000-08049000 r-xp 00000000 00:11 25161      /tmp/XXXX/tracer
-08049000-0804a000 rw-p 00000000 00:11 25161      /tmp/XXXX/tracer
-083e0000-08401000 rw-p 00000000 00:00 0          [heap]
-40000000-4001b000 r-xp 00000000 08:05 1187943    /lib/ld-2.11.3.so
-4001b000-4001c000 r--p 0001b000 08:05 1187943    /lib/ld-2.11.3.so
-4001c000-4001d000 rw-p 0001c000 08:05 1187943    /lib/ld-2.11.3.so
-4001d000-4001e000 r-xp 00000000 00:00 0          [vdso]
-4001e000-40020000 rw-p 00000000 00:00 0 
-40020000-40023000 r-xp 00000000 fe:00 669540     /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
-40023000-40024000 rw-p 00003000 fe:00 669540     /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
-40024000-40025000 r--p 00000000 00:11 25201      /tmp/XXXX/.ilist
-40025000-40028000 rw-p 00000000 00:00 0 
-4003d000-4017d000 r-xp 00000000 08:05 1196504    /lib/i686/cmov/libc-2.11.3.so
-4017d000-4017e000 ---p 00140000 08:05 1196504    /lib/i686/cmov/libc-2.11.3.so
-4017e000-40180000 r--p 00140000 08:05 1196504    /lib/i686/cmov/libc-2.11.3.so
-40180000-40181000 rw-p 00142000 08:05 1196504    /lib/i686/cmov/libc-2.11.3.so
-40181000-40185000 rw-p 00000000 00:00 0 
-40185000-40187000 r-xp 00000000 08:05 1196484    /lib/i686/cmov/libdl-2.11.3.so
-40187000-40188000 r--p 00001000 08:05 1196484    /lib/i686/cmov/libdl-2.11.3.so
-40188000-40189000 rw-p 00002000 08:05 1196484    /lib/i686/cmov/libdl-2.11.3.so
-40189000-4018a000 rw-p 00000000 00:00 0 
-bfb47000-bfb5c000 rw-p 00000000 00:00 0          [stack]
+00400000-00401000 r-xp 00000000 08:05 4178175                            /tmp/XXXX/tracer
+00600000-00601000 rw-p 00000000 08:05 4178175                            /tmp/XXXX/tracer
+01544000-01565000 rw-p 00000000 00:00 0                                  [heap]
+2ae29bd11000-2ae29bd31000 r-xp 00000000 08:05 12263538                   /lib/x86_64-linux-gnu/ld-2.13.so
+2ae29bd31000-2ae29bd33000 rw-p 00000000 00:00 0 
+2ae29bf30000-2ae29bf31000 r--p 0001f000 08:05 12263538                   /lib/x86_64-linux-gnu/ld-2.13.so
+2ae29bf31000-2ae29bf32000 rw-p 00020000 08:05 12263538                   /lib/x86_64-linux-gnu/ld-2.13.so
+2ae29bf32000-2ae29bf33000 rw-p 00000000 00:00 0 
+2ae29bf33000-2ae29bf37000 r-xp 00000000 08:05 3694783                    /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
+2ae29bf37000-2ae29c136000 ---p 00004000 08:05 3694783                    /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
+2ae29c136000-2ae29c137000 rw-p 00003000 08:05 3694783                    /home/dancer/DEBIAN/cowdancer/cowdancer/libcowdancer.so
+2ae29c137000-2ae29c138000 r--p 00000000 08:05 4178177                    /tmp/XXXX/.ilist
+2ae29c138000-2ae29c13c000 rw-p 00000000 00:00 0 
+2ae29c159000-2ae29c2d6000 r-xp 00000000 08:05 12263516                   /lib/x86_64-linux-gnu/libc-2.13.so
+2ae29c2d6000-2ae29c4d6000 ---p 0017d000 08:05 12263516                   /lib/x86_64-linux-gnu/libc-2.13.so
+2ae29c4d6000-2ae29c4da000 r--p 0017d000 08:05 12263516                   /lib/x86_64-linux-gnu/libc-2.13.so
+2ae29c4da000-2ae29c4db000 rw-p 00181000 08:05 12263516                   /lib/x86_64-linux-gnu/libc-2.13.so
+2ae29c4db000-2ae29c4e1000 rw-p 00000000 00:00 0 
+2ae29c4e1000-2ae29c4e3000 r-xp 00000000 08:05 12263530                   /lib/x86_64-linux-gnu/libdl-2.13.so
+2ae29c4e3000-2ae29c6e3000 ---p 00002000 08:05 12263530                   /lib/x86_64-linux-gnu/libdl-2.13.so
+2ae29c6e3000-2ae29c6e4000 r--p 00002000 08:05 12263530                   /lib/x86_64-linux-gnu/libdl-2.13.so
+2ae29c6e4000-2ae29c6e5000 rw-p 00003000 08:05 12263530                   /lib/x86_64-linux-gnu/libdl-2.13.so
+2ae29c6e5000-2ae29c6e7000 rw-p 00000000 00:00 0 
+7fff80f41000-7fff80f62000 rw-p 00000000 00:00 0                          [stack]
+7fff80f6e000-7fff80f6f000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
 + RESULT=0
 + mtrace /tmp/XXXX/tracer /tmp/XXXX/log
 No memory leaks.
