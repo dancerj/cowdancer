@@ -1,4 +1,4 @@
-/*BINFMTC: cowbuilder.c parameter.c forkexec.c ilistcreate.c
+/*BINFMTC: cowbuilder.c parameter.c forkexec.c ilistcreate.c cowbuilder_util.c
  */
 
 #define _GNU_SOURCE
