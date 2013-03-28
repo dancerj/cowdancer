@@ -43,7 +43,7 @@ static long ilist_len=0;
 /*
    verify the header content
  */
-int verify_ilist_header(struct ilist_header header)
+static int verify_ilist_header(struct ilist_header header)
 {
   if (header.revision != ILISTREVISION ||
       header.ilistsig != ILISTSIG ||
