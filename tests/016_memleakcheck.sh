@@ -4,6 +4,7 @@ set -ex
 
 TESTDIR=$(mktemp -d )
 TESTCODE=$(readlink -f tests/016_memleakcheck.c)
+COW_SHELL=$(readlink -f cow-shell)
 gcc ${TESTCODE} -o ${TESTDIR}/tracer -g 
 
 (
@@ -16,7 +17,7 @@ gcc ${TESTCODE} -o ${TESTDIR}/tracer -g
 
     cp -al 1 2 
 
-    MALLOC_TRACE="log" cow-shell ${TESTDIR}/tracer
+    MALLOC_TRACE="log" ${COW_SHELL} ${TESTDIR}/tracer
 )
 RESULT=$?
 
