@@ -1,4 +1,4 @@
-/*BINFMTC: -g 
+/*BINFMTC: -g
  *
  * check memory leak
  *
@@ -24,7 +24,7 @@ void dump_procmap()
 {
   FILE*f;
   int c;
-  
+
   f=fopen("/proc/self/maps", "r");
   while (EOF!=(c=fgetc(f)))
     fputc(c,stdout);
@@ -36,14 +36,14 @@ int main(int argc, char** argv)
   int fd;
   int i;
   FILE* f;
-  
+
   /* Initialize */
   if (-1==(fd=open("1/a", O_WRONLY)))
     {
       perror("open");
       return 1;
     }
-  
+
   if (5 !=write(fd, "test\n", 5))
     {
       perror("write");
@@ -57,7 +57,7 @@ int main(int argc, char** argv)
 
   /* try open/close 100 times. */
   mtrace();
-  
+
   for (i=0; i<100; ++i)
     {
       if (-1==(fd=open("1/b", O_WRONLY)))
@@ -65,7 +65,7 @@ int main(int argc, char** argv)
 	  perror("open");
 	  return 1;
 	}
-      
+
       if (5 !=write(fd, "test\n", 5))
 	{
       perror("write");
@@ -81,7 +81,7 @@ int main(int argc, char** argv)
 	{
 	  return 1;
 	}
-      
+
       if (5 !=fwrite("test\n", 1, 5, f))
 	{
 	  return 1;
@@ -91,10 +91,10 @@ int main(int argc, char** argv)
 	  return 1;
 	}
     }
-  
+
   muntrace();
-  
+
   dump_procmap();
-  
+
   return 0;
 }
