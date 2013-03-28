@@ -28,7 +28,7 @@
 
 /*
   execvp that does fork.
-  
+
   @return < 0 for failure, exit code for other cases.
  */
 int forkexecvp (char *const argv[])
@@ -36,12 +36,12 @@ int forkexecvp (char *const argv[])
   int ret;
   pid_t pid;
   int status;
-  
+
   /* DEBUG: */
   {
     int i=0;
     printf("  forking: ");
-	
+
     while(argv[i])
       {
 	printf("%s ", argv[i]);
@@ -84,10 +84,10 @@ int forkexecvp (char *const argv[])
 
 /*
   execlp that does fork.
-  
+
   NULL-terminated list of parameters.
 
-  cf. execl from FreeBSD sources, and glibc posix/execl.c, 
+  cf. execl from FreeBSD sources, and glibc posix/execl.c,
   and cygwin exec.cc
 
   @return < 0 for failure, exit code for other cases.
@@ -106,18 +106,18 @@ forkexeclp (const char *path, const char *arg0, ...)
   i = 1;
 
   printf("  forking: %s ", argv[0]);/* debug message */
-  
+
   do
     {
       argv[i] = va_arg(args, const char *);
-      if (argv[i]) 
+      if (argv[i])
 	printf("%s ", argv[i]);   /* debug message */
-      
-      if ( i >= 1023 ) 
+
+      if ( i >= 1023 )
 	{
 	  return -1;
 	}
-      
+
     }
   while (argv[i++] != NULL);
   va_end (args);
