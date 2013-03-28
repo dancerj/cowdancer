@@ -52,7 +52,7 @@ int main(int ac, char** av)
   /* give me a command-line to exec,
      and I will cow-keep what's under this directory. */
   const char* ilistpath="./.ilist";
-  char*buf;
+  char* buf;
   struct stat st;
   int cowdancer_reuse;
 
@@ -94,7 +94,9 @@ int main(int ac, char** av)
 
   setenv("COWDANCER_ILISTFILE",
 	  ilistpath,1);
-  setenv("LD_PRELOAD",buf,1);
+  setenv("LD_PRELOAD", buf, 1);
+  free(buf); buf = NULL;
+
   unsetenv("COWDANCER_IGNORE");
 
   if (!cowdancer_reuse)
