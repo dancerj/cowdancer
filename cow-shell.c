@@ -18,10 +18,12 @@
 
 const char* ilist_PRGNAME="cow-shell";
 
+static const char* ilistpath="./.ilist";
+
 /*
  * remove ilist after use.
  */
-void ilist_deleter(const char* ilistfile)
+static void ilist_deleter(const char* ilistfile)
 {
   if(fork()==0)
     {
@@ -46,20 +48,33 @@ void ilist_deleter(const char* ilistfile)
     }
 }
 
-
-int main(int ac, char** av)
-{
-  /* give me a command-line to exec,
-     and I will cow-keep what's under this directory. */
-  const char* ilistpath="./.ilist";
+/**
+ * Set environment variables.
+ */
+static void set_env_vars() {
   char* buf;
-  struct stat st;
-  int cowdancer_reuse;
+
+  // For sending down as environment variable, use a canonicalized version.
+  char* canonicalized_ilistpath=canonicalize_file_name(ilistpath);
+  setenv("COWDANCER_ILISTFILE",
+	 canonicalized_ilistpath,1);
+  unsetenv("COWDANCER_IGNORE");
+  free(canonicalized_ilistpath);
 
   asprintf(&buf, "%s%s%s",
 	   getenv("LD_PRELOAD")?:"",
 	   getenv("LD_PRELOAD")?" ":"",
 	   getenv("COWDANCER_SO") ?: LIBDIR "/cowdancer/libcowdancer.so");
+  setenv("LD_PRELOAD", buf, 1);
+  free(buf);
+}
+
+/* give me a command-line to exec,
+   and I will cow-keep what's under this directory. */
+int main(int ac, char** av)
+{
+  struct stat st;
+  int cowdancer_reuse;
 
   cowdancer_reuse=getenv("COWDANCER_REUSE") &&
     !strcmp(getenv("COWDANCER_REUSE"),"yes") ;
@@ -90,14 +105,7 @@ int main(int ac, char** av)
 	}
     }
 
-  ilistpath=canonicalize_file_name(ilistpath);
-
-  setenv("COWDANCER_ILISTFILE",
-	  ilistpath,1);
-  setenv("LD_PRELOAD", buf, 1);
-  free(buf); buf = NULL;
-
-  unsetenv("COWDANCER_IGNORE");
+  set_env_vars();
 
   if (!cowdancer_reuse)
     {
