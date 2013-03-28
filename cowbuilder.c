@@ -229,8 +229,7 @@ static int cpbuilder_internal_cleancow(const struct pbuilderconfig* pc)
    * cleanup procedure.
    */
 
-  char canonicalized_buildplace[strlen(pc->buildplace) +
-				1 /* terminating null character */];
+  char* canonicalized_buildplace = strdupa(pc->buildplace);
 
   printf(" -> Cleaning COW directory\n");
 
