@@ -17,7 +17,8 @@ gcc ${TESTCODE} -o ${TESTDIR}/tracer -g
 
     cp -al 1 2 
 
-    MALLOC_TRACE="log" ${COW_SHELL} ${TESTDIR}/tracer
+    # undefine LD_PRELOAD because it seems like loading cowdancer lib twice is causing memory leak?
+    LD_PRELOAD= MALLOC_TRACE="log" ${COW_SHELL} ${TESTDIR}/tracer
 )
 RESULT=$?
 

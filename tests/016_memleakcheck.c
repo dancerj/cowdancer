@@ -68,8 +68,8 @@ int main(int argc, char** argv)
 
       if (5 !=write(fd, "test\n", 5))
 	{
-      perror("write");
-      return 1;
+	  perror("write");
+	  return 1;
 	}
       if (-1==close(fd))
 	{
