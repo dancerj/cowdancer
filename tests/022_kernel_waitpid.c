@@ -10,7 +10,7 @@ int main()
 {
   pid_t pid;
   int status;
-  
+
   switch(pid=fork())
     {
     case 0:
@@ -20,7 +20,7 @@ int main()
     case -1:
       perror("fork()");
       exit (1);
-      
+
     default:
       sleep(1);
       if(-1==waitpid(pid, &status, 0))
@@ -31,5 +31,4 @@ int main()
       printf("waitpid: %x\n", status);
       exit (0);
     }
-  
 }
