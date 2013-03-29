@@ -594,7 +594,7 @@ int chown(const char* s, uid_t u, gid_t g)
  * @return 1 on failure, 0 on success
  *
  */
-int check_fd_inode_and_warn(int fd, const char* operation)
+static int check_fd_inode_and_warn(int fd, const char* operation)
 {
   struct stat buf;
   struct ilist_struct search_target;
