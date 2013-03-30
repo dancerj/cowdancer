@@ -1,10 +1,16 @@
-cowdancer (0.71ubuntu1) UNRELEASED; urgency=low
+cowdancer (0.72) unstable; urgency=low
 
-  * A directory bind-mounted into pc->buildplace, will be cleaned out by
+  [ Jean-Baptiste Lallement ]
+  * cowbuilder deletes content of bind-mounted directories (closes: #703406)
+  - A directory bind-mounted into pc->buildplace, will be cleaned out by
     rmrf() To avoid this disaster, we skip buildplace clean-up if a directory
     is bind-mounted under the chroot (LP: #1156540)
 
- -- Jean-Baptiste Lallement <jean-baptiste.lallement@canonical.com>  Tue, 19 Mar 2013 09:35:26 +0100
+  [ Junichi Uekawa ]
+  * Some refactoring, and removing memory leaks.
+  * Mark some functions to be static in cowdancer so that they are not exported.
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 30 Mar 2013 11:05:19 +0900
 
 cowdancer (0.71) unstable; urgency=low
 
