@@ -58,6 +58,27 @@ int size_of_ntarray(char ** buf)
 }
 
 /**
+ * @returns strdup of string with optionally removing the starting and
+ * trailing "'". bash 'set' command will quote.
+ *
+ ... for ', ''"'"
+ */
+char* strdup_strip_quote(const char* p) {
+  if (*p == 0) {
+    return strdup("");
+  }
+
+  size_t len = strlen(p);
+  if (*p == '\'' && p[len-1] == '\'') {
+    char* ret = strdup(p+1);
+    assert(strlen(ret) == len - 1);
+    ret[len-2] = 0;
+    return ret;
+  }
+  return strdup(p);
+}
+
+/**
  * load configuration.
  *
  * Returns bash return codes or -1 on popen error.
@@ -95,23 +116,23 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	  *(delim++)=0;
 	  if (!strcmp(buf, "MIRRORSITE"))
 	    {
-	      pc->mirror=strdup(delim);
+	      pc->mirror=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "BUILDRESULT"))
 	    {
-	      pc->buildresult=strdup(delim);
+	      pc->buildresult=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "DISTRIBUTION"))
 	    {
-	      pc->distribution=strdup(delim);
+	      pc->distribution=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "KERNEL_IMAGE"))
 	    {
-	      pc->kernel_image=strdup(delim);
+	      pc->kernel_image=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "INITRD"))
 	    {
-	      pc->initrd=strdup(delim);
+	      pc->initrd=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "MEMORY_MEGS"))
 	    {
@@ -119,35 +140,35 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    }
 	  else if (!strcmp(buf, "ARCHITECTURE"))
 	    {
-	      pc->arch=strdup(delim);
+	      pc->arch=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "ARCH"))
 	    {
-	      pc->arch=strdup(delim);
+	      pc->arch=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "BASEPATH"))
 	    {
-	      pc->basepath=strdup(delim);
+	      pc->basepath=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "BUILDPLACE"))
 	    {
-	      pc->buildplace=strdup(delim);
+	      pc->buildplace=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "COMPONENTS"))
 	    {
-	      pc->components=strdup(delim);
+	      pc->components=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "OTHERMIRROR"))
 	    {
-	      pc->othermirror=strdup(delim);
+	      pc->othermirror=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "SMP"))
 	    {
-	      pc->smp=strdup(delim);
+	      pc->smp=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "DEBBUILDOPTS"))
 	    {
-	      pc->debbuildopts=strdup(delim);
+	      pc->debbuildopts=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "BINARY_ARCH"))
 	    {
@@ -163,11 +184,11 @@ int load_config_file(const char* config, pbuilderconfig* pc)
 	    }
 	  else if (!strcmp(buf, "ARCH_DISKDEVICE"))
 	    {
-	      pc->arch_diskdevice=strdup(delim);
+	      pc->arch_diskdevice=strdup_strip_quote(delim);
 	    }
 	  else if (!strcmp(buf, "HTTP_PROXY"))
 	    {
-	      pc->http_proxy=strdup(delim);
+	      pc->http_proxy=strdup_strip_quote(delim);
 	    }
 	}
     }

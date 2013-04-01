@@ -23,7 +23,7 @@
 
 #define MAX_CUSTOM_FILES 32
 
-typedef struct pbuilderconfig 
+typedef struct pbuilderconfig
 {
   /* if you edit here, please add to parameter.c: dumpconfig */
   int mountproc;
@@ -42,11 +42,11 @@ typedef struct pbuilderconfig
   int binary_arch;
   char* http_proxy;
 
-  /* files to be copied into the chroot, 
+  /* files to be copied into the chroot,
      and copied out of the chroot */
   char* inputfile[MAX_CUSTOM_FILES+1];
   char* outputfile[MAX_CUSTOM_FILES+1];
-    
+
   /* cow-specific options */
   int no_cowdancer_update;		/* --no-cowdancer-update */
   int debian_etch_workaround;		/* --debian-etch-workaround */
@@ -69,7 +69,7 @@ typedef struct pbuilderconfig
     pbuilder_login,
     pbuilder_dumpconfig
   } operation;
-}pbuilderconfig;
+} pbuilderconfig;
 
 int load_config_file(const char* config, pbuilderconfig* pc);
 int size_of_ntarray(char ** buf);
@@ -83,8 +83,8 @@ int cpbuilder_update(const struct pbuilderconfig* pc);
 int cpbuilder_help(void);
 int cpbuilder_create(const struct pbuilderconfig* pc);
 
-/* 
-   
+/*
+
 The pbuilder command-line to pass
 
 0: pbuilder

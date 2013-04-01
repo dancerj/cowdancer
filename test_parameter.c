@@ -3,9 +3,10 @@
  */
 #include <stdio.h>
 #include <assert.h>
+#include <string.h>
 #include "parameter.h"
 
-/* 
+/*
    Mock functions
  */
 int cpbuilder_build(const struct pbuilderconfig* pc, const char* dscfile)
@@ -37,7 +38,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 {
   return 0;
 }
-/* 
+/*
    end of mock functions
  */
 
@@ -53,8 +54,20 @@ void test_size_of_ntarray()
   assert(size_of_ntarray(test)==2);
 }
 
+/*
+  Test handling of quoted parameter string.
+ */
+void test_load_quoted_config()
+{
+  pbuilderconfig pc;
+  assert(0 == load_config_file("tests/102_test_cowbuilder_debbuildopts.config", &pc));
+  assert(!strcmp("-j2 -I", pc.debbuildopts));
+  assert(!strcmp("/boot/vmlinuz-x.y.z", pc.kernel_image));
+}
+
 int main()
 {
   test_size_of_ntarray();
+  test_load_quoted_config();
   return 0;
 }
