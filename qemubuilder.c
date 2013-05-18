@@ -568,7 +568,7 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
 	}
       if(filelist)
 	{
-	  if(sscanf(buf, " %*s %*s %as", &filename)!=1)
+	  if(sscanf(buf, " %*s %*s %ms", &filename)!=1)
 	    filelist=0;
 	  else
 	    {

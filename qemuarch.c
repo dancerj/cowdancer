@@ -102,7 +102,7 @@ char* get_host_dpkg_arch()
 {
   FILE*f=popen("dpkg --print-architecture", "r");
   char*host_arch;
-  fscanf(f, "%as", &host_arch);
+  fscanf(f, "%ms", &host_arch);
   pclose(f);
   return host_arch;
 }
