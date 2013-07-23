@@ -1,3 +1,11 @@
+cowdancer (0.73) unstable; urgency=low
+
+  * debbuildopts quoting is wrong from ~/.pbuilderrc (closes: #704247)
+  * do not fail test when '/' is not mounted inside chroot. 
+    (closes: #713511)
+
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 24 Jul 2013 06:41:33 +0900
+
 cowdancer (0.72) unstable; urgency=low
 
   [ Jean-Baptiste Lallement ]
