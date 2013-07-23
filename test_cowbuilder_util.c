@@ -2,16 +2,23 @@
  */
 #include "cowbuilder_util.h"
 
+#include <stdio.h>
 #include <assert.h>
 #include <string.h>
 
 
 void test_check_mountpoint() {
   // something is usually mounted under /.
-  assert(1 == check_mountpoint("/"));
+  if(0 == check_mountpoint("/")) {
+    fprintf(stderr, 
+	    "*******************************************************************************\n"
+	    "* '/' is not mounted, something is wrong with the system or the code\n"
+	    "*******************************************************************************\n");
+  }
   // something is usually mounted under /run, but can't be sure.
   // assert(1 == check_mountpoint("/run")); // commented out so that I don't break automatic builds.
   // usually nothing is mounted under /tmp/nothing-is-mounted
+  fprintf(stderr, "The following message is expected:\n");
   assert(0 == check_mountpoint("/tmp/nothing-is-mounted"));
 }
 
