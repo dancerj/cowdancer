@@ -198,13 +198,11 @@ static int cpbuilder_internal_cowcopy(const struct pbuilderconfig* pc)
       /* if there was no ilist file in the beginning, that's not a
 	 problem.
        */
-      fprintf(stderr, "I: unlink for ilistfile %s failed, it didn't exist?\n",
-	      ilistfile);
+      printf("I: unlink for ilistfile %s failed, it didn't exist?\n", ilistfile);
     }
   else
     {
-      fprintf(stderr, "I: removed stale ilistfile %s\n",
-	      ilistfile);
+      printf("I: removed stale ilistfile %s\n", ilistfile);
     }
   free(ilistfile);
 
