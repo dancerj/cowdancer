@@ -106,7 +106,7 @@ $ sudo apt-get install linux-image-2.6.22-2-amd64
 $ cat pbuilderrc-amd64.config
 KERNEL_IMAGE=/boot/vmlinuz-2.6.22-2-amd64
 INITRD=/boot/initrd.img-2.6.22-2-amd64
-MIRRORSITE=http://cdn.debian.net/debian
+MIRRORSITE=http://httpredir.debian.org/debian
 ARCH=amd64
 BASEPATH=/home/ondra/debian/base-amd64.qemu
 MEMORY_MEGS=64
@@ -120,7 +120,7 @@ I found that MEMORY_MEGS=64 was too small. It seemed to work much better for me 
 == arm ==
 
 kernel for versatile architecture is available from
-Debian archive: http://cdn.debian.net/debian/pool/main/l/linux-latest-2.6/
+Debian archive: http://httpredir.debian.org/debian/pool/main/l/linux-latest-2.6/
 for example, linux-image-2.6.26-1-versatile_2.6.26-12_armel.deb
 This kernel requires initrd, and ext3 and ethernet driver module is not built-in.
 
@@ -131,7 +131,7 @@ Currently you cannot use this kernel.
 For etch, there was qemu architecture, for lenny it's malta.
 
 Get the kernel and initrd from 
-http://cdn.debian.net/debian/pool/main/l/linux-latest-2.6/
+http://httpredir.debian.org/debian/pool/main/l/linux-latest-2.6/
 for malta architecture, is this too modularized too?
 
 == mipsel ==
@@ -139,7 +139,7 @@ for malta architecture, is this too modularized too?
 For etch, there was qemu architecture, for lenny it's malta.
 
 Get the kernel and initrd from 
-http://cdn.debian.net/debian/pool/main/l/linux-latest-2.6/
+http://httpredir.debian.org/debian/pool/main/l/linux-latest-2.6/
 for malta architecture, is this too modularized too?
 
 == powerpc ==
