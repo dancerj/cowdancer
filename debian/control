@@ -15,8 +15,9 @@ Vcs-Browser: https://anonscm.debian.org/cgit/pbuilder/cowdancer.git
 Vcs-Git: git://anonscm.debian.org/pbuilder/cowdancer.git
 
 Package: cowdancer
-Architecture: any
-Depends: ${shlibs:Depends}
+Architecture: linux-any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
 Description: Copy-on-write directory tree utility.
  Tries to make copy-on-write semantics upon hard-link copied
  directory trees generated with 'cp -la'
@@ -31,8 +32,9 @@ Description: Copy-on-write directory tree utility.
 Homepage: http://www.netfort.gr.jp/~dancer/software/cowdancer.html
 
 Package: cowbuilder
-Architecture: any
+Architecture: linux-any
 Depends: ${shlibs:Depends},
+         ${misc:Depends},
          pbuilder,
          cowdancer
 Replaces: cowdancer (<= 0.49)
@@ -48,6 +50,7 @@ Description: pbuilder running on cowdancer
 Package: qemubuilder
 Architecture: i386 amd64 powerpc
 Depends: ${shlibs:Depends},
+         ${misc:Depends},
          qemu-system | kvm,
          pbuilder,
          debootstrap
