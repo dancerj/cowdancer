@@ -32,9 +32,9 @@ install: $(BINARY)
 	$(INSTALL_PROGRAM) cowdancer-ilistcreate $(DESTDIR)/usr/bin/cowdancer-ilistcreate
 	$(INSTALL_PROGRAM) cowdancer-ilistdump $(DESTDIR)/usr/bin/cowdancer-ilistdump
 
-	$(INSTALL_DIR) $(DESTDIR)/etc/bash_completion.d
-	$(INSTALL_FILE) bash_completion.qemubuilder $(DESTDIR)/etc/bash_completion.d/qemubuilder
-	$(INSTALL_FILE) bash_completion.cowbuilder $(DESTDIR)/etc/bash_completion.d/cowbuilder
+	$(INSTALL_DIR) $(DESTDIR)/usr/share/bash-completion/completions
+	$(INSTALL_FILE) bash_completion.qemubuilder $(DESTDIR)/usr/share/bash-completion/completions/qemubuilder
+	$(INSTALL_FILE) bash_completion.cowbuilder $(DESTDIR)/usr/share/bash-completion/completions/cowbuilder
 
 libcowdancer.so: cowdancer.lo ilistcreate.lo
 	$(CC) $(CFLAGS) -shared -o $@ $^ -ldl
