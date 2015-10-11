@@ -57,7 +57,8 @@ const char* qemu_arch_diskdevice(const struct pbuilderconfig* pc)
   dev_t consoledev;
 
   if (!strcmp(arch, "arm") ||
-      !strcmp(arch, "armel"))
+      !strcmp(arch, "armel") ||
+      !strcmp(arch, "armhf"))
     {
       consoledev = makedev(204, 64);
     }
@@ -113,7 +114,8 @@ char* get_host_dpkg_arch()
 const char* qemu_arch_qemu(const char* arch)
 {
   if (!strcmp(arch, "arm") ||
-      !strcmp(arch, "armel"))
+      !strcmp(arch, "armel") ||
+      !strcmp(arch, "armhf"))
     {
       return "qemu-system-arm";
     }
@@ -163,6 +165,8 @@ const char* qemu_arch_qemumachine(const char* arch)
   if (!strcmp(arch, "arm") ||
       !strcmp(arch, "armel"))
     return "versatilepb";
+  else if (!strcmp(arch, "armhf"))
+	   return "virt";
   else if (!strcmp(arch, "i386") ||
 	   !strcmp(arch, "hurd-i386") ||
            !strcmp(arch, "amd64"))
@@ -184,7 +188,8 @@ const char* qemu_arch_tty(const char* arch)
 {
 
   if (!strcmp(arch, "arm")||
-      !strcmp(arch, "armel"))
+      !strcmp(arch, "armel") ||
+      !strcmp(arch, "armhf"))
     {
       return "ttyAMA0,115200n8";
     }

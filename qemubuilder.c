@@ -275,7 +275,7 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       const char* initrd = pc->initrd;
       char* mem;
       int argc = 0;
-      const int MAX_ARGS = 30;
+      const int MAX_ARGS = 40;
       char *argv[MAX_ARGS];
       int i;
 
@@ -286,10 +286,12 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
 
       asprintf(&mem, "%i", pc->memory_megs);
 
-      asprintf(&hda_command, "file=%s,index=0,media=disk,cache=writeback",
+      asprintf(&hda_command,
+	       "file=%s,index=0,media=disk,cache=writeback,id=hd0",
 	       strdupa(hda));
 
-      asprintf(&hdb_command, "file=%s,index=1,media=disk,cache=writeback",
+      asprintf(&hdb_command,
+	       "file=%s,index=1,media=disk,cache=writeback,id=hd1",
 	       strdupa(hdb));
 
       asprintf(&append_command,
@@ -329,8 +331,21 @@ static int fork_qemu(const char* hda, const char* hdb, const struct pbuilderconf
       argv[argc++]="stdio";
       argv[argc++]="-net";
       argv[argc++]="user";
-      argv[argc++]="-net";
-      argv[argc++]="nic";
+      if (!strcmp(machine, "virt")) {
+	argv[argc++]="-device";
+	argv[argc++]="virtio-scsi-device,id=scsi";
+	argv[argc++]="-device";
+	argv[argc++]="virtio-net-device,netdev=net0";
+	argv[argc++]="-device";
+	argv[argc++]="scsi-hd,drive=hd0";
+	argv[argc++]="-device";
+	argv[argc++]="scsi-hd,drive=hd1";
+	argv[argc++]="-netdev";
+	argv[argc++]="user,id=net0";
+      } else {
+	argv[argc++]="-net";
+	argv[argc++]="nic";
+      }
       argv[argc]=NULL;
       assert(argc < MAX_ARGS);
 
