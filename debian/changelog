@@ -1,3 +1,22 @@
+cowdancer (0.74) unstable; urgency=medium
+
+  [ Francois Poirotte ]
+  * Send benign messages to stdout not stderr. (Closes: #734162)
+
+  [ Iain R. Learmonth ]
+  * Removed debian/watch; this is a native package.
+  * debian/control:
+   - Switch Vcs-Browser and Vcs-Git to canonical URLs.
+   - Change maintainer to Debian pbuilder maintenance team.
+   - Added self as an Uploader.
+   - Reformatted with cme.
+  * debian/copyright:
+   - DEP-5 compliance fixes.
+  * Fixed handling of .dsc files in qemubuilder. (Closes: #779255)
+   - Thanks to Stefan Kisdaroczi!
+
+ -- Iain R. Learmonth <irl@debian.org>  Sun, 11 Oct 2015 21:32:40 +0100
+
 cowdancer (0.73) unstable; urgency=low
 
   * debbuildopts quoting is wrong from ~/.pbuilderrc (closes: #704247)
