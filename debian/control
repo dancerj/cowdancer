@@ -1,22 +1,22 @@
 Source: cowdancer
+Maintainer: Debian pbuilder maintenance team <pbuilder-maint@lists.alioth.debian.org>
+Uploaders: Iain R. Learmonth <irl@debian.org>
 Section: utils
 Priority: optional
-Maintainer: Junichi Uekawa <dancer@debian.org>
 Build-Depends: cpio,
-	       busybox-static,
-	       debhelper (>> 4.0.0),
-	       klibc-utils,
-	       libklibc-dev,
-	       pbuilder,
-	       qemu-system [i386 amd64 powerpc]
-Standards-Version: 3.9.2
-Vcs-Git: git://git.debian.org/git/pbuilder/cowdancer.git
-Vcs-Browser: http://git.debian.org/?p=pbuilder/cowdancer.git
+               busybox-static,
+               debhelper (>> 4.0.0),
+               klibc-utils,
+               libklibc-dev,
+               pbuilder,
+               qemu-system [i386 amd64 powerpc]
+Standards-Version: 3.9.6
+Vcs-Browser: https://anonscm.debian.org/cgit/pbuilder/cowdancer.git
+Vcs-Git: git://anonscm.debian.org/pbuilder/cowdancer.git
 
 Package: cowdancer
 Architecture: any
 Depends: ${shlibs:Depends}
-Homepage: http://www.netfort.gr.jp/~dancer/software/cowdancer.html
 Description: Copy-on-write directory tree utility.
  Tries to make copy-on-write semantics upon hard-link copied
  directory trees generated with 'cp -la'
@@ -28,10 +28,13 @@ Description: Copy-on-write directory tree utility.
  Useful for quick scratch workspace and experimentation.
  .
  For a useful Debian tool, try cowbuilder.
+Homepage: http://www.netfort.gr.jp/~dancer/software/cowdancer.html
 
 Package: cowbuilder
 Architecture: any
-Depends: ${shlibs:Depends}, pbuilder, cowdancer
+Depends: ${shlibs:Depends},
+         pbuilder,
+         cowdancer
 Replaces: cowdancer (<= 0.49)
 Description: pbuilder running on cowdancer
  'cowbuilder' command is a wrapper for pbuilder which allows using
@@ -44,8 +47,10 @@ Description: pbuilder running on cowdancer
 
 Package: qemubuilder
 Architecture: i386 amd64 powerpc
-Depends: ${shlibs:Depends}, qemu-system | kvm, pbuilder (>= 0.174), debootstrap
-Homepage: http://wiki.debian.org/qemubuilder
+Depends: ${shlibs:Depends},
+         qemu-system | kvm,
+         pbuilder,
+         debootstrap
 Description: pbuilder using QEMU as backend
  pbuilder implementation for QEMU.
  .
@@ -62,3 +67,4 @@ Description: pbuilder using QEMU as backend
  clean chroot, and qemubuilder implements similar experience over
  emulated CPUs. This tool allows building package inside emulated
  Debian environment for different CPU architectures supported by qemu.
+Homepage: http://wiki.debian.org/qemubuilder
