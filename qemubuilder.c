@@ -579,7 +579,7 @@ static char* copy_dscfile(const char* dscfile_, const char* destdir)
 	    }
 	}
       if (!(buf[0]==' ')&&
-	  !strcmp(buf,"Files: "))
+	  !strncmp(buf,"Files:",6))
 	{
 	  filelist=1;
 	}
