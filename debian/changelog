@@ -1,3 +1,20 @@
+cowdancer (0.75) unstable; urgency=medium
+
+  * Updated references to cdn.debian.net to use httpredir.debian.org (Closes:
+    #774469)
+  * Add armhf support to qemubuilder (Closes: #780332)
+  * Move bash completions to standard location
+  * d/control:
+   - Changed architecture for qemubuilder to linux-any due to missing
+     dependencies on kfreebsd and hurd
+   - Added ${misc:Depends} to binary dependencies
+  * d/copyright:
+   - Updating FSF address in GPL references
+   - Reference common licenses
+  * Add source format "3.0 (native)"
+
+ -- Iain R. Learmonth <irl@debian.org>  Tue, 03 Nov 2015 11:53:25 +0000
+
 cowdancer (0.74) unstable; urgency=medium
 
   [ Francois Poirotte ]
