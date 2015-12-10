@@ -11,7 +11,7 @@ Low-level command for use internally.
 
 .SH "EXAMPLES"
 .TP
-.B "cowdancer-ilistcreate .ilist 'find . -xdev -path ./home -prune -o \( \( -type l -o -type f \) -a -links +1 -print0 \) | xargs -0 stat --format \"%d %i \"'"
+.B "cowdancer-ilistcreate .ilist 'find . -xdev -path ./home -prune -o ( ( -type l -o -type f ) -a -links +1 -print0 ) | xargs -0 stat --format \"%d %i \"'"
 Create .ilist file with excluding "./home/" directory.
 
 .SH "AUTHOR"
