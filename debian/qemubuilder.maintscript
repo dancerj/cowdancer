@@ -1,0 +1,1 @@
+rm_conffile /etc/bash_completion.d/qemubuilder 0.75~
