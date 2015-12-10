@@ -17,6 +17,7 @@ all: $(BINARY)
 
 install: $(BINARY)
 	$(INSTALL_DIR) $(DESTDIR)${PREFIX}/bin
+	$(INSTALL_DIR) $(DESTDIR)${PREFIX}/sbin
 	$(INSTALL_DIR) $(DESTDIR)${LIBDIR}/cowdancer
 	$(INSTALL_DIR) $(DESTDIR)${PREFIX}/share/man/man1
 	$(INSTALL_DIR) $(DESTDIR)${PREFIX}/share/man/man8
