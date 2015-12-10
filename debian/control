@@ -18,7 +18,7 @@ Package: cowdancer
 Architecture: linux-any
 Depends: ${misc:Depends},
          ${shlibs:Depends}
-Description: Copy-on-write directory tree utility.
+Description: Copy-on-write directory tree utility
  Tries to make copy-on-write semantics upon hard-link copied
  directory trees generated with 'cp -la'
  .
