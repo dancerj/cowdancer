@@ -3,8 +3,8 @@ Maintainer: Debian pbuilder maintenance team <pbuilder-maint@lists.alioth.debian
 Uploaders: Iain R. Learmonth <irl@debian.org>
 Section: utils
 Priority: optional
-Build-Depends: cpio,
-               busybox-static,
+Build-Depends: busybox-static,
+               cpio,
                debhelper (>> 9),
                klibc-utils,
                libklibc-dev,
@@ -16,8 +16,8 @@ Vcs-Git: git://anonscm.debian.org/pbuilder/cowdancer.git
 
 Package: cowdancer
 Architecture: linux-any
-Depends: ${shlibs:Depends},
-         ${misc:Depends}
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
 Description: Copy-on-write directory tree utility.
  Tries to make copy-on-write semantics upon hard-link copied
  directory trees generated with 'cp -la'
@@ -33,10 +33,10 @@ Homepage: http://www.netfort.gr.jp/~dancer/software/cowdancer.html
 
 Package: cowbuilder
 Architecture: linux-any
-Depends: ${shlibs:Depends},
-         ${misc:Depends},
+Depends: cowdancer,
          pbuilder,
-         cowdancer
+         ${misc:Depends},
+         ${shlibs:Depends}
 Replaces: cowdancer (<= 0.49)
 Description: pbuilder running on cowdancer
  'cowbuilder' command is a wrapper for pbuilder which allows using
@@ -48,12 +48,12 @@ Description: pbuilder running on cowdancer
  destruction of chroots fast.
 
 Package: qemubuilder
-Architecture: i386 amd64 powerpc
-Depends: ${shlibs:Depends},
-         ${misc:Depends},
-         qemu-system | kvm,
+Architecture: amd64 i386 powerpc
+Depends: debootstrap,
          pbuilder,
-         debootstrap
+         qemu-system | kvm,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: pbuilder using QEMU as backend
  pbuilder implementation for QEMU.
  .
