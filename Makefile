@@ -7,7 +7,7 @@ INSTALL_PROGRAM=install -o root -g root -m 755
 DESTDIR=
 PREFIX=/usr
 LIBDIR=$(PREFIX)/lib
-CFLAGS=-O2 -Wall -g -fno-strict-aliasing
+CFLAGS := $(CFLAGS) -fno-strict-aliasing
 CFLAGS_LFS=$(CFLAGS) $(shell getconf LFS_CFLAGS)
 PWD=$(shell pwd)
 
