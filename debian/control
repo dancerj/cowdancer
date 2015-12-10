@@ -5,7 +5,7 @@ Section: utils
 Priority: optional
 Build-Depends: cpio,
                busybox-static,
-               debhelper (>> 4.0.0),
+               debhelper (>> 9),
                klibc-utils,
                libklibc-dev,
                pbuilder,

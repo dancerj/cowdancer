@@ -1,90 +1,19 @@
 #!/usr/bin/make -f
-# Sample debian/rules that uses debhelper.
-# GNU copyright 1997 to 1999 by Joey Hess.
+export DH_VERBOSE=1
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
+%:
+	dh $@ --parallel
 
-CFLAGS = -Wall -g -fno-strict-aliasing 
-INSTALL = install
-export INSTALL_FILE    = $(INSTALL) -p    -o root -g root  -m  644
-export INSTALL_PROGRAM = $(INSTALL) -p    -o root -g root  -m  755
-export INSTALL_SCRIPT  = $(INSTALL) -p    -o root -g root  -m  755
-export INSTALL_DIR     = $(INSTALL) -p -d -o root -g root  -m  755
-
-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-CFLAGS += -O0
-else
-CFLAGS += -O2
-endif
-ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-INSTALL_PROGRAM += -s
-endif
-ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
-    NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
-    MAKEFLAGS += -j$(NUMJOBS)
-endif
-
-
-configure: configure-stamp
-configure-stamp:
-	dh_testdir
-	touch configure-stamp
-
-build: configure-stamp build-stamp
-build-stamp:
-	dh_testdir
-	$(MAKE)
-ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-	# Code to run the package test suite.
-	$(MAKE) check
-endif
-	touch build-stamp
-
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp configure-stamp
-	-$(MAKE) clean
-	dh_clean
-
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	dh_installdirs
-
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/cowdancer
+override_dh_auto_install:
+	dh_auto_install -- DESTDIR=$(CURDIR)/debian/cowdancer
 	dh_movefiles -pqemubuilder --sourcedir=debian/cowdancer
 	dh_movefiles -pcowbuilder --sourcedir=debian/cowdancer
 
-# Build architecture-independent files here.
-binary-indep: build install
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
-binary-arch: build install
-	dh_testdir -s 
-	dh_testroot -s 
-	dh_installdocs -s NEWS
-	dh_installexamples -s 
-	dh_installmenu -s 
-	dh_installman -s 
-	dh_installchangelogs -s ChangeLog
-	dh_link -s 
-	dh_strip -s 
-	dh_shlibdeps -s 
-	dh_compress -s 
-	dh_fixperms -s 
-	dh_installdeb -s 
-	dh_gencontrol -s 
-	dh_md5sums -s 
-	dh_builddeb -s 
+override_dh_installchangelogs:
+	dh_installchangelogs ChangeLog
 
 # (shell-command "cd ../ ; debian/rules debian/qemubuilder.README.Debian")
 debian/qemubuilder.README.Debian:
 	w3m -dump 'http://wiki.debian.org/qemubuilder?action=raw' > $@.tmp
 	mv $@.tmp $@
 
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install configure debian/qemubuilder.README.Debian
