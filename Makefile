@@ -37,24 +37,24 @@ install: $(BINARY)
 	$(INSTALL_FILE) bash_completion.cowbuilder $(DESTDIR)/usr/share/bash-completion/completions/cowbuilder
 
 libcowdancer.so: cowdancer.lo ilistcreate.lo
-	$(CC) $(CFLAGS) -shared -o $@ $^ -ldl
+	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -ldl
 
 cow-shell: cow-shell.o ilistcreate.o
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 cowdancer-ilistcreate: cowdancer-ilistcreate.o ilistcreate.o
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 cowbuilder: cowbuilder.o parameter.o forkexec.o ilistcreate.o main.o cowbuilder_util.o
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 qemubuilder: qemubuilder.lfso parameter.lfso forkexec.lfso qemuipsanitize.lfso qemuarch.lfso file.lfso main.lfso
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
-%.lo: %.c 
+%.lo: %.c
 	$(CC) $(CFLAGS) -fPIC $< -o $@ -c
 
-%.lfso: %.c 
+%.lfso: %.c
 	$(CC) $(CFLAGS_LFS) $< -o $@ -c
 
 %.o: %.c parameter.h
