@@ -1,3 +1,9 @@
+cowdancer (0.76) UNRELEASED; urgency=medium
+
+  * Team upload.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Thu, 10 Dec 2015 14:58:21 +0000
+
 cowdancer (0.75) unstable; urgency=medium
 
   * Updated references to cdn.debian.net to use httpredir.debian.org (Closes:
