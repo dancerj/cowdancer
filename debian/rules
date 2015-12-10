@@ -4,10 +4,8 @@ export DH_VERBOSE=1
 %:
 	dh $@ --parallel
 
-override_dh_auto_install:
-	dh_auto_install -- DESTDIR=$(CURDIR)/debian/cowdancer
-	dh_movefiles -pqemubuilder --sourcedir=debian/cowdancer
-	dh_movefiles -pcowbuilder --sourcedir=debian/cowdancer
+override_dh_install:
+	dh_install --fail-missing
 
 override_dh_installchangelogs:
 	dh_installchangelogs ChangeLog

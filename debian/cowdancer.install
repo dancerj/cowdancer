@@ -1,0 +1,7 @@
+usr/bin/cow-shell
+usr/bin/cowdancer-ilistcreate
+usr/bin/cowdancer-ilistdump
+usr/lib/cowdancer/libcowdancer.so
+usr/share/man/man1/cow-shell.1
+usr/share/man/man1/cowdancer-ilistcreate.1
+usr/share/man/man1/cowdancer-ilistdump.1
