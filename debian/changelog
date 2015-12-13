@@ -1,8 +1,34 @@
-cowdancer (0.76) UNRELEASED; urgency=medium
+cowdancer (0.76) unstable; urgency=medium
 
-  * Team upload.
+  [ Mattia Rizzolo ]
+  * debian/rules:
+   - use the dh sequencer and compat 9
+   - use CFLAGS from the env, always. dpkg-buildpackage takes care of that in
+     debian, just be sure -fno-strict-aliasing is there
+   - use LDFLAGS where we actually link stuff
+   - use dh_install instead of dh_movefiles
+   - enable hardening
+  * debian/dirs (removed):
+   - let the makefile create the directory, remove debian/dirs
+  * qemubuilder.8:
+   - remove .qy macro that's not understood by man now
+  * cowdancer-ilistcreate.1:
+   - remove escaping of round brackets
+  * bash_completion.qemubuilder:
+   - remove the shebang, bash completion don't want/need the shebang
+  * run wrap-and-sort
+  * debian/control:
+   - remove final dot from cowdancer short description, fix
+     description-synopsis-might-not-be-phrased-properly
+  * debian/cowbuilder.maintscript:
+   - add to remove obsolete /etc/bash_completion/cowbuilder (Closes: #804634)
+  * debian/qemubuilder.maintscript:
+   - add to remove obsolete /etc/bash_completion/qemubuilder (Closes: #804635)
 
- -- Mattia Rizzolo <mattia@debian.org>  Thu, 10 Dec 2015 14:58:21 +0000
+  [ Iain R. Learmonth ]
+  * Ensure qemubuilder mounts rootfs as rw during creation (Closes: #698451)
+
+ -- Iain R. Learmonth <irl@debian.org>  Sun, 13 Dec 2015 11:25:11 +0000
 
 cowdancer (0.75) unstable; urgency=medium
 
