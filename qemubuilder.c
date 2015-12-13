@@ -689,7 +689,7 @@ int cpbuilder_create(const struct pbuilderconfig* pc)
 	  "echo ' -> qemu-pbuilder first-stage' \n"
 	  "export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\n"
 	  "mount -n /proc /proc -t proc\n"
-	  "mount -n -o rw,remount /\n"
+	  "mount -n -o rw,remount / || mount -v -n -o rw,remount /dev/root \n"
 	  "cp /proc/mounts /etc/mtab\n"
 	  "export PBUILDER_MOUNTPOINT=/var/cache/pbuilder/pbuilder-mnt\n"
 	  "mkdir -p $PBUILDER_MOUNTPOINT\n"
