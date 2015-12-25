@@ -48,7 +48,7 @@ Description: pbuilder running on cowdancer
  destruction of chroots fast.
 
 Package: qemubuilder
-Architecture: amd64 i386 powerpc
+Architecture: any
 Depends: debootstrap,
          pbuilder,
          qemu-system | kvm,
