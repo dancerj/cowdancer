@@ -1,3 +1,10 @@
+cowdancer (0.77) unstable; urgency=medium
+
+  * bash_completion.cowbuilder:
+   - Added --configfile (Closes: #744974)
+
+ -- Iain R. Learmonth <irl@debian.org>  Fri, 25 Dec 2015 11:09:25 +0000
+
 cowdancer (0.76) unstable; urgency=medium
 
   [ Mattia Rizzolo ]
