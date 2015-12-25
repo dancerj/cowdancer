@@ -14,7 +14,7 @@ _cowbuilder()
     _get_comp_words_by_ref cur prev words
     initialcommand=${words[1]}
     initialcommand_options='--create --update --build --login --execute'
-    other_options='--dumpconfig --distribution --mirror --basepath --architecture'
+    other_options='--dumpconfig --distribution --mirror --basepath --architecture --configfile'
     distribution='sid sarge etch woody lenny squeeze'
 
     case $prev in
@@ -24,6 +24,10 @@ _cowbuilder()
 	    ;;
 	--basepath)
 	    _filedir -d
+	    return 0
+	    ;;
+	--configfile)
+	    _filedir
 	    return 0
 	    ;;
 	*)
