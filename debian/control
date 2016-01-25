@@ -9,7 +9,6 @@ Build-Depends: busybox-static,
                klibc-utils,
                libklibc-dev,
                pbuilder,
-               qemu-system [i386 amd64 powerpc]
 Standards-Version: 3.9.6
 Vcs-Browser: https://anonscm.debian.org/cgit/pbuilder/cowdancer.git
 Vcs-Git: git://anonscm.debian.org/pbuilder/cowdancer.git
