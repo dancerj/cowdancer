@@ -9,7 +9,7 @@ Build-Depends: busybox-static,
                klibc-utils,
                libklibc-dev,
                pbuilder,
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Vcs-Browser: https://anonscm.debian.org/cgit/pbuilder/cowdancer.git
 Vcs-Git: git://anonscm.debian.org/pbuilder/cowdancer.git
 
